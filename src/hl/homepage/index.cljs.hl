@@ -9,7 +9,7 @@
 
 (html
 	(head
-		(link :href "css/semantic.css" :rel "stylesheet")
+		(link :href "semantic.css" :rel "stylesheet")
 		)
 	(body
 		(h1 (text "Hello, Hoplon and Castra! ~{rpc/random-number}"))))
