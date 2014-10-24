@@ -7,27 +7,27 @@
 
 (rpc/init)
 
+(defn top-menu []
+	(div :class "ui tiered menu"
+		(div :class "ui menu"
+			(a :class "active item" "Features")
+			(a :class "item" "Pricing")
+			(a :class "item" "Blog")
+			(a :class "item" "Resources")
+			(div :class "right item"
+				(div :class "ui button" "Signup"))
+			(a :class "item" "Login")
+			)
+		(div :class "ui sub menu"
+			(a :class "item" "Starter Pack")
+			(a :class "active item" "Challenger Pack")
+			(a :class "item" "Dominator Pack")
+			(a :class "item" "Amplifier Pack")
+			)))
+
 (html
 	(head
-		(link :href "semantic.css" :rel "stylesheet")
-		)
+		(link :href "semantic.css" :rel "stylesheet"))
 	(body
-		(div :class "ui tiered menu"
-			(div :class "ui menu"
-				(a :class "active item" "Features")
-				(a :class "item" "Pricing")
-				(a :class "item" "Blog")
-				(a :class "item" "Resources")
-				(div :class "right item"
-					(div :class "ui button" "Signup"))
-				(a :class "item" "Login")
-				)
-			(div :class "ui sub menu"
-				(a :class "item" "Starter Pack")
-				(a :class "active item" "Challenger Pack")
-				(a :class "item" "Dominator Pack")
-				(a :class "item" "Amplifier Pack")
-				))
-		(h1 (text "Hello, Hoplon and Castra! ~{rpc/random-number}"))
-
-		))
+		(top-menu)
+		(h1 (text "Hello, Hoplon and Castra! ~{rpc/random-number}"))))
