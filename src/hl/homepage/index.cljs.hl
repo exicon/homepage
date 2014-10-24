@@ -27,7 +27,7 @@
 
 (defn intro []
 	(section :id "intro" :class "two middle aligned column ui grid"
-		(div :class "column"
+		(div :class "center aligned column"
 			(div :class "ui huge play button" "Video"))
 		(div :class "column"
 			(h1 "Get a grip on your apps" (br) "with the AppBoard")
@@ -38,7 +38,11 @@
 	consectetuer adipiscing elit. Donec odio.
 	Quisque volutpat mattis eros.")
 
-(defc q1 {:title "Title" :msg lorem})
+(defc q1 {:title "Title 1" :msg lorem})
+(defc q2 {:title "Title 2" :msg lorem})
+(defc q3 {:title "Title 3" :msg lorem})
+(defc q4 {:title "Title 4" :msg lorem})
+
 
 (defn customer-quote [x]
 	(div :class "column"
@@ -51,9 +55,9 @@
 	(section :id "customer-quote-list" :class "ui four column grid"
 		(div :class "row"
 			(customer-quote q1)
-			(customer-quote q1)
-			(customer-quote q1)
-			(customer-quote q1)))
+			(customer-quote q2)
+			(customer-quote q3)
+			(customer-quote q4)))
 
 	(section :id "imaginary-quote" :class "ui center aligned grid"
 		(div :class "eight wide column"
@@ -61,8 +65,21 @@
 	]
 )
 
-(defn features [])
-(defn packages [])
+(defn features []
+	(section :id "features" :class "ui two column grid"
+		(div :class "column" (h2 "Picture"))
+		(div :class "column" (div :class "ui two column grid"
+			(div :class "row" (div :class "four wide column" (h2 "Title")(p "content")) (div :class "four wide column" (h2 "Title")(p "content")))
+			(div :class "row" (div :class "four wide column" (h2 "Title")(p "content")) (div :class "four wide column" (h2 "Title")(p "content"))) )))
+)
+(defn packages []
+	(section :id "packages" :class "ui grid" :style "background-color:#ebebeb;"
+		(div :class "ui center aligned three column grid"(div :class "ui center aligned grid" (div :class "eight column grid" (h2 "Hungry for more?")(h3 "subtitle")))
+		(div :class "column" (div :class "ui left aligned segment" (h2 "The Challenger pack")(h3 "Competitor Insights")(p "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio.Quisque volutpat mattis eros.")))
+		(div :class "column" (div :class "ui left aligned segment" (h2 "The Challenger pack")(h3 "Competitor Insights")(p "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio.Quisque volutpat mattis eros.")))
+		(div :class "column" (div :class "ui left aligned segment" (h2 "The Challenger pack")(h3 "Competitor Insights")(p "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio.Quisque volutpat mattis eros."))))
+		)
+)
 (defn clients [])
 (defn testimonials [])
 (defn bottom-nav [])
