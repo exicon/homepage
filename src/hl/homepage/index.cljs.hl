@@ -7,8 +7,8 @@
 
 (rpc/init)
 
-(defn top-menu []
-	(div :class "ui tiered menu"
+(defelem top-nav []
+	(nav :id "top-nav" :class "ui tiered menu"
 		(div :class "ui menu"
 			(a :class "active item" "Features")
 			(a :class "item" "Pricing")
@@ -25,9 +25,59 @@
 			(a :class "item" "Amplifier Pack")
 			)))
 
+(defn intro []
+	(section :id "intro" :class "two middle aligned column ui grid"
+		(div :class "column"
+			(div :class "ui huge play button" "Video"))
+		(div :class "column"
+			(h1 "Get a grip on your apps" (br) "with the AppBoard")
+			(h2 "From 1 app to 500")
+			(div :class "ui teal button" "Sign me up for a FREE account"))))
+
+(def lorem "Lorem ipsum dolor sit amet,
+	consectetuer adipiscing elit. Donec odio.
+	Quisque volutpat mattis eros.")
+
+(defc q1 {:title "Title" :msg lorem})
+
+(defn customer-quote [x]
+	(div :class "column"
+		(div :class "ui basic segment"
+			(h2 (text (get x :title)))
+			(p (text (get x :msg))))))
+
+(defn quotes []
+	[
+	(section :id "customer-quote-list" :class "ui four column grid"
+		(div :class "row"
+			(customer-quote q1)
+			(customer-quote q1)
+			(customer-quote q1)
+			(customer-quote q1)))
+
+	(section :id "imaginary-quote" :class "ui center aligned grid"
+		(div :class "eight wide column"
+			(div :class "ui raised segment" (h1 "Big Quoute"))))
+	]
+)
+
+(defn features [])
+(defn packages [])
+(defn clients [])
+(defn testimonials [])
+(defn bottom-nav [])
+
 (html
 	(head
 		(link :href "semantic.css" :rel "stylesheet"))
 	(body
-		(top-menu)
-		(h1 (text "Hello, Hoplon and Castra! ~{rpc/random-number}"))))
+		(top-nav)
+		(div :id "content"
+			(intro)
+			(quotes)
+			(features)
+			(packages)
+			(clients)
+			(testimonials)
+			(bottom-nav))
+		(h1 :class "ui red button" (text "♥ ~{rpc/random-number}"))))
