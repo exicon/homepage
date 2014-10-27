@@ -3,4 +3,44 @@ body {
 	padding: 0 !important;
 	margin: 0!important;
 	width: 100% !important
+	color:#333;
+}
+p{
+	font-weight: 100;
+}
+
+#intro{
+	background: url(/images/hero-image-2.png) center no-repeat;
+height: 600px;
+}
+
+#intro .column.intro-right-info{
+	margin-top:90px;
+	padding-left: 3em;
+
+}
+
+#intro .video-btn{
+	margin-left: -175px;
+ padding-top: 218px;
+}
+
+#intro h1{
+	font-size: 48px;
+	font-weight: 400;
+
+}
+#intro h2{
+	font-size: 27px;
+	font-weight: 300;
+}
+
+.button{
+	text-transform: inherit !important;
+}
+
+#customer-quote-list h2{
+	font-weight: 400;
+font-size: 1.4em;
+height: 50px;
 }

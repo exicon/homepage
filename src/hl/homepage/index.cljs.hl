@@ -28,14 +28,14 @@
 
 (defn intro []
 	(section :id "intro" :class "full-width-container"
-		(div :class "ui page grid"
-			(div :class "two middle aligned column ui grid"
+		(div :class "ui two column doubling page grid"
+
 				(div :class "center aligned column"
-					(div :class "ui huge play button" "Video"))
-				(div :class "column"
+					(img :class "video-btn" :src "images/play-btn-normal.png"))
+				(div :class "column intro-right-info"
 					(h1 "Get a grip on your apps" (br) "with the AppBoard")
 					(h2 "From 1 app to 500")
-					(div :class "ui teal button" "Sign me up for a FREE account"))))
+					(div :class "ui teal button" "Sign me up for a FREE account")))
 	)
 )
 
@@ -43,28 +43,35 @@
 	consectetuer adipiscing elit. Donec odio.
 	Quisque volutpat mattis eros.")
 
-(defc q1 {:title "Title 1" :msg lorem})
-(defc q2 {:title "Title 2" :msg lorem})
-(defc q3 {:title "Title 3" :msg lorem})
-(defc q4 {:title "Title 4" :msg lorem})
+(defc q1 {:title "Reduce Inefficiencies" :msg "One of our customers has found out 100 of their apps, with an average cost of USD100k, are
+redundant - they won’t be making that mistake again!"})
+(defc q2 {:title "Protect Your Brand & IP" :msg "Every customer with over 20 apps is unaware of apps published in their name. 50% of sales calls hear
+about lost apps."})
+(defc q3 {:title "Putting You in the Know" :msg "Your apps, your competitors, your ROI and your APIs - all at your fingertips."})
+(defc q4 {:title "Tools to Make the Changes" :msg "News, Analytics, Distribution, Promotion, Competitor Intelligence, Secure Storage, Developer
+Management."})
 
 
 (defn customer-quote [x]
 	(div :class "column"
 			(h2 (text (get x :title)))
-			(p (text (get x :msg)))))
+
+			(p (i :class "quote left blue icon") (text (get x :msg)) (i :class "quote blue right icon"))))
 
 (defn quotes []
 	[
 	(section :id "customer-quote-list" :class "ui four column doubling page grid"
+
 			(customer-quote q1)
 			(customer-quote q2)
 			(customer-quote q3)
 			(customer-quote q4))
 
+
+
 	(section :id "imaginary-quote" :class "ui one column center aligned page grid"
 		(div :class "eight wide column"
-			(div :class "ui center aligned raised segment" (h1 "Big Quoute"))))
+			(div :class "ui center aligned raised segment" (h1 (i :class "quote left blue icon") "I thought we were doing well until we plugged our apps into the AppBoard." (i :class "quote right blue icon")))))
 	]
 )
 
@@ -143,3 +150,7 @@
 			(testimonials)
 			(bottom-nav))
 		(h1 :class "ui red button" (text "♥ ~{rpc/random-number}"))))
+
+
+
+
