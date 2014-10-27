@@ -61,8 +61,8 @@
 			(customer-quote q3)
 			(customer-quote q4))
 
-	(section :id "imaginary-quote" :class "ui one column page grid"
-		(div :class "column"
+	(section :id "imaginary-quote" :class "ui one column center aligned page grid"
+		(div :class "eight wide column"
 			(div :class "ui center aligned raised segment" (h1 "Big Quoute"))))
 	]
 )
