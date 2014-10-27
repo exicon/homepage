@@ -63,7 +63,7 @@
 
 	(section :id "imaginary-quote" :class "ui one column page grid"
 		(div :class "column"
-			(div :class "ui raised segment" (h1 "Big Quoute"))))
+			(div :class "ui center aligned raised segment" (h1 "Big Quoute"))))
 	]
 )
 
@@ -95,7 +95,7 @@
 			 (div :class "column" "Testimonial 2")))
 		)
 (defn bottom-nav []
-	(section :id "bottom-nav" :class "full-width-container"
+	(section :id "bottom-nav" :class "full-width-container" :style "background-color: gray;"
 		(div :class "ui six column doubling page grid"
 		(div :class "column" "Column")
 		(div :class "column" "Column")
