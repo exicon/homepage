@@ -10,13 +10,14 @@
 (defelem top-nav []
 	(nav :id "top-nav" :class "ui tiered menu"
 		(div :class "ui menu"
-			(a :class "active item" "Features")
+			(div :id "logo-container" :class "item" (img :src "images/exicon-logo.png"))
+			(a :class "active item" "Features" )
 			(a :class "item" "Pricing")
 			(a :class "item" "Blog")
 			(a :class "item" "Resources")
 			(div :class "right item"
-				(div :class "ui button" "Signup"))
-			(a :class "item" "Login")
+				(div :class "ui button" "Signup")
+				(a :class "item" "Login"))
 			)
 		(div :class "ui sub menu"
 			(a :class "item" "Starter Pack")
@@ -67,21 +68,43 @@
 	]
 )
 
+
 (defn features []
 	(section :id "features" :class "ui two column doubling page grid"
 		(div :class "column" (h2 "Picture"))
 		(div :class "column" (div :class "ui two column grid"
-			(div :class "row" (div :class "four wide column" (h2 "Title")(p "content")) (div :class "four wide column" (h2 "Title")(p "content")))
+			(div :class "row" (div :class "four wide column" (h2 "Title")(p "content")) (div :class "four wide column" (h2 "Title")(p "content")) )
 			(div :class "row" (div :class "four wide column" (h2 "Title")(p "content")) (div :class "four wide column" (h2 "Title")(p "content"))) )))
 )
-(defn packages []
+
+(def pkgs [
+	{
+		:icon "images/exicon-logo.png"
+		:title "Title 1"
+		:subtitle "Sub 1"
+		:desc " Content 1"
+	}
+])
+
+(defn pkg-tile [pkg]
+	(div :class "ui left aligned segment"
+		(img :src (cell= (:icon pkg)))
+		(h2 (text (:title pkg)))
+		(h3 (text (:subtitle pkg)))
+		(p (text (:desc pkg))))
+)
+
+(defn packages-section []
 	(section :id "packages" :class "full-width-container" :style "background-color:#ebebeb;"
 		(div :class "ui three column doubling page grid"(div :class "ui center aligned grid" (div :class "column" (h2 "Hungry for more?")(h3 "subtitle")))
-		(div :class "column" (div :class "ui left aligned segment" (h2 "The Challenger pack")(h3 "Competitor Insights")(p "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio.Quisque volutpat mattis eros.")))
+		(div :class "column"
+			(loop-tpl :bindings [pkg pkgs]
+				(pkg-tile pkg)))
 		(div :class "column" (div :class "ui left aligned segment" (h2 "The Challenger pack")(h3 "Competitor Insights")(p "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio.Quisque volutpat mattis eros.")))
 		(div :class "column" (div :class "ui left aligned segment" (h2 "The Challenger pack")(h3 "Competitor Insights")(p "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio.Quisque volutpat mattis eros."))))
 		)
 )
+
 (defn clients []
 	(section :id "clients" :class "ui one column page grid"
 	(div :class "center aligned column"(h2 "Clients")
@@ -115,7 +138,7 @@
 			(intro)
 			(quotes)
 			(features)
-			(packages)
+			(packages-section)
 			(clients)
 			(testimonials)
 			(bottom-nav))
