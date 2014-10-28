@@ -11,7 +11,7 @@
 				(div :class "right floated column intro-right-info"
 					(h1 "Get a grip on your apps" (br) "with the AppBoard")
 					(h2 "From 1 app to 500")
-					(div :class "ui teal button" "Sign me up for a FREE account"))
+					(div :class "ui lightExicon button" "Sign me up for a FREE account"))
 				(div :class "center aligned column"
 					(img :class "video-btn" :src "images/play-btn-normal.png"))
 				)
@@ -53,14 +53,14 @@ Management."})
 )
 
 
-(defn features []
+(defn features-section []
 	(section :id "features" :class "ui two column doubling page grid"
 
 		(h2 :class "ui center aligned header" "Let the AppBoard give you real insight into your app portfolio with the Starter Pack")
-		(div :class "column" (img :src "images/appboard.png"))
-		(div :class "column" (div :class "ui two column grid"
-			(div :class "row" (div :class "four wide column" (h2 "Title")(p "content")) (div :class "four wide column" (h2 "Title")(p "content")) )
-			(div :class "row" (div :class "four wide column" (h2 "Title")(p "content")) (div :class "four wide column" (h2 "Title")(p "content"))) )))
+		(div :class "column" (img :class "appboard-img" :src "images/appboard.png"))
+		(div :class "features-group column" (div :class "ui two column grid"
+			(div :class "row"  (loop-tpl :bindings [ftr features] (feature ftr)))
+		)))
 )
 
 (def pkgs [
@@ -70,9 +70,63 @@ Management."})
 		:subtitle "Sub 1"
 		:desc " Content 1"
 	}
+
 ])
 
+(def features [
+	{
+		:icon "images/icons/newsfeed.png"
+		:title "Intelligent Newsfeed"
+		:desc "Provides you with a personalized stream of activity across your app world."
+		:link "www.exiconglobal.com"
 
+	}
+	{
+		:icon "images/icons/analytics.png"
+		:title "Analytics"
+		:desc "Plug in your App Store Analytics, and go deeper with In App Analytics. Use ours or your existing provider, we can manage either."
+		:link "www.exiconglobal.com"
+
+
+	}
+	{
+		:icon "images/icons/leaderboard.png"
+		:title "Leaderboards"
+		:desc "Compare the performance of your best and worst performing apps, by downloads, engagement, revenue and more."
+		:link "www.exiconglobal.com"
+
+	}
+	{
+		:icon "images/icons/appbuilder.png"
+		:title "App Brief Builder"
+		:desc "Got an idea for a new app? Define your brief and we’ll find the right developer to build your app or plug in your own approved developers."
+		:link "www.exiconglobal.com"
+
+	}
+	{
+		:icon "images/icons/watchlist.png"
+		:title "Watchlist"
+		:desc "Build collections of apps to watch - from best-of-breed to your biggest competitors."
+		:link "www.exiconglobal.com"
+
+	}
+	{
+		:icon "images/icons/applocker.png"
+		:title "AppLocker"
+		:desc "Never lose project documents again - licenses, contracts, wireframes, codes, images etc, all in one place."
+		:link "www.exiconglobal.com"
+
+	}
+])
+
+(defn feature [ftr]
+	(div :class "four wide column"
+		(img :src (cell= (:icon ftr)))
+		(label (text (:title ftr)))
+		(p (text (:desc ftr)))
+		(a :href (cell= (:link ftr)) "Learn more")
+	)
+)
 
 (defn pkg-tile [pkg]
 	(div :class "ui left aligned segment"
@@ -84,7 +138,8 @@ Management."})
 
 (defn packages-section []
 	(section :id "packages" :class "full-width-container" :style "background-color:#ebebeb;"
-		(div :class "ui three column doubling page grid"(div :class "ui center aligned grid" (div :class "column" (h2 "Hungry for more?")(h3 "subtitle")))
+		(div :class "ui three column doubling page grid"
+			(h2 :class "ui center aligned header" "Hungry for more?")(h4 :class "ui center aligned header" "Expand your Starter Pack with:")
 		(div :class "column"
 			(loop-tpl :bindings [pkg pkgs]
 				(pkg-tile pkg)))
@@ -117,11 +172,13 @@ Management."})
 	)
 )
 
+
 (layout/main
 	(intro)
 	(quotes)
-	(features)
+	(features-section)
 	(packages-section)
 	(clients)
 	(testimonials)
 	(bottom-nav))
+
