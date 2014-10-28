@@ -1,0 +1,13 @@
+(ns homepage.bottom-nav)
+
+(defelem bottom-nav []
+	(section :id "bottom-nav" :class "full-width-container" :style "background-color: gray;"
+		(div :class "ui six column doubling page grid"
+		(div :class "column" "Column")
+		(div :class "column" "Column")
+		(div :class "column" "Column")
+		(div :class "column" "Column")
+		(div :class "column" "Column")
+		(div :class "column" "Column"))
+	)
+)

@@ -2,6 +2,7 @@
 	(:require
 		[homepage.rpc :as rpc]
 		[homepage.top-nav :as top-nav]
+		[homepage.bottom-nav :as bottom-nav]
 		))
 
 (rpc/init)
@@ -15,4 +16,5 @@
 			(div
 				(merge {:class "content"} attrs)
 				content)
+			(bottom-nav/bottom-nav)
 			(h1 :class "ui red button" (text "♥ ~{rpc/random-number}")))))

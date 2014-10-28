@@ -208,17 +208,7 @@ Management."})
 				(testimonial tst))
 )))
 
-(defn bottom-nav []
-	(section :id "bottom-nav" :class "full-width-container" :style "background-color: gray;"
-		(div :class "ui six column doubling page grid"
-		(div :class "column" "Column")
-		(div :class "column" "Column")
-		(div :class "column" "Column")
-		(div :class "column" "Column")
-		(div :class "column" "Column")
-		(div :class "column" "Column"))
-	)
-)
+
 
 
 (layout/main
@@ -228,5 +218,5 @@ Management."})
 	(packages-section)
 	(clients)
 	(testimonials-section)
-	(bottom-nav))
+	)
 
