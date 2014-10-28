@@ -135,6 +135,31 @@ Management."})
 	}
 ])
 
+(def testimonials [
+	{
+		:image "images/testimonials/testimonial1.png"
+		:testimonial "It has been an absolute pleasure to work with this team, consummate professionals through and through. Working with Exicon at the start of this journey was critical in helping us determine what we wanted and needed, then figuring out how to even begin to cast the net into the often confusing digital waters."
+		:name "Melanie McGraw"
+		:company "4Front Advisors"
+	}
+	{
+		:image "images/testimonials/testimonial2.png"
+		:testimonial "Wow, great service - thanks! Thanks a million! Thanks for your support so far - we're getting close now!"
+		:name "Aran Dadswell"
+		:company "Get to know your Brain"
+	}
+
+])
+
+(defn testimonial [tst]
+	(div :class "column"
+		(img :src (cell= (:image tst)))
+		(p :class "testimonial" (text (:testimonial tst)))
+		(p :class "testimonial-name" (text (:name tst)))
+		(p :class "testimonial-company" (text (:company tst)))
+	)
+)
+
 (defn feature [ftr]
 	(div :class "column"
 		(img :src (cell= (:icon ftr)))
@@ -173,15 +198,16 @@ Management."})
 (defn clients []
 	(section :id "clients" :class "ui one column page grid"
 	(div :class "center aligned column"(h2 :class "ui center aligned header" "Clients")
-		(div "Clients Logos"))))
+		(div :class "ui basic segment"(img :src "images/clients.png" :alt "Exicon customers")))))
 
-(defn testimonials []
+(defn testimonials-section []
 	(section :id "testimonials" :class "full-width-container"
 	(div :class "ui two column doubling page grid"
-	 (div :class "ui center aligned grid"(div :class "column" (h2 :class "ui center aligned header" "Testimonials")))
-			(div :class "column" "Testimonial 1")
-			 (div :class "column" "Testimonial 2")))
-		)
+		(h2 :class "ui center aligned header" "Interested in working with us? Check out our client testimonials below!")
+			(loop-tpl :bindings [tst testimonials]
+				(testimonial tst))
+)))
+
 (defn bottom-nav []
 	(section :id "bottom-nav" :class "full-width-container" :style "background-color: gray;"
 		(div :class "ui six column doubling page grid"
@@ -201,6 +227,6 @@ Management."})
 	(features-section)
 	(packages-section)
 	(clients)
-	(testimonials)
+	(testimonials-section)
 	(bottom-nav))
 

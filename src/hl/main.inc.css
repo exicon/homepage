@@ -5,9 +5,11 @@ body {
 	width: 100% !important
 	color:#333 !important;
 }
-/*p{
+p{
 	font-weight: 100;
-}*/
+	font-size: 1em;
+	line-height: 1.4em;
+}
 
 h2.ui.header, h3.ui.header, h4.ui.header{
 	font-weight: 300;
@@ -216,6 +218,24 @@ height: 50px;
 #packages .details.column h2{
 	color: #59d2d9;
 }
+
+/* Clients Section */
+#clients img{
+	width: 100%;
+}
+
+/* Testimonials Section */
+#testimonials img{
+	width: 7em;
+}
+#testimonials .testimonial {
+	font-style: italic;
+}
+#testimonials .testimonial-name{
+	font-weight: 400;
+}
+
+
 /* Media Queries for Responsiveness */
 
 /* Tablet*/
