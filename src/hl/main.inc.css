@@ -197,6 +197,25 @@ height: 50px;
 	width: 90%;
 }
 
+/* Pricing Packages */
+#packages .icon.column{
+	width: 25%;
+}
+
+#packages .icon.column img{
+	width: 100%;
+}
+
+#packages .details.column{
+	width: 75%;
+}
+
+#packages .details.column h2, #packages .details.column h3{
+	font-weight: 300;
+}
+#packages .details.column h2{
+	color: #59d2d9;
+}
 /* Media Queries for Responsiveness */
 
 /* Tablet*/

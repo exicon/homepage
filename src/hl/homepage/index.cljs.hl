@@ -65,10 +65,26 @@ Management."})
 
 (def pkgs [
 	{
-		:icon "images/exicon-logo.png"
-		:title "Title 1"
-		:subtitle "Sub 1"
-		:desc " Content 1"
+		:icon "images/packages/challengerpack.png"
+		:title "The Challenger Pack"
+		:subtitle "Competitor Insights"
+		:desc "Benchmark yourself against those in your industry, specific countries or track every move of a specific competitor’s brand."
+		:link ""
+	}
+	{
+		:icon "images/packages/dominatorpack.png"
+		:title "The Dominator Pack"
+		:subtitle "Distribution"
+		:desc "Increase the chance of your app being downloaded by up to 200% more and featured up to 20 times
+			more*. Expand your reach by putting your apps onto multiple app stores."
+		:link ""
+	}
+		{
+		:icon "images/packages/amplifierpack.png"
+		:title "The Amplifier Pack"
+		:subtitle "API & More"
+		:desc "Leverage your APIs to build your business. Monitor and manage traffic to all your API endpoints while using the developer portal to build your developer ecosystem."
+		:link ""
 	}
 
 ])
@@ -120,7 +136,7 @@ Management."})
 ])
 
 (defn feature [ftr]
-	(div :class "four wide column"
+	(div :class "column"
 		(img :src (cell= (:icon ftr)))
 		(label (text (:title ftr)))
 		(p (text (:desc ftr)))
@@ -129,34 +145,40 @@ Management."})
 )
 
 (defn pkg-tile [pkg]
-	(div :class "ui left aligned segment"
-		(img :src (cell= (:icon pkg)))
-		(h2 (text (:title pkg)))
-		(h3 (text (:subtitle pkg)))
-		(p (text (:desc pkg))))
+	(div :class "column"
+		(div :class "ui segment"
+			(div :class "ui two column grid"
+					(div :class "icon column"
+						(img :src (cell= (:icon pkg))))
+					(div :class "details column"
+						(h2 :class "lightExicon" (text (:title pkg)))
+						(h3 (text (:subtitle pkg)))
+						(p (text (:desc pkg)))
+						(a :href (cell= (:link pkg)) "Find out more")
+					))))
 )
+
 
 (defn packages-section []
 	(section :id "packages" :class "full-width-container" :style "background-color:#ebebeb;"
 		(div :class "ui three column doubling page grid"
 			(h2 :class "ui center aligned header" "Hungry for more?")(h4 :class "ui center aligned header" "Expand your Starter Pack with:")
-		(div :class "column"
+
 			(loop-tpl :bindings [pkg pkgs]
-				(pkg-tile pkg)))
-		(div :class "column" (div :class "ui left aligned segment" (h2 "The Challenger pack")(h3 "Competitor Insights")(p "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio.Quisque volutpat mattis eros.")))
-		(div :class "column" (div :class "ui left aligned segment" (h2 "The Challenger pack")(h3 "Competitor Insights")(p "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio.Quisque volutpat mattis eros."))))
+				(pkg-tile pkg))
+		)
 		)
 )
 
 (defn clients []
 	(section :id "clients" :class "ui one column page grid"
-	(div :class "center aligned column"(h2 "Clients")
+	(div :class "center aligned column"(h2 :class "ui center aligned header" "Clients")
 		(div "Clients Logos"))))
 
 (defn testimonials []
 	(section :id "testimonials" :class "full-width-container"
 	(div :class "ui two column doubling page grid"
-	 (div :class "ui center aligned grid"(div :class "column" (h2 "Testimonials")))
+	 (div :class "ui center aligned grid"(div :class "column" (h2 :class "ui center aligned header" "Testimonials")))
 			(div :class "column" "Testimonial 1")
 			 (div :class "column" "Testimonial 2")))
 		)
