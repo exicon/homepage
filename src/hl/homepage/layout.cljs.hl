@@ -1,0 +1,18 @@
+(ns homepage.layout
+	(:require
+		[homepage.rpc :as rpc]
+		[homepage.top-nav :as top-nav]
+		))
+
+(rpc/init)
+
+(defelem main [attrs content]
+	(html
+		(head
+			(link :href "/semantic.css" :rel "stylesheet"))
+		(body
+			(top-nav/top-nav)
+			(div
+				(merge {:class "content"} attrs)
+				content)
+			(h1 :class "ui red button" (text "♥ ~{rpc/random-number}")))))

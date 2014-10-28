@@ -1,30 +1,9 @@
 (page "index.html"
 	(:require
-		[homepage.rpc :as rpc]
+		[homepage.layout :as layout]
 		[tailrecursion.hoplon.reload :refer [reload-all]]))
 
-(reload-all 1000)
-
-(rpc/init)
-
-(defelem top-nav []
-	(nav :id "top-nav" :class "ui tiered menu"
-		(div :class "ui menu"
-			(div :id "logo-container" :class "item" (img :src "images/exicon-logo.png"))
-			(a :class "active item" "Features" )
-			(a :class "item" "Pricing")
-			(a :class "item" "Blog")
-			(a :class "item" "Resources")
-			(div :class "right item"
-				(div :class "ui button" "Signup")
-				(a :class "item" "Login"))
-			)
-		(div :class "ui sub menu"
-			(a :class "item" "Starter Pack")
-			(a :class "active item" "Challenger Pack")
-			(a :class "item" "Dominator Pack")
-			(a :class "item" "Amplifier Pack")
-			)))
+(reload-all 200)
 
 (defn intro []
 	(section :id "intro" :class "full-width-container"
@@ -138,21 +117,11 @@ Management."})
 	)
 )
 
-(html
-	(head
-		(link :href "semantic.css" :rel "stylesheet"))
-	(body
-		;(top-nav)
-		(div :id "content"
-			(intro)
-			(quotes)
-			(features)
-			(packages-section)
-			(clients)
-			(testimonials)
-			(bottom-nav))
-		(h1 :class "ui red button" (text "♥ ~{rpc/random-number}"))))
-
-
-
-
+(layout/main
+	(intro)
+	(quotes)
+	(features)
+	(packages-section)
+	(clients)
+	(testimonials)
+	(bottom-nav))

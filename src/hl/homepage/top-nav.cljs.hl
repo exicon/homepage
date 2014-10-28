@@ -1,0 +1,21 @@
+(ns homepage.top-nav)
+
+(defelem top-nav []
+	(nav :id "top-nav" :class "ui tiered menu"
+		(div :class "ui menu"
+			(div :id "logo-container" :class "item" (img :src "/images/exicon-logo.png"))
+			(a :class "active item" "Features" )
+			(a :class "item" "Pricing")
+			(a :class "item" "Blog")
+			(a :class "item" "Resources")
+			(div :class "right item"
+				(div :class "ui button" "Signup")
+				(a :class "item" "Login"))
+			)
+		(div :class "ui sub menu"
+			(a :class "item" "Starter Pack")
+			(a :class "active item" "Challenger Pack")
+			(a :class "item" "Dominator Pack")
+			(a :class "item" "Amplifier Pack")
+			)))
+
