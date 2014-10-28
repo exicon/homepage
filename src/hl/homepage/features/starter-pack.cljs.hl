@@ -36,7 +36,7 @@
 	})
 
 (defc analytics {
-	:image-side :left
+	:image-side :right
 	:screenshot "/images/analytics-screenshot.png"
 	:icon ""
 	:title "Analytics"
@@ -53,7 +53,7 @@
 })
 
 (defc app-brief-builder	{
-	:image-side :right
+	:image-side :left
 	:screenshot "/images/app-brief-builder-screenshot.png"
 	:icon ""
 	:title "App Brief Builder"
@@ -70,7 +70,7 @@
 })
 
 (defc applocker{
-	:image-side :left
+	:image-side :right
 	:screenshot "/images/applocker-screenshot.png"
 	:icon ""
 	:title "AppLocker"
@@ -81,7 +81,6 @@
 		Accessible and ready to use anytime.")
 		]
 })
-
 
 (defn feature [f]
 	(if (= (:image-side f) :left)
@@ -110,9 +109,9 @@
 			(div :class "column"
 				(h2 "Get started in App Management with your very own AppBoard")
 				(h3 "Checkout what you'll get in your Starter Pack")))
-		(feature intelligent-newsfeed)
-		(feature leaderboard)
-		(feature watchlist)
-		(feature analytics)
-		(feature app-brief-builder)
-		(feature applocker))))
+		(feature @intelligent-newsfeed)
+		(feature @leaderboard)
+		(feature @watchlist)
+		(feature @analytics)
+		(feature @app-brief-builder)
+		(feature @applocker))))
