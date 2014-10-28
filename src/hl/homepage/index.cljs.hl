@@ -53,15 +53,14 @@ Management."})
 )
 
 
-(defn features-section []
+(defn features-section [feature-list]
 	(section :id "features" :class "ui two column doubling page grid"
-
 		(h2 :class "ui center aligned header" "Let the AppBoard give you real insight into your app portfolio with the Starter Pack")
 		(div :class "column" (img :class "appboard-img" :src "images/appboard.png"))
 		(div :class "features-group column" (div :class "ui two column grid"
-			(div :class "row"  (loop-tpl :bindings [ftr features] (feature ftr)))
-		)))
-)
+			(div :class "row"
+				(loop-tpl :bindings [ftr feature-list] (feature ftr)))
+))))
 
 (def pkgs [
 	{
@@ -86,10 +85,9 @@ Management."})
 		:desc "Leverage your APIs to build your business. Monitor and manage traffic to all your API endpoints while using the developer portal to build your developer ecosystem."
 		:link ""
 	}
-
 ])
 
-(def features [
+(def feature-list [
 	{
 		:icon "images/icons/newsfeed.png"
 		:title "Intelligent Newsfeed"
@@ -179,26 +177,26 @@ Management."})
 						(h2 :class "lightExicon" (text (:title pkg)))
 						(h3 (text (:subtitle pkg)))
 						(p (text (:desc pkg)))
-						(a :href (cell= (:link pkg)) "Find out more")
-					))))
-)
-
+						(a :href (cell= (:link pkg)) "Find out more"))))))
 
 (defn packages-section []
-	(section :id "packages" :class "full-width-container" :style "background-color:#ebebeb;"
+	(section
+		:id "packages"
+		:class "full-width-container"
 		(div :class "ui three column doubling page grid"
-			(h2 :class "ui center aligned header" "Hungry for more?")(h4 :class "ui center aligned header" "Expand your Starter Pack with:")
-
 			(loop-tpl :bindings [pkg pkgs]
 				(pkg-tile pkg))
-		)
-		)
-)
+			(h2 :class "ui center aligned header"
+				"Hungry for more?")
+			(h4 :class "ui center aligned header"
+				"Expand your Starter Pack with:"))))
 
 (defn clients []
 	(section :id "clients" :class "ui one column page grid"
-	(div :class "center aligned column"(h2 :class "ui center aligned header" "Clients")
-		(div :class "ui basic segment"(img :src "images/clients.png" :alt "Exicon customers")))))
+	(div :class "center aligned column"
+		(h2 :class "ui center aligned header" "Clients")
+		(div :class "ui basic segment"
+			(img :src "images/clients.png" :alt "Exicon customers")))))
 
 (defn testimonials-section []
 	(section :id "testimonials" :class "full-width-container"
@@ -208,15 +206,11 @@ Management."})
 				(testimonial tst))
 )))
 
-
-
-
 (layout/main
 	(intro)
 	(quotes)
-	(features-section)
+	(features-section feature-list)
 	(packages-section)
 	(clients)
 	(testimonials-section)
 	)
-
