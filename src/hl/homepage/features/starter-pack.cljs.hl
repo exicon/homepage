@@ -1,0 +1,118 @@
+(page "starter-pack.html"
+	(:require
+		[homepage.layout :as layout]
+		[tailrecursion.hoplon.reload :refer [reload-all]] ))
+
+(reload-all 200)
+
+(defc intelligent-newsfeed {
+	:image-side :left
+	:screenshot "/images/intelligent-newsfeed-screenshot.png"
+	:icon ""
+	:title "Intelligent Newsfeeds"
+	:content (p "Stay up to speed with what's happening with your app portfolio
+			when you login. See the significant changes in performace
+			across your apps from app store rankings to downloads and
+			reviews.")
+	})
+
+(defc leaderboard {
+	:image-side :right
+	:screenshot "/images/leaderboard-screenshot.png"
+	:icon ""
+	:title "Leaderboard"
+	:content (p "Easily track your best and worst positioning apps sorted by downloads, revenue,
+		engagement adjusted for the last week or month.")
+	})
+
+(defc watchlist {
+	:image-side :left
+	:screenshot "/images/watchlist-screenshot.png"
+	:icon ""
+	:title "Watchlist"
+	:content (p "Set up lists of apps you want to follow using our tool you can easily
+			collate apps from competitors or from companies that are just great
+			at apps for inspiration for your next project.")
+	})
+
+(defc analytics {
+	:image-side :left
+	:screenshot "/images/analytics-screenshot.png"
+	:icon ""
+	:title "Analytics"
+	:content [
+		(ul
+			(li "AppStore Analytics")
+			(li "In-App Analytics")
+			(li "Your analytics, not Google's"))
+		(p "Pull in analytics and reviews from all the different stores you publish in.
+			Additionally, we'll provide you with In-App Analytics that let you know how users
+			are actually using your apps. What's more is you’ll own your data, unlike other
+			free providers. However, if you already have a provider you can plug that in too.")
+		]
+})
+
+(defc app-brief-builder	{
+	:image-side :right
+	:screenshot "/images/app-brief-builder-screenshot.png"
+	:icon ""
+	:title "App Brief Builder"
+	:content [
+		( p "Get your app built properly using our App Brief Builder tool.")
+		(ul
+			(li "User our calculator to help define your project")
+			(li "Fill in our standard App Brief template")
+			(li "Ensure consistency and standardization")
+			(li "Driving scale and minimizing duplication")
+			(li "Find 3 great developers from our database")
+			(li "Collaborate on the progress of mobile development projects"))
+			]
+})
+
+(defc applocker{
+	:image-side :left
+	:screenshot "/images/applocker-screenshot.png"
+	:icon ""
+	:title "AppLocker"
+	:content [
+		( p "Securely store all the content related to your apps, giving access to all or some of your team.
+		Images and photos from designers, source code and binaries from developers, screenshots
+		and meta information for stores, developer contracts, image licenses etc.
+		Accessible and ready to use anytime.")
+		]
+})
+
+
+(defn feature [f]
+	(if (= (:image-side f) :left)
+
+		(div :class "left aligned two column row "
+			(div :class "column"
+				(img :src (cell= (:screenshot f))))
+			(div :class "column"
+				(h2 (text (:title f)))
+				(div (cell= (:content f)))))
+
+		(div :class "left aligned two column row "
+			(div :class "column"
+				(h2 (text (:title f)))
+				(div (cell= (:content f))))
+			(div :class "column"
+				(img :src (cell= (:screenshot f)))))
+		))
+
+(layout/main :id "starter-pack"
+	(section :class "ui one column grid"
+		(div  :id "page-title" :class "center aligned row"
+			(div :class "column"
+				(h1 "Starter Pack")))
+		(div :class "center aligned row"
+			(div :class "column"
+				(h2 "Get started in App Management with your very own AppBoard")
+				(h3 "Checkout what you'll get in your Starter Pack")))
+		(feature intelligent-newsfeed)
+		(feature leaderboard)
+		(feature watchlist)
+		(feature analytics)
+		(feature app-brief-builder)
+		(feature applocker))))
