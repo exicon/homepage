@@ -28,14 +28,14 @@
 
 (defn intro []
 	(section :id "intro" :class "full-width-container"
-		(div :class "ui two column doubling page grid"
-
-				(div :class "center aligned column"
-					(img :class "video-btn" :src "images/play-btn-normal.png"))
-				(div :class "column intro-right-info"
+		(div :class "ui two column page grid"
+				(div :class "right floated column intro-right-info"
 					(h1 "Get a grip on your apps" (br) "with the AppBoard")
 					(h2 "From 1 app to 500")
-					(div :class "ui teal button" "Sign me up for a FREE account")))
+					(div :class "ui teal button" "Sign me up for a FREE account"))
+				(div :class "center aligned column"
+					(img :class "video-btn" :src "images/play-btn-normal.png"))
+				)
 	)
 )
 
@@ -56,7 +56,7 @@ Management."})
 	(div :class "column"
 			(h2 (text (get x :title)))
 
-			(p (i :class "quote left blue icon") (text (get x :msg)) (i :class "quote blue right icon"))))
+			(p (i :class "quote small left blue icon") (text (get x :msg)) (i :class "quote small blue right icon"))))
 
 (defn quotes []
 	[
@@ -67,18 +67,18 @@ Management."})
 			(customer-quote q3)
 			(customer-quote q4))
 
-
-
 	(section :id "imaginary-quote" :class "ui one column center aligned page grid"
 		(div :class "eight wide column"
-			(div :class "ui center aligned raised segment" (h1 (i :class "quote left blue icon") "I thought we were doing well until we plugged our apps into the AppBoard." (i :class "quote right blue icon")))))
+			(div :class "ui center aligned raised segment" (h2 (i :class "quote small left blue icon") "I thought we were doing well until we plugged our apps into the AppBoard." (i :class "quote small right blue icon"))(h3 :class "ui right aligned header" "Fortune 500 CEO"))))
 	]
 )
 
 
 (defn features []
 	(section :id "features" :class "ui two column doubling page grid"
-		(div :class "column" (h2 "Picture"))
+
+		(h2 :class "ui center aligned header" "Let the AppBoard give you real insight into your app portfolio with the Starter Pack")
+		(div :class "column" (img :src "images/appboard.png"))
 		(div :class "column" (div :class "ui two column grid"
 			(div :class "row" (div :class "four wide column" (h2 "Title")(p "content")) (div :class "four wide column" (h2 "Title")(p "content")) )
 			(div :class "row" (div :class "four wide column" (h2 "Title")(p "content")) (div :class "four wide column" (h2 "Title")(p "content"))) )))
@@ -92,6 +92,8 @@ Management."})
 		:desc " Content 1"
 	}
 ])
+
+
 
 (defn pkg-tile [pkg]
 	(div :class "ui left aligned segment"
@@ -140,7 +142,7 @@ Management."})
 	(head
 		(link :href "semantic.css" :rel "stylesheet"))
 	(body
-		(top-nav)
+		;(top-nav)
 		(div :id "content"
 			(intro)
 			(quotes)

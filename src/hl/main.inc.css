@@ -9,6 +9,9 @@ p{
 	font-weight: 100;
 }
 
+h2.ui.header{
+	font-weight: 300;
+}
 #intro{
 	background: url(/images/hero-image-2.png) center no-repeat;
 height: 600px;
@@ -44,3 +47,73 @@ height: 600px;
 font-size: 1.4em;
 height: 50px;
 }
+
+#imaginary-quote h2{
+	font-weight: 300;
+	font-size: 1.5em;
+	font-style: italic;
+}
+
+#imaginary-quote h3{
+	font-weight: 500;
+	font-size: 1.5em;
+	padding-right: 1.5em;
+}
+
+/* Media Queries for Responsiveness */
+
+/* Tablet*/
+@media only screen and (max-width: 991px) and (min-width: 768px){
+	#intro {
+			height: 560px;
+			/*background-size: 1100px;
+			background-position: -109px 180px;*/
+		}
+
+	#intro h1{
+		font-size: 38px;
+	}
+	#intro h2{
+		font-size: 24px;
+	}
+
+}
+
+/* Mobile */
+@media only screen and (max-width: 767px){
+	#intro {
+		height: 660px;
+		background-size: 1500px;
+		background-position: 12% 93%;
+}
+	#intro .column{
+		width: 100%;
+	}
+	#intro .column.intro-right-info {
+		margin-top: 0;
+		padding-left: 0;
+		text-align: center;
+	}
+	#intro h1{
+		font-size: 28px;
+	}
+	#intro h2{
+		font-size: 20px;
+	}
+	#intro .video-btn {
+		margin-left: 0;
+		padding-top: 101px;
+		width: 140px;
+	}
+}
+
+/* Smaller mobiles*/
+@media only screen and (max-width: 550px){
+	#intro{
+		height: 568px;
+		background-size: 1130px;
+		background-position: 20% 87%;
+		min-width: 320px;
+	}
+}
+
