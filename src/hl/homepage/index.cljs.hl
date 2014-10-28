@@ -31,11 +31,16 @@ about lost apps."})
 Management."})
 
 
-(defn customer-quote [x]
+(defn quote-column [x]
 	(div :class "column"
+		(h2 (text (get x :title)))
+		(p (text (get x :msg)))
+	)
+)
+(defn customer-quote [x]
+	(div :class "column quote"
 			(h2 (text (get x :title)))
-
-			(p (i :class "quote small left blue icon") (text (get x :msg)) (i :class "quote small blue right icon"))))
+			(p :class "quote" (i :class "quote small left blue icon") (text (get x :msg)) (i :class "quote small blue right icon"))))
 
 (defn quotes []
 	[
@@ -43,8 +48,8 @@ Management."})
 
 			(customer-quote q1)
 			(customer-quote q2)
-			(customer-quote q3)
-			(customer-quote q4))
+			(quote-column q3)
+			(quote-column q4))
 
 	(section :id "imaginary-quote" :class "ui one column center aligned page grid"
 		(div :class "eight wide column"
