@@ -3,11 +3,31 @@
 (defelem bottom-nav []
 	(section :id "bottom-nav" :class "full-width-container" :style "background-color: gray;"
 		(div :class "ui six column doubling page grid"
-		(div :class "column" "Column")
-		(div :class "column" "Column")
-		(div :class "column" "Column")
-		(div :class "column" "Column")
-		(div :class "column" "Column")
-		(div :class "column" "Column"))
+			(div :class "column"
+				(ul
+					(li :class "header" "Company")
+					(li (a "About Us"))
+					(li (a "Customers"))
+					(li (a "Media & Press"))
+					(li (a"Contact Us"))))
+			(div :class "column"
+				(ul
+					(li :class "header" "Products")
+					(li (a "Apps"))
+					(li (a "APIs"))
+					(li (a "ApiAxle"))
+					(li (a "Marketplace"))))
+			(div :class "column"
+				(ul
+					(li :class "header" "Partners")))
+			(div :class "column"
+				(ul
+					(li :class "header" "Developers")))
+			(div :class "column"
+				(ul
+					(li :class "header" "Legal")
+					(li (a "Privacy"))
+					(li (a"Terms & Conditions"))))
+		)
 	)
 )

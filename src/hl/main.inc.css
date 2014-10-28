@@ -235,7 +235,20 @@ height: 50px;
 	font-weight: 400;
 }
 
-
+/*Bottom Navigation*/
+#bottom-nav ul li{
+	list-style:  none;
+	color: white;
+	font-weight: 100;
+	margin-bottom: 0.5em;
+}
+#bottom-nav li.header{
+	font-weight: 600 !important;
+	margin-bottom: 1em;
+}
+#bottom-nav li a{
+	color: white;
+}
 /* Media Queries for Responsiveness */
 
 /* Tablet*/
