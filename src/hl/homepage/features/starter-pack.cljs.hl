@@ -46,7 +46,7 @@
 	})
 
 (defc analytics {
-	:image-side :left
+	:image-side :right
 	:screenshot "/images/analytics-screenshot.png"
 	:icon "/images/icons/big-analytics.png"
 	:title "Analytics"
@@ -64,7 +64,7 @@
 })
 
 (defc app-brief-builder	{
-	:image-side :right
+	:image-side :left
 	:screenshot "/images/app-brief-builder-screenshot.png"
 	:icon "/images/icons/big-appbuilder.png"
 	:title "App Brief Builder"
@@ -82,7 +82,7 @@
 })
 
 (defc applocker{
-	:image-side :left
+	:image-side :right
 	:screenshot "/images/applocker-screenshot.png"
 	:icon "/images/icons/big-applocker.png"
 	:title "AppLocker"
@@ -138,3 +138,4 @@
 		(feature @app-brief-builder)
 		(feature @applocker)
 		))
+

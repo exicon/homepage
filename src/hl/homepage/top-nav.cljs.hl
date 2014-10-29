@@ -1,20 +1,37 @@
 (ns homepage.top-nav)
 
 (defelem top-nav []
-	(nav :id "top-nav" :class "ui tiered menu"
-		(div :class "ui menu"
-			(div :id "logo-container" :class "item" (img :src "/images/exicon-logo.png"))
-			(a :class "active item" "Features" )
-			(a :class "item" "Pricing")
-			(a :class "item" "Blog")
-			(a :class "item" "Resources")
-			(div :class "right item"
-				(div :class "ui button" "Signup")
-				(a :class "item" "Login"))
-			)
-		(div :class "ui sub menu"
+(div :id "top-nav-container" :class "ui grid"
+		(div :class "five wide column logo-container"
+			(div :class "item" :id "logo" (img :src "/images/exicon-logo.png")))
+		(div :id "menu-container" :class "eleven wide column"
+			(nav :id "top-nav" :class "ui tiered menu"
+				(div :class "menu"
+						(a :class "active item" :click (elem-clicked) "Features" )
+						(a :class "item" "Pricing")
+						(a :class "item" "Blog")
+						(a :class "item" "Resources")
+						(right-menu)
+					)
+					(submenu)))
+	)
+)
+
+(defn elem-clicked []
+	 (submenu)
+	)
+
+(defelem submenu []
+	(div :class "ui sub menu"
 			(a :class "item" "Starter Pack")
 			(a :class "active item" "Challenger Pack")
 			(a :class "item" "Dominator Pack")
 			(a :class "item" "Amplifier Pack")
-			)))
+			)
+	)
+(defelem right-menu []
+	(div :class "right menu"
+		(a :class "item" "login")
+		(a :class "item" "signup")
+	)
+)
