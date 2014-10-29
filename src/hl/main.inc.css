@@ -5,6 +5,14 @@ body {
 	width: 100% !important
 	color:#333 !important;
 }
+a{
+	color: #59d2d9;
+	text-decoration: none;
+	cursor: pointer;
+}
+a:hover{
+	text-decoration: underline;
+}
 
 p{
 	font-weight: 100;
@@ -18,20 +26,6 @@ h2.ui.header, h3.ui.header, h4.ui.header{
 
 section#features, section#packages, section#clients, section#testimonials{
 	margin-top: 50px !important;
-}
-/* Intro Section */
-#intro{
-	background: url(/images/hero-image-2.png) center no-repeat;
-height: 600px;
-}
-
-a{
-	color: #59d2d9;
-	text-decoration: none;
-	cursor: pointer;
-}
-a:hover{
-	text-decoration: underline;
 }
 
 /* Exicon customized BUTTONS*/
@@ -146,8 +140,41 @@ line-height: 1em;
 	color: white !important;
 }
 
+/* Top Navigation */
+#menu-container {
+	margin: 0;
+	padding: 0;
+}
 
+#top-nav {
+	background-color: transparent;
+-webkit-box-shadow: none;
+box-shadow: none;
+border-radius: 0;
+}
+#top-nav .item{
+		background-color: transparent;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	border-radius: 0;
+}
+#top-nav-container .logo-container{
+	margin-bottom: 0;
+	padding-bottom: 0;
+}
+
+#top-nav .ui.sub.menu{
+			background-color: transparent;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	border-radius: 0;
+	border: none !important;
+}
 /* Intro Section*/
+#intro{
+	background: url(/images/hero-image-2.png) center no-repeat;
+height: 600px;
+}
 
 #intro .column.intro-right-info{
 	margin-top:90px;
@@ -158,6 +185,9 @@ line-height: 1em;
 #intro .video-btn{
 	margin-left: -175px;
  padding-top: 218px;
+ background: transparent;
+	border: none;
+	box-shadow: none;
 }
 
 #intro h1{
