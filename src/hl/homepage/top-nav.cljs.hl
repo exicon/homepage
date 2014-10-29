@@ -1,5 +1,20 @@
 (ns homepage.top-nav)
 
+(defelem right-menu []
+	(div :class "right menu"
+		(a :class "item" "login")
+		(a :class "item" "signup")
+	)
+)
+(defelem submenu []
+	(div :class "ui sub menu"
+			(a :class "item" "Starter Pack")
+			(a :class "active item" "Challenger Pack")
+			(a :class "item" "Dominator Pack")
+			(a :class "item" "Amplifier Pack")
+			)
+	)
+
 (defelem top-nav []
 (div :id "top-nav-container" :class "ui grid"
 		(div :class "five wide column logo-container"
@@ -7,7 +22,7 @@
 		(div :id "menu-container" :class "eleven wide column"
 			(nav :id "top-nav" :class "ui tiered menu"
 				(div :class "menu"
-						(a :class "active item" :click (elem-clicked) "Features" )
+						(a :class "active item" "Features" )
 						(a :class "item" "Pricing")
 						(a :class "item" "Blog")
 						(a :class "item" "Resources")
@@ -17,21 +32,6 @@
 	)
 )
 
-(defn elem-clicked []
-	 (submenu)
-	)
 
-(defelem submenu []
-	(div :class "ui sub menu"
-			(a :class "item" "Starter Pack")
-			(a :class "active item" "Challenger Pack")
-			(a :class "item" "Dominator Pack")
-			(a :class "item" "Amplifier Pack")
-			)
-	)
-(defelem right-menu []
-	(div :class "right menu"
-		(a :class "item" "login")
-		(a :class "item" "signup")
-	)
-)
+
+
