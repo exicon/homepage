@@ -16,7 +16,8 @@
 	)
 
 (defelem top-nav []
-(div :id "top-nav-container" :class "ui grid"
+(div :id "top-nav-container"
+	(div :class "ui grid inner-container"
 		(div :class "five wide column logo-container"
 			(div :class "item" :id "logo" (img :src "/images/exicon-logo.png")))
 		(div :id "menu-container" :class "eleven wide column"
@@ -28,7 +29,7 @@
 						(a :class "item" "Resources")
 						(right-menu)
 					)
-					(submenu)))
+					(submenu))))
 	)
 )
 

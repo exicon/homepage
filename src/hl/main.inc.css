@@ -27,6 +27,9 @@ h2.ui.header, h3.ui.header, h4.ui.header{
 section#features, section#packages, section#clients, section#testimonials{
 	margin-top: 50px !important;
 }
+.content{
+	padding-top: 2em;
+}
 
 /* Exicon customized BUTTONS*/
 .button{
@@ -158,9 +161,22 @@ border-radius: 0;
 	box-shadow: none;
 	border-radius: 0;
 }
+#top-nav-container{
+	width: 100%;
+	height: 67px;
+ background: rgba(255, 255, 255, 0.9);
+ position: fixed;
+ z-index: 999;
+ border-bottom: 1px solid #e5e5e5;
+}
 #top-nav-container .logo-container{
 	margin-bottom: 0;
 	padding-bottom: 0;
+	margin-top: 0.5em;
+	padding-left: 4em
+}
+#top-nav-container .inner-container{
+	width: 100%;
 }
 
 #top-nav .ui.sub.menu{
@@ -170,6 +186,15 @@ border-radius: 0;
 	border-radius: 0;
 	border: none !important;
 }
+
+.ui.menu .active.item {
+color: #59d2d9;
+}
+.active.item{
+	background-color: #59d2d9;
+	color:white;
+}
+
 /* Intro Section*/
 #intro{
 	background: url(/images/hero-image-2.png) center no-repeat;
