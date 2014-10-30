@@ -6,29 +6,33 @@
 		(a :class "item" "signup")
 	)
 )
+
+(defc submenu-visible false)
+
 (defelem submenu []
 	(div :class "ui sub menu"
-			(a :class "item" "Starter Pack")
-			(a :class "active item" "Challenger Pack")
-			(a :class "item" "Dominator Pack")
-			(a :class "item" "Amplifier Pack")
-			)
-	)
+		:toggle submenu-visible
+		:mouseleave #(reset! submenu-visible false)
+		(a :class "item" "Starter Pack")
+		(a :class "active item" "Challenger Pack")
+		(a :class "item" "Dominator Pack")
+		(a :class "item" "Amplifier Pack") ) )
 
 (defelem top-nav []
-(div :id "top-nav-container"
-	(div :class "ui grid inner-container"
-		(div :class "five wide column logo-container"
-			(div :class "item" :id "logo" (img :src "/images/exicon-logo.png")))
-		(div :id "menu-container" :class "eleven wide column"
-			(nav :id "top-nav" :class "ui tiered menu"
-				(div :class "menu"
-						(a :class "active item" "Features" )
-						(a :class "item" "Pricing")
-						(a :class "item" "Blog")
-						(a :class "item" "Resources")
-						(right-menu)
-					)
+	(div :id "top-nav-container"
+		(div :class "ui grid inner-container"
+			(div :class "five wide column logo-container"
+				(div :class "item" :id "logo" (img :src "/images/exicon-logo.png")))
+			(div :id "menu-container" :class "eleven wide column"
+				(nav :id "top-nav" :class "ui tiered menu"
+					(div :class "menu"
+							(a :class "active item" "Features" )
+							(a :class "item"
+								:mouseenter #(reset! submenu-visible true)
+								"Pricing")
+							(a :class "item" "Blog")
+							(a :class "item" "Resources")
+							(right-menu) )
 					(submenu))))
 	)
 )
