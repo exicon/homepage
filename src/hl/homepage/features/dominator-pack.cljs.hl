@@ -1,0 +1,119 @@
+(page "dominator-pack.html"
+	(:require
+		[homepage.layout :as layout]
+		[tailrecursion.hoplon.reload :refer [reload-all]] ))
+
+(reload-all 200)
+
+
+#_Loading Content
+(defc app-store-distribution {
+	:image-side :right
+	:screenshot "/images/Distribution.png"
+	:icon "/images/packages/dominatorpack.png"
+	:title "App Store Distribution"
+	:content [
+		(p "Increase the chances of your app being")
+		(ul
+			(li "Downloaded by up to 200% more")
+			(li "Featured by up to 20 times more"))
+		(div :class "ui lightExicon button" "Distribute my App")
+		(div :class "ui clearing")
+		(div :class "ui lightExicon button" "Find Out More")
+		]
+	})
+
+(defc marketplace {
+	:image-side :left
+	:screenshot "/images/Marketplace.png"
+	:icon "/images/icons/marketplace.png"
+	:title "Marketplace"
+	:content [
+		(p "Increase the discoverability of your Apps and APIs across your customers,
+			partners, suppliers and your organization with your own white labelled marketplace
+			accessible from your own company website showcasing your own products.")
+		(div :class "ui lightExicon button" "Distribute my App")
+		(div :class "ui clearing")
+		(div :class "ui lightExicon button" "Find Out More")
+		]
+	})
+
+(def distribution-options [
+	{
+		:title "One-Off"
+		:subtitle "Single App Distribution"
+		:price "US$ 2500"
+		:period ""
+		:button "Get My App Out Here!"
+	}
+	{
+		:title "Domiator Pack"
+		:subtitle "Distribution onto 20 apps stores"
+		:price "US$ 159"
+		:period " per app*/month"
+		:button "Sign Up Now"
+	}
+
+])
+
+(defn distribution-tile [opts]
+	(div :class "column"
+		(div :class "ui center aligned segment"
+				(h2 (text (:title opts)))
+				(h3 (text (:subtitle opts)))
+				(h4 :class "lightExicon text" (text (:price opts)) (span :class "default text" (text (:period opts))))
+				(div :class "ui lightExicon button" (text (:button opts)))
+			)
+	)
+)
+
+(defn distribution-section []
+	(section
+		:id "distribution"
+		:class "full-width-container"
+		(div :class "ui two column doubling page grid"
+				(loop-tpl :bindings [opt distribution-options]
+				(distribution-tile opt))
+			)
+
+	)
+)
+
+#_Function: Features Details
+(defn feature [f]
+	(if (= (:image-side f) :left)
+
+		(div :id "page-details" :class "middle aligned two column doubling row "
+			(div :class "column"
+				(img :src (cell= (:screenshot f))))
+			(div :class "column"
+				(img :class "features-icon" :src (cell= (:icon f)))
+				(h2 (text (:title f)))
+				(div (cell= (:content f)))))
+
+		(div :id "page-details" :class "middle aligned two column doubling row "
+			(div :class "column"
+				(img :class "features-icon" :src (cell= (:icon f)))
+				(h2 (text (:title f)))
+				(div (cell= (:content f))))
+			(div :class "column"
+				(img :src (cell= (:screenshot f)))))
+		))
+
+#_Page Layout
+(layout/main :id "starter-pack"
+	(section :class "ui one column full-width-container"
+		(div  :id "page-title" :class "center aligned row"
+			(div :class "column"
+				(h1 "Dominator Pack")))
+		)
+
+	(section :class "ui one column page grid"
+		(div :id "page-subtitle" :class "center aligned row"
+			(div :class "column"
+				(h2 "How are you targeted going to find your apps?")))
+				(feature @app-store-distribution)
+				(feature @marketplace)
+		)
+		(distribution-section)
+	)

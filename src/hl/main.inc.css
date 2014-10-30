@@ -31,12 +31,25 @@ section#features, section#packages, section#clients, section#testimonials{
 	padding-top: 4.2em;
 }
 
+.lightExicon.text{
+	color: #59d2d9 !important;
+}
+
+.default.text{
+	color: #333 !important;
+}
+.ui.clearing{
+	clear:both;
+	height: 1em;
+}
 /* Exicon customized BUTTONS*/
-.button{
+.ui.button{
 	text-transform: none !important;
 	font-weight: 400;
 	letter-spacing: 0.03em;
 	color:white;
+	width: 15em;
+	line-height: 1.2em;
 }
 .darkExicon.ui.button{
 	background-color: #379aa6;
