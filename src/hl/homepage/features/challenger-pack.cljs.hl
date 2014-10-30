@@ -1,0 +1,156 @@
+(page "challenger-pack.html"
+	(:require
+		[homepage.layout :as layout]
+		[tailrecursion.hoplon.reload :refer [reload-all]] ))
+
+(reload-all 200)
+
+#_Loading Features Content
+(defc competitors {
+	:screenshot "/images/competitor-insights-screenshots.png"
+	:content [
+		(ul
+			(li "Who are the leaders in your industry?")
+			(li "How are your apps performing in a specific market?")
+			(li "Do your competitors change by country?")
+			(li "What are the particular strengths of your competitor?"))
+		(p "Measure their")
+		(ul
+			(li "Engagement # by monthly average users")
+			(li "Popularity by monthly and total downloads")
+			(li "Appstore presence")
+			(li "Performance by their monthly growth and app ratings"))
+		]
+})
+
+
+#_Function: Features Details
+(defn feature [f]
+
+		(div :id "page-details" :class "middle aligned two column doubling row "
+			(div :class "column"
+				(div (cell= (:content f))))
+			(div :class "column"
+				(img :src (cell= (:screenshot f))))
+			)
+		)
+
+
+#_Loading Snapshots Content
+(defc by-brand {
+	:screenshot "/images/circle-company.png"
+	:icon "/images/icons/by-brand.png"
+	:title "By Brand"
+	:content [
+		(p "All apps released by a single brand")
+		]
+	})
+
+(defc by-country {
+	:screenshot "/images/circle-country.png"
+	:icon "/images/icons/by-country.png"
+	:title "By Country"
+	:content [
+		(p "Top 10 apps within a group of competitor brand")
+		]
+	})
+
+(defc by-industry {
+	:screenshot "/images/circle-industry.png"
+	:icon "/images/icons/by-industry.png"
+	:title "By Industry"
+	:content [
+		(p "Top 10 apps within an industry")
+		]
+	})
+
+
+#_Function: Snapshots Details
+(defn snapshots [x]
+
+			(div :class "column"
+				(img :src (cell= (:screenshot x)))
+				(h2 (img :class "snapshots-icon" :src (cell= (:icon x))) (text (:title x)))
+				(div (cell= (:content x))))
+
+)
+
+
+#_Loading Challenger Plan
+(def challenger-options [
+	{
+		:title "One-Off"
+		:subtitle "Single AppScan"
+		:price "USD$500"
+		:period ""
+		:button "Order Now"
+		:note ""
+	}
+	{
+		:title "Challenger Pack"
+		:subtitle "12 AppScans a year"
+		:price "USD$99"
+		:period " per app*/ month"
+		:button "Sign Up Now"
+		:note "* up to 20 apps"
+	}
+
+])
+
+
+#_Function: Challenger Plan
+(defn challenger-option-tile [opts]
+	(div :class "column"
+		(div :class "ui center aligned segment"
+				(h2 (text (:title opts)))
+				(h3 (text (:subtitle opts)))
+				(h4 :class "lightExicon text" (text (:price opts)) (span :class "default text" (text (:period opts))))
+				(div :class "ui lightExicon button" (text (:button opts)))
+				(p (text (:note opts)))
+			)
+	)
+)
+
+(defn challenger-option-section []
+	(section
+		:id "challenger"
+		:class "full-width-container"
+		(div :class "ui two column doubling page grid"
+				(loop-tpl :bindings [opt challenger-options]
+				(challenger-option-tile opt))
+			)
+
+	)
+)
+
+
+#_Page Layout
+(layout/main :id "challenger-pack"
+	(section :class "ui one column full-width-container"
+		(div  :id "page-title" :class "center aligned row"
+			(div :class "column"
+				(h1 "Challenger Pack")))
+	)
+	(section :class "ui one column page grid"
+		(div :id "page-subtitle" :class "center aligned row"
+			(div :class "column"
+				(h2 "How are your apps performing against current and potential competitors?")
+			))
+		(feature @competitors)
+		(div :id "page-subtitle" :class "center aligned row"
+			(div :class "column"
+				(h2 "You can zero in with “snapshots” by")
+			))
+		(div :id "page-snapshots" :class "top aligned three center column doubling row "
+			(snapshots @by-brand)
+			(snapshots @by-country)
+			(snapshots @by-industry)
+		)
+		(div :id "page-details" :class "center aligned row"
+			(div :class "column"
+					(p "Insights are aggregated from a proprietary statistical model, using publicly available app store data and analytics of opt-in partners. Your AppBoard data is never shared by Exicon. Find out more about sources of Competitors Insights Data here.")
+			)
+		)
+	)
+	(challenger-option-section)
+)

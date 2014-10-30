@@ -42,15 +42,15 @@
 	{
 		:title "One-Off"
 		:subtitle "Single App Distribution"
-		:price "US$ 2500"
+		:price "USD$2500"
 		:period ""
 		:button "Get My App Out Here!"
 	}
 	{
 		:title "Domiator Pack"
 		:subtitle "Distribution onto 20 apps stores"
-		:price "US$ 159"
-		:period " per app*/month"
+		:price "USD$159"
+		:period " per app*/ month"
 		:button "Sign Up Now"
 	}
 
