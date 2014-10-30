@@ -159,7 +159,23 @@ line-height: 1em;
 }
 
 /* Top Navigation */
-#menu-container {
+#top-nav-container{
+	width: 100%;
+	height: 67px;
+ background: rgba(255, 255, 255, 0.9);
+ position: fixed;
+ z-index: 999;
+ border-bottom: 1px solid #e5e5e5;
+}
+
+#top-nav-container .logo-container{
+	margin-bottom: 0;
+	padding-bottom: 0;
+	margin-top: 0.5em;
+	padding-left: 4em
+}
+
+/*#menu-container {
 	margin: 0;
 	padding: 0;
 }
@@ -208,7 +224,7 @@ color: #59d2d9;
 .active.item{
 	background-color: #59d2d9;
 	color:white;
-}
+}*/
 
 /* Intro Section*/
 #intro{

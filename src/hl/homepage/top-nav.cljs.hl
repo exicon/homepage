@@ -7,21 +7,66 @@
 	)
 )
 
-(defc submenu-visible false)
+(defc submenu-pricing-visible false)
+(defc submenu-features-visible false)
 (defc active-menu-item nil)
 (defc active-submenu-item nil)
 
-(defelem submenu []
+; (def items [
+; 	{:name "Features"
+; 		:link ""}
+; 	{:name "Pricing"
+; 	:link ""}
+; ])
+
+; (defelem menu-item [it]
+; 	(a :class "item"(text (:name it))
+; 		)
+; )
+
+(defelem submenu-pricing []
 	(div :class "ui sub menu"
-		:toggle submenu-visible
-		:mouseleave #(reset! submenu-visible false)
-		(a :class "item" "Starter Pack")
+		:toggle submenu-pricing-visible
+		:mouseenter #(reset! submenu-pricing-visible true)
+		:mouseleave #(reset! submenu-pricing-visible false)
+		(a :class "item"
+			:click #(reset! active-submenu-item :starter)
+			:do-class (cell= {:active (= active-submenu-item :starter)})
+			"Starter Pack")
 		(a :class "item"
 			:click #(reset! active-submenu-item :challenger)
 			:do-class (cell= {:active (= active-submenu-item :challenger)})
 			"Challenger Pack")
-		(a :class "item" "Dominator Pack")
-		(a :class "item" "Amplifier Pack") ) )
+		(a :class "item"
+			:click #(reset! active-submenu-item :dominator)
+			:do-class (cell= {:active (= active-submenu-item :dominator)})
+			"Dominator Pack")
+		(a :class "item"
+			:click #(reset! active-submenu-item :amplifier)
+			:do-class (cell= {:active (= active-submenu-item :amplifier)})
+			"Amplifier Pack") ) )
+
+(defelem submenu-features []
+	(div :class "ui sub menu"
+		:toggle submenu-features-visible
+		:mouseenter #(reset! submenu-features-visible true)
+		:mouseleave #(reset! submenu-features-visible false)
+		(a :class "item"
+			:click #(reset! active-submenu-item :features1)
+			:do-class (cell= {:active (= active-submenu-item :features1)})
+			"Feature 1")
+		(a :class "item"
+			:click #(reset! active-submenu-item :features2)
+			:do-class (cell= {:active (= active-submenu-item :features2)})
+			"Feature 2")
+		(a :class "item"
+			:click #(reset! active-submenu-item :features3)
+			:do-class (cell= {:active (= active-submenu-item :features3)})
+			"Feature 3")
+		(a :class "item"
+			:click #(reset! active-submenu-item :features4)
+			:do-class (cell= {:active (= active-submenu-item :features4)})
+			"Feature 4") ) )
 
 (defelem top-nav []
 	(div :id "top-nav-container"
@@ -31,13 +76,27 @@
 			(div :id "menu-container" :class "eleven wide column"
 				(nav :id "top-nav" :class "ui tiered menu"
 					(div :class "menu"
-						(a :class "item" "Features" )
+						(a :class "item"
+							:click #(reset! active-menu-item :features)
+							:do-class (cell= {:active (= active-menu-item :features)})
+							:mouseenter #(reset! submenu-features-visible true)
+							:mouseleave #(reset! submenu-features-visible false)
+							"Features"
+						)
 						(a :class "item"
 							:click #(reset! active-menu-item :pricing)
 							:do-class (cell= {:active (= active-menu-item :pricing)})
-							:mouseenter #(reset! submenu-visible true)
+							:mouseenter #(reset! submenu-pricing-visible true)
+							:mouseleave #(reset! submenu-pricing-visible false)
 							"Pricing")
-						(a :class "item" "Blog")
-						(a :class "item" "Resources")
+						(a :class "item"
+							:click #(reset! active-menu-item :blog)
+							:do-class (cell= {:active (= active-menu-item :blog)})
+							"Blog")
+						(a :class "item"
+							:click #(reset! active-menu-item :resources)
+							:do-class (cell= {:active (= active-menu-item :resources)})
+							"Resources")
 						(right-menu) )
-					(submenu) ) ) ) ) )
+					(submenu-features)
+					(submenu-pricing) ) ) ) ) )
