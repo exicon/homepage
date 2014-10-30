@@ -12,39 +12,40 @@
 (defc active-menu-item nil)
 (defc active-submenu-item nil)
 
-; (def items [
-; 	{:name "Features"
-; 		:link ""}
-; 	{:name "Pricing"
-; 	:link ""}
-; ])
+(def pricing-items [
+	{:name "Starter Pack"
+	:ns :starter}
+	{:name "Challenger Pack"
+	:ns :challenge}
+	{:name "Dominator Pack"
+	:ns :dominator}
+	{:name "Amplifier Pack"
+	:ns :amplifier}
+])
 
-; (defelem menu-item [it]
-; 	(a :class "item"(text (:name it))
-; 		)
-; )
+(defn submenu-item [si]
+		(a :class "item"
+			:click #(reset! active-submenu-item (:ns si))
+			:do-class (cell= {:active (= active-submenu-item (:ns si))})
+				(text (:name si))
+		)
+)
+
+(defn submenu-item-section [items]
+	(loop-tpl :bindings [si items] (submenu-item si))
+	)
+
+(defn submenu-pricing-items[]
+	(submenu-item-section pricing-items))
+
 
 (defelem submenu-pricing []
 	(div :class "ui sub menu"
 		:toggle submenu-pricing-visible
 		:mouseenter #(reset! submenu-pricing-visible true)
 		:mouseleave #(reset! submenu-pricing-visible false)
-		(a :class "item"
-			:click #(reset! active-submenu-item :starter)
-			:do-class (cell= {:active (= active-submenu-item :starter)})
-			"Starter Pack")
-		(a :class "item"
-			:click #(reset! active-submenu-item :challenger)
-			:do-class (cell= {:active (= active-submenu-item :challenger)})
-			"Challenger Pack")
-		(a :class "item"
-			:click #(reset! active-submenu-item :dominator)
-			:do-class (cell= {:active (= active-submenu-item :dominator)})
-			"Dominator Pack")
-		(a :class "item"
-			:click #(reset! active-submenu-item :amplifier)
-			:do-class (cell= {:active (= active-submenu-item :amplifier)})
-			"Amplifier Pack") ) )
+		(submenu-pricing-items)
+))
 
 (defelem submenu-features []
 	(div :class "ui sub menu"
