@@ -48,8 +48,10 @@ section#features, section#packages, section#clients, section#testimonials{
 	font-weight: 400;
 	letter-spacing: 0.03em;
 	color:white;
-	width: 15em;
 	line-height: 1.2em;
+}
+.ui.fixed-size.button{
+	width:15em;
 }
 .darkExicon.ui.button{
 	background-color: #379aa6;
@@ -281,6 +283,9 @@ p.quote{
 section#packages{
 	background-color: #ebebeb;
 	padding: 2em 0;
+}
+#packages .ui.segment{
+	margin-bottom: 1em;
 }
 #packages .icon.column{
 	width: 25%;
