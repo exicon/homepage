@@ -8,13 +8,18 @@
 )
 
 (defc submenu-visible false)
+(defc active-menu-item nil)
+(defc active-submenu-item nil)
 
 (defelem submenu []
 	(div :class "ui sub menu"
 		:toggle submenu-visible
 		:mouseleave #(reset! submenu-visible false)
 		(a :class "item" "Starter Pack")
-		(a :class "active item" "Challenger Pack")
+		(a :class "item"
+			:click #(reset! active-submenu-item :challenger)
+			:do-class (cell= {:active (= active-submenu-item :challenger)})
+			"Challenger Pack")
 		(a :class "item" "Dominator Pack")
 		(a :class "item" "Amplifier Pack") ) )
 
@@ -26,17 +31,13 @@
 			(div :id "menu-container" :class "eleven wide column"
 				(nav :id "top-nav" :class "ui tiered menu"
 					(div :class "menu"
-							(a :class "active item" "Features" )
-							(a :class "item"
-								:mouseenter #(reset! submenu-visible true)
-								"Pricing")
-							(a :class "item" "Blog")
-							(a :class "item" "Resources")
-							(right-menu) )
-					(submenu))))
-	)
-)
-
-
-
-
+						(a :class "item" "Features" )
+						(a :class "item"
+							:click #(reset! active-menu-item :pricing)
+							:do-class (cell= {:active (= active-menu-item :pricing)})
+							:mouseenter #(reset! submenu-visible true)
+							"Pricing")
+						(a :class "item" "Blog")
+						(a :class "item" "Resources")
+						(right-menu) )
+					(submenu) ) ) ) ) )
