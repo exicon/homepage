@@ -284,6 +284,9 @@ section#packages{
 	background-color: #ebebeb;
 	padding: 2em 0;
 }
+#packages .ui.segment{
+	margin-bottom: 1em;
+}
 #packages .icon.column{
 	width: 25%;
 }

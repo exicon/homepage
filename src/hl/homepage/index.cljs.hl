@@ -164,7 +164,7 @@ Management."})
 )
 
 (defn feature [ftr]
-	(div :class "column"
+	(div :class  "column"
 		(img :src (cell= (:icon ftr)))
 		(label (text (:title ftr)))
 		(p (text (:desc ftr)))
@@ -182,19 +182,27 @@ Management."})
 						(h2 :class "lightExicon" (text (:title pkg)))
 						(h3 (text (:subtitle pkg)))
 						(p (text (:desc pkg)))
-						(a :href (cell= (:link pkg)) "Find out more"))))))
+						(a :href (cell= (:link pkg)) "Find out more")))))
+	)
 
 (defn packages-section []
 	(section
 		:id "packages"
 		:class "full-width-container"
-		(div :class "ui three column doubling page grid"
-			(loop-tpl :bindings [pkg pkgs]
-				(pkg-tile pkg))
-			(h2 :class "ui center aligned header"
+		(h2 :class "ui center aligned header"
 				"Hungry for more?")
 			(h4 :class "ui center aligned header"
-				"Expand your Starter Pack with:"))))
+				"Expand your Starter Pack with:")
+		(div :class "ui page grid"
+				(div :class "equal height computer only row"
+					(loop-tpl :bindings [pkg pkgs]
+						(pkg-tile pkg)))
+				(div :class "one column tablet mobile only row"
+						(loop-tpl :bindings [pkg pkgs]
+						(pkg-tile pkg)))
+					)
+
+			))
 
 (defn clients []
 	(section :id "clients" :class "ui one column page grid"
