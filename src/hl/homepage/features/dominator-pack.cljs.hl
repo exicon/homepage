@@ -16,9 +16,9 @@
 		(ul
 			(li "Downloaded by up to 200% more")
 			(li "Featured by up to 20 times more"))
-		(div :class "ui lightExicon button" "Distribute my App")
+		(div :class "ui lightExicon fixed-size button" "Distribute my App")
 		(div :class "ui clearing")
-		(div :class "ui lightExicon button" "Find Out More")
+		(div :class "ui lightExicon fixed-size button" "Find Out More")
 		]
 	})
 
@@ -31,9 +31,9 @@
 		(p "Increase the discoverability of your Apps and APIs across your customers,
 			partners, suppliers and your organization with your own white labelled marketplace
 			accessible from your own company website showcasing your own products.")
-		(div :class "ui lightExicon button" "Distribute my App")
+		(div :class "ui lightExicon fixed-size button" "Distribute my App")
 		(div :class "ui clearing")
-		(div :class "ui lightExicon button" "Find Out More")
+		(div :class "ui lightExicon fixed-size button" "Find Out More")
 		]
 	})
 
