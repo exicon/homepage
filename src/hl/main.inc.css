@@ -211,6 +211,8 @@ line-height: 1em;
 
 #top-nav-container .ui.menu .active.item{
 	box-shadow: none !important;
+	color: white;
+	background-color: rgba(76,76,76,0.7);
 }
 #menu-container {
 	margin: 0;
