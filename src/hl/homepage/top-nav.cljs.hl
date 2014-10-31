@@ -7,67 +7,62 @@
 	)
 )
 
-(defc submenu-pricing-visible false)
+(defc menu-item-of-page :features)
+(defc active-submenu nil)
 (defc submenu-features-visible false)
-(defc active-menu-item nil)
+(defc hovered-menu-item nil)
 (defc active-submenu-item nil)
 
-(def pricing-items [
-	{:name "Starter Pack"
-	:ns :starter}
-	{:name "Challenger Pack"
-	:ns :challenge}
-	{:name "Dominator Pack"
-	:ns :dominator}
-	{:name "Amplifier Pack"
-	:ns :amplifier}
+(def pricing-submenu-items [
+	{ :id :starter :name "Starter Pack" }
+	{ :id :challenge :name "Challenger Pack" }
+	{ :id :dominator :name "Dominator Pack" }
+	{ :id :amplifier :name "Amplifier Pack" }
 ])
 
-(defn submenu-item [si]
-		(a :class "item"
-			:click #(reset! active-submenu-item (:ns si))
-			:do-class (cell= {:active (= active-submenu-item (:ns si))})
-				(text (:name si))
-		)
-)
+(def features-submenu-items [
+	{:id :feature-1 :name "Feature 1"}
+	{:id :feature-2 :name "Feature 2"}
+	{:id :feature-3 :name "Feature 3"}
+	{:id :feature-4 :name "Feature 4"}
+])
 
-(defn submenu-item-section [items]
-	(loop-tpl :bindings [si items] (submenu-item si))
-	)
+(def main-menu-items
+	[
+	{ :id :features :name "Features" :submenu features-submenu-items }
+	{ :id :pricing :name "Pricing" :submenu pricing-submenu-items }
+	{ :id :blog :name "Blog" }
+	{ :id :resources :name "Resources" }
+	])
 
-(defn submenu-pricing-items[]
-	(submenu-item-section pricing-items))
+(defn main-menu [items]
+	(loop-tpl :bindings [item items] (main-menu-item item)) )
 
+(defn main-menu-item [item]
+	(a :class "item"
+		:hover #(reset! hovered-menu-item (:id @item))
+		:do-class (is-active-item? (:id @item))
+		:mouseenter #(reset! active-submenu (:submenu @item))
+		(text (:name item)) ) )
 
-(defelem submenu-pricing []
+(defn submenu-item [item]
+	(a :class "item"
+		:on-click #(reset! active-submenu-item (:id @item))
+		:do-class (cell= {:active (= active-submenu-item (:id item))})
+			(text (:name item)) ) )
+
+(defn submenu [items]
 	(div :class "ui sub menu"
-		:toggle submenu-pricing-visible
-		:mouseenter #(reset! submenu-pricing-visible true)
-		:mouseleave #(reset! submenu-pricing-visible false)
-		(submenu-pricing-items)
+		:toggle items
+		:mouseleave #(reset! items nil)
+		(loop-tpl :bindings [item items] (submenu-item item))
 ))
 
-(defelem submenu-features []
-	(div :class "ui sub menu"
-		:toggle submenu-features-visible
-		:mouseenter #(reset! submenu-features-visible true)
-		:mouseleave #(reset! submenu-features-visible false)
-		(a :class "item"
-			:click #(reset! active-submenu-item :features1)
-			:do-class (cell= {:active (= active-submenu-item :features1)})
-			"Feature 1")
-		(a :class "item"
-			:click #(reset! active-submenu-item :features2)
-			:do-class (cell= {:active (= active-submenu-item :features2)})
-			"Feature 2")
-		(a :class "item"
-			:click #(reset! active-submenu-item :features3)
-			:do-class (cell= {:active (= active-submenu-item :features3)})
-			"Feature 3")
-		(a :class "item"
-			:click #(reset! active-submenu-item :features4)
-			:do-class (cell= {:active (= active-submenu-item :features4)})
-			"Feature 4") ) )
+(defn is-active-item? [item-id]
+	(cell= { :active
+			(or
+				(= hovered-menu-item item-id)
+				(and (not hovered-menu-item) (= menu-item-of-page item-id)) ) } ) )
 
 (defelem top-nav []
 	(div :id "top-nav-container"
@@ -76,28 +71,8 @@
 				(div :class "item" :id "logo" (img :src "/images/exicon-logo.png")))
 			(div :id "menu-container" :class "eleven wide column"
 				(nav :id "top-nav" :class "ui tiered menu"
+					:mouseleave #(do (reset! active-submenu nil) (reset! hovered-menu-item nil))
 					(div :class "menu"
-						(a :class "item"
-							:click #(reset! active-menu-item :features)
-							:do-class (cell= {:active (= active-menu-item :features)})
-							:mouseenter #(reset! submenu-features-visible true)
-							:mouseleave #(reset! submenu-features-visible false)
-							"Features"
-						)
-						(a :class "item"
-							:click #(reset! active-menu-item :pricing)
-							:do-class (cell= {:active (= active-menu-item :pricing)})
-							:mouseenter #(reset! submenu-pricing-visible true)
-							:mouseleave #(reset! submenu-pricing-visible false)
-							"Pricing")
-						(a :class "item"
-							:click #(reset! active-menu-item :blog)
-							:do-class (cell= {:active (= active-menu-item :blog)})
-							"Blog")
-						(a :class "item"
-							:click #(reset! active-menu-item :resources)
-							:do-class (cell= {:active (= active-menu-item :resources)})
-							"Resources")
+						(main-menu main-menu-items)
 						(right-menu) )
-					(submenu-features)
-					(submenu-pricing) ) ) ) ) )
+					(submenu active-submenu) ) ) ) ) )
