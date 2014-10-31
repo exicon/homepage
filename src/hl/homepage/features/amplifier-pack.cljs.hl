@@ -34,7 +34,7 @@
 
 (defc manager-console{
 	:image-side :right
-	:screenshot "/images/dev-ecosystem-screenshot.png"
+	:screenshot "/images/manager-console-screenshot.png"
 	:icon "/images/icons/manager-console.png"
 	:title "Manager Console"
 	:content [
