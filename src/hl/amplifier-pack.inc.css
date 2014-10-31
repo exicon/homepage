@@ -1,0 +1,63 @@
+#amplifier-pack #page-title h1 {
+	font-size: 2.5em;
+	padding-top: 80px;
+	margin: 0;
+	font-size: 45px;
+ color: #333333;
+ font-weight: 300;
+ text-align: center;
+}
+
+#amplifier-pack #page-subtitle h2 {
+	font-size: 1.8em;
+ line-height: 50px;
+ color: #333333;
+ font-weight: 400;
+}
+
+#amplifier-pack #page-subtitle h3 {
+	font-size: 1.4em;
+ line-height: 30px;
+ color: #333333;
+ font-weight: 200;
+}
+
+#amplifier-pack #page-title {
+	background: url('/images/starter-pack-title.png') center no-repeat;
+	height: 200px;
+	background-color: #f0f0ee;
+}
+
+#amplifier-pack #page-details {
+	padding-bottom: 35px;
+}
+
+#amplifier-pack #page-details h2 {
+	font-size: 1.8em;
+ line-height: 43px;
+ color: #333333;
+ font-weight: 400;
+ margin-bottom: 30px;
+	margin-top: 0px;
+}
+
+#amplifier-pack #page-details p {
+	font-size: 1.2em;
+ line-height: 30px;
+ color: #333333;
+ font-weight: 100;
+}
+
+#amplifier-pack #page-details ul li{
+	font-size: 1.2em;
+	line-height: 30px;
+	color: #333333;
+	font-weight: 100;
+	list-style-image: url('/images/green-list-dot.png');
+	margin: 7px 0px 7px -20px;
+}
+
+#amplifier-pack .features-icon {
+	float: left;
+	margin-right: 10px;
+}

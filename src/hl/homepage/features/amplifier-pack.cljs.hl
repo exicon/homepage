@@ -1,0 +1,89 @@
+(page "amplifier-pack.html"
+	(:require
+		[homepage.layout :as layout]
+		[tailrecursion.hoplon.reload :refer [reload-all]] ))
+
+(reload-all 200)
+
+#_Loading Content
+(defc api-management {
+	:image-side :right
+	:screenshot "/images/api-mgt-screenshot.png"
+	:icon "/images/icons/api-mgt.png"
+	:title "API Management"
+	:content [
+		(p "The AppBoard intergrates with ApiAxle Internet Easiest + API Management + Platform")
+		(ul
+			(li "Free and easy to use")
+			(li "Flexible")
+			(li "Open source"))
+		(div :class "ui lightExicon button" "Learn More")
+		]
+	})
+
+(defc development-ecosystem {
+	:image-side :left
+	:screenshot "/images/dev-ecosystem-screenshot.png"
+	:icon "/images/icons/dev-ecosystem.png"
+	:title "Devlelopment Ecosystem"
+	:content [
+		(p "Whether you are looking for a very specific development skill set to create your API or
+			to build a group of developers around your API, our networking 4000+ software houses.")
+		]
+	})
+
+(defc manager-console{
+	:image-side :right
+	:screenshot "/images/dev-ecosystem-screenshot.png"
+	:icon "/images/icons/manager-console.png"
+	:title "Manager Console"
+	:content [
+		(p "Who in your team is really getting a return from the apps they have created and managed?
+			Understand who in your team is performing best and why, so that you can share learnings with
+			the team. Get the birds eye view of usage stats by individual and app portfolio.")
+		(p "Let’s get on a call to talk Amplifier Pack!")
+		(div :class "ui lightExicon button" "Get In Touch!")
+		]
+	})
+
+
+#_Function: Features Details
+(defn feature [f]
+	(if (= (:image-side f) :left)
+
+		(div :id "page-details" :class "middle aligned two column doubling row "
+			(div :class "column"
+				(img :src (cell= (:screenshot f))))
+			(div :class "column"
+				(img :class "features-icon" :src (cell= (:icon f)))
+				(h2 (text (:title f)))
+				(div (cell= (:content f)))))
+
+		(div :id "page-details" :class "middle aligned two column doubling row "
+			(div :class "column"
+				(img :class "features-icon" :src (cell= (:icon f)))
+				(h2 (text (:title f)))
+				(div (cell= (:content f))))
+			(div :class "column"
+				(img :src (cell= (:screenshot f)))))
+		))
+
+
+#_Page Layout
+(layout/main :id "amplifier-pack"
+	(section :class "ui one column full-width-container"
+		(div  :id "page-title" :class "center aligned row"
+			(div :class "column"
+				(h1 "Amplifier Pack")))
+	)
+	(section :class "ui one column page grid"
+		(div :id "page-subtitle" :class "center aligned row"
+			(div :class "column"
+				(h2 "Are your thinking bigger? Ready to open your API? Considering leveraging 3rd party developers to your amplify efforts.")
+			))
+		(feature @api-management)
+		(feature @development-ecosystem)
+		(feature @manager-console)
+		)
+
+)
