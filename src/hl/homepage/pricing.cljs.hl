@@ -1,0 +1,59 @@
+(page "pricing.html"
+	(:require
+		[homepage.layout :as layout]
+		[tailrecursion.hoplon.reload :refer [reload-all]] ))
+
+(reload-all 200)
+
+(defc challenger-pack {
+	:title "CHALLENGER PACK"
+	:price "$99 per app/ month"
+	:note "The insights to see how your profolio stacks up against the competition"
+	:content [
+		(div :class "ui lightExicon button" "SIGN UP NOW")
+		(p "Profiles for up to 20 of your apps")
+		(p "STARTER PACK")
+		(p "+ PLUS +")
+		(ul
+			(li "12 competitor insights per year"))
+		]
+	})
+
+(defc dominator-pack {
+	:title "DOMINATOR PACK"
+	:price "$159 per app/ month"
+	:note "For those with a grip on their apps looking to expand their footprint"
+	:content [
+		(div :class "ui lightExicon button" "SIGN UP NOW")
+		(p "Profiles for up to 50 of your apps")
+		(p "STARTER PACK")
+		(p "+ PLUS +")
+		(ul
+			(li "12 competitor insights per year"))
+		]
+	})
+
+(defc amplifier-pack {
+	:title "AMPLIFIER PACK"
+	:price "CONTACT US"
+	:note "Ready to unleash your API, and maybe open it to developers?"
+	:content [
+		(div :class "ui lightExicon button" "CALL ME")
+		(p "Profiles for up to 20 of your apps")
+		(p "Unlimited apps & APIs")
+		(p "Custmoized")
+		(ul
+			(li "12 competitor insights per year"))
+		]
+	})
+
+
+(layout/main :id "pricing"
+	(section :class "ui one column full-width-container"
+		(div  :id "page-title" :class "center aligned row"
+			(div :class "column"
+				(h1 "Pricing")))
+	)
+
+
+)
