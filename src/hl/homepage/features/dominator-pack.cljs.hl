@@ -5,8 +5,6 @@
 
 (reload-all 200)
 
-
-#_Loading Content
 (defc app-store-distribution {
 	:image-side :right
 	:screenshot "/images/app-distribution.png"
@@ -53,33 +51,20 @@
 		:period " per app*/ month"
 		:button "Sign Up Now"
 	}
-
-])
+	])
 
 (defn distribution-tile [opts]
 	(div :class "column"
 		(div :class "ui center aligned segment"
-				(h2 (text (:title opts)))
-				(h3 (text (:subtitle opts)))
-				(h4 :class "lightExicon text" (text (:price opts)) (span :class "default text" (text (:period opts))))
-				(div :class "ui lightExicon button" (text (:button opts)))
-			)
-	)
-)
+			(h2 (text (:title opts)))
+			(h3 (text (:subtitle opts)))
+			(h4 :class "lightExicon text"
+				(text (:price opts))
+				(span :class "default text" (text (:period opts))) )
+			(div :class "ui lightExicon button" (text (:button opts)))
+		)
+	) )
 
-(defn distribution-section []
-	(section
-		:id "distribution"
-		:class "full-width-container"
-		(div :class "ui two column doubling page grid"
-				(loop-tpl :bindings [opt distribution-options]
-				(distribution-tile opt))
-			)
-
-	)
-)
-
-#_Function: Features Details
 (defn feature [f]
 	(if (= (:image-side f) :left)
 
@@ -98,22 +83,24 @@
 				(div (cell= (:content f))))
 			(div :class "column"
 				(img :src (cell= (:screenshot f)))))
-		))
+	) )
 
-#_Page Layout
 (layout/main :id "starter-pack"
-	(section :class "ui one column full-width-container"
+	(header :class "ui one column full-width-container"
 		(div  :id "page-title" :class "center aligned row"
 			(div :class "column"
-				(h1 "Dominator Pack")))
-		)
-
-	(section :class "ui one column page grid"
+				(h1 "Dominator Pack") ) )
+	)
+	(section :id "how-to-find" :class "ui one column page grid"
 		(div :id "page-subtitle" :class "center aligned row"
 			(div :class "column"
-				(h2 "How are you targeted going to find your apps?")))
-				(feature @app-store-distribution)
-				(feature @marketplace)
-		)
-		(distribution-section)
+				(h2 "How are you targeting going to find your apps?") ) )
+
+		(feature @app-store-distribution)
+		(feature @marketplace)
 	)
+	(section :id "distribution":class "full-width-container"
+		(div :class "ui two column doubling page grid"
+			(loop-tpl :bindings [opt distribution-options]
+				(distribution-tile opt) ) )
+	) )
