@@ -61,14 +61,19 @@ font-size: 0.95em;
 margin-left: -1px;
 }
 
+.award.column img{
+	width:auto;
+	max-width: 100px;
+	margin: 0 auto;
+	text-align: center;
+}
+
 #partners h3{
 	font-weight: 300;
 }
+
 /* Mobile */
 @media only screen and (max-width: 767px){
-	#about-us .profile.column{
-		width: 30%;	}
-
 	#about-us #board-team{
 		margin-top: 0px;
 	}

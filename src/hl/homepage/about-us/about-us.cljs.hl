@@ -95,6 +95,17 @@
 			:position "Advisory Board"
 		}
 	])
+(def award-logos
+	[
+		{:logo "images/about-us/awards/MEF.png"}
+		{:logo "images/about-us/awards/ME.png"}
+		{:logo "images/about-us/awards/the-next-women.png"}
+		{:logo "images/about-us/awards/red-herring.png"}
+		{:logo "images/about-us/awards/IDC.png"}
+		{:logo "images/about-us/awards/Momo.png"}
+		{:logo "images/about-us/awards/digital-matters-music-matters.png"}
+	]
+)
 
 (defn management-team-tile [profile]
 	(div :class "three wide profile column"
@@ -140,9 +151,7 @@
 				(p "We have had some incredible partner customers who have helped evolve the product as we onboard their Apps, APIs and Developers.")
 				(p "Managing the logistics of a company’s app portfolio is continuing to evolve, as is our product, to meet the demands of customers large and small. ")
 				(p "We hope you’ll join us on that journey if you are trying to get a grip on your apps.")
-				(p "Management Team")
-				(p "Our Board")
-				)
+			)
 	)
 
 (defn management-team-section []
@@ -180,7 +189,16 @@
 
 (defn awards-section []
 	(section :id "awards"
-		(h2 :class "ui header" "Awards and Associations") )
+		(h2 :class "ui header" "Awards and Associations")
+		(div :class "ui seven column doubling ui grid"
+			(loop-tpl :bindings [logo award-logos] (award logo)) )
+	 )
+	)
+
+(defn award [logo]
+		(div :class "award column"
+			(img :src (cell= (:logo logo)))
+			)
 	)
 
 ; Page Layout
