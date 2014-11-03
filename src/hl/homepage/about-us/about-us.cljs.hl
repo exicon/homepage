@@ -244,7 +244,7 @@
 				(div :class "developers-link" (a :class "lightExicon" "Developers"))
 				(awards-section)
 			)
-			(div :class "five wide column")
+			(div :class "five wide timeline column" (img :src "images/about-us/timeline-wip.png"))
 		)
 
 

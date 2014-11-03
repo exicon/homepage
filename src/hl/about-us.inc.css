@@ -79,6 +79,14 @@ margin-left: -1px;
 }
 
 
+.timeline.column img {
+	float: right;
+	margin-top: 4em;
+	width: 90%;
+	max-width: 300px;
+}
+
+
 /* Mobile */
 @media only screen and (max-width: 767px){
 	#about-us #board-team{
