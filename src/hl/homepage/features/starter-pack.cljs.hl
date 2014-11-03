@@ -5,7 +5,6 @@
 
 (reload-all 200)
 
-#_Loading Content
 (defc intelligent-newsfeed {
 	:image-side :right
 	:screenshot "/images/intelligent-newsfeed-screenshot.png"
@@ -61,7 +60,7 @@
 			free providers. However, if you already have a provider you can plug that in too.")
 		(div :class "ui lightExicon button" "Get Started Now")
 		]
-})
+	})
 
 (defc app-brief-builder	{
 	:image-side :left
@@ -79,7 +78,7 @@
 			(li "Collaborate on the progress of mobile development projects"))
 		(div :class "ui lightExicon button" "Get Me Started")
 			]
-})
+	})
 
 (defc applocker{
 	:image-side :right
@@ -93,10 +92,8 @@
 		Accessible and ready to use anytime.")
 		(div :class "ui lightExicon button" "I'm ready to signup!")
 		]
-})
+	})
 
-
-#_Function: Features Details
 (defn feature [f]
 	(if (= (:image-side f) :left)
 
@@ -117,15 +114,12 @@
 				(img :src (cell= (:screenshot f)))))
 		))
 
-
-#_Page Layout
 (layout/main :id "starter-pack"
 	(section :class "ui one column full-width-container"
 		(div  :id "page-title" :class "center aligned row"
 			(div :class "column"
 				(h1 "Starter Pack")))
-		)
-
+	)
 	(section :class "ui one column page grid"
 		(div :id "page-subtitle" :class "center aligned row"
 			(div :class "column"
@@ -137,5 +131,4 @@
 		(feature @analytics)
 		(feature @app-brief-builder)
 		(feature @applocker)
-		))
-
+	) )

@@ -5,7 +5,6 @@
 
 (reload-all 200)
 
-#_Loading Content
 (defc api-management {
 	:image-side :right
 	:screenshot "/images/api-mgt-screenshot.png"
@@ -18,8 +17,7 @@
 			(li "Flexible")
 			(li "Open source"))
 		(div :class "ui lightExicon button" "Learn More")
-		]
-	})
+	] })
 
 (defc development-ecosystem {
 	:image-side :left
@@ -29,10 +27,9 @@
 	:content [
 		(p "Whether you are looking for a very specific development skill set to create your API or
 			to build a group of developers around your API, our networking 4000+ software houses.")
-		]
-	})
+	] })
 
-(defc manager-console{
+(defc manager-console {
 	:image-side :right
 	:screenshot "/images/manager-console-screenshot.png"
 	:icon "/images/icons/manager-console.png"
@@ -43,11 +40,8 @@
 			the team. Get the birds eye view of usage stats by individual and app portfolio.")
 		(p "Let’s get on a call to talk Amplifier Pack!")
 		(div :class "ui lightExicon button" "Get In Touch!")
-		]
-	})
+	] })
 
-
-#_Function: Features Details
 (defn feature [f]
 	(if (= (:image-side f) :left)
 
@@ -66,10 +60,8 @@
 				(div (cell= (:content f))))
 			(div :class "column"
 				(img :src (cell= (:screenshot f)))))
-		))
+	) )
 
-
-#_Page Layout
 (layout/main :id "amplifier-pack"
 	(section :class "ui one column full-width-container"
 		(div  :id "page-title" :class "center aligned row"
@@ -79,11 +71,10 @@
 	(section :class "ui one column page grid"
 		(div :id "page-subtitle" :class "center aligned row"
 			(div :class "column"
-				(h2 "Are your thinking bigger? Ready to open your API? Considering leveraging 3rd party developers to your amplify efforts.")
-			))
+				(h2 "Are your thinking bigger? Ready to open your API?
+					Considering leveraging 3rd party developers to your
+					amplify efforts.") ))
 		(feature @api-management)
 		(feature @development-ecosystem)
 		(feature @manager-console)
-		)
-
-)
+	) )
