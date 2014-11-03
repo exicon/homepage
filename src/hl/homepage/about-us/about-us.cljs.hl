@@ -107,6 +107,18 @@
 	]
 )
 
+(def partner-logos
+	[
+		{:logo "images/about-us/partners/Priori.png"}
+		{:logo "images/about-us/partners/Opentracker.png"}
+		{:logo "images/about-us/partners/Bango.png"}
+		{:logo "images/about-us/partners/Mippin-Partner-Logo.png"}
+		{:logo "images/about-us/partners/Oponiti-Partner-Logo.png"}
+		{:logo "images/about-us/partners/Catalist-Partner-Logo.png"}
+		{:logo "images/about-us/partners/Flurry.png"}
+	])
+
+
 (defn management-team-tile [profile]
 	(div :class "three wide profile column"
 		(img :class "circular ui image" :src (cell= (:image profile)))
@@ -177,12 +189,19 @@
 			)
 		)
 
+(defn partner [logo]
+	(div :class "column"
+		(img :src (cell= (:logo logo))))
+	)
 (defn partners-section []
 	(section :id "partners"
 		(h2 :class "ui header" "Our Partners")
-		(div (h3 "Solutions Partners"))
-		(div (h3 "Tech Partners"))
-		(div (h3 "Channel Partners"))
+		(div :class "ui three column dobling grid"
+		(loop-tpl :bindings [prt partner-logos] (partner prt))
+			)
+		; (div (h3 "Solutions Partners"))
+		; (div (h3 "Tech Partners"))
+		; (div (h3 "Channel Partners"))
 
 		)
 	)

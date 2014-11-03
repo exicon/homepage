@@ -72,6 +72,13 @@ margin-left: -1px;
 	font-weight: 300;
 }
 
+#partners img {
+	width: 70%;
+	min-width: 90px;
+	max-width: 160px;
+}
+
+
 /* Mobile */
 @media only screen and (max-width: 767px){
 	#about-us #board-team{
