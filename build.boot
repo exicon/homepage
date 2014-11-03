@@ -21,7 +21,7 @@
 (deftask development
 	"Build homepage for development."
 	[]
-	(comp (watch) (hoplon {:prerender false}) (c/castra-dev-server 'homepage.api)))
+	(comp (watch) (hoplon {:prerender false}) (c/castra-dev-server 'homepage.api :port 3003)))
 
 (deftask dev-debug
 	"Build homepage for development with source maps."
@@ -33,4 +33,7 @@
 (deftask production
 	"Build homepage for production."
 	[]
-	(hoplon {:optimizations :advanced}))
+	(hoplon {
+		:pretty-print true
+		:prerender true
+		:optimizations :advanced}))
