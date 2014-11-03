@@ -9,7 +9,7 @@
 #_Loading Content
 (defc app-store-distribution {
 	:image-side :right
-	:screenshot "/images/Distribution.png"
+	:screenshot "/images/app-distribution.png"
 	:icon "/images/packages/dominatorpack.png"
 	:title "App Store Distribution"
 	:content [
