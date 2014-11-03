@@ -1,0 +1,215 @@
+(page "about-us.html"
+	(:require
+		[homepage.layout :as layout]
+		[tailrecursion.hoplon.reload :refer [reload-all]] ))
+
+(reload-all 200)
+
+(def management-team
+	[
+
+		{
+			:image "images/about-us/Albert.png"
+			:name "Albert Kwong"
+			:position "Product Architect"
+		}
+		{
+			:image "images/about-us/Phil.png"
+			:name "Tamas Herman"
+			:position "Lead Developer"
+		}
+		{
+			:image "images/about-us/Phil.png"
+			:name "Phil Jackson"
+			:position "API Solutions"
+		}
+
+	])
+(def founders
+	[
+		{
+			:image "images/about-us/Stefan.png"
+			:name "Stefan Rust"
+			:position "Chairman & CEO"
+			:kloud "96"
+		}
+		{
+			:image "images/about-us/Cat.png"
+			:name "Cat Purvis"
+			:position "Director & Co-Founder"
+			:kloud "97"
+		}
+	]
+)
+
+(def board-team
+	[
+		{
+			:image "images/about-us/Stefan.png"
+			:name "Stefan Rust"
+			:position "Chairman & CEO"
+		}
+		{
+			:image "images/about-us/Cat.png"
+			:name "Cat Purvis"
+			:position "Director & Co-Founder"
+		}
+		{
+			:image "images/about-us/Anthoine.png"
+			:name "Antoine Blondeau"
+			:position "Director"
+		}
+		{
+			:image "images/about-us/Norman.png"
+			:name "Norman Janelle"
+			:position "Director"
+		}
+		{
+			:image "images/about-us/Stephen.png"
+			:name "Stephen King"
+			:position "Director"
+		}
+
+	])
+
+(def advisory-team
+	[
+		{
+			:image "images/about-us/Ralph.png"
+			:name "Ralph Simon"
+			:position "Advisory Board"
+		}
+		{
+			:image "images/about-us/Charles.png"
+			:name "Charles Fallon"
+			:position "Advisory Board"
+		}
+		{
+			:image "images/about-us/Anthony.png"
+			:name "Anthony Tse"
+			:position "Advisory Board"
+		}
+		{
+			:image "images/about-us/Jeffrey.png"
+			:name "Jeffrey Belk"
+			:position "Advisory Board"
+		}
+	])
+
+(defn management-team-tile [profile]
+	(div :class "three wide profile column"
+		(img :class "circular ui image" :src (cell= (:image profile)))
+		(div :class "info-labels"
+			(label :class "name" (text (:name profile))) )
+		(div :class "info-labels"	(label :class "position" (text (:position profile))) )
+		(div :class "social-media-icons"
+			(i :class "linkedin icon")
+			(i :class "twitter icon") )
+		)
+	)
+
+(defn profile-tile [profile]
+	(div :class "three wide column"
+		(img :class "circular ui image" :src (cell= (:image profile)))
+		(div :class "info-labels"
+			(label :class "name" (text (:name profile))) )
+		(div :class "info-labels"	(label :class "position" (text (:position profile))) )
+		)
+	)
+(defn founder-tile [profile]
+	(div :class "three wide profile column"
+			(img :class "circular ui image" :src (cell= (:image profile)))
+		(div :class "info-labels"
+			(label :class "name" (text (:name profile))) )
+		(div :class "info-labels"	(label :class "position" (text (:position profile))) )
+			(div :class "social-media-icons"
+				(i :class "linkedin icon")
+				(i :class "twitter icon")
+				(div (img :class "kloud icon" :src "images/about-us/kloud-50x39.png")(label :class "kloud-score" (text (:kloud profile)))) )
+			(div :class "ui tiny lightExicon bio button" "Download Bio")
+	))
+
+(defn overview-section []
+	(section :id "overview-section"
+				(h2 :class "ui header" "How we got here")
+				(p "We started out as a developer agency, helping companies find the right developers in the right markets on the right platforms. This allowed us to create a network of over 4000 development companies, working for companies like Sony Ericsson, HP, Qualcomm, Standard Chartered, glh hotels, Juniper Networks.")
+				(p "Companies were looking to build apps thanks to the proliferation of mobile phones. They needed developers to help them do this. ")
+				(p "In a sales meeting with a Fortune 500 company they asked us if we could find a specific type of developer for a new app. We surprised them by telling them they already had 4 of those apps. Additional research showed that they had a total of 180 apps built by their agencies, independent developers, wholesalers, and more. ")
+				(p "And the lightbulb went on. There was an opportunity here. ")
+				(p "So we decided to build out the Exicon AppBoard, helping companies get a grip on their apps. ")
+				(p "We have had some incredible partner customers who have helped evolve the product as we onboard their Apps, APIs and Developers.")
+				(p "Managing the logistics of a company’s app portfolio is continuing to evolve, as is our product, to meet the demands of customers large and small. ")
+				(p "We hope you’ll join us on that journey if you are trying to get a grip on your apps.")
+				(p "Management Team")
+				(p "Our Board")
+				)
+	)
+
+(defn management-team-section []
+		(section :id "management-team" :class "ui sixteen column doubling grid "
+			(h2 :class "ui header" "Management Team")
+
+			(loop-tpl :bindings [prf founders] (founder-tile prf))
+			(loop-tpl :bindings [prf management-team] (management-team-tile prf))
+		)
+	)
+
+(defn our-board-section []
+		(section :id "board-team" :class "ui sixteen column doubling grid "
+			(h2 :class "ui header" "Our Board")
+			(loop-tpl :bindings [prf board-team] (profile-tile prf))
+			)
+		)
+
+(defn advisory-board-section []
+		(section :id "management-team" :class "ui sixteen column doubling grid "
+			(h2 :class "ui header" "Advisory Board")
+			(loop-tpl :bindings [prf advisory-team] (profile-tile prf))
+			)
+		)
+
+(defn partners-section []
+	(section :id "partners"
+		(h2 :class "ui header" "Our Partners")
+		(div (h3 "Solutions Partners"))
+		(div (h3 "Tech Partners"))
+		(div (h3 "Channel Partners"))
+
+		)
+	)
+
+(defn awards-section []
+	(section :id "awards"
+		(h2 :class "ui header" "Awards and Associations") )
+	)
+
+; Page Layout
+(layout/main :id "challenger-pack"
+	(section :class "ui one column full-width-container"
+		(div  :id "page-title" :class "center aligned row"
+			(div :class "column"
+				(h1 "About Us")))
+	)
+		(section :class "ui one column page grid"
+		(div :id "page-subtitle" :class "center aligned row"
+			(div :class "column"
+				(h2 "App-cessorizing Everything")
+				(img :src "images/about-us/appcessorizing-everything.png")
+			)))
+
+		(div :class "ui two column doubling page grid"
+			(div :id "about-us" :class "eleven wide column"
+				(overview-section)
+				(management-team-section)
+				(our-board-section)
+				(advisory-board-section)
+				(partners-section)
+				(div :class "developers-link" (a :class "lightExicon" "Developers"))
+				(awards-section)
+			)
+			(div :class "five wide column")
+		)
+
+
+
+	)

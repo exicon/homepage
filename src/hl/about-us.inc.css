@@ -1,0 +1,75 @@
+#about-us section{
+	margin-top: 50px;
+}
+
+#about-us .profile.column{
+	position: relative;
+	height: 280px;
+}
+
+#about-us .profile.column img{
+	margin: 0 auto;
+	text-align: center;
+}
+
+#about-us .social-media-icons{
+	position: absolute;
+	top: 11.5em;
+	width: 85%;
+}
+
+#about-us .social-media-icons, .info-labels{
+		text-align: center;
+		margin-top: 0.5em;
+}
+#about-us .social-media-icons, .info-labels .name{
+	font-weight: 600;
+}
+
+
+#about-us .social-media-icons .kloud.icon{
+	width: 2em;
+	vertical-align: middle;
+	display: inline;
+}
+#about-us .bio.button{
+position: absolute;
+bottom: 0;
+}
+.twitter.icon{
+	color:#00bfff;
+}
+.linkedin.icon{
+	color:#035880;
+}
+.social-media-icons .icon{
+	cursor:pointer;
+}
+
+label.kloud-score{
+cursor: pointer;
+border: solid 1px orange;
+padding-right: 6px;
+display: inline;
+padding-top: 2px;
+padding-bottom: 3px;
+border-top-right-radius: 3px;
+border-bottom-right-radius: 3PX;
+padding-left: 4px;
+font-weight: 500;
+font-size: 0.95em;
+margin-left: -1px;
+}
+
+#partners h3{
+	font-weight: 300;
+}
+/* Mobile */
+@media only screen and (max-width: 767px){
+	#about-us .profile.column{
+		width: 30%;	}
+
+	#about-us #board-team{
+		margin-top: 0px;
+	}
+}
