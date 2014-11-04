@@ -173,7 +173,7 @@
 	:question "Can I use the competitor insight and enlarge my distribution without upgrading to the challenger or dominator pack?"
 	:answer [
 		(p "Yes, you can buy these features on a one off basis although it is more expensive per unit than upgrading. You can buy Competitive
-			insights by going to "Competitive Insights" in your AppBoard where you will be given the choice to upgrade or to buy one-off reports.
+			insights by going to \"Competitive Insights\" in your AppBoard where you will be given the choice to upgrade or to buy one-off reports.
 			You can buy the Distribution onto multiple appstores by going to “Distribution” in your AppBoard where you will be given the choice to
 			upgrade or to buy distribution for a specific app.")
 		]
