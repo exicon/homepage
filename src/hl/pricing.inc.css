@@ -13,3 +13,147 @@
 	height: 200px;
 	background-color: #f0f0ee;
 }
+
+#pricing-pack .pack-title{
+	font-size: 21px;
+	line-height: 35px;
+	font-weight: 300;
+	color: #666666;
+}
+
+#pricing-pack .other-pack {
+	box-shadow: none;
+}
+
+#pricing-pack .other-pack .pack-price{
+	width: 170px;
+	height: 170px;
+	margin: 0px auto;
+	padding-top: 10px;
+	border-radius: 50%;
+	border: 1px solid #59d2d9;
+	vertical-align: middle;
+	padding-top: 60px;
+}
+
+#pricing-pack .other-pack .pack-price p{
+	font-size: 30px;
+	font-weight: 400;
+	color: #59d2d9;
+	line-height: 25px;
+}
+
+#pricing-pack .other-pack .sub-price {
+	font-size: 15px;
+	font-weight: 100;
+	color: #59d2d9;
+}
+
+#pricing-pack .other-pack .price-note {
+	font-size: 17px;
+	height: 70px;
+	line-height: 20px;
+	font-weight: 100;
+	color: #9b9b9b;
+	font-style: italic;
+}
+
+#pricing-pack .price-details .no-of-app{
+	font-size: 17px;
+	font-weight: 600;
+	color: #59d2d9;
+}
+
+#pricing-pack .price-details p{
+	font-size: 15px;
+	font-weight: 300;
+	color: #333333;
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+
+#pricing-pack .price-details ul li{
+	font-size: 13px;
+	font-weight: 100;
+	color: #333333;
+	list-style: cirle;
+	margin: 6px 0 6px 10%;
+	line-height: 20px;
+	text-align: left;
+}
+
+#pricing-pack .price-details .pack-include {
+	font-size: 19px;
+	color: #666666;
+	font-weight: 100;
+}
+
+#pricing-pack .price-details .pack-plus {
+	font-size: 16px;
+	color: #59d2d9;
+	font-weight: 100;
+}
+
+
+#pricing-pack .amplifier-pack .pack-price{
+	width: 170px;
+	height: 170px;
+	margin: 0px auto;
+	padding-top: 10px;
+	border-radius: 50%;
+	border: 1px solid #59d2d9;
+	vertical-align: middle;
+	padding-top: 60px;
+}
+
+#pricing-pack .amplifier-pack .pack-price p{
+	font-size: 30px;
+	font-weight: 400;
+	color: #59d2d9;
+	line-height: 31px;
+}
+
+#pricing-pack .amplifier-pack {
+	height: 730px;
+	background-color: #59d2d9;
+	color: #ffffff !important;
+	-webkit-box-shadow: 0px 3px 11px -2px rgba(61,61,61,1);
+	-moz-box-shadow: 0px 3px 11px -2px rgba(61,61,61,1);
+	box-shadow: 0px 3px 11px -2px rgba(61,61,61,1);
+}
+
+#pricing-pack .amplifier-pack .pack-price{
+	background-color: #59d2d9;
+	border: 1px solid #ffffff;
+}
+
+#pricing-pack .amplifier-pack p, #pricing-pack .amplifier-pack ul li, #pricing-pack .amplifier-pack h2{
+	color: #ffffff !important;
+	}
+
+
+#faq-help h2 {
+	font-size: 23px;
+	font-weight: 700;
+	color: #000000;
+	line-height: 60px;
+	font-style: italic;
+}
+
+#faq-help h3 {
+	font-size: 15px;
+	font-weight: 500;
+	color: #379aa6;
+	line-height: 25px;
+	margin-bottom: 15px;
+}
+
+#faq-help p {
+	font-size: 14px;
+	font-weight: 100;
+	color: #000;
+}
+
+
+
+

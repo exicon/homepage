@@ -5,47 +5,213 @@
 
 (reload-all 200)
 
-(defc challenger-pack {
+(def pack-list [
+{
+	:box	"other-pack"
+	:title "STARTER PACK"
+	:price "US$0 "
+	:price-des "per app / month"
+	:note "Entry tool for those new to app management"
+	:content [
+		(div :class "ui lightExicon button" "SIGN UP NOW")
+		(p "Profiles for up to" (span :class"no-of-app" " 5 ") "of your apps")
+		(ul
+			(li "Intelligent Newsfeeds")
+			(li "LeaderBoard")
+			(li "Watchlist")
+			(li "App Store Analytics")
+			(li "In-app Analytics")
+			(li "App Briefbuilder")
+			(li "AppLocker"))
+		]
+	}
+
+	{
+	:box	"other-pack"
 	:title "CHALLENGER PACK"
-	:price "$99 per app/ month"
+	:price "US$99 "
+	:price-des "per app / month"
 	:note "The insights to see how your profolio stacks up against the competition"
 	:content [
 		(div :class "ui lightExicon button" "SIGN UP NOW")
-		(p "Profiles for up to 20 of your apps")
-		(p "STARTER PACK")
-		(p "+ PLUS +")
+		(p "Profiles for up to" (span :class "no-of-app" " 20 ") "of your apps")
+		(p :class "pack-include" "STARTER PACK")
+		(p :class "pack-plus" "+ PLUS +")
 		(ul
 			(li "12 competitor insights per year"))
 		]
-	})
+	}
 
-(defc dominator-pack {
+{
+	:box	"other-pack"
 	:title "DOMINATOR PACK"
-	:price "$159 per app/ month"
+	:price "US$159 "
+	:price-des "per app / month"
 	:note "For those with a grip on their apps looking to expand their footprint"
 	:content [
 		(div :class "ui lightExicon button" "SIGN UP NOW")
-		(p "Profiles for up to 50 of your apps")
-		(p "STARTER PACK")
-		(p "+ PLUS +")
+		(p "Profiles for up to" (span :class"no-of-app" " 50 ") "of your apps")
+		(p :class"pack-include" "CHALLENGER PACK")
+		(p :class "pack-plus" "+ PLUS +")
 		(ul
-			(li "12 competitor insights per year"))
+			(li "Distribution onto 20 app stores")
+			(li "White label marketplace"))
 		]
-	})
+	}
 
-(defc amplifier-pack {
+{
+	:box	"amplifier-pack"
 	:title "AMPLIFIER PACK"
 	:price "CONTACT US"
+	:price-des ""
 	:note "Ready to unleash your API, and maybe open it to developers?"
 	:content [
 		(div :class "ui lightExicon button" "CALL ME")
-		(p "Profiles for up to 20 of your apps")
 		(p "Unlimited apps & APIs")
 		(p "Custmoized")
 		(ul
-			(li "12 competitor insights per year"))
+			(li "API mangement")
+			(li "Developer ecosystem")
+			(li "API mangement"))
 		]
-	})
+	}
+
+	])
+
+(defn pricing-options [opts]
+	(div :class "column"
+		(div :class "ui center aligned segment" :do-class (cell= (:box opts))
+			(h2 :class "pack-title" (text (:title opts)))
+				(div :class "ui center aligned segment pack-price"
+						(p (text (:price opts)) (span :class "sub-price" (text (:price-des opts))))
+				)
+			(p :class "price-note" (text (:note opts)))
+			(div :class "price-details" (cell= (:content opts)))
+		)
+	)
+)
+
+(defn pricing-options-section []
+	(section
+		:id "pricing-pack"
+		:class "full-width-container"
+		(div :class "ui four column doubling page grid"
+			(loop-tpl :bindings [opt pack-list]
+			(pricing-options opt))
+		)
+	) )
+
+
+
+(def faq-detail [
+
+	{
+	:question "Do I get all the features for free with the starter pack?"
+	:answer [
+		(p "We want to make sure that you get to best “taste” you can of the value that the
+			AppBoard can bring you and your company. So we have added all of the features that
+			don’t have to be customised for you for free. We have however limited the number of
+			apps that you can try out with up to 5 (so those of you with 5 apps or less, your
+			day just got even better!)")
+		]
+	}
+
+	{
+	:question "What is NOT included in the Starter Pack?"
+	:answer [
+		(p "The short answer is Competitive Analytics (Challenger Pack), Automated Distribution
+			(Distributor Pack) onto multiple stores and our API Portal (API Axle).")
+		(p "You can get access to all of these features by upgrading to one of our other packs
+			(Challenger - Competitive Insights; Dominator - Competitive insights and Distribution
+			onto multiple stores; Amplifier - customized solution Call us).")
+		]
+	}
+
+	{
+	:question "How can I find out how many apps I have?"
+	:answer [
+		(p "When you first set up your AppBoard you will be asked to either securely connect your
+			Googleplay and iTunes account so that all of your apps are pulled straight to your AppBoard
+			almost immediately, or you can add them manually. Every separate submission you make to an
+			appstore will be counted as 1 separate app. E.g. Acme iPad app + Acme iPhone app + Acme Android
+			app = 3 apps in total.")
+		]
+	}
+
+	{
+	:question "I have more than 5 apps. Can I still use the free Starter pack?"
+	:answer [
+		(p "Yes, if you have more than 5 apps you will be asked to select which 5 apps you’d like to display
+			in your AppBoard. If you have more than 5 be aware that you cannot change which apps you display later.
+			We’d recommend that you use apps that you are just starting so that you can track them from end to end
+			and keep on top of everything, and apps that you have as much data about as possible e.g. who in your
+			team started the app, appstore analytics, who built it and in-app analytics if you have them (don’t worry
+			if you don’t we can help you out).")
+		]
+	}
+
+{
+	:question "Can I upgrade to the Challenger or Dominator pack after signing up for the Starter pack?"
+	:answer [
+		(p "Yes. If (or should I say when) you decide that you want to add more apps or more features you can upgrade at
+			any time. You can upgrade to the Challenger pack by going to “Competitive Insights” in your AppBoard where you will
+			be given the choice to upgrade or to buy one-off reports. You can upgrade to the Dominator pack by going to “Distribution”
+			in your AppBoard where you will be given the choice to upgrade or to buy distribution for a specific app.")
+		]
+	}
+
+	{
+	:question "If I have signed up for the Challenger Pack can I add additional competitor insights on top of those I get as part of the subscription?"
+	:answer [
+		(p "Yes, you can buy as many competitive insights as you like on a one off basis. You can buy Competitive insights by going to “Competitive Insights”
+			in your AppBoard where you will be given the choice to upgrade or to buy one-off reports.")
+		]
+	}
+
+	{
+	:question "Can I use the competitor insight and enlarge my distribution without upgrading to the challenger or dominator pack?"
+	:answer [
+		(p "Yes, you can buy these features on a one off basis although it is more expensive per unit than upgrading. You can buy Competitive
+			insights by going to "Competitive Insights" in your AppBoard where you will be given the choice to upgrade or to buy one-off reports.
+			You can buy the Distribution onto multiple appstores by going to “Distribution” in your AppBoard where you will be given the choice to
+			upgrade or to buy distribution for a specific app.")
+		]
+	}
+
+	{
+	:question "Do I need to give my credit card details when I sign up for the Starter pack?"
+	:answer [
+		(p "No, you just need to set up an account and you can start immediately.")
+		]
+	}
+
+		{
+	:question "I have more questions. Who do I ask?"
+	:answer [
+		(p "Contact us through the contact form here or call or send us an email. We’d be happy to chat with you.")
+		]
+	}
+
+])
+
+(defn faq-list [q]
+	(div :class "column"
+		(h3 (text (:question q)))
+		(div (cell= (:answer q)))
+	)
+)
+
+(defn faq-list-section []
+	(section
+		:id "faq-help"
+		:class "full-width-container"
+		(div :class "ui two column doubling page grid"
+			(h2 :class "ui center aligned header" "FAQ - We're here to help")
+			(loop-tpl :bindings [opt faq-detail]
+			(faq-list opt))
+		)
+	) )
+
 
 
 (layout/main :id "pricing"
@@ -54,6 +220,6 @@
 			(div :class "column"
 				(h1 "Pricing")))
 	)
-
-
+	(pricing-options-section)
+	(faq-list-section)
 )
