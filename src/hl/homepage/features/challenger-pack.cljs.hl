@@ -17,7 +17,7 @@
 		(ul
 			(li "Engagement # by monthly average users")
 			(li "Popularity by monthly and total downloads")
-			(li "Appstore presence")
+			(li "App Store presence")
 			(li "Performance by their monthly growth and app ratings"))
 		]
 	})
@@ -67,17 +67,17 @@
 	{
 		:title "One-Off"
 		:subtitle "Single AppScan"
-		:price "USD$500"
+		:price "US$500"
 		:period ""
-		:button "Order Now"
+		:button "Start for free now"
 		:note ""
 	}
 	{
 		:title "Challenger Pack"
-		:subtitle "12 AppScans a year"
-		:price "USD$99"
+		:subtitle "Including 1 Appscan per month"
+		:price "US$99"
 		:period " per app*/ month"
-		:button "Sign Up Now"
+		:button "Start for free now"
 		:note "* up to 20 apps"
 	}
 

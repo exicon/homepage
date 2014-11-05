@@ -203,14 +203,6 @@
 		)
 	)
 
-(defn awards-section []
-	(section :id "awards"
-		(h2 :class "ui header" "Awards and Associations")
-		(div :class "ui four column doubling grid"
-			(loop-tpl :bindings [logo award-logos] (award logo)) )
-	 )
-	)
-
 (defn award [logo]
 		(div :class "award column"
 			(img :src (cell= (:logo logo)))
@@ -220,8 +212,10 @@
 (defn awards-section []
 	(section :id "awards"
 		(h2 :class "ui header" "Awards and Associations")
-		(div :class "ui four column doubling ui grid"
-			(loop-tpl :bindings [logo award-logos] (award logo)))))
+		(div :class "ui four column doubling grid"
+			(loop-tpl :bindings [logo award-logos] (award logo)) )
+	 )
+	)
 
 (layout/main :id "challenger-pack"
 	(section :class "ui one column full-width-container"
