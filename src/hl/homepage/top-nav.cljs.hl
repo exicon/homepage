@@ -14,26 +14,26 @@
 (defc hovered-menu-item nil)
 (defc active-submenu-item nil)
 
-(def pricing-submenu-items [
-	{ :id :starter :name "Starter Pack" }
-	{ :id :challenge :name "Challenger Pack" }
-	{ :id :dominator :name "Dominator Pack" }
-	{ :id :amplifier :name "Amplifier Pack" }
+(def resources-submenu-items [
+	{ :id :starter :name "Reports" :url ""}
+	{ :id :challenge :name "Newsletters" :url "/newsletters.html"}
+	{ :id :dominator :name "Videos" :url ""}
+	{ :id :amplifier :name "Presentations" :url ""}
 ])
 
 (def features-submenu-items [
-	{:id :feature-1 :name "Feature 1"}
-	{:id :feature-2 :name "Feature 2"}
-	{:id :feature-3 :name "Feature 3"}
-	{:id :feature-4 :name "Feature 4"}
+	{:id :feature-1 :name "Starter Pack" :url "/starter-pack.html"}
+	{:id :feature-2 :name "Challenger Pack" :url "/challenger-pack.html"}
+	{:id :feature-3 :name "Dominator Pack" :url "/dominator-pack.html"}
+	{:id :feature-4 :name "Amplifier Pack" :url "/amplifier-pack.html"}
 ])
 
 (def main-menu-items
 	[
 	{ :id :features :name "Features" :submenu features-submenu-items }
-	{ :id :pricing :name "Pricing" :submenu pricing-submenu-items }
+	{ :id :pricing :name "Pricing" :url "/pricing.html" }
 	{ :id :blog :name "Blog" }
-	{ :id :resources :name "Resources" }
+	{ :id :resources :name "Resources" :submenu resources-submenu-items}
 	])
 
 (defn is-active-item? [item-id]
@@ -44,14 +44,14 @@
 
 (defn main-menu [items]
 	(loop-tpl :bindings [item items] (
-		(a :class "item"
+		(a :class "item" :href (cell= (:url item))
 			:hover #(reset! hovered-menu-item (:id @item))
 			:do-class (is-active-item? (:id @item))
 			:mouseenter #(reset! active-submenu (:submenu @item))
 			(text (:name item)) ) ) ) )
 
 (defn submenu-item [item]
-	(a :class "item"
+	(a :class "item" :href (cell= (:url item))
 		:on-click #(reset! active-submenu-item (:id @item))
 		:do-class (cell= {:active (= active-submenu-item (:id item))})
 			(text (:name item)) ) )
@@ -67,7 +67,7 @@
 	(div :id "top-nav-container"
 		(div :class "ui grid inner-container"
 			(div :class "five wide column logo-container"
-				(div :class "item" :id "logo" (img :src "/images/exicon-logo.png")))
+				(div :class "item" :id "logo" (a :href "/" (img :src "/images/exicon-logo.png"))))
 			(div :id "menu-container" :class "eleven wide column"
 				(nav :id "top-nav" :class "ui tiered menu"
 					:mouseleave #(do (reset! active-submenu nil) (reset! hovered-menu-item nil))

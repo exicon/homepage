@@ -13,7 +13,7 @@
 	:price-des "per app / month"
 	:note "Entry tool for those new to app management"
 	:content [
-		(div :class "ui button" "SIGN UP NOW")
+		(a :href "https://app.exiconglobal.com/?package=starter#!/registration/" (div :class "ui button" "SIGN UP NOW"))
 		(p "Profiles for up to" (span :class"no-of-app" " 5 ") "of your apps")
 		(ul
 			(li "Intelligent Newsfeeds")
@@ -33,7 +33,7 @@
 	:price-des "per app / month"
 	:note "The insights to see how your profolio stacks up against the competition"
 	:content [
-		(div :class "ui button" "SIGN UP NOW")
+		(a :href "https://app.exiconglobal.com/?package=challenger#!/registration/" (div :class "ui button" "SIGN UP NOW"))
 		(p "Profiles for up to" (span :class "no-of-app" " 20 ") "of your apps")
 		(p :class "pack-include" "STARTER PACK")
 		(p :class "pack-plus" "+ PLUS +")
@@ -49,7 +49,7 @@
 	:price-des "per app / month"
 	:note "For those with a grip on their apps looking to expand their footprint"
 	:content [
-		(div :class "ui button" "SIGN UP NOW")
+		(a :href "https://app.exiconglobal.com/?package=dominator#!/registration/" (div :class "ui button" "SIGN UP NOW"))
 		(p "Profiles for up to" (span :class"no-of-app" " 50 ") "of your apps")
 		(p :class"pack-include" "CHALLENGER PACK")
 		(p :class "pack-plus" "+ PLUS +")

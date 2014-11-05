@@ -11,7 +11,7 @@
 	:icon "/images/icons/api-mgt.png"
 	:title "API Management"
 	:content [
-		(p "The AppBoard intergrates with ApiAxle Internet Easiest + API Management + Platform")
+		(p " The Internet's easiest API Management Platform.")
 		(ul
 			(li "Free and easy to use")
 			(li "Flexible")
@@ -26,7 +26,7 @@
 	:title "Devlelopment Ecosystem"
 	:content [
 		(p "Whether you are looking for a very specific development skill set to create your API or
-			to build a group of developers around your API, our networking 4000+ software houses.")
+			to build a group of developers around your API, access our network of 4000+ software houses.")
 	] })
 
 (defc manager-console {

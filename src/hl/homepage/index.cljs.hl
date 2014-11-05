@@ -11,7 +11,7 @@
 				(div :class "right floated column intro-right-info"
 					(h1 "Get a grip on your apps" (br) "with the AppBoard")
 					(h2 "From 1 app to 500")
-					(div :class "ui lightExicon button" "Sign me up for a FREE account"))
+					(a :href "https://app.exiconglobal.com/?package=starter#!/registration/" (div :class "ui lightExicon button" "Sign me up for a FREE account")))
 				(div :class "center aligned column"
 					(img :class "video-btn" :src "images/play-btn-normal.png"))
 				)
@@ -63,7 +63,7 @@ Management."})
 		:title "The Challenger Pack"
 		:subtitle "Competitor Insights"
 		:desc "Benchmark yourself against those in your industry, specific countries or track every move of a specific competitor’s brand."
-		:link ""
+		:link "/challenger-pack.html"
 	}
 	{
 		:icon "images/packages/dominatorpack.png"
@@ -71,14 +71,14 @@ Management."})
 		:subtitle "Distribution"
 		:desc "Increase the chance of your app being downloaded by up to 200% more and featured up to 20 times
 			more*. Expand your reach by putting your apps onto multiple app stores."
-		:link ""
+		:link "/dominator-pack.html"
 	}
 		{
 		:icon "images/packages/amplifierpack.png"
 		:title "The Amplifier Pack"
 		:subtitle "API & More"
 		:desc "Leverage your APIs to build your business. Monitor and manage traffic to all your API endpoints while using the developer portal to build your developer ecosystem."
-		:link ""
+		:link "/amplifier-pack.html"
 	}
 ])
 
@@ -87,14 +87,14 @@ Management."})
 		:icon "images/icons/newsfeed.png"
 		:title "Intelligent Newsfeed"
 		:desc "Provides you with a personalized stream of activity across your app world."
-		:link "www.exiconglobal.com"
+		:link "/starter-pack.html"
 
 	}
 	{
 		:icon "images/icons/analytics.png"
 		:title "Analytics"
 		:desc "Plug in your App Store Analytics, and go deeper with In App Analytics. Use ours or your existing provider, we can manage either."
-		:link "www.exiconglobal.com"
+		:link "/starter-pack.html"
 
 
 	}
@@ -102,28 +102,28 @@ Management."})
 		:icon "images/icons/leaderboard.png"
 		:title "Leaderboards"
 		:desc "Compare the performance of your best and worst performing apps, by downloads, engagement, revenue and more."
-		:link "www.exiconglobal.com"
+		:link "/starter-pack.html"
 
 	}
 	{
 		:icon "images/icons/appbuilder.png"
 		:title "App Brief Builder"
 		:desc "Got an idea for a new app? Define your brief and we’ll find the right developer to build your app or plug in your own approved developers."
-		:link "www.exiconglobal.com"
+		:link "/starter-pack.html"
 
 	}
 	{
 		:icon "images/icons/watchlist.png"
 		:title "Watchlist"
 		:desc "Build collections of apps to watch - from best-of-breed to your biggest competitors."
-		:link "www.exiconglobal.com"
+		:link "/starter-pack.html"
 
 	}
 	{
 		:icon "images/icons/applocker.png"
 		:title "AppLocker"
 		:desc "Never lose project documents again - licenses, contracts, wireframes, codes, images etc, all in one place."
-		:link "www.exiconglobal.com"
+		:link "/starter-pack.html"
 
 	}
 ])
@@ -165,14 +165,14 @@ Management."})
 (defn features-section [feature-list]
 	(section :id "features"
 		(h2 :class "ui center aligned header" "Let the AppBoard give you real insight into your app portfolio with the Starter Pack")
-		(div :class "ui center aligned basic segment"(div :class "ui lightExicon long button" "Check it out now!"))
+		(div :class "ui center aligned basic segment" (a :href "/starter-pack.html" (div :class "ui lightExicon long button" "Check it out now!")))
 		(div :class "ui two column doubling page grid"
 			(div :class "column" (img :class "appboard-img" :src "images/appboard.png"))
 			(div :class "features-group column"
 				(div :class "ui two column grid"
 					(div :class "row"
 						(loop-tpl :bindings [ftr feature-list] (feature ftr)) )
-							(div :class "ui center aligned basic segment" (div :class "ui lightExicon long button" "Sign up now!"))
+							(div :class "ui center aligned basic segment" (a :href "https://app.exiconglobal.com/?package=starter#!/registration/" (div :class "ui lightExicon long button" "Sign up now!")))
 						) ) )
 	) )
 
