@@ -220,7 +220,7 @@
 (defn awards-section []
 	(section :id "awards"
 		(h2 :class "ui header" "Awards and Associations")
-		(div :class "ui seven column doubling ui grid"
+		(div :class "ui four column doubling ui grid"
 			(loop-tpl :bindings [logo award-logos] (award logo)))))
 
 (layout/main :id "challenger-pack"
