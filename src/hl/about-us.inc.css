@@ -7,7 +7,7 @@
 	height: 280px;
 }
 
-#about-us .profile.column img, #about-us .founder.column img{
+#about-us .profile.column img, #about-us .management.column img{
 	margin: 0 auto;
 	text-align: center;
 }
@@ -99,4 +99,5 @@ margin-left: -1px;
 	#about-us .management.column, #about-us .profile.column{
 		width: 30%;
 	}
+
 }
