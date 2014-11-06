@@ -93,7 +93,7 @@ Management."})
 	{
 		:icon "images/icons/analytics.png"
 		:title "Analytics"
-		:desc "Plug in your App Store Analytics, and go deeper with In App Analytics. Use ours or your existing provider, we can manage either."
+		:desc "Plug in your App Store Analytics, and go deeper with In App Analytics. Use ours, or your existing provider, we can manage either."
 		:link "/starter-pack.html"
 
 
@@ -101,7 +101,7 @@ Management."})
 	{
 		:icon "images/icons/leaderboard.png"
 		:title "Leaderboards"
-		:desc "Compare the performance of your best and worst performing apps, by downloads, engagement, revenue and more."
+		:desc "Compare the performance of your best, and worst, performing apps, by downloads, engagement, revenue and more."
 		:link "/starter-pack.html"
 
 	}
@@ -164,15 +164,17 @@ Management."})
 
 (defn features-section [feature-list]
 	(section :id "features"
-		(h2 :class "ui center aligned header" "Let the AppBoard give you real insight into your app portfolio with the Starter Pack")
-		(div :class "ui center aligned basic segment" (a :href "/starter-pack.html" (div :class "ui lightExicon long button" "Check it out now!")))
+		(h2 :class "ui center aligned header" "Let the AppBoard give you real insight into your app portfolio")
+		(div :class "ui center aligned basic segment" (a :href "/starter-pack.html" (div :class "ui lightExicon long button" "Free Account Sign Up")))
 		(div :class "ui two column doubling page grid"
 			(div :class "column" (img :class "appboard-img" :src "images/appboard.png"))
 			(div :class "features-group column"
 				(div :class "ui two column grid"
 					(div :class "row"
 						(loop-tpl :bindings [ftr feature-list] (feature ftr)) )
-							(div :class "ui center aligned basic segment" (a :href "https://app.exiconglobal.com/?package=starter#!/registration/" (div :class "ui lightExicon long button" "Sign up now!")))
+							(div :class "ui center aligned basic segment"
+								(a :href "https://app.exiconglobal.com/?package=starter#!/registration/"
+									(div :class "ui lightExicon long button" "Check out more!")))
 						) ) )
 	) )
 

@@ -14,7 +14,7 @@
 			:position "Product Architect"
 		}
 		{
-			:image "images/about-us/Phil.png"
+			:image "images/about-us/Tamas.png"
 			:name "Tamas Herman"
 			:position "Lead Developer"
 		}
@@ -97,13 +97,13 @@
 	])
 (def award-logos
 	[
-		{:logo "images/about-us/awards/MEF.png"}
-		{:logo "images/about-us/awards/ME.png"}
-		{:logo "images/about-us/awards/the-next-women.png"}
-		{:logo "images/about-us/awards/red-herring.png"}
-		{:logo "images/about-us/awards/IDC.png"}
-		{:logo "images/about-us/awards/Momo.png"}
-		{:logo "images/about-us/awards/digital-matters-music-matters.png"}
+		{:logo "images/about-us/awards/MEF2.png"}
+		{:logo "images/about-us/awards/ME2.png"}
+		{:logo "images/about-us/awards/the-next-women2.png"}
+		{:logo "images/about-us/awards/red-herring2.png"}
+		{:logo "images/about-us/awards/IDC2.png"}
+		{:logo "images/about-us/awards/Momo2.png"}
+		{:logo "images/about-us/awards/digital-matters-music-matters2.png"}
 	]
 )
 
@@ -120,7 +120,7 @@
 
 
 (defn management-team-tile [profile]
-	(div :class "three wide profile column"
+	(div :class "management column"
 		(img :class "circular ui image" :src (cell= (:image profile)))
 		(div :class "info-labels"
 			(label :class "name" (text (:name profile))) )
@@ -132,7 +132,7 @@
 	)
 
 (defn profile-tile [profile]
-	(div :class "three wide column"
+	(div :class "profile column"
 		(img :class "circular ui image" :src (cell= (:image profile)))
 		(div :class "info-labels"
 			(label :class "name" (text (:name profile))) )
@@ -140,7 +140,7 @@
 		)
 	)
 (defn founder-tile [profile]
-	(div :class "three wide profile column"
+	(div :class "management column"
 			(img :class "circular ui image" :src (cell= (:image profile)))
 		(div :class "info-labels"
 			(label :class "name" (text (:name profile))) )
@@ -148,8 +148,9 @@
 			(div :class "social-media-icons"
 				(i :class "linkedin icon")
 				(i :class "twitter icon")
-				(div (img :class "kloud icon" :src "images/about-us/kloud-50x39.png")(label :class "kloud-score" (text (:kloud profile)))) )
-			(div :class "ui tiny lightExicon bio button" "Download Bio")
+				(div (img :class "kloud icon" :src "images/about-us/kloud-50x39.png")(label :class "kloud-score" (text (:kloud profile))))
+				(div :class "ui tiny bio button" "Download Bio") )
+			; (div :class "bio-btn-container"(div :class "ui tiny lightExicon bio button" "Download Bio"))
 	))
 
 (defn overview-section []
@@ -167,7 +168,7 @@
 	)
 
 (defn management-team-section []
-		(section :id "management-team" :class "ui sixteen column doubling grid "
+		(section :id "management-team" :class "ui five column doubling grid "
 			(h2 :class "ui header" "Management Team")
 
 			(loop-tpl :bindings [prf founders] (founder-tile prf))
@@ -176,14 +177,14 @@
 	)
 
 (defn our-board-section []
-		(section :id "board-team" :class "ui sixteen column doubling grid "
+		(section :id "board-team" :class "ui five column doubling grid "
 			(h2 :class "ui header" "Our Board")
 			(loop-tpl :bindings [prf board-team] (profile-tile prf))
 			)
 		)
 
 (defn advisory-board-section []
-		(section :id "management-team" :class "ui sixteen column doubling grid "
+		(section :id "advisory-team-team" :class "ui five column doubling grid "
 			(h2 :class "ui header" "Advisory Board")
 			(loop-tpl :bindings [prf advisory-team] (profile-tile prf))
 			)
@@ -196,13 +197,9 @@
 (defn partners-section []
 	(section :id "partners"
 		(h2 :class "ui header" "Our Partners")
-		(div :class "ui three column dobling grid"
+		(div :class "ui three column doubling grid"
 		(loop-tpl :bindings [prt partner-logos] (partner prt))
 			)
-		; (div (h3 "Solutions Partners"))
-		; (div (h3 "Tech Partners"))
-		; (div (h3 "Channel Partners"))
-
 		)
 	)
 
@@ -215,8 +212,10 @@
 (defn awards-section []
 	(section :id "awards"
 		(h2 :class "ui header" "Awards and Associations")
-		(div :class "ui seven column doubling ui grid"
-			(loop-tpl :bindings [logo award-logos] (award logo)))))
+		(div :class "ui four column doubling grid"
+			(loop-tpl :bindings [logo award-logos] (award logo)) )
+	 )
+	)
 
 (layout/main :id "challenger-pack"
 	(section :class "ui one column full-width-container"
@@ -232,15 +231,15 @@
 			)))
 
 		(div :class "ui two column doubling page grid"
-			(div :id "about-us" :class "eleven wide column"
+			(div :id "about-us" :class "ten wide column"
 				(overview-section)
 				(management-team-section)
 				(our-board-section)
 				(advisory-board-section)
 				(partners-section)
-				(div :class "developers-link" (a :class "lightExicon" "Developers"))
+				(div :class "ui tiny button" "Developers")
 				(awards-section)
 			)
-			(div :class "five wide timeline column" (img :src "images/about-us/timeline-wip.png"))
+			(div :class "six wide timeline column" (div :class "timeline-img" (img :src "images/about-us/timeline.png")))
 		)
 	)

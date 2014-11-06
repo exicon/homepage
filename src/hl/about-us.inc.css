@@ -1,13 +1,13 @@
 #about-us section{
-	margin-top: 50px;
+	margin-top: 90px;
 }
 
-#about-us .profile.column{
+#about-us .management.column {
 	position: relative;
 	height: 280px;
 }
 
-#about-us .profile.column img{
+#about-us .profile.column img, #about-us .management.column img{
 	margin: 0 auto;
 	text-align: center;
 }
@@ -32,9 +32,12 @@
 	vertical-align: middle;
 	display: inline;
 }
+.bio-btn-container{
+	width: 45%;
+	text-align: center;
+}
 #about-us .bio.button{
-position: absolute;
-bottom: 0;
+margin-top: 1em;
 }
 .twitter.icon{
 	color:#00bfff;
@@ -80,16 +83,21 @@ margin-left: -1px;
 
 
 .timeline.column img {
-	float: right;
 	margin-top: 4em;
-	width: 90%;
+	width: 60%;
 	max-width: 300px;
 }
-
+.timeline.column .timeline-img{
+	text-align: center;
+}
 
 /* Mobile */
 @media only screen and (max-width: 767px){
 	#about-us #board-team{
 		margin-top: 0px;
 	}
+	#about-us .management.column, #about-us .profile.column{
+		width: 30%;
+	}
+
 }
