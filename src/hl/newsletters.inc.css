@@ -1,0 +1,47 @@
+#newsletters #page-title h1 {
+	font-size: 2.5em;
+	padding-top: 80px;
+	margin: 0;
+	font-size: 45px;
+ color: #333333;
+ font-weight: 300;
+ text-align: center;
+}
+
+#newsletters #page-title {
+	background: url('/images/starter-pack-title.png') center no-repeat;
+	height: 200px;
+	background-color: #f0f0ee;
+}
+
+#newsletters-list .newsletters-title {
+	font-size: 18px;
+	font-weight: 600;
+	color: #006776;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	height: 42px;
+}
+
+#newsletters-list .newsletters-issue {
+	font-size: 14px;
+	font-weight: 400;
+	color: #333333;
+	height: 20px;
+}
+
+#newsletters-list .newsletters-screenshot {
+	height: 100%;
+	max-width: 85%;
+}
+
+#newsletters-list .newsletters-screenshot-box {
+	width: 100%;
+	height: 330px;
+	text-align: center;
+}
+
+
+#newsletters-list a{
+	text-decoration: none;
+}
