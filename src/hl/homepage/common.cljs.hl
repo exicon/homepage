@@ -1,0 +1,8 @@
+(ns homepage.common)
+
+(defn registration-link [package]
+	(str "https://app.exiconglobal.com/?package=" (name package) "#!/registration/"))
+
+(defn registration-button [package text]
+	(a :href (registration-link package)
+		(div :class "ui lightExicon button" text)) )

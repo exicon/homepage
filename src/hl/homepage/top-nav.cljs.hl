@@ -30,7 +30,7 @@
 
 (def main-menu-items
 	[
-	{ :id :features :name "Features" :submenu features-submenu-items }
+	{ :id :features :name "Packages" :submenu features-submenu-items }
 	{ :id :pricing :name "Pricing" :url "/pricing.html" }
 	{ :id :blog :name "Blog" }
 	{ :id :resources :name "Resources" :submenu resources-submenu-items}

@@ -1,6 +1,7 @@
 (page "dominator-pack.html"
 	(:require
 		[homepage.layout :as layout]
+		[homepage.common :as common]
 		[tailrecursion.hoplon.reload :refer [reload-all]] ))
 
 (reload-all 200)
@@ -15,7 +16,7 @@
 		(ul
 			(li "Downloaded by up to 200% more")
 			(li "Featured by up to 20 times more"))
-		(div :class "ui lightExicon fixed-size button" "Start for free now")
+		(common/registration-button :dominator "Start for free now")
 		]
 	})
 
@@ -28,7 +29,7 @@
 		(p "Increase the discoverability of your Apps and APIs across your customers,
 			partners, suppliers and your organization with your own white labelled marketplace
 			accessible from your own company website showcasing your own products.")
-		(div :class "ui lightExicon fixed-size button" "Get started now")
+		(common/registration-button :dominator "Start for free now")
 		]
 	})
 
@@ -39,6 +40,7 @@
 		:price "US$2500"
 		:period ""
 		:button "Start for free now"
+		:link "/company/contact/"
 	}
 	{
 		:title "Dominator Pack"
@@ -47,6 +49,7 @@
 		:period " per app*/ month"
 		:button "Start for free now"
 		:note "* up to 50 apps"
+		:link (common/registration-link :dominator)
 	}
 	])
 
@@ -58,10 +61,9 @@
 			(h4 :class "lightExicon text"
 				(text (:price opts))
 				(span :class "default text" (text (:period opts))) )
-			(div :class "ui lightExicon button" (text (:button opts)))
-			(p (text (:note opts)))
-		)
-	) )
+			(a :href (cell= (:link opts))
+				(div :class "ui lightExicon button" (text (:button opts))))
+			(p (text (:note opts))))))
 
 (defn feature [f]
 	(if (= (:image-side f) :left)
