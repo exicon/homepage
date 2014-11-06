@@ -66,12 +66,18 @@
 (defelem top-nav []
 	(div :id "top-nav-container"
 		(div :class "ui grid inner-container"
-			(div :class "five wide column logo-container"
+			(div :class "eight wide column logo-container"
 				(div :class "item" :id "logo" (a :href "/" (img :src "/images/exicon-logo.png"))))
-			(div :id "menu-container" :class "eleven wide column"
+			(div :id "menu-container" :class "eight wide column"
 				(nav :id "top-nav" :class "ui tiered menu"
 					:mouseleave #(do (reset! active-submenu nil) (reset! hovered-menu-item nil))
 					(div :class "menu"
 						(main-menu main-menu-items)
 						(right-menu) )
-					(submenu active-submenu) ) ) ) ) )
+					(submenu active-submenu) ) )
+			)
+					(div :id "get-in-touch" )
+	)
+)
+
+

@@ -230,6 +230,20 @@ line-height: 1em;
 }
 
 
+/* Right Navi Get in touch */
+#get-in-touch {
+	cursor: pointer;
+	width: 119px;
+	height: 113px;
+	background-image: url(/images/header/contact-us.png);
+	transition: background-color 0.4s ease-out;
+	position: fixed;
+	z-index: 18;
+	right: 0px;
+	top: 140px;
+}
+
+
 /* Intro Section*/
 #intro{
 	background: url(/images/hero-image-2.png) center no-repeat;

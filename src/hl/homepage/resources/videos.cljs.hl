@@ -1,0 +1,83 @@
+(page "videos.html"
+	(:require
+		[homepage.layout :as layout]
+		[tailrecursion.hoplon.reload :refer [reload-all]] ))
+
+(reload-all 200)
+
+
+(def videos-list [
+
+	{
+	:title "Exicon's OnBoarding Tutorial 2014"
+	:image "/images/videos/homepage-video.png"
+	:url ""
+	}
+
+	{
+	:title "Indigo Digital Marketing Case Study 2014"
+	:image "/images/videos/Indigo.png"
+	:url ""
+	}
+
+	{
+	:title "myFOX App on Brew MP"
+	:image "/images/videos/fox.png"
+	:url ""
+	}
+
+	{
+	:title "API Strategy & Practice Conference, Amsterdam 2014"
+	:image "/images/videos/API-Strategy.png"
+	:url ""
+	}
+
+	{
+	:title "TWF and Bloomberg present the Women in Technology panel discussion 2012"
+	:image "/images/videos/Women-in-Tech.png"
+	:url ""
+	}
+
+	{
+	:title "WTM 2012: Going Mobile - Stefan Rust"
+	:image "/images/videos/Going-Mobile.png"
+	:url ""
+	}
+
+	{
+	:title "Mobile Matters 2011"
+	:image "/images/videos/mobile-matters.png"
+	:url ""
+	}
+
+])
+
+(defn videos-options [opts]
+	(div :class "column"
+		(a :target "_blank" :href (cell= (:url opts))(div :class "ui center aligned segment"
+			(h2 :class "videos-title" (text (:title opts)))
+			(div :class "videos-screenshot-box" (img :class "videos-screenshot" :src (cell= (:image opts))))
+		))
+	)
+)
+
+(defn videos-options-section []
+	(section
+		:id "videos-list"
+		:class "full-width-container"
+		(div :class "ui three column doubling page grid"
+			(loop-tpl :bindings [opt videos-list]
+			(videos-options opt))
+		)
+	)
+)
+
+
+(layout/main :id "videos"
+	(section :class "ui one column full-width-container"
+		(div  :id "page-title" :class "center aligned row"
+			(div :class "column"
+				(h1 "Videos")))
+	)
+	(videos-options-section)
+)
