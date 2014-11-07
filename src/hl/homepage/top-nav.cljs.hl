@@ -1,5 +1,26 @@
 (ns homepage.top-nav)
 
+(defc menu-item-of-page nil)
+
+(defc active-submenu nil)
+(defc submenu-features-visible false)
+(defc hovered-menu-item nil)
+(defc active-submenu-item nil)
+
+(def features-submenu-items [
+	{:id :feature-1 :name "Starter Pack" :url "/starter-pack.html"}
+	{:id :feature-2 :name "Challenger Pack" :url "/challenger-pack.html"}
+	{:id :feature-3 :name "Dominator Pack" :url "/dominator-pack.html"}
+	{:id :feature-4 :name "Amplifier Pack" :url "/amplifier-pack.html"}
+])
+
+(def resources-submenu-items [
+	{ :id :starter :name "Reports" :url "/our-products/industry-updates/"}
+	{ :id :challenge :name "Newsletters" :url "/newsletters.html"}
+	{ :id :dominator :name "Videos" :url "/company/video/"}
+	{ :id :amplifier :name "Presentations" :url "/company/whitepapers/"}
+])
+
 (defelem signup-and-login []
 	(div :class "right menu"
 		(a :id "signup" :href "/pricing.html" :class "item"
@@ -10,27 +31,6 @@
 			"Log In")
 	)
 )
-
-(defc menu-item-of-page nil)
-
-(defc active-submenu nil)
-(defc submenu-features-visible false)
-(defc hovered-menu-item nil)
-(defc active-submenu-item nil)
-
-(def resources-submenu-items [
-	{ :id :starter :name "Reports" :url "/our-products/industry-updates/"}
-	{ :id :challenge :name "Newsletters" :url "/newsletters.html"}
-	{ :id :dominator :name "Videos" :url "/company/video/"}
-	{ :id :amplifier :name "Presentations" :url "/company/whitepapers/"}
-])
-
-(def features-submenu-items [
-	{:id :feature-1 :name "Starter Pack" :url "/starter-pack.html"}
-	{:id :feature-2 :name "Challenger Pack" :url "/challenger-pack.html"}
-	{:id :feature-3 :name "Dominator Pack" :url "/dominator-pack.html"}
-	{:id :feature-4 :name "Amplifier Pack" :url "/amplifier-pack.html"}
-])
 
 (def main-menu-items
 	[
