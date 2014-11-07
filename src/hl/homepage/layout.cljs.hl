@@ -17,4 +17,4 @@
 				(merge {:class "content"} attrs)
 				content)
 			(bottom-nav/bottom-nav)
-			(h1 :class "ui red button" (text "♥ ~{rpc/random-number}")))))
+			#_(h1 :class "ui red button" (text "♥ ~{rpc/random-number}")))))
