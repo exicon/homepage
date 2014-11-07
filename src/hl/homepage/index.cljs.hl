@@ -166,15 +166,18 @@ Management."})
 (defn features-section [feature-list]
 	(section :id "features"
 		(h2 :class "ui center aligned header" "Let the AppBoard give you real insight into your app portfolio")
-		(div :class "ui center aligned basic segment" (a :href "/starter-pack.html" (div :class "ui lightExicon long button" "Free Account Sign Up")))
+		(div :class "ui center aligned basic segment"
+			(common/registration-button :starter "Free Account Sign Up"))
 		(div :class "ui two column doubling page grid"
 			(div :class "column" (img :class "appboard-img" :src "images/appboard.png"))
 			(div :class "features-group column"
 				(div :class "ui two column grid"
 					(div :class "row"
-						(loop-tpl :bindings [ftr feature-list] (feature ftr)) )
-							(div :class "ui center aligned basic segment"
-								(common/registration-button :starter "Check out more!"))
+						(loop-tpl :bindings [ftr feature-list]
+							(feature ftr)))
+						(div :class "ui center aligned basic segment"
+							(a :href "/starter-pack.html"
+								(div :class "ui lightExicon long button" "Checkout more")))
 						) ) )
 	) )
 
