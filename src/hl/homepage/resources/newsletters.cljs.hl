@@ -103,7 +103,7 @@
 
 (defn newsletters-options [opts]
 	(div :class "column"
-		(a :target "_blank" :href (cell= (:url opts))(div :class "ui center aligned segment"
+		(a :href (cell= (:url opts))(div :class "ui center aligned segment"
 			(h2 :class "newsletters-title" (text (:title opts)))
 			(p :class "newsletters-issue" (text (:issue opts)))
 			(div :class "newsletters-screenshot-box" (img :class "newsletters-screenshot" :src (cell= (:image opts))))
