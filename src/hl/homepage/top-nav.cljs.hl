@@ -15,10 +15,10 @@
 (defc active-submenu-item nil)
 
 (def resources-submenu-items [
-	{ :id :starter :name "Reports" :url ""}
+	{ :id :starter :name "Reports" :url "/our-products/industry-updates/"}
 	{ :id :challenge :name "Newsletters" :url "/newsletters.html"}
-	{ :id :dominator :name "Videos" :url ""}
-	{ :id :amplifier :name "Presentations" :url ""}
+	{ :id :dominator :name "Videos" :url "/company/video/"}
+	{ :id :amplifier :name "Presentations" :url "/company/whitepapers/"}
 ])
 
 (def features-submenu-items [
@@ -32,7 +32,7 @@
 	[
 	{ :id :features :name "Packages" :submenu features-submenu-items }
 	{ :id :pricing :name "Pricing" :url "/pricing.html" }
-	{ :id :blog :name "Blog" }
+	{ :id :blog :name "Blog" :url "/corp/" }
 	{ :id :resources :name "Resources" :submenu resources-submenu-items}
 	])
 
