@@ -1,10 +1,13 @@
 (page "starter-pack.html"
 	(:require
 		[homepage.layout :as layout]
+		[homepage.top-nav :as top-nav]
 		[homepage.common :as common]
 		[tailrecursion.hoplon.reload :refer [reload-all]] ))
 
 (reload-all 1000)
+
+(reset! top-nav/menu-item-of-page :features)
 
 (defc intelligent-newsfeed {
 	:image-side :right

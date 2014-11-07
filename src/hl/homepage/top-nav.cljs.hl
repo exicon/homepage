@@ -11,7 +11,7 @@
 	)
 )
 
-(defc menu-item-of-page :features)
+(defc menu-item-of-page nil)
 
 (defc active-submenu nil)
 (defc submenu-features-visible false)
