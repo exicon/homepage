@@ -4,7 +4,7 @@
 		[homepage.common :as common]
 		[tailrecursion.hoplon.reload :refer [reload-all]] ))
 
-(reload-all 200)
+(reload-all 1000)
 
 (defc app-store-distribution {
 	:image-side :right
