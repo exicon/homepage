@@ -32,12 +32,14 @@
 			:name "Stefan Rust"
 			:position "Chairman & CEO"
 			:kloud "96"
+			:bio "/staff/bios/Stefan Rust Bio.pdf"
 		}
 		{
 			:image "images/about-us/Cat.png"
 			:name "Cat Purvis"
 			:position "Director & Co-Founder"
 			:kloud "97"
+			:bio "/staff/bios/Cat Purvis Bio.pdf"
 		}
 	]
 )
@@ -139,6 +141,7 @@
 		(div :class "info-labels"	(label :class "position" (text (:position profile))) )
 		)
 	)
+
 (defn founder-tile [profile]
 	(div :class "management column"
 			(img :class "circular ui image" :src (cell= (:image profile)))
@@ -148,9 +151,11 @@
 			(div :class "social-media-icons"
 				(i :class "linkedin icon")
 				(i :class "twitter icon")
-				(div (img :class "kloud icon" :src "images/about-us/kloud-50x39.png")(label :class "kloud-score" (text (:kloud profile))))
-				(div :class "ui tiny bio button" "Download Bio") )
-			; (div :class "bio-btn-container"(div :class "ui tiny lightExicon bio button" "Download Bio"))
+				(div
+					(img :class "kloud icon" :src "images/about-us/kloud-50x39.png")
+					(label :class "kloud-score" (text (:kloud profile))))
+				(a :href (cell= (:bio profile))
+					(div :class "ui tiny bio button" "Download Bio")) )
 	))
 
 (defn overview-section []
@@ -171,8 +176,10 @@
 		(section :id "management-team" :class "ui five column doubling grid "
 			(h2 :class "ui header" "Management Team")
 
-			(loop-tpl :bindings [prf founders] (founder-tile prf))
-			(loop-tpl :bindings [prf management-team] (management-team-tile prf))
+			(loop-tpl :bindings [profile founders]
+				(founder-tile profile))
+			(loop-tpl :bindings [profile management-team]
+				(management-team-tile profile))
 		)
 	)
 
@@ -237,7 +244,8 @@
 				(our-board-section)
 				(advisory-board-section)
 				(partners-section)
-				(div :class "ui tiny button" "Developers")
+				(a :href "https://i2a.exiconglobal.com/#!node-developers-sign-up"
+					(div :class "ui tiny button" "Developers"))
 				(awards-section)
 			)
 			(div :class "six wide timeline column" (div :class "timeline-img" (img :src "images/about-us/timeline.png")))
