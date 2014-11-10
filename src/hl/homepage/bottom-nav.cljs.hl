@@ -30,6 +30,21 @@
 					(li :class "header" "Legal")
 					(li (a :href "/corp/legal/privacy-policy/" "Privacy"))	; FIXME migrate
 					(li (a :href "/corp/legal/terms-of-use/" "Terms & Conditions"))))	; FIXME migrate
+			(div :class "column"
+				(ul
+					(li :class "header" "Follow Us")
+					(li :class "follow-us-icon"
+						(a :target "_blank" :href "https://plus.google.com/115123733707845359729/posts" (img :src "/images/footer/white-g.png"))
+						(a :target "_blank" :href "https://www.facebook.com/exicon.mobi" (img :src "/images/footer/white-fb.png"))
+						(a :target "_blank" :href "https://twitter.com/exicon" (img :src "/images/footer/white-twitter.png"))
+						(a :target "_blank" :href "http://www.linkedin.com/company/exicon-ltd" (img :src "/images/footer/white-linkedIn.png")))
+					(li :class "follow-us-icon"
+						(a :target "_blank" :href "https://www.youtube.com/user/Exicon1" (img :src "/images/footer/white-youtube.png"))
+						(a :target "_blank" :href "http://www.weibo.com/u/3147916252" (img :src "/images/footer/white-weibo.png"))
+						(a :target "_blank" :href "http://feeds.feedburner.com/Exiconglobal" (img :src "/images/footer/white-rss.png"))
+						(a :target "_blank" :href "http://www.pinterest.com/exicon/pins/follow/?guid=CqzN7JCYsQQy-0" (img :src "/images/footer/white-pinterest.png")))
+				)
+			)
 		)
 	)
 )

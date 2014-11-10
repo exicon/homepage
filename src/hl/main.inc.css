@@ -280,14 +280,13 @@ height: 600px;
 	font-weight: 300;
 }
 
-/* Customer Quotes Section */
 
+/* Customer Quotes Section */
 #customer-quote-list h2{
 	font-weight: 400;
 font-size: 1.4em;
 height: 50px;
 }
-
 
 p.quote{
 	font-style: italic;
@@ -304,6 +303,7 @@ p.quote{
 	padding-right: 1.5em;
 }
 
+
 /* Features Section */
 #features img.appboard-img{
 	width: 100%;
@@ -318,6 +318,7 @@ p.quote{
 	margin-bottom: 1em;
 	width: 90%;
 }
+
 
 /* Pricing Packages */
 section#packages{
@@ -346,6 +347,7 @@ section#packages{
 	color: #59d2d9;
 }
 
+
 /* Clients Section */
 #clients img{
 	width: 100%;
@@ -362,6 +364,7 @@ section#packages{
 	font-weight: 400;
 }
 
+
 /*Bottom Navigation*/
 #bottom-nav ul li{
 	list-style:  none;
@@ -369,15 +372,23 @@ section#packages{
 	font-weight: 100;
 	margin-bottom: 0.5em;
 }
+
 #bottom-nav li.header{
 	font-weight: 600 !important;
 	margin-bottom: 1em;
 }
+
 #bottom-nav li a{
 	color: white;
 }
-/* Media Queries for Responsiveness */
 
+.follow-us-icon img {
+	width: 25px;
+}
+
+
+
+/* Media Queries for Responsiveness */
 /* Tablet*/
 @media only screen and (max-width: 991px) and (min-width: 768px){
 	#intro {
