@@ -7,6 +7,55 @@
 
 
 (def newsletters-list [
+			{
+	:title "How to blow 300M on winning customers"
+	:issue "Issue#020 November 06, 2014"
+	:image "/images/newsletters/issue_20.png"
+	:url "http://us3.campaign-archive2.com/?u=59165e464834675ada250903e&id=5e337c8064&e=[UNIQID]"
+	}
+
+		{
+	:title "15 banks, 600 apps - Who's in control?"
+	:issue "Issue#019 October 28, 2014"
+	:image "/images/newsletters/issue_19.png"
+	:url "http://us3.campaign-archive2.com/?u=59165e464834675ada250903e&id=d4f909cf24&e=[UNIQID]"
+	}
+
+		{
+	:title "Occupy Central: On the Streets and Off the Grid"
+	:issue "Issue#018 October 02, 2014"
+	:image "/images/newsletters/issue_18.png"
+	:url "http://us3.campaign-archive2.com/?u=59165e464834675ada250903e&id=cfa144fbae&e=[UNIQID]"
+	}
+
+		{
+	:title "Connecting Wheelchair Users to the Internet of Things"
+	:issue "Issue#017 September 24, 2014"
+	:image "/images/newsletters/issue_17.png"
+	:url "http://us3.campaign-archive1.com/?u=59165e464834675ada250903e&id=f39bbb9d0e&e=[UNIQID]"
+	}
+
+		{
+	:title "Mobile Video Editing on Smartphones & Tablets"
+	:issue "Issue#016 September 17, 2014"
+	:image "/images/newsletters/issue_16.png"
+	:url "http://us3.campaign-archive1.com/?u=59165e464834675ada250903e&id=0ee0eddc79&e=[UNIQID]"
+	}
+
+		{
+	:title "Jawbone Senses an Earthquake, We Sense Opportunity"
+	:issue "Issue#015 September 10, 2014"
+	:image "/images/newsletters/issue_15.png"
+	:url "http://us3.campaign-archive2.com/?u=59165e464834675ada250903e&id=571b0958a2&e=[UNIQID]"
+	}
+
+		{
+	:title "Where Do You Publish Your App?"
+	:issue "Issue#014 September 03, 2014"
+	:image "/images/newsletters/issue_14.png"
+	:url "http://us3.campaign-archive2.com/?u=59165e464834675ada250903e&id=a5c73d41f1&e=[UNIQID]"
+	}
+
 	{
 	:title "World Cup Fever"
 	:issue "Issue#013 July 02, 2014"
