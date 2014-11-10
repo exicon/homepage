@@ -90,7 +90,7 @@
 	:image-side :left
 	:screenshot1 "/images/customers/Graphic-Warehouse.png"
 	:screenshot2 "/images/customers/Screenshot-Warehouse.png"
-	:title "The Mobile Apps Developers"
+	:title "The Data Warehouse"
 	:challenge "You'd like to make it easier to get data to your customers, but you'd rather focus on your core
 			business than building and maintaining an app. Sometimes, it's better to let the rest of the world build your
 			apps for you. With the right content and a well-documented API, developers will compete with each other to
