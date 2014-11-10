@@ -201,6 +201,12 @@ line-height: 1em;
 	box-shadow: none;
 }
 
+#top-nav-container #signup:hover{
+	background-color: transparent;
+	color: #333;
+	box-shadow: none;
+}
+
 #top-nav-container .sub.menu {
 	background-color: rgba(76,76,76,0.7);
 	height: 45px;

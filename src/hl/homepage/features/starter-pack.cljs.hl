@@ -1,9 +1,13 @@
 (page "starter-pack.html"
 	(:require
 		[homepage.layout :as layout]
+		[homepage.top-nav :as top-nav]
+		[homepage.common :as common]
 		[tailrecursion.hoplon.reload :refer [reload-all]] ))
 
-(reload-all 200)
+(reload-all 1000)
+
+(reset! top-nav/menu-item-of-page :features)
 
 (defc intelligent-newsfeed {
 	:image-side :right
@@ -15,7 +19,7 @@
 			when you login. See the significant changes in performace
 			across your apps from app store rankings to downloads and
 			reviews.")
-		(div :class "ui lightExicon button" "Get My Free Pack")
+		(common/registration-button :starter "Get My Free Pack")
 		]
 	})
 
@@ -27,7 +31,7 @@
 	:content [
 		(p "Easily track your best and worst positioned apps sorted by downloads, revenue,
 			engagement adjusted for the last week or month.")
-		(a :href "https://app.exiconglobal.com/?package=starter#!/registration/" (div :class "ui lightExicon button" "Get Started Now"))
+		(common/registration-button :starter "Get Started Now")
 		]
 	})
 
@@ -40,12 +44,12 @@
 		(p "Set up lists of apps you want to follow using our tool. You can easily
 			collate apps from competitors or from companies that are just great
 			at apps for inspiration for your next project.")
-		(a :href "https://app.exiconglobal.com/?package=starter#!/registration/" (div :class "ui lightExicon button" "Get Started Now"))
+		(common/registration-button :starter "Get Started Now")
 		]
 	})
 
 (defc analytics {
-	:image-side :right
+	:image-side :left
 	:screenshot "/images/analytics-screenshot.png"
 	:icon "/images/icons/big-analytics.png"
 	:title "Analytics"
@@ -58,12 +62,12 @@
 			Additionally, we'll provide you with In-App Analytics that let you know how users
 			are actually using your apps. What's more, you’ll own your data, unlike other
 			free providers. However, if you already have a provider you can plug that in too.")
-		(a :href "https://app.exiconglobal.com/?package=starter#!/registration/" (div :class "ui lightExicon button" "Get Started Now"))
+		(common/registration-button :starter "Get Started Now")
 		]
 	})
 
 (defc app-brief-builder	{
-	:image-side :left
+	:image-side :right
 	:screenshot "/images/app-brief-builder-screenshot.png"
 	:icon "/images/icons/big-appbuilder.png"
 	:title "App Brief Builder"
@@ -76,12 +80,12 @@
 			(li "Driving scale and minimizing duplication")
 			(li "Find 3 great developers from our database, all under NDA")
 			(li "Collaborate on the progress of mobile development projects"))
-		(a :href "https://app.exiconglobal.com/?package=starter#!/registration/"(div :class "ui lightExicon button" "Get Me Started"))
+			(common/registration-button :starter "Get Me Started")
 			]
 	})
 
 (defc applocker{
-	:image-side :right
+	:image-side :left
 	:screenshot "/images/applocker-screenshot.png"
 	:icon "/images/icons/big-applocker.png"
 	:title "AppLocker"
@@ -90,7 +94,7 @@
 		Images and photos from designers, source code and binaries from developers, screenshots
 		and meta data for stores, developer contracts, image licenses etc.
 		Accessible and ready to use anytime.")
-		(a :href "https://app.exiconglobal.com/?package=starter#!/registration/"(div :class "ui lightExicon button" "I'm ready to signup!"))
+		(common/registration-button :starter "I'm ready to signup!")
 		]
 	})
 

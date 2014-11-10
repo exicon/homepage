@@ -1,9 +1,12 @@
 (page "amplifier-pack.html"
 	(:require
 		[homepage.layout :as layout]
+		[homepage.top-nav :as top-nav]
 		[tailrecursion.hoplon.reload :refer [reload-all]] ))
 
 (reload-all 200)
+
+(reset! top-nav/menu-item-of-page :features)
 
 (defc api-management {
 	:image-side :right
@@ -16,7 +19,7 @@
 			(li "Free and easy to use")
 			(li "Flexible")
 			(li "Open source"))
-		(div :class "ui lightExicon button" "Learn More")
+		(a :href "http://exiconglobal.com/apiaxle" (div :class "ui lightExicon button" "Learn More"))
 	] })
 
 (defc development-ecosystem {
@@ -39,7 +42,7 @@
 			Understand who in your team is performing best and why, so that you can share learnings with
 			the team. Get the birds eye view of usage stats by individual and app portfolio.")
 		(p "Let’s get on a call to talk Amplifier Pack!")
-		(div :class "ui lightExicon button" "Get In Touch!")
+		(a :href "/company/contact/" (div :class "ui lightExicon button" "Get In Touch!"))
 	] })
 
 (defn feature [f]

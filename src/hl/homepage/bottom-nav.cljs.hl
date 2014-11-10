@@ -6,28 +6,30 @@
 			(div :class "column"
 				(ul
 					(li :class "header" "Company")
-					(li (a "About Us"))
-					(li (a "Customers"))
-					(li (a "Media & Press"))
-					(li (a"Contact Us"))))
+					(li (a :href "/about-us.html" "About Us"))	; FIXME old link was /about-us/
+					(li (a :href "/customers.html" "Customers"))	; FIXME migrate
+					(li (a :href "/about-us/news/" "Media & Press"))	; FIXME migrate
+					(li (a  :href "/company/contact/" "Contact Us"))))	; FIXME migrate
 			(div :class "column"
 				(ul
 					(li :class "header" "Products")
-					(li (a "Apps"))
-					(li (a "APIs"))
-					(li (a "ApiAxle"))
-					(li (a "Marketplace"))))
+					(li (a :href "https://app.exiconglobal.com/app-dir/" "Apps"))
+					(li (a :href "https://app.exiconglobal.com/api-dir/" "APIs"))
+					(li (a :href "/apiaxle/" "ApiAxle"))	; FIXME migrate
+					(li (a :href "/directories/" "Marketplace"))))	; FIXME migrate
 			(div :class "column"
 				(ul
-					(li :class "header" "Partners")))
+					(li :class "header"
+						(a :href "/about-us.html#partners" "Partners"))))
 			(div :class "column"
 				(ul
-					(li :class "header" "Developers")))
+					(li :class "header"
+						(a :href "https://i2a.exiconglobal.com/#!node-developers-sign-up" "Developers"))))
 			(div :class "column"
 				(ul
 					(li :class "header" "Legal")
-					(li (a "Privacy"))
-					(li (a"Terms & Conditions"))))
+					(li (a :href "/corp/legal/privacy-policy/" "Privacy"))	; FIXME migrate
+					(li (a :href "/corp/legal/terms-of-use/" "Terms & Conditions"))))	; FIXME migrate
 		)
 	)
 )

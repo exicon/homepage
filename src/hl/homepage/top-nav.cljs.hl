@@ -1,25 +1,12 @@
 (ns homepage.top-nav)
 
-(defelem right-menu []
-	(div :class "right menu"
-		(a :class "item" "login")
-		(a :class "item" "signup")
-	)
-)
-
-(defc menu-item-of-page :features)
+(defc menu-item-of-page nil)
 
 (defc active-submenu nil)
 (defc submenu-features-visible false)
 (defc hovered-menu-item nil)
 (defc active-submenu-item nil)
 
-(def resources-submenu-items [
-	{ :id :starter :name "Reports" :url ""}
-	{ :id :challenge :name "Newsletters" :url "/newsletters.html"}
-	{ :id :dominator :name "Videos" :url "/videos.html"}
-	{ :id :amplifier :name "Presentations" :url ""}
-])
 
 (def features-submenu-items [
 	{:id :feature-1 :name "Starter Pack" :url "/starter-pack.html"}
@@ -28,11 +15,29 @@
 	{:id :feature-4 :name "Amplifier Pack" :url "/amplifier-pack.html"}
 ])
 
+(def resources-submenu-items [
+	{ :id :starter :name "Reports" :url "/our-products/industry-updates/"}
+	{ :id :challenge :name "Newsletters" :url "/newsletters.html"}
+	{ :id :dominator :name "Videos" :url "/company/video/"}
+	{ :id :amplifier :name "Presentations" :url "/company/whitepapers/"}
+])
+
+(defelem signup-and-login []
+	(div :class "right menu"
+		(a :id "signup" :href "/pricing.html" :class "item"
+			:hover #(reset! hovered-menu-item :signup)
+			(div :class "ui small button" "Sign Up"))
+		(a :id "login" :href "https://app.exiconglobal.com/":class "item"
+			:hover #(reset! hovered-menu-item :login)
+			"Log In")
+	)
+)
+
 (def main-menu-items
 	[
-	{ :id :features :name "Features" :submenu features-submenu-items }
+	{ :id :features :name "Packages" :submenu features-submenu-items }
 	{ :id :pricing :name "Pricing" :url "/pricing.html" }
-	{ :id :blog :name "Blog" }
+	{ :id :blog :name "Blog" :url "/corp/" }
 	{ :id :resources :name "Resources" :submenu resources-submenu-items}
 	])
 
@@ -67,13 +72,14 @@
 	(div :id "top-nav-container"
 		(div :class "ui grid inner-container"
 			(div :class "eight wide column logo-container"
-				(div :class "item" :id "logo" (a :href "/" (img :src "/images/exicon-logo.png"))))
+				(div :class "item" :id "logo"
+					(a :href "/" (img :src "/images/exicon-logo.png"))))
 			(div :id "menu-container" :class "eight wide column"
 				(nav :id "top-nav" :class "ui tiered menu"
 					:mouseleave #(do (reset! active-submenu nil) (reset! hovered-menu-item nil))
 					(div :class "menu"
 						(main-menu main-menu-items)
-						(right-menu) )
+						(signup-and-login) )
 					(submenu active-submenu) ) )
 			)
 					(div :id "get-in-touch" )

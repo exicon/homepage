@@ -1,9 +1,13 @@
 (page "challenger-pack.html"
 	(:require
 		[homepage.layout :as layout]
+		[homepage.top-nav :as top-nav]
+		[homepage.common :as common]
 		[tailrecursion.hoplon.reload :refer [reload-all]] ))
 
 (reload-all 200)
+
+(reset! top-nav/menu-item-of-page :features)
 
 (defc competitors {
 	:screenshot "/images/competitor-insights-screenshots.png"
@@ -71,6 +75,7 @@
 		:period ""
 		:button "Start for free now"
 		:note ""
+		:link "/company/contact/"
 	}
 	{
 		:title "Challenger Pack"
@@ -79,6 +84,7 @@
 		:period " per app*/ month"
 		:button "Start for free now"
 		:note "* up to 20 apps"
+		:link (common/registration-link :challenger)
 	}
 
 ])
@@ -89,7 +95,7 @@
 			(h2 (text (:title opts)))
 			(h3 (text (:subtitle opts)))
 			(h4 :class "lightExicon text" (text (:price opts)) (span :class "default text" (text (:period opts))))
-			(div :class "ui lightExicon button" (text (:button opts)))
+			(a :href (cell= (:link opts)) (div :class "ui lightExicon button" (text (:button opts))))
 			(p (text (:note opts)))
 		)
 	) )

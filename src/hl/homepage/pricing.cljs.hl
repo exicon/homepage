@@ -66,13 +66,14 @@
 	:price-des ""
 	:note "Ready to unleash your API, and maybe open it to developers?"
 	:content [
-		(div :class "ui white button" "CALL ME BACK")
+		(a :href "mailto:sales@exiconglobal.com?subject=Amplifier%20pack"
+			(div :class "ui white button" "CONTACT US"))
 		(p "Unlimited apps & APIs")
-		(p "Custmoized")
+		(p "Customized")
 		(ul
 			(li "API mangement")
 			(li "Developer ecosystem")
-			(li "API mangement"))
+			(li "Manager console"))
 		]
 	}
 
