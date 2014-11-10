@@ -19,7 +19,7 @@
 	{ :id :starter :name "Reports" :url "/our-products/industry-updates/"}
 	{ :id :challenge :name "Newsletters" :url "/newsletters.html"}
 	{ :id :dominator :name "Videos" :url "/company/video/"}
-	{ :id :amplifier :name "Presentations" :url "/company/whitepapers/"}
+	{ :id :amplifier :name "Presentations" :url "/presentations.html"}
 ])
 
 (defelem signup-and-login []
