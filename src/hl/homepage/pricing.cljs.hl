@@ -1,9 +1,6 @@
 (page "pricing.html"
 	(:require
-		[homepage.layout :as layout]
-		[tailrecursion.hoplon.reload :refer [reload-all]] ))
-
-(reload-all 200)
+		[homepage.layout :as layout]))
 
 (def pack-list [
 {

@@ -1,23 +1,21 @@
 (page "presentations.html"
 	(:require
-		[homepage.layout :as layout]
-		[tailrecursion.hoplon.reload :refer [reload-all]] ))
-
-(reload-all 200)
+		[homepage.layout :as layout]))
 
 (layout/main :id "presentations"
 	(section :class "ui one column full-width-container"
 		(div  :id "page-title" :class "center aligned row"
 			(div :class "column"
-				(h1 "Presentations")))
-	)
+				(h1 "Presentations"))))
 
 	(section :class "ui one column page grid"
 		(div :class "center aligned column"
 			(iframe :src "http://www.slideshare.net/Exicon/slideshelf"
 				:width "760px" :height "570px" :frameborder "0" :marginwidth "0"
-				:scrolling "no" allowfullscreen webkitallowfullscreen mozallowfullscreen)
+				:scrolling "no"
+				:allowfullscreen ""
+				:webkitallowfullscreen ""
+				:mozallowfullscreen "")
 		)
-	)
-)
+	))
 

@@ -1,13 +1,8 @@
 (page "videos.html"
 	(:require
-		[homepage.layout :as layout]
-		[tailrecursion.hoplon.reload :refer [reload-all]] ))
-
-(reload-all 200)
-
+		[homepage.layout :as layout]))
 
 (def videos-list [
-
 	{
 	:title "Exicon's OnBoarding Tutorial 2014"
 	:image "/images/videos/homepage-video.png"
@@ -54,12 +49,11 @@
 
 (defn videos-options [opts]
 	(div :class "column"
-		(a :target "_blank" :href (cell= (:url opts))(div :class "ui center aligned segment"
-			(h2 :class "videos-title" (text (:title opts)))
-			(div :class "videos-screenshot-box" (img :class "videos-screenshot" :src (cell= (:image opts))))
-		))
-	)
-)
+		(a :target "_blank" :href (cell= (:url opts))
+			(div :class "ui center aligned segment"
+				(h2 :class "videos-title" (text (:title opts)))
+				(div :class "videos-screenshot-box"
+					(img :class "videos-screenshot" :src (cell= (:image opts))))))))
 
 (defn videos-options-section []
 	(section
@@ -72,30 +66,6 @@
 	)
 )
 
-<div class="ui modal">
-  <i class="close icon"></i>
-  <div class="header">
-    Header
-  </div>
-  <div class="content">
-    <div class="left">
-      Some content to the left, usually an image or icon
-    </div>
-    <div class="right">
-      Some content to the right
-    </div>
-  </div>
-  <div class="actions">
-    <div class="ui button">
-      Cancel
-    </div>
-    <div class="ui button">
-      Okay
-    </div>
-  </div>
-</div>
-
-
 (layout/main :id "videos"
 	(section :class "ui one column full-width-container"
 		(div  :id "page-title" :class "center aligned row"
@@ -106,21 +76,5 @@
 
 	(section :class "ui one column full-width-container"
 		(div :class "ui tutorial modal"
-			(i class "close icon")
-			(div :class "header" (h1 "Video"))
-		)
-
-	)
-
-
-)
-
-
-
-
-
-
-
-
-
-
+			(i :class "close icon")
+			(div :class "header" (h1 "Video")))))

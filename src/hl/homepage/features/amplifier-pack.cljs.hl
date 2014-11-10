@@ -1,10 +1,7 @@
 (page "amplifier-pack.html"
 	(:require
 		[homepage.layout :as layout]
-		[homepage.top-nav :as top-nav]
-		[tailrecursion.hoplon.reload :refer [reload-all]] ))
-
-(reload-all 200)
+		[homepage.top-nav :as top-nav]))
 
 (reset! top-nav/menu-item-of-page :features)
 
