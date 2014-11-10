@@ -17,7 +17,7 @@
 (def resources-submenu-items [
 	{ :id :starter :name "Reports" :url ""}
 	{ :id :challenge :name "Newsletters" :url "/newsletters.html"}
-	{ :id :dominator :name "Videos" :url ""}
+	{ :id :dominator :name "Videos" :url "/videos.html"}
 	{ :id :amplifier :name "Presentations" :url ""}
 ])
 

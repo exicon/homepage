@@ -72,6 +72,29 @@
 	)
 )
 
+<div class="ui modal">
+  <i class="close icon"></i>
+  <div class="header">
+    Header
+  </div>
+  <div class="content">
+    <div class="left">
+      Some content to the left, usually an image or icon
+    </div>
+    <div class="right">
+      Some content to the right
+    </div>
+  </div>
+  <div class="actions">
+    <div class="ui button">
+      Cancel
+    </div>
+    <div class="ui button">
+      Okay
+    </div>
+  </div>
+</div>
+
 
 (layout/main :id "videos"
 	(section :class "ui one column full-width-container"
@@ -80,4 +103,24 @@
 				(h1 "Videos")))
 	)
 	(videos-options-section)
+
+	(section :class "ui one column full-width-container"
+		(div :class "ui tutorial modal"
+			(i class "close icon")
+			(div :class "header" (h1 "Video"))
+		)
+
+	)
+
+
 )
+
+
+
+
+
+
+
+
+
+
