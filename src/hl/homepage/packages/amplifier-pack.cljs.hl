@@ -1,4 +1,4 @@
-(page "amplifier-pack.html"
+(page "packages/amplifier-pack/index.html"
 	(:require
 		[homepage.layout :as layout]
 		[homepage.top-nav :as top-nav]))

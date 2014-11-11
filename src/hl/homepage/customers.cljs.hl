@@ -121,8 +121,8 @@
 				(p (text (:result f)))
 				(img :src (cell= (:customer-logo1 f)))
 				(img :src (cell= (:customer-logo2 f)))(br)(br)
-				(a :href "/pricing.html"
-								(div :class "ui button" "Get started now"))
+				(a :href "/appboard/pricing"
+					(div :class "ui button" "Get started now"))
 			)
 		)
 
@@ -136,8 +136,8 @@
 				(p (text (:solution f)))
 				(h4 "Result")
 				(p (text (:result f))) (br)(br)
-				(a :href "/pricing.html"
-								(div :class "ui button" "Get started now"))
+				(a :href "/appboard/pricing"
+					(div :class "ui button" "Get started now"))
 			)
 			(div :class "column right-image"
 				(img :src (cell= (:screenshot1 f)))

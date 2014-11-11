@@ -1,4 +1,4 @@
-(page "dominator-pack.html"
+(page "packages/dominator-pack/index.html"
 	(:require
 		[homepage.layout :as layout]
 		[homepage.top-nav :as top-nav]
