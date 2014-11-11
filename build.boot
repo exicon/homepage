@@ -10,7 +10,7 @@
 		[tailrecursion/hoplon      "5.10.24"]
 	]
 	:out-path     "resources/public"
-	:src-paths    #{"src/hl" "src/cljs" "src/clj"})
+	:src-paths    #{"src/hl" "src/cljs" "src/clj" "assets/javascript"})
 
 ;; Static resources (css, images, etc.):
 (add-sync! (get-env :out-path) #{"assets"})

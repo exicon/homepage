@@ -11,13 +11,13 @@
 	{
 	:title "Exicon's OnBoarding Tutorial 2014"
 	:image "/images/videos/homepage-video.png"
-	:url ""
+	:url ".tutorial.modal"
 	}
 
 	{
 	:title "Indigo Digital Marketing Case Study 2014"
 	:image "/images/videos/Indigo.png"
-	:url ""
+	:url ".tutorial.modal"
 	}
 
 	{
@@ -54,10 +54,12 @@
 
 (defn videos-options [opts]
 	(div :class "column"
-		(a :target "_blank" :href (cell= (:url opts))(div :class "ui center aligned segment"
+		(a :on-click #(.modal (js/jQuery (:url opts) ) "show")
+			(div :class "ui center aligned segment"
 			(h2 :class "videos-title" (text (:title opts)))
 			(div :class "videos-screenshot-box" (img :class "videos-screenshot" :src (cell= (:image opts))))
-		))
+			)
+		)
 	)
 )
 
@@ -67,7 +69,7 @@
 		:class "full-width-container"
 		(div :class "ui three column doubling page grid"
 			(loop-tpl :bindings [opt videos-list]
-			(videos-options opt))
+				(videos-options @opt))
 		)
 	)
 )
@@ -104,13 +106,15 @@
 	)
 	(videos-options-section)
 
-	(section :class "ui one column full-width-container"
-		(div :class "ui tutorial modal"
-			(i class "close icon")
-			(div :class "header" (h1 "Video"))
-		)
 
-	)
+		(div :class "ui tutorial modal"
+			(i :class "close icon")
+			(div :class "header"
+				(h1 "Exicon Demo Video")
+				(div :class "speakingengagements1")
+				(iframe :id "clearmySound" :width "100%" :height "400px;" :src "http://www.youtube.com/embed/Yiq8tNlH_7I?autoplay=1" :frameboarder "0" )
+			)
+		)
 
 
 )
