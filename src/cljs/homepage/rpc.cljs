@@ -18,5 +18,5 @@
 	(mkremote 'homepage.api/get-state state error loading))
 
 (defn init []
-	(get-state)
-	(js/setInterval get-state 1000))
+	#_(get-state)
+	#_(js/setInterval get-state 1000))
