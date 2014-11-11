@@ -1,8 +1,9 @@
-(page "starter-pack.html"
+(page "packages/starter-pack/index.html"
 	(:require
 		[homepage.layout :as layout]
 		[homepage.top-nav :as top-nav]
-		[homepage.common :as common]))
+		[homepage.common :as common]
+		[tailrecursion.hoplon.reload :refer [reload-all]]))
 
 (reset! top-nav/menu-item-of-page :features)
 

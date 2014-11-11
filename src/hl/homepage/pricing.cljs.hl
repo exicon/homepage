@@ -1,4 +1,4 @@
-(page "pricing.html"
+(page "appboard/pricing/index.html"
 	(:require
 		[homepage.layout :as layout]))
 

@@ -9,10 +9,10 @@
 
 
 (def features-submenu-items [
-	{:id :feature-1 :name "Starter Pack" :url "/starter-pack.html"}
-	{:id :feature-2 :name "Challenger Pack" :url "/challenger-pack.html"}
-	{:id :feature-3 :name "Dominator Pack" :url "/dominator-pack.html"}
-	{:id :feature-4 :name "Amplifier Pack" :url "/amplifier-pack.html"}
+	{:id :feature-1 :name "Starter Pack" :url "/packages/starter-pack"}
+	{:id :feature-2 :name "Challenger Pack" :url "/packages/challenger-pack"}
+	{:id :feature-3 :name "Dominator Pack" :url "/packages/dominator-pack"}
+	{:id :feature-4 :name "Amplifier Pack" :url "/packages/amplifier-pack"}
 ])
 
 (def resources-submenu-items [
@@ -24,7 +24,7 @@
 
 (defelem signup-and-login []
 	(div :class "right menu"
-		(a :id "signup" :href "/pricing.html" :class "item"
+		(a :id "signup" :href "/appboard/pricing" :class "item"
 			:hover #(reset! hovered-menu-item :signup)
 			(div :class "ui small button" "Sign Up"))
 		(a :id "login" :href "https://app.exiconglobal.com/":class "item"
@@ -36,7 +36,7 @@
 (def main-menu-items
 	[
 	{ :id :features :name "Packages" :submenu features-submenu-items }
-	{ :id :pricing :name "Pricing" :url "/pricing.html" }
+	{ :id :pricing :name "Pricing" :url "/appboard/pricing" }
 	{ :id :blog :name "Blog" :url "/corp/" }
 	{ :id :resources :name "Resources" :submenu resources-submenu-items}
 	])

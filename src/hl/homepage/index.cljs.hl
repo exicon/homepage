@@ -50,11 +50,10 @@ Management."})
 (defn quotes []
 	[
 	(section :id "customer-quote-list" :class "ui four column doubling page grid"
-
-			(customer-quote q1)
-			(customer-quote q2)
-			(quote-column q3)
-			(quote-column q4))
+		(customer-quote q1)
+		(customer-quote q2)
+		(quote-column q3)
+		(quote-column q4))
 
 	(section :id "imaginary-quote" :class "ui one column center aligned page grid"
 		(div :class "eight wide column"
@@ -68,7 +67,7 @@ Management."})
 		:title "The Challenger Pack"
 		:subtitle "Competitor Insights"
 		:desc "Benchmark yourself against those in your industry, specific countries or track every move of a specific competitor’s brand."
-		:link "/challenger-pack.html"
+		:link "/packages/challenger-pack"
 	}
 	{
 		:icon "images/packages/dominatorpack.png"
@@ -76,14 +75,14 @@ Management."})
 		:subtitle "Distribution"
 		:desc "Increase the chance of your app being downloaded by up to 200% more and featured up to 20 times
 			more*. Expand your reach by putting your apps onto multiple app stores."
-		:link "/dominator-pack.html"
+		:link "/packages/dominator-pack"
 	}
 		{
 		:icon "images/packages/amplifierpack.png"
 		:title "The Amplifier Pack"
 		:subtitle "API & More"
 		:desc "Leverage your APIs to build your business. Monitor and manage traffic to all your API endpoints while using the developer portal to build your developer ecosystem."
-		:link "/amplifier-pack.html"
+		:link "/packages/amplifier-pack"
 	}
 ])
 
@@ -92,14 +91,14 @@ Management."})
 		:icon "images/icons/newsfeed.png"
 		:title "Intelligent Newsfeed"
 		:desc "Provides you with a personalized stream of activity across your app world."
-		:link "/starter-pack.html"
+		:link "/packages/starter-pack"
 
 	}
 	{
 		:icon "images/icons/analytics.png"
 		:title "Analytics"
 		:desc "Plug in your App Store Analytics, and go deeper with In App Analytics. Use ours, or your existing provider, we can manage either."
-		:link "/starter-pack.html"
+		:link "/packages/starter-pack"
 
 
 	}
@@ -107,28 +106,28 @@ Management."})
 		:icon "images/icons/leaderboard.png"
 		:title "Leaderboards"
 		:desc "Compare the performance of your best, and worst, performing apps, by downloads, engagement, revenue and more."
-		:link "/starter-pack.html"
+		:link "/packages/starter-pack"
 
 	}
 	{
 		:icon "images/icons/appbuilder.png"
 		:title "App Brief Builder"
 		:desc "Got an idea for a new app? Define your brief and we’ll find the right developer to build your app or plug in your own approved developers."
-		:link "/starter-pack.html"
+		:link "/packages/starter-pack"
 
 	}
 	{
 		:icon "images/icons/watchlist.png"
 		:title "Watchlist"
 		:desc "Build collections of apps to watch - from best-of-breed to your biggest competitors."
-		:link "/starter-pack.html"
+		:link "/packages/starter-pack"
 
 	}
 	{
 		:icon "images/icons/applocker.png"
 		:title "AppLocker"
 		:desc "Never lose project documents again - licenses, contracts, wireframes, codes, images etc, all in one place."
-		:link "/starter-pack.html"
+		:link "/packages/starter-pack"
 
 	}
 ])
@@ -180,7 +179,7 @@ Management."})
 						(loop-tpl :bindings [ftr feature-list]
 							(feature ftr)))
 						(div :class "ui center aligned basic segment"
-							(a :href "/starter-pack.html"
+							(a :href "/packages/starter-pack"
 								(div :class "ui lightExicon long button" "Checkout more")))
 						) ) )
 	) )
@@ -238,5 +237,4 @@ Management."})
 	(features-section feature-list)
 	(packages-section)
 	(clients)
-	(testimonials-section)
-	)
+	(testimonials-section))
