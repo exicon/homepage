@@ -1,63 +1,78 @@
 (page "videos.html"
 	(:require
-		[homepage.layout :as layout]
-		[tailrecursion.hoplon.reload :refer [reload-all]] ))
-
-(reload-all 200)
-
+		[homepage.layout :as layout]))
 
 (def videos-list [
-
 	{
 	:title "Exicon's OnBoarding Tutorial 2014"
 	:image "/images/videos/homepage-video.png"
-	:url ".tutorial.modal"
+	:popbox "exicon-home"
+	:link "http://www.youtube.com/embed/Yiq8tNlH_7I"
 	}
 
 	{
 	:title "Indigo Digital Marketing Case Study 2014"
 	:image "/images/videos/Indigo.png"
-	:url ".tutorial.modal"
+	:popbox "indigo"
+	:link "http://www.youtube.com/embed/97EateflMdU"
 	}
 
 	{
 	:title "myFOX App on Brew MP"
 	:image "/images/videos/fox.png"
-	:url ""
+	:popbox "myfox"
+	:link "http://www.youtube.com/embed/zjJajOoUOZc"
 	}
 
 	{
 	:title "API Strategy & Practice Conference, Amsterdam 2014"
 	:image "/images/videos/API-Strategy.png"
-	:url ""
+	:popbox "api-strategy"
+	:link "http://www.youtube.com/embed/Gj_RMzcpWkc"
 	}
 
 	{
 	:title "TWF and Bloomberg present the Women in Technology panel discussion 2012"
 	:image "/images/videos/Women-in-Tech.png"
-	:url ""
+	:popbox "twf"
+	:link "http://www.youtube.com/embed/_BgoAwFSTLo"
 	}
 
 	{
 	:title "WTM 2012: Going Mobile - Stefan Rust"
 	:image "/images/videos/Going-Mobile.png"
-	:url ""
+	:popbox "going-mobile"
+	:link "http://www.youtube.com/embed/Lsyi8dXJVUc"
 	}
 
 	{
 	:title "Mobile Matters 2011"
 	:image "/images/videos/mobile-matters.png"
-	:url ""
+	:popbox "mobile-matters"
+	:link "http://www.youtube-nocookie.com/embed/AFKOeOQ9k5U"
 	}
 
 ])
 
 (defn videos-options [opts]
 	(div :class "column"
-		(a :on-click #(.modal (js/jQuery (:url opts) ) "show")
+		(a :on-click #(.modal (js/jQuery (str "."(:popbox opts)".modal")) "show")
 			(div :class "ui center aligned segment"
 			(h2 :class "videos-title" (text (:title opts)))
 			(div :class "videos-screenshot-box" (img :class "videos-screenshot" :src (cell= (:image opts))))
+			)
+		)
+
+		(div :id "videos-popup-box" :class "ui modal" :do-class (cell= (:popbox opts))
+			(i :class "close icon")
+			(div :class "header"
+				(h1 (text (:title opts)))
+				(div :class "speakingengagements1")
+				(iframe :id "clearmySound" :width "100%" :height "480px;" :src (cell= (:link opts))
+				:frameboarder "0"
+				:allowfullscreen ""
+				:webkitallowfullscreen ""
+				:mozallowfullscreen "")
 			)
 		)
 	)
@@ -74,29 +89,6 @@
 	)
 )
 
-<div class="ui modal">
-  <i class="close icon"></i>
-  <div class="header">
-    Header
-  </div>
-  <div class="content">
-    <div class="left">
-      Some content to the left, usually an image or icon
-    </div>
-    <div class="right">
-      Some content to the right
-    </div>
-  </div>
-  <div class="actions">
-    <div class="ui button">
-      Cancel
-    </div>
-    <div class="ui button">
-      Okay
-    </div>
-  </div>
-</div>
-
 
 (layout/main :id "videos"
 	(section :class "ui one column full-width-container"
@@ -105,26 +97,5 @@
 				(h1 "Videos")))
 	)
 	(videos-options-section)
-
-
-		(div :class "ui tutorial modal"
-			(i :class "close icon")
-			(div :class "header"
-				(h1 "Exicon Demo Video")
-				(div :class "speakingengagements1")
-				(iframe :id "clearmySound" :width "100%" :height "400px;" :src "http://www.youtube.com/embed/Yiq8tNlH_7I?autoplay=1" :frameboarder "0" )
-			)
-		)
-
-
 )
-
-
-
-
-
-
-
-
-
 

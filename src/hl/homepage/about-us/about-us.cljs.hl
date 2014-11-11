@@ -1,13 +1,9 @@
 (page "about-us.html"
 	(:require
-		[homepage.layout :as layout]
-		[tailrecursion.hoplon.reload :refer [reload-all]] ))
-
-(reload-all 200)
+		[homepage.layout :as layout]))
 
 (def management-team
 	[
-
 		{
 			:image "images/about-us/Albert.png"
 			:name "Albert Kwong"
@@ -25,6 +21,7 @@
 		}
 
 	])
+
 (def founders
 	[
 		{
@@ -41,8 +38,7 @@
 			:kloud "97"
 			:bio "/staff/bios/Cat Purvis Bio.pdf"
 		}
-	]
-)
+	])
 
 (def board-team
 	[
@@ -97,6 +93,7 @@
 			:position "Advisory Board"
 		}
 	])
+
 (def award-logos
 	[
 		{:logo "images/about-us/awards/MEF2.png"}
@@ -106,8 +103,7 @@
 		{:logo "images/about-us/awards/IDC2.png"}
 		{:logo "images/about-us/awards/momo2.png"}
 		{:logo "images/about-us/awards/digital-matters-music-matters2.png"}
-	]
-)
+	])
 
 (def partner-logos
 	[
@@ -120,7 +116,6 @@
 		{:logo "images/about-us/partners/Flurry.png"}
 	])
 
-
 (defn management-team-tile [profile]
 	(div :class "management column"
 		(img :class "circular ui image" :src (cell= (:image profile)))
@@ -129,22 +124,19 @@
 		(div :class "info-labels"	(label :class "position" (text (:position profile))) )
 		(div :class "social-media-icons"
 			(i :class "linkedin icon")
-			(i :class "twitter icon") )
-		)
-	)
+			(i :class "twitter icon"))))
 
 (defn profile-tile [profile]
 	(div :class "profile column"
 		(img :class "circular ui image" :src (cell= (:image profile)))
 		(div :class "info-labels"
 			(label :class "name" (text (:name profile))) )
-		(div :class "info-labels"	(label :class "position" (text (:position profile))) )
-		)
-	)
+		(div :class "info-labels"
+			(label :class "position" (text (:position profile))))))
 
 (defn founder-tile [profile]
 	(div :class "management column"
-			(img :class "circular ui image" :src (cell= (:image profile)))
+		(img :class "circular ui image" :src (cell= (:image profile)))
 		(div :class "info-labels"
 			(label :class "name" (text (:name profile))) )
 		(div :class "info-labels"	(label :class "position" (text (:position profile))) )
@@ -155,8 +147,7 @@
 					(img :class "kloud icon" :src "images/about-us/kloud-50x39.png")
 					(label :class "kloud-score" (text (:kloud profile))))
 				(a :href (cell= (:bio profile))
-					(div :class "ui tiny bio button" "Download Bio")) )
-	))
+					(div :class "ui tiny bio button" "Download Bio")))))
 
 (defn overview-section []
 	(section :id "overview-section"
@@ -178,51 +169,39 @@
 
 			(loop-tpl :bindings [profile founders]
 				(founder-tile profile))
+
 			(loop-tpl :bindings [profile management-team]
-				(management-team-tile profile))
-		)
-	)
+				(management-team-tile profile))))
 
 (defn our-board-section []
 		(section :id "board-team" :class "ui five column doubling grid "
 			(h2 :class "ui header" "Our Board")
-			(loop-tpl :bindings [prf board-team] (profile-tile prf))
-			)
-		)
+			(loop-tpl :bindings [prf board-team] (profile-tile prf))))
 
 (defn advisory-board-section []
 		(section :id "advisory-team-team" :class "ui five column doubling grid "
 			(h2 :class "ui header" "Advisory Board")
-			(loop-tpl :bindings [prf advisory-team] (profile-tile prf))
-			)
-		)
+			(loop-tpl :bindings [prf advisory-team] (profile-tile prf))))
 
 (defn partner [logo]
 	(div :class "column"
-		(img :src (cell= (:logo logo))))
-	)
+		(img :src (cell= (:logo logo)))))
+
 (defn partners-section []
 	(section :id "partners"
 		(h2 :class "ui header" "Our Partners")
 		(div :class "ui three column doubling grid"
-		(loop-tpl :bindings [prt partner-logos] (partner prt))
-			)
-		)
-	)
+		(loop-tpl :bindings [prt partner-logos] (partner prt)))))
 
 (defn award [logo]
-		(div :class "award column"
-			(img :src (cell= (:logo logo)))
-			)
-	)
+	(div :class "award column"
+		(img :src (cell= (:logo logo)))))
 
 (defn awards-section []
 	(section :id "awards"
 		(h2 :class "ui header" "Awards and Associations")
 		(div :class "ui four column doubling grid"
-			(loop-tpl :bindings [logo award-logos] (award logo)) )
-	 )
-	)
+			(loop-tpl :bindings [logo award-logos] (award logo)))))
 
 (layout/main :id "challenger-pack"
 	(section :class "ui one column full-width-container"

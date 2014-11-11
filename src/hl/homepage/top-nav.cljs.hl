@@ -71,7 +71,7 @@
 (defelem top-nav []
 	(div :id "top-nav-container"
 		(div :class "ui grid inner-container"
-			(div :class "eight wide column logo-container"
+			(div :id "left-logo" :class "eight wide column logo-container"
 				(div :class "item" :id "logo"
 					(a :href "/" (img :src "/images/exicon-logo.png"))))
 			(div :id "menu-container" :class "eight wide column"

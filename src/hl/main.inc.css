@@ -194,7 +194,9 @@ line-height: 1em;
 #top-nav-container .ui.menu .item{
 	height: 67px;
 	line-height: 2.6em;
+	padding: 0.83em 1.5em;
 }
+
 #top-nav-container .ui.menu .item:hover{
 	background-color: rgba(76,76,76,0.7);
 	color: white;
@@ -235,6 +237,13 @@ line-height: 1em;
 	padding: 0;
 }
 
+#left-logo {
+		width: 50%;
+	}
+
+	#menu-container {
+		width: 50%}
+}
 
 /* Right Navi Get in touch */
 #get-in-touch {
@@ -389,6 +398,18 @@ section#packages{
 
 
 /* Media Queries for Responsiveness */
+/* Small Screen Laptop */
+@media only screen and (max-width: 1350px) and (min-width: 768px){
+	#left-logo {
+		width: 30%;
+	}
+
+	#menu-container {
+		width: 70%}
+}
+
+
+
 /* Tablet*/
 @media only screen and (max-width: 991px) and (min-width: 768px){
 	#intro {
@@ -400,10 +421,21 @@ section#packages{
 	#intro h1{
 		font-size: 38px;
 	}
+
 	#intro h2{
 		font-size: 24px;
 	}
 
+	#top-nav-container .ui.menu .item{
+	padding: 0.83em 1em !important;
+	}
+
+	#left-logo {
+		width: 30%;
+	}
+
+	#menu-container {
+		width: 70%}
 }
 
 /* Mobile */
@@ -435,6 +467,10 @@ section#packages{
 	#imaginary-quote .eight.wide.column{
 		width: 80%;
 	}
+
+	#top-nav-container .ui.menu .item{
+	padding: 0.83em 1em !important;
+	}
 }
 
 
@@ -448,6 +484,10 @@ section#packages{
 	}
 	#imaginary-quote .eight.wide.column{
 		width: 80%;
+	}
+
+	#top-nav-container .ui.menu .item{
+	padding: 0.83em 1em !important;
 	}
 
 }

@@ -1,36 +1,40 @@
 (page "index.html"
 	(:require
 		[homepage.layout :as layout]
-		[homepage.common :as common]
-		[tailrecursion.hoplon.reload :refer [reload-all]]))
-
-(reload-all 200)
+		[homepage.common :as common]))
 
 (defn intro []
 	(section :id "intro" :class "full-width-container"
 		(div :class "ui two column page grid"
-				(div :class "right floated column intro-right-info"
-					(h1 "Get a grip on your apps" (br) "with the AppBoard")
-					(h2 "From 1 app to 500")
-					(a :href "https://app.exiconglobal.com/?package=starter#!/registration/" (div :class "ui lightExicon button" "Sign me up for a FREE account")))
-				(div :class "center aligned column"
-					(img :class "video-btn" :src "images/play-btn-normal.png"))
-				)
-	)
-)
+			(div :class "right floated column intro-right-info"
+				(h1 "Get a grip on your apps" (br) "with the AppBoard")
+				(h2 "From 1 app to 500")
+				(a :href "https://app.exiconglobal.com/?package=starter#!/registration/" (div :class "ui lightExicon button" "Sign me up for a FREE account")))
+			(div :class "center aligned column"
+				(img :class "video-btn" :src "images/play-btn-normal.png")))))
 
 (def lorem "Lorem ipsum dolor sit amet,
 	consectetuer adipiscing elit. Donec odio.
 	Quisque volutpat mattis eros.")
 
-(defc q1 {:title "Reduce Inefficiencies" :msg "One of our customers has found out 100 of their apps, with an average cost of USD100k, are
+(defc q1 {
+	:title "Reduce Inefficiencies"
+	:msg "One of our customers has found out 100 of their apps, with an average cost of USD100k, are
 redundant - they won’t be making that mistake again!"})
-(defc q2 {:title "Protect Your Brand & IP" :msg "Every customer with over 20 apps is unaware of apps published in their name. 50% of sales calls hear
-about lost apps."})
-(defc q3 {:title "Putting You in the Know" :msg "Your apps, your competitors, your ROI and your APIs - all at your fingertips."})
-(defc q4 {:title "Tools to Make the Changes" :msg "News, Analytics, Distribution, Promotion, Competitor Intelligence, Secure Storage, Developer
-Management."})
 
+(defc q2 {
+	:title "Protect Your Brand & IP"
+	:msg "Every customer with over 20 apps is unaware of apps published in their name. 50% of sales calls hear
+about lost apps."})
+
+(defc q3 {
+	:title "Putting You in the Know"
+	:msg "Your apps, your competitors, your ROI and your APIs - all at your fingertips."})
+
+(defc q4 {
+	:title "Tools to Make the Changes"
+	:msg "News, Analytics, Distribution, Promotion, Competitor Intelligence, Secure Storage, Developer
+Management."})
 
 (defn quote-column [x]
 	(div :class "column"

@@ -26,3 +26,9 @@
 #videos-list a{
 	text-decoration: none;
 }
+
+#videos-popup-box h1{
+	font-size: 1.4em;
+ color: #333333;
+ font-weight: 500;
+}

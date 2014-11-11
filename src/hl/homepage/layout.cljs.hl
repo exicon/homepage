@@ -1,11 +1,15 @@
 (ns homepage.layout
 	(:require
+		[homepage.config :refer [env?]]
 		[homepage.rpc :as rpc]
 		[homepage.top-nav :as top-nav]
 		[homepage.bottom-nav :as bottom-nav]
+		[tailrecursion.hoplon.reload :refer [reload-all]]
 		))
 
-(rpc/init)
+(if (env? :development)
+	(rpc/init)
+	(reload-all 1000))
 
 (defelem main [attrs content]
 	(html
@@ -17,4 +21,5 @@
 				(merge {:class "content"} attrs)
 				content)
 			(bottom-nav/bottom-nav)
-			#_(h1 :class "ui red button" (text "♥ ~{rpc/random-number}")))))
+			(if (env? :development)
+				(h1 :class "ui red button" (text "♥ ~{rpc/random-number}"))))))
