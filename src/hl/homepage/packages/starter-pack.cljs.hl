@@ -114,7 +114,8 @@
 				(div (cell= (:content f))))
 			(div :class "column"
 				(img :src (cell= (:screenshot f)))))
-		))
+		)
+)
 
 (layout/main :id "starter-pack"
 	(section :class "ui one column full-width-container"
