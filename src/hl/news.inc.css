@@ -37,6 +37,7 @@
 
 #news-list img {
 	max-width: 120px;
+	margin-bottom: 20px;
 }
 
 #news-list .events-screenshot {
