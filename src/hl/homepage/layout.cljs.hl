@@ -1,11 +1,13 @@
 (ns homepage.layout
+	(:require-macros [config :refer [env?]])
 	(:require
 		[homepage.top-nav :as top-nav]
 		[homepage.bottom-nav :as bottom-nav]
 		[tailrecursion.hoplon.reload :refer [reload-all]]
 		))
 
-#_(reload-all 1000)
+(if (env? :development)
+	(reload-all 1000))
 
 (defelem main [attrs content]
 	(html
