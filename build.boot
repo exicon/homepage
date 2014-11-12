@@ -36,4 +36,4 @@
 	(hoplon {
 		:pretty-print true
 		:prerender true
-		:optimizations :advanced}))
+		:optimizations :simple}))
