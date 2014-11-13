@@ -4,91 +4,94 @@
 
 (def videos-list [
 	{
+	:title "World is going Mobile"
+	:image "/images/videos/world-going-mobile.png"
+	:link "http://www.youtube.com/embed/94XtUIDwQUU?autoplay=1"
+	}
+
+	{
 	:title "Exicon's OnBoarding Tutorial 2014"
 	:image "/images/videos/homepage-video.png"
-	:popbox "exicon-home"
-	:link "http://www.youtube.com/embed/Yiq8tNlH_7I"
+	:link "http://www.youtube.com/embed/Yiq8tNlH_7I?autoplay=1"
 	}
 
 	{
 	:title "Indigo Digital Marketing Case Study 2014"
 	:image "/images/videos/Indigo.png"
-	:popbox "indigo"
-	:link "http://www.youtube.com/embed/97EateflMdU"
+	:link "http://www.youtube.com/embed/97EateflMdU?autoplay=1"
 	}
 
 	{
 	:title "myFOX App on Brew MP"
 	:image "/images/videos/fox.png"
-	:popbox "myfox"
-	:link "http://www.youtube.com/embed/zjJajOoUOZc"
+	:link "http://www.youtube.com/embed/zjJajOoUOZc?autoplay=1"
 	}
 
 	{
 	:title "API Strategy & Practice Conference, Amsterdam 2014"
 	:image "/images/videos/API-Strategy.png"
-	:popbox "api-strategy"
-	:link "http://www.youtube.com/embed/Gj_RMzcpWkc"
+	:link "http://www.youtube.com/embed/Gj_RMzcpWkc?autoplay=1"
 	}
 
 	{
 	:title "TWF and Bloomberg present the Women in Technology panel discussion 2012"
 	:image "/images/videos/Women-in-Tech.png"
-	:popbox "twf"
-	:link "http://www.youtube.com/embed/_BgoAwFSTLo"
+	:link "http://www.youtube.com/embed/_BgoAwFSTLo?autoplay=1"
 	}
 
 	{
 	:title "WTM 2012: Going Mobile - Stefan Rust"
 	:image "/images/videos/Going-Mobile.png"
-	:popbox "going-mobile"
-	:link "http://www.youtube.com/embed/Lsyi8dXJVUc"
+	:link "http://www.youtube.com/embed/Lsyi8dXJVUc?autoplay=1"
 	}
 
 	{
 	:title "Mobile Matters 2011"
 	:image "/images/videos/mobile-matters.png"
-	:popbox "mobile-matters"
-	:link "http://www.youtube-nocookie.com/embed/AFKOeOQ9k5U"
+	:link "http://www.youtube-nocookie.com/embed/AFKOeOQ9k5U?autoplay=1"
 	}
 
 ])
 
-(defn videos-options [opts]
-	(div :class "column"
-		(a :on-click #(.modal (js/jQuery (str "."(:popbox opts)".modal")) "show")
-			(div :class "ui center aligned segment"
-			(h2 :class "videos-title" (text (:title opts)))
-			(div :class "videos-screenshot-box" (img :class "videos-screenshot" :src (cell= (:image opts))))
-			)
-		)
+(defn call-video [opts vlink vtitle]
+	(reset! vtitle (:title opts))
+	(reset! vlink (:link opts))
+	(.modal (js/jQuery (str ".ui.modal")) "show")
+)
 
-		(div :id "videos-popup-box" :class "ui modal" :do-class (cell= (:popbox opts))
-			(i :class "close icon")
-			(div :class "header"
-				(h1 (text (:title opts)))
-				(div :class "speakingengagements1")
-				(iframe :id "clearmySound" :width "100%" :height "480px;" :src (cell= (:link opts))
-				:frameboarder "0"
-				:allowfullscreen ""
-				:webkitallowfullscreen ""
-				:mozallowfullscreen "")
+(defn videos-options [opts vlink vtitle]
+	(div :class "column"
+		(a :on-click #(call-video opts vlink vtitle)
+			(div :class "ui center aligned segment"
+				(h2 :class "videos-title" (text (:title opts)))
+				(div :class "videos-screenshot-box" (img :class "videos-screenshot" :src (cell= (:image opts))))
 			)
 		)
 	)
 )
 
 (defn videos-options-section []
-	(section
-		:id "videos-list"
-		:class "full-width-container"
-		(div :class "ui three column doubling page grid"
-			(loop-tpl :bindings [opt videos-list]
-				(videos-options @opt))
+	(let [vlink (cell "")
+							vtitle (cell "")]
+		(section :id "videos-list" :class "full-width-container"
+				(div :class "ui three column doubling page grid"
+					(loop-tpl :bindings [opt videos-list]
+						(videos-options @opt vlink vtitle))
+				)
+
+				(div :id "videos-popup-box" :class "ui modal"
+					(i :class "close icon" :on-click #(reset! vlink ""))
+					(div :class "header"
+						(h1 vtitle)
+						(div :class "video-frame"
+							(iframe :width "90%" :height "430px;" :src vlink
+							:frameboarder "0" :allowfullscreen "" :webkitallowfullscreen "" :mozallowfullscreen "")
+						)
+					)
+				)
 		)
 	)
 )
-
 
 (layout/main :id "videos"
 	(section :class "ui one column full-width-container"
