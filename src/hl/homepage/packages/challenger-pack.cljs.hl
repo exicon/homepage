@@ -107,7 +107,7 @@
 		)
 	) )
 
-(layout/main :id "challenger-pack"
+(layout/main :id "challenger-pack" :pagetitle "Challenger | Competitive Benchmarking & App Analytics"
 	(section :class "ui one column full-width-container"
 		(div  :id "page-title" :class "center aligned row"
 			(div :class "column"

@@ -117,7 +117,7 @@
 		)
 )
 
-(layout/main :id "starter-pack"
+(layout/main :id "starter-pack" :pagetitle "Starter Pack | Intro To App Management & App Analytics"
 	(section :class "ui one column full-width-container"
 		(div  :id "page-title" :class "center aligned row"
 			(div :class "column"

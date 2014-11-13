@@ -165,7 +165,7 @@
 	)
 )
 
-(layout/main :id "newsletters"
+(layout/main :id "newsletters" :pagetitle "Exicon Newsletter | Mobile Apps"
 	(section :class "ui one column full-width-container"
 		(div  :id "page-title" :class "center aligned row"
 			(div :class "column"

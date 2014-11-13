@@ -62,7 +62,7 @@
 				(img :src (cell= (:screenshot f)))))
 	) )
 
-(layout/main :id "amplifier-pack"
+(layout/main :id "amplifier-pack" :pagetitle "Amplifier | API Management Platform & Developer Console"
 	(section :class "ui one column full-width-container"
 		(div  :id "page-title" :class "center aligned row"
 			(div :class "column"

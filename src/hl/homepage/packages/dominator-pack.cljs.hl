@@ -85,7 +85,7 @@
 				(img :src (cell= (:screenshot f)))))
 	) )
 
-(layout/main :id "starter-pack"
+(layout/main :id "dominator-pack" :pagetitle "Dominator | App Distribution onto Global Appstores"
 	(header :class "ui one column full-width-container"
 		(div  :id "page-title" :class "center aligned row"
 			(div :class "column"

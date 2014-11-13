@@ -231,7 +231,7 @@ Management."})
 				(testimonial tst))
 )))
 
-(layout/main
+(layout/main :pagetitle "Manage Your Apps | Exicon Cloud App Management AppBoard"
 	(intro)
 	(quotes)
 	(features-section feature-list)

@@ -1,4 +1,4 @@
-#starter-pack #page-title h1 {
+#page-title h1 {
 	font-size: 2.5em;
 	padding-top: 80px;
 	margin: 0;
@@ -8,31 +8,31 @@
  text-align: center;
 }
 
-#starter-pack #page-subtitle h2 {
+#page-subtitle h2 {
 	font-size: 1.8em;
  line-height: 50px;
  color: #333333;
  font-weight: 400;
 }
 
-#starter-pack #page-subtitle h3 {
+#page-subtitle h3 {
 	font-size: 1.4em;
  line-height: 30px;
  color: #333333;
  font-weight: 200;
 }
 
-#starter-pack #page-title {
+#page-title {
 	background: url('/images/starter-pack-title.png') center no-repeat;
 	height: 200px;
 	background-color: #f0f0ee;
 }
 
-#starter-pack #page-details {
+#page-details {
 	padding-bottom: 35px;
 }
 
-#starter-pack #page-details h2 {
+#page-details h2 {
 	font-size: 1.8em;
  line-height: 43px;
  color: #333333;
@@ -41,14 +41,14 @@
 	margin-top: 0px;
 }
 
-#starter-pack #page-details p {
+#page-details p {
 	font-size: 1.2em;
  line-height: 30px;
  color: #333333;
  font-weight: 100;
 }
 
-#starter-pack #page-details ul li{
+#page-details ul li{
 	font-size: 1.2em;
 	line-height: 30px;
 	color: #333333;
@@ -57,7 +57,7 @@
 	margin: 7px 0px 7px -20px;
 }
 
-#starter-pack .features-icon {
+.features-icon {
 	float: left;
 	margin-right: 10px;
 }

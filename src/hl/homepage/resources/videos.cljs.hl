@@ -4,7 +4,7 @@
 
 (def videos-list [
 	{
-	:title "World is going Mobile"
+	:title "The World is Going Mobile"
 	:image "/images/videos/world-going-mobile.png"
 	:link "http://www.youtube.com/embed/94XtUIDwQUU?autoplay=1"
 	}
@@ -93,7 +93,7 @@
 	)
 )
 
-(layout/main :id "videos"
+(layout/main :id "videos" :pagetitle "Videos | Mobile | Apps | AppBoard"
 	(section :class "ui one column full-width-container"
 		(div  :id "page-title" :class "center aligned row"
 			(div :class "column"

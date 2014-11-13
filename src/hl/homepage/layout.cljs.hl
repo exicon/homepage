@@ -9,9 +9,10 @@
 (if (env? :development)
 	(reload-all 1000))
 
-(defelem main [attrs content]
+(defelem main [{:keys [attrs pagetitle]} content]
 	(html
 		(head
+			(title pagetitle)
 			(link :href "/semantic.css" :rel "stylesheet"))
 		(body
 			(top-nav/top-nav)

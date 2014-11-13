@@ -203,7 +203,7 @@
 		(div :class "ui four column doubling grid"
 			(loop-tpl :bindings [logo award-logos] (award logo)))))
 
-(layout/main :id "challenger-pack"
+(layout/main :id "about-us" :pagetitle "About Exicon | App Management & Analytics | Our Team"
 	(section :class "ui one column full-width-container"
 		(div  :id "page-title" :class "center aligned row"
 			(div :class "column"

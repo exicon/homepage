@@ -1,4 +1,4 @@
-#customers #page-title h1 {
+#page-title h1 {
 	font-size: 2.5em;
 	padding-top: 80px;
 	margin: 0;
@@ -8,43 +8,43 @@
  text-align: center;
 }
 
-#customers #page-title {
+#page-title {
 	background: url('/images/starter-pack-title.png') center no-repeat;
 	height: 200px;
 	background-color: #f0f0ee;
 }
 
-#customers #page-details{
+#page-details{
 	margin-top: 50px;
 }
 
-#customers #page-details h2 {
+#page-details h2 {
 	font-size: 1.8em;
  line-height: 43px;
  color: #333333;
  font-weight: 400;
 }
 
-#customers #page-details h4 {
+#page-details h4 {
 	font-size: 1.3em;
 	line-height: 30px;
 	color: #666666;
 	font-weight: 400;
 }
 
-#customers #page-details p {
+#page-details p {
 	font-size: 1em;
  line-height: 30px;
  color: #333333;
  font-weight: 100;
 }
 
-#customers .right-image img {
+.right-image img {
 	margin-bottom: 20px;
 	text-align: right;
 	float: right;
 }
 
-#customers .left-image img {
+.left-image img {
 	margin-bottom: 20px;
 }
