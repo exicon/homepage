@@ -93,7 +93,9 @@
 	)
 )
 
-(layout/main :id "videos" :pagetitle "Videos | Mobile | Apps | AppBoard"
+(layout/main :id "videos"
+	:pagetitle "Videos | Mobile | Apps | AppBoard"
+	:pagedescription "Watch Videos About Mobile, Apps, APIs & Developers. Oh, And The Exicon AppBoard!"
 	(section :class "ui one column full-width-container"
 		(div  :id "page-title" :class "center aligned row"
 			(div :class "column"

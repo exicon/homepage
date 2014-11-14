@@ -107,7 +107,10 @@
 		)
 	) )
 
-(layout/main :id "challenger-pack" :pagetitle "Challenger | Competitive Benchmarking & App Analytics"
+(layout/main :id "challenger-pack"
+	:pagetitle "Challenger | Competitive Benchmarking & App Analytics"
+	:pagedescription "The Challenger Pack Is An App Management & App Logistics Pack That Includes Competitive Benchmarking Insights"
+	:pagekeywords "Competitive Benchmarkeing and App Analytics"
 	(section :class "ui one column full-width-container"
 		(div  :id "page-title" :class "center aligned row"
 			(div :class "column"

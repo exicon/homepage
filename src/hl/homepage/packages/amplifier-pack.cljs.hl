@@ -62,7 +62,10 @@
 				(img :src (cell= (:screenshot f)))))
 	) )
 
-(layout/main :id "amplifier-pack" :pagetitle "Amplifier | API Management Platform & Developer Console"
+(layout/main :id "amplifier-pack"
+	:pagetitle "Amplifier | API Management Platform & Developer Console"
+	:pagedescription "Amplifier Pack Combines The Best Of Our App Management & Logistics Packs While Adding Our API Management Platform & Developer Console For You To Leverage Partner Developers."
+	:pagekeywords "API Management, Developer Console"
 	(section :class "ui one column full-width-container"
 		(div  :id "page-title" :class "center aligned row"
 			(div :class "column"

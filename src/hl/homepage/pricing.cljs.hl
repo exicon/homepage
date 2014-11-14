@@ -228,7 +228,10 @@
 
 
 
-(layout/main :id "pricing" :pagetitle "Product Pricing | Analytics & App Management | Exicon"
+(layout/main :id "pricing"
+	:pagetitle "Product Pricing | Analytics & App Management | Exicon"
+	:pagedescription "Pricing For Exicon's App Management & Logistics Platform That Scales With Your App Portfolio, Analytics, Distribution & API Management."
+	:pagekeywords "Analytics, App Management, Exicon"
 	(section :class "ui one column full-width-container"
 		(div  :id "page-title" :class "center aligned row"
 			(div :class "column"

@@ -9,10 +9,12 @@
 (if (env? :development)
 	(reload-all 1000))
 
-(defelem main [{:keys [attrs pagetitle]} content]
+(defelem main [{:keys [attrs pagetitle pagedescription pagekeywords]} content]
 	(html
 		(head
 			(title pagetitle)
+			(meta :name "description" :content pagedescription)
+			(meta :name "keywords" :content pagekeywords)
 			(link :href "/semantic.css" :rel "stylesheet"))
 		(body
 			(top-nav/top-nav)

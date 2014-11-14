@@ -2,7 +2,9 @@
 	(:require
 		[homepage.layout :as layout]))
 
-(layout/main :id "presentations" :pagetitle "Mobile | Presentations"
+(layout/main :id "presentations"
+	:pagetitle "Mobile | Presentations"
+	:pagedescription "All Thing Mobile Across Multiple Industries Including Automotive, Travel & Hospitality, Banking & Finance, & IoT."
 	(section :class "ui one column full-width-container"
 		(div  :id "page-title" :class "center aligned row"
 			(div :class "column"
