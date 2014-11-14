@@ -1,4 +1,4 @@
-(page "about-us.html"
+(page "about-us/index.html"
 	(:require
 		[homepage.layout :as layout]))
 

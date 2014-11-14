@@ -1,4 +1,4 @@
-(page "videos.html"
+(page "videos/index.html"
 	(:require
 		[homepage.layout :as layout]))
 
