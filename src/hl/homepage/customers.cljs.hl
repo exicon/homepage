@@ -18,12 +18,11 @@
 			parts of the world without sharing any insight into the successes and mistakes
 			made previously. Several apps were effectively abandoned when team structures
 			changed."
-	:solution "Having developed hundreds of apps over the past decade, your company now has
-			dozens of marketing and IT teams across the enterprise that often are not even
-			aware of each other's existence. Similar apps have been developed for different
-			parts of the world without sharing any insight into the successes and mistakes
-			made previously. Several apps were effectively abandoned when team structures
-			changed."
+	:solution "Exicon supports the aggregation of all your company's existing mobile app assets.
+	Owners are identified, developers are contacted and source files are compiled into individual
+	repositories on the AppBoard platform. Data sources, both from stores and the apps themselves,
+	are integrated into the AppBoard for comparison and analysis. Competitor research from Exicon
+	established how your company's apps were performing in comparison to the outside market."
 	:result "Marketing teams are able to strategically collaborate on the apps they build,
 			learn from each other's experience, and avoid duplicative work. Code loss is mitigated.
 			Without an IT bottleneck, app owners have direct access to all their analytics and the
@@ -119,8 +118,8 @@
 				(p (text (:solution f)))
 				(h4 "Result")
 				(p (text (:result f)))
-				(img :src (cell= (:customer-logo1 f)))
-				(img :src (cell= (:customer-logo2 f)))(br)(br)
+				(img :class "customer-logo" :src (cell= (:customer-logo1 f)))
+				(img :class "customer-logo" :src (cell= (:customer-logo2 f)))(br)(br)
 				(a :href "/appboard/pricing"
 					(div :class "ui button" "Get started now"))
 			)
