@@ -56,91 +56,91 @@
 	:title "World Cup Fever"
 	:issue "Issue#013 July 02, 2014"
 	:image "/images/newsletters/272014.png"
-	:url "/images/newsletters/exicon_news_272014/exicon_newletters_2013.html"
+	:url "/newsletters/exicon_news_272014/exicon_newletters_2013.html"
 	}
 
 	{
 	:title "How to increase sales and profit margin with App?"
 	:issue "Issue#012 January 09, 2014"
 	:image "/images/newsletters/912014.png"
-	:url "/images/newsletters/exicon_news_912014/exicon_newletters_2013.html"
+	:url "/newsletters/exicon_news_912014/exicon_newletters_2013.html"
 	}
 
 	{
 	:title "Building an app in 60 seconds"
 	:issue "Issue#011 December 05, 2013"
 	:image "/images/newsletters/5122013.png"
-	:url "/images/newsletters/exicon_news_5122013/exicon_newletters_2013.html"
+	:url "/newsletters/exicon_news_5122013/exicon_newletters_2013.html"
 	}
 
 	{
 	:title "Who uses which social channels for doing what?"
 	:issue "Issue#010 November 22, 2013"
 	:image "/images/newsletters/22112013.png"
-	:url "/images/newsletters/exicon_news_22112013/exicon_newletters_2013.html"
+	:url "/newsletters/exicon_news_22112013/exicon_newletters_2013.html"
 	}
 
 	{
 	:title "3 Real Reasons of Moving Mobile Market | Weekly Digest"
 	:issue "Issue#009 October 18, 2013"
 	:image "/images/newsletters/18102013.png"
-	:url "/images/newsletters/exicon_report_news_18102013/exicon_newletters_2013.html"
+	:url "/newsletters/exicon_report_news_18102013/exicon_newletters_2013.html"
 	}
 
 	{
 	:title "The True Connectivity of Mobile"
 	:issue "Issue#008 May 16, 2013"
 	:image "/images/newsletters/3152013.png"
-	:url "/images/newsletters/exicon_news_3152013/exicon_newletters_2013.html"
+	:url "/newsletters/exicon_news_3152013/exicon_newletters_2013.html"
 	}
 
 	{
 	:title "IOS vs Android"
 	:issue "Issue#007 May 16, 2013"
 	:image "/images/newsletters/1652013.png"
-	:url "/images/newsletters/exicon_news_1652013/exicon_newletters_2013.html"
+	:url "/newsletters/exicon_news_1652013/exicon_newletters_2013.html"
 	}
 
 	{
 	:title "Appcessorize!"
 	:issue "Issue#006 April 26, 2013"
 	:image "/images/newsletters/2642013.png"
-	:url "/images/newsletters/exicon_news_2542013/exicon_newletters_2013.html"
+	:url "/newsletters/exicon_news_2542013/exicon_newletters_2013.html"
 	}
 
 	{
 	:title "Simplifying Passenger Travel"
 	:issue "Issue#005 April 3, 2013"
 	:image "/images/newsletters/342013.png"
-	:url "/images/newsletters/exicon_news_342013/exicon_newletters_2013.html"
+	:url "/newsletters/exicon_news_342013/exicon_newletters_2013.html"
 	}
 
 	{
 	:title "Mobile World Congress 2013"
 	:issue "Issue#004 March 14, 2013"
 	:image "/images/newsletters/1332013.png"
-	:url "/images/newsletters/exicon_news_1332013/exicon_newletters_2013.html"
+	:url "/newsletters/exicon_news_1332013/exicon_newletters_2013.html"
 	}
 
 	{
 	:title "App Complexity"
 	:issue "Issue#003 Feb 21, 2013"
 	:image "/images/newsletters/2122013.png"
-	:url "/images/newsletters/exicon_news_2022013/exicon_newletters_2013.html"
+	:url "/newsletters/exicon_news_2022013/exicon_newletters_2013.html"
 	}
 
 	{
 	:title "2013 Tech Trends"
 	:issue "Issue#002 Feb 1, 2013"
 	:image "/images/newsletters/3012013.png"
-	:url "/images/newsletters/exicon_news_3012013/exicon_newletters_2013.html"
+	:url "/newsletters/exicon_news_3012013/exicon_newletters_2013.html"
 	}
 
 	{
 	:title "Travel & Mobile"
 	:issue "Issue#001 Jan 9, 2013"
 	:image "/images/newsletters/212013.png"
-	:url "/images/newsletters/exicon_news_2012/exicon_newletters_2013.html"
+	:url "/newsletters/exicon_news_2012/exicon_newletters_2013.html"
 	}
 	])
 
