@@ -28,8 +28,8 @@
 			(div :class "column"
 				(ul
 					(li :class "header" "Legal")
-					(li (a :href "/corp/legal/privacy-policy/" "Privacy"))	; FIXME migrate
-					(li (a :href "/corp/legal/terms-of-use/" "Terms & Conditions"))))	; FIXME migrate
+					(li (a :href "/privacy-policy/" "Privacy"))
+					(li (a :href "/terms-of-use/" "Terms & Conditions"))))
 			(div :class "column"
 				(ul
 					(li :class "header" "Follow Us")

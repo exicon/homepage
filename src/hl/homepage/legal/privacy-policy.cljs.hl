@@ -1,4 +1,4 @@
-(page "privacy-policy.html"
+(page "privacy-policy/index.html"
 	(:require
 		[homepage.layout :as layout]
 		[tailrecursion.hoplon.reload :refer [reload-all]] ))

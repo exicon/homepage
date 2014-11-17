@@ -1,0 +1,28 @@
+.terms-of-use-details .terms-of-use-heading {
+	font-weight: 600 !important;
+	font-size: 1em;
+	line-height: 4.5em;
+	margin-left: -15px;
+}
+
+.terms-of-use-details ol li{
+	font-weight: 300 !important;
+	font-size: 1em;
+	line-height:1.5em;
+	margin-bottom: 20px;
+}
+
+.terms-of-use-details ul li{
+ list-style: none;
+}
+
+.terms-of-use-details ul li li{
+ list-style: circle;
+ margin-bottom: 5px;
+}
+
+.terms-of-use-table {
+	padding-top: 20px;
+	padding-bottom: 80px;
+	font-weight: 300 !important;
+}

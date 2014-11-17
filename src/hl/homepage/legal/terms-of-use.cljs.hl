@@ -1,0 +1,671 @@
+(page "terms-of-use/index.html"
+	(:require
+		[homepage.layout :as layout]
+		[tailrecursion.hoplon.reload :refer [reload-all]] ))
+
+(reload-all 200)
+
+(layout/main :id "terms-of-use" :pagetitle "Terms of Use"
+	(section :class "ui one column full-width-container"
+		(div  :id "page-title" :class "center aligned row"
+			(div :class "column"
+				(h1 "Terms of Use")))
+	)
+	(section :class "ui one column page grid"
+		(div :class "column terms-of-use-details"
+			(p "This Agreement (“the Agreement”) governs Your use of Exicon’s Platform Services. If you
+				register for a Free Trial, this Agreement will also govern that Free Trial. By clicking a
+				box indicating Your acceptance, executing an Order Form that references this Agreement, or
+				starting to use Exicon’s Platform Services, You agree to all the terms of this Agreement.
+				If You do not agree to all of the terms of this Agreement, you are not authorized to use
+				the Platform Services or Website.")
+			(p "You may not access the Platform Services if You are Our direct competitor, except with
+				Our prior written consent. In addition, You may not access the Platform Services for purposes
+				of monitoring their availability, performance or functionality, or for any other benchmarking
+				or competitive purposes.")
+			(p "This Agreement is effective as between You and Us from the earliest date on which You either
+				returned to Us an executed Order Form, clicked the box indicating your acceptance during the
+				registration process or otherwise started to use the Platform Services (“Effective Date”).")
+			(p "We reserve the right to amend this Agreement at any time by notifying You as provided in
+				this Agreement, provided that no notice shall be required for non-substantive changes to the
+				Agreement. If we substantively amend this Agreement, we will post the updated Agreement on
+				the Website with at least seven (7) days’ notice before the changes take effect. If You do
+				not agree to any of these terms or any future Agreement, do not use or access (or continue
+					to access) the Platform Services or Website.")
+			(p "Governing Language: The original Agreement is written in English. The English language text
+				shall prevail in the event of a conflict between the English version and any translated version
+				presented on the Website. Exicon shall have no liability for any incorrect or inaccurate translation
+				appearing on the Website, nor for any damage incurred by users as a result of any mistranslation.")
+
+			(ol
+					(li :class "terms-of-use-heading" "Definitions & Interpretation"
+						(ul
+							(li "1.1 The definitions and rules of interpretation in this section apply in this Agreement.")
+							(li "1.2 “Confidential Information” means information that is proprietary or confidential and is
+								clearly labelled as such.")
+							(li "1.3 “Content” means the data inputted by You, Users, or Us on Your behalf for the purpose
+								of using the Platform Services or facilitating Your use of the Platform Services, including but
+								not limited to Customer Software Applications, together with the related files, Application
+								Programming Interfaces (APIs), technical documentation, marketing collateral and other content.")
+							(li "1.4 “Customer Software Application” means each unique software application or project that
+								You manage or store as “My Apps” using the Platform Services.")
+							(li "1.5 “Free Trial” means Your limited right to use the Platform Services free from any payment
+								obligation, from the date of Your registration to use the Platform Services until the end of the
+								free trial period for which you registered or are registering to use the applicable Service. If
+								at the end of a Free Trial, You do not wish to purchase the Platform Services from Us, please
+								notify us by sending an email to: admin@exiconglobal.com. In the event that You do not notify
+								Us of Your intention to cancel or initiate payment for the Platform Services, We reserve the
+								right to deny You access to Your account and the Platform Services and delete any Content
+								associated with your account. Platform Services offered under a Free Trial may be limited in
+								various ways as compared to the scope of available Platform Services, such as limits on number
+								of users, lesser or no security, and disabled or limited customization, functionality and features.
+								Free Trials are for general information purposes, and should not be relied on for Your operational
+								purposes.")
+							(li "1.6 “Initial Subscription Term” the initial term of this Agreement as set out in an Order Form.")
+							(li "1.7 “Intellectual Property Rights” or “Intellectual Property” means all right, title, and
+								interest in and to any copyright, database, design, logo, trademark, service mark, patent, invention,
+								trade secret, domain name, confidential and proprietary information, know-how, technology, business
+								name, trade name, trade dress, technical solutions, associated right to sue (past, present, and future),
+								and any other intellectual property rights whether existing at common law, applied for, registered or
+								unregistered and all extensions, renewals, continuations, continuations in part, divisionals, reissues,
+								re-examinations, and revivals thereof and existing anywhere in the world.")
+							(li "1.8 “Platform Services” means the provision of the Website where You can upload and manage Customer
+								Software Applications, and other web services, the SaaS Software and other tools and features related
+								thereto provided by Us to You in accordance with this Agreement and with the characteristics and features
+								as described on the Website from time to time.")
+							(li "1.9 “Order Form” means the document for placing orders for the Platform Services, including addenda
+								thereto, that are entered into between You and Us from time to time. Order Forms shall be deemed to
+								incorporate all of the terms and conditions contained herein, unless expressly amended by way of wording
+								to this effect appended to the Order Form. Fees stated on Order Forms are exclusive of any other sales
+								taxes or value added taxes. The Order Form will describe all of the Platform Services that We agree to
+								make available to You.")
+							(li "1.10 “Renewal Period” means the period described in clause 15.1.")
+							(li "1.11 “SaaS Software” means the online software applications provided by Us as part of the Platform
+								Services. This includes any customization, other derivative works, upgrades, releases, fixes, patches
+								etc. related to the SaaS Software that We develop or deploy from time to time.")
+							(li "1.12 “Subscription Fees” means the subscription fees payable by You to Us for use of the Platform
+								Services, as set out in an Order Form.")
+							(li "1.13 “Subscription Term” has the meaning given in clause 15.1.")
+							(li "1.14 “The Parties” means You and Us collectively.")
+							(li "1.15 “User” means an individual who has completed the user registration process and created a user
+								account with Us. This includes an individual that We create a user account for on Your behalf and any
+								individual invited by You to become a User.")
+							(li "1.16 “User Subscriptions” means the User Subscriptions purchased by You pursuant to clause 8.1
+								which entitle Users to access and use the Platform Services in accordance with this Agreement.")
+							(li "1.17 “Virus” any thing or device (including any software, code, file or program) which may: prevent,
+								impair or otherwise adversely affect the operation of any computer software, hardware or network, any
+								telecommunications service, equipment or network or any other service or device; prevent, impair or
+								otherwise adversely affect access to or the operation of any programme or data, including the reliability
+								of any programme or data (whether by re-arranging, altering or erasing the programme or data in whole
+									or part or otherwise); or adversely affect the user experience, including worms, trojan horses, viruses
+							and other similar things or devices.")
+							(li "1.18 “Website” means the website at http://www.exiconglobal.com and any other associated domains
+								notified to You by Us from time to time.")
+							(li "1.19 “We/Us/Our/Exicon” means the Exicon company described in section 24.")
+							(li "1.20 “You” or “Your” means the company or other legal entity for which You are accepting this
+								Agreement and any other party that You have authorized to use the Platform Services or Website on
+								Your behalf.")
+							(li "1.21 In this Agreement, unless the context requires otherwise"
+									(ul
+										(li "(a) any reference to a person includes an individual, corporate or unincorporated body (whether
+											or not having separate legal personality) and that person’s legal and personal representatives,
+										 successors or permitted assigns;")
+										(li "(b) a reference to a company shall include any company, corporation or other body corporate,
+											wherever and however incorporated or established;")
+										(li "(c) words in the singular shall include the plural and vice versa; and")
+										(li "(d) a reference to one gender shall include a reference to the other genders.")
+									)
+							)
+							(li "1.22 The paragraph headings and sub-headings shall not affect the interpretation of this Agreement.")
+							(li "1.23 If You are agreeing to this Agreement on behalf of individual Users under your control,
+								you are shall procure that such other individuals comply with this Agreement and You shall be responsible
+								and liable where such individual Users breach this Agreement.")
+						)
+					)
+					(li :class "terms-of-use-heading" "Grant of License"
+						(ul
+							(li "2.1 Subject to the terms and conditions of this Agreement, We hereby grant to You a non-transferable,
+								non-exclusive, limited term right to permit the Users to use the Platform Services during the Subscription
+								Term solely for Your internal business operations.")
+							(li "2.2 In relation to the Users, You undertake that:"
+								(ul
+									(li "(a) the maximum number of Users that You authorize to access and use the Platform Services shall not
+										exceed the number of User Subscriptions You have purchased from time to time;")
+									(li "(b) You will not allow or suffer any User Subscription to be used by more than one individual User
+										unless it has been reassigned in its entirety to another individual User, in which case the prior User
+										shall no longer have any right to access or use the Platform Services; and")
+									(li "(c) each User shall keep a secure password for his use of the Platform Services that each User shall
+										keep his password confidential.")
+								)
+							)
+							(li "2.3 You shall not access, store, distribute or transmit any Viruses, or any content during the course
+								of Your use of the Platform Services that:"
+								(ul
+									(li "(a) is unlawful, harmful, threatening, defamatory, obscene,harassing or racially or ethnically
+										offensive;")
+									(li "(b) facilitates illegal activity;")
+									(li "(c) depicts sexually explicit images;")
+									(li "(d) promotes unlawful violence;")
+									(li "(e) is discriminatory based on race, gender, colour, religious belief, sexual orientation, disability,
+										or any other illegal activity; or")
+									(li "(f) causes damage or injury to any person or property; and We reserve the right, without liability
+										to You, to disable Your access to any material that breaches the provisions of this section.")
+								)
+							)
+							(li "2.4 You shall not:"
+								(ul
+									(li "(a) except as may be allowed by any applicable law which is incapable of exclusion by agreement between
+										the parties:(i) and except to the extent expressly permitted under this Agreement, attempt to copy, modify,
+										duplicate, create derivative works from, frame, mirror, republish, download, display, transmit, or distribute
+										all or any portion of the SaaS Software in any form or media or by any means; or (ii) attempt to reverse
+										compile, disassemble, reverse engineer or otherwise reduce to human-perceivable form all or any part of the
+										SaaS Software; or")
+									(li "(b) access all or any part of the Platform Services in order to build a product or service which competes
+										with the Platform Services; or")
+									(li "(c) subject to clause 20.1, license, sell, rent, lease, transfer, assign, distribute, display, disclose,
+										or otherwise commercially exploit, or otherwise make the Platform Services available to any third party except
+										the Users; or")
+									(li "(d) attempt to obtain, or assist third parties in obtaining, access to the Platform Services, other than
+										as provided under this clause 2.5.")
+								)
+							)
+							(li "2.5 Any breach of clause 2.5 entitles Us to immediately terminate this Agreement, without prejudice
+								to any other rights or remedies We may have against You.")
+							(li "2.6 You shall use all reasonable endeavours to prevent any unauthorised access to, or use of, the
+								Platform Services and, in the event of any such unauthorised access or use, promptly notify Us.")
+						)
+					)
+					(li :class "terms-of-use-heading" "Platform Services"
+						(ul
+							(li "3.1 We reserve the right in Our sole discretion, at any time and from time to time to reasonably modify
+								or discontinue, temporarily or permanently, the Platform Services or Website (or any part thereof), including
+								but not limited to modifications to the design, SaaS Software, and other functions. You agree that We shall
+								not be liable to You or to any third party for any modification, suspension, or discontinuance of the Platform
+								Services or Website.")
+							(li "3.2 We shall use commercially reasonable endeavours to provide 99.9% total uptime of the Platform Services,
+								except for:(a) planned maintenance (which will be scheduled to the extent practical outside of normal Hong Kong
+									business hours); or (b) any unavailability caused by circumstances beyond Our reasonable control, including
+							without limitation, acts of God, acts of government, floods, fires, earthquakes, civil unrest, acts of terror,
+							strikes or other labor problems (other than those involving Our employees), Internet service provider failures
+							or delays, or denial of service attacks.")
+							(li "3.3 We will, as part of the Platform Services and at no additional cost to You, provide You with Our
+								standard customer support services, and/or enhanced support services purchased separately.")
+							(li "3.4 You acknowledge that the Platform Services may enable or assist Users to access the website content
+								of, correspond with, and purchase products and services from, third parties via third-party websites and that
+								You do so solely at Your own risk. We make no representation or commitment and shall have no liability or
+								obligation whatsoever in relation to the content or use of, or correspondence with, any such third-party
+								website, or any transactions completed, and any contract entered into by You, with any such third party.
+								Any contract entered into and any transaction completed via any third-party website is between You and the
+								relevant third party, and not with Us. We do not endorse or approve any third-party website nor the content
+								of any of the third-party websites made available via the Platform Services.")
+						)
+					)
+					(li :class "terms-of-use-heading" "Your Content"
+						(ul
+							(li "4.1 You shall have sole responsibility for the legality, reliability, integrity,
+								accuracy and quality of Your Content.")
+							(li "4.2 You grant to Us a non-exclusive, worldwide, royalty-free, perpetual, non-revocable
+								license to use, compile, distribute, display, store, process, reproduce, or create
+								derivative works of Your Content solely to facilitate the performance of Platform
+								Services by Us or Your use of the SaaS Software. You also grant Us the right to copy
+								and maintain such material and content on Our servers (or the servers of Our suppliers).
+								In addition, You grant Us a license to collect, use, store, and transmit non-personally
+								identifiable technical and related information relating to Your Customer Software Applications
+								for Our business purposes (including, but not limited to, supporting software use optimization
+									and product marketing activities).")
+							(li "4.3 We shall maintain appropriate administrative, physical, and technical safeguards for
+								protection of the security, confidentiality and integrity of Your Content. We shall not
+								disclose Your Content except as compelled by law or as expressly permitted in writing by You.")
+							(li "4.4 We will back-up Your Content stored on Our system, including files and Customer
+								Software Applications stored using the Platform Services and associated User data. Full
+								backups of the Exicon file store are carried out weekly, with incremental backups performed
+								daily. Full backups of the Exicon database are carried out nightly. All backups are held
+								for a 14-day period. Any problems experienced by You in accessing the Platform Services
+								should be reported to Our online feedback system or by emailing admin@exiconglobal.com.")
+							(li "4.5 In the event of any loss or damage to Your Content, Your sole and exclusive remedy
+								shall be for Us to use reasonable commercial endeavours to restore the lost or damaged
+								Content from the latest back-up of such Content maintained by Us. We shall not be responsible
+								for any loss, destruction, alteration or disclosure of Content caused by any third party
+								(except those third parties sub-contracted by Us to perform services related to Content
+									maintenance and back-up).")
+							(li "4.6 We shall, in providing the Platform Services, comply with our Privacy Policy
+								relating to the privacy and security of content available at the Website, as such document
+								may be amended from time to time by Us in Our sole discretion.")
+							(li "4.7 We retain the right to create limits on use and storage of Your Content on the
+								Platform Services at Our sole discretion.  If the amount of Content stored by You is in
+								Our sole opinion excessive in relation to the number of Customer Software Applications
+								that You have purchased, we reserve the right to request that You either upgrade your
+								subscription package or archive some of Your Content.")
+						)
+					)
+					(li :class "terms-of-use-heading" "Content in the Public Areas of the Website"
+						(ul
+							(li "5.1 By posting or submitting content, ideas, any intellectual property or information
+								on the public areas of the Website (currently the App Directory and the API Directory),
+								you automatically grant, and you represent and warrant that you have the right to grant
+								to Us a worldwide, non-exclusive, royalty-free, fully paid, perpetual, irrevocable right
+								to display such content on the Website. You also grant each user of the Website a
+								non-exclusive license to access any content that you post on a part of the Website that
+								is available for the public to view.")
+							(li "5.2 We reserve the right to monitor, edit or remove any content posted by You at
+								Our sole discretion, for reasons including but not limited to that it is unlawful,
+								threatening, libellous, defamatory, fraudulent, obscene or otherwise objectionable,
+								or because it may infringe or violate any party’s intellectual property or privacy,
+								or is alleged to violate, any applicable law or this Agreement.")
+						)
+					)
+					(li :class "terms-of-use-heading" "Our Obligations"
+						(ul
+							(li "6.1 We undertake that the Platform Services will be performed with reasonable skill
+								and care.")
+							(li "6.2 The undertaking at clause 6.1 shall not apply to the extent of any
+								non-conformance which is caused by use of the Platform Services contrary to Our
+								instructions, or modification or alteration of the Platform Services by any party
+								other than Us or Our duly authorised contractors or agents. If the Platform Services
+								do not conform with the foregoing undertaking, We will, at our expense, use all
+								reasonable commercial endeavours to correct any such non-conformance promptly, or
+								provide You with an alternative means of accomplishing the desired performance.
+								Such correction or substitution constitutes Your sole and exclusive remedy for any
+								breach of the undertaking set out in clause 6.1. Notwithstanding the foregoing, We:"
+								(ul
+									(li "(a) do not warrant that Your use of the Platform Services will be uninterrupted
+										or error-free; nor that the Platform Services and/or the information obtained by
+										You through the Platform Services will meet Your requirements;")
+									(li "(b) hereby disclaim all implied warranties of merchantability and fitness for
+										a particular purpose with respect to the Platform Services, SaaS Software, and other
+										materials and/or services; and")
+									(li "(c) are not responsible for any delays, delivery failures, or any other loss
+										or damage resulting from the transfer of data over communications networks and
+										facilities, including the internet, and You acknowledge that the Platform Services
+										may be subject to limitations, delays and other problems inherent in the use of
+										such communications facilities.")
+								)
+							)
+							(li "6.3 We are under no obligation to provide You with any technical support under
+								this Agreement, And We provide You with no assurance that any specific errors,
+								software bugs, problems, discrepancies or other matters raised by You will be rectified.")
+						)
+					)
+					(li :class "terms-of-use-heading" "Your Obligations"
+						(ul
+							(li "7.1 You shall:"
+								(ul
+									(li "(a) provide Us with:(i) all necessary co-operation in relation to this Agreement;
+										and" (br)
+										"(ii) all necessary access to such information as may be required by Us; in order to
+										render the Platform Services, including but not limited to Content, security access
+										information and configuration services;")
+									(li "(b) comply with all applicable laws and regulations with respect to Your activities
+										under this Agreement;")
+									(li "(c) carry out all Your other responsibilities set out in this Agreement in a timely
+										and efficient manner. In the event of any delays in Your provision of such assistance as
+										agreed by the parties, We may adjust any agreed timetable or delivery schedule as
+										reasonably necessary;")
+									(li "(d) ensure that the Users use the Platform Services in accordance with the terms
+										and conditions of this Agreement and shall be responsible for any User’s breach of
+										this Agreement;")
+									(li "(e) obtain and shall maintain all necessary licenses, consents, and permissions
+										necessary for Us, Our contractors and agents to perform their obligations under this
+										Agreement, including without limitation the Platform Services;")
+									(li "(f) ensure that Your network and systems comply with the relevant specifications
+										provided by Us from time to time; and")
+									(li "(g) be solely responsible for procuring and maintaining Your network connections
+										and telecommunications links from Your systems to Our data centres, and all problems,
+										conditions, delays, delivery failures and all other loss or damage arising from or
+										relating to Your network connections or telecommunications links or caused by the internet.")
+								)
+							)
+						)
+					)
+					(li :class "terms-of-use-heading" "Fees and Payment"
+						(ul
+							(li "8.1 Subscription Fees: All Subscription Fees are payable in advance, either annually in
+								advance or in accordance with any different payment terms as stated in the applicable Order
+								Form. You shall pay the Subscription Fees specified in all Order Forms hereunder. Except as
+								otherwise specified herein or in an Order Form:"
+								(ul
+									(li "(a) payment obligations are non-cancellable and fees paid are non-refundable;")
+									(li "(b) the package of the specified number of User Subscriptions and Customer Software
+										Applications purchased cannot be decreased during the relevant subscription term stated
+										on the applicable Order Form; and")
+									(li "(c) Subscription fees are based on monthly periods that begin on the subscription
+										start date and each monthly anniversary thereof; therefore, fees for upgraded packages
+										of Additional User Subscriptions and Customer Software Applications added in the middle
+										of a monthly period will be charged for that full monthly period and the monthly periods
+										remaining in the Subscription Term.")
+								)
+							)
+							(li "8.2 You shall on the Effective Date provide to Us valid, up-to-date and complete credit
+								card details or approved purchase order information acceptable to Us and any other relevant
+								valid, up-to-date and complete contact and billing details and, if You provide:"
+								(ul
+									(li "(a) Your credit card details to Us, You hereby authorise Us to bill such credit card:"
+									 (br) "(i) on the Effective Date for the Subscription Fees payable in respect of the Initial
+									 Subscription Term together with a 5% credit card handling fee; and" (br) "(ii) subject to
+									 clause 15.1, on each anniversary of the Effective Date for the Subscription Fees payable
+									 in respect of the next Renewal Period;")
+									(li "(b) Your approved purchase order information to Us, We shall invoice You:" (br) "(i)
+										on the Effective Date for the Subscription Fees payable in respect of the Initial
+										Subscription Term;" (br) " (ii) subject to clause 15.1, at least 30 days prior to each
+										anniversary of the Effective Date for the Subscription Fees payable in respect of the
+										next Renewal Period; and and You shall pay each invoice within 30 days after the date
+										of such invoice.")
+								)
+							)
+							(li "8.3 If We have not received payment within 30 days after the due date, and without
+								prejudice to any of Our other rights and remedies:"
+								(ul
+									(li "(a) We may, without liability to You, disable Your password, account and access to
+										all or part of the Platform Services and We shall be under no obligation to provide any
+										or all of the Platform Services while the invoice(s) concerned remain unpaid; and")
+									(li "(b) interest shall accrue on such due amounts at an annual rate equal to 3% over
+										the then current base lending rate of Our bankers in Hong Kong at the date the relevant
+										invoice was issued, commencing on the due date and continuing until fully paid, whether
+										before or after judgment.")
+								)
+							)
+							(li "8.4 We shall be entitled to increase the Subscription Fees, the fees payable in respect
+								of the additional User Subscriptions and/or storage of additional Customer Software
+								Applications purchased pursuant to clause 8.1 at the start of each Renewal Period upon
+								90 days’ prior notice to You and shall be deemed to have been amended accordingly.")
+						)
+					)
+					(li :class "terms-of-use-heading" "Proprietary Rights"
+						(ul
+							(li "9.1 You acknowledge and agree that Exicon and/or its licensors own all Intellectual
+								Property Rights in the SaaS Software and Platform Services. Except as expressly stated
+								herein, this Agreement does not grant You any rights to, or in, Intellectual Property
+								Rights, or any other rights or licenses in respect of the SaaS Software and Platform
+								Services.")
+						)
+					)
+					(li :class "terms-of-use-heading" "Publicity"
+						(ul
+							(li "10.1 You agree that We shall have the right, both during the term of this Agreement,
+								and in perpetuity, to publicize, promote, advertise and reference You as a present or
+								past client.")
+							(li "10.2 During the term of this Agreement, and unless otherwise set forth, You grant
+								Us the right to reference Your name and/or logo in media releases, whitepapers, case
+								studies, on the Website, and in other forms of marketing and/or corporate, technical,
+								financial, product, brand communications provided that We follow relevant guidelines
+								for the use of Your name and brand features and such use has been submitted to You for
+								approval in advance. Such approval shall not be unreasonably withheld.")
+							(li "10.3 Upon submission of marketing or media related promotional, advertising or
+								publicity copy or designs that reference either You or Us, the receiving party shall
+								have three business days to approve or return edited copy. Should no reply be received,
+								the submitted copy or designs shall be considered approved.")
+						)
+					)
+					(li :class "terms-of-use-heading" "Confidentiality"
+						(ul
+							(li "11.1 Each party may be given access to Confidential Information from the other party
+								in order to perform its obligations under this Agreement. A party’s Confidential Information
+								shall not be deemed to include information that:"
+								(ul
+									(li "(a) is or becomes publicly known other than through any act or omission of the
+										receiving party;")
+									(li "(b) was in the other party’s lawful possession before the disclosure;")
+									(li "(c) is lawfully disclosed to the receiving party by a third party without restriction
+										on disclosure;")
+									(li "(d) is independently developed by the receiving party, which independent development
+										can be shown by written evidence; or")
+									(li "(e) is required to be disclosed by law, by any court of competent jurisdiction or
+										by any regulatory or administrative body.")
+								)
+							)
+							(li "11.2 Each party shall hold the other’s Confidential Information in confidence and,
+								unless required by law, not make the other’s Confidential Information available to any
+								third party, or use the other’s Confidential Information for any purpose other than the
+								implementation of this Agreement.")
+							(li "11.3 Each party shall take all reasonable steps to ensure that the other’s Confidential
+								Information to which it has access is not disclosed or distributed by its employees or
+								agents in violation of the terms of this Agreement.")
+							(li "11.4 Neither party shall be responsible for any loss, destruction, alteration or
+								disclosure of Confidential Information caused by any third party.")
+							(li "11.5 You acknowledge that details of the Platform Services, and the results of any
+								performance tests of the Platform Services, constitute Our Confidential Information.")
+							(li "11.6 This section 11 shall survive termination of this Agreement, however arising.")
+						)
+					)
+					(li :class "terms-of-use-heading" "Indemnity"
+						(ul
+							(li "12.1 You shall defend, indemnify and hold Us harmless against claims, actions,
+								proceedings, losses, damages, expenses and costs (including without limitation court
+									costs and reasonable legal fees) arising out of or in connection with Your use of the
+							Platform Services, provided that:"
+								(ul
+									(li "(a) You are given prompt notice of any such claim;")
+									(li "(b) We provide reasonable co-operation to You in the defence and settlement of
+										such claim, at Your expense; and")
+									(li "(c) You are given sole authority to defend or settle the claim.")
+								)
+							)
+						)
+					)
+					(li :class "terms-of-use-heading" "Limitation of liability"
+						(ul
+							(li "13.1 This section 13 sets out Our entire financial liability (including any
+								liability for the acts or omissions of Our employees, agents and sub-contractors) to
+								You in respect of:"
+								(ul
+									(li "(a) any breach of this Agreement;")
+									(li "(b) any use made by You of the Platform Services or any part of them;")
+									(li "(c) any representation, statement or tortious act or omission (including negligence)
+										arising under or in connection with this Agreement.")
+								)
+							)
+							(li "13.2 Except as expressly and specifically provided in this Agreement:"
+								(ul
+									(li "(a) You assume sole responsibility for results obtained from the use of the
+										Platform/Services by You, and for conclusions drawn from such use. We shall have no
+										liability for any damage caused by errors or omissions in any information, instructions
+										or scripts provided to Us by You in connection with the Platform Services, or any actions
+										taken by Us at Your direction;")
+									(li "(b) all warranties, representations, conditions and all other terms of any kind
+										whatsoever implied by statute or common law are, to the fullest extent permitted by
+										applicable law, excluded from this Agreement including but not limited to fitness for
+										a particular purpose, merchantability and non-infringement; and")
+									(li "(c) the Platform Services are provided to You on an “as is” and “as available” basis
+										and could contain defects, faults, mistakes, and other deficiencies.")
+									(li "(d) The aforesaid disclaimers shall survive acceptance, payment and termination of
+										the Platform Services.")
+									(li "(e) These disclaimers constitute an essential part of this Agreement. No use of the
+										Platform Services or Website is authorized hereunder except pursuant to these disclaimers.")
+								)
+							)
+							(li "13.3 Nothing in this Agreement excludes the Our liability:"
+								(ul
+									(li "(a) for death or personal injury caused by Our negligence; or")
+									(li "(b) for fraud or fraudulent misrepresentation.")
+								)
+							)
+							(li "13.4 Subject to clause 13.2 and clause 13.3:"
+								(ul
+									(li "(a) We shall not be liable whether in tort (including for negligence or breach of
+										statutory duty), contract, misrepresentation, restitution or otherwise for any loss of
+									profits, loss of business, depletion of goodwill and/or similar losses or loss or corruption
+									of data or information, or pure economic loss, or for any special, indirect or consequential
+									loss, costs, damages, charges or expenses however arising under this Agreement; and")
+									(li "(b) Our total aggregate liability in contract, tort (including negligence or breach
+										of statutory duty), misrepresentation, restitution or otherwise, arising in connection
+									with the performance or contemplated performance of this Agreement shall be limited to the
+									total Subscription Fees paid for the User Subscriptions during the 12 months immediately
+									preceding the date on which the claim arose.")
+								)
+							)
+						)
+					)
+					(li :class "terms-of-use-heading" "Security Breach"
+						(ul
+							(li "14.1 In the event of a security breach:"
+								(ul
+									(li "(a) by anyone other than Your Users, We will immediately:(i) initiate remedial actions
+										that are consistent with industry standards;" (br) "(ii) notify You of the security breach,
+										its nature and scope, the nature and scope of remedial actions We will undertake, and the
+										timeline within which We expect to remedy the breach;")
+								)
+							)
+							(li "14.2 by Your employees, agents and independent contractors, You will maintain
+								responsibility for initiating remedial actions and notify Us immediately of the breach and
+								steps You expect to remedy the breach.")
+						)
+					)
+					(li :class "terms-of-use-heading" "Term and Termination"
+						(ul
+							(li "15.1 This Agreement shall, unless otherwise terminated as provided in this section 15,
+								commence on the Effective Date and shall continue for the Initial Subscription Term as indicated
+								on your Order Form and, thereafter, this Agreement shall be automatically renewed for successive
+								periods of 12 months (each a Renewal Period), unless:"
+								(ul
+									(li "(a) either party notifies the other party of termination, in writing, at least 90 days
+										before the end of the Initial Subscription Term or any Renewal Period, in which case this
+										Agreement shall terminate upon the expiry of the applicable Initial Subscription Term or
+										Renewal Period; or")
+									(li "(b) otherwise terminated in accordance with the provisions of this Agreement;")
+								)
+							)
+							(li "15.2 and the Initial Subscription Term together with any subsequent Renewal Periods shall
+								constitute the Subscription Term.")
+							(li "15.3 Any Free Trial account that We have arranged for You, for any period of time, shall
+								be bound by the terms in this Agreement, including the terms for Termination as set forth in
+								this section 15, unless expressly agreed by Us in writing to You and detailed in a signed Order
+								Form or this Agreement.")
+							(li "15.4 Without prejudice to any other rights or remedies to which the parties may be entitled,
+								either party may terminate this Agreement without liability to the other if:"
+								(ul
+									(li "(a) the other party commits a material breach of any of the terms of this Agreement and
+										(if such a breach is remediable) fails to remedy that breach within 30 days of that party being
+										notified in writing of the breach; or")
+									(li "(b) an order is made or a resolution is passed for the winding up of the other party, or
+										circumstances arise which entitle a court of competent jurisdiction to make a winding-up order
+										in relation to the other party; or")
+									(li "(c) the other party makes any arrangement or composition with its creditors, or makes an
+										application to a court of competent jurisdiction for the protection of its creditors in any
+										way; or")
+									(li "(d) the other party ceases, or threatens to cease, to trade; or")
+									(li "(e) the other party takes or suffers any similar or analogous action in any jurisdiction
+										in consequence of debt.")
+								)
+							)
+							(li "15.5 On termination of this Agreement for any reason:"
+								(ul
+									(li "(a) We may destroy or otherwise dispose of any of Your Content in Our possession unless
+										We receive, no later than 30 days after the effective date of the termination of this Agreement,
+										a written request for the delivery to You of the then most recent back-up of Your Content.
+										We shall use reasonable commercial endeavours to make available to You the back-up of Content
+										in standard commercial format along with attachments in their native format within 30 days of
+										its receipt of such a written request, provided that You have, at that time, paid all fees and
+										charges outstanding at and resulting from termination (whether or not due at the date of
+											termination); and")
+									(li "(b) the accrued rights of the parties as at termination, or the continuation after
+										termination of any provision expressly stated to survive or implicitly surviving termination,
+										shall not be affected or prejudiced.")
+								)
+							)
+						)
+					)
+					(li :class "terms-of-use-heading" "Force Majeure"
+						(ul
+							(li "16.1 We shall have no liability to You under this Agreement if We are prevented from or delayed
+								in performing Our obligations under this Agreement, or from carrying on Our business, by acts, events,
+								omissions or accidents beyond Our reasonable control, including, without limitation, strikes,
+								lock-outs or other industrial disputes (whether involving Our workforce or any other party), failure
+								of a utility service or transport or telecommunications network, act of God, war, riot, civil commotion,
+								malicious damage, compliance with any law or governmental order, rule, regulation or direction, accident,
+								breakdown of plant or machinery, fire, flood, storm or default of suppliers or sub-contractors, provided
+								that You are notified of such an event and its expected duration.")
+						)
+					)
+					(li :class "terms-of-use-heading" "Waiver"
+						(ul
+							(li "17.1 A waiver of any right under this Agreement is only effective if it is in writing and it applies
+								only to the party to whom the waiver is addressed and to the circumstances for which it is given.")
+							(li "17.2 Unless specifically provided otherwise, rights arising under this Agreement are cumulative and
+								do not exclude rights provided by law.")
+						)
+					)
+					(li :class "terms-of-use-heading" "Severance"
+						(ul
+							(li "18.1 If any provision (or part of a provision) of this Agreement is found by any court or
+								administrative body of competent jurisdiction to be invalid, unenforceable or illegal, the other
+								provisions shall remain in force.")
+							(li "18.2 If any invalid, unenforceable or illegal provision would be valid, enforceable or legal if
+								some part of it were deleted, the provision shall apply with whatever modification is necessary to
+								give effect to the commercial intention of the parties.")
+						)
+					)
+					(li :class "terms-of-use-heading" "Entire Agreement"
+						(ul
+							(li "19.1 This Agreement, and any documents referred to in it, constitute the whole Agreement between
+								the parties and supersede any previous arrangement, understanding or Agreement between them relating
+								to the subject matter they cover.")
+							(li "19.2 Each of the parties acknowledges and agrees that in entering into this Agreement it does not
+								rely on any undertaking, promise, assurance, statement, representation, warranty or understanding
+								(whether in writing or not) of any person (whether party to this Agreement or not) relating to the
+								subject matter of this Agreement, other than as expressly set out in this Agreement.")
+						)
+					)
+					(li :class "terms-of-use-heading" "Assignment"
+						(ul
+							(li "20.1 You shall not, without Our prior written consent, assign, transfer, charge, sub-contract
+								or deal in any other manner with all or any of its rights or obligations under this Agreement.")
+							(li "20.2 We may at any time assign, transfer, charge, sub-contract or deal in any other manner
+								with all or any of Our rights or obligations under this Agreement.")
+						)
+					)
+					(li :class "terms-of-use-heading" "No Partnership or Agency"
+						(ul
+							(li "21.1 Nothing in this Agreement is intended to or shall operate to create a partnership between
+								the parties, or authorise either party to act as agent for the other, and neither party shall have
+								the authority to act in the name or on behalf of or otherwise to bind the other in any way (including,
+									but not limited to, the making of any representation or warranty, the assumption of any obligation
+									or liability and the exercise of any right or power).")
+						)
+					)
+					(li :class "terms-of-use-heading" "Third Party Rights"
+						(ul
+							(li "22.1 This Agreement does not confer any rights on any person or party (other than the parties
+								to this Agreement and, where applicable, their successors and permitted assigns).")
+						)
+					)
+					(li :class "terms-of-use-heading" "Notices"
+						(ul
+							(li "23.1 Any notice to be given under this Agreement shall be by post to Your address as notified
+								to us on Your Order Form, or by email via the email address You provide to Us, or such other
+								working email address for You as You may notify to Us from time to time. Any notice to Us should
+								be addressed to the relevant company described in section 24.")
+						)
+					)
+					(li :class "terms-of-use-heading" "Governing Law and Jurisdiction"
+						(ul
+							(li "24.1 Details of who You are contracting with under this Agreement, who You should direct
+								notices to under this Agreement, what law will apply in any lawsuit arising out of or in connection
+								with this Agreement, and which courts can adjudicate any such lawsuit, are set out below:")
+						)
+					)
+			)
+		)
+
+		(div :class "column terms-of-use-table"
+			(table :class "ui table segment"
+				(thead
+					(tr
+						(th "You are contracting with:")
+						(th "Notices should be addressed to:")
+						(th "The governing law is:")
+						(th "The courts having exclusive jurisdiction are:")
+					)
+				)
+				(tbody
+					(tr
+						(td "Exicon Limited")
+						(td "302 Wilson House 19-27 Wyndham Street, Central, Hong Kong")
+						(td "Hong Kong")
+						(td "Hong Kong")
+					)
+				)
+			)
+		)
+
+	)
+)
