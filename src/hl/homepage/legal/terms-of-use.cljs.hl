@@ -53,7 +53,8 @@
 								obligation, from the date of Your registration to use the Platform Services until the end of the
 								free trial period for which you registered or are registering to use the applicable Service. If
 								at the end of a Free Trial, You do not wish to purchase the Platform Services from Us, please
-								notify us by sending an email to: admin@exiconglobal.com. In the event that You do not notify
+								notify us by sending an email to: "(a :href "mailto:info@exiconglobal.com?subject=Terms and Conditions"
+									"info@exiconglobal.com")". In the event that You do not notify
 								Us of Your intention to cancel or initiate payment for the Platform Services, We reserve the
 								right to deny You access to Your account and the Platform Services and delete any Content
 								associated with your account. Platform Services offered under a Free Trial may be limited in
@@ -221,7 +222,8 @@
 								backups of the Exicon file store are carried out weekly, with incremental backups performed
 								daily. Full backups of the Exicon database are carried out nightly. All backups are held
 								for a 14-day period. Any problems experienced by You in accessing the Platform Services
-								should be reported to Our online feedback system or by emailing admin@exiconglobal.com.")
+								should be reported to Our online feedback system or by emailing
+								"(a :href "mailto:info@exiconglobal.com?subject=Terms and Conditions" "info@exiconglobal.com")".")
 							(li "4.5 In the event of any loss or damage to Your Content, Your sole and exclusive remedy
 								shall be for Us to use reasonable commercial endeavours to restore the lost or damaged
 								Content from the latest back-up of such Content maintained by Us. We shall not be responsible
