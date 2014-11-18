@@ -12,12 +12,12 @@
 		{
 			:image "/images/about-us/Tamas.png"
 			:name "Tamas Herman"
-			:position "Lead Developer"
+			:position "VP Engineering"
 		}
 		{
 			:image "/images/about-us/Phil.png"
 			:name "Phil Jackson"
-			:position "API Solutions"
+			:position "VP APIs"
 		}
 
 	])
@@ -27,14 +27,14 @@
 		{
 			:image "/images/about-us/Stefan.png"
 			:name "Stefan Rust"
-			:position "Chairman & CEO"
+			:position "Founder & CEO"
 			:kloud "96"
 			:bio "/staff/bios/Stefan Rust Bio.pdf"
 		}
 		{
 			:image "/images/about-us/Cat.png"
 			:name "Cat Purvis"
-			:position "Director & Co-Founder"
+			:position "Founder & EVP"
 			:kloud "97"
 			:bio "/staff/bios/Cat Purvis Bio.pdf"
 		}
@@ -45,12 +45,12 @@
 		{
 			:image "/images/about-us/Stefan.png"
 			:name "Stefan Rust"
-			:position "Chairman & CEO"
+			:position "Founder & CEO"
 		}
 		{
 			:image "/images/about-us/Cat.png"
 			:name "Cat Purvis"
-			:position "Director & Co-Founder"
+			:position "Founder & EVP"
 		}
 		{
 			:image "/images/about-us/Anthoine.png"

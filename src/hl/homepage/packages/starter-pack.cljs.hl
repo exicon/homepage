@@ -72,7 +72,7 @@
 	:content [
 		(p "Get your app built properly using our App Brief Builder tool.")
 		(ul
-			(li "User our calculator to help define your project")
+			(li "Use our calculator to help define your project")
 			(li "Fill in our standard App Brief template - all secure")
 			(li "Ensure consistency and standardization")
 			(li "Driving scale and minimizing duplication")

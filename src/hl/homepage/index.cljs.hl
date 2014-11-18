@@ -76,6 +76,7 @@ Management."})
 		:desc "Increase the chance of your app being downloaded by up to 200% more and featured up to 20 times
 			more*. Expand your reach by putting your apps onto multiple app stores."
 		:link "/packages/dominator-pack"
+		:note "* Source: One Platform Foundation (the * is now not referring to anything)"
 	}
 		{
 		:icon "images/packages/amplifierpack.png"
@@ -194,7 +195,9 @@ Management."})
 						(h2 :class "lightExicon" (text (:title pkg)))
 						(h3 (text (:subtitle pkg)))
 						(p (text (:desc pkg)))
-						(a :href (cell= (:link pkg)) "Find out more")))))
+						(a :href (cell= (:link pkg)) "Find out more")
+						(p :class "pkg-note" (text (:note pkg)))
+					))))
 	)
 
 (defn packages-section []

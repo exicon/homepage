@@ -23,7 +23,7 @@
 	:image-side :left
 	:screenshot "/images/dev-ecosystem-screenshot.png"
 	:icon "/images/icons/dev-ecosystem.png"
-	:title "Devlelopment Ecosystem"
+	:title "Development Ecosystem"
 	:content [
 		(p "Whether you are looking for a very specific development skill set to create your API or
 			to build a group of developers around your API, access our network of 4000+ software houses.")

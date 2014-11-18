@@ -133,10 +133,9 @@
 		)
 		(div :id "page-details" :class "center aligned row"
 			(div :class "column"
-				(p "Insights are aggregated from a proprietary statistical model,
-					using publicly available app store data and analytics of opt-in
-					partners. Your AppBoard data is never shared by Exicon.
-					Find out more about sources of Competitors Insights Data here.")
+				(p "Insights are aggregated from a proprietary statistical model, using publicly
+					available App Store data and analytics of opt-in partners. Your AppBoard data is
+					never shared by Exicon.")
 			) )
 	)
 	(challenger-option-section)

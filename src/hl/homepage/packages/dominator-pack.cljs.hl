@@ -97,7 +97,7 @@
 	(section :id "how-to-find" :class "ui one column page grid"
 		(div :id "page-subtitle" :class "center aligned row"
 			(div :class "column"
-				(h2 "How are you targeting going to find your apps?") ) )
+				(h2 "How is your target audience going to find your apps?") ) )
 
 		(feature @app-store-distribution)
 		(feature @marketplace)

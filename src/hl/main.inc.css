@@ -389,6 +389,12 @@ section#packages{
 	font-weight: 400;
 }
 
+.pkg-note {
+	font-size: 0.7em;
+	margin-top: 20px;
+	width: 190px;
+}
+
 
 /*Bottom Navigation*/
 #bottom-nav ul li{

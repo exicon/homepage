@@ -13,10 +13,10 @@
 			(div :class "column"
 				(ul
 					(li :class "header" "Products")
-					(li (a :href "https://app.exiconglobal.com/app-dir/" "Apps"))
-					(li (a :href "https://app.exiconglobal.com/api-dir/" "APIs"))
+					(li (a :href "https://app.exiconglobal.com/api-dir/" "API Directory"))
+					(li (a :href "https://app.exiconglobal.com/app-dir/" "App Directory"))
 					(li (a :href "/apiaxle/" "ApiAxle"))	; FIXME migrate
-					(li (a :href "/directories/" "Marketplace"))))	; FIXME migrate
+					(li (a :href "https://i2a.exiconglobal.com/" "Node"))))
 			(div :class "column"
 				(ul
 					(li :class "header"

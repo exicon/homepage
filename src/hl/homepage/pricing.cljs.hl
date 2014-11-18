@@ -28,7 +28,7 @@
 	:title "CHALLENGER PACK"
 	:price "US$99"
 	:price-des "per app / month"
-	:note "The insights to see how your profolio stacks up against the competition"
+	:note "The insights to see how your portfolio stacks up against the competition"
 	:content [
 		(a :href "https://app.exiconglobal.com/?package=challenger#!/registration/" (div :class "ui button" "START FOR FREE"))
 		(p "Profiles for 1 to" (span :class "no-of-app" " 20 ") "of your apps")
@@ -107,11 +107,11 @@
 	{
 	:question "Do I get all the features for free with the Starter Pack?"
 	:answer [
-		(p "We want to make sure that you get to best “taste” you can of the value that the
+		(p "We want to make sure that you get the best “taste” you can of the value that the
 			AppBoard can bring you and your company. So we have added all of the features that
 			don’t have to be customised for you for free. We have however limited the number of
 			apps that you can try out with up to 5 (so those of you with 5 apps or less, your
-			day just got even better!)")
+				day just got even better!)")
 		]
 	}
 
@@ -202,7 +202,7 @@
 	{
 	:question "I have more questions. Who do I ask?"
 	:answer [
-		(p "Contact us through the contact form here or call or send us an email. We’d be happy to chat with you.")
+		(p "Contact us through the contact form " (a :href "/company/contact/" "here") " or call or send us an email. We’d be happy to chat with you.")
 		]
 	}
 
