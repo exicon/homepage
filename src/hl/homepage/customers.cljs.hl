@@ -73,16 +73,15 @@
 	:title "The Mobile Apps Developers"
 	:challenge "Your customers are always satisfied with your work, but your relationship with them tends to end as
 			soon as the app is launched."
-	:solution "Exicon provides a reason for your clients to stick around. With the AppBoard, they'll be more aware
-			of their app's performance and ready to act when it's time to make improvements. The AppBoard platform can
-			also streamline your communication with corporate clients. Enterprises with strict rules for software development
-			can build their governance model into the AppBoard. With all of the steps clearly laid out, you'll have less
-			risk of the project being changed or canceled late into development."
-	:result "Exicon provides a reason for your clients to stick around. With the AppBoard, they'll be more aware of
-			their app's performance and ready to act when it's time to make improvements. The AppBoard platform can also
-			streamline your communication with corporate clients. Enterprises with strict rules for software development
-			can build their governance model into the AppBoard. With all of the steps clearly laid out, you'll have less
-			risk of the project being changed or canceled late into development."
+	:solution "Exicon provides a reason for your clients to stick around. With the AppBoard, they'll
+			be more aware of their app's performance and ready to act when it's time to make improvements.
+			The AppBoard platform can also streamline your communication with corporate clients. Enterprises
+			with strict rules for software development can build their governance model into the AppBoard.
+			With all of the steps clearly laid out, you'll have less risk of the project being changed or
+			canceled late into development."
+	:result "With a long-term relationship in place, you'll be in a better position to work with
+			your customers on future projects. You'll see the same data that they see and you'll be able
+			to proactively address any problems that arise."
 })
 
 (defc data-warehouse {
