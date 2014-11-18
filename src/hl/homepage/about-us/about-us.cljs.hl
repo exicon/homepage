@@ -5,17 +5,17 @@
 (def management-team
 	[
 		{
-			:image "images/about-us/Albert.png"
+			:image "/images/about-us/Albert.png"
 			:name "Albert Kwong"
 			:position "Product Architect"
 		}
 		{
-			:image "images/about-us/Tamas.png"
+			:image "/images/about-us/Tamas.png"
 			:name "Tamas Herman"
 			:position "Lead Developer"
 		}
 		{
-			:image "images/about-us/Phil.png"
+			:image "/images/about-us/Phil.png"
 			:name "Phil Jackson"
 			:position "API Solutions"
 		}
@@ -25,14 +25,14 @@
 (def founders
 	[
 		{
-			:image "images/about-us/Stefan.png"
+			:image "/images/about-us/Stefan.png"
 			:name "Stefan Rust"
 			:position "Chairman & CEO"
 			:kloud "96"
 			:bio "/staff/bios/Stefan Rust Bio.pdf"
 		}
 		{
-			:image "images/about-us/Cat.png"
+			:image "/images/about-us/Cat.png"
 			:name "Cat Purvis"
 			:position "Director & Co-Founder"
 			:kloud "97"
@@ -43,27 +43,27 @@
 (def board-team
 	[
 		{
-			:image "images/about-us/Stefan.png"
+			:image "/images/about-us/Stefan.png"
 			:name "Stefan Rust"
 			:position "Chairman & CEO"
 		}
 		{
-			:image "images/about-us/Cat.png"
+			:image "/images/about-us/Cat.png"
 			:name "Cat Purvis"
 			:position "Director & Co-Founder"
 		}
 		{
-			:image "images/about-us/Anthoine.png"
+			:image "/images/about-us/Anthoine.png"
 			:name "Antoine Blondeau"
 			:position "Director"
 		}
 		{
-			:image "images/about-us/Norman.png"
+			:image "/images/about-us/Norman.png"
 			:name "Norman Janelle"
 			:position "Director"
 		}
 		{
-			:image "images/about-us/Stephen.png"
+			:image "/images/about-us/Stephen.png"
 			:name "Stephen King"
 			:position "Director"
 		}
@@ -73,22 +73,22 @@
 (def advisory-team
 	[
 		{
-			:image "images/about-us/Ralph.png"
+			:image "/images/about-us/Ralph.png"
 			:name "Ralph Simon"
 			:position "Advisory Board"
 		}
 		{
-			:image "images/about-us/Charles.png"
+			:image "/images/about-us/Charles.png"
 			:name "Charles Fallon"
 			:position "Advisory Board"
 		}
 		{
-			:image "images/about-us/Anthony.png"
+			:image "/images/about-us/Anthony.png"
 			:name "Anthony Tse"
 			:position "Advisory Board"
 		}
 		{
-			:image "images/about-us/Jeffrey.png"
+			:image "/images/about-us/Jeffrey.png"
 			:name "Jeffrey Belk"
 			:position "Advisory Board"
 		}
@@ -96,24 +96,24 @@
 
 (def award-logos
 	[
-		{:logo "images/about-us/awards/MEF2.png"}
-		{:logo "images/about-us/awards/ME2.png"}
-		{:logo "images/about-us/awards/the-next-women2.png"}
-		{:logo "images/about-us/awards/red-herring2.png"}
-		{:logo "images/about-us/awards/IDC2.png"}
-		{:logo "images/about-us/awards/momo2.png"}
-		{:logo "images/about-us/awards/digital-matters-music-matters2.png"}
+		{:logo "/images/about-us/awards/MEF2.png"}
+		{:logo "/images/about-us/awards/ME2.png"}
+		{:logo "/images/about-us/awards/the-next-women2.png"}
+		{:logo "/images/about-us/awards/red-herring2.png"}
+		{:logo "/images/about-us/awards/IDC2.png"}
+		{:logo "/images/about-us/awards/momo2.png"}
+		{:logo "/images/about-us/awards/digital-matters-music-matters2.png"}
 	])
 
 (def partner-logos
 	[
-		{:logo "images/about-us/partners/Priori.png"}
-		{:logo "images/about-us/partners/Opentracker.png"}
-		{:logo "images/about-us/partners/Bango.png"}
-		{:logo "images/about-us/partners/Mippin-Partner-Logo.png"}
-		{:logo "images/about-us/partners/Oponiti-Partner-Logo.png"}
-		{:logo "images/about-us/partners/Catalist-Partner-Logo.png"}
-		{:logo "images/about-us/partners/Flurry.png"}
+		{:logo "/images/about-us/partners/Priori.png"}
+		{:logo "/images/about-us/partners/Opentracker.png"}
+		{:logo "/images/about-us/partners/Bango.png"}
+		{:logo "/images/about-us/partners/Mippin-Partner-Logo.png"}
+		{:logo "/images/about-us/partners/Oponiti-Partner-Logo.png"}
+		{:logo "/images/about-us/partners/Catalist-Partner-Logo.png"}
+		{:logo "/images/about-us/partners/Flurry.png"}
 	])
 
 (defn management-team-tile [profile]
@@ -144,7 +144,7 @@
 				(i :class "linkedin icon")
 				(i :class "twitter icon")
 				(div
-					(img :class "kloud icon" :src "images/about-us/kloud-50x39.png")
+					(img :class "kloud icon" :src "/images/about-us/kloud-50x39.png")
 					(label :class "kloud-score" (text (:kloud profile))))
 				(a :href (cell= (:bio profile))
 					(div :class "ui tiny bio button" "Download Bio")))))
@@ -216,7 +216,7 @@
 		(div :id "page-subtitle" :class "center aligned row"
 			(div :class "column"
 				(h2 "App-cessorizing Everything")
-				(img :src "images/about-us/appcessorizing-everything.png")
+				(img :src "/images/about-us/appcessorizing-everything.png")
 			)))
 
 		(div :class "ui two column doubling page grid"
@@ -230,6 +230,6 @@
 					(div :class "ui tiny button" "Developers"))
 				(awards-section)
 			)
-			(div :class "six wide timeline column" (div :class "timeline-img" (img :src "images/about-us/timeline.png")))
+			(div :class "six wide timeline column" (div :class "timeline-img" (img :src "/images/about-us/timeline.png")))
 		)
 	)
