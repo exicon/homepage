@@ -99,6 +99,18 @@
 
 
 (def speaking-list [
+		{
+	:title "Nov. 2014 - App-solutely Essential: What mobile is doing for business in every aspect,
+		The American Chamber of Commerce"
+	:image "/images/news/Video-AmCham.png"
+	:detail "We’ve all heard how mobile is changing the way we do business, From the taxi driver to
+		factory workers to service engineers, students and the corporate executive, everyone is accessing
+		the internet via their smartphone. At the same time companies are only beginning to invest in this
+		new medium and to capitalise on how these devices can reduce costs, streamline operations and
+		provide a channel straight to your customers, not to mention gaining insights from the data
+		acquired. "
+	:link "http://www.youtube.com/embed/X1g3mY7mChQ?autoplay=1"
+	}
 	{
 	:title "Mar. 2014 - API Strategy & Practice Conference, Amsterdam"
 	:image "/images/news/Video-Discovery-Trust.png"
@@ -138,7 +150,7 @@
 		)
 		(div :class "eleven wide column"
 			(h2 (text (:title opts)))
-			(p (text (:detail opts)) (a :target "_blank" :href (cell= (:link opts)) "See original article"))
+			(p (text (:detail opts)) (a :target "_blank" :href (cell= (:link opts)) "See video"))
 		)
 	)
 )
