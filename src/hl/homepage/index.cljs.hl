@@ -76,7 +76,7 @@ Management."})
 		:desc "Increase the chance of your app being downloaded by up to 200% more and featured up to 20 times
 			more*. Expand your reach by putting your apps onto multiple app stores."
 		:link "/packages/dominator-pack"
-		:note "* Source: One Platform Foundation (the * is now not referring to anything)"
+		:note "* Source: One Platform Foundation"
 	}
 		{
 		:icon "images/packages/amplifierpack.png"
