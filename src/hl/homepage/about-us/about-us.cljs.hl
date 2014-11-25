@@ -2,43 +2,8 @@
 	(:require
 		[homepage.layout :as layout]))
 
-(def management-team
-	[
-		{
-			:image "/images/about-us/Albert.png"
-			:name "Albert Kwong"
-			:position "Product Architect"
-			:content [
-				(p "")
-			]
-		}
-		{
-			:image "/images/about-us/Tamas.png"
-			:name "Tamas Herman"
-			:position "VP Engineering"
-			:content [
-				(p "")
-			]
-			:twitter "onetom"
-		}
-		{
-			:image "/images/about-us/Phil.png"
-			:name "Phil Jackson"
-			:position "VP APIs"
-			:content [
-				(p "After graduating from university in England, Phil became a contractor working at companies like BT, McAfee, and on the iPlayer API at the BBC. In 2010 he co-founded Qwerly; a company that aggregated social information online for marketing purposes. Just over a year later, Qwerly sold to a US competitor.")
-				(p "During his time at Qwerly, a need emerged for a simple on-premise, open, scalable API proxy and thus ApiAxle was born as a side project. It became a commercial product in early 2013 and was sold to Exicon later in the year.")
-			]
-			:linkedin "https://www.linkedin.com/in/philapiaxle"
-			:twitter "philjackson"
-		}
-
-	])
-
-
-(def founders
-	[
-		{
+(def team {
+		:stefan {
 			:image "/images/about-us/Stefan.png"
 			:name "Stefan Rust"
 			:position "Founder & CEO"
@@ -55,7 +20,8 @@
 			:linkedin "http://hk.linkedin.com/in/stefanrust"
 			:twitter "srust99"
 		}
-		{
+
+		:cat {
 			:image "/images/about-us/Cat.png"
 			:name "Cat Purvis"
 			:position "Founder & EVP"
@@ -70,37 +36,41 @@
 			:linkedin "http://hk.linkedin.com/in/catrust/"
 			:twitter "CatRust"
 		}
-	])
 
-(def board-team
-	[
-		{
-			:image "/images/about-us/Stefan.png"
-			:name "Stefan Rust"
-			:position "Founder & CEO"
+		:albert {
+			:image "/images/about-us/Albert.png"
+			:name "Albert Kwong"
+			:position "Product Architect"
 			:content [
-				(p "Stefan is the CEO at Exicon. Inspired. Spontaneous. Unstoppable. Stefan is China born and bred and speaks English, Mandarin, German and French. In other words, he's pretty unique.")
-				(p "Considered a thought-leader in his field, Stefan is passionate about the power that mobile and the Internet brings to businesses around the world. He has a real knack for spotting breaking trends, and seeing ahead in terms of potential new business applications and revenue models. With over 20 years' experience in the telecommunications industry, Stefan leads the team here at Exicon and ensures our clients experience the 'out of the box' thinking they've come to expect from us.")
-				(p "It's no surprise then that he is a founding member and former chairman of the Mobile Entertainment Forum, as well as being identified 2 years in a row as one of the top 50 Global Mobile Entertainment Executives by 'Mobile Entertainment' magazine. He is also a founding advisor to Music Matters, Asia's premier music industry event.")
-				(p "Before joining Exicon, Stefan was Head of Strategic Planning for Web 2.0 and Communication Industries at Sun Microsystems and prior to that he worked at Lucent and Siemens. In addition to large technology company experience, he has also worked for entrepreneurial organizations such as the European Business Channel at Limelight Studios as well as a number of start-ups around the world.")
-				(p "Stefan's qualifications include a Post Graduate Degree in Economics from SEBA in Switzerland. He is a regular guest and speaker at key industry events in the US, Europe and Asia, making a dynamic contribution wherever he goes.")
-				(p "With Stefan, the pace never lets up. Even in his downtime he's carving up the water at early morning swim training, intent on setting a new personal best. Keep up if you can!")
+				(p "")
 			]
 			:linkedin "http://hk.linkedin.com/in/stefanrust"
 			:twitter "srust99"
 		}
-		{
-			:image "/images/about-us/Cat.png"
-			:name "Cat Purvis"
-			:position "Founder & EVP"
+
+		:tamas {
+			:image "/images/about-us/Tamas.png"
+			:name "Tamas Herman"
+			:position "VP Engineering"
 			:content [
-				(p "Cat Purvis is the Founder of Exicon, a cloud platform for App and API Management, with global clients including Handset manufacturers, Operators, Brands & Enterprises. It is a 2012 Red Herring 100 Global tech companies winner.")
-				(p "During her career, Cat has built companies, teams and divisions all over the world, in the UK, US as well as in China where she lived for 5 years. Previous roles include COO at Icon Medialab and GM at a start up in Beijing which was later sold to a global player.")
-				(p "Born and raised in China, Cat is truly an international woman. Speaking English, French, Mandarin and German she has lived, worked and studied in many places. A firm believer in the power of education, she studied Management and Statistics at St Andrews University and also has a Diploma in Marketing and qualifications in Process Re-engineering.")
-				(p "Cat is also a regular swimmer in international Masters competitions including the World Masters Championships in Sweden. Her dream is to do a family swim tour with her husband and 4 kids in the Greek Islands.")
+				(p "")
 			]
+			:twitter "onetom"
 		}
-		{
+
+		:phil {
+			:image "/images/about-us/Phil.png"
+			:name "Phil Jackson"
+			:position "VP APIs"
+			:content [
+				(p "After graduating from university in England, Phil became a contractor working at companies like BT, McAfee, and on the iPlayer API at the BBC. In 2010 he co-founded Qwerly; a company that aggregated social information online for marketing purposes. Just over a year later, Qwerly sold to a US competitor.")
+				(p "During his time at Qwerly, a need emerged for a simple on-premise, open, scalable API proxy and thus ApiAxle was born as a side project. It became a commercial product in early 2013 and was sold to Exicon later in the year.")
+			]
+			:linkedin "https://www.linkedin.com/in/philapiaxle"
+			:twitter "philjackson"
+		}
+
+		:antoine {
 			:image "/images/about-us/Anthoine.png"
 			:name "Antoine Blondeau"
 			:position "Director"
@@ -112,7 +82,8 @@
 			]
 			:linkedin "https://www.linkedin.com/in/antoineblondeau"
 		}
-		{
+
+		:norman {
 			:image "/images/about-us/Norman.png"
 			:name "Norman Janelle"
 			:position "Director"
@@ -121,7 +92,8 @@
 				(p "He is also a chartered Accountant and holds a Bachelor of Commerce Degree from the University of Montreal.")
 			]
 		}
-		{
+
+		:stephen {
 			:image "/images/about-us/Stephen.png"
 			:name "Stephen King"
 			:position "Director"
@@ -132,11 +104,8 @@
 			]
 			:linkedin "http://hk.linkedin.com/pub/stephen-king/21/126/1a2"
 		}
-	])
 
-(def advisory-team
-	[
-		{
+		:ralph {
 			:image "/images/about-us/Ralph.png"
 			:name "Ralph Simon"
 			:position "Advisory Board"
@@ -148,7 +117,8 @@
 			:linkedin "https://www.linkedin.com/pub/ralph-simon-frsa/0/88/a41"
 			:twitter "ralphsimon1"
 		}
-		{
+
+		:charles {
 			:image "/images/about-us/Charles.png"
 			:name "Charles Fallon"
 			:position "Advisory Board"
@@ -159,7 +129,8 @@
 			]
 			:linked "http://uk.linkedin.com/pub/charles-fallon/15/a13/98"
 		}
-		{
+
+		:anthony {
 			:image "/images/about-us/Anthony.png"
 			:name "Anthony Tse"
 			:position "Advisory Board"
@@ -169,7 +140,8 @@
 			]
 			:linkedin "https://www.linkedin.com/pub/anthony-tse/0/430/681"
 		}
-		{
+
+		:jeffrey {
 			:image "/images/about-us/Jeffrey.png"
 			:name "Jeffrey Belk"
 			:position "Advisory Board"
@@ -182,7 +154,13 @@
 			:linkedin "http://www.linkedin.com/pub/jeffrey-belk/3/48b/a32"
 			:twitter "jkbelk"
 		}
-	])
+
+	})
+
+(def management-team (map #(% team) [:albert :tamas :phil]))
+(def founders (map #(% team) [:stefan :cat]))
+(def board-team (map #(% team) [:stefan :cat :antoine :norman :stephen]))
+(def advisory-team (map #(% team) [:ralph :charles :anthony :jeffrey]))
 
 (def award-logos
 	[
@@ -211,7 +189,7 @@
 	(reset! btitle (:name opts))
 	(reset! bposition (:position opts))
 	(reset! bcontent (:content opts))
-	(.modal (js/jQuery (str ".management.ui.modal")) "show")
+	(.modal (js/jQuery ".management.ui.modal") "show")
 )
 
 (defn call-board-bio [opts btitle bposition bcontent]
@@ -235,18 +213,18 @@
 				(i :class "linkedin icon")))
 		(if (:twitter profile)
 			(a :href (str "http://twitter.com/" (:twitter profile))
-				(i :class "twitter icon")))])
+				(i :class "twitter icon")))
+	])
 
 (defn management-team-tile [profile btitle bposition bcontent]
-		(div :class "management column"
-			(a :on-click #(call-management-bio profile btitle bposition bcontent)
-				(img :class "circular ui image" :src (cell= (:image profile))))
-			(div :class "info-labels"
-				(label :class "name" (text (:name profile))) )
-			(div :class "info-labels"
-				(label :class "position" (text (:position profile))) )
-			(div :class "social-media-icons" (social-icons profile))))
-
+	(div :class "management column"
+		(a :on-click #(call-management-bio profile btitle bposition bcontent)
+			(img :class "circular ui image" :src (cell= (:image profile))))
+		(div :class "info-labels"
+			(label :class "name" (text (:name profile))) )
+		(div :class "info-labels"
+			(label :class "position" (text (:position profile))) )
+		(div :class "social-media-icons" (social-icons profile))))
 
 (defn profile-tile [profile btitle bposition bcontent]
 	(div :class "profile column"
@@ -256,8 +234,7 @@
 			(label :class "name" (text (:name profile))) )
 		(div :class "info-labels"
 			(label :class "position" (text (:position profile))))
-		(div :class "social-media-icons" (social-icons profile))))
-
+		#_(div :class "social-media-icons" (social-icons profile))))
 
 (defn advisory-tile [profile btitle bposition bcontent]
 	(div :class "profile column"
@@ -267,8 +244,7 @@
 			(label :class "name" (text (:name profile))) )
 		(div :class "info-labels"
 			(label :class "position" (text (:position profile))))
-		(div :class "social-media-icons" (social-icons profile))))
-
+		#_(div :class "social-media-icons" (social-icons profile))))
 
 (defn founder-tile [profile btitle bposition bcontent]
 	(div :class "management column"
@@ -285,7 +261,6 @@
 				(a :href (cell= (:bio profile))
 					(div :class "ui tiny bio button" "Download Bio")))))
 
-
 (defn overview-section []
 	(section :id "overview-section"
 				(h2 :class "ui header" "How we got here")
@@ -300,8 +275,8 @@
 
 (defn management-team-section []
 	(let [btitle (cell "")
-							bposition (cell "")
-							bcontent (cell "")]
+			bposition (cell "")
+			bcontent (cell "")]
 		(section :id "management-team" :class "ui five column doubling grid "
 			(h2 :class "ui header" "Management Team")
 
@@ -320,11 +295,12 @@
 
 (defn our-board-section []
 		(let [btitle (cell "")
-							bposition (cell "")
-							bcontent (cell "")]
-			(section :id "board-team" :class "ui five column doubling grid "
+				bposition (cell "")
+				bcontent (cell "")]
+			(section :id "board-team" :class "ui five column doubling grid"
 				(h2 :class "ui header" "Our Board")
-				(loop-tpl :bindings [prf board-team] (profile-tile @prf btitle bposition bcontent))
+				(loop-tpl :bindings [prf board-team]
+					(profile-tile @prf btitle bposition bcontent))
 
 				(div :id "bio-popup-box" :class "board ui modal"
 				(i :class "close icon")
@@ -335,9 +311,9 @@
 
 (defn advisory-board-section []
 	(let [btitle (cell "")
-							bposition (cell "")
-							bcontent (cell "")]
-		(section :id "advisory-team-team" :class "ui five column doubling grid "
+			bposition (cell "")
+			bcontent (cell "")]
+		(section :id "advisory-team-team" :class "ui five column doubling grid"
 			(h2 :class "ui header" "Advisory Board")
 			(loop-tpl :bindings [prf advisory-team]
 				(advisory-tile @prf btitle bposition bcontent))
@@ -348,7 +324,6 @@
 						(h1 btitle)
 						(h2 bposition)
 						(div bcontent))))))
-
 
 (defn partner [logo]
 	(div :class "column"
