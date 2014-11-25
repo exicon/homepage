@@ -24,7 +24,7 @@
 			(div :class "column"
 				(ul
 					(li :class "header"
-						(a :href "https://i2a.exiconglobal.com/#!node-developers-sign-up" "Developers"))))
+						(a :href "/developers/" "Developers"))))
 			(div :class "column"
 				(ul
 					(li :class "header" "Legal")

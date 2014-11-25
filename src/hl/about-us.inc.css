@@ -91,6 +91,18 @@ margin-left: -1px;
 	text-align: center;
 }
 
+#bio-popup-box h1{
+	font-size: 1.4em;
+}
+
+#bio-popup-box h2{
+	font-size: 0.7em;
+}
+
+#bio-popup-box p{
+	font-size: 0.6em;
+}
+
 /* Mobile */
 @media only screen and (max-width: 767px){
 	#about-us #board-team{
