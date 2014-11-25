@@ -44,8 +44,6 @@
 			:content [
 				(p "")
 			]
-			:linkedin "http://hk.linkedin.com/in/stefanrust"
-			:twitter "srust99"
 		}
 
 		:tamas {
