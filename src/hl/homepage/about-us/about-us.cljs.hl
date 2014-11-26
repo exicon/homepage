@@ -204,6 +204,26 @@
 	(.modal (js/jQuery (str ".advisory.ui.modal")) "show")
 )
 
+(def klout-iframe
+	(iframe
+		:src "http://widgets.klout.com/badge/CatRust"
+		:style "border:0"
+		:scrolling "no"
+		:allowTransparency "true"
+		:frameBorder "0"
+		:width "100px"
+		:height "49px"))
+
+(defn klout-widget [profile]
+
+	(div
+		(img :class "klout icon"
+			:src "/images/about-us/kloud-50X39.png"
+			#_:src (cell= (str "http://www.kloutwidget.com/32/"(:twitter profile)".png")))
+		(label :class "klout-score" (text (:klout profile)))
+	))
+
+
 (defn social-icons [profile]
 	[
 		(if (:linkedin profile)
@@ -253,9 +273,7 @@
 		(div :class "info-labels"	(label :class "position" (text (:position profile))) )
 			(div :class "social-media-icons"
 				(social-icons profile)
-				(div
-					(img :class "klout icon" :src "/images/about-us/kloud-50x39.png")
-					(label :class "klout-score" (text (:klout profile))))
+				(klout-widget profile)
 				(a :href (cell= (:bio profile))
 					(div :class "ui tiny bio button" "Download Bio")))))
 
