@@ -42,7 +42,9 @@
 			:name "Albert Kwong"
 			:position "Product Architect"
 			:content [
-				(p "")
+				(p "Albert is one of those rare creatures able to understand both technology and commercial challenges. He has worked for both big companies (PacNet and MTR Corporation) and small, and in fact has set up his own companies – Bit Exchange systems Ltd and Charcoal Generation Ltd.")
+				(p "He has led teams on projects around supply chain management (SCM) and electronic document interchange (EDI), Telecoms billing systems, IaaS platforms, ERP, Revenue Information Systems and the famous Octopus Smartcard system but it is really his work on Cloud SaaS platforms that has made him such a valuable member of the team.")
+				(p "Albert is able to take complex systems and break them down into the key components in order to bring the team onto the same page to gain consensus prior to the group making core business decisions.")
 			]
 		}
 
@@ -51,7 +53,9 @@
 			:name "Tamas Herman"
 			:position "VP Engineering"
 			:content [
-				(p "")
+				(p "Tamas’s has become a bit of a technology icon. His long background in technology and science literally dates back to his earliest childhood having been born into a family of scientists. He has built world famous technologies and products all over the globe including Cheyenne webserver, the Darcs on Mac, and has covered a wide range of company types – from Civil service with the University of Szeged to some very varied Start ups including Foound, JamiO, Nixplay and Blockshopper covering Cloud solutions, Financial platforms, Education, ERP as well as Bricks and mortar companies such as Motorworld.")
+				(p "His roles have included Senior Software Developer/Engineer, Software Architect, Chief Architect, Lead Programmer and even Co-founder of eKita.")
+				(p "He is a huge asset to the company in terms of driving discipline in programming, new techniques (e.g. paired programming) as well as new technologies (Clojure, Facebook React etc) all of which reinforce the Exicon value of “Always be learning”.")
 			]
 			:twitter "onetom"
 		}
@@ -108,9 +112,10 @@
 			:name "Ralph Simon"
 			:position "Advisory Board"
 			:content [
-				(p "")
-				(p "")
-				(p "")
+				(p "Ralph Simon is acknowledged as one of the founders of the modern mobile entertainment & content industry. Over the last 17 years, he has been a prominent global mobile trailblazer and innovator, helping grow the mobile entertainment, health and content industry while playing a central role in its impact and presence. Today, mobile is a key platform to reach the over seven billion mobile subscribers worldwide.")
+				(p "Simon heads London-based Mobilium Global Group, which provides high-level strategic counsel and guidance to individuals, brands, companies and organizations across the entire mobile spectrum. He also serves on several boards, including Exicon's advisory board.")
+				(p "Internationally, Simon is known as an impactful and popular speaker on all aspects of mobile commerce, content & the creative digital industries.")
+				(p "Ralph Simon travels the world on a relentless search for the latest in mobile and device innovation, the best new emerging markets’ start-ups, and with special emphasis on relevance to Europe, Africa, Asia & the Americas. He has formidable knowledge about ways to deliver mobile content, “social broadcasting” and entertainment and grow the creative industries. He is a Fellow of the Royal Society of Arts in the UK and is a member of the National Academy of Recording Arts & Sciences in the USA.")
 			]
 			:linkedin "https://www.linkedin.com/pub/ralph-simon-frsa/0/88/a41"
 			:twitter "ralphsimon1"
@@ -215,14 +220,13 @@
 		:height "49px"))
 
 (defn klout-widget [profile]
-
 	(div
 		(img :class "klout icon"
 			:src "/images/about-us/kloud-50X39.png"
-			#_:src (cell= (str "http://www.kloutwidget.com/32/"(:twitter profile)".png")))
+			;:src (cell= (str "http://www.kloutwidget.com/32/"(:twitter profile)".png"))
+			)
 		(label :class "klout-score" (text (:klout profile)))
 	))
-
 
 (defn social-icons [profile]
 	[
