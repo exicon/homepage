@@ -225,24 +225,24 @@
 		(div :class "social-media-icons" (social-icons profile))))
 
 (defn profile-tile [profile btitle bposition bcontent]
-	(div :class "profile column"
+	(div :class "management column"
 		(a :on-click #(call-board-bio profile btitle bposition bcontent)
 			(img :class "circular ui image" :src (cell= (:image profile))))
 		(div :class "info-labels"
 			(label :class "name" (text (:name profile))) )
 		(div :class "info-labels"
 			(label :class "position" (text (:position profile))))
-		#_(div :class "social-media-icons" (social-icons profile))))
+		(div :class "social-media-icons" (social-icons profile))))
 
 (defn advisory-tile [profile btitle bposition bcontent]
-	(div :class "profile column"
+	(div :class "management column"
 		(a :on-click #(call-advisory-bio profile btitle bposition bcontent)
 			(img :class "circular ui image" :src (cell= (:image profile))))
 		(div :class "info-labels"
 			(label :class "name" (text (:name profile))) )
 		(div :class "info-labels"
 			(label :class "position" (text (:position profile))))
-		#_(div :class "social-media-icons" (social-icons profile))))
+		(div :class "social-media-icons" (social-icons profile))))
 
 (defn founder-tile [profile btitle bposition bcontent]
 	(div :class "management column"
@@ -331,7 +331,9 @@
 	(section :id "partners"
 		(h2 :class "ui header" "Our Partners")
 		(div :class "ui three column doubling grid"
-		(loop-tpl :bindings [prt partner-logos] (partner prt)))))
+		(loop-tpl :bindings [prt partner-logos] (partner prt)))
+		(a :href "https://i2a.exiconglobal.com/#!node-developers-sign-up"
+					(div :class "ui tiny button" "Developers"))))
 
 (defn award [logo]
 	(div :class "award column"
@@ -366,8 +368,6 @@
 				(our-board-section)
 				(advisory-board-section)
 				(partners-section)
-				(a :href "https://i2a.exiconglobal.com/#!node-developers-sign-up"
-					(div :class "ui tiny button" "Developers"))
 				(awards-section)
 			)
 			(div :class "six wide timeline column" (div :class "timeline-img" (img :src "/images/about-us/timeline.png")))

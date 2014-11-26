@@ -1,5 +1,5 @@
 #about-us section{
-	margin-top: 90px;
+	margin-bottom: 3em;
 }
 
 #about-us .management.column {
@@ -7,7 +7,15 @@
 	height: 280px;
 }
 
-#about-us .profile.column img, #about-us .management.column img{
+#board-team .column{
+	height: 180px;
+}
+
+#board-team {
+	margin-top: 4rem;
+}
+
+#about-us .management.column img {
 	margin: 0 auto;
 	text-align: center;
 }
@@ -105,10 +113,10 @@ margin-left: -1px;
 
 /* Mobile */
 @media only screen and (max-width: 767px){
-	#about-us #board-team{
+	#about-us #board-team {
 		margin-top: 0px;
 	}
-	#about-us .management.column, #about-us .profile.column{
+	#about-us .management.column {
 		width: 30%;
 	}
 
