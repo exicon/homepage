@@ -47,11 +47,14 @@
 #about-us .bio.button{
 margin-top: 1em;
 }
-.twitter.icon{
+#about-us .twitter.icon{
 	color:#00bfff;
+	font-size: 1.5em;
 }
-.linkedin.icon{
+
+#about-us .linkedin.icon{
 	color:#035880;
+	font-size: 1.5em;
 }
 .social-media-icons .icon{
 	cursor:pointer;
