@@ -42,7 +42,9 @@
 			:name "Albert Kwong"
 			:position "Product Architect"
 			:content [
-				(p "")
+				(p "Albert is one of those rare creatures able to understand both technology and commercial challenges. He has worked for both big companies (PacNet and MTR Corporation) and small, and in fact has set up his own companies – Bit Exchange systems Ltd and Charcoal Generation Ltd.")
+				(p "He has led teams on projects around supply chain management (SCM) and electronic document interchange (EDI), Telecoms billing systems, IaaS platforms, ERP, Revenue Information Systems and the famous Octopus Smartcard system but it is really his work on Cloud SaaS platforms that has made him such a valuable member of the team.")
+				(p "Albert is able to take complex systems and break them down into the key components in order to bring the team onto the same page to gain consensus prior to the group making core business decisions.")
 			]
 		}
 
@@ -51,7 +53,9 @@
 			:name "Tamas Herman"
 			:position "VP Engineering"
 			:content [
-				(p "")
+				(p "Tamas’s has become a bit of a technology icon. His long background in technology and science literally dates back to his earliest childhood having been born into a family of scientists. He has built world famous technologies and products all over the globe including Cheyenne webserver, the Darcs on Mac, and has covered a wide range of company types – from Civil service with the University of Szeged to some very varied Start ups including Foound, JamiO, Nixplay and Blockshopper covering Cloud solutions, Financial platforms, Education, ERP as well as Bricks and mortar companies such as Motorworld.")
+				(p "His roles have included Senior Software Developer/Engineer, Software Architect, Chief Architect, Lead Programmer and even Co-founder of eKita.")
+				(p "He is a huge asset to the company in terms of driving discipline in programming, new techniques (e.g. paired programming) as well as new technologies (Clojure, Facebook React etc) all of which reinforce the Exicon value of “Always be learning”.")
 			]
 			:twitter "onetom"
 		}
