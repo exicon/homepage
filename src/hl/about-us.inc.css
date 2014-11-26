@@ -35,7 +35,7 @@
 }
 
 
-#about-us .social-media-icons .kloud.icon{
+#about-us .social-media-icons .klout.icon{
 	width: 2em;
 	vertical-align: middle;
 	display: inline;
@@ -57,7 +57,7 @@ margin-top: 1em;
 	cursor:pointer;
 }
 
-label.kloud-score{
+label.klout-score{
 cursor: pointer;
 border: solid 1px orange;
 padding-right: 6px;

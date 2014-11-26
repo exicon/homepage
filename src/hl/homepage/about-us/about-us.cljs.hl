@@ -7,7 +7,7 @@
 			:image "/images/about-us/Stefan.png"
 			:name "Stefan Rust"
 			:position "Founder & CEO"
-			:kloud "58"
+			:klout "58"
 			:bio "/staff/bios/Stefan Rust Bio.pdf"
 			:content [
 				(p "Stefan is the CEO at Exicon. Inspired. Spontaneous. Unstoppable. Stefan is China born and bred and speaks English, Mandarin, German and French. In other words, he's pretty unique.")
@@ -25,7 +25,7 @@
 			:image "/images/about-us/Cat.png"
 			:name "Cat Purvis"
 			:position "Founder & EVP"
-			:kloud "54"
+			:klout "54"
 			:bio "/staff/bios/Cat Purvis Bio.pdf"
 			:content [
 				(p "Cat Purvis is the Founder of Exicon, a cloud platform for App and API Management, with global clients including Handset manufacturers, Operators, Brands & Enterprises. It is a 2012 Red Herring 100 Global tech companies winner.")
@@ -254,8 +254,8 @@
 			(div :class "social-media-icons"
 				(social-icons profile)
 				(div
-					(img :class "kloud icon" :src "/images/about-us/kloud-50x39.png")
-					(label :class "kloud-score" (text (:kloud profile))))
+					(img :class "klout icon" :src "/images/about-us/kloud-50x39.png")
+					(label :class "klout-score" (text (:klout profile))))
 				(a :href (cell= (:bio profile))
 					(div :class "ui tiny bio button" "Download Bio")))))
 
