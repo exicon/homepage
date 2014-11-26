@@ -222,7 +222,7 @@
 (defn klout-widget [profile]
 	(div
 		(img :class "klout icon"
-			:src "/images/about-us/kloud-50X39.png"
+			:src "/images/about-us/kloud-50x39.png"
 			;:src (cell= (str "http://www.kloutwidget.com/32/"(:twitter profile)".png"))
 			)
 		(label :class "klout-score" (text (:klout profile)))
