@@ -8,8 +8,8 @@
 			:name "Stefan Rust"
 			:position "Founder & CEO"
 			:klout "58"
-			:bio "/staff/bios/Stefan Rust Bio.pdf"
-			:content [
+			:bio-url "/staff/bios/Stefan Rust Bio.pdf"
+			:bio [
 				(p "Stefan is the CEO at Exicon. Inspired. Spontaneous. Unstoppable. Stefan is China born and bred and speaks English, Mandarin, German and French. In other words, he's pretty unique.")
 				(p "Considered a thought-leader in his field, Stefan is passionate about the power that mobile and the Internet brings to businesses around the world. He has a real knack for spotting breaking trends, and seeing ahead in terms of potential new business applications and revenue models. With over 20 years' experience in the telecommunications industry, Stefan leads the team here at Exicon and ensures our clients experience the 'out of the box' thinking they've come to expect from us.")
 				(p "It's no surprise then that he is a founding member and former chairman of the Mobile Entertainment Forum, as well as being identified 2 years in a row as one of the top 50 Global Mobile Entertainment Executives by 'Mobile Entertainment' magazine. He is also a founding advisor to Music Matters, Asia's premier music industry event.")
@@ -26,8 +26,8 @@
 			:name "Cat Purvis"
 			:position "Founder & EVP"
 			:klout "54"
-			:bio "/staff/bios/Cat Purvis Bio.pdf"
-			:content [
+			:bio-url "/staff/bios/Cat Purvis Bio.pdf"
+			:bio [
 				(p "Cat Purvis is the Founder of Exicon, a cloud platform for App and API Management, with global clients including Handset manufacturers, Operators, Brands & Enterprises. It is a 2012 Red Herring 100 Global tech companies winner.")
 				(p "During her career, Cat has built companies, teams and divisions all over the world, in the UK, US as well as in China where she lived for 5 years. Previous roles include COO at Icon Medialab and GM at a start up in Beijing which was later sold to a global player.")
 				(p "Born and raised in China, Cat is truly an international woman. Speaking English, French, Mandarin and German she has lived, worked and studied in many places. A firm believer in the power of education, she studied Management and Statistics at St Andrews University and also has a Diploma in Marketing and qualifications in Process Re-engineering.")
@@ -41,7 +41,7 @@
 			:image "/images/about-us/Albert.png"
 			:name "Albert Kwong"
 			:position "Product Architect"
-			:content [
+			:bio [
 				(p "Albert is one of those rare creatures able to understand both technology and commercial challenges. He has worked for both big companies (PacNet and MTR Corporation) and small, and in fact has set up his own companies – Bit Exchange systems Ltd and Charcoal Generation Ltd.")
 				(p "He has led teams on projects around supply chain management (SCM) and electronic document interchange (EDI), Telecoms billing systems, IaaS platforms, ERP, Revenue Information Systems and the famous Octopus Smartcard system but it is really his work on Cloud SaaS platforms that has made him such a valuable member of the team.")
 				(p "Albert is able to take complex systems and break them down into the key components in order to bring the team onto the same page to gain consensus prior to the group making core business decisions.")
@@ -52,7 +52,7 @@
 			:image "/images/about-us/Tamas.png"
 			:name "Tamas Herman"
 			:position "VP Engineering"
-			:content [
+			:bio [
 				(p "Tamas has became a bit of a technology icon. His long background in technology and science literally dates back to his earliest childhood having been born into a family of scientists. He has contributed to world famous technologies and products all over the globe including Cheyenne webserver, the Darcs on Mac, and has covered a wide range of company types – from Civil service with the University of Szeged to some very varied Start ups including Foound, JamiQ, Nixplay and Blockshopper covering Cloud solutions, Financial platforms, Education, ERP as well as bricks and mortar companies such as Motorworld.")
 				(p "His roles have included Senior Software Developer/Engineer, Software Architect, Chief Architect and Lead Programmer.")
 				(p "He is a huge asset to the company in terms of driving discipline in programming, new techniques (e.g. pair programming) as well as new technologies (Clojure, Datomic, Facebook React etc) all of which reinforce the Exicon value of “Always be learning”.")
@@ -64,7 +64,7 @@
 			:image "/images/about-us/Phil.png"
 			:name "Phil Jackson"
 			:position "VP APIs"
-			:content [
+			:bio [
 				(p "After graduating from university in England, Phil became a contractor working at companies like BT, McAfee, and on the iPlayer API at the BBC. In 2010 he co-founded Qwerly; a company that aggregated social information online for marketing purposes. Just over a year later, Qwerly sold to a US competitor.")
 				(p "During his time at Qwerly, a need emerged for a simple on-premise, open, scalable API proxy and thus ApiAxle was born as a side project. It became a commercial product in early 2013 and was sold to Exicon later in the year.")
 			]
@@ -76,7 +76,7 @@
 			:image "/images/about-us/Anthoine.png"
 			:name "Antoine Blondeau"
 			:position "Director"
-			:content [
+			:bio [
 				(p "Antoine started his career with the Tokyo representation of the French Industrial Development Agency where he negotiated a number of large Japanese technology investments in France. Antoine then moved to Nortel Networks where he managed the OEM and Asia/Pacific unit of the company's cellular handset business. Then, as president and COO of Zi Corporation, a NASDAQ-listed developer of intelligent user interface software, he engineered a turnaround and grew the company's market valuation to a high of $1.4 billion. Zi is now part of Nuance Communications. Antoine was subsequently appointed CEO of Dejima, Inc., a developer of distributed Artificial Intelligence software, which he sold to Sybase, Inc. (now SAP). Dejima was a core member of the consortium that developed the original Siri technology, now present in Apple's devices as a voice-activated virtual assistant. Antoine also worked at salesforce.com as vice president in charge of the mobile/wireless business unit, and at Good Technology as senior vice president corporate development & GM Asia/Pacific.")
 				(p "Antoine is the founder and CEO of Genetic Finance Holdings, a developer of a massively scaled Artificial Intelligence processing engine for advanced decision making. The company applies its technology to the deployment of systematic trading strategies in the most liquid financial markets, and to genomics and healthcare research in partnership with MIT.")
 				(p "Antoine is also an investor in -and director or advisor of - a number of start-ups in California, China and Japan.")
@@ -89,7 +89,7 @@
 			:image "/images/about-us/Norman.png"
 			:name "Norman Janelle"
 			:position "Director"
-			:content [
+			:bio [
 				(p "Norman Janelle was, until recently, the Managing Director of Toonsland Limited, the CEO of Byford International Limited and Special Advisor to Roly International Holdings Limited. Prior to this, he spent 25 years as a senior executive with Philip Morris International ('PMI') and was based in Asia and in Europe where he was responsible for the strategic direction and performance of PMI in several markets within each region. He subsequently joined The Walt Disney Company and his last position was head of Walt Disney Consumer Products (Asia Pacific) Limited where he was responsible for their licensing and retail businesses throughout the Asia Pacific region.")
 				(p "He is also a chartered Accountant and holds a Bachelor of Commerce Degree from the University of Montreal.")
 			]
@@ -99,7 +99,7 @@
 			:image "/images/about-us/Stephen.png"
 			:name "Stephen King"
 			:position "Director"
-			:content [
+			:bio [
 				(p "Stephen King is a Managing Partner of Violet Hill Partners Limited, a value-oriented multi-strategy hedge fund based in Hong Kong. Violet Hill manages about US$150 million.")
 				(p "Before establishing Violet Hill, Mr. King was a Partner and member of the Investment Committee at Unitas Capital (formerly known as JP Morgan Partners Asia), a leading financial sponsor in the Asia-Pacific region with US$3.9 billion under management. In his ten years at Unitas Capital, Mr. King was responsible for the Australasian business of Unitas and worked on eight buyouts with aggregate transaction size of over US$4.5 billion. Mr. King was Chairman of two portfolio companies each with sales of approximately US$1 billion. Mr. King also served on the boards of 7 other companies.")
 				(p "Mr. King is a former Secretary and Executive Committee member of the Hong Kong Venture Capital Association. Mr. King is currently a delegate to the China People’s Political Consultative Conference of Zhejiang Province.")
@@ -111,7 +111,7 @@
 			:image "/images/about-us/Ralph.png"
 			:name "Ralph Simon"
 			:position "Advisory Board"
-			:content [
+			:bio [
 				(p "Ralph Simon is acknowledged as one of the founders of the modern mobile entertainment & content industry. Over the last 17 years, he has been a prominent global mobile trailblazer and innovator, helping grow the mobile entertainment, health and content industry while playing a central role in its impact and presence. Today, mobile is a key platform to reach the over seven billion mobile subscribers worldwide.")
 				(p "Simon heads London-based Mobilium Global Group, which provides high-level strategic counsel and guidance to individuals, brands, companies and organizations across the entire mobile spectrum. He also serves on several boards, including Exicon's advisory board.")
 				(p "Internationally, Simon is known as an impactful and popular speaker on all aspects of mobile commerce, content & the creative digital industries.")
@@ -125,7 +125,7 @@
 			:image "/images/about-us/Charles.png"
 			:name "Charles Fallon"
 			:position "Advisory Board"
-			:content [
+			:bio [
 				(p "Founder and Managing Partner of  S.I.Partners LLP, an advisor to the marketing, media and technology sectors offering a unique blend of management consultancy and corporate finance services.")
 				(p "Charles has over 25 year of marketing experience with a track record in technology, including; 10 years at Saatchi & Saatchi Advertising working with clients such as Hewlett Packard; founding one of the first digital agencies, Saatchi Interactive in 1994; and being one of the UK’s internet pioneers co-founding a Pan European online retailer – Pets Pyjamas in 1998.")
 				(p "Since the early internet years Charles has been an investor in early stage technology firms and now co-owns a private fund specialising in this sector providing capital and advice on commercialisation of new technologies.")
@@ -137,7 +137,7 @@
 			:image "/images/about-us/Anthony.png"
 			:name "Anthony Tse"
 			:position "Advisory Board"
-			:content [
+			:bio [
 				(p "Anthony Tse joined Galaxy Resources as Executive Director in 2010, and is responsible for various strategic development, corporate finance and M&A activities of the company. He also previously served as Acting Managing Director - China, overseeing the company's lithium carbonate and battery project in Jiangsu.")
 				(p "He has close to 20 years of business management, capital markets and M&A experience in high growth industries, including the media/entertainment, technology, as well as the resource & commodities sectors, across the Greater China and broader Asia-Pacific region. He has formerly served in several senior executive roles, including as CEO of CSN Corp, President of China Entertainment Television, Director of Corporate Development - TOM Group, Deputy General Manager - TOM Online, and was also previously with News Corporation's STAR Group.")
 			]
@@ -148,7 +148,7 @@
 			:image "/images/about-us/Jeffrey.png"
 			:name "Jeffrey Belk"
 			:position "Advisory Board"
-			:content [
+			:bio [
 				(p "Managing Director of ICT168 Capital, LLC, focused on developing and guiding global growth opportunities in the Information and Communication Technology space. Formerly, Belk spent almost 14 years at Qualcomm Incorporated, where prior to his departure in early 2008, he was Qualcomm's senior vice president of strategy and market development, focused on examining changes in the wireless ecosystem and formulating approaches to help accelerate mobile broadband adoption and growth.")
 				(p "From 2000 until 2006, Belk was senior vice president, global marketing, leading a team responsible of all facets of the company's corporate messaging, communications, and marketing worldwide. In 1999-2000, Belk was SVP & GM of Qualcomm Eudora Products, Qualcomm's award winning email client. In 1997, Belk was named VP, marketing of Qualcomm Consumer Products, and initiated the company's global branding and communications efforts.")
 				(p "Prior to Qualcomm, Belk spent ten years in the early growth years of the PC industry, primarily with Proxima Corporation. Belk joined the company in 1983, when the company was less than 25 employees, and was with the company through its IPO in the early 90's in several key distribution, product management, and international roles.")
@@ -160,10 +160,9 @@
 
 	})
 
-(def management-team (map #(% team) [:albert :tamas :phil]))
-(def founders (map #(% team) [:stefan :cat]))
-(def board-team (map #(% team) [:stefan :cat :antoine :norman :stephen]))
-(def advisory-team (map #(% team) [:ralph :charles :anthony :jeffrey]))
+(def management-team (map team [:stefan :cat :albert :tamas :phil]))
+(def board-team (map #(dissoc % :klout :bio-url) (map team [:stefan :cat :antoine :norman :stephen])))
+(def advisory-team (map team [:ralph :charles :anthony :jeffrey]))
 
 (def award-logos
 	[
@@ -196,7 +195,7 @@
 		(div :class "header"
 				(h1 (cell= (:name profile)))
 				(h2 (cell= (:position profile)))
-				(div (cell= (:content profile))))))
+				(div (cell= (:bio profile))))))
 
 (defn call-bio [profile]
 	(reset! current-bio profile)
@@ -227,53 +226,27 @@
 		(if (:linkedin profile)
 			(a :href (:linkedin profile) :target "_blank"
 				(i :class "linkedin icon")))
+
 		(if (:twitter profile)
 			(a :href (str "http://twitter.com/" (:twitter profile)) :target "_blank"
 				(i :class "twitter icon")))
+
+		(if (:klout profile) (klout-widget profile))
 	])
 
-(defn management-team-tile [profile]
-	(div :class "management column"
-		(a :on-click #(call-bio profile)
-			(img :class "circular ui image" :src (cell= (:image profile))))
-		(div :class "info-labels"
-			(label :class "name" (text (:name profile))) )
-		(div :class "info-labels"
-			(label :class "position" (text (:position profile))) )
-		(div :class "social-media-icons" (social-icons profile))))
-
 (defn profile-tile [profile]
-	(div :class "management column"
+	(div :class "profile column"
 		(a :on-click #(call-bio profile)
 			(img :class "circular ui image" :src (cell= (:image profile))))
 		(div :class "info-labels"
-			(label :class "name" (text (:name profile))) )
+			(label :class "name" (text (:name profile))))
 		(div :class "info-labels"
 			(label :class "position" (text (:position profile))))
-		(div :class "social-media-icons" (social-icons profile))))
-
-(defn advisory-tile [profile]
-	(div :class "management column"
-		(a :on-click #(call-bio profile)
-			(img :class "circular ui image" :src (cell= (:image profile))))
-		(div :class "info-labels"
-			(label :class "name" (text (:name profile))) )
-		(div :class "info-labels"
-			(label :class "position" (text (:position profile))))
-		(div :class "social-media-icons" (social-icons profile))))
-
-(defn founder-tile [profile]
-	(div :class "management column"
-		(a :on-click #(call-bio profile)
-			(img :class "circular ui image" :src (cell= (:image profile))))
-		(div :class "info-labels"
-			(label :class "name" (text (:name profile))) )
-		(div :class "info-labels"	(label :class "position" (text (:position profile))) )
 			(div :class "social-media-icons"
 				(social-icons profile)
-				(klout-widget profile)
-				(a :href (cell= (:bio profile))
-					(div :class "ui tiny bio button" "Download Bio")))))
+				(if (:bio-url profile)
+					(a :href (cell= (:bio-url profile)) :target "_blank"
+						(div :class "ui tiny bio button" "Download Bio"))))))
 
 (defn overview-section []
 	(section :id "overview-section"
@@ -287,27 +260,11 @@
 				(p "Managing the logistics of a company’s app portfolio is continuing to evolve, as is our product, to meet the demands of customers large and small. ")
 				(p "We hope you’ll join us on that journey if you are trying to get a grip on your apps.")))
 
-(defn management-team-section []
-	(section :id "management-team" :class "ui five column doubling grid "
-		(h2 :class "ui header" "Management Team")
-
-		(loop-tpl :bindings [profile founders]
-			(founder-tile @profile))
-
-		(loop-tpl :bindings [profile management-team]
-			(management-team-tile @profile))))
-
-(defn our-board-section []
-	(section :id "board-team" :class "ui five column doubling grid"
-		(h2 :class "ui header" "Our Board")
-		(loop-tpl :bindings [profile board-team]
+(defelem team-section [{:keys [id title members]} _]
+	(section :id id :class "ui five column doubling grid "
+		(h2 :class "ui header" title)
+		(loop-tpl :bindings [profile members]
 			(profile-tile @profile))))
-
-(defn advisory-board-section []
-	(section :id "advisory-team-team" :class "ui five column doubling grid"
-		(h2 :class "ui header" "Advisory Board")
-		(loop-tpl :bindings [profile advisory-team]
-			(advisory-tile @profile))))
 
 (defn partner [logo]
 	(div :class "column"
@@ -350,9 +307,19 @@
 		(div :class "ui two column doubling page grid"
 			(div :id "about-us" :class "ten wide column"
 				(overview-section)
-				(management-team-section)
-				(our-board-section)
-				(advisory-board-section)
+
+				(team-section :id "management-team"
+					:title "Management Team"
+					:members management-team)
+
+				(team-section :id "board-team"
+					:title "Our Board"
+					:members board-team)
+
+				(team-section :id "advisory-team"
+					:title "Advisory Board"
+					:members advisory-team)
+
 				(partners-section)
 				(awards-section)
 				(bio current-bio))
