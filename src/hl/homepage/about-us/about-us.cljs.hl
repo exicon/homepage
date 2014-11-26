@@ -53,9 +53,9 @@
 			:name "Tamas Herman"
 			:position "VP Engineering"
 			:content [
-				(p "Tamas’s has become a bit of a technology icon. His long background in technology and science literally dates back to his earliest childhood having been born into a family of scientists. He has built world famous technologies and products all over the globe including Cheyenne webserver, the Darcs on Mac, and has covered a wide range of company types – from Civil service with the University of Szeged to some very varied Start ups including Foound, JamiO, Nixplay and Blockshopper covering Cloud solutions, Financial platforms, Education, ERP as well as Bricks and mortar companies such as Motorworld.")
-				(p "His roles have included Senior Software Developer/Engineer, Software Architect, Chief Architect, Lead Programmer and even Co-founder of eKita.")
-				(p "He is a huge asset to the company in terms of driving discipline in programming, new techniques (e.g. paired programming) as well as new technologies (Clojure, Facebook React etc) all of which reinforce the Exicon value of “Always be learning”.")
+				(p "Tamas has became a bit of a technology icon. His long background in technology and science literally dates back to his earliest childhood having been born into a family of scientists. He has contributed to world famous technologies and products all over the globe including Cheyenne webserver, the Darcs on Mac, and has covered a wide range of company types – from Civil service with the University of Szeged to some very varied Start ups including Foound, JamiQ, Nixplay and Blockshopper covering Cloud solutions, Financial platforms, Education, ERP as well as bricks and mortar companies such as Motorworld.")
+				(p "His roles have included Senior Software Developer/Engineer, Software Architect, Chief Architect and Lead Programmer.")
+				(p "He is a huge asset to the company in terms of driving discipline in programming, new techniques (e.g. pair programming) as well as new technologies (Clojure, Datomic, Facebook React etc) all of which reinforce the Exicon value of “Always be learning”.")
 			]
 			:twitter "onetom"
 		}
