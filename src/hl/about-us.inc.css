@@ -58,18 +58,18 @@ margin-top: 1em;
 }
 
 label.klout-score{
-cursor: pointer;
-border: solid 1px orange;
-padding-right: 6px;
-display: inline;
-padding-top: 2px;
-padding-bottom: 3px;
-border-top-right-radius: 3px;
-border-bottom-right-radius: 3PX;
-padding-left: 4px;
-font-weight: 500;
-font-size: 0.95em;
-margin-left: -1px;
+	cursor: pointer;
+	border: solid 1px orange;
+	padding-right: 6px;
+	display: inline;
+	padding-top: 2px;
+	padding-bottom: 3px;
+	border-top-right-radius: 3px;
+	border-bottom-right-radius: 3PX;
+	padding-left: 4px;
+	font-weight: 500;
+	font-size: 0.95em;
+	margin-left: -1px;
 }
 
 .award.column img{
@@ -99,15 +99,15 @@ margin-left: -1px;
 	text-align: center;
 }
 
-#bio-popup-box h1{
+#bio.modal h1{
 	font-size: 1.4em;
 }
 
-#bio-popup-box h2{
+#bio.modal h2{
 	font-size: 0.7em;
 }
 
-#bio-popup-box p{
+#bio.modal p{
 	font-size: 0.6em;
 }
 

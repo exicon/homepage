@@ -188,25 +188,19 @@
 	])
 
 
-(defn call-management-bio [opts btitle bposition bcontent]
-	(reset! btitle (:name opts))
-	(reset! bposition (:position opts))
-	(reset! bcontent (:content opts))
-	(.modal (js/jQuery ".management.ui.modal") "show")
-)
+(defc current-bio nil)
 
-(defn call-board-bio [opts btitle bposition bcontent]
-	(reset! btitle (:name opts))
-	(reset! bposition (:position opts))
-	(reset! bcontent (:content opts))
-	(.modal (js/jQuery (str ".board.ui.modal")) "show")
-)
+(defn bio [profile]
+	(div :id "bio" :class "ui modal"
+		(i :class "close icon")
+		(div :class "header"
+				(h1 (cell= (:name profile)))
+				(h2 (cell= (:position profile)))
+				(div (cell= (:content profile))))))
 
-(defn call-advisory-bio [opts btitle bposition bcontent]
-	(reset! btitle (:name opts))
-	(reset! bposition (:position opts))
-	(reset! bcontent (:content opts))
-	(.modal (js/jQuery (str ".advisory.ui.modal")) "show")
+(defn call-bio [profile]
+	(reset! current-bio profile)
+	(.modal (js/jQuery "#bio.modal") "show")
 )
 
 (def klout-iframe
@@ -238,9 +232,9 @@
 				(i :class "twitter icon")))
 	])
 
-(defn management-team-tile [profile btitle bposition bcontent]
+(defn management-team-tile [profile]
 	(div :class "management column"
-		(a :on-click #(call-management-bio profile btitle bposition bcontent)
+		(a :on-click #(call-bio profile)
 			(img :class "circular ui image" :src (cell= (:image profile))))
 		(div :class "info-labels"
 			(label :class "name" (text (:name profile))) )
@@ -248,9 +242,9 @@
 			(label :class "position" (text (:position profile))) )
 		(div :class "social-media-icons" (social-icons profile))))
 
-(defn profile-tile [profile btitle bposition bcontent]
+(defn profile-tile [profile]
 	(div :class "management column"
-		(a :on-click #(call-board-bio profile btitle bposition bcontent)
+		(a :on-click #(call-bio profile)
 			(img :class "circular ui image" :src (cell= (:image profile))))
 		(div :class "info-labels"
 			(label :class "name" (text (:name profile))) )
@@ -258,9 +252,9 @@
 			(label :class "position" (text (:position profile))))
 		(div :class "social-media-icons" (social-icons profile))))
 
-(defn advisory-tile [profile btitle bposition bcontent]
+(defn advisory-tile [profile]
 	(div :class "management column"
-		(a :on-click #(call-advisory-bio profile btitle bposition bcontent)
+		(a :on-click #(call-bio profile)
 			(img :class "circular ui image" :src (cell= (:image profile))))
 		(div :class "info-labels"
 			(label :class "name" (text (:name profile))) )
@@ -268,9 +262,9 @@
 			(label :class "position" (text (:position profile))))
 		(div :class "social-media-icons" (social-icons profile))))
 
-(defn founder-tile [profile btitle bposition bcontent]
+(defn founder-tile [profile]
 	(div :class "management column"
-		(a :on-click #(call-management-bio profile btitle bposition bcontent)
+		(a :on-click #(call-bio profile)
 			(img :class "circular ui image" :src (cell= (:image profile))))
 		(div :class "info-labels"
 			(label :class "name" (text (:name profile))) )
@@ -294,56 +288,26 @@
 				(p "We hope you’ll join us on that journey if you are trying to get a grip on your apps.")))
 
 (defn management-team-section []
-	(let [btitle (cell "")
-			bposition (cell "")
-			bcontent (cell "")]
-		(section :id "management-team" :class "ui five column doubling grid "
-			(h2 :class "ui header" "Management Team")
+	(section :id "management-team" :class "ui five column doubling grid "
+		(h2 :class "ui header" "Management Team")
 
-			(loop-tpl :bindings [profile founders]
-				(founder-tile @profile btitle bposition bcontent))
+		(loop-tpl :bindings [profile founders]
+			(founder-tile @profile))
 
-			(loop-tpl :bindings [profile management-team]
-				(management-team-tile @profile btitle bposition bcontent))
-
-			(div :id "bio-popup-box" :class "management ui modal"
-				(i :class "close icon")
-				(div :class "header"
-						(h1 btitle)
-						(h2 bposition)
-						(div bcontent))))))
+		(loop-tpl :bindings [profile management-team]
+			(management-team-tile @profile))))
 
 (defn our-board-section []
-		(let [btitle (cell "")
-				bposition (cell "")
-				bcontent (cell "")]
-			(section :id "board-team" :class "ui five column doubling grid"
-				(h2 :class "ui header" "Our Board")
-				(loop-tpl :bindings [prf board-team]
-					(profile-tile @prf btitle bposition bcontent))
-
-				(div :id "bio-popup-box" :class "board ui modal"
-				(i :class "close icon")
-					(div :class "header"
-						(h1 btitle)
-						(h2 bposition)
-						(div bcontent))))))
+	(section :id "board-team" :class "ui five column doubling grid"
+		(h2 :class "ui header" "Our Board")
+		(loop-tpl :bindings [profile board-team]
+			(profile-tile @profile))))
 
 (defn advisory-board-section []
-	(let [btitle (cell "")
-			bposition (cell "")
-			bcontent (cell "")]
-		(section :id "advisory-team-team" :class "ui five column doubling grid"
-			(h2 :class "ui header" "Advisory Board")
-			(loop-tpl :bindings [prf advisory-team]
-				(advisory-tile @prf btitle bposition bcontent))
-
-			(div :id "bio-popup-box" :class "advisory ui modal"
-				(i :class "close icon")
-					(div :class "header"
-						(h1 btitle)
-						(h2 bposition)
-						(div bcontent))))))
+	(section :id "advisory-team-team" :class "ui five column doubling grid"
+		(h2 :class "ui header" "Advisory Board")
+		(loop-tpl :bindings [profile advisory-team]
+			(advisory-tile @profile))))
 
 (defn partner [logo]
 	(div :class "column"
@@ -355,7 +319,7 @@
 		(div :class "ui three column doubling grid"
 		(loop-tpl :bindings [prt partner-logos] (partner prt)))
 		(a :href "https://i2a.exiconglobal.com/#!node-developers-sign-up"
-					(div :class "ui tiny button" "Developers"))))
+			(div :class "ui tiny button" "Developers"))))
 
 (defn award [logo]
 	(div :class "award column"
@@ -371,17 +335,17 @@
 	:pagetitle "About Exicon | App Management & Analytics | Our Team"
 	:pagedescription "Our Mission And The Road That Got Us Here As Well As The Team That Makes Exicon Tick."
 	:pagekeywords "Exicon, App Management, Analytics"
+
 	(section :class "ui one column full-width-container"
 		(div  :id "page-title" :class "center aligned row"
 			(div :class "column"
-				(h1 "About Us")))
-	)
-		(section :class "ui one column page grid"
+				(h1 "About Us"))))
+
+	(section :class "ui one column page grid"
 		(div :id "page-subtitle" :class "center aligned row"
 			(div :class "column"
 				(h2 "App-cessorizing Everything")
-				(img :src "/images/about-us/appcessorizing-everything.png")
-			)))
+				(img :src "/images/about-us/appcessorizing-everything.png"))))
 
 		(div :class "ui two column doubling page grid"
 			(div :id "about-us" :class "ten wide column"
@@ -391,7 +355,7 @@
 				(advisory-board-section)
 				(partners-section)
 				(awards-section)
-			)
-			(div :class "six wide timeline column" (div :class "timeline-img" (img :src "/images/about-us/timeline.png")))
-		)
-	)
+				(bio current-bio))
+			(div :class "six wide timeline column"
+				(div :class "timeline-img"
+					(img :src "/images/about-us/timeline.png")))))
