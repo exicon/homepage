@@ -112,9 +112,10 @@
 			:name "Ralph Simon"
 			:position "Advisory Board"
 			:content [
-				(p "")
-				(p "")
-				(p "")
+				(p "Ralph Simon is acknowledged as one of the founders of the modern mobile entertainment & content industry. Over the last 17 years, he has been a prominent global mobile trailblazer and innovator, helping grow the mobile entertainment, health and content industry while playing a central role in its impact and presence. Today, mobile is a key platform to reach the over seven billion mobile subscribers worldwide.")
+				(p "Simon heads London-based Mobilium Global Group, which provides high-level strategic counsel and guidance to individuals, brands, companies and organizations across the entire mobile spectrum. He also serves on several boards, including Exicon's advisory board.")
+				(p "Internationally, Simon is known as an impactful and popular speaker on all aspects of mobile commerce, content & the creative digital industries.")
+				(p "Ralph Simon travels the world on a relentless search for the latest in mobile and device innovation, the best new emerging markets’ start-ups, and with special emphasis on relevance to Europe, Africa, Asia & the Americas. He has formidable knowledge about ways to deliver mobile content, “social broadcasting” and entertainment and grow the creative industries. He is a Fellow of the Royal Society of Arts in the UK and is a member of the National Academy of Recording Arts & Sciences in the USA.")
 			]
 			:linkedin "https://www.linkedin.com/pub/ralph-simon-frsa/0/88/a41"
 			:twitter "ralphsimon1"
@@ -208,6 +209,25 @@
 	(.modal (js/jQuery (str ".advisory.ui.modal")) "show")
 )
 
+(def klout-iframe
+	(iframe
+		:src "http://widgets.klout.com/badge/CatRust"
+		:style "border:0"
+		:scrolling "no"
+		:allowTransparency "true"
+		:frameBorder "0"
+		:width "100px"
+		:height "49px"))
+
+(defn klout-widget [profile]
+	(div
+		(img :class "klout icon"
+			:src "/images/about-us/kloud-50x39.png"
+			;:src (cell= (str "http://www.kloutwidget.com/32/"(:twitter profile)".png"))
+			)
+		(label :class "klout-score" (text (:klout profile)))
+	))
+
 (defn social-icons [profile]
 	[
 		(if (:linkedin profile)
@@ -257,9 +277,7 @@
 		(div :class "info-labels"	(label :class "position" (text (:position profile))) )
 			(div :class "social-media-icons"
 				(social-icons profile)
-				(div
-					(img :class "klout icon" :src "/images/about-us/kloud-50x39.png")
-					(label :class "klout-score" (text (:klout profile))))
+				(klout-widget profile)
 				(a :href (cell= (:bio profile))
 					(div :class "ui tiny bio button" "Download Bio")))))
 
