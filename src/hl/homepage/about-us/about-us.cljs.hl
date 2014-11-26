@@ -225,10 +225,10 @@
 (defn social-icons [profile]
 	[
 		(if (:linkedin profile)
-			(a :href (:linkedin profile)
+			(a :href (:linkedin profile) :target "_blank"
 				(i :class "linkedin icon")))
 		(if (:twitter profile)
-			(a :href (str "http://twitter.com/" (:twitter profile))
+			(a :href (str "http://twitter.com/" (:twitter profile)) :target "_blank"
 				(i :class "twitter icon")))
 	])
 
