@@ -164,7 +164,7 @@
 (def board-team (map #(dissoc % :klout :bio-url) (map team [:stefan :cat :antoine :norman :stephen])))
 (def advisory-team (map team [:ralph :charles :anthony :jeffrey]))
 
-(def award-logos
+(def awards
 	[
 		{:logo "/images/about-us/awards/MEF2.png"}
 		{:logo "/images/about-us/awards/ME2.png"}
@@ -175,7 +175,7 @@
 		{:logo "/images/about-us/awards/digital-matters-music-matters2.png"}
 	])
 
-(def partner-logos
+(def partners
 	[
 		{:logo "/images/about-us/partners/Priori.png"}
 		{:logo "/images/about-us/partners/Opentracker.png"}
@@ -197,7 +197,7 @@
 				(h2 (cell= (:position profile)))
 				(div (cell= (:bio profile))))))
 
-(defn call-bio [profile]
+(defn show-bio [profile]
 	(reset! current-bio profile)
 	(.modal (js/jQuery "#bio.modal") "show")
 )
@@ -234,9 +234,9 @@
 		(if (:klout profile) (klout-widget profile))
 	])
 
-(defn profile-tile [profile]
+(defn team-member [profile]
 	(div :class "profile column"
-		(a :on-click #(call-bio profile)
+		(a :on-click #(show-bio profile)
 			(img :class "circular ui image" :src (cell= (:image profile))))
 		(div :class "info-labels"
 			(label :class "name" (text (:name profile))))
@@ -264,7 +264,7 @@
 	(section :id id :class "ui five column doubling grid "
 		(h2 :class "ui header" title)
 		(loop-tpl :bindings [profile members]
-			(profile-tile @profile))))
+			(team-member @profile))))
 
 (defn partner [logo]
 	(div :class "column"
@@ -274,7 +274,7 @@
 	(section :id "partners"
 		(h2 :class "ui header" "Our Partners")
 		(div :class "ui three column doubling grid"
-		(loop-tpl :bindings [prt partner-logos] (partner prt)))
+		(loop-tpl :bindings [prt partners] (partner prt)))
 		(a :href "https://i2a.exiconglobal.com/#!node-developers-sign-up"
 			(div :class "ui tiny button" "Developers"))))
 
@@ -286,7 +286,7 @@
 	(section :id "awards"
 		(h2 :class "ui header" "Awards and Associations")
 		(div :class "ui four column doubling grid"
-			(loop-tpl :bindings [logo award-logos] (award logo)))))
+			(loop-tpl :bindings [logo awards] (award logo)))))
 
 (layout/main :id "about-us"
 	:pagetitle "About Exicon | App Management & Analytics | Our Team"
