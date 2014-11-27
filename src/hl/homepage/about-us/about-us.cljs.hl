@@ -46,6 +46,7 @@
 				(p "He has led teams on projects around supply chain management (SCM) and electronic document interchange (EDI), Telecoms billing systems, IaaS platforms, ERP, Revenue Information Systems and the famous Octopus Smartcard system but it is really his work on Cloud SaaS platforms that has made him such a valuable member of the team.")
 				(p "Albert is able to take complex systems and break them down into the key components in order to bring the team onto the same page to gain consensus prior to the group making core business decisions.")
 			]
+			:linkedin "https://www.linkedin.com/in/albertkwong"
 		}
 
 		:tamas {
@@ -57,6 +58,7 @@
 				(p "His roles have included Senior Software Developer/Engineer, Software Architect, Chief Architect and Lead Programmer.")
 				(p "He is a huge asset to the company in terms of driving discipline in programming, new techniques (e.g. pair programming) as well as new technologies (Clojure, Datomic, Facebook React etc) all of which reinforce the Exicon value of “Always be learning”.")
 			]
+			:linkedin "https://hk.linkedin.com/in/TamasHerman"
 			:twitter "onetom"
 		}
 
@@ -130,7 +132,7 @@
 				(p "Charles has over 25 year of marketing experience with a track record in technology, including; 10 years at Saatchi & Saatchi Advertising working with clients such as Hewlett Packard; founding one of the first digital agencies, Saatchi Interactive in 1994; and being one of the UK’s internet pioneers co-founding a Pan European online retailer – Pets Pyjamas in 1998.")
 				(p "Since the early internet years Charles has been an investor in early stage technology firms and now co-owns a private fund specialising in this sector providing capital and advice on commercialisation of new technologies.")
 			]
-			:linked "http://uk.linkedin.com/pub/charles-fallon/15/a13/98"
+			:linkedin "https://www.linkedin.com/pub/charles-fallon/15/a13/98"
 		}
 
 		:anthony {
