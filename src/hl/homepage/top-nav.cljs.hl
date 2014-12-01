@@ -37,7 +37,7 @@
 	[
 	{ :id :features :name "Packages" :submenu features-submenu-items }
 	{ :id :pricing :name "Pricing" :url "/appboard/pricing" }
-	{ :id :blog :name "Blog" :url "/corp/" }
+	{ :id :blog :name "Blog" :url "http://blog.exiconglobal.com/corp/" }
 	{ :id :resources :name "Resources" :submenu resources-submenu-items}
 	])
 

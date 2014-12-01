@@ -2,9 +2,14 @@
 	margin-bottom: 3em;
 }
 
-#about-us .management.column {
+#about-us .profile.column {
 	position: relative;
 	height: 280px;
+}
+
+#about-us .profile.column img {
+	margin: 0 auto;
+	text-align: center;
 }
 
 #board-team .column{
@@ -13,11 +18,6 @@
 
 #board-team {
 	margin-top: 4rem;
-}
-
-#about-us .management.column img {
-	margin: 0 auto;
-	text-align: center;
 }
 
 #about-us .social-media-icons{
@@ -47,29 +47,32 @@
 #about-us .bio.button{
 margin-top: 1em;
 }
-.twitter.icon{
+#about-us .twitter.icon{
 	color:#00bfff;
+	font-size: 1.5em;
 }
-.linkedin.icon{
+
+#about-us .linkedin.icon{
 	color:#035880;
+	font-size: 1.5em;
 }
 .social-media-icons .icon{
 	cursor:pointer;
 }
 
 label.klout-score{
-cursor: pointer;
-border: solid 1px orange;
-padding-right: 6px;
-display: inline;
-padding-top: 2px;
-padding-bottom: 3px;
-border-top-right-radius: 3px;
-border-bottom-right-radius: 3PX;
-padding-left: 4px;
-font-weight: 500;
-font-size: 0.95em;
-margin-left: -1px;
+	cursor: pointer;
+	border: solid 1px orange;
+	padding-right: 6px;
+	display: inline;
+	padding-top: 2px;
+	padding-bottom: 3px;
+	border-top-right-radius: 3px;
+	border-bottom-right-radius: 3PX;
+	padding-left: 4px;
+	font-weight: 500;
+	font-size: 0.95em;
+	margin-left: -1px;
 }
 
 .award.column img{
@@ -99,15 +102,15 @@ margin-left: -1px;
 	text-align: center;
 }
 
-#bio-popup-box h1{
+#bio.modal h1{
 	font-size: 1.4em;
 }
 
-#bio-popup-box h2{
+#bio.modal h2{
 	font-size: 0.7em;
 }
 
-#bio-popup-box p{
+#bio.modal p{
 	font-size: 0.6em;
 }
 
@@ -116,7 +119,7 @@ margin-left: -1px;
 	#about-us #board-team {
 		margin-top: 0px;
 	}
-	#about-us .management.column {
+	#about-us .profile.column {
 		width: 30%;
 	}
 
