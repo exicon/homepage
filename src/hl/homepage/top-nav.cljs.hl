@@ -16,7 +16,7 @@
 ])
 
 (def resources-submenu-items [
-	{ :id :starter :name "Reports" :url "/our-products/industry-updates/"}
+	{ :id :starter :name "Reports" :url "/reports/"}
 	{ :id :challenge :name "Newsletters" :url "/newsletters/"}
 	{ :id :dominator :name "Videos" :url "/videos/"}
 	{ :id :amplifier :name "Presentations" :url "/presentations/"}
