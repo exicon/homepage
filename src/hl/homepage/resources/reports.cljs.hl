@@ -3,6 +3,13 @@
 		[homepage.layout :as layout]))
 
 (def reports-list [
+		{
+	:title "Mobile Ecosystem"
+	:detail "Check out the 'Mobile Ecosystem' infographic."
+	:image "/images/reports/Mobile-Ecosystem.png"
+	:link "/report-download/mobile-ecosystem"
+	}
+
 	{
 	:title "11 Signs of a Poorly Planned App"
 	:detail "It's sad to see apps sitting alone in an app store, with only a few dozen downloads to their name. We know that with a little bit of help, they could be so much better."
