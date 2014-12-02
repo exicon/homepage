@@ -4,7 +4,7 @@
 
 (def reports-list [
 	{
-	:title "11 Reasons"
+	:title "11 Signs of a Poorly Planned App"
 	:detail "It's sad to see apps sitting alone in an app store, with only a few dozen downloads to their name. We know that with a little bit of help, they could be so much better."
 	:image "/images/reports/Eleven-Reasons.png"
 	:link "/report-download/eleven-reasons"
@@ -25,7 +25,7 @@
 	}
 
 	{
-	:title "Wearables"
+	:title "Wearables Landscape"
 	:detail "We Have uncovered some starting statistics that can help you understand the burgeoning wearable landscape and make sure your strategy is working for you."
 	:image "/images/reports/Wearables.png"
 	:link "/report-download/wearables"
@@ -246,12 +246,12 @@
 
 
 (layout/main :id "reports"
-	:pagetitle "Reports"
-	:pagedescription "Reports"
+	:pagetitle "InfoPorn"
+	:pagedescription "InfoPorn"
 	(section :class "ui one column full-width-container"
 		(div  :id "page-title" :class "center aligned row"
 			(div :class "column"
-				(h1 "Reports")))
+				(h1 "InfoPorn")))
 	)
 
 	(reports-options-section)
