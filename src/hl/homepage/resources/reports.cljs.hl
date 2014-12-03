@@ -4,6 +4,13 @@
 
 (def reports-list [
 	{
+	:title "Mobile Ad Spend"
+	:detail "Why should your brand invest in Mobile Marketing in 2014? Check out the Infographic."
+	:image "/images/reports/Mobile-Ad-Spend.png"
+	:link "/report-download/mobile-ad-spend"
+	}
+
+	{
 	:title "The Power of APIs"
 	:detail "Everyone is talking about data but a lot of people think about data in a “straight line” going from where it is generated to where it is recorded."
 	:image "/images/reports/The-Power-Of-APIs.png"
