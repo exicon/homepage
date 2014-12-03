@@ -3,9 +3,16 @@
 		[homepage.layout :as layout]))
 
 (def reports-list [
-		{
+	{
+	:title "The Power of APIs"
+	:detail "Everyone is talking about data but a lot of people think about data in a “straight line” going from where it is generated to where it is recorded."
+	:image "/images/reports/The-Power-Of-APIs.png"
+	:link "/report-download/the-power-of-apis"
+	}
+
+	{
 	:title "Mobile Ecosystem"
-	:detail "Check out the 'Mobile Ecosystem' infographic."
+	:detail "App Creation is a complicated business because there are so many different parties involved."
 	:image "/images/reports/Mobile-Ecosystem.png"
 	:link "/report-download/mobile-ecosystem"
 	}
