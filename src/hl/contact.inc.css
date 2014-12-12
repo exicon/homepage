@@ -1,0 +1,30 @@
+#office-list .SF {
+	 background-image: url('/images/contact/contact-SF-2.png');
+	 background-repeat: no-repeat;
+	 background-size: 97%;
+	 padding: 25px;
+}
+
+#office-list .HK {
+	 background-image: url('/images/contact/contact-HK-2.png');
+	 background-repeat: no-repeat;
+	 background-size: 97%;
+	 padding: 25px;
+}
+
+#office-list .LN {
+	 background-image: url('/images/contact/contact-LN-2.png');
+	 background-repeat: no-repeat;
+	 background-size: 97%;
+	 padding: 25px;
+}
+
+#office-list .office-box {
+	height: 300px;
+	margin-bottom: 50px;
+}
+
+.office-box p{
+	font-size: 18px;
+	font-weight: 300;
+}

@@ -6,10 +6,10 @@
 			(div :class "column"
 				(ul
 					(li :class "header" "Company")
-					(li (a :href "/about-us/" "About Us"))	; FIXME old link was /about-us/
-					(li (a :href "/customers.html" "Customers"))
-					(li (a :href "/news/" "Media & Press"))	; FIXME migrate
-					(li (a  :href "/company/contact/" "Contact Us"))))	; FIXME migrate
+					(li (a :href "/about-us/" "About Us"))
+					(li (a :href "/customers/" "Customers"))
+					(li (a :href "/news/" "Media & Press"))
+					(li (a  :href "/company/contact/" "Contact Us"))))
 			(div :class "column"
 				(ul
 					(li :class "header" "Products")

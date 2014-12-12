@@ -1,0 +1,70 @@
+(page "company/contact/index.html"
+	(:require
+		[homepage.layout :as layout]))
+
+(def office-list [
+	{
+	:country "SF"
+	:address "Suite 2710, 101 California Street, San Francisco CA 94111, U.S.A."
+	:phone "T	+1 650 283 8651"
+	:email "info@exiconglobal.com"
+	}
+
+	{
+	:country "HK"
+	:address "Wilson House, Suite 302, 19 Wyndham St Central, Hong Kong."
+	:phone "T	+852 2167 8311"
+	:email "info@exiconglobal.com"
+	}
+
+	{
+	:country "LN"
+	:address "Tech City, 228 Whitechapel Road, London E1 1BJ, United Kingdom."
+	:phone ""
+	:email "info@exiconglobal.com"
+	}
+]
+)
+
+(defn office-options [opts]
+	(div :class "left aligned column office-box" :do-class (cell= (:country opts))
+		(p :class "office-address" (text (:address opts)))
+		(p :class "office-phone" (text (:phone opts)))
+		(p :class "office-email" "E " (a :href "mailto:info@exiconglobal.com" (text (:email opts))))
+	)
+)
+
+(defn office-options-section []
+	(section
+		:id "office-list"
+		:class "full-width-container"
+		(div :class "ui column page grid"
+				(h1 "Contact Us"))
+		(div :class "ui three column doubling page grid"
+			(loop-tpl :bindings [opt office-list]
+			(office-options opt))
+		)
+	)
+)
+
+
+(layout/main :id "contact"
+	:pagetitle "Videos | Mobile | Apps | AppBoard"
+	:pagedescription "Watch Videos About Mobile, Apps, APIs & Developers. Oh, And The Exicon AppBoard!"
+	(section :class "ui one column full-width-container"
+		(div  :id "page-title" :class "center aligned row"
+			(div :class "column"
+				(h1 "Contact Us")))
+	)
+
+	(section :class "ui one column page grid"
+		(div :id "page-subtitle" :class "left aligned row"
+			(div :class "column"
+				(h2 "Our Locations")
+			)
+		)
+	)
+
+	(office-options-section)
+
+)
