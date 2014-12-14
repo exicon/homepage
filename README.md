@@ -24,7 +24,7 @@ transmited to the client. But you should change that to what you want.
 
 ## License
 
-Copyright © 2014, **Your Name Goes Here**
+Copyright © 2014, **Excion Ltd**
 
 [1]: https://github.com/tailrecursion/boot
 [2]: https://github.com/technomancy/leiningen
