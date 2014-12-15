@@ -36,7 +36,7 @@
 			(div :class "center aligned column"
 				(a :id "video-a" :href "#/play-video"
 					:click show-main-video
-					(img :class "video-btn" :src "images/play-btn-normal.png"))
+					(img :class "video-btn" :src "images/play-btn-normal.png" :onclick "ga('send', 'event', 'video', 'play', 'home')"))
 				(main-video-box)))))
 
 (def lorem "Lorem ipsum dolor sit amet,
