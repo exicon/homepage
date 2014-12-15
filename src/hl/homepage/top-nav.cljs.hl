@@ -82,8 +82,11 @@
 						(signup-and-login) )
 					(submenu active-submenu) ) )
 			)
-					(div :id "get-in-touch" )
+
 	)
 )
+
+
+
 
 

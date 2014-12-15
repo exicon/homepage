@@ -9,6 +9,7 @@
 (if (env? :development)
 	(reload-all 1000))
 
+
 (defelem main [{:keys [pagetitle pagedescription pagekeywords] :as attrs} content]
 	(html
 		(head
@@ -18,6 +19,10 @@
 			(link :href "/semantic.css" :rel "stylesheet"))
 		(body
 			(top-nav/top-nav)
+
+			(a :href "/company/contact-manager/" (div :id "get-in-touch"))
+
+
 			(div (merge {:class "content"}
 				(dissoc attrs :pagetitle :pagedescription :pagekeywords))
 				content)

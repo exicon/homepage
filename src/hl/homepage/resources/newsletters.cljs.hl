@@ -3,7 +3,36 @@
 		[homepage.layout :as layout]))
 
 (def newsletters-list [
-			{
+		{
+	:title "Did you almost miss out on this?"
+	:issue "Issue #024 December 05, 2014"
+	:image "/images/newsletters/issue_24.png"
+	:url "http://us3.campaign-archive1.com/?u=59165e464834675ada250903e&id=d79d571310&e=[UNIQID]"
+	}
+
+		{
+	:title "IoT... Are you ready for the future?"
+	:issue "Issue #023 November 28, 2014"
+	:image "/images/newsletters/issue_23.png"
+	:url "http://us3.campaign-archive2.com/?u=59165e464834675ada250903e&id=74625148d2&e=[UNIQID]"
+	}
+
+		{
+	:title "2,300 Apps by 41 Auto Brands. Too many or just right?"
+	:issue "Issue #022 November 20, 2014"
+	:image "/images/newsletters/issue_22.png"
+	:url "http://us3.campaign-archive1.com/?u=59165e464834675ada250903e&id=a42f5366d5&e=[UNIQID]"
+	}
+
+
+		{
+	:title "How Mobile Apps Change Our Lives"
+	:issue "Issue #021 November 13, 2014"
+	:image "/images/newsletters/issue_21.png"
+	:url "http://us3.campaign-archive2.com/?u=59165e464834675ada250903e&id=fbf081a9bf&e=[UNIQID]"
+	}
+
+		{
 	:title "How to blow 300M on winning customers"
 	:issue "Issue#020 November 06, 2014"
 	:image "/images/newsletters/issue_20.png"

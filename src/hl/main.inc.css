@@ -245,12 +245,11 @@ line-height: 1em;
 		width: 50%}
 }
 
-/* Right Navi Get in touch */
-#get-in-touch {
+#get-in-touch	{
 	cursor: pointer;
 	width: 119px;
 	height: 113px;
-	background-image: url(/images/header/contact-us.png);
+	background-image: url('/images/header/contact-us.png');
 	transition: background-color 0.4s ease-out;
 	position: fixed;
 	z-index: 18;
@@ -261,7 +260,7 @@ line-height: 1em;
 
 /* Intro Section*/
 #intro{
-	background: url(/images/hero-image.jpg) center no-repeat;
+	background: url('/images/hero-image.jpg') center no-repeat;
 	background-color: #F0F0EE;
 	height: 600px;
 }
@@ -288,6 +287,31 @@ line-height: 1em;
 #intro h2{
 	font-size: 27px;
 	font-weight: 300;
+}
+
+
+#get-in-touch	{
+	cursor: pointer;
+	width: 119px;
+	height: 113px;
+	background-image: url('/images/header/contact-us.png');
+	transition: background-color 0.4s ease-out;
+	position: fixed;
+	z-index: 18;
+	right: 0px;
+	top: 140px;
+}
+
+#subscribe-stick {
+    cursor: pointer;
+    width: 143px;
+    height: 62px;
+    background: url('/images/header/subscribe-btn.png');
+    transition: background-color 0.4s ease-out;
+    position: fixed;
+    z-index: 18;
+    right: 0px;
+    top: 260px;
 }
 
 /* Page Title */
