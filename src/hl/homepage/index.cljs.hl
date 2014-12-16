@@ -4,9 +4,9 @@
 		[homepage.common :as common]))
 
 (defc route @(route-cell ""))
+(route-cell route #(reset! route %))
 
-(defn video-page? []
-	(= route "#/play-video"))
+(defn video-page? [] (= @route "#play-video"))
 
 (defc main-video-src "")
 (def main-video-link "//www.youtube.com/embed/Yiq8tNlH_7I?autoplay=1")
@@ -18,11 +18,14 @@
 (defn hide-main-video []
 	#(reset! main-video-src ""))
 
+(with-init!
+	(if (video-page?) (show-main-video)))
+
 (defn main-video-box []
 	(div :id "main-video" :class "ui modal"
 		(i :class "close icon" :on-click (hide-main-video))
-		(iframe :width "100%" :height "480" :frameboarder "0"
-			:src (cell= (if video-page? main-video-src ""))
+		(iframe :src main-video-src
+			:width "100%" :height "480" :frameboarder "0"
 			:allowfullscreen "" :webkitallowfullscreen "" :mozallowfullscreen "")))
 
 (defn intro []
@@ -34,9 +37,10 @@
 				(a :href "https://app.exiconglobal.com/?package=starter#!/registration/"
 					(div :class "ui lightExicon button" "Sign me up for a FREE account")))
 			(div :class "center aligned column"
-				(a :id "video-a" :href "#/play-video"
-					:click show-main-video
-					(img :class "video-btn" :src "images/play-btn-normal.png" :onclick "ga('send', 'event', 'video', 'play', 'home')"))
+				(a :href "#play-video" :click show-main-video
+					(img :class "video-btn"
+						:src "images/play-btn-normal.png"
+						:click "ga('send', 'event', 'video', 'play', 'home')"))
 				(main-video-box)))))
 
 (def lorem "Lorem ipsum dolor sit amet,
@@ -270,19 +274,3 @@ Management."})
 	(packages-section)
 	(clients)
 	(testimonials-section))
-
-
-(defn doc-ready-handler []
-  (let[ ready-state (. js/document -readyState)]
-    (if (= "complete" ready-state)
-      (.click (js/jQuery "#video-a")))))
-
-(defn on-doc-ready []
-  (aset js/document "onreadystatechange" doc-ready-handler ))
-
-(route-cell route #(do
-	(reset! route %)
-	))
-
-(with-init!
-	(if (video-page?) (on-doc-ready)))
