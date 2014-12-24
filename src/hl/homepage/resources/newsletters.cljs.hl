@@ -3,6 +3,21 @@
 		[homepage.layout :as layout]))
 
 (def newsletters-list [
+
+		{
+	:title "Your weekly shot of Mobile and App news"
+	:issue "Issue #026 December 22, 2014"
+	:image "/images/newsletters/issue_26.png"
+	:url "http://us3.campaign-archive1.com/?u=59165e464834675ada250903e&id=d1286c9a0c"
+	}	
+
+		{
+	:title "Exicon's Holiday Gift to You"
+	:issue "Issue #025 December 16, 2014"
+	:image "/images/newsletters/issue_25.png"
+	:url "http://us3.campaign-archive2.com/?u=59165e464834675ada250903e&id=25c88e074d"
+	}
+
 		{
 	:title "Did you almost miss out on this?"
 	:issue "Issue #024 December 05, 2014"
