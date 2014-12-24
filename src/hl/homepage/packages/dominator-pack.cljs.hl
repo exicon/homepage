@@ -14,8 +14,8 @@
 	:content [
 		(p "Increase the chances of your app being")
 		(ul
-			(li "Downloaded by up to 200% more")
-			(li "Featured by up to 20 times more"))
+			(li "Downloaded by up to " (span :class "lightExicon text" (b "200%")) " more")
+			(li "Featured by up to " (span :class "lightExicon text" (b "20")) " times more"))
 		(common/registration-button :dominator "Start for free now")
 		]
 	})
@@ -26,29 +26,32 @@
 	:icon "/images/icons/marketplace.png"
 	:title "Marketplace"
 	:content [
-		(p "Increase the discoverability of your Apps and APIs across your customers,
-			partners, suppliers and your organization with your own white labelled marketplace
-			accessible from your own company website showcasing your own products.")
+		(p "Stand out from the crowd")
+		(ul
+			(li "Increase the discoverability of your Apps and APIs across your customers,
+			partners, suppliers and your organization with your own white labelled marketplace")
+			(li "Accessible from " (em "your own") " company website showcasing " (em "your own") " products"))
 		(common/registration-button :dominator "Start for free now")
 		]
 	})
 
 (def distribution-options [
 	{
-		:title "One-Off"
-		:subtitle "Single App Distribution"
+		:title "Try It Once - Single App Distribution"
+		:subtitle "(I’m not a fan of commitment)"
 		:price "US$2500"
 		:period ""
 		:button "Start for free now"
 		:link "/company/contact/"
+		:note (p " ")
 	}
 	{
 		:title "Dominator Pack"
-		:subtitle "Distribution onto 20 app stores"
-		:price "US$159"
-		:period " per app*/ month"
+		:subtitle "Including distribution onto 20 app stores"
+		:price "US$159*"
+		:period ""
 		:button "Start for free now"
-		:note "* up to 50 apps"
+		:note (p "*per app/month for 1 to 50 apps")
 		:link (common/registration-link :dominator)
 	}
 	])
@@ -63,7 +66,7 @@
 				(span :class "default text" (text (:period opts))) )
 			(a :href (cell= (:link opts))
 				(div :class "ui lightExicon button" (text (:button opts))))
-			(p (text (:note opts))))))
+			(p (cell= (:note opts))))))
 
 (defn feature [f]
 	(if (= (:image-side f) :left)
@@ -97,7 +100,9 @@
 	(section :id "how-to-find" :class "ui one column page grid"
 		(div :id "page-subtitle" :class "center aligned row"
 			(div :class "column"
-				(h2 "How is your target audience going to find your apps?") ) )
+				(h2 "How is your target audience going to find your apps?")
+				(h3 "All the amazing features of the Starter and Challenger Packs " 
+					(span :class "lightExicon text" "PLUS")" the following features") ) )
 
 		(feature @app-store-distribution)
 		(feature @marketplace)
