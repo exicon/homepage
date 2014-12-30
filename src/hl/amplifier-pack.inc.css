@@ -28,11 +28,7 @@
 	background-color: #f0f0ee;
 }
 
-#amplifier-pack #page-details {
-	padding-bottom: 35px;
-}
-
-#amplifier-pack #page-details h2 {
+#amplifier-pack .page-details h2 {
 	font-size: 1.8em;
  line-height: 43px;
  color: #333333;
@@ -41,14 +37,14 @@
 	margin-top: 0px;
 }
 
-#amplifier-pack #page-details p {
+#amplifier-pack .page-details p {
 	font-size: 1.2em;
  line-height: 30px;
  color: #333333;
  font-weight: 100;
 }
 
-#amplifier-pack #page-details ul li{
+#amplifier-pack .page-details ul li{
 	font-size: 1.2em;
 	line-height: 30px;
 	color: #333333;

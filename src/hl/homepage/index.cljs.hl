@@ -29,7 +29,7 @@
 			:allowfullscreen "" :webkitallowfullscreen "" :mozallowfullscreen "")))
 
 (defn intro []
-	(section :id "intro" :class "full-width-container"
+	(section :class "intro full-width-container"
 		(div :class "ui two column page grid"
 			(div :class "right floated column intro-right-info"
 				(h1 "Get a grip on your apps" (br) "with the AppBoard")
@@ -79,13 +79,15 @@ Management."})
 
 (defn quotes []
 	[
-	(section :id "customer-quote-list" :class "ui four column doubling page grid"
+	(section :class "customer-quote-list ui four column doubling page grid"
+    (div :id "customer-quote-list")
 		(customer-quote q1)
 		(customer-quote q2)
 		(quote-column q3)
 		(quote-column q4))
 
-	(section :id "imaginary-quote" :class "ui one column center aligned page grid"
+	(section :class "quote ui one column center aligned page grid"
+    (div :id "quote" :class "anchor" )
 		(div :class "eight wide column"
 			(div :class "ui center aligned raised segment" (h2 (i :class "quote small left blue icon") "I thought we were doing well until we plugged our apps into the AppBoard." (i :class "quote small right blue icon"))(h3 :class "ui right aligned header" "Fortune 500 CEO"))))
 	]
@@ -198,7 +200,8 @@ Management."})
 )
 
 (defn features-section [feature-list]
-	(section :id "features"
+	(section :class "features"
+    (div :id "features" :class "anchor" )
 		(h2 :class "ui center aligned header" "Let the AppBoard give you real insight into your app portfolio")
 		(div :class "ui center aligned basic segment"
 			(common/registration-button :starter "Free Account Sign Up"))
@@ -231,9 +234,8 @@ Management."})
 	)
 
 (defn packages-section []
-	(section
-		:id "packages"
-		:class "full-width-container"
+	(section :class "packages full-width-container"
+    (div :id "packages" :class "anchor" )
 		(h2 :class "ui center aligned header"
 				"Hungry for more?")
 			(h4 :class "ui center aligned header"
@@ -250,14 +252,16 @@ Management."})
 			))
 
 (defn clients []
-	(section :id "clients" :class "ui one column page grid"
-	(div :class "center aligned column"
-		(h2 :class "ui center aligned header" "Clients")
-		(div :class "ui basic segment"
-			(img :src "images/clients.png" :alt "Exicon customers")))))
+	(section :class "clients ui one column page grid" 
+    (div :id "clients" :class "anchor" )
+  	(div :class "center aligned column"
+  		(h2 :class "ui center aligned header" "Clients")
+  		(div :class "ui basic segment"
+  			(img :src "images/clients.png" :alt "Exicon customers")))))
 
 (defn testimonials-section []
-	(section :id "testimonials" :class "full-width-container"
+	(section :class "full-width-container"
+  (div :id "testimonials" :class "anchor" )
 	(div :class "ui two column doubling page grid"
 		(h2 :class "ui center aligned header" "Interested in working with us? Check out our client testimonials below!")
 			(loop-tpl :bindings [tst testimonials]
@@ -268,7 +272,8 @@ Management."})
 	:pagetitle "Manage Your Apps | Exicon Cloud App Management AppBoard"
 	:pagedescription "Exicon AppBoard Is An App Management Platform That Helps SMEs & Enterprise Manage Their Mobile Apps Through Define, Build, Enage & Measure."
 	:pagekeywords "Manage Apps, Exicon, Cloud, App Management, AppBoard"
-	(intro)
+	:id "homepage"
+  (intro)
 	(quotes)
 	(features-section feature-list)
 	(packages-section)

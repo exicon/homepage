@@ -48,36 +48,36 @@
 	margin-right: 10px;
 }
 
-section#challenger{
+section.challenger{
 	background-color: #ebebeb;
 		padding: 2em;
 }
 
-#challenger h2{
+.challenger h2{
 	font-weight: 400;
 }
 
-#challenger h3{
+.challenger h3{
 	font-weight: 300;
 }
 
-#challenger p{
+.challenger p{
 	font-weight: 100;
 	font-size: 0.8em;
 }
 
-#challenger h4{
+.challenger h4{
 	font-weight: 400;
 	font-size: 1.5em;
 }
 
-#challenger .segment{
+.challenger .segment{
 	width: 80%;
 	margin: 0 auto;
 	padding: 2em;
 }
 
-#challenger .segment .ui.button{
+.challenger .segment .ui.button{
 	width: 80% !important;
 	max-width: 14em;
 }

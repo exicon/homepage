@@ -1,27 +1,28 @@
-
-section#distribution{
+section.distribution{
 	background-color: #ebebeb;
-		padding: 2em;
+	padding: 2em;
 }
-#distribution h2{
+
+.distribution h2{
 	font-weight: 400;
 }
 
-#distribution h3{
+.distribution h3{
 	font-weight: 300;
 }
 
-#distribution h4{
+.distribution h4{
 	font-weight: 400;
 	font-size: 1.5em;
 }
-#distribution .segment{
+
+.distribution .segment{
 	width: 80%;
 	margin: 0 auto;
 	padding: 2em;
 }
 
-#distribution .segment .ui.button{
+.distribution .segment .ui.button{
 	width: 80% !important;
 	max-width: 14em;
 }

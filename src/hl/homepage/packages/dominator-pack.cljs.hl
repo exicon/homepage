@@ -11,6 +11,7 @@
 	:screenshot "/images/app-distribution.png"
 	:icon "/images/packages/dominatorpack.png"
 	:title "App Store Distribution"
+  :anchor "app-store-distribution"
 	:content [
 		(p "Increase the chances of your app being")
 		(ul
@@ -25,6 +26,7 @@
 	:screenshot "/images/Marketplace.png"
 	:icon "/images/icons/marketplace.png"
 	:title "Marketplace"
+  :anchor "marketplace"
 	:content [
 		(p "Stand out from the crowd")
 		(ul
@@ -71,16 +73,18 @@
 (defn feature [f]
 	(if (= (:image-side f) :left)
 
-		(div :id "page-details" :class "middle aligned two column doubling row "
-			(div :class "column"
+		(div :class "page-details middle aligned two column doubling row "
+			(div :id (cell= (:anchor f)) :class "anchor")
+      (div :class "column"
 				(img :src (cell= (:screenshot f))))
 			(div :class "column"
 				(img :class "features-icon" :src (cell= (:icon f)))
 				(h2 (text (:title f)))
 				(div (cell= (:content f)))))
 
-		(div :id "page-details" :class "middle aligned two column doubling row "
-			(div :class "column"
+		(div :class "page-details middle aligned two column doubling row "
+			(div :id (cell= (:anchor f)) :class "anchor")
+      (div :class "column"
 				(img :class "features-icon" :src (cell= (:icon f)))
 				(h2 (text (:title f)))
 				(div (cell= (:content f))))
@@ -107,7 +111,8 @@
 		(feature @app-store-distribution)
 		(feature @marketplace)
 	)
-	(section :id "distribution":class "full-width-container"
+	(section :class "distribution full-width-container"
+    (div :id "distribution" :class "anchor")
 		(div :class "ui two column doubling page grid"
 			(loop-tpl :bindings [opt distribution-options]
 				(distribution-tile opt) ) )

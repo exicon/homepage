@@ -1,25 +1,25 @@
 #page-title h1 {
-	font-size: 2.5em;
-	padding-top: 80px;
-	margin: 0;
-	font-size: 45px;
- color: #333333;
- font-weight: 300;
- text-align: center;
+  font-size: 2.5em;
+  padding-top: 80px;
+  margin: 0;
+  font-size: 45px;
+  color: #333333;
+  font-weight: 300;
+  text-align: center;
 }
 
 #page-subtitle h2 {
-	font-size: 1.8em;
- line-height: 50px;
- color: #333333;
- font-weight: 400;
+  font-size: 1.8em;
+  line-height: 50px;
+  color: #333333;
+  font-weight: 400;
 }
 
 #page-subtitle h3 {
-	font-size: 1.4em;
- line-height: 30px;
- color: #333333;
- font-weight: 200;
+  font-size: 1.4em;
+  line-height: 30px;
+  color: #333333;
+  font-weight: 200;
 }
 
 #page-title {
@@ -28,27 +28,28 @@
 	background-color: #f0f0ee;
 }
 
-#page-details {
-	padding-bottom: 35px;
+.page-details {
+	padding-bottom: 35px!important;
+  padding-top: 50px!important;
 }
 
-#page-details h2 {
-	font-size: 1.8em;
- line-height: 43px;
- color: #333333;
- font-weight: 400;
- margin-bottom: 30px;
-	margin-top: 0px;
+.page-details h2 {
+  font-size: 1.8em;
+  line-height: 43px;
+  color: #333333;
+  font-weight: 400;
+  margin-bottom: 30px;
+  margin-top: 0px;
 }
 
-#page-details p {
-	font-size: 1.2em;
- line-height: 30px;
- color: #333333;
- font-weight: 100;
+.page-details p {
+  font-size: 1.2em;
+  line-height: 30px;
+  color: #333333;
+  font-weight: 100;
 }
 
-#page-details ul li{
+.page-details ul li{
 	font-size: 1.2em;
 	line-height: 30px;
 	color: #333333;

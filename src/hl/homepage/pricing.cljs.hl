@@ -226,8 +226,6 @@
 		)
 	) )
 
-
-
 (layout/main :id "pricing"
 	:pagetitle "Product Pricing | Analytics & App Management | Exicon"
 	:pagedescription "Pricing For Exicon's App Management & Logistics Platform That Scales With Your App Portfolio, Analytics, Distribution & API Management."

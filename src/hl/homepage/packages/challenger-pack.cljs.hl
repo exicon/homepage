@@ -8,6 +8,7 @@
 
 (defc competitors {
 	:screenshot "/images/competitor-insights-screenshots.png"
+  :anchor "competitors"
 	:content [
 		(p "Know Where You Stand")
 		(ul
@@ -27,7 +28,8 @@
 	})
 
 (defn feature [f]
-	(div :id "page-details" :class "middle aligned two column doubling row "
+	(div :class "page-details middle aligned two column doubling row"
+    (div :id "page-details" :class "anchor" )
 		(div :class "column"
 			(div (cell= (:content f))) )
 		(div :class "column"
@@ -102,13 +104,14 @@
 
 (defn challenger-option-section []
 	(section
-		:id "challenger"
-		:class "full-width-container"
+		:class "challenger full-width-container"
 		(div :class "ui two column doubling page grid"
+      (div :id "challenger" :class "anchor")
 			(loop-tpl :bindings [opt challenger-options]
 			(challenger-option-tile opt))
-		)
-	) )
+	  ) 
+  )
+)
 
 (layout/main :id "challenger-pack"
 	:pagetitle "Challenger | Competitive Benchmarking & App Analytics"
@@ -125,16 +128,18 @@
 				(h2 "How are your apps performing against current and potential competitors?")
 			))
 		(feature @competitors)
-		(div :id "page-subtitle" :class "center aligned row"
+		(div :class "page-subtitle center aligned row"
 			(div :class "column"
 				(h2 "You can zero in with “AppScans” by")
 			))
-		(div :id "page-snapshots" :class "top aligned three center column doubling row "
+		(div :class "page-snapshots top aligned three center column doubling row"
+      (div :id "snapshots" :class "anchor")
 			(snapshots @by-brand)
 			(snapshots @by-country)
 			(snapshots @by-industry)
 		)
-		(div :id "page-details" :class "center aligned row"
+		(div :class "page-details center aligned row"
+      (div :id "insights" :class "anchor")
 			(div :class "column"
 				(p "Insights are aggregated from a proprietary statistical model, using publicly
 					available App Store data and analytics of opt-in partners."(br)"Your AppBoard data is

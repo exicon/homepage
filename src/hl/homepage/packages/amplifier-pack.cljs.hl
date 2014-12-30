@@ -10,6 +10,7 @@
 	:screenshot "/images/api-mgt-screenshot.png"
 	:icon "/images/icons/api-mgt.png"
 	:title "API Management"
+  :anchor "api-management"
 	:content [
 		(p " The Internet's easiest API Management Platform.")
 		(ul
@@ -24,6 +25,7 @@
 	:screenshot "/images/dev-ecosystem-screenshot.png"
 	:icon "/images/icons/dev-ecosystem.png"
 	:title "Development Ecosystem"
+  :anchor "development-ecosystem"
 	:content [
 		(p "Whether you are looking for a very specific development skill set to create your API or
 			to build a group of developers around your API, access our network of 4000+ software houses.")
@@ -34,6 +36,7 @@
 	:screenshot "/images/manager-console-screenshot.png"
 	:icon "/images/icons/manager-console.png"
 	:title "Manager Console"
+  :anchor "manager-console"
 	:content [
 		(p "Who in your team is really getting a return from the apps they have created and managed?
 			Understand who in your team is performing best and why, so that you can share learnings with
@@ -45,7 +48,8 @@
 (defn feature [f]
 	(if (= (:image-side f) :left)
 
-		(div :id "page-details" :class "middle aligned two column doubling row "
+		(div :class "page-details middle aligned two column doubling row"
+      (div :id (cell= (:anchor f)) :class "anchor")
 			(div :class "column"
 				(img :src (cell= (:screenshot f))))
 			(div :class "column"
@@ -53,7 +57,8 @@
 				(h2 (text (:title f)))
 				(div (cell= (:content f)))))
 
-		(div :id "page-details" :class "middle aligned two column doubling row "
+		(div :class "page-details middle aligned two column doubling row"
+      (div :id (cell= (:anchor f)) :class "anchor")
 			(div :class "column"
 				(img :class "features-icon" :src (cell= (:icon f)))
 				(h2 (text (:title f)))

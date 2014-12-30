@@ -106,7 +106,8 @@
 (defn customer [f]
 	(if (= (:image-side f) :left)
 
-		(div :id "page-details" :class "middle aligned two column doubling row "
+		(div :class "page-details middle aligned two column doubling row"
+      (div :id (cell= (:anchor f)) :class "anchor")
 			(div :class "column left-image"
 				(img :src (cell= (:screenshot1 f)))
 				(img :src (cell= (:screenshot2 f)))
@@ -126,7 +127,8 @@
 			)
 		)
 
-		(div :id "page-details" :class "middle aligned two column doubling row "
+		(div :class "page-details middle aligned two column doubling row"
+      (div :id (cell= (:anchor f)) :class "anchor")
 			(div :class "column"
 				(img :class "features-icon" :src (cell= (:icon f)))
 				(h2 (:title f))
