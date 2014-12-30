@@ -18,17 +18,19 @@
 (require '[tailrecursion.hoplon.boot :refer :all]
 	'[tailrecursion.castra.task :as c])
 
+(def server (c/castra-dev-server 'homepage.api :port 3003))
+
 (deftask development
 	"Build homepage for development."
 	[]
-	(comp (watch) (hoplon {:prerender false}) (c/castra-dev-server 'homepage.api :port 3003)))
+	(comp (watch) (hoplon {:prerender false}) server))
 
 (deftask dev-debug
 	"Build homepage for development with source maps."
 	[]
 	(comp (watch) (hoplon {:pretty-print true
 		:prerender false
-		:source-map true}) (c/castra-dev-server 'homepage.api)))
+		:source-map true}) server))
 
 (deftask production
 	"Build homepage for production."
