@@ -46,6 +46,7 @@
 		]
 	})
 
+
 (defc analytics {
 	:image-side :left
 	:screenshot "/images/analytics-screenshot.png"
@@ -122,7 +123,7 @@
 	:pagedescription "Starter Pack Is An Entry Tool For Those New To App Management, App Logistics & Analytics"
 	:pagekeywords "App Management, App Analytics"
 	(section :class "ui one column full-width-container"
-		(div  :id "page-title" :class "center aligned row"
+		(div :id "page-title" :class "center aligned row"
 			(div :class "column"
 				(h1 "Starter Pack")))
 	)
