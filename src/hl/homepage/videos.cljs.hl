@@ -1,8 +1,9 @@
 (page "videos/index.html"
 	(:require
-		[homepage.layout :as layout]))
+		[homepage.layout :as layout]
+		[clojure.string :refer [replace lower-case]]))
 
-(def videos-list [
+(defc video-list [
 	{
 	:title "The American Chamber of Commerce 2014"
 	:image "/images/videos/AmCham.png"
@@ -56,48 +57,50 @@
 	:image "/images/videos/mobile-matters.png"
 	:link "http://www.youtube-nocookie.com/embed/AFKOeOQ9k5U?autoplay=1"
 	}
-
 ])
 
-(defn call-video [opts vlink vtitle]
-	(reset! vtitle (:title opts))
-	(reset! vlink (:link opts))
-	(.modal (js/jQuery (str ".ui.modal")) "show")
-)
+(defc= video-list-with-hash
+	(let [
+		title-to-hash #(str "#" (-> % lower-case (replace #"[^A-Za-z0-9]+" "-")))
+		title-if-no-hash #(or (:hash %) (title-to-hash (:title %)))
+		with-some-hash #(assoc % :hash (title-if-no-hash %))]
+		(map with-some-hash video-list)))
 
-(defn videos-options [opts vlink vtitle]
+(defc route @(route-cell ""))
+(route-cell route #(reset! route %))
+(defc= current-video
+	(first (filter #(= (:hash %) route) video-list-with-hash)))
+
+(defn show-video-popup []
+	(.. (js/jQuery "#videos-popup-box.modal") (modal "show")))
+
+(with-init!
+	(if @current-video (show-video-popup)))
+
+(defn videos-options [video]
 	(div :class "column"
-		(a :on-click #(call-video opts vlink vtitle)
+		(a :href (cell= (:hash video)) :click #(show-video-popup)
 			(div :class "ui center aligned segment"
-				(h2 :class "videos-title" (text (:title opts)))
-				(div :class "videos-screenshot-box" (img :class "videos-screenshot" :src (cell= (:image opts))))
-			)
-		)
-	)
-)
+				(h2 :class "videos-title" (text (:title video)))
+				(div :class "videos-screenshot-box"
+					(img :class "videos-screenshot" :src (cell= (:image video))))))))
 
 (defn videos-options-section []
-	(let [vlink (cell "")
-							vtitle (cell "")]
-		(section :id "videos-list" :class "full-width-container"
-				(div :class "ui three column doubling page grid"
-					(loop-tpl :bindings [opt videos-list]
-						(videos-options @opt vlink vtitle))
-				)
+	(section :id "video-list" :class "full-width-container"
+			(div :class "ui three column doubling page grid"
+				(loop-tpl :bindings [video video-list-with-hash]
+					(videos-options video)))
 
-				(div :id "videos-popup-box" :class "ui modal"
-					(i :class "close icon" :on-click #(reset! vlink ""))
-					(div :class "header"
-						(h1 vtitle)
-						(div :class "video-frame"
-							(iframe :width "90%" :height "430px;" :src vlink
-							:frameboarder "0" :allowfullscreen "" :webkitallowfullscreen "" :mozallowfullscreen "")
-						)
-					)
-				)
-		)
-	)
-)
+			(div :id "videos-popup-box" :class "ui modal"
+				(i :class "close icon"
+					:click #(reset! route ""))
+				(div :class "header"
+					(h1 (text (:title current-video)))
+					(div :class "video-frame"
+						(iframe :width "90%" :height "430px;"
+							:src (cell= (:link current-video))
+							:frameborder "0" :allowfullscreen ""
+							:webkitallowfullscreen "" :mozallowfullscreen ""))))))
 
 (layout/main :id "videos"
 	:pagetitle "Videos | Mobile | Apps | AppBoard"
@@ -105,8 +108,5 @@
 	(section :class "ui one column full-width-container"
 		(div  :id "page-title" :class "center aligned row"
 			(div :class "column"
-				(h1 "Videos")))
-	)
-	(videos-options-section)
-)
-
+				(h1 "Videos"))))
+	(videos-options-section))
