@@ -16,6 +16,7 @@
 			(title pagetitle)
 			(meta :name "description" :content pagedescription)
 			(meta :name "keywords" :content pagekeywords)
+			(link :href "/images/favicon.ico" :rel "shortcut icon")
 			(link :href "/semantic.css" :rel "stylesheet"))
 		(body
 			(top-nav/top-nav)
