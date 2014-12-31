@@ -228,18 +228,6 @@ h2.ui.header, h3.ui.header, h4.ui.header{
 	width: 50%}
 }
 
-#get-in-touch	{
-	cursor: pointer;
-	width: 119px;
-	height: 113px;
-	background-image: url('/images/header/contact-us.png');
-	transition: background-color 0.4s ease-out;
-	position: fixed;
-	z-index: 18;
-	right: 0px;
-	top: 140px;
-}
-
 
 /* Intro Section*/
 .intro{
@@ -289,15 +277,43 @@ h2.ui.header, h3.ui.header, h4.ui.header{
 }
 
 #subscribe-stick {
-  cursor: pointer;
-  width: 143px;
-  height: 62px;
-  background: url('/images/header/subscribe-btn.png');
-  transition: background-color 0.4s ease-out;
-  position: fixed;
-  z-index: 18;
-  right: 0px;
-  top: 260px;
+	cursor: pointer;
+	width: 143px;
+	height: 62px;
+	background: url('/images/header/subscribe-btn.png');
+	transition: background-color 0.4s ease-out;
+	position: fixed;
+	z-index: 18;
+	right: 0px;
+	top: 260px;
+	display:none;
+}
+
+#subscribe-stick-layer, #subscribe-stick-form {
+	width: 239px;
+	height: 365px;
+	color: white;
+	/*background-image: url(/images/header/subscribe-sidebox.png);*/
+	position: fixed;
+	z-index: 18;
+	right: 0px;
+	top: 260px;
+	display:none;
+}
+
+#subscribe-stick-layer.show, #subscribe-stick-form.show, #subscribe-stick.show {
+	display:block;
+}
+
+#subscribe-stick-form p {
+	text-align: center;
+	margin: 0;
+}
+
+#subscribe-stick-layer {
+	background-color: black;
+	opacity: 0.4;
+	border-radius: 0.2em;
 }
 
 /* Page Title */

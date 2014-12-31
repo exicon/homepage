@@ -62,7 +62,7 @@
 (defc= video-list-with-hash
 	(let [
 		title-to-hash #(str "#" (-> % lower-case (replace #"[^A-Za-z0-9]+" "-")))
-		title-if-no-hash #(or (:hash %) (title-to-hash (:title %)))
+		title-if-no-hash #(if (:hash %) (:hash %) (title-to-hash (:title %)))
 		with-some-hash #(assoc % :hash (title-if-no-hash %))]
 		(map with-some-hash video-list)))
 
