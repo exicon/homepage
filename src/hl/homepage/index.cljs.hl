@@ -181,6 +181,27 @@ Management."})
 
 ])
 
+(def ux-list [
+	{
+		:icon "bar chart"
+		:statement
+			(p "of our customers said our work was good: the rest said it was Impressive")
+		:percentage 60
+	}
+	{
+		:icon "like"
+		:statement
+			(p "of our customers said we \"Overdelivered\"")
+		:percentage 40
+	}
+	{
+		:icon "thumbs up outline"
+		:statement
+			(p "of our respondents said they would recommend us to other companies")
+		:percentage 100
+	}
+	])
+
 (defn testimonial [tst]
 	(div :class "column"
 		(img :src (cell= (:image tst)))
@@ -252,28 +273,41 @@ Management."})
 			))
 
 (defn clients []
-	(section :class "clients ui one column page grid" 
+	(section :class "clients ui one column page grid"
     (div :id "clients" :class "anchor" )
   	(div :class "center aligned column"
   		(h2 :class "ui center aligned header" "Clients")
   		(div :class "ui basic segment"
   			(img :src "images/clients.png" :alt "Exicon customers")))))
 
+(defelem ux-statement [attrs kids]
+	(div :class "column"
+		(div :class "ui secondary segment"
+			(h1 :class "ui teal header"
+				(div :class "ui ribbon label"
+					(i :class (cell= (str (:icon attrs) " icon"))))
+				(div :class "content"
+					(text (str (:percentage attrs) "%"))))
+			(:statement attrs))))
+
 (defn testimonials-section []
 	(section :class "full-width-container"
-  (div :id "testimonials" :class "anchor" )
-	(div :class "ui two column doubling page grid"
-		(h2 :class "ui center aligned header" "Interested in working with us? Check out our client testimonials below!")
-			(loop-tpl :bindings [tst testimonials]
-				(testimonial tst))
-)))
+		(div :id "testimonials" :class "anchor" )
+		(div :class "ui two column doubling page grid"
+			(h2 :class "ui center aligned header"
+				"Interested in working with us? Check out our client testimonials below!")
+			(div :id "ux-statements" :class "three column row"
+				(loop-tpl :bindings [ux ux-list]
+					(ux-statement @ux))
+				(loop-tpl :bindings [tst testimonials]
+					(testimonial tst))))))
 
 (layout/main
 	:pagetitle "Manage Your Apps | Exicon Cloud App Management AppBoard"
 	:pagedescription "Exicon AppBoard Is An App Management Platform That Helps SMEs & Enterprise Manage Their Mobile Apps Through Define, Build, Enage & Measure."
 	:pagekeywords "Manage Apps, Exicon, Cloud, App Management, AppBoard"
 	:id "homepage"
-  (intro)
+	(intro)
 	(quotes)
 	(features-section feature-list)
 	(packages-section)

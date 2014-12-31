@@ -28,7 +28,7 @@ h2.ui.header, h3.ui.header, h4.ui.header{
   padding-top: 50px;
 }
 
-.content{
+#content {
 	padding-top: 4.2em;
 }
 
@@ -415,6 +415,22 @@ section.clients img{
 }
 .testimonials .testimonial-name{
 	font-weight: 400;
+}
+
+#testimonials #ux-statements .segment.secondary p {
+	font-size: 1.2em;
+	color: black;
+	text-align: center;
+	min-height: 3em;
+}
+
+#testimonials #ux-statements .segment.secondary h1 {
+	font-size: 4em;
+	margin: 0;
+}
+
+#testimonials #ux-statements .segment.secondary i {
+	font-size: 2em;
 }
 
 .pkg-note {
