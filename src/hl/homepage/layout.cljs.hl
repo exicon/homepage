@@ -61,7 +61,7 @@
 						))
 
 
-				(div (merge {:class "content"}
+				(div (merge {:id "content"}
 					(dissoc attrs :pagetitle :pagedescription :pagekeywords))
 					content)
 				(bottom-nav/bottom-nav)))))
