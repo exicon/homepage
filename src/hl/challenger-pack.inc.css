@@ -3,23 +3,23 @@
 	padding-top: 80px;
 	margin: 0;
 	font-size: 45px;
- color: #333333;
- font-weight: 300;
- text-align: center;
+	color: #333333;
+	font-weight: 300;
+	text-align: center;
 }
 
 #challenger-pack #page-subtitle h2 {
 	font-size: 1.8em;
- line-height: 50px;
- color: #333333;
- font-weight: 400;
+	line-height: 50px;
+	color: #333333;
+	font-weight: 400;
 }
 
 #challenger-pack #page-subtitle h3 {
 	font-size: 1.4em;
- line-height: 30px;
- color: #333333;
- font-weight: 200;
+	line-height: 30px;
+	color: #333333;
+	font-weight: 200;
 }
 
 #challenger-pack #page-title {
@@ -41,9 +41,13 @@
 	margin-right: 10px;
 }
 
+#challenger-pack #pricing-pack {
+	margin-top: 34px;
+}
+
 section.challenger{
 	background-color: #ebebeb;
-		padding: 2em;
+	padding: 2em;
 }
 
 .challenger h2{

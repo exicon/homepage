@@ -2,7 +2,8 @@
 	(:require
 		[homepage.layout :as layout]
 		[homepage.top-nav :as top-nav]
-		[homepage.common :as common]))
+		[homepage.common :as common]
+		[homepage.packages :refer [dominator-pack starter-pack challenger-pack]]))
 
 (reset! top-nav/menu-item-of-page :features)
 
@@ -73,24 +74,44 @@
 (defn feature [f]
 	(if (= (:image-side f) :left)
 
-		(div :class "page-details middle aligned two column doubling row "
+		(div :class "ui page-details middle aligned two column doubling grid"
+			(div :class "row"
 			(div :id (cell= (:anchor f)) :class "anchor")
       (div :class "column"
 				(img :src (cell= (:screenshot f))))
 			(div :class "column"
 				(img :class "features-icon" :src (cell= (:icon f)))
 				(h2 (text (:title f)))
-				(div (cell= (:content f)))))
+				(div (cell= (:content f))))))
 
-		(div :class "page-details middle aligned two column doubling row "
+		(div :class "ui page-details middle aligned two column doubling grid"
+			(div :class "row"
 			(div :id (cell= (:anchor f)) :class "anchor")
       (div :class "column"
 				(img :class "features-icon" :src (cell= (:icon f)))
 				(h2 (text (:title f)))
 				(div (cell= (:content f))))
 			(div :class "column"
-				(img :src (cell= (:screenshot f)))))
-	) )
+				(img :src (cell= (:screenshot f))))))
+		))
+(defelem pricing-features [{:keys [starter challenger dominator]}] 
+		[(div (cell= (nth (:content starter)2)))
+		(div (cell= (nth (:content challenger)4)))
+		(div (cell= (nth (:content dominator)4)))]
+	)
+
+(defn pricing-options [opts]
+	(div :class "column"
+		(div :class "ui center aligned segment" :do-class (cell= (:box opts))
+			(h2 :class "pack-title" (text (:title opts)))
+				(div :class "ui center aligned segment pack-price"
+						(p (text (:price opts)))
+						(span :class "sub-price" (text (:price-des opts)))
+				)
+			(p :class "price-note" (text (:note opts)))
+			(pricing-features :starter starter-pack 
+				:challenger challenger-pack
+				:dominator dominator-pack))))
 
 (layout/main :id "dominator-pack"
 	:pagetitle "Dominator | App Distribution onto Global Appstores"
@@ -101,7 +122,8 @@
 			(div :class "column"
 				(h1 "Dominator Pack") ) )
 	)
-	(section :id "how-to-find" :class "ui one column page grid"
+	(div :class "ui four column doubling page grid"
+	(section :id "how-to-find" :class "twelve wide column"
 		(div :id "page-subtitle" :class "center aligned row"
 			(div :class "column"
 				(h2 "How is your target audience going to find your apps?")
@@ -110,6 +132,12 @@
 		(feature @app-store-distribution)
 		(feature @marketplace)
 	)
+
+	
+	(div :class "column" :id "pricing-pack"
+			(pricing-options dominator-pack))
+	)
+
 	(section :class "distribution full-width-container"
     (div :id "distribution" :class "anchor")
 		(div :class "ui two column doubling page grid"

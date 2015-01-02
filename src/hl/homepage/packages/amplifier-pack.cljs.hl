@@ -1,7 +1,8 @@
 (page "packages/amplifier-pack/index.html"
 	(:require
 		[homepage.layout :as layout]
-		[homepage.top-nav :as top-nav]))
+		[homepage.top-nav :as top-nav]
+		[homepage.packages :refer [amplifier-pack]]))
 
 (reset! top-nav/menu-item-of-page :features)
 
@@ -48,24 +49,37 @@
 (defn feature [f]
 	(if (= (:image-side f) :left)
 
-		(div :class "page-details middle aligned two column doubling row"
+		(div :class "ui page-details middle aligned two column doubling grid"
+			(div :class "row"
       (div :id (cell= (:anchor f)) :class "anchor")
 			(div :class "column"
 				(img :src (cell= (:screenshot f))))
 			(div :class "column"
 				(img :class "features-icon" :src (cell= (:icon f)))
 				(h2 (text (:title f)))
-				(div (cell= (:content f)))))
+				(div (cell= (:content f))))))
 
-		(div :class "page-details middle aligned two column doubling row"
+		(div :class "ui page-details middle aligned two column doubling grid"
+			(div :class "row"
       (div :id (cell= (:anchor f)) :class "anchor")
 			(div :class "column"
 				(img :class "features-icon" :src (cell= (:icon f)))
 				(h2 (text (:title f)))
 				(div (cell= (:content f))))
 			(div :class "column"
-				(img :src (cell= (:screenshot f)))))
-	) )
+				(img :src (cell= (:screenshot f))))))
+	))
+
+(defn pricing-options [opts]
+	(div :class "column"
+		(div :class "ui center aligned segment" :do-class (cell= (:box opts))
+			(h2 :class "pack-title" (text (:title opts)))
+				(div :class "ui center aligned segment pack-price"
+						(p (text (:price opts)))
+						(span :class "sub-price" (text (:price-des opts)))
+				)
+			(p :class "price-note" (text (:note opts)))
+			(div :class "price-details" (cell= (:content opts))))))
 
 (layout/main :id "amplifier-pack"
 	:pagetitle "Amplifier | API Management Platform & Developer Console"
@@ -76,7 +90,8 @@
 			(div :class "column"
 				(h1 "Amplifier Pack")))
 	)
-	(section :class "ui one column page grid"
+	(div :class "ui column four doubling page grid"
+	(section :class "twelve wide column"
 		(div :id "page-subtitle" :class "center aligned row"
 			(div :class "column"
 				(h2 "Are your thinking bigger? Ready to open your API?
@@ -85,4 +100,7 @@
 		(feature @api-management)
 		(feature @development-ecosystem)
 		(feature @manager-console)
-	) )
+	)
+	(div :class "column" :id "pricing-pack"
+		(pricing-options amplifier-pack))
+	))

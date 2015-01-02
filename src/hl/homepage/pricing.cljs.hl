@@ -1,83 +1,7 @@
 (page "appboard/pricing/index.html"
 	(:require
-		[homepage.layout :as layout]))
-
-(def pack-list [
-{
-	:box	"other-pack"
-	:title "STARTER PACK"
-	:price "US$0 "
-	:price-des "per app / month"
-	:note "Entry tool for those new to app management"
-	:content [
-		(a :href "https://app.exiconglobal.com/?package=starter#!/registration/" (div :class "ui button" "START FOR FREE"))
-		(p "1 to" (span :class"no-of-app" " 5 ") "of your apps")
-		(ul
-			(li "Intelligent Newsfeeds")
-			(li "LeaderBoard")
-			(li "Watchlist")
-			(li "App Store Analytics")
-			(li "In-app Analytics")
-			(li "App Briefbuilder")
-			(li "AppLocker"))
-		]
-	}
-
-	{
-	:box	"other-pack"
-	:title "CHALLENGER PACK"
-	:price "US$99"
-	:price-des "per app / month"
-	:note "The insights to see how your portfolio stacks up against the competition"
-	:content [
-		(a :href "https://app.exiconglobal.com/?package=challenger#!/registration/" (div :class "ui button" "START FOR FREE"))
-		(p "1 to" (span :class "no-of-app" " 20 ") "of your apps")
-		(p :class "pack-include" "STARTER PACK")
-		(p :class "pack-plus" "+ PLUS +")
-		(ul
-			(li "Monthly Competitor Insight")
-			(li "One AppScan per month")
-			li ""
-			)
-		]
-	}
-
-{
-	:box	"other-pack"
-	:title "DOMINATOR PACK"
-	:price "US$159"
-	:price-des "per app / month"
-	:note "For those with a grip on their apps looking to expand their footprint"
-	:content [
-		(a :href "https://app.exiconglobal.com/?package=dominator#!/registration/" (div :class "ui button" "START FOR FREE"))
-		(p "1 to" (span :class"no-of-app" " 50 ") "of your apps")
-		(p :class"pack-include" "CHALLENGER PACK")
-		(p :class "pack-plus" "+ PLUS +")
-		(ul
-			(li "Distribution onto 20 app stores")
-			(li "White label marketplace"))
-		]
-	}
-
-{
-	:box	"amplifier-pack"
-	:title "AMPLIFIER PACK"
-	:price "CONTACT US"
-	:price-des ""
-	:note "Ready to unleash your API, and maybe open it to developers?"
-	:content [
-		(a :href "mailto:sales@exiconglobal.com?subject=Amplifier%20pack"
-			(div :class "ui white button" "CONTACT US"))
-		(p "Unlimited apps & APIs")
-		(p "Customized")
-		(ul
-			(li "API mangement")
-			(li "Developer ecosystem")
-			(li "Manager console"))
-		]
-	}
-
-	])
+		[homepage.layout :as layout]
+		[homepage.packages :refer [packages]]))
 
 (defn pricing-options [opts]
 	(div :class "column"
@@ -88,22 +12,15 @@
 						(span :class "sub-price" (text (:price-des opts)))
 				)
 			(p :class "price-note" (text (:note opts)))
-			(div :class "price-details" (cell= (:content opts)))
-		)
-	)
-)
+			(div :class "price-details" (cell= (:content opts))))))
 
 (defn pricing-options-section []
 	(section
 		:id "pricing-pack"
 		:class "full-width-container"
 		(div :class "ui four column doubling page grid"
-			(loop-tpl :bindings [opt pack-list]
-			(pricing-options opt))
-		)
-	) )
-
-
+			(loop-tpl :bindings [opt packages]
+				(pricing-options opt)))))
 
 (def faq-detail [
 

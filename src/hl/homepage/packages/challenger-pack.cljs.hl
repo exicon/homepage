@@ -2,7 +2,9 @@
 	(:require
 		[homepage.layout :as layout]
 		[homepage.top-nav :as top-nav]
-		[homepage.common :as common]))
+		[homepage.common :as common]
+		[homepage.packages :refer [challenger-pack]]))
+
 
 (reset! top-nav/menu-item-of-page :features)
 
@@ -29,7 +31,7 @@
 })
 
 (defn feature [f]
-	(div :class "page-details aligned two column doubling row"
+	(div :class "ui page-details aligned two column doubling grid"
     (div :id "page-details" :class "anchor" )
 		(div :class "column"
 			(div (cell= (:content f))) )
@@ -103,6 +105,17 @@
 		)
 	) )
 
+(defn pricing-options [opts]
+	(div :class "column"
+		(div :class "ui center aligned segment" :do-class (cell= (:box opts))
+			(h2 :class "pack-title" (text (:title opts)))
+				(div :class "ui center aligned segment pack-price"
+						(p (text (:price opts)))
+						(span :class "sub-price" (text (:price-des opts)))
+				)
+			(p :class "price-note" (text (:note opts)))
+			(div :class "price-details" (cell= (:content opts))))))
+
 (defn challenger-option-section []
 	(section
 		:class "challenger full-width-container"
@@ -123,29 +136,32 @@
 			(div :class "column"
 				(h1 "Challenger Pack")))
 	)
-	(section :class "ui one column page grid"
-		(div :id "page-subtitle" :class "center aligned row"
-			(div :class "column"
-				(h2 "How are your apps performing against current and potential competitors? Stay ahead with your monthly AppScan.")
-			))
-		(feature @competitors)
-		(div :class "page-subtitle center aligned row"
-			(div :class "column"
-				(h2 "You can zero in with “AppScans” by")
-			))
-		(div :class "page-snapshots top aligned three center column doubling row"
-      (div :id "snapshots" :class "anchor")
-			(snapshots @by-brand)
-			(snapshots @by-country)
-			(snapshots @by-industry)
-		)
-		(div :class "page-details center aligned row"
-      (div :id "insights" :class "anchor")
-			(div :class "column"
-				(p "Insights are aggregated from a proprietary statistical model, using publicly
-					available App Store data and analytics of opt-in partners."(br)"Your AppBoard data is
-					never shared by Exicon.")
-			) )
-	)
+	(div :class "ui four column doubling page grid"
+		(section :class "twelve wide column"
+			(div :id "page-subtitle" :class "center aligned row"
+				(div :class "column"
+					(h2 "How are your apps performing against current and potential competitors? Stay ahead with your monthly AppScan.")
+				))
+			(feature @competitors)
+			(div :class "page-subtitle center aligned row"
+				(div :class "column"
+					(h2 "You can zero in with “AppScans” by")
+				))
+			(div :class "ui page-snapshots top aligned three center column doubling grid"
+	      (div :id "snapshots" :class "anchor")
+	      (div :class "row"
+					(snapshots @by-brand)
+					(snapshots @by-country)
+					(snapshots @by-industry)
+				)
+			)
+			(div :class "page-details center aligned row"
+	      (div :id "insights" :class "anchor")
+				(div :class "column"
+					(p :class "small-text" "Insights are aggregated from a proprietary statistical model, using publicly
+						available App Store data and analytics of opt-in partners."(br)"Your AppBoard data is
+						never shared by Exicon."))))
+		(div :class "column" :id "pricing-pack"
+			(pricing-options challenger-pack)))
 	(challenger-option-section)
 )
