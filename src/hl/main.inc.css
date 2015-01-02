@@ -433,6 +433,10 @@ section.clients img{
 	font-size: 2em;
 }
 
+#ux-statements .column{
+	margin-bottom: 1em;
+}
+
 .pkg-note {
 	font-size: 0.7em;
 	margin-top: 20px;

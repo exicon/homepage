@@ -293,13 +293,14 @@ Management."})
 (defn testimonials-section []
 	(section :class "full-width-container"
 		(div :id "testimonials" :class "anchor" )
-		(div :class "ui two column doubling page grid"
+		(div :class "ui page grid"
 			(h2 :class "ui center aligned header"
 				"Interested in working with us? Check out our client testimonials below!")
-			(div :id "ux-statements" :class "three column row"
+			(div :id "ux-statements" :class "three column doubling row"
 				(loop-tpl :bindings [ux ux-list]
-					(ux-statement @ux))
-				(loop-tpl :bindings [tst testimonials]
+					(ux-statement @ux)))
+				(div :class "testimonials two column doubling row"
+					(loop-tpl :bindings [tst testimonials]
 					(testimonial tst))))))
 
 (layout/main
