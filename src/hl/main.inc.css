@@ -69,7 +69,7 @@ h2.ui.header, h3.ui.header, h4.ui.header{
 	color: white;
 }
 .ui.inverted.white.button{
-	background-color: transparent; !important;
+	background-color: transparent !important;
 	color: white;
 	box-shadow:inset 0px 0px 0px 1px white;
 }
@@ -225,7 +225,7 @@ h2.ui.header, h3.ui.header, h4.ui.header{
 }
 
 #menu-container {
-	width: 50%}
+	width: 50%
 }
 
 

@@ -24,11 +24,12 @@
 			(body
 				(top-nav/top-nav)
 
-				(a :href "/company/contact-manager/" (div :id "get-in-touch"))
+				(a :href "/company/contact-manager/"
+					(div :id "get-in-touch"))
 				(a :href "javascript:void(0);"
 					:click #(reset! subscribe-click true)
 					(div :id "subscribe-stick" :do-class
-						(cell= {:show (not subscribe-click)}))))
+						(cell= {:show (not subscribe-click)})))
 				(div :id "subscribe-stick-layer"
 					:do-class (cell= {:show subscribe-click}))
 				(div :id "subscribe-stick-form"
@@ -53,4 +54,4 @@
 				(div (merge {:id "content"}
 					(dissoc attrs :pagetitle :pagedescription :pagekeywords))
 					content)
-				(bottom-nav/bottom-nav))))))
+				(bottom-nav/bottom-nav)))))))
