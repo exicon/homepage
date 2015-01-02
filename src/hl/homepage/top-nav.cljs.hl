@@ -47,42 +47,41 @@
 			(= hovered-menu-item item-id)
 			(and (not hovered-menu-item) (= menu-item-of-page item-id)) ) } ) )
 
-(defn main-menu [items]
-	(loop-tpl :bindings [item items] (
-		(a :class "item" :href (cell= (:url item))
-			:hover #(reset! hovered-menu-item (:id @item))
-			:do-class (is-active-item? (:id @item))
-			:mouseenter #(reset! active-submenu (:submenu @item))
-			(text (:name item)) ) ) ) )
-
 (defn submenu-item [item]
+	(li
 	(a :class "item" :href (cell= (:url item))
 		:on-click #(reset! active-submenu-item (:id @item))
 		:do-class (cell= {:active (= active-submenu-item (:id item))})
-			(text (:name item)) ) )
+			(text (:name item)) ) ) )
 
 (defn submenu [items]
-	(div :class "ui sub menu"
-		:toggle items
-		:mouseleave #(reset! items nil)
+	(ul :class "hidden ui sub menu"
 		(loop-tpl :bindings [item items] (submenu-item item))
 ))
+
+(defn main-menu [items]
+	(loop-tpl :bindings [item items] (
+		(li
+		(a :class "item" :href (cell= (:url item))
+
+			(text (:name item)))
+			(if (:submenu @item)(submenu (:submenu @item)) )) ) ) ) 
 
 (defelem top-nav []
 	(div :id "top-nav-container"
 		(div :class "ui grid inner-container"
-			(div :id "left-logo" :class "eight wide column logo-container"
+			(div :id "left-logo" :class "four wide column logo-container"
 				(div :class "item" :id "logo"
 					(a :href "/" (img :src "/images/exicon-logo.png"))))
-			(div :id "menu-container" :class "eight wide column"
+			(div :id "menu-container" :class "twelve wide column"
 				(nav :id "top-nav" :class "ui tiered menu"
-					:mouseleave #(do (reset! active-submenu nil) (reset! hovered-menu-item nil))
-					(div :class "menu"
+					(label :for "show-menu" :id "show-menu-button":class "ui button" "Menu")
+					(input :type "checkbox" :id "show-menu" :role "button")
+					(ul :class "menu"
 						(main-menu main-menu-items)
 						(signup-and-login) )
-					(submenu active-submenu) ) )
+					#_(submenu active-submenu) ) )
 			)
-
 	)
 )
 
