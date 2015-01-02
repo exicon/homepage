@@ -144,11 +144,7 @@
 
 #faq-help h2 {
 	border-top: 1px solid #dddddd;
-	font-size: 23px;
-	font-weight: 700;
-	color: #000000;
 	line-height: 150px;
-	font-style: italic;
 }
 
 #faq-help h3 {
@@ -156,7 +152,6 @@
 	font-weight: 500;
 	color: #379aa6;
 	line-height: 25px;
-	margin-bottom: 15px;
 }
 
 #faq-help p {
@@ -164,7 +159,3 @@
 	font-weight: 100;
 	color: #000;
 }
-
-
-
-

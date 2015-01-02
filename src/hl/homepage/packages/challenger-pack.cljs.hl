@@ -10,13 +10,14 @@
 	:screenshot "/images/competitor-insights-screenshots.png"
   :anchor "competitors"
 	:content [
-		(p "Know Where You Stand")
+		(p "Get to Know Where You Stand")
 		(ul
 			(li "Who are the leaders in your industry?")
 			(li "How are your apps performing in a specific market?")
 			(li "Do your competitors change by country?")
 			)
-		(br)
+		]
+	:content2 [
 		(p "Measure the Competition")
 		(ul
 			(li "What are the particular strengths of your competitors?")
@@ -24,16 +25,16 @@
 			(li "Popularity by monthly and total downloads")
 			(li "App Store presence")
 			(li "Competitor performance by monthly growth and app ratings"))
-		]
-	})
+	]
+})
 
 (defn feature [f]
-	(div :class "page-details middle aligned two column doubling row"
+	(div :class "page-details aligned two column doubling row"
     (div :id "page-details" :class "anchor" )
 		(div :class "column"
 			(div (cell= (:content f))) )
 		(div :class "column"
-			(img :src (cell= (:screenshot f))) )
+			(div (cell= (:content2 f))) )
 	) )
 
 (defc by-brand {
@@ -125,7 +126,7 @@
 	(section :class "ui one column page grid"
 		(div :id "page-subtitle" :class "center aligned row"
 			(div :class "column"
-				(h2 "How are your apps performing against current and potential competitors?")
+				(h2 "How are your apps performing against current and potential competitors? Stay ahead with your monthly AppScan.")
 			))
 		(feature @competitors)
 		(div :class "page-subtitle center aligned row"

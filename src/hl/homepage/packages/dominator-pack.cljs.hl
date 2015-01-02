@@ -105,8 +105,7 @@
 		(div :id "page-subtitle" :class "center aligned row"
 			(div :class "column"
 				(h2 "How is your target audience going to find your apps?")
-				(h3 "All the amazing features of the Starter and Challenger Packs " 
-					(span :class "lightExicon text" "PLUS")" the following features") ) )
+				) )
 
 		(feature @app-store-distribution)
 		(feature @marketplace)

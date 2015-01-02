@@ -11,7 +11,7 @@
 	:note "Entry tool for those new to app management"
 	:content [
 		(a :href "https://app.exiconglobal.com/?package=starter#!/registration/" (div :class "ui button" "START FOR FREE"))
-		(p "Profiles for 1 to" (span :class"no-of-app" " 5 ") "of your apps")
+		(p "1 to" (span :class"no-of-app" " 5 ") "of your apps")
 		(ul
 			(li "Intelligent Newsfeeds")
 			(li "LeaderBoard")
@@ -31,11 +31,14 @@
 	:note "The insights to see how your portfolio stacks up against the competition"
 	:content [
 		(a :href "https://app.exiconglobal.com/?package=challenger#!/registration/" (div :class "ui button" "START FOR FREE"))
-		(p "Profiles for 1 to" (span :class "no-of-app" " 20 ") "of your apps")
+		(p "1 to" (span :class "no-of-app" " 20 ") "of your apps")
 		(p :class "pack-include" "STARTER PACK")
 		(p :class "pack-plus" "+ PLUS +")
 		(ul
-			(li "Monthly Competitor Insight"))
+			(li "Monthly Competitor Insight")
+			(li "One AppScan per month")
+			li ""
+			)
 		]
 	}
 
@@ -47,7 +50,7 @@
 	:note "For those with a grip on their apps looking to expand their footprint"
 	:content [
 		(a :href "https://app.exiconglobal.com/?package=dominator#!/registration/" (div :class "ui button" "START FOR FREE"))
-		(p "Profiles for 1 to" (span :class"no-of-app" " 50 ") "of your apps")
+		(p "1 to" (span :class"no-of-app" " 50 ") "of your apps")
 		(p :class"pack-include" "CHALLENGER PACK")
 		(p :class "pack-plus" "+ PLUS +")
 		(ul
