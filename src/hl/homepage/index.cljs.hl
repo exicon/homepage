@@ -185,19 +185,19 @@ Management."})
 	{
 		:icon "bar chart"
 		:statement
-			(p "of our customers said our work was good: the rest said it was Impressive")
+			(p "of our customers said our work was " (b "Good") ": the rest said it was " (b "Impressive"))
 		:percentage 60
 	}
 	{
 		:icon "like"
 		:statement
-			(p "of our customers said we \"Overdelivered\"")
+			(p "of our customers said we " (b "Overdelivered"))
 		:percentage 40
 	}
 	{
 		:icon "thumbs up outline"
 		:statement
-			(p "of our respondents said they would recommend us to other companies")
+			(p "of our respondents said they would " (b "Recommend us") " to other companies")
 		:percentage 100
 	}
 	])

@@ -476,20 +476,15 @@ section.clients img{
 	font-weight: 400;
 }
 
-#testimonials #ux-statements .segment.secondary p {
-	font-size: 1.2em;
-	color: black;
+#ux-statements p {
+	min-height: 4em;
 	text-align: center;
-	min-height: 3em;
+	color: black;
 }
 
-#testimonials #ux-statements .segment.secondary h1 {
-	font-size: 4em;
+#ux-statements .segment.secondary h1 {
+	font-size:  3em;
 	margin: 0;
-}
-
-#testimonials #ux-statements .segment.secondary i {
-	font-size: 2em;
 }
 
 #ux-statements .column{
