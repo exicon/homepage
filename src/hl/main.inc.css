@@ -264,7 +264,7 @@ div p.small-text {
 	padding: 0 20px;
 }
 
-#top-nav ul li a:hover + .hidden, 
+#top-nav ul li a:hover + .hidden,
 #top-nav .hidden:hover {
 	display: block;
 	background: transparent;
@@ -352,7 +352,7 @@ div p.small-text {
 
 #subscribe-stick-layer, #subscribe-stick-form {
 	width: 239px;
-	height: 365px;
+	height: 400px;
 	color: white;
 	/*background-image: url(/images/header/subscribe-sidebox.png);*/
 	position: fixed;
@@ -418,16 +418,16 @@ section.quote  h3{
 }
 
 /* Features Section */
-section.features img.appboard-img{
+.features img.appboard-img{
 	width: 100%;
 }
 
-section.features-group img{
+.features-group img{
 	vertical-align: bottom;
 	margin-right: 0.5em;
 }
 
-section.features-group .column{
+.features-group .column{
 	margin-bottom: 1em;
 	width: 90%;
 }
@@ -439,7 +439,7 @@ section.packages{
 }
 
 section.packages .ui.segment{
-	margin-bottom: 1em;
+	margin-bottom: 1em !important;
 }
 
 section.packages .icon.column{
@@ -530,43 +530,55 @@ section.clients img{
 
 /* Tablet*/
 @media only screen and (max-width: 991px) and (min-width: 768px){
-	#intro {
+	.intro {
 		height: 560px;
-			/*background-size: 1100px;
-			background-position: -109px 180px;*/
+		background-position: -459px 20px;
+		background-size: 1700px !important;
 		}
 
-		#intro h1{
+		.intro h1{
 			font-size: 38px;
 		}
 
-		#intro h2{
+		.intro h2{
 			font-size: 24px;
+		}
+
+		.intro .intro-right-info{
+			margin-top: 90px !important;
+		}
+		#top-nav ul.menu{
+			margin-left: 0px;
 		}
 	}
 
 	/* Mobile */
 	@media only screen and (max-width: 767px){
-		#intro {
+		#get-in-touch, #subscribe-stick,
+		#subscribe-stick-layer, #subscribe-stick-form {
+			display: none !important;
+		}
+
+		.intro {
 			height: 660px;
 			background-size: 1500px;
 			background-position: 12% 93%;
 		}
-		#intro .column{
-			width: 100%;
+		.intro .column{
+			width: 100% !important;
 		}
-		#intro .column.intro-right-info {
+		.intro .column.intro-right-info {
 			margin-top: 0;
 			padding-left: 0;
-			text-align: center;
+			text-align: center !important;
 		}
-		#intro h1{
+		.intro h1{
 			font-size: 28px;
 		}
-		#intro h2{
+		.intro h2{
 			font-size: 20px;
 		}
-		#intro .video-btn {
+		.intro .video-btn {
 			margin-left: 0;
 			padding-top: 101px;
 			width: 140px;
@@ -588,8 +600,12 @@ section.clients img{
 			width: 100%;
 		}
 		#top-nav {
+			height: 52px;
 			position: relative;
 			right: -11px;
+		}
+		#top-nav ul {
+			background-color: white;
 		}
 		#top-nav li ul li {
 			background-color: rgba(76,76,76,0.35);
@@ -621,6 +637,7 @@ section.clients img{
 		}
 	}
 
+/* Desktop Size */
 	@media only screen and (min-width: 768px){
 		#top-nav-container .sub.menu:before {
 			position: absolute;
@@ -635,12 +652,15 @@ section.clients img{
 			width: 100%;
 			border-top: 0;
 		}
+		#top-nav ul {
+			margin-left: 210px;
+		}
 	}
 
 
 	/* Smaller mobiles*/
 	@media only screen and (max-width: 550px){
-		#intro{
+		.intro{
 			height: 568px;
 			background-size: 1130px;
 			background-position: 20% 87%;
