@@ -2,7 +2,7 @@
 	(:require
 		[homepage.layout :as layout]
 		[homepage.top-nav :as top-nav]
-		[homepage.common :as common]
+		[homepage.common :refer [registration-button registration-link]]
 		[homepage.packages :refer [dominator-pack starter-pack challenger-pack]]))
 
 (reset! top-nav/menu-item-of-page :features)
@@ -12,13 +12,13 @@
 	:screenshot "/images/app-distribution.png"
 	:icon "/images/packages/dominatorpack.png"
 	:title "App Store Distribution"
-  :anchor "app-store-distribution"
+	:anchor "app-store-distribution"
 	:content [
 		(p "Increase the chances of your app being")
 		(ul
 			(li "Downloaded by up to " (span :class "lightExicon text" (b "200%")) " more")
 			(li "Featured by up to " (span :class "lightExicon text" (b "20")) " times more"))
-		(common/registration-button :dominator "Start for free now")
+		(registration-button :dominator "Start for free now")
 		]
 	})
 
@@ -27,14 +27,14 @@
 	:screenshot "/images/Marketplace.png"
 	:icon "/images/icons/marketplace.png"
 	:title "Marketplace"
-  :anchor "marketplace"
+	:anchor "marketplace"
 	:content [
 		(p "Stand out from the crowd")
 		(ul
 			(li "Increase the discoverability of your Apps and APIs across your customers,
 			partners, suppliers and your organization with your own white labelled marketplace")
 			(li "Accessible from " (em "your own") " company website showcasing " (em "your own") " products"))
-		(common/registration-button :dominator "Start for free now")
+		(registration-button :dominator "Start for free now")
 		]
 	})
 
@@ -55,7 +55,7 @@
 		:period ""
 		:button "Start for free now"
 		:note (p "*per app/month for 1 to 50 apps")
-		:link (common/registration-link :dominator)
+		:link (registration-link :dominator)
 	}
 	])
 
@@ -77,7 +77,7 @@
 		(div :class "ui page-details middle aligned two column doubling grid"
 			(div :class "row"
 			(div :id (cell= (:anchor f)) :class "anchor")
-      (div :class "column"
+			(div :class "column"
 				(img :src (cell= (:screenshot f))))
 			(div :class "column"
 				(img :class "features-icon" :src (cell= (:icon f)))
@@ -87,14 +87,14 @@
 		(div :class "ui page-details middle aligned two column doubling grid"
 			(div :class "row"
 			(div :id (cell= (:anchor f)) :class "anchor")
-      (div :class "column"
+			(div :class "column"
 				(img :class "features-icon" :src (cell= (:icon f)))
 				(h2 (text (:title f)))
 				(div (cell= (:content f))))
 			(div :class "column"
-				(img :src (cell= (:screenshot f))))))
-		))
-(defelem pricing-features [{:keys [starter challenger dominator]}] 
+				(img :src (cell= (:screenshot f))))))))
+
+(defelem pricing-features [{:keys [starter challenger dominator]}]
 		[(div (cell= (nth (:content starter)2)))
 		(div (cell= (nth (:content challenger)4)))
 		(div (cell= (nth (:content dominator)4)))]
@@ -104,12 +104,11 @@
 	(div :class "column"
 		(div :class "ui center aligned segment" :do-class (cell= (:box opts))
 			(h2 :class "pack-title" (text (:title opts)))
-				(div :class "ui center aligned segment pack-price"
-						(p (text (:price opts)))
-						(span :class "sub-price" (text (:price-des opts)))
-				)
+			(div :class "ui center aligned segment pack-price"
+				(p (text (:price opts)))
+				(span :class "sub-price" (text (:price-des opts))))
 			(p :class "price-note" (text (:note opts)))
-			(pricing-features :starter starter-pack 
+			(pricing-features :starter starter-pack
 				:challenger challenger-pack
 				:dominator dominator-pack))))
 
@@ -133,13 +132,11 @@
 		(feature @marketplace)
 	)
 
-	
-	(div :class "column" :id "pricing-pack"
-			(pricing-options dominator-pack))
-	)
+	(div :class "column" :id "pricing-pack" :style "display:none"
+		(pricing-options dominator-pack)))
 
 	(section :class "distribution full-width-container"
-    (div :id "distribution" :class "anchor")
+	(div :id "distribution" :class "anchor")
 		(div :class "ui two column doubling page grid"
 			(loop-tpl :bindings [opt distribution-options]
 				(distribution-tile opt) ) )
