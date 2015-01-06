@@ -80,14 +80,14 @@ Management."})
 (defn quotes []
 	[
 	(section :class "customer-quote-list ui four column doubling page grid"
-    (div :id "customer-quote-list")
+		(div :id "customer-quote-list")
 		(customer-quote q1)
 		(customer-quote q2)
 		(quote-column q3)
 		(quote-column q4))
 
 	(section :class "quote ui one column center aligned page grid"
-    (div :id "quote" :class "anchor" )
+		(div :id "quote" :class "anchor" )
 		(div :class "eight wide column"
 			(div :class "ui center aligned raised segment" (h2 (i :class "quote small left blue icon") "I thought we were doing well until we plugged our apps into the AppBoard." (i :class "quote small right blue icon"))(h3 :class "ui right aligned header" "Fortune 500 CEO"))))
 	]
@@ -165,52 +165,45 @@ Management."})
 	}
 ])
 
-(def testimonials [
-	{
+(def testimonials {
+	:four-front {
 		:image "images/testimonials/testimonial1.png"
 		:testimonial "It has been an absolute pleasure to work with this team, consummate professionals through and through. Working with Exicon at the start of this journey was critical in helping us determine what we wanted and needed, then figuring out how to even begin to cast the net into the often confusing digital waters."
 		:name "Melanie McGraw"
-		:company "4Front Advisors"
+		:sub-title "4Front Advisors"
 	}
-	{
+	:brain {
 		:image "images/testimonials/testimonial2.png"
 		:testimonial "Wow, great service - thanks! Thanks a million! Thanks for your support so far - we're getting close now!"
 		:name "Aran Dadswell"
-		:company "Get to know your Brain"
+		:sub-title "Get to know your Brain"
 	}
-	{
-		:image "images/testimonials/testimonial2.png"
-		:testimonial "Wow, great service - thanks! Tupport so far - we're getting close now!"
-		:name "Aran Dadswell"
-		:company "Get to know your Brain"
+	:chartered {
+		:image "images/testimonials/testimonial3.png"
+		:testimonial "The team at Exicon helped find some great, innovative developers in the mobile banking space. In fact, we ended up making an acquisition as a result of an introduction."
+		:name "Mike Denoma"
+		:sub-title "Ex-Head of Global Consumer Banking, Standard Chartered"
 	}
-	{
-		:image "images/testimonials/testimonial2.png"
-		:testimonial "Wow, great service - thanks! Thanks a million! Thanks 
-		for your supq ef qwef qwe fwqe fqw efqw ef evrfv wrtb etb etrb rt port so far - we're getting close now!"
-		:name "Aran Dadswell"
-		:company "Get to know your Brain"
+	:hotels {
+		:image "images/testimonials/testimonial4.png"
+		:testimonial "I give them credit for teaching me everything I know about APIs! It has been a great partnership, they are smart, responsive and the access to apps made us think about our brands very differently in terms of what we could be doing in digital. On top of the work on APIs and APPs they have also been great at 'thought-provoking' with our brand and technology innovation and are ALWAYS and excellent resource for up to date thinking and industry insight."
+		:name "Richard Sofer"
+		:sub-title "Brand CEO, every hotels"
 	}
-	{
-		:image "images/testimonials/testimonial2.png"
-		:testimonial "Wow, great service - thanks! Thanks a million! Thanks for yourerfv ev wer fe rf ewrf ewr vwer vwe rf ef erf ev rtb we rv erv support so far - we're getting close now!"
-		:name "Aran Dadswell"
-		:company "Get to know your Brain"
+	:sony {
+		:image "images/testimonials/testimonial5.png"
+		:testimonial "Managing developers was crucial to our business. Exicon helped us build the foundation on which to drive our new products, bringing new developers into our prefered developer programs in over 20 countries which helped us generate a whole suite of local applications for the different markets."
+		:name "Christopher David"
+		:sub-title "Ex-Head of Developer and Partner Engagement, Sony Mobile"
 	}
-	{
-		:image "images/testimonials/testimonial2.png"
-		:testimonial "Wow, great service - thanks! Thanks a million! Thanks for your supdfv dfv sd fvs dfv sdfv dsfv sdfv dfvqerf3fr qrevwr fvwrvq refqerwrev erverport so far - we're getting close now!"
-		:name "Aran Dadswell"
-		:company "Get to know your Brain"
-	}
-	{
-		:image "images/testimonials/testimonial2.png"
-		:testimonial "Wow, great service - thanks! Thanks a million! Thanks for your support so far - we're getting close now!"
-		:name "Aran Dadswell"
-		:company "Get to know your Brain"
+	:schneider {
+		:image "images/testimonials/testimonial6.png"
+		:testimonial "Would you recommend Exicon to another company to work with? Better than that I am using Exicon services and applications again in my current role at Schneider Electric."
+		:name "Christopher David"
+		:sub-title "CTO Digital Customer Experience & SVP Software, Schneider Electric"
 	}
 
-])
+})
 
 (def ux-list [
 	{
@@ -233,15 +226,6 @@ Management."})
 	}
 	])
 
-(defn testimonial [tst]
-	(div :class "ui left floated segment"
-		(img :src (cell= (:image tst)))
-		(p :class "testimonial" (text (:testimonial tst)))
-		(p :class "testimonial-name" (text (:name tst)))
-		(p :class "testimonial-company" (text (:company tst))))
-	
-)
-
 (defn feature [ftr]
 	(div :class  "column"
 		(img :src (cell= (:icon ftr)))
@@ -253,7 +237,7 @@ Management."})
 
 (defn features-section [feature-list]
 	(section :class "features"
-    (div :id "features" :class "anchor" )
+		(div :id "features" :class "anchor" )
 		(h2 :class "ui center aligned header" "Let the AppBoard give you real insight into your app portfolio")
 		(div :class "ui center aligned basic segment"
 			(common/registration-button :starter "Free Account Sign Up"))
@@ -287,29 +271,26 @@ Management."})
 
 (defn packages-section []
 	(section :class "packages full-width-container"
-    (div :id "packages" :class "anchor" )
+		(div :id "packages" :class "anchor" )
 		(h2 :class "ui center aligned header"
-				"Hungry for more?")
-			(h4 :class "ui center aligned header"
-				"Expand your Starter Pack with:")
+			"Hungry for more?")
+		(h4 :class "ui center aligned header"
+			"Expand your Starter Pack with:")
 		(div :class "ui page grid"
-				(div :class "equal height computer only row"
-					(loop-tpl :bindings [pkg pkgs]
-						(pkg-tile pkg)))
-				(div :class "one column tablet mobile only row"
-						(loop-tpl :bindings [pkg pkgs]
-						(pkg-tile pkg)))
-					)
-
-			))
+			(div :class "equal height computer only row"
+				(loop-tpl :bindings [pkg pkgs]
+					(pkg-tile pkg)))
+			(div :class "one column tablet mobile only row"
+				(loop-tpl :bindings [pkg pkgs]
+					(pkg-tile pkg))))))
 
 (defn clients []
 	(section :class "clients ui one column page grid"
-    (div :id "clients" :class "anchor" )
-  	(div :class "center aligned column"
-  		(h2 :class "ui center aligned header" "Clients")
-  		(div :class "ui basic segment"
-  			(img :src "images/clients.png" :alt "Exicon customers")))))
+		(div :id "clients" :class "anchor" )
+		(div :class "center aligned column"
+			(h2 :class "ui center aligned header" "Clients")
+			(div :class "ui basic segment"
+				(img :src "images/clients.png" :alt "Exicon customers")))))
 
 (defelem ux-statement [attrs kids]
 	(div :class "column"
@@ -321,19 +302,48 @@ Management."})
 					(text (str (:percentage attrs) "%"))))
 			(:statement attrs))))
 
+(defn testimonial-block [testimonial-name]
+	(let [testimonial (testimonial-name testimonials)]
+		[
+			(div :class "ui header"
+				(div :class "ui small circular image icon" (img :src (cell= (:image testimonial))))
+				(div :class "middle aligned content"
+					(span (text (:name testimonial)))
+					(div :class "sub header" (text (:sub-title testimonial)))))
+			(p :class "testimonial"
+				(i :class "quote small left blue icon")
+				(text (:testimonial testimonial))
+				(i :class "quote small right blue icon"))
+		]))
+
 (defn testimonials-section []
 	(section :class "full-width-container"
-		(div :id "testimonials" :class "anchor" )
 		(div :class "ui page grid"
+			(div :id "testimonials" :class "anchor" )
 			(h2 :class "ui center aligned header"
 				"Interested in working with us? Check out our client testimonials below!")
 			(div :id "ux-statements" :class "three column doubling row"
 				(loop-tpl :bindings [ux ux-list]
 					(ux-statement @ux)))
-				(div :class "testimonials row"
-					(div :class "column"
-						(loop-tpl :bindings [tst testimonials]
-						(testimonial tst)))))))
+			(h5 :class "ui header" "Source: Exicon Customer Survey 2014")
+			(div :class "testimonials two column row"
+				(div :class "column"
+					(div :class "ui segment"
+						(testimonial-block :chartered))
+					(div :class "ui segment"
+						(testimonial-block :brain))
+					(div :class "ui segment"
+						(testimonial-block :hotels))
+					)
+				(div :class "column"
+					(div :class "ui segment"
+						(testimonial-block :four-front)
+					)
+					(div :class "ui segment"
+						(testimonial-block :sony)
+						(testimonial-block :schneider)
+					)
+					)))))
 
 (layout/main
 	:pagetitle "Manage Your Apps | Exicon Cloud App Management AppBoard"
