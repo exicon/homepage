@@ -178,6 +178,37 @@ Management."})
 		:name "Aran Dadswell"
 		:company "Get to know your Brain"
 	}
+	{
+		:image "images/testimonials/testimonial2.png"
+		:testimonial "Wow, great service - thanks! Tupport so far - we're getting close now!"
+		:name "Aran Dadswell"
+		:company "Get to know your Brain"
+	}
+	{
+		:image "images/testimonials/testimonial2.png"
+		:testimonial "Wow, great service - thanks! Thanks a million! Thanks 
+		for your supq ef qwef qwe fwqe fqw efqw ef evrfv wrtb etb etrb rt port so far - we're getting close now!"
+		:name "Aran Dadswell"
+		:company "Get to know your Brain"
+	}
+	{
+		:image "images/testimonials/testimonial2.png"
+		:testimonial "Wow, great service - thanks! Thanks a million! Thanks for yourerfv ev wer fe rf ewrf ewr vwer vwe rf ef erf ev rtb we rv erv support so far - we're getting close now!"
+		:name "Aran Dadswell"
+		:company "Get to know your Brain"
+	}
+	{
+		:image "images/testimonials/testimonial2.png"
+		:testimonial "Wow, great service - thanks! Thanks a million! Thanks for your supdfv dfv sd fvs dfv sdfv dsfv sdfv dfvqerf3fr qrevwr fvwrvq refqerwrev erverport so far - we're getting close now!"
+		:name "Aran Dadswell"
+		:company "Get to know your Brain"
+	}
+	{
+		:image "images/testimonials/testimonial2.png"
+		:testimonial "Wow, great service - thanks! Thanks a million! Thanks for your support so far - we're getting close now!"
+		:name "Aran Dadswell"
+		:company "Get to know your Brain"
+	}
 
 ])
 
@@ -203,12 +234,12 @@ Management."})
 	])
 
 (defn testimonial [tst]
-	(div :class "column"
+	(div :class "ui left floated segment"
 		(img :src (cell= (:image tst)))
 		(p :class "testimonial" (text (:testimonial tst)))
 		(p :class "testimonial-name" (text (:name tst)))
-		(p :class "testimonial-company" (text (:company tst)))
-	)
+		(p :class "testimonial-company" (text (:company tst))))
+	
 )
 
 (defn feature [ftr]
@@ -299,9 +330,10 @@ Management."})
 			(div :id "ux-statements" :class "three column doubling row"
 				(loop-tpl :bindings [ux ux-list]
 					(ux-statement @ux)))
-				(div :class "testimonials two column doubling row"
-					(loop-tpl :bindings [tst testimonials]
-					(testimonial tst))))))
+				(div :class "testimonials row"
+					(div :class "column"
+						(loop-tpl :bindings [tst testimonials]
+						(testimonial tst)))))))
 
 (layout/main
 	:pagetitle "Manage Your Apps | Exicon Cloud App Management AppBoard"
@@ -312,5 +344,5 @@ Management."})
 	(quotes)
 	(features-section feature-list)
 	(packages-section)
-	(clients)
-	(testimonials-section))
+	(testimonials-section)
+	(clients))

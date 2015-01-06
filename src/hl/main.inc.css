@@ -476,6 +476,13 @@ section.clients img{
 	font-weight: 400;
 }
 
+.testimonials .ui.segment {
+	width: 48%;
+	margin-right: 1rem;
+	margin-top: 0;
+	margin-bottom: 2em;
+}
+
 #ux-statements p {
 	min-height: 4em;
 	text-align: center;
@@ -490,7 +497,6 @@ section.clients img{
 #ux-statements .column{
 	margin-bottom: 1em;
 }
-
 .pkg-note {
 	font-size: 0.7em;
 	margin-top: 20px;
