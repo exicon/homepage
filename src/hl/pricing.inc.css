@@ -166,8 +166,11 @@
 	box-shadow: 0px 0px 0px 0px #fff;
 }
 
-
-
 #faq-help .ui.accordion .title {
 	border-radius: 0.3125em;
+}
+
+#faq-help .column {
+	margin-top: 0;
+	margin-bottom: 0;
 }
