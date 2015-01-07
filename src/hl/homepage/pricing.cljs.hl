@@ -129,17 +129,26 @@
 ])
 
 (defn faq-list [q]
-	(div :class "column"
-		(h3 (text (:question q)))
-		(div (cell= (:answer q)))
-	)
+	(let [opened (cell false)]
+		(div :class "column"
+			(div :class "ui accordion"
+				(div :class "title"
+					:do-class (cell= {:active opened})
+					:click #(swap! opened not)
+					(i :class "dropdown icon")
+					(text (:question q)))
+
+				(div :class "content"
+					:do-class (cell= {:active opened})
+					(cell= (:answer q))))
+	))
 )
 
 (defn faq-list-section []
 	(section
 		:id "faq-help"
 		:class "full-width-container"
-		(div :class "ui two column doubling page grid"
+		(div :class "ui one column page grid"
 			(h2 :class "ui center aligned header" "FAQ - We're here to help")
 			(loop-tpl :bindings [opt faq-detail]
 			(faq-list opt))
