@@ -98,15 +98,19 @@ Management."})
 		:icon "images/packages/challengerpack.png"
 		:title "The Challenger Pack"
 		:subtitle "Competitor Insights"
-		:desc "Benchmark yourself against those in your industry, specific countries or track every move of a specific competitor’s brand."
+		:desc #(p "Benchmark yourself against those in your industry,
+			specific countries or track every move of a specific competitor’s brand."
+			(br)
+			(br)
+			"Stay ahead with your monthly AppScan.")
 		:link "/packages/challenger-pack"
 	}
 	{
 		:icon "images/packages/dominatorpack.png"
 		:title "The Dominator Pack"
 		:subtitle "Distribution"
-		:desc "Increase the chance of your app being downloaded by up to 200% more and featured up to 20 times
-			more*. Expand your reach by putting your apps onto multiple app stores."
+		:desc #(p "Increase the chance of your app being downloaded by up to 200% more and featured up to 20 times
+			more*. Expand your reach by putting your apps onto multiple app stores.")
 		:link "/packages/dominator-pack"
 		:note "* Source: One Platform Foundation"
 	}
@@ -114,7 +118,9 @@ Management."})
 		:icon "images/packages/amplifierpack.png"
 		:title "The Amplifier Pack"
 		:subtitle "API & More"
-		:desc "Leverage your APIs to build your business. Monitor and manage traffic to all your API endpoints while using the developer portal to build your developer ecosystem."
+		:desc #(p "Leverage your APIs to build your business. Monitor and manage traffic to all your API endpoints while using the developer portal to build your developer ecosystem."
+			(br)
+			"Everything customized to your needs.")
 		:link "/packages/amplifier-pack"
 	}
 ])
@@ -254,7 +260,7 @@ Management."})
 						) ) )
 	) )
 
-(defn pkg-tile [pkg]
+(defelem pkg-tile [pkg]
 	(div :class "column"
 		(div :class "ui segment"
 			(div :class "ui two column grid"
@@ -263,9 +269,9 @@ Management."})
 					(div :class "details column"
 						(h2 :class "lightExicon" (text (:title pkg)))
 						(h3 (text (:subtitle pkg)))
-						(p (text (:desc pkg)))
+						((:desc pkg))
+						(if (:note pkg) (p :class "pkg-note" (:note pkg)))
 						(a :href (cell= (:link pkg)) "Find out more")
-						(p :class "pkg-note" (text (:note pkg)))
 					))))
 	)
 
@@ -277,12 +283,12 @@ Management."})
 		(h4 :class "ui center aligned header"
 			"Expand your Starter Pack with:")
 		(div :class "ui page grid"
-			(div :class "equal height computer only row"
+			(div :class "equal height computer three column only row"
 				(loop-tpl :bindings [pkg pkgs]
-					(pkg-tile pkg)))
+					(pkg-tile @pkg)))
 			(div :class "one column tablet mobile only row"
 				(loop-tpl :bindings [pkg pkgs]
-					(pkg-tile pkg))))))
+					(pkg-tile @pkg))))))
 
 (defn clients []
 	(section :class "clients ui one column page grid"

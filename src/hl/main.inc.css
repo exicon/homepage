@@ -507,9 +507,8 @@ section.clients img{
 	margin-bottom: 1em;
 }
 .pkg-note {
-	font-size: 0.7em;
-	margin-top: 20px;
-	width: 190px;
+	font-size: 0.6em;
+	margin-top: -1px;
 }
 
 /*Bottom Navigation*/
