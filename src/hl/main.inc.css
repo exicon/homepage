@@ -488,6 +488,10 @@ section.clients img{
 	font-weight: 400;
 }
 
+#appendix {
+	font-size: 0.8rem
+}
+
 #ux-statements p {
 	min-height: 4em;
 	text-align: center;

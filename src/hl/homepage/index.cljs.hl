@@ -325,7 +325,7 @@ Management."})
 			(div :id "ux-statements" :class "three column doubling row"
 				(loop-tpl :bindings [ux ux-list]
 					(ux-statement @ux)))
-			(h5 :class "ui header" "Source: Exicon Customer Survey 2014")
+			(div :class "row" (div :class "column" :id "appendix" "Source: Exicon Customer Survey 2014"))
 			(div :class "testimonials two column row"
 				(div :class "column"
 					(div :class "ui segment"
