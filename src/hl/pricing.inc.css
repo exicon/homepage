@@ -144,7 +144,8 @@
 
 #faq-help h2 {
 	border-top: 1px solid #dddddd;
-	line-height: 150px;
+	line-height: 115px;
+	margin-bottom: 0
 }
 
 #faq-help h3 {
