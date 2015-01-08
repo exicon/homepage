@@ -4,11 +4,40 @@
 
 #about-us .profile.column {
 	position: relative;
-	height: 280px;
+}
+
+#about-us .profile.column .reveal,
+#about-us .profile.column .reveal img {
+	background-color: transparent;
+	width: 100%
+}
+
+#about-us .profile.column .reveal ~ div {
+	/*margin-top: -0.8em;*/
+}
+
+#about-us .profile.column .reveal img.layer{
+	background-color: rgba(0,0,0,0.2);
 }
 
 #about-us .profile.column img {
 	margin: 0 auto;
+	text-align: center;
+}
+
+#about-us .profile.column .user.icon {
+	font-size: 1.375em;
+}
+
+#about-us .profile.column .icon {
+	opacity: 1;
+}
+
+#about-us .profile.column .icons {
+	position: absolute !important;
+	top: 48%;
+	left: 2%;
+	width: 100%;
 	text-align: center;
 }
 
@@ -18,12 +47,6 @@
 
 #board-team {
 	margin-top: 4rem;
-}
-
-#about-us .social-media-icons{
-	position: absolute;
-	top: 11.5em;
-	width: 85%;
 }
 
 #about-us .social-media-icons, .info-labels{
