@@ -6,11 +6,38 @@
 		[tailrecursion.hoplon.reload :refer [reload-all]]
 		))
 
-(if (env? :development)
-	(reload-all 1000))
-
 (defn row [] (div
 	:class "column sixteen wide center aligned"))
+
+(defn subscribe-stick-form [subscribe-click]
+	[
+		(div :id "subscribe-stick-layer"
+			:do-class (cell= {:show subscribe-click}))
+		(div :id "subscribe-stick-form"
+			:class "ui header"
+			:do-class (cell= {:show subscribe-click})
+			(div :class "ui grid"
+				((row)
+					(h4 :class "ui header" "Subscribe to our FREE")
+					(p "Newsletter • Reports • Infographs")
+					(div :class "ui divider hidden header")
+					(img :src "/images/header/subscribe.png"))
+				((row)
+					(form
+						:action "exiconglobal.us3.list-manage.com/subscribe/post?u=59165e464834675ada250903e&amp;id=2df8fbeed9"
+						:method "post"
+						:target "_blank"
+						:id "subscribe-form"
+						(div :class "ui input basic"
+							(input :type "text" :name "EMAIL" :placeholder "email-address"))
+						(div :class "ui divider hidden header")
+						(input :type "submit" :class "ui button tiny" :value "Subscribe")))))])
+
+(defn subscribe-stick-btn [subscribe-click]
+	(a :href "javascript:void(0);"
+		:click #(reset! subscribe-click true)
+		(div :id "subscribe-stick" :do-class
+			(cell= {:show (not subscribe-click)}))))
 
 (defelem main [{:keys [pagetitle pagedescription pagekeywords] :as attrs} content]
 	(let [subscribe-click (cell false)]
@@ -26,31 +53,8 @@
 
 				(a :href "/company/contact-manager/"
 					(div :id "get-in-touch"))
-				(a :href "javascript:void(0);"
-					:click #(reset! subscribe-click true)
-					(div :id "subscribe-stick" :do-class
-						(cell= {:show (not subscribe-click)})))
-				(div :id "subscribe-stick-layer"
-					:do-class (cell= {:show subscribe-click}))
-				(div :id "subscribe-stick-form"
-					:class "ui header"
-					:do-class (cell= {:show subscribe-click})
-					(div :class "ui grid"
-						((row)
-							(h4 :class "ui header" "Subscribe to our FREE")
-							(p "Newsletter • Reports • Infographs")
-							(div :class "ui divider hidden header")
-							(img :src "/images/header/subscribe.png"))
-						((row)
-							(form
-								:action "//exiconglobal.us3.list-manage.com/subscribe/post?u=59165e464834675ada250903e&amp;id=2df8fbeed9"
-								:method "post"
-								:name "mc-embedded-subscribe-form"
-								:target "_blank"
-								(div :class "ui input basic"
-									(input :type "text" :name "EMAIL" :placeholder "email-address"))
-								(div :class "ui divider hidden header")
-								(input :type "submit" :class "ui button tiny" :value "Subscribe")))))
+				(subscribe-stick-btn subscribe-click)
+				(subscribe-stick-form subscribe-click)
 
 				(div (merge {:id "content"}
 					(dissoc attrs :pagetitle :pagedescription :pagekeywords))
