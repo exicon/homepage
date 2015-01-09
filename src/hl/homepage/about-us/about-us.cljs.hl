@@ -250,17 +250,40 @@
 				(social-icons profile "mobile")
 				(if (:klout profile) (klout-widget profile)))))
 
+(defn videos-part []
+	(let [
+		video (cell "http://www.youtube.com/embed/94XtUIDwQUU?autoplay=1")
+		set-void #(reset! video "")
+		show-video-popup #((reset! video "http://www.youtube.com/embed/94XtUIDwQUU?autoplay=1")
+			(.. (js/jQuery "#videos-popup-box.modal") (modal "setting" "onHide" set-void))
+			(.. (js/jQuery "#videos-popup-box.modal") (modal "show")))]
+	[(div :class "ui center aligned grid"
+		(div :class "eight wide column"
+			(a :click #(show-video-popup)
+				(div :class "ui center aligned segment"
+					(h2 :class "videos-title" "The World is Going Mobile")
+					(div :class "videos-screenshot-box"
+						(img :class "ui image" :src "/images/about-us/video.png"))))))
+	(div :id "videos-popup-box" :class "ui modal"
+		(i :class "close icon"
+			:click set-void)
+		(div :class "header"
+			(h1 "The World is Going Mobile")
+			(div :class "video-frame"
+				(iframe :width "90%" :height "430px;"
+					:src (cell= video)
+					:frameborder "0" :allowfullscreen ""
+					:webkitallowfullscreen "" :mozallowfullscreen ""))))]))
+
 (defn overview-section []
 	(section :id "overview-section"
 				(h2 :class "ui header" "How we got here")
 				(p "We started out as a developer agency, helping companies find the right developers in the right markets on the right platforms. This allowed us to create a network of over 4000 development companies, working for companies like Sony Ericsson, HP, Qualcomm, Standard Chartered, glh hotels, Juniper Networks.")
 				(p "Companies were looking to build apps thanks to the proliferation of mobile phones. They needed developers to help them do this. ")
-				(p "In a sales meeting with a Fortune 500 company they asked us if we could find a specific type of developer for a new app. We surprised them by telling them they already had 4 of those apps. Additional research showed that they had a total of 180 apps built by their agencies, independent developers, wholesalers, and more. ")
-				(p "And the lightbulb went on. There was an opportunity here. ")
-				(p "So we decided to build out the Exicon AppBoard, helping companies get a grip on their apps. ")
-				(p "We have had some incredible partner customers who have helped evolve the product as we onboard their Apps, APIs and Developers.")
-				(p "Managing the logistics of a company’s app portfolio is continuing to evolve, as is our product, to meet the demands of customers large and small. ")
-				(p "We hope you’ll join us on that journey if you are trying to get a grip on your apps.")))
+				(p "A Fortune 500 company asked us if we could find a developer for a new app. We surprised them by telling them they already had 4 of those apps. Additional research showed that they had a total of 180 apps built by their agencies, independent developers and system integrators. And the lightbulb went on. There was an opportunity here. So we decided to build the Exicon AppBoard, helping companies get a grip on their apps. ")
+				(videos-part)
+				(p "We have some incredible partners and customers who help us grow the product as we onboard their Apps, APIs and Developers.")
+				(p "As we manage the logistics of our customers app portfolio, we continue to grow and add features to meet the demands of customers large and small. As the industry develops gradually we hope you’ll join us on that journey as you look to get a grip on your apps.")))
 
 (defelem team-section [{:keys [id title members]} _]
 	(section :id id :class "ui five column doubling grid "
@@ -326,5 +349,6 @@
 				(awards-section)
 				(bio current-bio))
 			(div :class "six wide timeline column"
+				(h2 :class "ui header aligned center" "Exicon Timeline")
 				(div :class "timeline-img"
 					(img :src "/images/about-us/timeline.png")))))
