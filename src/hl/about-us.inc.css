@@ -41,10 +41,6 @@
 	text-align: center;
 }
 
-#board-team .column{
-	height: 180px;
-}
-
 #board-team {
 	margin-top: 4rem;
 }
@@ -146,4 +142,47 @@ label.klout-score{
 		width: 30%;
 	}
 
+	#about-us .profile.column .computer{
+		display: none;
+	}
+
+	#about-us .profile.column .mobile{
+		display: block;
+		padding-bottom: 5px;
+	}
+
+	#about-us .profile.column .mobile .icon {
+		font-size: 2rem;
+	}
+
+}
+
+/* Tablet */
+@media only screen and (min-width: 767px) and (max-width: 992px){
+
+	#about-us .profile.column .computer{
+		display: none;
+	}
+
+	#about-us .profile.column .mobile{
+		display: block;
+		padding-bottom: 5px;
+	}
+
+	#about-us .profile.column .mobile .icon {
+		font-size: 2rem;
+	}
+}
+
+
+/* Computer */
+@media only screen and (min-width: 992px){
+
+	#about-us .profile.column .computer{
+		display: block;
+	}
+
+	#about-us .profile.column .mobile{
+		display: none;
+	}
 }

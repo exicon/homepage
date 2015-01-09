@@ -223,18 +223,17 @@
 		(label :class "klout-score" (text (:klout profile)))
 	))
 
-(defn social-icons [profile]
-	[
-		(if (:bio-url profile)
-			(a :click #(show-bio profile) :target "_blank"
-				(i :class "user tiny icon")))
+(defn social-icons [profile media]
+	(div :class media
+		(a :click #(show-bio profile) :target "_blank"
+			(i :class "user tiny icon"))
 		(if (:linkedin profile)
 			(a :href (:linkedin profile) :target "_blank"
 				(i :class "linkedin tiny icon")))
 		(if (:twitter profile)
 			(a :href (str "http://twitter.com/" (:twitter profile)) :target "_blank"
-				(i :class "twitter tiny icon")))
-	])
+				(i :class "twitter tiny icon"))))
+	)
 
 (defn team-member [profile]
 	(div :class "profile column"
@@ -242,12 +241,13 @@
 			(img :class "ui circular image visible content" :src (cell= (:image profile)))
 			(img :class "ui circular image hidden content layer" :src "/images/dummy.png")
 			(div :class "hidden content icons"
-				(social-icons profile)))
+				(social-icons profile "computer")))
 		(div :class "info-labels"
 			(label :class "name" (text (:name profile))))
 		(div :class "info-labels"
 			(label :class "position" (text (:position profile))))
 			(div :class "social-media-icons"
+				(social-icons profile "mobile")
 				(if (:klout profile) (klout-widget profile)))))
 
 (defn overview-section []
