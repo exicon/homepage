@@ -32,8 +32,20 @@
 			to build a group of developers around your API, access our network of 4000+ software houses.")
 	] })
 
-(defc manager-console {
+(defc governance-module {
 	:image-side :right
+	:screenshot "/images/governance-module.png"
+	:icon "/images/icons/governance-module.png"
+	:title "Governance Module"
+  :anchor "governance-module"
+	:content [
+		(p "Avoid duplicating apps, wasting money, producing poor quality code while protecting your menu-item-of-page
+			and ensuring consistent brand values with our App Governance module, customizable for your needs.")
+	] })
+
+
+(defc manager-console {
+	:image-side :left
 	:screenshot "/images/manager-console-screenshot.png"
 	:icon "/images/icons/manager-console.png"
 	:title "Manager Console"
@@ -99,6 +111,7 @@
 					amplify efforts.") ))
 		(feature @api-management)
 		(feature @development-ecosystem)
+		(feature @governance-module)
 		(feature @manager-console)
 	)
 	(div :class "column" :id "pricing-pack"
