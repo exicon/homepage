@@ -24,7 +24,7 @@
 					(img :src "/images/header/subscribe.png"))
 				((row)
 					(form
-						:action "exiconglobal.us3.list-manage.com/subscribe/post?u=59165e464834675ada250903e&amp;id=2df8fbeed9"
+						:action "//exiconglobal.us3.list-manage.com/subscribe/post?u=59165e464834675ada250903e&amp;id=2df8fbeed9"
 						:method "post"
 						:target "_blank"
 						:id "subscribe-form"
@@ -48,13 +48,14 @@
 				(meta :name "keywords" :content pagekeywords)
 				(link :href "/images/favicon.ico" :rel "shortcut icon")
 				(link :href "/semantic.css" :rel "stylesheet"))
+			(subscribe-stick-btn subscribe-click)
+			(subscribe-stick-form subscribe-click)
 			(body
 				(top-nav/top-nav)
 
 				(a :href "/company/contact-manager/"
 					(div :id "get-in-touch"))
-				(subscribe-stick-btn subscribe-click)
-				(subscribe-stick-form subscribe-click)
+
 
 				(div (merge {:id "content"}
 					(dissoc attrs :pagetitle :pagedescription :pagekeywords))
