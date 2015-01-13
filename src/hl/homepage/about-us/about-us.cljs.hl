@@ -5,6 +5,7 @@
 (def team {
 		:stefan {
 			:image "/images/about-us/Stefan.png"
+			:birthday-image "/images/about-us/Birthday-Stefan.png"
 			:name "Stefan Rust"
 			:position "Founder & CEO"
 			:klout "58"
@@ -23,6 +24,7 @@
 
 		:cat {
 			:image "/images/about-us/Cat.png"
+			:birthday-image "/images/about-us/Birthday-Cat.jpg"
 			:name "Cat Purvis"
 			:position "Founder & EVP"
 			:klout "54"
@@ -40,6 +42,7 @@
 		:albert {
 			:image "/images/about-us/Albert.png"
 			:name "Albert Kwong"
+			:birthday-image "/images/about-us/Birthday-Albert.jpg"
 			:position "Product Architect"
 			:bio [
 				(p "Albert is one of those rare creatures able to understand both technology and commercial challenges. He has worked for both big companies (PacNet and MTR Corporation) and small, and in fact has set up his own companies – Bit Exchange systems Ltd and Charcoal Generation Ltd.")
@@ -65,6 +68,7 @@
 		:phil {
 			:image "/images/about-us/Phil.png"
 			:name "Phil Jackson"
+			:birthday-image "/images/about-us/Birthday-Phil.png"
 			:position "VP APIs"
 			:bio [
 				(p "After graduating from university in England, Phil became a contractor working at companies like BT, McAfee, and on the iPlayer API at the BBC. In 2010 he co-founded Qwerly; a company that aggregated social information online for marketing purposes. Just over a year later, Qwerly sold to a US competitor.")
@@ -197,7 +201,12 @@
 		(div :class "header"
 				(h1 (cell= (:name profile)))
 				(h2 (cell= (:position profile)))
-				(div (cell= (:bio profile))))))
+				(div (cell= [
+					(when (:birthday-image profile)
+							(img :class "ui medium right floated image"
+								:src (cell= (:birthday-image profile))))
+					(:bio profile)]))
+				)))
 
 (defn show-bio [profile]
 	(reset! current-bio profile)
@@ -252,18 +261,17 @@
 
 (defn videos-part []
 	(let [
-		video (cell "http://www.youtube.com/embed/94XtUIDwQUU?autoplay=1")
+		video (cell "")
 		set-void #(reset! video "")
 		show-video-popup #((reset! video "http://www.youtube.com/embed/94XtUIDwQUU?autoplay=1")
 			(.. (js/jQuery "#videos-popup-box.modal") (modal "setting" "onHide" set-void))
 			(.. (js/jQuery "#videos-popup-box.modal") (modal "show")))]
 	[(div :class "ui center aligned grid"
-		(div :class "eight wide column"
+		(div :class "ten wide column"
 			(a :click #(show-video-popup)
-				(div :class "ui center aligned segment"
-					(h2 :class "videos-title" "The World is Going Mobile")
+				(div :class "ui center aligned basic segment"
 					(div :class "videos-screenshot-box"
-						(img :class "ui image" :src "/images/about-us/video.png"))))))
+						(img :class "ui image" :src "/images/about-us/video1.png"))))))
 	(div :id "videos-popup-box" :class "ui modal"
 		(i :class "close icon"
 			:click set-void)
@@ -327,7 +335,7 @@
 		(div :id "page-subtitle" :class "center aligned row"
 			(div :class "column"
 				(h2 "App-cessorizing Everything")
-				(img :src "/images/about-us/appcessorizing-everything.png"))))
+				(img :src "/images/about-us/flow1.png"))))
 
 		(div :class "ui two column doubling page grid"
 			(div :id "about-us" :class "ten wide column"
