@@ -344,7 +344,7 @@
 		(div :class "ui two column doubling page grid"
 			(div :class "ten wide column"
 
-				(div :class "anchor" :id "how-we-got-there")
+				(div :class "anchor" :id "how-we-got-here")
 				(overview-section)
 
 				(team-section :id "management-team"
