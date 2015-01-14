@@ -11,12 +11,11 @@
 			:klout "58"
 			:bio-url "/staff/bios/Stefan Rust Bio.pdf"
 			:bio [
-				(p "Stefan is the CEO at Exicon. Inspired. Spontaneous. Unstoppable. Stefan is China born and bred and speaks English, Mandarin, German and French. In other words, he's pretty unique.")
-				(p "Considered a thought-leader in his field, Stefan is passionate about the power that mobile and the Internet brings to businesses around the world. He has a real knack for spotting breaking trends, and seeing ahead in terms of potential new business applications and revenue models. With over 20 years' experience in the telecommunications industry, Stefan leads the team here at Exicon and ensures our clients experience the 'out of the box' thinking they've come to expect from us.")
-				(p "It's no surprise then that he is a founding member and former chairman of the Mobile Entertainment Forum, as well as being identified 2 years in a row as one of the top 50 Global Mobile Entertainment Executives by 'Mobile Entertainment' magazine. He is also a founding advisor to Music Matters, Asia's premier music industry event.")
-				(p "Before joining Exicon, Stefan was Head of Strategic Planning for Web 2.0 and Communication Industries at Sun Microsystems and prior to that he worked at Lucent and Siemens. In addition to large technology company experience, he has also worked for entrepreneurial organizations such as the European Business Channel at Limelight Studios as well as a number of start-ups around the world.")
-				(p "Stefan's qualifications include a Post Graduate Degree in Economics from SEBA in Switzerland. He is a regular guest and speaker at key industry events in the US, Europe and Asia, making a dynamic contribution wherever he goes.")
-				(p "With Stefan, the pace never lets up. Even in his downtime he's carving up the water at early morning swim training, intent on setting a new personal best. Keep up if you can!")
+				(p "Stefan Rust is the Founder and CEO at Exicon, which was recently recognized as Hong Kong’s hottest start-up by Hong Kong Business.")
+				(p "Exicon is a SaaS platform providing mobile application content and asset management. Aggregating the diverse app assets and data into a single, easy-to-use management console. Exicon provides the marketing and product teams with relevant business intelligence. ")
+				(p "Stefan is also the Chairman Emeritus of MEF and was elected top 50 Global Mobile Entertainment Executive. He played key roles in Corporate Development and Strategic Marketing during 7 years at Sun Microsystems Inc. in Mobile, Web 2.0 and Communication Industries. ")
+				(p "As founding member of Xin De Telecom, Stefan drove Marketing & Sales for the mobile business until its sale to China Unicom.")
+				(p "As a contributor to the greater digital community Stefan remains engaged with various industry organizations and start-ups around the world.")
 			]
 			:linkedin "http://hk.linkedin.com/in/stefanrust"
 			:twitter "srust99"
@@ -289,15 +288,20 @@
 				(p "We started out as a developer agency, helping companies find the right developers in the right markets on the right platforms. This allowed us to create a network of over 4000 development companies, working for companies like Sony Ericsson, HP, Qualcomm, Standard Chartered, glh hotels, Juniper Networks.")
 				(p "Companies were looking to build apps thanks to the proliferation of mobile phones. They needed developers to help them do this. ")
 				(p "A Fortune 500 company asked us if we could find a developer for a new app. We surprised them by telling them they already had 4 of those apps. Additional research showed that they had a total of 180 apps built by their agencies, independent developers and system integrators. And the lightbulb went on. There was an opportunity here. So we decided to build the Exicon AppBoard, helping companies get a grip on their apps. ")
+				(div :class "anchor" :id "the-world-is-going-mobile")
 				(videos-part)
 				(p "We have some incredible partners and customers who help us grow the product as we onboard their Apps, APIs and Developers.")
-				(p "As we manage the logistics of our customers app portfolio, we continue to grow and add features to meet the demands of customers large and small. As the industry develops gradually we hope you’ll join us on that journey as you look to get a grip on your apps.")))
+				(p "As we manage the logistics of our customers app portfolio, we continue to grow and add features to meet the demands of customers large and small. As the industry develops gradually we hope you’ll join us on that journey as you look to get a grip on your apps.")
+				(div :class "anchor" :id "mobile-ecosystem")
+				(img :class "ui large centered image" :src "/images/reports/Mobile-Ecosystem.png"))
+)
 
-(defelem team-section [{:keys [id title members]} _]
+(defelem team-section [{:keys [id link title members]} _]
+	[(div :class "anchor" :id link)
 	(section :id id :class "ui five column doubling grid "
 		(h2 :class "ui header" title)
 		(loop-tpl :bindings [profile members]
-			(team-member @profile))))
+			(team-member @profile)))])
 
 (defn partner [logo]
 	(div :class "column"
@@ -338,21 +342,27 @@
 				(img :src "/images/about-us/flow1.png"))))
 
 		(div :class "ui two column doubling page grid"
-			(div :id "about-us" :class "ten wide column"
+			(div :class "ten wide column"
+
+				(div :class "anchor" :id "how-we-got-there")
 				(overview-section)
 
 				(team-section :id "management-team"
+					:link "management-team"
 					:title "Management Team"
 					:members management-team)
 
 				(team-section :id "board-team"
+					:link "our-board"
 					:title "Our Board"
 					:members board-team)
 
 				(team-section :id "advisory-team"
+					:link "advisory-board"
 					:title "Advisory Board"
 					:members advisory-team)
 
+				(div :class "anchor" :id "our-partners")
 				(partners-section)
 				(awards-section)
 				(bio current-bio))

@@ -2,6 +2,11 @@
 	margin-bottom: 3em;
 }
 
+.ui.image.centered {
+	margin-left: auto;
+	margin-right: auto;
+}
+
 #about-us .profile.column {
 	position: relative;
 }
