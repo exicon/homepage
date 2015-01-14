@@ -106,8 +106,8 @@
 	(section :class "twelve wide column"
 		(div :id "page-subtitle" :class "center aligned row"
 			(div :class "column"
-				(h2 "Are your thinking bigger? Ready to open your API?
-					Considering leveraging 3rd party developers to your
+				(h2 "Are you thinking bigger? Ready to open your API?
+					Consider leveraging 3rd party developers to your
 					amplify efforts.") ))
 		(feature @api-management)
 		(feature @development-ecosystem)
