@@ -481,6 +481,9 @@ section.clients img{
 .testimonials .ui.image {
 	background-color: rgba(0,0,0,0)
 }
+.testimonials .ui.divider {
+	margin-top: 2em;
+}
 
 
 .testimonials .testimonial {
@@ -489,6 +492,12 @@ section.clients img{
 
 .testimonials .testimonial-name{
 	font-weight: 400;
+}
+
+.ui.image.custom-m {
+	width: 135px;
+	font-size: 0.95rem;
+	margin-top: 1em;
 }
 
 #appendix {
