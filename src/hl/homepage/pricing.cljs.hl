@@ -152,7 +152,7 @@
 	(section
 		:id "faq-help"
 		:class "full-width-container"
-		(h2 :class "ui center aligned header" "FAQ - We're here to help")
+		(h2 :class "ui center aligned header" "FAQ")
 		(div :class "ui one column page grid"
 			(loop-tpl :bindings [opt faq-detail]
 			(faq-list opt))

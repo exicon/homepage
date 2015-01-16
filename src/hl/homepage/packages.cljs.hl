@@ -38,7 +38,7 @@
 				"SIGN UP NOW"))
 		(div :class "ui exicon-teal divider small bd")
 		(div "All the features of")
-		(h3 :class "ui exicon-teal header word"
+		(h3 :class "ui exicon-teal header word sub-pack-title"
 			"STARTER PACK" (br) "+")
 		(ul
 			(li "Monthly Competitor Insight")
@@ -62,7 +62,7 @@
 				"SIGN UP NOW"))
 		(div :class "ui exicon-teal divider small bd")
 		(div "All the features of")
-		(h3 :class"ui exicon-teal header word"
+		(h3 :class "ui exicon-teal header word sub-pack-title"
 			"STARTER PACK" (br) "+" (br) "CHALLENGER PACK" (br) "+" )
 		(ul
 			(li "Distribution onto 20 app stores")
@@ -75,13 +75,14 @@
 	:title "AMPLIFIER PACK"
 	:price "CUSTOM"
 	:price-des ""
-	:no-of-app (p :class "bold" "Unlimited apps & APIs")
+	:no-of-app (p (span :class"no-of-app" " Unlimited ") "apps & APIs")
 	:note "Ready to unleash your API, and maybe open it to developers?"
 	:content [(a :href "mailto:sales@exiconglobal.com?subject=Amplifier%20pack"
 			(div :class "ui button round-corner exicon-teal word no-trans"
 				"CONTACT US"))
 		(div :class "ui exicon-teal divider small bd")
 		(div "Everything customized to your needs")
+		(br :class "sub-pack-title")
 		(ul
 			(li "App Management")
 			(li "API Mangement")
