@@ -25,37 +25,67 @@
 	color: #666666;
 }
 
-#pricing-pack .other-pack {
+#pricing-pack .best-seller {
+	background-color: white;
+	color: transparent;
+	margin-bottom: 0;
+	text-align: center;
 	box-shadow: none;
-}
-
-#pricing-pack .other-pack .pack-price{
-	width: 170px;
-	height: 170px;
-	margin: 0px auto;
-	padding-top: 10px;
-	border-radius: 50%;
 	border: 1px solid #59d2d9;
-	vertical-align: middle;
-	padding-top: 60px;
+	border-bottom: 0;
 }
 
-#pricing-pack .other-pack .pack-price p{
-	font-size: 30px;
-	font-weight: 400;
+
+#pricing-pack .bold {
+	font-weight: 600;
+}
+
+#pricing-pack .best-seller.show {
+	background-color: #59d2d9 !important;
+	color: white;
+}
+
+#pricing-pack .pack{
+	box-shadow: none;
+	border: 1px solid #59d2d9;
+	border-top: 0
+}
+
+/*#pricing-pack .page.grid .ui.button:hover,*/
+#pricing-pack .page.grid .ui.button:not(.inverted){
+	color: white !important;
+}
+
+#pricing-pack .ui.page.grid .ui.button.exicon-teal.word:hover {
+	color: #59d2d9 !important;
+}
+
+#pricing-pack .page.grid .column:hover > *{
+	border-color: transparent;
+	background-color: #E4F7F7;
+
+}
+
+#pricing-pack .ui.button.no-trans {
+	transition: none;
+	-webkit-transition: none;
+}
+
+#pricing-pack .pack-price-title{
 	color: #59d2d9;
-	margin-bottom: 10px;
-	line-height: 25px;
+	font-size: 3rem;
+	margin: 0;
 }
 
-#pricing-pack .other-pack .sub-price {
-	font-size: 15px;
+#pricing-pack .sub-price {
+	font-size: 0.9em;
 	font-weight: 100;
 	color: #59d2d9;
+	height: 0.9em;
 }
 
-#pricing-pack .other-pack .price-note, #pricing-pack .amplifier-pack .price-note {
-	font-size: 17px;
+#pricing-pack .price-note {
+	font-size: 1em;
 	height: 70px;
 	line-height: 20px;
 	font-weight: 100;
@@ -63,33 +93,50 @@
 	font-style: italic;
 }
 
-#pricing-pack .price-details .no-of-app{
+#pricing-pack .no-of-app{
 	font-size: 17px;
 	font-weight: 600;
 	color: #59d2d9;
 }
 
+.ui.divider.small {
+	width:	2em;
+	margin-left: auto;
+	margin-right: auto;
+	border-bottom: 0;
+}
+
+
+#pricing-pack .price-details {
+	color: #666666;
+	font-weight: 100;
+}
+
+#pricing-pack .price-details ul li {
+	text-align: left;
+	padding: 0.5em 0;
+}
+
+#pricing-pack .price-details ul li ul {
+	list-style-type: circle;
+	padding: 0.5em 0 0 1em;
+}
+
+#pricing-pack .price-details ul li ul li {
+	text-align: left;
+	padding: 0.3em 0;
+}
+
 #pricing-pack .price-details p{
 	font-size: 15px;
 	font-weight: 300;
-	color: #333333;
 	margin-top: 30px;
 	margin-bottom: 30px;
 }
 
-#pricing-pack .price-details ul li{
-	font-size: 13px;
-	font-weight: 100;
-	color: #333333;
-	list-style: cirle;
-	margin: 6px 0 6px 10%;
-	line-height: 20px;
-	text-align: left;
-}
-
 #pricing-pack .price-details .pack-include {
-	font-size: 19px;
-	color: #666666;
+	font-size: 1.4em;
+	color: #59d2d9;
 	font-weight: 100;
 }
 
@@ -98,43 +145,6 @@
 	color: #59d2d9;
 	font-weight: 100;
 }
-
-
-#pricing-pack .amplifier-pack .pack-price{
-	width: 170px;
-	height: 170px;
-	margin: 0px auto;
-	padding-top: 10px;
-	border-radius: 50%;
-	border: 1px solid #59d2d9;
-	vertical-align: middle;
-	padding-top: 60px;
-}
-
-#pricing-pack .amplifier-pack .pack-price p{
-	font-size: 30px;
-	font-weight: 400;
-	color: #59d2d9;
-	line-height: 31px;
-}
-
-#pricing-pack .amplifier-pack {
-	height: 730px;
-	background-color: #59d2d9;
-	color: #ffffff !important;
-	-webkit-box-shadow: 0px 3px 11px -2px rgba(61,61,61,1);
-	-moz-box-shadow: 0px 3px 11px -2px rgba(61,61,61,1);
-	box-shadow: 0px 3px 11px -2px rgba(61,61,61,1);
-}
-
-#pricing-pack .amplifier-pack .pack-price{
-	background-color: #59d2d9;
-	border: 1px solid #ffffff;
-}
-
-#pricing-pack .amplifier-pack p, #pricing-pack .amplifier-pack ul li, #pricing-pack .amplifier-pack h2{
-	color: #ffffff !important;
-	}
 
 #faq-help {
 	margin-top: 30px;
@@ -174,4 +184,28 @@
 #faq-help .column {
 	margin-top: 0;
 	margin-bottom: 0;
+}
+
+@media only screen and (min-width: 992px) {
+	#pricing-pack .page.grid {
+		height: 850px;
+	}
+
+	#pricing-pack .page.grid .column{
+		height: 100%;
+	}
+
+	#pricing-pack .page.grid .column > *:first-child{
+		height: 3%;
+	}
+
+	#pricing-pack .page.grid .column > *:nth-child(2){
+		height: 90%;
+	}
+}
+
+@media only screen and (max-width: 1215px) and (min-width: 992px) {
+	#pricing-pack .pack-price-title {
+		font-size: 2.5rem;
+	}
 }

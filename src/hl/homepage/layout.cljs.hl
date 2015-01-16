@@ -39,7 +39,7 @@
 		(div :id "subscribe-stick" :do-class
 			(cell= {:show (not subscribe-click)}))))
 
-(defelem main [{:keys [pagetitle pagedescription pagekeywords] :as attrs} content]
+(defelem main [{:keys [pagecss pagetitle pagedescription pagekeywords] :as attrs} content]
 	(let [subscribe-click (cell false)]
 		(html
 			(head
@@ -47,7 +47,8 @@
 				(meta :name "description" :content pagedescription)
 				(meta :name "keywords" :content pagekeywords)
 				(link :href "/images/favicon.ico" :rel "shortcut icon")
-				(link :href "/semantic.css" :rel "stylesheet"))
+				(link :href "/semantic.css" :rel "stylesheet")
+				(if pagecss (link :href pagecss :rel "stylesheet")))
 			(subscribe-stick-btn subscribe-click)
 			(subscribe-stick-form subscribe-click)
 			(body

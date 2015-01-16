@@ -2,79 +2,92 @@
 
 (def starter-pack
 	{
-	:box	"other-pack"
+	:best-label false
 	:title "STARTER PACK"
-	:price "US$0 "
-	:price-des "per app / month"
+	:price "FREE"
+	:price-des ""
 	:note "Entry tool for those new to app management"
-	:content [
-		(a :href "https://app.exiconglobal.com/?package=starter#!/registration/" (div :class "ui button" "START FOR FREE"))
-		(p "1 to" (span :class"no-of-app" " 5 ") "of your apps")
-		(ul
-			(li "Intelligent Newsfeeds")
-			(li "LeaderBoard")
-			(li "Watchlist")
-			(li "App Store Analytics")
-			(li "In-app Analytics")
-			(li "App Briefbuilder")
-			(li "AppLocker"))
-		]
+	:no-of-app (p "1 to" (span :class"no-of-app" " 5 ") "of your apps")
+	:content [(a :href "https://app.exiconglobal.com/?package=starter#!/registration/"
+				(div :class "ui button round-corner exicon-teal word no-trans"
+					"SIGN UP NOW"))
+			(div :class "ui exicon-teal divider small bd")
+			(ul
+				(li "Intelligent Newsfeeds")
+				(li "LeaderBoard")
+				(li "Watchlist")
+				(li "Analytics"
+					(ul
+						(li "App store")
+						(li "In-app")))
+				(li "App Briefbuilder")
+				(li "AppLocker"))]
+
 	})
 
 (def challenger-pack
 	{
-	:box	"other-pack"
+	:best-label true
 	:title "CHALLENGER PACK"
 	:price "US$99"
 	:price-des "per app / month"
 	:note "The insights to see how your portfolio stacks up against the competition"
-	:content [
-		(a :href "https://app.exiconglobal.com/?package=challenger#!/registration/" (div :class "ui button" "START FOR FREE"))
-		(p "1 to" (span :class "no-of-app" " 20 ") "of your apps")
-		(p :class "pack-include" "STARTER PACK")
-		(p :class "pack-plus" "+ PLUS +")
+	:no-of-app (p "1 to" (span :class "no-of-app" " 20 ") "of your apps")
+	:content [(a :href "https://app.exiconglobal.com/?package=challenger#!/registration/"
+			(div :class "ui button round-corner exicon-teal word no-trans"
+				"SIGN UP NOW"))
+		(div :class "ui exicon-teal divider small bd")
+		(div "All the features of")
+		(h3 :class "ui exicon-teal header word"
+			"STARTER PACK" (br) "+")
 		(ul
 			(li "Monthly Competitor Insight")
-			(li "One AppScan per month")
-			)
-		]
+			(li "One AppScan per month"
+				(ul
+					(li "By brand")
+					(li "By country")
+					(li "By industry"))))]
 	})
 
 (def dominator-pack
 	{
-	:box	"other-pack"
+	:best-label false
 	:title "DOMINATOR PACK"
 	:price "US$159"
 	:price-des "per app / month"
 	:note "For those with a grip on their apps looking to expand their footprint"
-	:content [
-		(a :href "https://app.exiconglobal.com/?package=dominator#!/registration/" (div :class "ui button" "START FOR FREE"))
-		(p "1 to" (span :class"no-of-app" " 50 ") "of your apps")
-		(p :class"pack-include" "CHALLENGER PACK")
-		(p :class "pack-plus" "+ PLUS +")
+	:no-of-app (p "1 to" (span :class"no-of-app" " 50 ") "of your apps")
+	:content [(a :href "https://app.exiconglobal.com/?package=dominator#!/registration/"
+			(div :class "ui button round-corner exicon-teal word no-trans"
+				"SIGN UP NOW"))
+		(div :class "ui exicon-teal divider small bd")
+		(div "All the features of")
+		(h3 :class"ui exicon-teal header word"
+			"STARTER PACK" (br) "+" (br) "CHALLENGER PACK" (br) "+" )
 		(ul
 			(li "Distribution onto 20 app stores")
-			(li "White label marketplace"))
-		]
+			(li "White label marketplace"))]
 	})
 
 (def amplifier-pack
 	{
-	:box	"amplifier-pack"
+	:best-label false
 	:title "AMPLIFIER PACK"
-	:price "CONTACT US"
+	:price "CUSTOM"
 	:price-des ""
+	:no-of-app (p :class "bold" "Unlimited apps & APIs")
 	:note "Ready to unleash your API, and maybe open it to developers?"
-	:content [
-		(a :href "mailto:sales@exiconglobal.com?subject=Amplifier%20pack"
-			(div :class "ui white button" "CONTACT US"))
-		(p "Unlimited apps & APIs")
-		(p "Customized")
+	:content [(a :href "mailto:sales@exiconglobal.com?subject=Amplifier%20pack"
+			(div :class "ui button round-corner exicon-teal word no-trans"
+				"CONTACT US"))
+		(div :class "ui exicon-teal divider small bd")
+		(div "Everything customized to your needs")
 		(ul
-			(li "API mangement")
-			(li "Developer ecosystem")
-			(li "Manager console"))
-		]
+			(li "App Management")
+			(li "API Mangement")
+			(li "Development Ecosystem")
+			(li "Manager Console")
+			(li "Management Module"))]
 	})
 
 (def packages [starter-pack challenger-pack dominator-pack amplifier-pack])
