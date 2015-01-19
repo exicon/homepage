@@ -149,7 +149,7 @@
 	      (div :id "insights" :class "anchor")
 				(div :class "column"
 					(p :class "small-text" "Insights are aggregated from a proprietary statistical model, using publicly
-						available App Store data and analytics of opt-in partners."(br)"Your AppBoard data is
+						available App Store data and analytics of opt-in partners. Your AppBoard data is
 						never shared by Exicon."))))
 		(div :class "column" :id "pricing-pack"
 			(pricing-options challenger-pack)))
