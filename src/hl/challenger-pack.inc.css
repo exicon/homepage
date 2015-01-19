@@ -45,6 +45,14 @@
 	margin-top: 34px;
 }
 
+#challenger-pack #pricing-pack .starter-pack-desc{
+	display: block;
+}
+
+#challenger-pack #pricing-pack .no-desc{
+  display: none;
+}
+
 section.challenger{
 	background-color: #ebebeb;
 	padding: 2em;

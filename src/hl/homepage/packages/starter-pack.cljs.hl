@@ -4,7 +4,8 @@
 		[homepage.top-nav :as top-nav]
 		[homepage.common :as common]
 		[tailrecursion.hoplon.reload :refer [reload-all]]
-		[homepage.packages :refer [starter-pack]]))
+		[homepage.packages :refer [starter-pack]]
+		[homepage.pricing-pack :refer [pricing-options]]))
 
 (reset! top-nav/menu-item-of-page :features)
 
@@ -128,16 +129,16 @@
 		)
 )
 
-(defn pricing-options [opts]
-	(div :class "column"
-		(div :class "ui center aligned segment" :do-class (cell= (:box opts))
-			(h2 :class "pack-title" (text (:title opts)))
-				(div :class "ui center aligned segment pack-price"
-						(p (text (:price opts)))
-						(span :class "sub-price" (text (:price-des opts)))
-				)
-			(p :class "price-note" (text (:note opts)))
-			(div :class "price-details" (cell= (:content opts))))))
+; (defn pricing-options [opts]
+; 	(div :class "column"
+; 		(div :class "ui center aligned segment" :do-class (cell= (:box opts))
+; 			(h2 :class "pack-title" (text (:title opts)))
+; 				(div :class "ui center aligned segment pack-price"
+; 						(p (text (:price opts)))
+; 						(span :class "sub-price" (text (:price-des opts)))
+; 				)
+; 			(p :class "price-note" (text (:note opts)))
+; 			(div :class "price-details" (cell= (:content opts))))))
 
 (layout/main :id "starter-pack"
 	:pagetitle "Starter Pack | Intro To App Management & App Analytics"

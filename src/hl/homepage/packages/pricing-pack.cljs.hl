@@ -1,0 +1,18 @@
+(ns homepage.pricing-pack)
+
+(defn pricing-options [opts]
+	(div :class "column pack-col"
+		(h4 :class "ui attached header best-seller"
+			:do-class (cell= {:show (:best-label opts)
+			})
+			"BEST SELLER")
+		(div :class "ui center aligned attached segment pack"
+			:do-class
+			(cell= {:show (:best-label opts)
+				(:name opts) true})
+			(h2 :class "pack-title" (text (:title opts)))
+			(p :class "pack-price-title" (text (:price opts)))
+			(div :class "sub-price" (text (:price-des opts)))
+			(div (cell= (:no-of-app opts)))
+			(p :class "price-note" (text (:note opts)))
+			(div :class "price-details" (cell= (:content opts))))))

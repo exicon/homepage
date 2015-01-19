@@ -45,22 +45,13 @@
 	color: white;
 }
 
-#pricing-pack .pack{
+#pricing-pack .pack {
 	box-shadow: none;
 	border: 1px solid #59d2d9;
 	border-top: 0
 }
 
-/*#pricing-pack .page.grid .ui.button:hover,*/
-#pricing-pack .page.grid .ui.button:not(.inverted){
-	color: white !important;
-}
-
-#pricing-pack .ui.page.grid .ui.button.exicon-teal.word:hover {
-	color: #59d2d9 !important;
-}
-
-#pricing-pack .page.grid .column:hover > *{
+#pricing-pack .pack-col:hover > *{
 	border-color: transparent;
 	background-color: #E4F7F7;
 
@@ -69,6 +60,22 @@
 #pricing-pack .ui.button.no-trans {
 	transition: none;
 	-webkit-transition: none;
+}
+
+#pricing-pack .pack-price-title{
+	color: #59d2d9;
+	font-size: 3rem;
+	margin: 0;
+}
+
+#pricing-pack .challenger-pack .starter-pack-desc,
+#pricing-pack .dominator-pack .starter-pack-desc,
+#pricing-pack .dominator-pack .challenger-pack-desc{
+	display: none;
+}
+
+#pricing-pack .no-desc{
+	display: block;
 }
 
 #pricing-pack .pack-price-title{

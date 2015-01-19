@@ -1,69 +1,101 @@
 (ns homepage.packages)
 
+(def starter-pack-desc
+	#(ul :class "starter-pack-desc"
+		(li "Intelligent Newsfeeds")
+		(li "LeaderBoard")
+		(li "Watchlist")
+		(li "Analytics"
+			(ul
+				(li "App store")
+				(li "In-app")))
+		(li "App Briefbuilder")
+		(li "AppLocker")))
+
+(def challenger-pack-desc
+	#(ul :class "challenger-pack-desc"
+		(li "Monthly Competitor Insight")
+		(li "One AppScan per month"
+			(ul
+				(li "By brand")
+				(li "By country")
+				(li "By industry")))))
+
+(def sign-up-button
+	#(a :href "https://app.exiconglobal.com/?package=starter#!/registration/"
+				(div :class "ui button"
+					"SIGN UP NOW")))
+
 (def starter-pack
 	{
+	:name :starter-pack
 	:best-label false
 	:title "STARTER PACK"
 	:price "FREE"
 	:price-des ""
 	:note "Entry tool for those new to app management"
 	:no-of-app (p "1 to" (span :class"no-of-app" " 5 ") "of your apps")
-	:content [(a :href "https://app.exiconglobal.com/?package=starter#!/registration/"
-				(div :class "ui button round-corner exicon-teal word no-trans"
-					"SIGN UP NOW"))
+	:content [
+			(sign-up-button)
 			(div :class "ui exicon-teal divider small bd")
-			(ul
-				(li "Intelligent Newsfeeds")
-				(li "LeaderBoard")
-				(li "Watchlist")
-				(li "Analytics"
-					(ul
-						(li "App store")
-						(li "In-app")))
-				(li "App Briefbuilder")
-				(li "AppLocker"))]
-
+			(starter-pack-desc)
+			]
 	})
 
 (def challenger-pack
 	{
+	:name :challenger-pack
 	:best-label true
 	:title "CHALLENGER PACK"
 	:price "US$99"
 	:price-des "per app / month"
 	:note "The insights to see how your portfolio stacks up against the competition"
 	:no-of-app (p "1 to" (span :class "no-of-app" " 20 ") "of your apps")
-	:content [(a :href "https://app.exiconglobal.com/?package=challenger#!/registration/"
-			(div :class "ui button round-corner exicon-teal word no-trans"
-				"SIGN UP NOW"))
+	:content [
+		(sign-up-button)
 		(div :class "ui exicon-teal divider small bd")
 		(div "All the features of")
-		(h3 :class "ui exicon-teal header word sub-pack-title"
-			"STARTER PACK" (br) "+")
-		(ul
-			(li "Monthly Competitor Insight")
-			(li "One AppScan per month"
-				(ul
-					(li "By brand")
-					(li "By country")
-					(li "By industry"))))]
-	})
+
+		(h3 :class "ui exicon-teal header word sub-pack-title no-desc"
+			"STARTER PACK"
+			(br)
+			"+")
+
+		(h3 :class "ui exicon-teal header word sub-pack-title starter-pack-desc"
+			"STARTER PACK")
+		(starter-pack-desc)
+		(h3 :class "ui exicon-teal header word sub-pack-title starter-pack-desc" "+")
+
+		(challenger-pack-desc)
+		]})
 
 (def dominator-pack
 	{
+	:name :dominator-pack
 	:best-label false
 	:title "DOMINATOR PACK"
 	:price "US$159"
 	:price-des "per app / month"
 	:note "For those with a grip on their apps looking to expand their footprint"
 	:no-of-app (p "1 to" (span :class"no-of-app" " 50 ") "of your apps")
-	:content [(a :href "https://app.exiconglobal.com/?package=dominator#!/registration/"
-			(div :class "ui button round-corner exicon-teal word no-trans"
-				"SIGN UP NOW"))
+	:content [
+		(sign-up-button)
 		(div :class "ui exicon-teal divider small bd")
 		(div "All the features of")
-		(h3 :class "ui exicon-teal header word sub-pack-title"
+
+		(h3 :class "ui exicon-teal header word sub-pack-title no-desc"
 			"STARTER PACK" (br) "+" (br) "CHALLENGER PACK" (br) "+" )
+
+		(h3 :class "ui exicon-teal header word sub-pack-title starter-pack-desc"
+			"STARTER PACK")
+		(starter-pack-desc)
+		(h3 :class "ui exicon-teal header word sub-pack-title starter-pack-desc" "+")
+
+		(h3 :class "ui exicon-teal header word sub-pack-title challenger-pack-desc"
+			"CHALLENGER PACK")
+		(challenger-pack-desc)
+		(h3 :class "ui exicon-teal header word sub-pack-title challenger-pack-desc" "+")
+
 		(ul
 			(li "Distribution onto 20 app stores")
 			(li "White label marketplace"))]
@@ -71,6 +103,7 @@
 
 (def amplifier-pack
 	{
+	:name :amplifier-pack
 	:best-label false
 	:title "AMPLIFIER PACK"
 	:price "CUSTOM"
@@ -78,7 +111,7 @@
 	:no-of-app (p (span :class"no-of-app" " Unlimited ") "apps & APIs")
 	:note "Ready to unleash your API, and maybe open it to developers?"
 	:content [(a :href "mailto:sales@exiconglobal.com?subject=Amplifier%20pack"
-			(div :class "ui button round-corner exicon-teal word no-trans"
+			(div :class "ui button"
 				"CONTACT US"))
 		(div :class "ui exicon-teal divider small bd")
 		(div "Everything customized to your needs")

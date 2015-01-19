@@ -3,7 +3,8 @@
 		[homepage.layout :as layout]
 		[homepage.top-nav :as top-nav]
 		[homepage.common :refer [registration-button registration-link]]
-		[homepage.packages :refer [dominator-pack starter-pack challenger-pack]]))
+		[homepage.packages :refer [dominator-pack starter-pack challenger-pack]]
+		[homepage.pricing-pack :refer [pricing-options]]))
 
 (reset! top-nav/menu-item-of-page :features)
 
@@ -100,18 +101,6 @@
 		(div (cell= (nth (:content dominator)4)))]
 	)
 
-(defn pricing-options [opts]
-	(div :class "column"
-		(div :class "ui center aligned segment" :do-class (cell= (:box opts))
-			(h2 :class "pack-title" (text (:title opts)))
-			(div :class "ui center aligned segment pack-price"
-				(p (text (:price opts)))
-				(span :class "sub-price" (text (:price-des opts))))
-			(p :class "price-note" (text (:note opts)))
-			(pricing-features :starter starter-pack
-				:challenger challenger-pack
-				:dominator dominator-pack))))
-
 (layout/main :id "dominator-pack"
 	:pagetitle "Dominator | App Distribution onto Global Appstores"
 	:pagedescription "The Dominator Pack Is An App Management  & Logistics Pack That Includes Competitive Benchmarking & Appstore Distribution"
@@ -132,7 +121,7 @@
 		(feature @marketplace)
 	)
 
-	(div :class "column" :id "pricing-pack" :style "display:none"
+	(div :class "column" :id "pricing-pack"
 		(pricing-options dominator-pack)))
 
 	(section :class "distribution full-width-container"
