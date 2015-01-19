@@ -18,7 +18,8 @@
 		(p "Increase the chances of your app being")
 		(ul
 			(li "Downloaded by up to " (span :class "lightExicon text" (b "200%")) " more")
-			(li "Featured by up to " (span :class "lightExicon text" (b "20")) " times more"))
+			(li "Featured by up to " (span :class "lightExicon text" (b "20")) " times more"
+				(br)(br)(br)))
 		(registration-button :dominator "Start for free now")
 		]
 	})
@@ -34,7 +35,8 @@
 		(ul
 			(li "Increase the discoverability of your Apps and APIs across your customers,
 			partners, suppliers and your organization with your own white labelled marketplace")
-			(li "Accessible from " (em "your own") " company website showcasing " (em "your own") " products"))
+			(li "Accessible from " (em "your own") " company website showcasing " (em "your own") " products"
+				(br)(br)(br)))
 		(registration-button :dominator "Start for free now")
 		]
 	})

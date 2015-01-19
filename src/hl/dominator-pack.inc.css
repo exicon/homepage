@@ -34,6 +34,7 @@ section.distribution{
 #dominator-pack #pricing-pack .starter-pack-desc,
 #dominator-pack #pricing-pack .challenger-pack-desc{
 	display: block;
+	margin:0;
 }
 
 #dominator-pack #pricing-pack .no-desc{
