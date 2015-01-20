@@ -262,7 +262,7 @@ Management."})
 		(div :id "features" :class "anchor" )
 		(h2 :class "ui center aligned header" "Let the AppBoard give you real insight into your app portfolio")
 		(div :class "ui center aligned basic segment"
-			(common/registration-button :starter "Free Account Sign Up"))
+			(common/registration-button :starter "Free Starter Pack Sign Up"))
 		(div :class "ui two column doubling page grid"
 			(div :class "column" (img :class "appboard-img" :src "images/appboard.png"))
 			(div :class "features-group column"
