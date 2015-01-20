@@ -38,7 +38,7 @@
 	(section
 		:id "office-list"
 		:class "full-width-container"
-		(div :class "ui column page grid"
+		(div :class "ui column grid"
 				(h1 "Contact Us"))
 		(div :class "ui three column doubling page grid"
 			(loop-tpl :bindings [opt office-list]
@@ -57,14 +57,14 @@
 				(h1 "Contact Us")))
 	)
 
-	(section :class "ui one column page grid"
-		(div :id "page-subtitle" :class "left aligned row"
-			(div :class "column"
-				(h2 "Our Locations")
-			)
+	(section :class "ui page grid"
+		(div :class "ten wide column"
+			(h2 "Tell us a little about yourself, and we'll be in touch right away.")
 		)
-	)
+		(div :class "four wide column"
+			(office-options-section)
+		)
 
-	(office-options-section)
+	)
 
 )
