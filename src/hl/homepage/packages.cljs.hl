@@ -35,6 +35,7 @@
 	:price-des ""
 	:note "Entry tool for those new to app management"
 	:no-of-app (p "1 to" (span :class"no-of-app" " 5 ") "of your apps")
+	:link "https://app.exiconglobal.com/?package=starter#!/registration/"
 	:content [
 			(sign-up-button)
 			(div :class "ui exicon-teal divider small bd")
@@ -51,6 +52,7 @@
 	:price-des "per app / month"
 	:note "The insights to see how your portfolio stacks up against the competition"
 	:no-of-app (p "1 to" (span :class "no-of-app" " 20 ") "of your apps")
+	:link "https://app.exiconglobal.com/?package=starter#!/registration/"
 	:content [
 		(sign-up-button)
 		(div :class "ui exicon-teal divider small bd")
@@ -78,6 +80,7 @@
 	:price-des "per app / month"
 	:note "For those with a grip on their apps looking to expand their footprint"
 	:no-of-app (p "1 to" (span :class"no-of-app" " 50 ") "of your apps")
+	:link "https://app.exiconglobal.com/?package=starter#!/registration/"
 	:content [
 		(sign-up-button)
 		(div :class "ui exicon-teal divider small bd")
@@ -109,8 +112,10 @@
 	:price "CUSTOM"
 	:price-des ""
 	:no-of-app (p (span :class"no-of-app" " Unlimited ") "apps & APIs")
+	:link "mailto:sales@exiconglobal.com?subject=Amplifier%20pack"
 	:note "Ready to unleash your API, and maybe open it to developers?"
-	:content [(a :href "mailto:sales@exiconglobal.com?subject=Amplifier%20pack"
+	:content [
+		(a :href "mailto:sales@exiconglobal.com?subject=Amplifier%20pack"
 			(div :class "ui button"
 				"CONTACT US"))
 		(div :class "ui exicon-teal divider small bd")

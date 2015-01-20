@@ -2,6 +2,7 @@
 
 (defn pricing-options [opts]
 	(div :class "column pack-col"
+		:click #(set! (.-location js/window) (:link @opts))
 		(h4 :class "ui attached header best-seller"
 			:do-class (cell= {:show (:best-label opts)
 			})

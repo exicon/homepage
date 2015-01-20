@@ -54,7 +54,7 @@
 #pricing-pack .pack-col:hover > *{
 	border-color: transparent;
 	background-color: #E4F7F7;
-
+	cursor: pointer;
 }
 
 #pricing-pack .ui.button.no-trans {
