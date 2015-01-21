@@ -57,7 +57,6 @@
 				(a :href "/company/contact-manager/"
 					(div :id "get-in-touch"))
 
-
 				(div (merge {:id "content"}
 					(dissoc attrs :pagetitle :pagedescription :pagekeywords))
 					content)

@@ -246,23 +246,18 @@
 
 (defn reports-options [opts]
 	(div :class "column"
-		(a :href (cell= (:link opts))(div :class "ui center aligned segment"
-			(h2 :class "reports-title" (text (:title opts)))
-			(p :class "reports-issue" (text (:detail opts)))
-			(div :class "reports-screenshot-box" (img :class "reports-screenshot" :src (cell= (:image opts))))
-		))
+		(a :href (cell= (:link opts))
+			(div :class "ui center aligned segment"
+				(h2 :class "reports-title" (text (:title opts)))
+				(p :class "reports-issue" (text (:detail opts)))
+				(div :class "reports-screenshot-box"
+					(img :class "reports-screenshot" :src (cell= (:image opts))))))
 	)
 )
 
 (defn reports-options-section []
-	(section
-		:id "reports-list"
-		:class "full-width-container"
-		(div :class "ui three column doubling page grid"
-			(loop-tpl :bindings [opt reports-list]
-			(reports-options opt))
-		)
-	)
+	(loop-tpl :bindings [opt reports-list]
+		(reports-options opt))
 )
 
 
@@ -272,8 +267,9 @@
 	(section :class "ui one column full-width-container"
 		(div  :id "page-title" :class "center aligned row"
 			(div :class "column"
-				(h1 "InfoPorn")))
-	)
+				(h1 "InfoPorn"))))
 
-	(reports-options-section)
-)
+	(section :id "reports-list"
+		:class "full-width-container"
+		(div :class "ui three column vertically padded doubling page grid"
+			(reports-options-section))))

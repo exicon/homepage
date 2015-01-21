@@ -43,10 +43,6 @@
 						:click "ga('send', 'event', 'video', 'play', 'home')"))
 				(main-video-box)))))
 
-(def lorem "Lorem ipsum dolor sit amet,
-	consectetuer adipiscing elit. Donec odio.
-	Quisque volutpat mattis eros.")
-
 (defc q1 {
 	:title "Reduce Inefficiencies"
 	:msg "One of our customers has found out 100 of their apps, with an average cost of USD100k, are
@@ -270,9 +266,9 @@ Management."})
 					(div :class "row"
 						(loop-tpl :bindings [ftr feature-list]
 							(feature ftr)))
-						(div :class "ui center aligned basic segment"
-							(a :href "/packages/starter-pack"
-								(div :class "ui lightExicon long button" "Check Out More")))
+					(div :class "one column row center aligned"
+						(a :href "/packages/starter-pack"
+							(div :class "ui lightExicon long button" "Check Out More")))
 						) ) )
 	) )
 
