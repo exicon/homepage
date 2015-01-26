@@ -37,7 +37,7 @@
 		(p (text (:name opts)))
 		(p :class "office-address" (text (:address opts)))
 		(p :class "office-phone" (text (:phone opts)))
-		(p :class "office-email" "E " (a :href (text (str "mailto:" (:email opts)))  (text (:email opts))))
+		(p :class "office-email" "E " (a :href (str "mailto:" (:email @opts))  (text (:email opts))))
 	)
 )
 
@@ -126,7 +126,7 @@
 					:placeholder ""
 					:keydown (val-change lens)}
 					:blur reset-finish
-					:change reset-finish)))
+					:change (val-change lens))))
 		data {
 			:tandcReg "1"
 			:send "Send"
