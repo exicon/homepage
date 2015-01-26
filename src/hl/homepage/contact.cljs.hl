@@ -1,33 +1,40 @@
 (page "company/contact/index.html"
 	(:require
-		[homepage.layout :as layout]))
+		[homepage.layout :as layout]
+		[ajax.core :refer [POST]]
+		[validateur.validation :refer [validation-set presence-of format-of valid?]]
+		))
 
 (def office-list [
 	{
-	:country "SF"
-	:address "Suite 2710, 101 California Street, San Francisco CA 94111, U.S.A."
-	:phone "T	+1 650 283 8651"
-	:email "info@exiconglobal.com"
+	:country "HK"
+	:name "Hong Kong"
+	:address "Wilson House, Suite 302, 19 Wyndham St Central, Hong Kong."
+	:phone "T	+852 2167 8311"
+	:email "amanda@exiconglobal.com"
 	}
 
 	{
-	:country "HK"
-	:address "Wilson House, Suite 302, 19 Wyndham St Central, Hong Kong."
-	:phone "T	+852 2167 8311"
-	:email "info@exiconglobal.com"
+	:country "SF"
+	:name "United States"
+	:address "Suite 2710, 101 California Street, San Francisco CA 94111, U.S.A."
+	:phone "T	+1 650 283 8651"
+	:email "rebecca@exiconglobal.com"
 	}
 
 	{
 	:country "LN"
+	:name "London"
 	:address "Tech City, 228 Whitechapel Road, London E1 1BJ, United Kingdom."
 	:phone ""
-	:email "info@exiconglobal.com"
+	:email "cat@exiconglobal.com"
 	}
 ]
 )
 
 (defn office-options [opts]
 	(div :class "left aligned column office-box" :do-class (cell= (:country opts))
+		(p (text (:name opts)))
 		(p :class "office-address" (text (:address opts)))
 		(p :class "office-phone" (text (:phone opts)))
 		(p :class "office-email" "E " (a :href "mailto:info@exiconglobal.com" (text (:email opts))))
@@ -37,31 +44,192 @@
 (defn office-options-section []
 	(section
 		:id "office-list"
-		:class "full-width-container"
-		(div :class "ui column grid"
-				(h1 "Contact Us"))
-		(div :class "ui three column doubling page grid"
+		(div :class "ui one column grid"
+			(div :class "column"
+				(h2 :class "ui header" "Our Location"))
 			(loop-tpl :bindings [opt office-list]
 			(office-options opt))
 		)
 	)
 )
 
+(defn contact-form []
+	(let [
+		this-val #(-> % .-currentTarget .-value)
+		fields (cell {
+			:fname {:value "" :name "First Name" :required true}
+			:lname {:value "" :name "Last Name" :required true}
+			:workEmail {:value "" :name "Email" :required true}
+			:companyName {:value "" :name "Company" :required true}
+			:question {:value "" :name "Message" :required false}})
+
+		fields->lens #(cell=
+			(get-in fields [% :value])
+			(partial swap! fields assoc-in [% :value]))
+		fname (fields->lens :fname)
+		lname (fields->lens :lname)
+		workEmail (fields->lens :workEmail)
+		companyName (fields->lens :companyName)
+		question (fields->lens :question)
+		to-validate (validation-set
+			(presence-of :fname
+				:message "Please enter your first name.")
+			(presence-of :lname
+				:message "Please enter your last name.")
+			(format-of :workEmail
+                 :format #"(?i)\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b"
+                 :message "The email address is invalid, please enter a valid one."
+                 :blank-message "Please enter your email address.")
+			(presence-of :companyName
+				:message "Please enter your company name."))
+		field-cell (cell=
+			(apply assoc {}
+				(interleave
+					(keys fields)
+					(map
+						#(:value %)
+						(vals fields)))))
+		invalid-msg-map (cell= (to-validate field-cell))
+		;error "OMG! Our new intern unplugged the server again... Please contact us at info@exiconglobal.com or +852 2167 8311."
+		;error2 "OMG! The aliens are attacking our site! Please contact us at info@exiconglobal.com or +852 2167 8311."
+		;error "Wait! You have been selected for special Exicon treament, please contact me directly at cat@exiconglobal.com or call +852 2167 8311."
+		error #(div "We are currently experiencing some technical difficulities, please contact us at info@exiconglobal.com or call +852 2167 8311.")
+		missing (fn []
+			(div "Some fields have problems, please check:"
+				(br)
+				(map (fn [msg] [(first msg)(br)]) (vals @invalid-msg-map)) ))
+		thankyou #(div "Thank you! We have received your message and will be in touch shortly.")
+		message (cell thankyou)
+		empty-field? #(and (= %1 missing) (empty? %2))
+		finish (cell false)
+		reset-finish #(if (= @message missing)
+				(reset! finish (not (empty? @invalid-msg-map))))
+		val-change (fn [lens]
+			(fn [input]
+				(reset! lens (this-val input))
+				(reset-finish)
+				nil))
+		success (fn []
+			(reset! message thankyou)
+			(reset! finish true))
+		fail (fn []
+			(reset! message error)
+			(reset! finish true))
+		refill (fn []
+			(reset! message missing)
+			(reset! finish true))
+		fields-elem (fn [field elem lens]
+			(div :class "field"
+				:do-class (cell= {:error (and (empty-field? message lens) (:required field))})
+				(label (text (str (:name field) ":")))
+				(elem {
+					:placeholder ""
+					:keydown (val-change lens)})))
+		data {
+			:tandcReg "1"
+			:send "Send"
+			:firstName (str @fname @lname)
+			:workEmail @workEmail
+			:companyName @companyName}
+		post #(POST
+			"//www.exiconglobal.com/company/contact-manager/"
+			;"//localhost:3003"
+			{:params data
+			:handler success
+			:error-handler fail})
+		form_submit (fn []
+			(if (valid? to-validate @field-cell)
+				(post)
+				(refill)))]
+		(div :class "ui warning form large"
+			(div :class "two fields"
+				(fields-elem (cell= (:fname fields)) (input :type "text") fname)
+				(fields-elem (cell= (:lname fields)) (input :type "text") lname))
+			(fields-elem (cell= (:workEmail fields)) (input :type "text") workEmail)
+			(fields-elem (cell= (:companyName fields)) (input :type "text") companyName)
+			(fields-elem (cell= (:question fields)) (textarea) question)
+			(div :class "inline field"
+				(div :class "ui checkbox")
+				(input :type "checkbox" :checked true)
+				(label "Yes, I would like to receive offers and information from Exicon"))
+			(div :class "field"
+				(label "*Exicon does not share, sell, rent, or trade personally identifiable information with third parties for promotional purposes."
+					(br)(br)
+					(a "Exicon's Terms and Conditions")))
+			(div :class "ui message"
+				:do-class (cell= {
+					:hide (not finish)
+					:warning (#{thankyou missing} message)
+					:error (#{error} message)})
+				(cell= ((message invalid-msg-map) {:class "header"}))
+				)
+			(div :class "ui submit button" :click form_submit
+				"Contact Me")
+			(input :type "hidden" :name "firstName" :value (cell= (str fname lname)))
+			(input :type "hidden" :name "tandcReg" :value "1")
+			(input :type "hidden" :name "send" :value "Send"))
+))
+
+
+
+
+(defn contact-form-inline []
+	(div :class "ui grid"
+		(div :class "three wide left floated column"
+			(div :class "ui form large label-list"
+				(div :class "inline field"
+					(label "First Name:" ))
+				(div :class " inline field"
+					(label "Last Name:"))
+				(div :class " inline field"
+					(label "Email:"))
+				(div :class " inline field"
+					(label "Company:"))
+				(div :class "field"
+					(label "Message:"))))
+
+		(div :class "thirteen wide right floated column"
+			(div :class "ui form large"
+				(div :class "field"
+					(input :type "text" :placeholder ""))
+				(div :class " field"
+					(input :type "text" :placeholder ""))
+				(div :class " field"
+					(input :type "text" :placeholder ""))
+				(div :class " field"
+					(input :type "text" :placeholder ""))
+				(div :class "field"
+					(textarea))
+				(div :class "inline field"
+					(div :class "ui checkbox")
+					(input :type "checkbox")
+					(label "Yes, I would like to receive offers and information from Exicon"))
+				(div :class "field"
+					(label "*Exicon does not share, sell, rent, or trade personally identifiable information with third parties for promotional purposes."
+						(br)
+						(a "Exicon's Terms and Conditions")))
+				(div :class "g-recaptcha" :data-sitekey "6LcLxwATAAAAAGxtvNhj3lN4oFLOuDaZhdToADD4")
+				(div :class "ui submit button" "Contact Me")))))
+
 
 (layout/main :id "contact"
 	:pagetitle "Videos | Mobile | Apps | AppBoard"
 	:pagedescription "Watch Videos About Mobile, Apps, APIs & Developers. Oh, And The Exicon AppBoard!"
 	(section :class "ui one column full-width-container"
-		(div  :id "page-title" :class "center aligned row"
+		(div :id "page-title" :class "center aligned row"
 			(div :class "column"
 				(h1 "Contact Us")))
 	)
 
-	(section :class "ui page grid"
-		(div :class "ten wide column"
-			(h2 "Tell us a little about yourself, and we'll be in touch right away.")
+	(section :class "ui page grid page-details"
+		(div :class "ten left floated wide column"
+			(div :class "ui one column grid"
+				(div :class "column"
+					(h2 :class "ui header" "Leave us a message and we'll be in touch right away."))
+				(div :class "column"
+					(contact-form)))
 		)
-		(div :class "four wide column"
+		(div :class "four right floated wide column"
 			(office-options-section)
 		)
 

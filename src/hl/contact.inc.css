@@ -1,30 +1,37 @@
-#office-list .SF {
-	 background-image: url('/images/contact/contact-SF-2.png');
-	 background-repeat: no-repeat;
-	 background-size: 97%;
-	 padding: 25px;
-}
-
-#office-list .HK {
-	 background-image: url('/images/contact/contact-HK-2.png');
-	 background-repeat: no-repeat;
-	 background-size: 97%;
-	 padding: 25px;
-}
-
-#office-list .LN {
-	 background-image: url('/images/contact/contact-LN-2.png');
-	 background-repeat: no-repeat;
-	 background-size: 97%;
-	 padding: 25px;
-}
-
-#office-list .office-box {
-	height: 300px;
-	margin-bottom: 50px;
-}
-
-.office-box p{
+#office-list .office-box  p{
 	font-size: 18px;
 	font-weight: 300;
 }
+
+#contact .page-details h2 {
+margin-bottom: 0px;
+}
+
+#contact .label-list label{
+	padding: 0.8em 0 1em 0;
+}
+
+#contact .ui.message.warning .header{
+	font-size: 0.8em;
+}
+
+#contact ::-webkit-input-placeholder { /* WebKit browsers */
+	color: #DDD;
+}
+#contact :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+	color: #DDD;
+	opacity: 1;
+}
+#contact ::-moz-placeholder { /* Mozilla Firefox 19+ */
+	color: #DDD;
+	opacity: 1;
+}
+#contact :-ms-input-placeholder { /* Internet Explorer 10+ */
+	color: #DDD;
+}
+
+#contact .hide {
+	display: none !important;
+}
+
+

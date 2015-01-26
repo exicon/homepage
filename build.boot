@@ -6,8 +6,11 @@
 	:project      'homepage
 	:version      "0.1.0-SNAPSHOT"
 	:dependencies '[
-		[tailrecursion/boot.task   "2.2.4"]
-		[tailrecursion/hoplon      "5.10.24"]
+		[tailrecursion/boot.task    "2.2.4"]
+		[tailrecursion/hoplon       "5.10.24"]
+		[cljs-ajax                  "0.3.9"]
+		[spyscope                   "0.1.5"]
+		[com.novemberain/validateur "2.4.2"]
 	]
 	:out-path     "resources/public"
 	:src-paths    #{"src/hl" "src/cljs" "src/clj" "assets/javascript"})
