@@ -37,7 +37,7 @@
 		(p (text (:name opts)))
 		(p :class "office-address" (text (:address opts)))
 		(p :class "office-phone" (text (:phone opts)))
-		(p :class "office-email" "E " (a :href "mailto:info@exiconglobal.com" (text (:email opts))))
+		(p :class "office-email" "E " (a :href (text (str "mailto:" (:email opts)))  (text (:email opts))))
 	)
 )
 
@@ -157,7 +157,9 @@
 			(div :class "field"
 				(label "*Exicon does not share, sell, rent, or trade personally identifiable information with third parties for promotional purposes."
 					(br)(br)
-					(a "Exicon's Terms and Conditions")))
+					(a :href "http://blog.exiconglobal.com/corp/legal/terms-of-use/"
+						:target "_blank"
+						"Exicon's Terms and Conditions")))
 			(div :class "ui message"
 				:do-class (cell= {
 					:hide (not finish)
@@ -171,48 +173,6 @@
 			(input :type "hidden" :name "tandcReg" :value "1")
 			(input :type "hidden" :name "send" :value "Send"))
 ))
-
-
-
-
-(defn contact-form-inline []
-	(div :class "ui grid"
-		(div :class "three wide left floated column"
-			(div :class "ui form large label-list"
-				(div :class "inline field"
-					(label "First Name:" ))
-				(div :class " inline field"
-					(label "Last Name:"))
-				(div :class " inline field"
-					(label "Email:"))
-				(div :class " inline field"
-					(label "Company:"))
-				(div :class "field"
-					(label "Message:"))))
-
-		(div :class "thirteen wide right floated column"
-			(div :class "ui form large"
-				(div :class "field"
-					(input :type "text" :placeholder ""))
-				(div :class " field"
-					(input :type "text" :placeholder ""))
-				(div :class " field"
-					(input :type "text" :placeholder ""))
-				(div :class " field"
-					(input :type "text" :placeholder ""))
-				(div :class "field"
-					(textarea))
-				(div :class "inline field"
-					(div :class "ui checkbox")
-					(input :type "checkbox")
-					(label "Yes, I would like to receive offers and information from Exicon"))
-				(div :class "field"
-					(label "*Exicon does not share, sell, rent, or trade personally identifiable information with third parties for promotional purposes."
-						(br)
-						(a :href "http://blog.exiconglobal.com/corp/legal/terms-of-use/" :target "_blank" "Exicon's Terms and Conditions")))
-				(div :class "g-recaptcha" :data-sitekey "6LcLxwATAAAAAGxtvNhj3lN4oFLOuDaZhdToADD4")
-				(div :class "ui submit button" "Contact Me")))))
-
 
 (layout/main :id "contact"
 	:pagetitle "Contact us | Mobile | Apps | AppBoard"
