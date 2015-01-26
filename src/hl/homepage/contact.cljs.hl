@@ -124,7 +124,9 @@
 				(label (text (str (:name field) ":")))
 				(elem {
 					:placeholder ""
-					:keydown (val-change lens)})))
+					:keydown (val-change lens)}
+					:blur reset-finish
+					:change reset-finish)))
 		data {
 			:tandcReg "1"
 			:send "Send"
@@ -207,14 +209,14 @@
 				(div :class "field"
 					(label "*Exicon does not share, sell, rent, or trade personally identifiable information with third parties for promotional purposes."
 						(br)
-						(a "Exicon's Terms and Conditions")))
+						(a :href "http://blog.exiconglobal.com/corp/legal/terms-of-use/" :target "_blank" "Exicon's Terms and Conditions")))
 				(div :class "g-recaptcha" :data-sitekey "6LcLxwATAAAAAGxtvNhj3lN4oFLOuDaZhdToADD4")
 				(div :class "ui submit button" "Contact Me")))))
 
 
 (layout/main :id "contact"
-	:pagetitle "Videos | Mobile | Apps | AppBoard"
-	:pagedescription "Watch Videos About Mobile, Apps, APIs & Developers. Oh, And The Exicon AppBoard!"
+	:pagetitle "Contact us | Mobile | Apps | AppBoard"
+	:pagedescription "Contact us"
 	(section :class "ui one column full-width-container"
 		(div :id "page-title" :class "center aligned row"
 			(div :class "column"
