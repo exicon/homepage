@@ -11,7 +11,8 @@ margin-bottom: 0px;
 	padding: 0.8em 0 1em 0;
 }
 
-#contact .ui.message.warning .header{
+#contact .ui.message.warning .header,
+#contact .ui.message.error .header{
 	font-size: 0.8em;
 }
 
@@ -34,4 +35,25 @@ margin-bottom: 0px;
 	display: none !important;
 }
 
+#contact .confirm,
+#contact .confirm * {
+	/*color: white !important;*/
+	background-color: white;
+	border: 0 none #fff !important;
+	box-shadow: none !important;
+}
 
+#contact .confirm * {
+	height: 0 !important;
+}
+
+#contact .confirm{
+	position: relative;
+}
+
+#contact .confirm .helper{
+	position: absolute;
+	top: 0px;
+	height: 101% !important;
+	width: 100%;
+}

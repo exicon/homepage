@@ -18,7 +18,7 @@
 	:country "SF"
 	:name "United States"
 	:address "Suite 2710, 101 California Street, San Francisco CA 94111, U.S.A."
-	:phone "T	+1 650 283 8651"
+	:phone ""
 	:email "rebecca@exiconglobal.com"
 	}
 
@@ -60,7 +60,7 @@
 			:fname {:value "" :name "First Name" :required true}
 			:lname {:value "" :name "Last Name" :required true}
 			:workEmail {:value "" :name "Email" :required true}
-			:companyName {:value "" :name "Company" :required true}
+			:companyName {:value "" :name "Company" :required false}
 			:question {:value "" :name "Message" :required false}})
 
 		fields->lens #(cell=
@@ -71,6 +71,7 @@
 		workEmail (fields->lens :workEmail)
 		companyName (fields->lens :companyName)
 		question (fields->lens :question)
+		ans (cell nil)
 		to-validate (validation-set
 			(presence-of :fname
 				:message "Please enter your first name.")
@@ -79,9 +80,7 @@
 			(format-of :workEmail
                  :format #"(?i)\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b"
                  :message "The email address is invalid, please enter a valid one."
-                 :blank-message "Please enter your email address.")
-			(presence-of :companyName
-				:message "Please enter your company name."))
+                 :blank-message "Please enter your email address."))
 		field-cell (cell=
 			(apply assoc {}
 				(interleave
@@ -99,33 +98,48 @@
 				(br)
 				(map (fn [msg] [(first msg)(br)]) (vals @invalid-msg-map)) ))
 		thankyou #(div "Thank you! We have received your message and will be in touch shortly.")
-		message (cell thankyou)
-		empty-field? #(and (= %1 missing) (empty? %2))
-		finish (cell false)
-		reset-finish #(if (= @message missing)
-				(reset! finish (not (empty? @invalid-msg-map))))
+		confirm1
+			#(div :class "confirm inline field"
+				(div "Please answer the question to prove you are not a robot: 2+2")
+				(input :type "text" :name "email"
+					:id "email"
+					:autocomplete "off")
+				(div :class "helper"))
+		random (+ 1 (rand-int 6))
+		confirm2
+			(fn[] (div :class "confirm2 inline field"
+				(label (text "Let us know you are not a robot by answering the following question - Two plus ~{random} = "))
+				(input :type "text"
+					:keyup #(reset! ans (this-val %))
+					:change #(reset! ans (this-val %)))))
+		checking #(empty? (val-id "email"))
+		checking2 (cell= (= (+ 2 random) (int ans)))
+		message (cell div)
+		invalid-field? #(and (= %2 missing) (contains? @invalid-msg-map %1))
+		validated (cell false)
+		reset-finish #(if (and (= @message missing) (empty? @invalid-msg-map))
+				(reset! message div))
 		val-change (fn [lens]
 			(fn [input]
 				(reset! lens (this-val input))
-				(reset-finish)
 				nil))
 		success (fn []
-			(reset! message thankyou)
-			(reset! finish true))
+			(reset! message thankyou))
 		fail (fn []
-			(reset! message error)
-			(reset! finish true))
+			(reset! message error))
 		refill (fn []
-			(reset! message missing)
-			(reset! finish true))
-		fields-elem (fn [field elem lens]
+			(reset! message missing))
+		fields-elem (fn [key field elem lens]
 			(div :class "field"
-				:do-class (cell= {:error (and (empty-field? message lens) (:required field))})
+				:do-class (cell=
+					{:error (and
+						checking2
+						(invalid-field? key message)
+						(:required field))})
 				(label (text (str (:name field) ":")))
 				(elem {
 					:placeholder ""
-					:keydown (val-change lens)}
-					:blur reset-finish
+					:keyup (val-change lens)}
 					:change (val-change lens))))
 		data {
 			:tandcReg "1"
@@ -140,16 +154,18 @@
 			:handler success
 			:error-handler fail})
 		form_submit (fn []
-			(if (valid? to-validate @field-cell)
-				(post)
-				(refill)))]
-		(div :class "ui warning form large"
+			(if (and (checking) @checking2)
+				(if (valid? to-validate @field-cell)
+					(post)
+					(refill))
+				(reset! validated true)))]
+		(div :class "ui warning error form large"
 			(div :class "two fields"
-				(fields-elem (cell= (:fname fields)) (input :type "text") fname)
-				(fields-elem (cell= (:lname fields)) (input :type "text") lname))
-			(fields-elem (cell= (:workEmail fields)) (input :type "text") workEmail)
-			(fields-elem (cell= (:companyName fields)) (input :type "text") companyName)
-			(fields-elem (cell= (:question fields)) (textarea) question)
+				(fields-elem :fname (cell= (:fname fields)) (input :type "text") fname)
+				(fields-elem :lname (cell= (:lname fields)) (input :type "text") lname))
+			(fields-elem :workEmail (cell= (:workEmail fields)) (input :type "text") workEmail)
+			(fields-elem :companyName (cell= (:companyName fields)) (input :type "text") companyName)
+			(fields-elem :question (cell= (:question fields)) (textarea) question)
 			(div :class "inline field"
 				(div :class "ui checkbox")
 				(input :type "checkbox" :checked true)
@@ -162,11 +178,17 @@
 						"Exicon's Terms and Conditions")))
 			(div :class "ui message"
 				:do-class (cell= {
-					:hide (not finish)
+					:hide (or
+						(not (#{thankyou missing error} message))
+						(and (= missing message) (empty? invalid-msg-map)))
 					:warning (#{thankyou missing} message)
 					:error (#{error} message)})
-				(cell= ((message invalid-msg-map) {:class "header"}))
-				)
+				(cell= ((message invalid-msg-map) {:class "header"})))
+			(confirm1)
+			(confirm2)
+			(div :class "ui message error"
+				:do-class (cell= {:hide (or checking2 (not validated))})
+				"Please answer the question above!")
 			(div :class "ui submit button" :click form_submit
 				"Contact Me")
 			(input :type "hidden" :name "firstName" :value (cell= (str fname lname)))
