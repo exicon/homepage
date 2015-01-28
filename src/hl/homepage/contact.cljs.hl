@@ -57,27 +57,24 @@
 	(let [
 		this-val #(-> % .-currentTarget .-value)
 		checked? #(-> % .-currentTarget .-checked)
-		fields (cell {
-			:fname {:value "" :name "First Name" :required true}
-			:lname {:value "" :name "Last Name" :required true}
-			:workEmail {:value "" :name "Email" :required true}
-			:companyName {:value "" :name "Company" :required false}
-			:question {:value "" :name "Message" :required false}
-			:agree-to-receive-info {:value true}})
+		fname (cell "")
+		lname (cell "")
+		workEmail (cell "")
+		companyName (cell "")
+		question (cell "")
+		agree-to-receive-info (cell true)
+		ans (cell nil)
+		fields (cell= {
+			:fname {:value fname :name "First Name" :required true}
+			:lname {:value lname :name "Last Name" :required true}
+			:workEmail {:value workEmail :name "Email" :required true}
+			:companyName {:value companyName :name "Company" :required false}
+			:question {:value question :name "Message" :required false}
+			:agree-to-receive-info {:value agree-to-receive-info :required false}})
 		receive-msg {
 			true "Yes, I would like to receive offers and information from Exicon. \n"
 			false "No, I don't want to receive offers and information from Exicon. \n"
 		}
-		fields->lens #(cell=
-			(get-in fields [% :value])
-			(partial swap! fields assoc-in [% :value]))
-		fname (fields->lens :fname)
-		lname (fields->lens :lname)
-		workEmail (fields->lens :workEmail)
-		companyName (fields->lens :companyName)
-		question (fields->lens :question)
-		agree-to-receive-info (fields->lens :agree-to-receive-info)
-		ans (cell nil)
 		to-validate (validation-set
 			(presence-of :fname
 				:message "Please enter your first name.")
@@ -138,7 +135,8 @@
 					{:error (and
 						checking2
 						(invalid-field? key message)
-						(:required field))})
+						(:required field)
+						lens)})
 				(label (text (str (:name field) ":")))
 				(elem {
 					:placeholder ""
@@ -167,11 +165,11 @@
 				(reset! validated true)))]
 		(div :class "ui warning error form large"
 			(div :class "two fields"
-				(fields-elem :fname (cell= (:fname fields)) (input :type "text") fname)
-				(fields-elem :lname (cell= (:lname fields)) (input :type "text") lname))
-			(fields-elem :workEmail (cell= (:workEmail fields)) (input :type "text") workEmail)
-			(fields-elem :companyName (cell= (:companyName fields)) (input :type "text") companyName)
-			(fields-elem :question (cell= (:question fields)) (textarea) question)
+				(fields-elem :fname (:fname @fields) (input :type "text") fname)
+				(fields-elem :lname (:lname @fields) (input :type "text") lname))
+			(fields-elem :workEmail (:workEmail @fields) (input :type "text") workEmail)
+			(fields-elem :companyName (:companyName @fields) (input :type "text") companyName)
+			(fields-elem :question (:question @fields) (textarea) question)
 			(confirm2)
 			(div :class "ui message error"
 				:do-class (cell= {:hide (or checking2 (not validated))})
