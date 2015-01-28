@@ -56,13 +56,18 @@
 (defn contact-form []
 	(let [
 		this-val #(-> % .-currentTarget .-value)
+		checked? #(-> % .-currentTarget .-checked)
 		fields (cell {
 			:fname {:value "" :name "First Name" :required true}
 			:lname {:value "" :name "Last Name" :required true}
 			:workEmail {:value "" :name "Email" :required true}
 			:companyName {:value "" :name "Company" :required false}
-			:question {:value "" :name "Message" :required false}})
-
+			:question {:value "" :name "Message" :required false}
+			:agree-to-receive-info {:value true}})
+		receive-msg {
+			true "Yes, I would like to receive offers and information from Exicon. \n"
+			false "No, I don't want to receive offers and information from Exicon. \n"
+		}
 		fields->lens #(cell=
 			(get-in fields [% :value])
 			(partial swap! fields assoc-in [% :value]))
@@ -71,6 +76,7 @@
 		workEmail (fields->lens :workEmail)
 		companyName (fields->lens :companyName)
 		question (fields->lens :question)
+		agree-to-receive-info (fields->lens :agree-to-receive-info)
 		ans (cell nil)
 		to-validate (validation-set
 			(presence-of :fname
@@ -109,7 +115,7 @@
 		confirm2
 			(fn[] (div :class "confirm2 inline field"
 				(label (text "Let us know you are not a robot by answering the following question - Two plus ~{random} = "))
-				(input :type "text"
+				(input :type "text" :class "ans"
 					:keyup #(reset! ans (this-val %))
 					:change #(reset! ans (this-val %)))))
 		checking #(empty? (val-id "email"))
@@ -119,16 +125,13 @@
 		validated (cell false)
 		reset-finish #(if (and (= @message missing) (empty? @invalid-msg-map))
 				(reset! message div))
-		val-change (fn [lens]
+		val-change (fn [lens get-v]
 			(fn [input]
-				(reset! lens (this-val input))
+				(reset! lens (get-v input))
 				nil))
-		success (fn []
-			(reset! message thankyou))
-		fail (fn []
-			(reset! message error))
-		refill (fn []
-			(reset! message missing))
+		success (fn [] (reset! message thankyou))
+		fail (fn [] (reset! message error))
+		refill (fn [] (reset! message missing))
 		fields-elem (fn [key field elem lens]
 			(div :class "field"
 				:do-class (cell=
@@ -139,24 +142,27 @@
 				(label (text (str (:name field) ":")))
 				(elem {
 					:placeholder ""
-					:keyup (val-change lens)}
-					:change (val-change lens))))
-		data {
+					:keyup (val-change lens this-val)}
+					:change (val-change lens this-val))))
+		data (cell= {
 			:tandcReg "1"
 			:send "Send"
-			:firstName (str @fname @lname)
-			:workEmail @workEmail
-			:companyName @companyName}
+			:firstName (str fname lname)
+			:workEmail workEmail
+			:companyName companyName
+			:question (str (receive-msg agree-to-receive-info) question)})
 		post #(POST
 			"//www.exiconglobal.com/company/contact-manager/"
 			;"//localhost:3003"
-			{:params data
+			{:params @data
 			:handler success
 			:error-handler fail})
 		form_submit (fn []
 			(if (and (checking) @checking2)
 				(if (valid? to-validate @field-cell)
-					(post)
+					(do
+						(print @data)
+						(post))
 					(refill))
 				(reset! validated true)))]
 		(div :class "ui warning error form large"
@@ -166,13 +172,16 @@
 			(fields-elem :workEmail (cell= (:workEmail fields)) (input :type "text") workEmail)
 			(fields-elem :companyName (cell= (:companyName fields)) (input :type "text") companyName)
 			(fields-elem :question (cell= (:question fields)) (textarea) question)
+			(confirm2)
+			(div :class "ui message error"
+				:do-class (cell= {:hide (or checking2 (not validated))})
+				"Please answer the question above!")
 			(div :class "inline field"
-				(div :class "ui checkbox")
-				(input :type "checkbox" :checked true)
+				(input :class "coll-info" :type "checkbox" :checked true
+					:change (val-change agree-to-receive-info checked?))
 				(label "Yes, I would like to receive offers and information from Exicon"))
 			(div :class "field"
-				(label "*Exicon does not share, sell, rent, or trade personally identifiable information with third parties for promotional purposes."
-					(br)(br)
+				(label :class "terms" "*Exicon does not share, sell, rent, or trade personally identifiable information with third parties for promotional purposes. "
 					(a :href "http://blog.exiconglobal.com/corp/legal/terms-of-use/"
 						:target "_blank"
 						"Exicon's Terms and Conditions")))
@@ -184,13 +193,9 @@
 					:warning (#{thankyou missing} message)
 					:error (#{error} message)})
 				(cell= ((message invalid-msg-map) {:class "header"})))
-			(confirm1)
-			(confirm2)
-			(div :class "ui message error"
-				:do-class (cell= {:hide (or checking2 (not validated))})
-				"Please answer the question above!")
 			(div :class "ui submit button" :click form_submit
 				"Contact Me")
+			(confirm1)
 			(input :type "hidden" :name "firstName" :value (cell= (str fname lname)))
 			(input :type "hidden" :name "tandcReg" :value "1")
 			(input :type "hidden" :name "send" :value "Send"))

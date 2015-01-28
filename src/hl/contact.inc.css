@@ -57,3 +57,21 @@ margin-bottom: 0px;
 	height: 101% !important;
 	width: 100%;
 }
+
+#contact .terms {
+	font-size: 0.65em
+}
+
+#contact .coll-info {
+	width: 1em;
+	height: 1em;
+	font-size: 1em;
+}
+
+#contact .coll-info ~ label{
+	margin-top: 3px;
+}
+
+#contact .ans {
+	width: 3em;
+}
