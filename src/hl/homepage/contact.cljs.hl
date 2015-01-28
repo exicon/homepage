@@ -10,7 +10,7 @@
 	:country "HK"
 	:name "Hong Kong"
 	:address "Wilson House, Suite 302, 19 Wyndham St Central, Hong Kong."
-	:phone "T	+852 2167 8311"
+	:phone ""
 	:email "amanda@exiconglobal.com"
 	}
 
@@ -92,10 +92,10 @@
 						#(:value %)
 						(vals fields)))))
 		invalid-msg-map (cell= (to-validate field-cell))
-		;error "OMG! Our new intern unplugged the server again... Please contact us at info@exiconglobal.com or +852 2167 8311."
-		;error2 "OMG! The aliens are attacking our site! Please contact us at info@exiconglobal.com or +852 2167 8311."
-		;error "Wait! You have been selected for special Exicon treament, please contact me directly at cat@exiconglobal.com or call +852 2167 8311."
-		error #(div "We are currently experiencing some technical difficulities, please contact us at info@exiconglobal.com or call +852 2167 8311.")
+		;error "OMG! Our new intern unplugged the server again... Please contact us at info@exiconglobal.com."
+		;error2 "OMG! The aliens are attacking our site! Please contact us at info@exiconglobal.com."
+		;error "Wait! You have been selected for special Exicon treament, please contact me directly at cat@exiconglobal.com."
+		error #(div "We are currently experiencing some technical difficulities, please contact us at info@exiconglobal.com.")
 		missing (fn []
 			(div "Some fields have problems, please check:"
 				(br)
