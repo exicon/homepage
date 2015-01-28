@@ -54,7 +54,7 @@
 			(body
 				(top-nav/top-nav)
 
-				(a :href "/company/contact/index.html"
+				(a :href "/company/contact"
 					(div :id "get-in-touch"))
 
 
