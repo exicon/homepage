@@ -95,7 +95,7 @@
 		;error "OMG! Our new intern unplugged the server again... Please contact us at info@exiconglobal.com."
 		;error2 "OMG! The aliens are attacking our site! Please contact us at info@exiconglobal.com."
 		;error "Wait! You have been selected for special Exicon treament, please contact me directly at cat@exiconglobal.com."
-		error #(div "We are currently experiencing some technical difficulities, please contact us at info@exiconglobal.com.")
+		error #(div "We are currently experiencing some technical difficulties, please contact us at info@exiconglobal.com.")
 		missing (fn []
 			(div "Some fields have problems, please check:"
 				(br)
