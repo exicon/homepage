@@ -1,7 +1,6 @@
 (page "company/contact/index.html"
 	(:require
 		[homepage.layout :as layout]
-		[ajax.core :refer [POST]]
 		[validateur.validation :refer [validation-set presence-of format-of valid?]]
 		))
 
@@ -128,6 +127,10 @@
 				nil))
 		success (fn [] (reset! message thankyou))
 		fail (fn [] (reset! message error))
+		response-handler (fn [res]
+			(if (= (.-status res) 200)
+				(success)
+				(fail)))
 		refill (fn [] (reset! message missing))
 		fields-elem (fn [key field elem lens]
 			(div :class "field"
@@ -149,17 +152,18 @@
 			:workEmail workEmail
 			:companyName companyName
 			:question (str (receive-msg agree-to-receive-info) question)})
-		post #(POST
-			"//www.exiconglobal.com/company/contact-manager/"
-			;"//localhost:3003"
-			{:params @data
-			:handler success
-			:error-handler fail})
+		post #(.ajax js/jQuery
+         (clj->js
+          {:url "/company/contact-manager/"
+           :type "POST"
+           :dataType "application/x-www-form-urlencoded"
+           :data @data
+           :error response-handler
+           :success response-handler}))
 		form_submit (fn []
 			(if (and (checking) @checking2)
 				(if (valid? to-validate @field-cell)
 					(do
-						(print @data)
 						(post))
 					(refill))
 				(reset! validated true)))]
