@@ -52,37 +52,39 @@
 	)
 )
 
+(defn this-val [this] (-> this .-currentTarget .-value))
+(defn checked? [this] (-> this .-currentTarget .-checked))
+(defc fname "")
+(defc lname "")
+(defc workEmail "")
+(defc companyName "")
+(defc message "")
+(defc agree-to-receive-info true)
+(defc ans nil)
+(defc= fields {
+	:fname {:value fname :name "First Name" :required true}
+	:lname {:value lname :name "Last Name" :required true}
+	:workEmail {:value workEmail :name "Email" :required true}
+	:companyName {:value companyName :name "Company" :required false}
+	:message {:value message :name "Message" :required false}
+	:agree-to-receive-info {:value agree-to-receive-info :required false}})
+
+(def receive-msg {
+	true "Yes, I would like to receive offers and information from Exicon. \n"
+	false "No, I don't want to receive offers and information from Exicon. \n"
+})
+
 (defn contact-form []
 	(let [
-		this-val #(-> % .-currentTarget .-value)
-		checked? #(-> % .-currentTarget .-checked)
-		fname (cell "")
-		lname (cell "")
-		workEmail (cell "")
-		companyName (cell "")
-		question (cell "")
-		agree-to-receive-info (cell true)
-		ans (cell nil)
-		fields (cell= {
-			:fname {:value fname :name "First Name" :required true}
-			:lname {:value lname :name "Last Name" :required true}
-			:workEmail {:value workEmail :name "Email" :required true}
-			:companyName {:value companyName :name "Company" :required false}
-			:question {:value question :name "Message" :required false}
-			:agree-to-receive-info {:value agree-to-receive-info :required false}})
-		receive-msg {
-			true "Yes, I would like to receive offers and information from Exicon. \n"
-			false "No, I don't want to receive offers and information from Exicon. \n"
-		}
 		to-validate (validation-set
 			(presence-of :fname
 				:message "Please enter your first name.")
 			(presence-of :lname
 				:message "Please enter your last name.")
 			(format-of :workEmail
-                 :format #"(?i)\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b"
-                 :message "The email address is invalid, please enter a valid one."
-                 :blank-message "Please enter your email address."))
+								 :format #"(?i)\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b"
+								 :message "The email address is invalid, please enter a valid one."
+								 :blank-message "Please enter your email address."))
 		field-cell (cell=
 			(apply assoc {}
 				(interleave
@@ -100,8 +102,7 @@
 				(br)
 				(map (fn [msg] [(first msg)(br)]) (vals @invalid-msg-map)) ))
 		thankyou #(div "Thank you! We have received your message and will be in touch shortly.")
-		confirm1
-			#(div :class "confirm inline field"
+		confirm1 #(div :class "confirm inline field"
 				(div "Please answer the question to prove you are not a robot: 2+2")
 				(input :type "text" :name "email"
 					:id "email"
@@ -116,28 +117,28 @@
 					:change #(reset! ans (this-val %)))))
 		checking #(empty? (val-id "email"))
 		checking2 (cell= (= (+ 2 random) (int ans)))
-		message (cell div)
+		msg (cell div)
 		invalid-field? #(and (= %2 missing) (contains? @invalid-msg-map %1))
 		validated (cell false)
-		reset-finish #(if (and (= @message missing) (empty? @invalid-msg-map))
-				(reset! message div))
+		reset-finish #(if (and (= @msg missing) (empty? @invalid-msg-map))
+				(reset! msg div))
 		val-change (fn [lens get-v]
 			(fn [input]
 				(reset! lens (get-v input))
 				nil))
-		success (fn [] (reset! message thankyou))
-		fail (fn [] (reset! message error))
+		success (fn [] (reset! msg thankyou))
+		fail (fn [] (reset! msg error))
 		response-handler (fn [res]
 			(if (= (.-status res) 200)
 				(success)
 				(fail)))
-		refill (fn [] (reset! message missing))
+		refill (fn [] (reset! msg missing))
 		fields-elem (fn [key field elem lens]
 			(div :class "field"
 				:do-class (cell=
 					{:error (and
 						checking2
-						(invalid-field? key message)
+						(invalid-field? key msg)
 						(:required field)
 						lens)})
 				(label (text (str (:name field) ":")))
@@ -146,25 +147,33 @@
 					:keyup (val-change lens this-val)}
 					:change (val-change lens this-val))))
 		data (cell= {
-			:tandcReg "1"
-			:send "Send"
-			:firstName (str fname lname)
-			:workEmail workEmail
+			:firstName fname
+			:lastName lname
+			:email workEmail
 			:companyName companyName
-			:question (str (receive-msg agree-to-receive-info) question)})
-		post #(.ajax js/jQuery
-         (clj->js
-          {:url "/company/contact-manager/"
-           :type "POST"
-           :dataType "application/x-www-form-urlencoded"
-           :data @data
-           :error response-handler
-           :success response-handler}))
+			:message (str (receive-msg agree-to-receive-info) message)})
+		post-to-us #(.ajax js/jQuery
+				 (clj->js
+					{:url "https://zapier.com/hooks/catch/olmnld/"
+					 :type "POST"
+					 :dataType "application/json"
+					 :data @data
+					 :error response-handler
+					 :success response-handler}))
+		post-to-user #(.ajax js/jQuery
+				 (clj->js
+					{:url "https://zapier.com/hooks/catch/ollgwo/"
+					 :type "POST"
+					 :dataType "application/json"
+					 :data @data
+					 :error response-handler
+					 :success response-handler}))
 		form_submit (fn []
 			(if (and (checking) @checking2)
 				(if (valid? to-validate @field-cell)
 					(do
-						(post))
+						(post-to-us)
+						(post-to-user))
 					(refill))
 				(reset! validated true)))]
 		(div :class "ui warning error form large"
@@ -173,10 +182,10 @@
 				(fields-elem :lname (:lname @fields) (input :type "text") lname))
 			(fields-elem :workEmail (:workEmail @fields) (input :type "text") workEmail)
 			(fields-elem :companyName (:companyName @fields) (input :type "text") companyName)
-			(fields-elem :question (:question @fields) (textarea) question)
+			(fields-elem :message (:message @fields) (textarea) message)
 			(confirm2)
 			(div :class "ui message error"
-				:do-class (cell= {:hide (or checking2 (not validated))})
+				:toggle (cell= (and (not checking2) validated))
 				"Please answer the question above!")
 			(div :class "inline field"
 				(input :class "coll-info" :type "checkbox" :checked true
@@ -190,11 +199,12 @@
 			(div :class "ui message"
 				:do-class (cell= {
 					:hide (or
-						(not (#{thankyou missing error} message))
-						(and (= missing message) (empty? invalid-msg-map)))
-					:warning (#{thankyou missing} message)
-					:error (#{error} message)})
-				(cell= ((message invalid-msg-map) {:class "header"})))
+						(not (#{thankyou missing error} msg))
+						(and (= missing msg) (empty? invalid-msg-map)))
+					:warning (#{thankyou missing} msg)
+					:error (#{error} msg)})
+				(cell= ((msg invalid-msg-map) {:class "header"})))
+
 			(div :class "ui submit button" :click form_submit
 				"Contact Me")
 			(confirm1)
