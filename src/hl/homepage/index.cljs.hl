@@ -35,7 +35,8 @@
 				(h1 "Get a grip on your apps" (br) "with the AppBoard")
 				(h2 "From 1 app to 500")
 				(a :href "https://app.exiconglobal.com/?package=starter#!/registration/"
-					(div :class "ui lightExicon button" "Sign me up for a FREE account")))
+					(div :class "ui lightExicon huge button"
+						"FREE Sign Up now!")))
 			(div :class "center aligned column"
 				(a :href "#play-video" :click show-main-video
 					(img :class "video-btn"
