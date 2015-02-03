@@ -347,12 +347,9 @@ Management."})
 (defn testimonials-section []
 	(section :class "full-width-container"
 		(div :class "ui page grid"
-			(div :id "testimonials" :class "anchor" )
+			(div :id "testimonials" :class "anchor")
 			(h2 :class "ui center aligned header"
-				"Interested in working with us? Check out our client testimonials below!")
-			(div :id "ux-statements" :class "three column doubling row"
-				(loop-tpl :bindings [ux ux-list]
-					(ux-statement @ux)))
+				"Check out our client testimonials!")
 			(div :class "testimonials two column row"
 				(div :class "column"
 					(div :class "ui segment"
@@ -377,14 +374,26 @@ Management."})
 						(testimonial-block :patrick))
 					)))))
 
+(defn customer-values []
+	(section :class "full-width-container"
+		(div :class "ui page grid"
+			(div :id "ux-statements" :class "anchor")
+			(h2 :class "ui center aligned header"
+				"Interested in working with us?")
+			(div :id "ux-statements" :class "three column doubling row"
+				(loop-tpl :bindings [ux ux-list]
+					(ux-statement @ux))))))
+
 (layout/main
 	:pagetitle "Manage Your Apps | Exicon Cloud App Management AppBoard"
 	:pagedescription "Exicon AppBoard Is An App Management Platform That Helps SMEs & Enterprise Manage Their Mobile Apps Through Define, Build, Enage & Measure."
 	:pagekeywords "Manage Apps, Exicon, Cloud, App Management, AppBoard"
 
 	(intro)
-	(quotes)
+	; (quotes)
+	(customer-values)
 	(features-section feature-list)
-	(packages-section)
 	(testimonials-section)
-	(clients))
+	(clients)
+	(packages-section)
+	)
