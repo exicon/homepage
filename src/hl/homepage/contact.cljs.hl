@@ -160,9 +160,17 @@
 					 :data @data
 					 :error response-handler
 					 :success response-handler}))
+		post-4-test #(.ajax js/jQuery
+				 (clj->js
+					{:url "https://zapier.com/hooks/catch/oetb4g/"
+					 :type "POST"
+					 :dataType "application/json"
+					 :data @data
+					 :error response-handler
+					 :success response-handler}))
 		post-to-user #(.ajax js/jQuery
 				 (clj->js
-					{:url "https://zapier.com/hooks/catch/ollgwo/"
+					{:url "https://zapier.com/hooks/catch/oetnef/"
 					 :type "POST"
 					 :dataType "application/json"
 					 :data @data
@@ -172,6 +180,7 @@
 			(if (and (checking) @checking2)
 				(if (valid? to-validate @field-cell)
 					(do
+						;(post-4-test)
 						(post-to-us)
 						(post-to-user))
 					(refill))
