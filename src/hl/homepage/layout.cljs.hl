@@ -53,13 +53,13 @@
 				(script :src "//load.sumome.com/"
 					:data-sumo-site-id "ebf284bbaebf222290fb6ad21ded0363d1b94fddbbb9138e7930124b6645bbcb"
 					:async))
-			(subscribe-stick-btn subscribe-click)
-			(subscribe-stick-form subscribe-click)
+			; (subscribe-stick-btn subscribe-click)
+			; (subscribe-stick-form subscribe-click)
 			(body
 				(top-nav/top-nav)
 
-				(a :href "/company/contact"
-					(div :id "get-in-touch"))
+				; (a :href "/company/contact"
+				; 	(div :id "get-in-touch"))
 
 
 				(div (merge {:id "content"}
