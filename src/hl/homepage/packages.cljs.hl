@@ -11,7 +11,6 @@
 		(li "Intelligent Newsfeeds")
 		(li "Watchlist")
 		(li "App builder")
-		(li "Pay gate")
 		))
 
 (def challenger-pack-desc
@@ -21,9 +20,7 @@
 			(ul
 				(li "By brand")
 				(li "By country")
-				(li "By industry")))
-
-		(li "Pay gate")))
+				(li "By industry")))))
 
 (def sign-up-button
 	#(a :href "https://app.exiconglobal.com/?package=starter#!/registration/"
@@ -114,8 +111,7 @@
 
 		(ul
 			(li "Distribution onto 20 app stores")
-			(li "White label marketplace")
-			(li "Pay gate"))]
+			(li "White label marketplace"))]
 	})
 
 (def amplifier-pack
@@ -144,8 +140,7 @@
 			(li "API Mangement")
 			(li "Development Ecosystem")
 			(li "Manager Console")
-			(li "Governance Module")
-			(li "Pay gate"))]
+			(li "Governance Module"))]
 	})
 
 (def packages [starter-pack challenger-pack dominator-pack amplifier-pack])
