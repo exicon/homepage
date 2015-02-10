@@ -46,6 +46,7 @@
 				(title pagetitle)
 				(meta :name "description" :content pagedescription)
 				(meta :name "keywords" :content pagekeywords)
+				(meta :name "viewport" :content "width=device-width, initial-scale=1.0")
 				(link :href "/images/favicon.ico" :rel "shortcut icon")
 				(link :href "/semantic.css" :rel "stylesheet")
 				(if pagecss (link :href pagecss :rel "stylesheet"))
