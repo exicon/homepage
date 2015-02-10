@@ -342,7 +342,8 @@ Management."})
 				(i :class "quote small left blue icon")
 				(text (:testimonial testimonial))
 				(i :class "quote small right blue icon")
-				(img :class "ui custom-m right floated image" :src (:company testimonial)))
+				(img :class "ui custom-m right floated image" :src (:company testimonial))
+				(div :class "clear"))
 		]))
 
 (defn testimonials-section []
