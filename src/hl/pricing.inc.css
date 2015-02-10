@@ -19,10 +19,11 @@
 }
 
 #pricing-pack .pack-title{
-	font-size: 21px;
+	font-size: 1.539em;
 	line-height: 35px;
 	font-weight: 300;
 	color: #666666;
+	margin-bottom: 0;
 }
 
 #pricing-pack .best-seller {
@@ -93,6 +94,7 @@
 
 #pricing-pack .price-note {
 	font-size: 1em;
+	margin-top: 0;
 	height: 70px;
 	line-height: 20px;
 	font-weight: 100;
