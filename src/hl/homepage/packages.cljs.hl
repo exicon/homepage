@@ -58,7 +58,7 @@
 	:no-of-app (p
 		"Unlimited Users"
 		(br)
-		"Up to" (span :class "no-of-app" " 20 ") " apps")
+		"Up to" (span :class "no-of-app" " 10 ") " apps")
 	:link "https://app.exiconglobal.com/?package=starter#!/registration/"
 	:content [
 		(sign-up-button)
