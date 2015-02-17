@@ -211,10 +211,6 @@
 		height: 100%;
 	}
 
-	#pricing-pack .page.grid .column > *:first-child{
-		height: 3%;
-	}
-
 	#pricing-pack .page.grid .column > *:nth-child(2) {
 		height: 93%;
 	}

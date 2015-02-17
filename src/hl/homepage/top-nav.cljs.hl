@@ -1,13 +1,5 @@
 (ns homepage.top-nav)
 
-(defc menu-item-of-page nil)
-
-(defc active-submenu nil)
-(defc submenu-features-visible false)
-(defc hovered-menu-item nil)
-(defc active-submenu-item nil)
-
-
 (def features-submenu-items [
 	{:id :feature-1 :name "Starter Pack" :url "/packages/starter-pack"}
 	{:id :feature-2 :name "Challenger Pack" :url "/packages/challenger-pack"}
@@ -17,73 +9,62 @@
 
 (def resources-submenu-items [
 	{ :id :starter :name "InfoPorn" :url "/reports/"}
-	;{ :id :challenge :name "Newsletters" :url "/newsletters/"}
 	{ :id :dominator :name "Videos" :url "/videos/"}
 	{ :id :amplifier :name "Presentations" :url "/presentations/"}
 ])
 
 (defelem signup-and-login []
-	(div :class "right menu"
-		(a :id "signup" :href "/appboard/pricing" :class "item"
-			:hover #(reset! hovered-menu-item :signup)
-			(div :class "ui small button" "Sign Up"))
-		(a :id "login" :href "https://app.exiconglobal.com/":class "item"
-			:hover #(reset! hovered-menu-item :login)
-			"Log In")
-	)
-)
+	[(a :href "/appboard/pricing" :class "item"
+		(div :class "ui small button" "Sign Up"))
+	(a :href "https://app.exiconglobal.com/" :class "item"
+		"Log In")])
 
 (def main-menu-items
-	[
-	{ :id :features :name "Packages" :submenu features-submenu-items }
-	{ :id :pricing :name "Pricing" :url "/appboard/pricing" }
-	{ :id :blog :name "Blog" :url "http://blog.exiconglobal.com/corp/" }
-	{ :id :resources :name "Resources" :submenu resources-submenu-items}
-	])
+	{
+	:features {:name "Packages" :submenu features-submenu-items }
+	:pricing {:name "Pricing" :url "/appboard/pricing" }
+	:blog {:name "Blog" :url "http://blog.exiconglobal.com/corp/" }
+	:resources {:name "Resources" :submenu resources-submenu-items}
+	})
 
-(defn is-active-item? [item-id]
-	(cell= { :active
-		(or
-			(= hovered-menu-item item-id)
-			(and (not hovered-menu-item) (= menu-item-of-page item-id)) ) } ) )
+(defn sub-menu [items]
+	(loop-tpl :bindings [item items]
+		(a :class "item"
+			:href (cell= (:url item))
+			(text (:name item)))))
 
-(defn submenu-item [item]
-	(li
-	(a :class "item" :href (cell= (:url item))
-		:on-click #(reset! active-submenu-item (:id @item))
-		:do-class (cell= {:active (= active-submenu-item (:id item))})
-			(text (:name item)) ) ) )
+(defn main-menu [items clicked-item]
+	(loop-tpl :bindings [[id item] items]
+		(a :class "item"
+			:test (cell= (print clicked-item))
+			:do-class (cell= {:active (= clicked-item id)})
+			:href (cell= (:url item))
+			:click #(reset! clicked-item @id)
+			(text (:name item)))) )
 
-(defn submenu [items]
-	(ul :class "hidden ui sub menu"
-		(loop-tpl :bindings [item items] (submenu-item item))
-))
-
-(defn main-menu [items]
-	(loop-tpl :bindings [item items] (
-		(li
-		(a :class "item" :href (cell= (:url item))
-
-			(text (:name item)))
-			(if (:submenu @item)(submenu (:submenu @item)) )) ) ) )
-
-(defelem top-nav []
-	(div :id "top-nav-container"
-		(div :class "ui grid inner-container"
-			(div :id "left-logo" :class "four wide column logo-container"
-				(div :class "item" :id "logo"
-					(a :href "/" (img :src "/images/exicon-logo.png"))))
-			(div :id "menu-container" :class "twelve wide column"
-				(nav :id "top-nav" :class "ui tiered menu"
-					(label :for "show-menu" :id "show-menu-button":class "ui button" "Menu")
-					(input :type "checkbox" :id "show-menu" :role "button")
-					(ul :class "menu"
-						(main-menu main-menu-items)
-						(signup-and-login) )
-					#_(submenu active-submenu) ) )
-			)
-	)
-)
+(defn top-nav []
+	(let [clicked-main-menu-item (cell nil)]
+		(div :class "ui grid"
+			(div :class "four wide column"
+				(div :class "ui basic segment"
+					(a :href "/" :class "ui medium image"
+						(img :src "/images/exicon-logo.png" :alt "Exicon Global Ltd."))))
+			(div :class "twelve wide column"
+				(div :class "ui basic segment"
+					(div :class "ui tiered menu"
+						(div :class "menu"
+							(main-menu
+								main-menu-items
+								clicked-main-menu-item)
+							(div :class "right menu"
+								(signup-and-login)))
+						(div :class "ui sub menu"
+							(cell= (if clicked-main-menu-item
+								(-> clicked-main-menu-item
+									main-menu-items
+									:submenu
+									sub-menu)
+								)))))))))
 
 
 

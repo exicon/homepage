@@ -6,8 +6,6 @@
 		[homepage.packages :refer [dominator-pack starter-pack challenger-pack]]
 		[homepage.pricing-pack :refer [pricing-options]]))
 
-(reset! top-nav/menu-item-of-page :features)
-
 (defc app-store-distribution {
 	:image-side :right
 	:screenshot "/images/app-distribution.png"

@@ -6,9 +6,6 @@
 		[homepage.packages :refer [challenger-pack]]
 		[homepage.pricing-pack :refer [pricing-options]]))
 
-
-(reset! top-nav/menu-item-of-page :features)
-
 (defc competitors {
 	:screenshot "/images/competitor-insights-screenshots.png"
   :anchor "competitors"
