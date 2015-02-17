@@ -6,8 +6,10 @@
 	:project      'homepage
 	:version      "0.1.0-SNAPSHOT"
 	:dependencies '[
-		[tailrecursion/boot.task   "2.2.4"]
-		[tailrecursion/hoplon      "5.10.24"]
+		[tailrecursion/boot.task    "2.2.4"]
+		[tailrecursion/hoplon       "5.10.24"]
+		[com.novemberain/validateur "2.4.2"]
+		[link.exicon/semantic-ui "1.8.1-0"]
 	]
 	:out-path     "resources/public"
 	:src-paths    #{"src/hl" "src/cljs" "src/clj" "assets/javascript"})

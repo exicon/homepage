@@ -363,7 +363,7 @@ div p.small-text {
 	position: fixed;
 	z-index: 18;
 	right: 0px;
-	top: 260px;
+	top: 138px;
 	display:none;
 }
 
@@ -496,10 +496,6 @@ section.clients img{
 .testimonials .ui.image {
 	background-color: rgba(0,0,0,0)
 }
-.testimonials .ui.divider {
-	margin-top: 2em;
-}
-
 
 .testimonials .testimonial {
 	font-style: italic;
@@ -507,6 +503,10 @@ section.clients img{
 
 .testimonials .testimonial-name{
 	font-weight: 400;
+}
+
+.clear {
+	clear: both;
 }
 
 .ui.image.custom-m {

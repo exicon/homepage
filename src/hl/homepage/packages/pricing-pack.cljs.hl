@@ -2,6 +2,7 @@
 
 (defn pricing-options [opts]
 	(div :class "column pack-col"
+		:click #(set! (.-location js/window) (:link (if (cell? opts) @opts opts)))
 		(h4 :class "ui attached header best-seller"
 			:do-class (cell= {:show (:best-label opts)
 			})
@@ -11,8 +12,9 @@
 			(cell= {:show (:best-label opts)
 				(:name opts) true})
 			(h2 :class "pack-title" (text (:title opts)))
+			(p :class "price-note" (text (:note opts)))
 			(p :class "pack-price-title" (text (:price opts)))
 			(div :class "sub-price" (text (:price-des opts)))
 			(div (cell= (:no-of-app opts)))
-			(p :class "price-note" (text (:note opts)))
+			;(p :class "price-note" (text (:note opts)))
 			(div :class "price-details" (cell= (:content opts))))))

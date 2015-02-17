@@ -19,10 +19,11 @@
 }
 
 #pricing-pack .pack-title{
-	font-size: 21px;
+	font-size: 1.35em;
 	line-height: 35px;
 	font-weight: 300;
 	color: #666666;
+	margin-bottom: 0;
 }
 
 #pricing-pack .best-seller {
@@ -54,7 +55,7 @@
 #pricing-pack .pack-col:hover > *{
 	border-color: transparent;
 	background-color: #E4F7F7;
-
+	cursor: pointer;
 }
 
 #pricing-pack .ui.button.no-trans {
@@ -93,7 +94,8 @@
 
 #pricing-pack .price-note {
 	font-size: 1em;
-	height: 70px;
+	margin-top: 0;
+	height: 40px;
 	line-height: 20px;
 	font-weight: 100;
 	color: #9b9b9b;
@@ -108,8 +110,7 @@
 
 .ui.divider.small {
 	width:	2em;
-	margin-left: auto;
-	margin-right: auto;
+	margin: 25px auto;
 	border-bottom: 0;
 }
 
@@ -155,6 +156,10 @@
 	font-size: 16px;
 	color: #59d2d9;
 	font-weight: 100;
+}
+
+#pricing-pack .price-details > ul{
+	margin-top: 1.7em;
 }
 
 #faq-help {

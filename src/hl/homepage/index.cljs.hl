@@ -35,7 +35,8 @@
 				(h1 "Get a grip on your apps" (br) "with the AppBoard")
 				(h2 "From 1 app to 500")
 				(a :href "https://app.exiconglobal.com/?package=starter#!/registration/"
-					(div :class "ui lightExicon button" "Sign me up for a FREE account")))
+					(div :class "ui lightExicon huge button"
+						"FREE Sign Up now!")))
 			(div :class "center aligned column"
 				(a :href "#play-video" :click show-main-video
 					(img :class "video-btn"
@@ -258,7 +259,7 @@ Management."})
 		(div :id "features" :class "anchor" )
 		(h2 :class "ui center aligned header" "Let the AppBoard give you real insight into your app portfolio")
 		(div :class "ui center aligned basic segment"
-			(common/registration-button :starter "Free Account Sign Up"))
+			(common/registration-button :starter "Free Starter Pack Sign Up"))
 		(div :class "ui two column doubling page grid"
 			(div :class "column" (img :class "appboard-img" :src "images/appboard.png"))
 			(div :class "features-group column"
@@ -337,18 +338,16 @@ Management."})
 				(i :class "quote small left blue icon")
 				(text (:testimonial testimonial))
 				(i :class "quote small right blue icon")
-				(img :class "ui custom-m right floated image" :src (:company testimonial)))
+				(img :class "ui custom-m right floated image" :src (:company testimonial))
+				(div :class "clear"))
 		]))
 
 (defn testimonials-section []
 	(section :class "full-width-container"
 		(div :class "ui page grid"
-			(div :id "testimonials" :class "anchor" )
+			(div :id "testimonials" :class "anchor")
 			(h2 :class "ui center aligned header"
-				"Interested in working with us? Check out our client testimonials below!")
-			(div :id "ux-statements" :class "three column doubling row"
-				(loop-tpl :bindings [ux ux-list]
-					(ux-statement @ux)))
+				"Check out our client testimonials!")
 			(div :class "testimonials two column row"
 				(div :class "column"
 					(div :class "ui segment"
@@ -373,14 +372,26 @@ Management."})
 						(testimonial-block :patrick))
 					)))))
 
+(defn customer-values []
+	(section :class "full-width-container"
+		(div :class "ui page grid"
+			(div :id "ux-statements" :class "anchor")
+			(h2 :class "ui center aligned header"
+				"Interested in working with us?")
+			(div :id "ux-statements" :class "three column doubling row"
+				(loop-tpl :bindings [ux ux-list]
+					(ux-statement @ux))))))
+
 (layout/main
 	:pagetitle "Manage Your Apps | Exicon Cloud App Management AppBoard"
 	:pagedescription "Exicon AppBoard Is An App Management Platform That Helps SMEs & Enterprise Manage Their Mobile Apps Through Define, Build, Enage & Measure."
 	:pagekeywords "Manage Apps, Exicon, Cloud, App Management, AppBoard"
 
 	(intro)
-	(quotes)
+	; (quotes)
+	(customer-values)
 	(features-section feature-list)
-	(packages-section)
 	(testimonials-section)
-	(clients))
+	(clients)
+	(packages-section)
+	)

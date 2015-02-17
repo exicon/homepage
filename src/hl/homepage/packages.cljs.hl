@@ -2,19 +2,20 @@
 
 (def starter-pack-desc
 	#(ul :class "starter-pack-desc"
-		(li "Intelligent Newsfeeds")
-		(li "LeaderBoard")
-		(li "Watchlist")
 		(li "Analytics"
 			(ul
 				(li "App store")
 				(li "In-app")))
-		(li "App Briefbuilder")
-		(li "AppLocker")))
+		(li "AppLocker")
+		(li "LeaderBoard")
+		(li "Intelligent Newsfeeds")
+		(li "Watchlist")
+		(li "App builder")
+		))
 
 (def challenger-pack-desc
 	#(ul :class "challenger-pack-desc"
-		(li "Monthly Competitor Insight")
+		(li "Competitor Insights")
 		(li "One AppScan per month"
 			(ul
 				(li "By brand")
@@ -33,8 +34,12 @@
 	:title "STARTER PACK"
 	:price "FREE"
 	:price-des ""
-	:note "Entry tool for those new to app management"
-	:no-of-app (p "1 to" (span :class"no-of-app" " 5 ") "of your apps")
+	:note "New to app management"
+	:no-of-app (p
+		"Unlimited Users"
+		(br)
+		"1 to" (span :class"no-of-app" " 5 ") " apps")
+	:link "https://app.exiconglobal.com/?package=starter#!/registration/"
 	:content [
 			(sign-up-button)
 			(div :class "ui exicon-teal divider small bd")
@@ -49,8 +54,12 @@
 	:title "CHALLENGER PACK"
 	:price "US$99"
 	:price-des "per app / month"
-	:note "The insights to see how your portfolio stacks up against the competition"
-	:no-of-app (p "1 to" (span :class "no-of-app" " 20 ") "of your apps")
+	:note "Includes competitive insights"
+	:no-of-app (p
+		"Unlimited Users"
+		(br)
+		"Up to" (span :class "no-of-app" " 10 ") " apps")
+	:link "https://app.exiconglobal.com/?package=starter#!/registration/"
 	:content [
 		(sign-up-button)
 		(div :class "ui exicon-teal divider small bd")
@@ -76,15 +85,19 @@
 	:title "DOMINATOR PACK"
 	:price "US$159"
 	:price-des "per app / month"
-	:note "For those with a grip on their apps looking to expand their footprint"
-	:no-of-app (p "1 to" (span :class"no-of-app" " 50 ") "of your apps")
+	:note "Looking to expand your footprint"
+	:no-of-app (p
+		"Unlimited Users"
+		(br)
+		"Up to" (span :class"no-of-app" " 20 ") " apps")
+	:link "https://app.exiconglobal.com/?package=starter#!/registration/"
 	:content [
 		(sign-up-button)
 		(div :class "ui exicon-teal divider small bd")
 		(div "All the features of")
 
 		(h3 :class "ui exicon-teal header word sub-pack-title no-desc"
-			"STARTER PACK" (br) "+" (br) "CHALLENGER PACK" (br) "+" )
+			"CHALLENGER PACK" (br) "+" )
 
 		(h3 :class "ui exicon-teal header word sub-pack-title starter-pack-desc"
 			"STARTER PACK")
@@ -108,20 +121,26 @@
 	:title "AMPLIFIER PACK"
 	:price "CUSTOM"
 	:price-des ""
-	:no-of-app (p (span :class"no-of-app" " Unlimited ") "apps & APIs")
-	:note "Ready to unleash your API, and maybe open it to developers?"
-	:content [(a :href "mailto:sales@exiconglobal.com?subject=Amplifier%20pack"
+	:no-of-app (p
+		"Unlimited Users"
+		(br)
+		"More than "(span :class"no-of-app" "20") " apps")
+	:link "mailto:sales@exiconglobal.com?subject=Amplifier%20pack"
+	:note "Ready to unleash your APIs to developers?"
+	:content [
+		(a :href "mailto:sales@exiconglobal.com?subject=Amplifier%20pack"
 			(div :class "ui button"
 				"CONTACT US"))
 		(div :class "ui exicon-teal divider small bd")
 		(div "Everything customized to your needs")
 		(br :class "sub-pack-title")
+		(span :style "float: left" "Including")
 		(ul
 			(li "App Management")
 			(li "API Mangement")
 			(li "Development Ecosystem")
 			(li "Manager Console")
-			(li "Management Module"))]
+			(li "Governance Module"))]
 	})
 
 (def packages [starter-pack challenger-pack dominator-pack amplifier-pack])
