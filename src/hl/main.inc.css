@@ -538,6 +538,14 @@ section.clients img{
 	}
 
 /* Mobile */
+
+
+@media only screen and (max-width: 1000px){
+.equal.height.computer.three.column.only.row{
+	display: none;
+		}
+}
+
 @media only screen and (max-width: 767px){
 	#get-in-touch, #subscribe-stick,
 	#subscribe-stick-layer, #subscribe-stick-form {
