@@ -1,4 +1,4 @@
-* {
+*:not(i) {
 	font-family: "Helvetica", sans-serif !important;
 }
 

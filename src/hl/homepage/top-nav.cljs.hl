@@ -36,7 +36,6 @@
 (defn main-menu [items clicked-item]
 	(loop-tpl :bindings [[id item] items]
 		(a :class "item"
-			:test (cell= (print clicked-item))
 			:do-class (cell= {:active (= clicked-item id)})
 			:href (cell= (:url item))
 			:click #(reset! clicked-item @id)
@@ -51,7 +50,7 @@
 						(img :src "/images/exicon-logo.png" :alt "Exicon Global Ltd."))))
 			(div :class "twelve wide column"
 				(div :class "ui basic segment"
-					(div :class "ui tiered menu"
+					(div :class "ui borderless tiered menu"
 						(div :class "menu"
 							(main-menu
 								main-menu-items

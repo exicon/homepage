@@ -8,8 +8,7 @@
 					(li :class "header" "Company")
 					(li (a :href "/about-us/" "About Us"))
 					(li (a :href "/customers/" "Customers"))
-					(li (a :href "/news/" "Media & Press"))
-					(li (a  :href "/company/contact/" "Contact Us"))))
+					(li (a :href "/news/" "Media & Press"))))
 			(div :class "column"
 				(ul
 					(li :class "header" "Products")

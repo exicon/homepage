@@ -87,7 +87,7 @@
 
 (defn videos-options-section []
 	(section :id "video-list" :class "full-width-container"
-			(div :class "ui three column doubling page grid"
+			(div :class "ui three column doubling page grid basic segment"
 				(loop-tpl :bindings [video video-list-with-hash]
 					(videos-options video)))
 

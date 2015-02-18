@@ -165,6 +165,54 @@
 
 	})
 
+(def office-list [
+	{
+	:country "HK"
+	:name "Hong Kong"
+	:address "Wilson House, Suite 302, 19 Wyndham St Central, Hong Kong."
+	:phone ""
+	:email "amanda@exiconglobal.com"
+	}
+
+	{
+	:country "SF"
+	:name "United States"
+	:address "Suite 2710, 101 California Street, San Francisco CA 94111, U.S.A."
+	:phone ""
+	:email "rebecca@exiconglobal.com"
+	}
+
+	{
+	:country "LN"
+	:name "London"
+	:address "Tech City, 228 Whitechapel Road, London E1 1BJ, United Kingdom."
+	:phone ""
+	:email "cat@exiconglobal.com"
+	}
+]
+)
+
+(defn office-options [opts]
+	(div :class "left aligned column office-box" :do-class (cell= (:country opts))
+		(p (text (:name opts)))
+		(p :class "office-address" (text (:address opts)))
+		(p :class "office-phone" (text (:phone opts)))
+		(p :class "office-email" "E " (a :href (str "mailto:" (:email @opts))  (text (:email opts))))
+	)
+)
+
+(defn office-options-section []
+	(section
+		:id "office-list"
+		(div :class "ui three column doubling grid"
+			(div :class "three columns"
+				(h2 :class "ui header" "Our Locations"))
+			(loop-tpl :bindings [opt office-list]
+			(office-options opt))
+		)
+	)
+)
+
 (def management-team (map team [:stefan :cat :albert :tamas :phil]))
 (def board-team (map #(dissoc % :klout :bio-url) (map team [:stefan :cat :antoine :norman :stephen])))
 (def advisory-team (map team [:ralph :charles :anthony :jeffrey]))
@@ -247,7 +295,6 @@
 	(div :class "profile column"
 		(div :class "ui fade reveal"
 			(img :class "ui circular image visible content" :src (cell= (:image profile)))
-			(img :class "ui circular image hidden content layer" :src "/images/dummy.png")
 			(div :class "hidden content icons"
 				(social-icons profile "computer")))
 		(div :class "info-labels"
@@ -365,7 +412,8 @@
 				(div :class "anchor" :id "our-partners")
 				(partners-section)
 				(awards-section)
-				(bio current-bio))
+				(bio current-bio)
+				(office-options-section))
 			(div :class "six wide timeline column"
 				(h2 :class "ui header aligned center" "Exicon Timeline")
 				(div :class "timeline-img"
