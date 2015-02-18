@@ -4,9 +4,10 @@ A Hoplon project to implement the custom part of Exicon's public homepage.
 
 ## Dependencies
 
-- java 1.7+
-- [boot][1]
-- [leiningen][2]
+- Java 1.7+ in theory but in practice, on a Mac it needs [Java 1.8][1]
+  otherwise it throws an out of memory error because of some bug
+- [boot][2] for development
+- [leiningen][3] for production compilation
 
 ## Usage
 
@@ -16,11 +17,7 @@ A Hoplon project to implement the custom part of Exicon's public homepage.
     $ boot development
     ```
 
-2. Go to [http://localhost:3003][3] in your browser. You should see "Hello,
-Hoplon and Castra!" with random numbers that are generated on the server and
-transmited to the client. But you should change that to what you want.
-
-3. You're already done.
+2. Go to [http://localhost:3003][4] in your browser.
 
 ## License
 
@@ -31,6 +28,7 @@ Public License 1.0](http://opensource.org/licenses/eclipse-1.0.php). By using
 this software in any fashion, you are agreeing to be bound by the terms of
 this license. You must not remove this notice, or any other, from this software.
 
-[1]: https://github.com/tailrecursion/boot
-[2]: https://github.com/technomancy/leiningen
-[3]: http://localhost:3003
+[1]: http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
+[2]: https://github.com/tailrecursion/boot
+[3]: https://github.com/technomancy/leiningen
+[4]: http://localhost:3003
