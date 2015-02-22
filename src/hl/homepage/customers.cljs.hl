@@ -1,9 +1,6 @@
 (page "customers/index.html"
 	(:require
-		[homepage.layout :as layout]
-		[tailrecursion.hoplon.reload :refer [reload-all]] ))
-
-(reload-all 200)
+		[homepage.layout :refer [layout]]))
 
 (defc multinational {
 	:image-side :left
@@ -40,9 +37,9 @@
 			sure how to get started. Can you trust the developers you find using a Google search? How much
 			should you expect to budget? How do I know if the app is actually helping my business?"
 	:solution [
-		(text "The AppBoard isn't only for existing apps, it supports you through the full App LifeCycle.
+		(span "The AppBoard isn't only for existing apps, it supports you through the full App LifeCycle.
 			If you have 'No Developer,' Exicon has ") (a :href "https://i2a.exiconglobal.com" "Node")
-			(text". You'll get help defining the app you need and Exicon
+			(span". You'll get help defining the app you need and Exicon
 			will send your requirements to three experienced developers with the qualifications you need. We
 			help you choose the proposal that makes the most sense for your requirements and negotiate a contract.
 			Exicon can even manage the project all the way to launch and set you up on the AppBoard for continued
@@ -150,7 +147,7 @@
 )
 
 
-(layout/main :id "customers"
+(layout :id "customers"
 	:pagetitle "Exicon Customers | Reviews | Testimonials"
 	:pagedescription "Global Fans Of Exicon's AppBoard, Products & Services"
 	:pagekeywords "Exicon"

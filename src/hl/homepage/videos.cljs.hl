@@ -1,6 +1,6 @@
 (page "videos/index.html"
 	(:require
-		[homepage.layout :as layout]
+		[homepage.layout :refer [layout]]
 		[clojure.string :refer [replace lower-case]]))
 
 (defc video-list [
@@ -81,7 +81,7 @@
 	(div :class "column"
 		(a :href (cell= (:hash video)) :click #(show-video-popup)
 			(div :class "ui center aligned segment"
-				(h2 :class "videos-title" (text (:title video)))
+				(h2 :class "videos-title" :text (:title video))
 				(div :class "videos-screenshot-box"
 					(img :class "videos-screenshot" :src (cell= (:image video))))))))
 
@@ -95,14 +95,14 @@
 				(i :class "close icon"
 					:click #(reset! route ""))
 				(div :class "header"
-					(h1 (text (:title current-video)))
+					(h1 :text (:title current-video))
 					(div :class "video-frame"
 						(iframe :width "90%" :height "430px;"
 							:src (cell= (:link current-video))
 							:frameborder "0" :allowfullscreen ""
 							:webkitallowfullscreen "" :mozallowfullscreen ""))))))
 
-(layout/main :id "videos"
+(layout :id "videos"
 	:pagetitle "Videos | Mobile | Apps | AppBoard"
 	:pagedescription "Watch Videos About Mobile, Apps, APIs & Developers. Oh, And The Exicon AppBoard!"
 	(section :class "ui one column full-width-container"

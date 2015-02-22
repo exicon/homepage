@@ -49,10 +49,10 @@
 
 (defn submenu-item [item]
 	(li
-	(a :class "item" :href (cell= (:url item))
-		:on-click #(reset! active-submenu-item (:id @item))
-		:do-class (cell= {:active (= active-submenu-item (:id item))})
-			(text (:name item)) ) ) )
+		(a :class "item" :href (cell= (:url item))
+			:on-click #(reset! active-submenu-item (:id @item))
+			:do-class (cell= {:active (= active-submenu-item (:id item))})
+			(text "(:name item)"))))
 
 (defn submenu [items]
 	(ul :class "hidden ui sub menu"
@@ -62,10 +62,12 @@
 (defn main-menu [items]
 	(loop-tpl :bindings [item items] (
 		(li
-		(a :class "item" :href (cell= (:url item))
-
-			(text (:name item)))
-			(if (:submenu @item)(submenu (:submenu @item)) )) ) ) )
+			(a :class "item"
+				:href (cell= (:url item))
+				:text (:name item))
+			(cell=
+				(if (:submenu item)
+					(submenu (:submenu item))))))))
 
 (defelem top-nav []
 	(div :id "top-nav-container"
@@ -80,10 +82,7 @@
 					(ul :class "menu"
 						(main-menu main-menu-items)
 						(signup-and-login) )
-					#_(submenu active-submenu) ) )
-			)
-	)
-)
+					(submenu active-submenu))))))
 
 
 

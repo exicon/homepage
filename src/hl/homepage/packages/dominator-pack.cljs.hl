@@ -1,6 +1,6 @@
 (page "packages/dominator-pack/index.html"
 	(:require
-		[homepage.layout :as layout]
+		[homepage.layout :refer [layout]]
 		[homepage.top-nav :as top-nav]
 		[homepage.common :refer [registration-button registration-link]]
 		[homepage.packages :refer [dominator-pack starter-pack challenger-pack]]
@@ -65,13 +65,13 @@
 (defn distribution-tile [opts]
 	(div :class "column"
 		(div :class "ui center aligned segment"
-			(h2 (text (:title opts)))
-			(h3 (text (:subtitle opts)))
+			(h2 :text (:title opts))
+			(h3 :text (:subtitle opts))
 			(h4 :class "lightExicon text"
-				(text (:price opts))
-				(span :class "default text" (text (:period opts))) )
+				(span (:price opts))
+				(span :class "default text" :text (:period opts)) )
 			(a :href (cell= (:link opts))
-				(div :class "ui lightExicon button" (text (:button opts))))
+				(div :class "ui lightExicon button" :text (:button opts)))
 			(p (cell= (:note opts))))))
 
 (defn feature [f]
@@ -84,7 +84,7 @@
 				(img :src (cell= (:screenshot f))))
 			(div :class "column"
 				(img :class "features-icon" :src (cell= (:icon f)))
-				(h2 (text (:title f)))
+				(h2 :text (:title f))
 				(div (cell= (:content f))))))
 
 		(div :class "ui page-details middle aligned two column doubling grid"
@@ -92,7 +92,7 @@
 			(div :id (cell= (:anchor f)) :class "anchor")
 			(div :class "column"
 				(img :class "features-icon" :src (cell= (:icon f)))
-				(h2 (text (:title f)))
+				(h2 :text (:title f))
 				(div (cell= (:content f))))
 			(div :class "column"
 				(img :src (cell= (:screenshot f))))))))
@@ -103,7 +103,7 @@
 		(div (cell= (nth (:content dominator)4)))]
 	)
 
-(layout/main :id "dominator-pack"
+(layout :id "dominator-pack"
 	:pagetitle "Dominator | App Distribution onto Global Appstores"
 	:pagedescription "The Dominator Pack Is An App Management  & Logistics Pack That Includes Competitive Benchmarking & Appstore Distribution"
 	:pagekeywords "App Distribution, Appstores"

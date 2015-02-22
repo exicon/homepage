@@ -2,9 +2,7 @@
 	(:require-macros [config :refer [env?]])
 	(:require
 		[homepage.top-nav :as top-nav]
-		[homepage.bottom-nav :as bottom-nav]
-		[tailrecursion.hoplon.reload :refer [reload-all]]
-		))
+		[homepage.bottom-nav :as bottom-nav]))
 
 (defn row [] (div
 	:class "column sixteen wide center aligned"))
@@ -39,17 +37,17 @@
 		(div :id "subscribe-stick" :do-class
 			(cell= {:show (not subscribe-click)}))))
 
-(defelem main [{:keys [pagecss pagetitle pagedescription pagekeywords] :as attrs} content]
+(defelem layout
+	[{:keys [pagetitle pagedescription pagekeywords] :as attrs} content]
 	(let [subscribe-click (cell false)]
 		(html
 			(head
 				(title pagetitle)
-				(meta :name "description" :content pagedescription)
-				(meta :name "keywords" :content pagekeywords)
-				(meta :name "viewport" :content "width=device-width, initial-scale=1.0")
+				(html-meta :name "description" :content pagedescription)
+				(html-meta :name "keywords" :content pagekeywords)
+				(html-meta :name "viewport" :content "width=device-width, initial-scale=1.0")
 				(link :href "/images/favicon.ico" :rel "shortcut icon")
-				(link :href "/semantic.css" :rel "stylesheet")
-				(if pagecss (link :href pagecss :rel "stylesheet"))
+				(link :href "/semantic-ui.inc.css" :rel "stylesheet")
 				(script :src "//load.sumome.com/"
 					:data-sumo-site-id "ebf284bbaebf222290fb6ad21ded0363d1b94fddbbb9138e7930124b6645bbcb"
 					:async))

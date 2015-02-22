@@ -1,6 +1,6 @@
 (page "about-us/index.html"
 	(:require
-		[homepage.layout :as layout]))
+		[homepage.layout :refer [layout]]))
 
 (def team {
 		:stefan {
@@ -228,7 +228,7 @@
 			:src "/images/about-us/kloud-50x39.png"
 			;:src (cell= (str "http://www.kloutwidget.com/32/"(:twitter profile)".png"))
 			)
-		(label :class "klout-score" (text (:klout profile)))
+		(label :class "klout-score" :text (:klout profile))
 	))
 
 (defn social-icons [profile media]
@@ -251,9 +251,9 @@
 			(div :class "hidden content icons"
 				(social-icons profile "computer")))
 		(div :class "info-labels"
-			(label :class "name" (text (:name profile))))
+			(label :class "name" :text (:name profile)))
 		(div :class "info-labels"
-			(label :class "position" (text (:position profile))))
+			(label :class "position" :text (:position profile)))
 			(div :class "social-media-icons"
 				(social-icons profile "mobile")
 				(if (:klout profile) (klout-widget profile)))))
@@ -325,7 +325,7 @@
 		(div :class "ui four column doubling grid"
 			(loop-tpl :bindings [logo awards] (award logo)))))
 
-(layout/main :id "about-us"
+(layout :id "about-us"
 	:pagetitle "About Exicon | App Management & Analytics | Our Team"
 	:pagedescription "Our Mission And The Road That Got Us Here As Well As The Team That Makes Exicon Tick."
 	:pagekeywords "Exicon, App Management, Analytics"

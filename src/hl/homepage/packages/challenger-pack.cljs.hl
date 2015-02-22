@@ -1,6 +1,6 @@
 (page "packages/challenger-pack/index.html"
 	(:require
-		[homepage.layout :as layout]
+		[homepage.layout :refer [layout]]
 		[homepage.top-nav :as top-nav]
 		[homepage.common :as common]
 		[homepage.packages :refer [challenger-pack]]
@@ -33,7 +33,7 @@
 
 (defn feature [f]
 	(div :class "ui page-details aligned two column doubling grid"
-    (div :id "page-details" :class "anchor" )
+		(div :id "page-details" :class "anchor" )
 		(div :class "column"
 			(div (cell= (:content f))) )
 		(div :class "column"
@@ -70,7 +70,9 @@
 (defn snapshots [x]
 	(div :class "column"
 		(img :src (cell= (:screenshot x)))
-		(h2 (img :class "snapshots-icon" :src (cell= (:icon x))) (text (:title x)))
+		(h2
+			(img :class "snapshots-icon" :src (cell= (:icon x)))
+			(span (:title x)))
 		(div (cell= (:content x))) ) )
 
 (def challenger-options [
@@ -98,10 +100,13 @@
 (defn challenger-option-tile [opts]
 	(div :class "column"
 		(div :class "ui center aligned segment"
-			(h2 (text (:title opts)))
-			(h3 (text (:subtitle opts)))
-			(h4 :class "lightExicon text" (text (:price opts)) (span :class "default text" (text (:period opts))))
-			(a :href (cell= (:link opts)) (div :class "ui lightExicon button" (text (:button opts))))
+			(h2 :text (:title opts))
+			(h3 :text (:subtitle opts))
+			(h4 :class "lightExicon text"
+				(span (:price opts))
+				(span :class "default text" :text (:period opts)))
+			(a :href (cell= (:link opts))
+				(div :class "ui lightExicon button" :text (:button opts)))
 			(div (cell= (:note opts)))
 		)
 	) )
@@ -117,7 +122,7 @@
   )
 )
 
-(layout/main :id "challenger-pack"
+(layout :id "challenger-pack"
 	:pagetitle "Challenger | Competitive Benchmarking & App Analytics"
 	:pagedescription "The Challenger Pack Is An App Management & App Logistics Pack That Includes Competitive Benchmarking Insights"
 	:pagekeywords "Competitive Benchmarkeing and App Analytics"

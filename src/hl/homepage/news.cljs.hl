@@ -1,9 +1,6 @@
 (page "news/index.html"
 	(:require
-		[homepage.layout :as layout]
-		[tailrecursion.hoplon.reload :refer [reload-all]] ))
-
-(reload-all 200)
+		[homepage.layout :refer [layout]]))
 
 (def press-list [
 	{
@@ -82,8 +79,10 @@
 			(img :class "press-screenshot" :src (cell= (:image opts)))
 		)
 		(div :class "eleven wide column"
-			(h2 (text (:title opts)))
-			(p (text (:detail opts)) (a :target "_blank" :href (cell= (:link opts)) "See original article"))
+			(h2 :text (:title opts))
+			(p :text (:detail opts)
+				(a :target "_blank" :href (cell= (:link opts))
+					"See original article"))
 		)
 	)
 )
@@ -149,8 +148,10 @@
 			(img :class "press-screenshot" :src (cell= (:image opts)))
 		)
 		(div :class "eleven wide column"
-			(h2 (text (:title opts)))
-			(p (text (:detail opts)) (a :target "_blank" :href (cell= (:link opts)) "See video"))
+			(h2 :text (:title opts))
+			(p :text (:detail opts)
+				(a :target "_blank" :href (cell= (:link opts))
+					"See video"))
 		)
 	)
 )
@@ -229,7 +230,7 @@
 (defn hkicc-options [opts]
 	(div :class "ui column"
 		(div :class "column"
-			(h2 (text (:title opts)))
+			(h2 :text (:title opts))
 			(img :class "events-screenshot" :src (cell= (:image1 opts)))
 			(img :class "events-screenshot" :src (cell= (:image2 opts)))
 			(img :class "events-screenshot" :src (cell= (:image3 opts)))
@@ -241,7 +242,7 @@
 (defn momo-options [m]
 	(div :class "ui column"
 		(div :class "column"
-			(h2 (text (:title m)))
+			(h2 :text (:title m))
 			(img :class "events-screenshot" :src (cell= (:image1 m)))
 			(img :class "events-screenshot" :src (cell= (:image2 m)))
 			(img :class "events-screenshot" :src (cell= (:image3 m)))
@@ -268,7 +269,7 @@
 )
 
 
-(layout/main :id "news"
+(layout :id "news"
 	:pagetitle "News"
 	:pagedescription "The Exicon Team In The Public Eye"
 	:pagekeywords "Exicon App Management"

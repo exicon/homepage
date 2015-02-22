@@ -1,9 +1,8 @@
 (page "packages/starter-pack/index.html"
 	(:require
-		[homepage.layout :as layout]
+		[homepage.layout :refer [layout]]
 		[homepage.top-nav :as top-nav]
 		[homepage.common :as common]
-		[tailrecursion.hoplon.reload :refer [reload-all]]
 		[homepage.packages :refer [starter-pack]]
 		[homepage.pricing-pack :refer [pricing-options]]))
 
@@ -114,7 +113,7 @@
 				(img :src (cell= (:screenshot f))))
 			(div :class "column"
 				(img :class "features-icon" :src (cell= (:icon f)))
-				(h2 (text (:title f)))
+				(h2 :text (:title f))
 				(div (cell= (:content f))))))
 
 		(div :class "ui page-details middle aligned two column doubling grid"
@@ -122,25 +121,14 @@
 			(div :id (cell= (:anchor f)) :class "anchor")
 			(div :class "column"
 				(img :class "features-icon" :src (cell= (:icon f)))
-				(h2 (text (:title f)))
+				(h2 :text (:title f))
 				(div (cell= (:content f))))
 			(div :class "column"
 				(img :src (cell= (:screenshot f))))))
 		)
 )
 
-; (defn pricing-options [opts]
-; 	(div :class "column"
-; 		(div :class "ui center aligned segment" :do-class (cell= (:box opts))
-; 			(h2 :class "pack-title" (text (:title opts)))
-; 				(div :class "ui center aligned segment pack-price"
-; 						(p (text (:price opts)))
-; 						(span :class "sub-price" (text (:price-des opts)))
-; 				)
-; 			(p :class "price-note" (text (:note opts)))
-; 			(div :class "price-details" (cell= (:content opts))))))
-
-(layout/main :id "starter-pack"
+(layout :id "starter-pack"
 	:pagetitle "Starter Pack | Intro To App Management & App Analytics"
 	:pagedescription "Starter Pack Is An Entry Tool For Those New To App Management, App Logistics & Analytics"
 	:pagekeywords "App Management, App Analytics"

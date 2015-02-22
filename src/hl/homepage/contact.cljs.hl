@@ -1,6 +1,6 @@
 (page "company/contact/index.html"
 	(:require
-		[homepage.layout :as layout]
+		[homepage.layout :refer [layout]]
 		[validateur.validation :refer [validation-set presence-of format-of valid?]]
 		))
 
@@ -33,10 +33,10 @@
 
 (defn office-options [opts]
 	(div :class "left aligned column office-box" :do-class (cell= (:country opts))
-		(p (text (:name opts)))
-		(p :class "office-address" (text (:address opts)))
-		(p :class "office-phone" (text (:phone opts)))
-		(p :class "office-email" "E " (a :href (str "mailto:" (:email @opts))  (text (:email opts))))
+		(p :text (:name opts))
+		(p :class "office-address" :text (:address opts))
+		(p :class "office-phone" :text (:phone opts))
+		(p :class "office-email" "E " (a :href (str "mailto:" (:email @opts))  :text (:email opts)))
 	)
 )
 
@@ -111,7 +111,7 @@
 		random (+ 1 (rand-int 6))
 		confirm2
 			(fn[] (div :class "confirm2 inline field"
-				(label (text "Let us know you are not a robot by answering the following question - Two plus ~{random} = "))
+				(label :text "Let us know you are not a robot by answering the following question - Two plus ~{random} = ")
 				(input :type "text" :class "ans"
 					:keyup #(reset! ans (this-val %))
 					:change #(reset! ans (this-val %)))))
@@ -141,7 +141,7 @@
 						(invalid-field? key msg)
 						(:required field)
 						lens)})
-				(label (text (str (:name field) ":")))
+				(label :text (str (:name field) ":"))
 				(elem {
 					:placeholder ""
 					:keyup (val-change lens this-val)}
@@ -222,7 +222,7 @@
 			(input :type "hidden" :name "send" :value "Send"))
 ))
 
-(layout/main :id "contact"
+(layout :id "contact"
 	:pagetitle "Contact us | Mobile | Apps | AppBoard"
 	:pagedescription "Contact us"
 	(section :class "ui one column full-width-container"

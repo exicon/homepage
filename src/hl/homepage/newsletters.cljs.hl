@@ -1,6 +1,6 @@
 (page "newsletters/index.html"
 	(:require
-		[homepage.layout :as layout]))
+		[homepage.layout :refer [layout]]))
 
 (def newsletters-list [
 
@@ -9,7 +9,7 @@
 	:issue "Issue #026 December 22, 2014"
 	:image "/images/newsletters/issue_26.png"
 	:url "http://us3.campaign-archive1.com/?u=59165e464834675ada250903e&id=d1286c9a0c"
-	}	
+	}
 
 		{
 	:title "Exicon's Holiday Gift to You"
@@ -191,8 +191,8 @@
 (defn newsletters-options [opts]
 	(div :class "column"
 		(a :href (cell= (:url opts))(div :class "ui center aligned segment"
-			(h2 :class "newsletters-title" (text (:title opts)))
-			(p :class "newsletters-issue" (text (:issue opts)))
+			(h2 :class "newsletters-title" :text (:title opts))
+			(p :class "newsletters-issue" :text (:issue opts))
 			(div :class "newsletters-screenshot-box" (img :class "newsletters-screenshot" :src (cell= (:image opts))))
 		))
 	)
@@ -209,7 +209,7 @@
 	)
 )
 
-(layout/main :id "newsletters"
+(layout :id "newsletters"
 	:pagetitle "Exicon Newsletter | Mobile Apps"
 	:pagedescription "Sign Up For Exicon's Weekly Newsletter About All Things Mobile."
 	(section :class "ui one column full-width-container"

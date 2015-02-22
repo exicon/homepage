@@ -1,11 +1,8 @@
 (page "privacy-policy/index.html"
 	(:require
-		[homepage.layout :as layout]
-		[tailrecursion.hoplon.reload :refer [reload-all]] ))
+		[homepage.layout :refer [layout]]))
 
-(reload-all 200)
-
-(layout/main :id "privacy" :pagetitle "Privacy Policy"
+(layout :id "privacy" :pagetitle "Privacy Policy"
 	(section :class "ui one column full-width-container"
 		(div  :id "page-title" :class "center aligned row"
 			(div :class "column"

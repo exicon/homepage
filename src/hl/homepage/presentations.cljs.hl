@@ -1,8 +1,8 @@
 (page "presentations/index.html"
 	(:require
-		[homepage.layout :as layout]))
+		[homepage.layout :refer [layout]]))
 
-(layout/main :id "presentations"
+(layout :id "presentations"
 	:pagetitle "Mobile | Presentations"
 	:pagedescription "All Thing Mobile Across Multiple Industries Including Automotive, Travel & Hospitality, Banking & Finance, & IoT."
 	(section :class "ui one column full-width-container"

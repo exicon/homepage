@@ -1,11 +1,8 @@
 (page "terms-of-use/index.html"
 	(:require
-		[homepage.layout :as layout]
-		[tailrecursion.hoplon.reload :refer [reload-all]] ))
+		[homepage.layout :refer [layout]]))
 
-(reload-all 200)
-
-(layout/main :id "terms-of-use" :pagetitle "Terms of Use"
+(layout :id "terms-of-use" :pagetitle "Terms of Use"
 	(section :class "ui one column full-width-container"
 		(div  :id "page-title" :class "center aligned row"
 			(div :class "column"

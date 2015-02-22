@@ -1,9 +1,6 @@
 (page "developers/index.html"
 	(:require
-		[homepage.layout :as layout]
-		[tailrecursion.hoplon.reload :refer [reload-all]] ))
-
-(reload-all 200)
+		[homepage.layout :refer [layout]]))
 
 (def developers-list [
 	{
@@ -28,9 +25,9 @@
 
 (defn developers-options [opts]
 	(div :class "center aligned column"
-		(h2 :class "developers-title" (text (:title opts)))
+		(h2 :class "developers-title" :text (:title opts))
 		(img :class "developers-icon" :src (cell= (:image opts)))
-		(p :class "developers-details" (text (:details opts)))
+		(p :class "developers-details" :text (:details opts))
 	)
 )
 
@@ -46,7 +43,7 @@
 )
 
 
-(layout/main :id "developers" :pagetitle "Developers"
+(layout :id "developers" :pagetitle "Developers"
 	(section :class "ui one column full-width-container"
 		(div  :id "page-title" :class "center aligned row"
 			(div :class "column"

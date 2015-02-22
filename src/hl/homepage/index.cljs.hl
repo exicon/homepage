@@ -1,6 +1,6 @@
-(page "index.html"
+(page "index2.html"
 	(:require
-		[homepage.layout :as layout]
+		[homepage.layout :refer [layout]]
 		[homepage.common :as common]))
 
 (defc route @(route-cell ""))
@@ -69,14 +69,14 @@ Management."})
 
 (defn quote-column [x]
 	(div :class "column"
-		(h2 (text (get x :title)))
-		(p (text (get x :msg)))
+		(h2 :text (get x :title))
+		(p :text (get x :msg))
 	)
 )
 (defn customer-quote [x]
 	(div :class "column quote"
-			(h2 (text (get x :title)))
-			(p :class "quote" (i :class "quote small left blue icon") (text (get x :msg)) (i :class "quote small blue right icon"))))
+			(h2 :text (get x :title))
+			(p :class "quote" (i :class "quote small left blue icon") (span (get x :msg)) (i :class "quote small blue right icon"))))
 
 (defn quotes []
 	[
@@ -252,8 +252,8 @@ Management."})
 (defn feature [ftr]
 	(div :class  "column"
 		(img :src (cell= (:icon ftr)))
-		(label (text (:title ftr)))
-		(p (text (:desc ftr)))
+		(label :text (:title ftr))
+		(p :text (:desc ftr))
 		(a :href (cell= (:link ftr)) "Learn more")
 	)
 )
@@ -284,8 +284,8 @@ Management."})
 					(div :class "icon column"
 						(img :src (cell= (:icon pkg))))
 					(div :class "details column"
-						(h2 :class "lightExicon" (text (:title pkg)))
-						(h3 (text (:subtitle pkg)))
+						(h2 :class "lightExicon" :text (:title pkg))
+						(h3 :text (:subtitle pkg))
 						((:desc pkg))
 						(if (:note pkg) (p :class "pkg-note" (:note pkg)))
 						(a :href (cell= (:link pkg)) "Find out more")
@@ -322,7 +322,7 @@ Management."})
 				(div :class "ui ribbon label"
 					(i :class (cell= (str (:icon attrs) " icon"))))
 				(div :class "content"
-					(text (str (:percentage attrs) "%"))))
+					:text (str (:percentage attrs) "%")))
 			(:statement attrs))))
 
 (defn testimonial-block [testimonial-name]
@@ -334,13 +334,13 @@ Management."})
 						(div :class "ui small circular image icon" (img :src (cell= (:image testimonial)))))
 					(div :class "middle aligned content"
 						(if (:name testimonial)
-							(span (text (:name testimonial))))
+							(span (:name testimonial)))
 						(if (:sub-title testimonial)
 							(div :class "sub header"
-						(text (:sub-title testimonial)))))))
+								:text (:sub-title testimonial))))))
 			(p :class "testimonial"
 				(i :class "quote small left blue icon")
-				(text (:testimonial testimonial))
+				(span :text (:testimonial testimonial))
 				(i :class "quote small right blue icon")
 				(img :class "ui custom-m right floated image" :src (:company testimonial))
 				(div :class "clear"))
@@ -386,7 +386,7 @@ Management."})
 				(loop-tpl :bindings [ux ux-list]
 					(ux-statement @ux))))))
 
-(layout/main
+(layout
 	:pagetitle "Manage Your Apps | Exicon Cloud App Management AppBoard"
 	:pagedescription "Exicon AppBoard Is An App Management Platform That Helps SMEs & Enterprise Manage Their Mobile Apps Through Define, Build, Enage & Measure."
 	:pagekeywords "Manage Apps, Exicon, Cloud, App Management, AppBoard"

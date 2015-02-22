@@ -1,6 +1,6 @@
 (page "reports/index.html"
 	(:require
-		[homepage.layout :as layout]))
+		[homepage.layout :refer [layout]]))
 
 (def reports-list [
 	{
@@ -247,8 +247,8 @@
 (defn reports-options [opts]
 	(div :class "column"
 		(a :href (cell= (:link opts))(div :class "ui center aligned segment"
-			(h2 :class "reports-title" (text (:title opts)))
-			(p :class "reports-issue" (text (:detail opts)))
+			(h2 :class "reports-title" :text (:title opts))
+			(p :class "reports-issue" :text (:detail opts))
 			(div :class "reports-screenshot-box" (img :class "reports-screenshot" :src (cell= (:image opts))))
 		))
 	)
@@ -266,7 +266,7 @@
 )
 
 
-(layout/main :id "reports"
+(layout :id "reports"
 	:pagetitle "InfoPorn"
 	:pagedescription "InfoPorn"
 	(section :class "ui one column full-width-container"

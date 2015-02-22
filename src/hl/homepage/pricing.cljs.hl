@@ -1,6 +1,6 @@
 (page "appboard/pricing/index.html"
 	(:require
-		[homepage.layout :as layout]
+		[homepage.layout :refer [layout]]
 		[homepage.packages :refer [packages]]
 		[homepage.pricing-pack :refer [pricing-options]]))
 
@@ -126,7 +126,7 @@
 					:do-class (cell= {:active opened})
 					:click #(swap! opened not)
 					(i :class "dropdown icon")
-					(text (:question q)))
+					(span (:question q)))
 
 				(div :class "content"
 					:do-class (cell= {:active opened})
@@ -145,7 +145,7 @@
 		)
 	) )
 
-(layout/main :id "pricing"
+(layout :id "pricing"
 	:pagetitle "Product Pricing | Analytics & App Management | Exicon"
 	:pagedescription "Pricing For Exicon's App Management & Logistics Platform That Scales With Your App Portfolio, Analytics, Distribution & API Management."
 	:pagekeywords "Analytics, App Management, Exicon"

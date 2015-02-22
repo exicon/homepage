@@ -1,6 +1,6 @@
 (page "packages/amplifier-pack/index.html"
 	(:require
-		[homepage.layout :as layout]
+		[homepage.layout :refer [layout]]
 		[homepage.top-nav :as top-nav]
 		[homepage.packages :refer [amplifier-pack]]
 		[homepage.pricing-pack :refer [pricing-options]]))
@@ -61,29 +61,27 @@
 
 (defn feature [f]
 	(if (= (:image-side f) :left)
+		(div :class "ui page-details middle aligned two column doubling grid"
+			(div :class "row"
+				(div :id (cell= (:anchor f)) :class "anchor")
+				(div :class "column"
+					(img :src (cell= (:screenshot f))))
+				(div :class "column"
+					(img :class "features-icon" :src (cell= (:icon f)))
+					(h2 :text (:title f))
+					(div (cell= (:content f))))))
 
 		(div :class "ui page-details middle aligned two column doubling grid"
 			(div :class "row"
-      (div :id (cell= (:anchor f)) :class "anchor")
-			(div :class "column"
-				(img :src (cell= (:screenshot f))))
-			(div :class "column"
-				(img :class "features-icon" :src (cell= (:icon f)))
-				(h2 (text (:title f)))
-				(div (cell= (:content f))))))
+				(div :id (cell= (:anchor f)) :class "anchor")
+				(div :class "column"
+					(img :class "features-icon" :src (cell= (:icon f)))
+					(h2 :text (:title f))
+					(div (cell= (:content f))))
+				(div :class "column"
+					(img :src (cell= (:screenshot f))))))))
 
-		(div :class "ui page-details middle aligned two column doubling grid"
-			(div :class "row"
-      (div :id (cell= (:anchor f)) :class "anchor")
-			(div :class "column"
-				(img :class "features-icon" :src (cell= (:icon f)))
-				(h2 (text (:title f)))
-				(div (cell= (:content f))))
-			(div :class "column"
-				(img :src (cell= (:screenshot f))))))
-	))
-
-(layout/main :id "amplifier-pack"
+(layout :id "amplifier-pack"
 	:pagetitle "Amplifier | API Management Platform & Developer Console"
 	:pagedescription "Amplifier Pack Combines The Best Of Our App Management & Logistics Packs While Adding Our API Management Platform & Developer Console For You To Leverage Partner Developers."
 	:pagekeywords "API Management, Developer Console"
