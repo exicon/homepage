@@ -9,7 +9,7 @@
 			:name "Stefan Rust"
 			:position "Founder & CEO"
 			:klout "58"
-			:bio-url "/staff/bios/Stefan Rust Bio.pdf"
+			:bio-url "/staff/bios/Stefan_Rust_Bio.pdf"
 			:bio [
 				(p "Stefan Rust is the Founder and CEO at Exicon, which was recently recognized as Hong Kong’s hottest start-up by Hong Kong Business.")
 				(p "Exicon is a SaaS platform providing mobile application content and asset management. Aggregating the diverse app assets and data into a single, easy-to-use management console. Exicon provides the marketing and product teams with relevant business intelligence. ")
@@ -27,7 +27,7 @@
 			:name "Cat Purvis"
 			:position "Founder & EVP"
 			:klout "54"
-			:bio-url "/staff/bios/Cat Purvis Bio.pdf"
+			:bio-url "/staff/bios/Cat_Purvis_Bio.pdf"
 			:bio [
 				(p "Cat Purvis is the Founder of Exicon, a cloud platform for App and API Management, with global clients including Handset manufacturers, Operators, Brands & Enterprises. It is a 2012 Red Herring 100 Global tech companies winner.")
 				(p "During her career, Cat has built companies, teams and divisions all over the world, in the UK, US as well as in China where she lived for 5 years. Previous roles include COO at Icon Medialab and GM at a start up in Beijing which was later sold to a global player.")
