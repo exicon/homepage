@@ -10,7 +10,7 @@
 			(div :class "column"
 				(h1 "Presentations"))))
 
-	(section :class "ui one column page grid"
+	(section :class "ui one column page grid basic segment"
 		(div :class "center aligned column"
 			(iframe :src "http://www.slideshare.net/Exicon/slideshelf"
 				:width "760px" :height "570px" :frameborder "0" :marginwidth "0"

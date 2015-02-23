@@ -7,8 +7,6 @@
 		[homepage.packages :refer [starter-pack]]
 		[homepage.pricing-pack :refer [pricing-options]]))
 
-(reset! top-nav/menu-item-of-page :features)
-
 (defc intelligent-newsfeed {
 	:image-side :right
 	:screenshot "/images/intelligent-newsfeed-screenshot.png"

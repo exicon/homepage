@@ -11,7 +11,7 @@
 			(div :class "column"
 				(h1 "Terms of Use")))
 	)
-	(section :class "ui one column page grid"
+	(section :class "ui one column page grid basic segment"
 		(div :class "column terms-of-use-details"
 			(p "This Agreement (“the Agreement”) governs Your use of Exicon’s Platform Services. If you
 				register for a Free Trial, this Agreement will also govern that Free Trial. By clicking a

@@ -48,7 +48,6 @@
 				(meta :name "keywords" :content pagekeywords)
 				(meta :name "viewport" :content "width=device-width, initial-scale=1.0")
 				(link :href "/images/favicon.ico" :rel "shortcut icon")
-				(link :href "/semantic.css" :rel "stylesheet")
 				(if pagecss (link :href pagecss :rel "stylesheet"))
 				(script :src "//load.sumome.com/"
 					:data-sumo-site-id "ebf284bbaebf222290fb6ad21ded0363d1b94fddbbb9138e7930124b6645bbcb"

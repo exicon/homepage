@@ -11,7 +11,7 @@
 			(div :class "column"
 				(h1 "Privacy Policy")))
 	)
-	(section :class "ui one column page grid"
+	(section :class "ui one column page grid basic segment"
 		(div :class "column privacy-details"
 			(p "Exicon takes the privacy of its users seriously. We are committed to safeguarding
 				the privacy of our users while providing a personalised and valuable service. This

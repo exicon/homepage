@@ -5,8 +5,6 @@
 		[homepage.packages :refer [amplifier-pack]]
 		[homepage.pricing-pack :refer [pricing-options]]))
 
-(reset! top-nav/menu-item-of-page :features)
-
 (defc api-management {
 	:image-side :right
 	:screenshot "/images/api-mgt-screenshot.png"
