@@ -3,7 +3,7 @@
 		[homepage.layout :as layout]
 		[homepage.top-nav :as top-nav]
 		[homepage.packages :refer [amplifier-pack]]
-		[homepage.pricing-pack :refer [pricing-options]]))
+		[homepage.packages.pricing :refer [pricing]]))
 
 (defc api-management {
 	:image-side :right
@@ -88,20 +88,17 @@
 	(section :class "ui one column full-width-container"
 		(div  :id "page-title" :class "center aligned row"
 			(div :class "column"
-				(h1 "Amplifier Pack")))
-	)
-	(div :class "ui column four doubling page grid"
-	(section :class "twelve wide column"
-		(div :id "page-subtitle" :class "center aligned row"
-			(div :class "column"
-				(h2 "Are you thinking bigger? Ready to open your API?
-					Consider leveraging 3rd party developers to your
-					amplify efforts.") ))
-		(feature @api-management)
-		(feature @development-ecosystem)
-		(feature @governance-module)
-		(feature @manager-console)
-	)
-	(div :class "column" :id "pricing-pack"
-		(pricing-options amplifier-pack))
-	))
+				(h1 "Amplifier Pack"))))
+	(div :class "ui four column doubling page grid"
+		(section :class "twelve wide column"
+			(div :id "page-subtitle" :class "center aligned row"
+				(div :class "column"
+					(h2 "Are you thinking bigger? Ready to open your API?
+						Consider leveraging 3rd party developers to your
+						amplify efforts.") ))
+			(feature @api-management)
+			(feature @development-ecosystem)
+			(feature @governance-module)
+			(feature @manager-console))
+		(div :class "column" :id "pricing-pack"
+			(pricing amplifier-pack))))

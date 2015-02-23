@@ -1,6 +1,6 @@
-(ns homepage.pricing-pack)
+(ns homepage.packages.pricing)
 
-(defn pricing-options [opts]
+(defn pricing [opts]
 	(div :class "column pack-col"
 		:click #(set! (.-location js/window) (:link (if (cell? opts) @opts opts)))
 		(h4 :class "ui attached header best-seller"

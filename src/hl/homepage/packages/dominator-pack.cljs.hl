@@ -4,7 +4,7 @@
 		[homepage.top-nav :as top-nav]
 		[homepage.common :refer [registration-button registration-link]]
 		[homepage.packages :refer [dominator-pack starter-pack challenger-pack]]
-		[homepage.pricing-pack :refer [pricing-options]]))
+		[homepage.packages.pricing :refer [pricing]]))
 
 (defc app-store-distribution {
 	:image-side :right
@@ -122,7 +122,7 @@
 	)
 
 	(div :class "column" :id "pricing-pack"
-		(pricing-options dominator-pack)))
+		(pricing dominator-pack)))
 
 	(section :class "distribution full-width-container"
 	(div :id "distribution" :class "anchor")

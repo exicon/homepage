@@ -5,7 +5,7 @@
 		[homepage.common :as common]
 		[tailrecursion.hoplon.reload :refer [reload-all]]
 		[homepage.packages :refer [starter-pack]]
-		[homepage.pricing-pack :refer [pricing-options]]))
+		[homepage.packages.pricing :refer [pricing]]))
 
 (defc intelligent-newsfeed {
 	:image-side :right
@@ -127,17 +127,6 @@
 		)
 )
 
-; (defn pricing-options [opts]
-; 	(div :class "column"
-; 		(div :class "ui center aligned segment" :do-class (cell= (:box opts))
-; 			(h2 :class "pack-title" (text (:title opts)))
-; 				(div :class "ui center aligned segment pack-price"
-; 						(p (text (:price opts)))
-; 						(span :class "sub-price" (text (:price-des opts)))
-; 				)
-; 			(p :class "price-note" (text (:note opts)))
-; 			(div :class "price-details" (cell= (:content opts))))))
-
 (layout/main :id "starter-pack"
 	:pagetitle "Starter Pack | Intro To App Management & App Analytics"
 	:pagedescription "Starter Pack Is An Entry Tool For Those New To App Management, App Logistics & Analytics"
@@ -161,5 +150,5 @@
 		(feature @applocker)
 	)
 	(div :class "column" :id "pricing-pack"
-		(pricing-options starter-pack)))
+		(pricing starter-pack)))
 )

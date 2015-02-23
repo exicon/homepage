@@ -2,15 +2,15 @@
 	(:require
 		[homepage.layout :as layout]
 		[homepage.packages :refer [packages]]
-		[homepage.pricing-pack :refer [pricing-options]]))
+		[homepage.packages.pricing :refer [pricing]]))
 
-(defn pricing-options-section []
+(defn pricing-section []
 	(section
 		:id "pricing-pack"
 		:class "full-width-container"
 		(div :class "ui four column doubling page grid"
 			(loop-tpl :bindings [opt packages]
-				(pricing-options opt)))))
+				(pricing opt)))))
 
 (def faq-detail [
 
@@ -154,6 +154,6 @@
 			(div :class "column"
 				(h1 "Pricing")))
 	)
-	(pricing-options-section)
+	(pricing-section)
 	(faq-list-section)
 )

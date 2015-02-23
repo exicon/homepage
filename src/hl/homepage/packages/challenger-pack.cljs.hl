@@ -4,7 +4,7 @@
 		[homepage.top-nav :as top-nav]
 		[homepage.common :as common]
 		[homepage.packages :refer [challenger-pack]]
-		[homepage.pricing-pack :refer [pricing-options]]))
+		[homepage.packages.pricing :refer [pricing]]))
 
 (defc competitors {
 	:screenshot "/images/competitor-insights-screenshots.png"
@@ -32,10 +32,9 @@
 	(div :class "ui page-details aligned two column doubling grid"
     (div :id "page-details" :class "anchor" )
 		(div :class "column"
-			(div (cell= (:content f))) )
+			(div (cell= (:content f))))
 		(div :class "column"
-			(div (cell= (:content2 f))) )
-	) )
+			(div (cell= (:content2 f))))))
 
 (defc by-brand {
 	:screenshot "/images/circle-company.png"
@@ -149,6 +148,6 @@
 						available App Store data and analytics of opt-in partners. Your AppBoard data is
 						never shared by Exicon."))))
 		(div :class "column" :id "pricing-pack"
-			(pricing-options challenger-pack)))
+			(pricing challenger-pack)))
 	(challenger-option-section)
 )
