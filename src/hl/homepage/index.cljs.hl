@@ -1,5 +1,6 @@
 (page "index2.html"
 	(:require
+		[cljsjs.semantic-ui]
 		[homepage.layout :refer [layout]]
 		[homepage.common :as common]))
 
@@ -390,7 +391,6 @@ Management."})
 	:pagetitle "Manage Your Apps | Exicon Cloud App Management AppBoard"
 	:pagedescription "Exicon AppBoard Is An App Management Platform That Helps SMEs & Enterprise Manage Their Mobile Apps Through Define, Build, Enage & Measure."
 	:pagekeywords "Manage Apps, Exicon, Cloud, App Management, AppBoard"
-
 	(intro)
 	; (quotes)
 	(customer-values)

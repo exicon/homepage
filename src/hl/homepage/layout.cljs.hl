@@ -4,8 +4,7 @@
 		[homepage.top-nav :as top-nav]
 		[homepage.bottom-nav :as bottom-nav]))
 
-(defn row [] (div
-	:class "column sixteen wide center aligned"))
+(defn row [] (div :class "column sixteen wide center aligned"))
 
 (defn subscribe-stick-form [subscribe-click]
 	[
@@ -48,14 +47,14 @@
 				(html-meta :name "viewport" :content "width=device-width, initial-scale=1.0")
 				(link :href "/images/favicon.ico" :rel "shortcut icon")
 				(link :href "/semantic-ui.inc.css" :rel "stylesheet")
-				(script :src "//load.sumome.com/"
+				#_(script :src "//load.sumome.com/"
 					:data-sumo-site-id "ebf284bbaebf222290fb6ad21ded0363d1b94fddbbb9138e7930124b6645bbcb"
 					:async))
-			(subscribe-stick-btn subscribe-click)
-			(subscribe-stick-form subscribe-click)
+			; (subscribe-stick-btn subscribe-click)
+			; (subscribe-stick-form subscribe-click)
 			(body
 				(top-nav/top-nav)
 				(div (merge {:id "content"}
 					(dissoc attrs :pagetitle :pagedescription :pagekeywords))
 					content)
-				(bottom-nav/bottom-nav)))))))
+				(bottom-nav/bottom-nav)))))
