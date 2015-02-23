@@ -2,13 +2,13 @@
 	(:require
 		[homepage.layout :as layout]
 		[homepage.top-nav :as top-nav]
-		[homepage.common :as common]
+		[homepage.common :refer [registration-link]]
 		[homepage.packages :refer [challenger-pack]]
 		[homepage.packages.pricing :refer [pricing]]))
 
 (defc competitors {
 	:screenshot "/images/competitor-insights-screenshots.png"
-  :anchor "competitors"
+	:anchor "competitors"
 	:content [
 		(p "Get to Know Where You Stand")
 		(ul
@@ -30,7 +30,7 @@
 
 (defn feature [f]
 	(div :class "ui page-details aligned two column doubling grid"
-    (div :id "page-details" :class "anchor" )
+		(div :id "page-details" :class "anchor")
 		(div :class "column"
 			(div (cell= (:content f))))
 		(div :class "column"
@@ -74,7 +74,6 @@
 		:title "Try It Once - Single AppScan"
 		:subtitle "(I'm not a fan of commitment)"
 		:price "US$500"
-		:period ""
 		:button "Start for free now"
 		:note (p " ")
 		:link "/company/contact/"
@@ -83,21 +82,21 @@
 		:title "Challenger Pack"
 		:subtitle "Including 1 Appscan per month"
 		:price "US$99*"
-		:period ""
 		:button "Start for free now"
 		:note (p "*per app/month for 1 to 20 apps")
-		:link (common/registration-link :challenger)
+		:link (registration-link :challenger)
 	}
 ])
 
 (defn challenger-option-tile [opts]
-	(div :class "column"
-		(div :class "ui center aligned segment"
-			(h2 (text (:title opts)))
-			(h3 (text (:subtitle opts)))
-			(h4 :class "lightExicon text" (text (:price opts)) (span :class "default text" (text (:period opts))))
-			(a :href (cell= (:link opts)) (div :class "ui lightExicon button" (text (:button opts))))
-			(div (cell= (:note opts))))))
+	(cell-let [{:keys [title subtitle price period link button note]} opts]
+		(div :class "column"
+			(div :class "ui center aligned segment"
+				(h2 :text title)
+				(h3 :text subtitle)
+				(h4 :class "text" :text price)
+				(a :href link (div :class "ui button" :text button))
+				(div note)))))
 
 (defn challenger-option-section []
 	(section :id "challenger" :class "challenger full-width-container"

@@ -15,8 +15,10 @@
 	:content [
 		(p "Increase the chances of your app being")
 		(ul
-			(li "Downloaded by up to " (span :class "lightExicon text" (b "200%")) " more")
-			(li "Featured by up to " (span :class "lightExicon text" (b "20")) " times more"
+			(li "Downloaded by up to "
+				(span :class "text" (b "200%")) " more")
+			(li "Featured by up to "
+				(span :class "text" (b "20")) " times more"
 				(br)(br)(br)))
 		(registration-button :dominator "Start for free now")
 		]
@@ -46,8 +48,8 @@
 		:price "US$2500"
 		:period ""
 		:button "Start for free now"
-		:link "/company/contact/"
 		:note (p " ")
+		:link "/company/contact/"
 	}
 	{
 		:title "Dominator Pack"
@@ -65,11 +67,11 @@
 		(div :class "ui center aligned segment"
 			(h2 (text (:title opts)))
 			(h3 (text (:subtitle opts)))
-			(h4 :class "lightExicon text"
+			(h4 :class "text"
 				(text (:price opts))
 				(span :class "default text" (text (:period opts))) )
 			(a :href (cell= (:link opts))
-				(div :class "ui lightExicon button" (text (:button opts))))
+				(div :class "ui button" (text (:button opts))))
 			(p (cell= (:note opts))))))
 
 (defn feature [f]

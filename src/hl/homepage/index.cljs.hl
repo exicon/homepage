@@ -1,7 +1,8 @@
 (page "index.html"
+	(:require-macros [config :refer [appboard-url]])
 	(:require
 		[homepage.layout :as layout]
-		[homepage.common :as common]))
+		[homepage.common :as common :refer [registration-link]]))
 
 (defc route @(route-cell ""))
 (route-cell route #(reset! route %))
@@ -34,8 +35,8 @@
 			(div :class "right floated column intro-right-info"
 				(h1 "Get a grip on your apps" (br) "with the AppBoard")
 				(h2 "From 1 app to 500")
-				(a :href "https://app.exiconglobal.com/?package=starter#!/registration/"
-					(div :class "ui lightExicon huge button"
+				(a :href (registration-link :starter)
+					(div :class "ui huge button"
 						"FREE Sign Up now!")))
 			(div :class "center aligned column"
 				(a :href "#play-video" :click show-main-video
@@ -128,43 +129,36 @@ Management."})
 		:title "Intelligent Newsfeed"
 		:desc "Provides you with a personalized stream of activity across your app world."
 		:link "/packages/starter-pack"
-
 	}
 	{
 		:icon "images/icons/analytics.png"
 		:title "Analytics"
 		:desc "Plug in your App Store Analytics, and go deeper with In App Analytics. Use ours, or your existing provider, we can manage either."
 		:link "/packages/starter-pack"
-
-
 	}
 	{
 		:icon "images/icons/leaderboard.png"
 		:title "Leaderboards"
 		:desc "Compare the performance of your best, and worst, performing apps, by downloads, engagement, revenue and more."
 		:link "/packages/starter-pack"
-
 	}
 	{
 		:icon "images/icons/appbuilder.png"
 		:title "App Brief Builder"
 		:desc "Got an idea for a new app? Define your brief and we’ll find the right developer to build your app or plug in your own approved developers."
 		:link "/packages/starter-pack"
-
 	}
 	{
 		:icon "images/icons/watchlist.png"
 		:title "Watchlist"
 		:desc "Build collections of apps to watch - from best-of-breed to your biggest competitors."
 		:link "/packages/starter-pack"
-
 	}
 	{
 		:icon "images/icons/applocker.png"
 		:title "AppLocker"
 		:desc "Never lose project documents again - licenses, contracts, wireframes, codes, images etc, all in one place."
 		:link "/packages/starter-pack"
-
 	}
 ])
 
@@ -269,7 +263,7 @@ Management."})
 							(feature ftr)))
 					(div :class "one column row center aligned"
 						(a :href "/packages/starter-pack"
-							(div :class "ui lightExicon long button" "Check Out More")))
+							(div :class "ui long button" "Check Out More")))
 						) ) )
 	) )
 
@@ -280,7 +274,7 @@ Management."})
 					(div :class "icon column"
 						(img :src (cell= (:icon pkg))))
 					(div :class "details column"
-						(h2 :class "lightExicon" (text (:title pkg)))
+						(h2 (text (:title pkg)))
 						(h3 (text (:subtitle pkg)))
 						((:desc pkg))
 						(if (:note pkg) (p :class "pkg-note" (:note pkg)))

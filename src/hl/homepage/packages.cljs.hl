@@ -1,4 +1,7 @@
-(ns homepage.packages)
+(ns homepage.packages
+	(:require-macros [config :refer [appboard-url]])
+	(:require [homepage.common :refer
+		[registration-button registration-link]]))
 
 (def starter-pack-desc
 	#(ul :class "starter-pack-desc"
@@ -22,10 +25,7 @@
 				(li "By country")
 				(li "By industry")))))
 
-(def sign-up-button
-	#(a :href "https://app.exiconglobal.com/?package=starter#!/registration/"
-				(div :class "ui button"
-					"SIGN UP NOW")))
+(defn sign-up-button [] (registration-button :starter "SIGN UP NOW"))
 
 (def starter-pack
 	{
@@ -39,7 +39,7 @@
 		"Unlimited Users"
 		(br)
 		"1 to" (span :class"no-of-app" " 5 ") " apps")
-	:link "https://app.exiconglobal.com/?package=starter#!/registration/"
+	:link (registration-link :starter)
 	:content [
 			(sign-up-button)
 			(div :class "ui exicon-teal divider small bd")
@@ -59,7 +59,7 @@
 		"Unlimited Users"
 		(br)
 		"Up to" (span :class "no-of-app" " 10 ") " apps")
-	:link "https://app.exiconglobal.com/?package=starter#!/registration/"
+	:link (registration-link :challenger)
 	:content [
 		(sign-up-button)
 		(div :class "ui exicon-teal divider small bd")
@@ -90,7 +90,7 @@
 		"Unlimited Users"
 		(br)
 		"Up to" (span :class"no-of-app" " 20 ") " apps")
-	:link "https://app.exiconglobal.com/?package=starter#!/registration/"
+	:link (registration-link :dominator)
 	:content [
 		(sign-up-button)
 		(div :class "ui exicon-teal divider small bd")

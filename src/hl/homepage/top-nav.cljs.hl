@@ -1,4 +1,5 @@
-(ns homepage.top-nav)
+(ns homepage.top-nav
+	(:require-macros [config :refer [appboard-url]]))
 
 (def features-submenu-items [
 	{:id :feature-1 :name "Starter Pack" :url "/packages/starter-pack"}
@@ -16,7 +17,7 @@
 (defelem signup-and-login []
 	[(a :href "/appboard/pricing" :class "item"
 		(div :class "ui small button" "Sign Up"))
-	(a :href "https://app.exiconglobal.com/" :class "item"
+	(a :href (appboard-url) :class "item"
 		"Log In")])
 
 (def main-menu-items

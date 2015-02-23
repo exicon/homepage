@@ -1,4 +1,5 @@
-(ns homepage.bottom-nav)
+(ns homepage.bottom-nav
+	(:require-macros [config :refer [appboard-url]]))
 
 (defelem bottom-nav []
 	(footer :id "bottom-nav" :class "full-width-container" :style "background-color: gray;"
@@ -12,8 +13,8 @@
 			(div :class "column"
 				(ul
 					(li :class "header" "Products")
-					(li (a :href "https://app.exiconglobal.com/api-dir/" "API Directory"))
-					(li (a :href "https://app.exiconglobal.com/app-dir/" "App Directory"))
+					(li (a :href (str (appboard-url) "/api-dir/") "API Directory"))
+					(li (a :href (str (appboard-url) "/app-dir/") "App Directory"))
 					(li (a :href "/apiaxle/" "ApiAxle"))	; FIXME migrate
 					(li (a :href "https://i2a.exiconglobal.com/" "Node"))))
 			(div :class "column"

@@ -1,5 +1,4 @@
 (ns homepage.layout
-	(:require-macros [config :refer [env?]])
 	(:require
 		[homepage.top-nav :as top-nav]
 		[homepage.bottom-nav :as bottom-nav]
