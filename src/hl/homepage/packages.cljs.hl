@@ -33,7 +33,7 @@
 	:best-label false
 	:title "STARTER PACK"
 	:price "FREE"
-	:price-des ""
+	:price-des (br)
 	:note "New to app management"
 	:no-of-app (p
 		"Unlimited Users"
@@ -120,7 +120,7 @@
 	:best-label false
 	:title "AMPLIFIER PACK"
 	:price "CUSTOM"
-	:price-des ""
+	:price-des (br)
 	:no-of-app (p
 		"Unlimited Users"
 		(br)
