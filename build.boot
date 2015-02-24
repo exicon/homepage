@@ -29,7 +29,7 @@
 	"Build hoplon.io for local development."
 	[]
 	(comp
-		(serve :dir (get-env :target-path) :port 3003)
+		(serve :port 3003)
 		(from-cljsjs :profile :development)
 		(sift :to-resource #{#"themes"})
 		(sift :to-resource #{#"semantic-ui.inc.css"})
