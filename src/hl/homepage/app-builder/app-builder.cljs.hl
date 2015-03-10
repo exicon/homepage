@@ -1,0 +1,101 @@
+(page "app-builder/index.html"
+	(:require
+		[homepage.layout :as layout]
+		[homepage.top-nav :as top-nav]
+		[homepage.common :as common]
+		[tailrecursion.hoplon.reload :refer [reload-all]]
+		[homepage.app-builder.package-data :refer [packages]]
+		[homepage.app-builder.pricing :refer [pricing]]))
+
+(def process-list-items [
+	{:title "Quick, secure and easy"}
+	{:title "The right developer for your project"}
+	{:title "The support you want"}])
+
+(defc active-content false)
+(defelem process-list-item [{:keys [title size]} kids]
+	(div :class "item"
+		(i :class (str size " checkmark icon"))
+		(div :class (str size " ui header content") title)))
+
+(def reasons-data [
+	{:title "1. We have invested in a global network of 3000+ qualified software development companies."
+	:content "We have profiled developers, who are some of the world's leading specialists, to ensure
+		our customers get developers who can actually do the job rather than just say they can."}
+	{:title "2. We guarantee another 3 developers if you aren’t satisfied."
+	:content "Among the 10,000 matches, we have yet to be asked to do this. Our customers usually
+		have the other problem, being unable to decide between the proposed developers."}
+	{:title "3. It is expensive and risky for customers to find and profile developers themselves."
+	:content "You may have referrals from others but do your apps have the same complexities? 60%
+		of our customers come to us when they have to restart projects due to a mismatch with developers."}
+	{:title "4. It is expensive and time-consuming for developers to create proposals."
+	:content "The best developers are available to us, as they know we offer great projects that fit."}
+	{:title "5. It ensures customers are serious."
+	:content "Often people just look to benchmark pricing or ideas and aren’t committed to the next
+		step, haven’t got a budget or aren’t the decision makers."}
+	])
+
+(defn reason-list-items [reason]
+	(h2 :class "ui header" (:title @reason)
+		(div :class "ui clearing")
+		(div :class "sub header" (:content @reason))))
+
+(defn list-content []
+	(div :class "ui list"
+		(loop-tpl :bindings [reason reasons-data]
+			(reason-list-items reason))))
+
+(layout/main
+	:pagetitle "App Builder"
+	:pagedescription "Find the right developer to get your app build"
+	:pagekeywords "Build an App, App Builder"
+	(section :class "ui one column full-width-container"
+		(div :id "page-title" :class "center aligned row"
+			(div :class "column"
+				(h1 "App Builder"))))
+
+	(div :class "ui page padded grid"
+		(div :class "center aligned twelve wide column"
+			(h2 :class "page-subtitle"
+			"This tool will help you refine and clarify your app
+			development project to match you to the best qualified development companies.
+			All confidential."))
+		(div :class "four wide column"
+			(img :class "ui small image" :src "/images/app-builder/nda.png"))
+
+		(div :class "two column row"
+			(div :class "column"
+				(div :class "ui inverted teal segment"
+					(h2 "Image Here")))
+			(div :class "column"
+				(div :class "ui list"
+					(loop-tpl :bindings [item process-list-items]
+						(process-list-item :title (cell= (:title item))
+							:size "big")))))
+
+
+		(div :class "center aligned row"
+			(div :class "column"(div :class "ui big button" "Start your Project")))
+
+		(div :class "center aligned sixteen wide column"
+			(h2 :class "page-subtitle"
+			"We are confident that we are the only recruiters of developers for you, we will give your money back
+			 if you aren’t delighted with the developers we match you with. We look forward to getting started."))
+
+		(div :class "sixteen wide column"
+			(div :class "ui fluid accordion"
+			(h2 :class "ui active title header" :style "color: #59d2d9"
+				:click #(swap! active-content not)
+				(i :class "caret icon" :style "text-align:left"
+					:do-class (cell={:down (not active-content) :up active-content}))
+				"5 Reasons why we charge for App Builder")
+				(div :class "content"
+					:do-class (cell= {:active active-content})
+					(list-content))))
+
+		(div :class "sixteen wide column"
+			(div :class "ui three column doubling grid"
+				(loop-tpl :bindings [opt packages]
+					(pricing opt))))
+	)
+)

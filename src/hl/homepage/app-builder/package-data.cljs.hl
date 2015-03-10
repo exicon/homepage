@@ -1,0 +1,67 @@
+(ns homepage.app-builder.package-data)
+
+(def standard-list-items [
+	"30-minute consultation with Exicon app expert"
+	"3 professional development proposals"
+	"3 months AppBoard subscription"
+	"In-app analytics"])
+
+(def pro-list-items [
+	"3 hour consultation with Exicon app expert"
+	"Support to conceptualize a brief"
+	"3 professional development proposals"
+	"Interpretation and clarification of developer proposals"
+	"3 months AppBoard subscription"
+	"In-app analytics"])
+
+(def advanced-list-items [
+	"Advisory from our app experts"
+	"3 professional development proposals"
+	"3 months AppBoard subscription"
+	"In-app analytics"
+	"Support to conceptualize a brief"
+	"Help you select the best developer"
+	"Full brief documentation and proposal review"
+	"Recommendations on development company selection"
+	"Project management and execution support"])
+
+(defn process-list-item [item size]
+	(div :class "item"
+		(i :class (str size " checkmark teal icon"))
+		(div :class (str size " ui small header content left aligned") item)))
+
+(defn make-content-from [items]
+	(div :class "ui list"
+	(map #(process-list-item % "medium") items)))
+
+(def standard-pack
+	{
+	:name :standard-pack
+	:best-label false
+	:title "Standard"
+	:price "499 USD"
+	:note "Matches you with proposals from 3
+			qualified experienced development companies"
+	:content (make-content-from standard-list-items)})
+
+(def pro-pack
+	{
+	:name :pro-pack
+	:best-label true
+	:title "Pro"
+	:price "1,599 USD"
+	:note "Work with an expert through this process"
+	:content (make-content-from pro-list-items)
+	})
+
+(def advanced-pack
+	{
+	:name :advanced-pack
+	:best-label false
+	:title "Advanced"
+	:price "Get in touch"
+	:note "Your partner in the selection and development process"
+	:content (make-content-from advanced-list-items)
+	})
+
+(def packages [standard-pack pro-pack advanced-pack])
