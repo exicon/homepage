@@ -3,7 +3,9 @@
 (defn pricing [opts]
 	(cell-let [{:keys [best-label name title note price price-des no-of-app content link]} opts]
 		(div :class "column pack-col"
-			:click #(set! (.-location js/window) @link)
+			:click (if  (string? 	@link)
+				#(set! (.-location js/window) @link)
+				@link)
 			(h4 :class "ui attached header best-seller"
 				:do-class (cell= {:show best-label})
 				"BEST SELLER")

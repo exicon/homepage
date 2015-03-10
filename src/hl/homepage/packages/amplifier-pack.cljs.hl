@@ -72,14 +72,13 @@
 
 		(div :class "ui page-details middle aligned two column doubling grid"
 			(div :class "row"
-      (div :id (cell= (:anchor f)) :class "anchor")
-			(div :class "column"
-				(img :class "features-icon" :src (cell= (:icon f)))
-				(h2 (text (:title f)))
-				(div (cell= (:content f))))
-			(div :class "column"
-				(img :src (cell= (:screenshot f))))))
-	))
+				(div :id (cell= (:anchor f)) :class "anchor")
+				(div :class "column"
+					(img :class "features-icon" :src (cell= (:icon f)))
+					(h2 (text (:title f)))
+					(div (cell= (:content f))))
+				(div :class "column"
+					(img :src (cell= (:screenshot f))))))))
 
 (layout/main :id "amplifier-pack"
 	:pagetitle "Amplifier | API Management Platform & Developer Console"

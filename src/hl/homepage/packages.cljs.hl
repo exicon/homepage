@@ -25,7 +25,7 @@
 				(li "By country")
 				(li "By industry")))))
 
-(defn sign-up-button [] (registration-button :starter "SIGN UP NOW"))
+(defn sign-up-button [] (div :class "ui button" "SIGN UP NOW"))
 
 (def starter-pack
 	{
@@ -114,6 +114,11 @@
 			(li "White label marketplace"))]
 	})
 
+(defn amplifier-pack-button []
+	(.click
+		(js/jQuery
+			".sumome-contactform-pullouttab.sumome-contactform-pullouttab-bottom-center")))
+
 (def amplifier-pack
 	{
 	:name :amplifier-pack
@@ -125,12 +130,12 @@
 		"Unlimited Users"
 		(br)
 		"More than "(span :class"no-of-app" "20") " apps")
-	:link "mailto:sales@exiconglobal.com?subject=Amplifier%20pack"
+	:link #(amplifier-pack-button)
 	:note "Ready to unleash your APIs to developers?"
 	:content [
-		(a :href "mailto:sales@exiconglobal.com?subject=Amplifier%20pack"
-			(div :class "ui button"
-				"CONTACT US"))
+			(div
+				:class "ui button"
+				"CONTACT US")
 		(div :class "ui exicon-teal divider small bd")
 		(div "Everything customized to your needs")
 		(br :class "sub-pack-title")
