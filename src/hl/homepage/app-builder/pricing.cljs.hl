@@ -4,12 +4,13 @@
 	(cell-let [{:keys [best-label name title note price
 					content]} opts]
 		(div :class "column pack-col"
-			(h4 :class "ui attached header best-seller"
+			(h4 :class "ui attached center aligned header best-seller"
 				:do-class (cell= {:show best-label})
-				"BEST SELLER")
+				(i :class "star icon")
+				"MOST POPULAR")
 			(div :class "ui center aligned attached segment pack"
 				:do-class (cell= {:show best-label name true})
-				(h2 :class "pack-title" :text title)
+				(h2 :class " ui huge header" :text title)
 				(p :class "price-note" :text note)
 				(p :class "pack-price-title" :text price)
 				@content))))

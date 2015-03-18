@@ -81,7 +81,10 @@
 
 
 		(div :class "center aligned row"
-			(div :class "column"(div :class "ui big button" "Start your Project")))
+			(div :class "column"
+				(a :class "ui big button"
+					:href (cell= (:appboard-url config))
+					 "Start your Project")))
 
 		(div :class "center aligned sixteen wide column"
 			(h2 :class "page-subtitle"
@@ -99,8 +102,8 @@
 					:do-class (cell= {:active active-content})
 					(list-content))))
 
-		(div :class "sixteen wide column"
-			(div :class "ui three column doubling grid"
+		(div :id "pricing-pack" :class "sixteen wide column"
+			(div :class "ui three column doubling stackable grid"
 				(loop-tpl :bindings [opt packages]
 					(pricing opt))))
 	)
