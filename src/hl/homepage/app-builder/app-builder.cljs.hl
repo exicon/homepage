@@ -5,7 +5,13 @@
 		[homepage.common :as common]
 		[tailrecursion.hoplon.reload :refer [reload-all]]
 		[homepage.app-builder.package-data :refer [packages]]
-		[homepage.app-builder.pricing :refer [pricing]]))
+		[homepage.app-builder.pricing :refer [pricing]]
+		[homepage.rpc :refer [get-config config]]
+		[tailrecursion.hoplon :refer [with-init!]]))
+
+(with-init! (get-config))
+
+(cell= (println "Config" config))
 
 (def process-list-items [
 	{:title "Quick, secure and easy"}

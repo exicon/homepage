@@ -25,11 +25,13 @@
 (deftask development
 	"Build homepage for development."
 	[]
+	(set-env! :env "dev")
 	(comp (watch) (hoplon {:prerender false}) server))
 
 (deftask dev-debug
 	"Build homepage for development with source maps."
 	[]
+	(set-env! :env "dev")
 	(comp (watch) (hoplon {:pretty-print true
 		:prerender false
 		:source-map true}) server))
@@ -37,6 +39,7 @@
 (deftask production
 	"Build homepage for production."
 	[]
+	(set-env! :env "prod")
 	(hoplon {
 		:pretty-print true
 		:prerender true

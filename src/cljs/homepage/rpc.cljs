@@ -3,7 +3,7 @@
 		[tailrecursion.javelin :refer [defc defc=]]
 	)
 	(:require
-		[tailrecursion.javelin]
+		[tailrecursion.javelin :refer [cell]]
 		[tailrecursion.castra :refer [mkremote]]
 	)
 )
@@ -11,8 +11,11 @@
 (defc state {:random nil})
 (defc error nil)
 (defc loading [])
-
 (defc= random-number (get state :random))
+(defc config nil)
+
+(def get-config
+	(mkremote 'homepage.api/get-config config error (cell [])))
 
 (def get-state
 	(mkremote 'homepage.api/get-state state error loading))
