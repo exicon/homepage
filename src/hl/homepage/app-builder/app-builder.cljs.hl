@@ -83,8 +83,11 @@
 		(div :class "center aligned row"
 			(div :class "column"
 				(a :class "ui big button"
-					:href (cell= (:appboard-url config))
-					 "Start your Project")))
+					:href (cell= (:registration-url config))
+					 "Register")
+				(a :class "ui big button"
+					:href (cell= (:login-url config))
+					 "Login")))
 
 		(div :class "center aligned sixteen wide column"
 			(h2 :class "page-subtitle"

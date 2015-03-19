@@ -8,4 +8,4 @@
 
 (defrpc get-config []
 	(select-keys (config)
-		[:appboard-url]))
+		[:registration-url :login-url]))
