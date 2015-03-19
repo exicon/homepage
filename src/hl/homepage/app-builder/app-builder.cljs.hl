@@ -71,8 +71,7 @@
 
 		(div :class "two column row"
 			(div :class "column"
-				(div :class "ui inverted teal segment"
-					(h2 "Image Here")))
+				(img :class "ui big image" :src "/images/app-builder/process.png"))
 			(div :class "column"
 				(div :class "ui list"
 					(loop-tpl :bindings [item process-list-items]
@@ -83,12 +82,12 @@
 		(div :class "center aligned row"
 			(div :class "column"
 				(a :class "ui big button"
-;					:href (cell= (:registration-url config)
-					:href "http://app.stg.exicon.link/?package=starter&returnUri=http://brief.stg.exicon.link#!/registration/"	)
+;					:href (cell= (:registration-url config))
+					:href "http://app.stg.exicon.link/?package=starter&returnUri=http://brief.stg.exicon.link#!/registration/"
 					 "Register")
 				(a :class "ui big button"
-;					:href (cell= (:login-url config)
-					:href "http://app.stg.exicon.link/?package=starter&returnUri=http://brief.stg.exicon.link#!/login/")
+;					:href (cell= (:login-url config))
+					:href "http://app.stg.exicon.link/?package=starter&returnUri=http://brief.stg.exicon.link#!/login/"
 					 "Login")))
 
 		(div :class "center aligned sixteen wide column"
