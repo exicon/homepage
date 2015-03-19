@@ -83,10 +83,12 @@
 		(div :class "center aligned row"
 			(div :class "column"
 				(a :class "ui big button"
-					:href (cell= (:registration-url config))
+;					:href (cell= (:registration-url config)
+					:href "http://app.stg.exicon.link/?package=starter&returnUri=http://brief.stg.exicon.link#!/registration/"	)
 					 "Register")
 				(a :class "ui big button"
-					:href (cell= (:login-url config))
+;					:href (cell= (:login-url config)
+					:href "http://app.stg.exicon.link/?package=starter&returnUri=http://brief.stg.exicon.link#!/login/")
 					 "Login")))
 
 		(div :class "center aligned sixteen wide column"
