@@ -33,7 +33,7 @@
 	(section :class "intro full-width-container"
 		(div :class "ui two column page grid"
 			(div :class "right floated column intro-right-info"
-				(h1 "Get a grip on your apps" (br) "with the AppBoard")
+				(h1 "Build, Measure, and Manage your apps")
 				(h2 "From 1 app to 500")
 				(a :href (registration-link :starter)
 					(div :class "ui huge button"
@@ -366,16 +366,6 @@ Management."})
 						(testimonial-block :patrick))
 					)))))
 
-(defn customer-values []
-	(section :class "full-width-container"
-		(div :class "ui page grid"
-			(div :id "ux-statements" :class "anchor")
-			(h2 :class "ui center aligned header"
-				"Interested in working with us?")
-			(div :id "ux-statements" :class "three column doubling row"
-				(loop-tpl :bindings [ux ux-list]
-					(ux-statement @ux))))))
-
 (layout/main
 	:pagetitle "Manage Your Apps | Exicon Cloud App Management AppBoard"
 	:pagedescription "Exicon AppBoard Is An App Management Platform That Helps SMEs & Enterprise Manage Their Mobile Apps Through Define, Build, Enage & Measure."
@@ -383,7 +373,6 @@ Management."})
 
 	(intro)
 	; (quotes)
-	(customer-values)
 	(features-section feature-list)
 	(testimonials-section)
 	(clients)
