@@ -6,12 +6,7 @@
 		[tailrecursion.hoplon.reload :refer [reload-all]]
 		[homepage.app-builder.package-data :refer [packages]]
 		[homepage.app-builder.pricing :refer [pricing]]
-		[homepage.rpc :refer [get-config config]]
 		[tailrecursion.hoplon :refer [with-init!]]))
-
-(with-init! (get-config))
-
-(cell= (println "Config" config))
 
 (def process-list-items [
 	{:title "Quick, secure and easy"}
@@ -21,7 +16,7 @@
 (defc active-content false)
 (defelem process-list-item [{:keys [title size]} kids]
 	(div :class "item"
-		(i :class (str size " checkmark icon"))
+		(i :class (str size " checkmark teal icon"))
 		(div :class (str size " ui header content") title)))
 
 (def reasons-data [
@@ -82,11 +77,9 @@
 		(div :class "center aligned row"
 			(div :class "column"
 				(a :class "ui big button"
-;					:href (cell= (:registration-url config))
 					:href "http://app.stg.exicon.link/?package=starter&returnUri=http://brief.stg.exicon.link#!/registration/"
 					 "Register")
 				(a :class "ui big button"
-;					:href (cell= (:login-url config))
 					:href "http://app.stg.exicon.link/?package=starter&returnUri=http://brief.stg.exicon.link#!/login/"
 					 "Login")))
 

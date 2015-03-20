@@ -12,10 +12,6 @@
 (defc error nil)
 (defc loading [])
 (defc= random-number (get state :random))
-(defc config nil)
-
-(def get-config
-	(mkremote 'homepage.api/get-config config error (cell [])))
 
 (def get-state
 	(mkremote 'homepage.api/get-state state error loading))
