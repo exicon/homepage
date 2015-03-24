@@ -1,4 +1,4 @@
-(page "app-builder/index.html"
+(page "app-builder"
 	(:require
 		[homepage.layout :as layout]
 		[homepage.top-nav :as top-nav]
