@@ -68,8 +68,8 @@
 		(div :class "ui equal height row"
 			(div :class "four wide column"
 				(div :class "ui basic segment"
-					(a :href "/" :class "ui medium image"
-						(img :src "/images/exicon-logo.png" :alt "Exicon Global Ltd."))))
+					(a :href "/"
+						(img :class "ui small image" :src "/images/exicon-logo.png" :alt "Exicon Global Ltd."))))
 			(div :class "twelve wide column"
 				(div :class "ui basic segment"
 					(div :class "ui borderless large menu"
