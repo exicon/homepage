@@ -14,8 +14,15 @@
 	{ :id :amplifier :name "Presentations" :url "/presentations/"}
 ])
 
+(defc clicked-main-menu-item nil)
+
+(defn submenu? [item]
+	(if (:submenu item)
+		true
+		false))
+
 (defelem signup-and-login []
-	[(a :href "/appboard/pricing" :class "item"
+	[(a :href "/appboard/pricing"
 		(div :class "ui small button" "Sign Up"))
 	(a :href (appboard-url) :class "item"
 		"Log In")])
@@ -38,34 +45,40 @@
 (defn main-menu [items clicked-item]
 	(loop-tpl :bindings [[id item] items]
 		(a :class "item"
-			:do-class (cell= {:active (= clicked-item id)})
+			:do-class (cell=
+				{:ui (submenu? item)
+				:pointing (submenu? item)
+				:dropdown (submenu? item)})
 			:href (cell= (:url item))
+			:hover #(reset! clicked-item @id)
+			:mouseout #(reset! clicked-item nil)
 			:click #(reset! clicked-item @id)
-			(text (:name item)))) )
+			(text (:name item))
+			(if (submenu? @item)
+				(div :class "menu" :style "display: none;"
+					:mouseover #(reset! clicked-item @id)
+					:do-class (cell= {
+						:visible (= clicked-item id)
+						:invisble (not (= clicked-item id))
+						})
+					(sub-menu (:submenu @item)))))) )
 
 (defn top-nav []
-	(let [clicked-main-menu-item (cell nil)]
-		(div :class "ui grid"
+	(div :id "top-nav" :class "ui grid"
+		(div :class "ui equal height row"
 			(div :class "four wide column"
 				(div :class "ui basic segment"
 					(a :href "/" :class "ui medium image"
 						(img :src "/images/exicon-logo.png" :alt "Exicon Global Ltd."))))
 			(div :class "twelve wide column"
 				(div :class "ui basic segment"
-					(div :class "ui borderless tiered menu"
+					(div :class "ui borderless large menu"
 						(div :class "menu"
 							(main-menu
 								main-menu-items
 								clicked-main-menu-item)
 							(div :class "right menu"
-								(signup-and-login)))
-						(div :class "ui sub menu"
-							(cell= (if clicked-main-menu-item
-								(-> clicked-main-menu-item
-									main-menu-items
-									:submenu
-									sub-menu)
-								)))))))))
+								(signup-and-login)))))))))
 
 
 

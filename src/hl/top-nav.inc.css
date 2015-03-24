@@ -1,0 +1,16 @@
+#top-nav .ui.menu {
+	box-shadow: none;
+	-webkit-box-shadow: none;
+}
+
+#top-nav .ui.sub.menu {
+	border: none;
+}
+
+.menu.visible {
+	display: block !important;
+}
+
+.menu.invisible {
+	display: none !important;
+}
