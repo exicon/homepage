@@ -112,10 +112,9 @@
 	{
 	:question "I have more questions. Who do I ask?"
 	:answer [
-		(p "Contact us through the contact form " (a :href "/company/contact/" "here") " or call or send us an email. We’d be happy to chat with you.")
+		(p "Contact us through the contact form " (a :click #(.click (js/jQuery ".sumome-contactform-pullouttab.sumome-contactform-pullouttab-bottom-center")) "here") " or call or send us an email. We’d be happy to chat with you.")
 		]
 	}
-
 ])
 
 (defn faq-list [q]
