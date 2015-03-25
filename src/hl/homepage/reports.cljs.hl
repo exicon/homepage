@@ -4,6 +4,13 @@
 
 (def reports-list [
 	{
+	:title "Are you tracking your apps properly?"
+	:detail "How are you keeping an eye on whats happening without losing your mind? How many sources do you have to check to see how your app is doing? Check out the infographic."
+	:image "/images/reports/Are-You-Tracking.png"
+	:link "/report-download/are-you-tracking"
+	}
+
+	{
 	:title "Mobile Ad Spend"
 	:detail "Why should your brand invest in Mobile Marketing in 2014? Check out the Infographic."
 	:image "/images/reports/Mobile-Ad-Spend.png"
