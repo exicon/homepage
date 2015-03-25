@@ -4,7 +4,14 @@
 
 (def reports-list [
 	{
-	:title "Are you tracking your apps properly?"
+	:title "How to improve app performance?"
+	:detail "You’ve probably noticed that the app stores are getting fuller. Mobile app usage is increasing with big numbers every year. Check out the infographic."
+	:image "/images/reports/How-To-Improve.png"
+	:link "/report-download/how-to-improve"
+	}
+
+	{
+	:title "Are you tracking your apps?"
 	:detail "How are you keeping an eye on whats happening without losing your mind? How many sources do you have to check to see how your app is doing? Check out the infographic."
 	:image "/images/reports/Are-You-Tracking.png"
 	:link "/report-download/are-you-tracking"
@@ -269,12 +276,12 @@
 
 
 (layout/main :id "reports"
-	:pagetitle "InfoPorn"
-	:pagedescription "InfoPorn"
+	:pagetitle "Research"
+	:pagedescription "Research"
 	(section :class "ui one column full-width-container"
 		(div  :id "page-title" :class "center aligned row"
 			(div :class "column"
-				(h1 "InfoPorn"))))
+				(h1 "Research"))))
 
 	(section :id "reports-list"
 		:class "full-width-container"
