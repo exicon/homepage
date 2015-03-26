@@ -4,6 +4,13 @@
 
 (def reports-list [
 	{
+	:title "If building an app was like building a house"
+	:detail "Here's what you need to know"
+	:image "/images/reports/Building-An-App.png"
+	:link "/report-download/building-an-app"
+	}
+
+	{
 	:title "The number of apps is growing"
 	:detail "Have you noticed the increased number of apps showing up in the app stores? How much time are you spending inside mobile apps every day?Check out the infographic. Where do you fit in these facts?"
 	:image "/images/reports/Number-Of-Apps.png"
