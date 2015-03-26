@@ -4,8 +4,15 @@
 
 (def reports-list [
 	{
+	:title "The number of apps is growing"
+	:detail "Have you noticed the increased number of apps showing up in the app stores? How much time are you spending inside mobile apps every day?Check out the infographic. Where do you fit in these facts?"
+	:image "/images/reports/Number-Of-Apps.png"
+	:link "/report-download/number-of-apps"
+	}
+
+	{
 	:title "How to improve app performance?"
-	:detail "You’ve probably noticed that the app stores are getting fuller. Mobile app usage is increasing with big numbers every year. Check out the infographic."
+	:detail "You’ve probably noticed that the app stores are getting fuller. Mobile app usage is increasing with big numbers every year. How do you make sure you’ll get noticed on these app stores? Check out this infographic."
 	:image "/images/reports/How-To-Improve.png"
 	:link "/report-download/how-to-improve"
 	}
