@@ -11,6 +11,13 @@
 	}
 
 	{
+	:title "Winning In mobile"
+	:detail "Here's what you need to know"
+	:image "/images/reports/Winning-In-Mobile.png"
+	:link "/report-download/winning-in-mobile"
+	}
+
+	{
 	:title "The number of apps is growing"
 	:detail "Have you noticed the increased number of apps showing up in the app stores? How much time are you spending inside mobile apps every day?Check out the infographic. Where do you fit in these facts?"
 	:image "/images/reports/Number-Of-Apps.png"
