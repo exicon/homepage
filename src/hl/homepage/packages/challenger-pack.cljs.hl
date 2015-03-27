@@ -2,7 +2,7 @@
 	(:require
 		[homepage.layout :as layout]
 		[homepage.top-nav :as top-nav]
-		[homepage.common :refer [registration-link]]
+		[homepage.common :refer [registration-link sumome-popup]]
 		[homepage.packages :refer [challenger-pack]]
 		[homepage.packages.pricing :refer [pricing]]))
 
@@ -76,7 +76,7 @@
 		:price "US$500"
 		:button "Start for free now"
 		:note (p " ")
-		:link "/company/contact/"
+		:link :sumome
 	}
 	{
 		:title "Challenger Pack"
@@ -95,7 +95,9 @@
 				(h2 :text title)
 				(h3 :text subtitle)
 				(h4 :class "text" :text price)
-				(a :href link (div :class "ui button" :text button))
+				(if (= @link :sumome)
+					(a :click #(sumome-popup) (div :class "ui button" :text button))
+					(a :href link (div :class "ui button" :text button)))
 				(div note)))))
 
 (defn challenger-option-section []

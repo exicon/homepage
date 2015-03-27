@@ -2,7 +2,7 @@
 	(:require
 		[homepage.layout :as layout]
 		[homepage.top-nav :as top-nav]
-		[homepage.common :refer [registration-button registration-link]]
+		[homepage.common :refer [registration-button registration-link sumome-popup]]
 		[homepage.packages :refer [dominator-pack starter-pack challenger-pack]]
 		[homepage.packages.pricing :refer [pricing]]))
 
@@ -49,7 +49,7 @@
 		:period ""
 		:button "Start for free now"
 		:note (p " ")
-		:link "/company/contact/"
+		:link :sumome
 	}
 	{
 		:title "Dominator Pack"
@@ -62,17 +62,17 @@
 	}
 	])
 
-(defn distribution-tile [opts]
-	(div :class "column"
-		(div :class "ui center aligned segment"
-			(h2 (text (:title opts)))
-			(h3 (text (:subtitle opts)))
-			(h4 :class "text"
-				(text (:price opts))
-				(span :class "default text" (text (:period opts))) )
-			(a :href (cell= (:link opts))
-				(div :class "ui button" (text (:button opts))))
-			(p (cell= (:note opts))))))
+(defn distribution-option-tile [opts]
+	(cell-let [{:keys [title subtitle price period link button note]} opts]
+		(div :class "column"
+			(div :class "ui center aligned segment"
+				(h2 :text title)
+				(h3 :text subtitle)
+				(h4 :class "text" :text price)
+				(if (= @link :sumome)
+					(a :click #(sumome-popup) (div :class "ui button" :text button))
+					(a :href link (div :class "ui button" :text button)))
+				(div note)))))
 
 (defn feature [f]
 	(if (= (:image-side f) :left)
@@ -130,5 +130,5 @@
 	(div :id "distribution" :class "anchor")
 		(div :class "ui two column doubling page grid"
 			(loop-tpl :bindings [opt distribution-options]
-				(distribution-tile opt) ) )
+				(distribution-option-tile opt) ) )
 	) )

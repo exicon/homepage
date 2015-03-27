@@ -2,6 +2,7 @@
 	(:require
 		[homepage.layout :as layout]
 		[homepage.top-nav :as top-nav]
+		[homepage.common :refer [sumome-popup]]
 		[homepage.packages :refer [amplifier-pack]]
 		[homepage.packages.pricing :refer [pricing]]))
 
@@ -54,7 +55,7 @@
 			Understand who in your team is performing best and why, so that you can share learnings with
 			the team. Get the birds eye view of usage stats by individual and app portfolio.")
 		(p "Let’s get on a call to talk Amplifier Pack!")
-		(a :href "/company/contact/" (div :class "ui button" "Get In Touch!"))
+		(a :click #(sumome-popup) (div :class "ui button" "Get In Touch!"))
 	] })
 
 (defn feature [f]

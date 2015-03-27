@@ -13,3 +13,8 @@
 (defn registration-button [package text]
 	(a :href (registration-link package)
 		(div :class "ui button" text)) )
+
+(defn sumome-popup []
+	(.click
+		(js/jQuery
+			".sumome-contactform-pullouttab.sumome-contactform-pullouttab-bottom-center")))
