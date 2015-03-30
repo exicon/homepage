@@ -5,7 +5,7 @@
 		[homepage.common :refer [textual-button]]
 		[tailrecursion.hoplon.reload :refer [reload-all]]
 		[homepage.app-builder.package-data :refer [packages]]
-		[homepage.app-builder.pricing :refer [pricing]]
+		[homepage.app-builder.pricing :refer [pricing2]]
 		[tailrecursion.hoplon :refer [with-init!]]))
 
 (def process-list-items [
@@ -55,20 +55,21 @@
 	])
 
 (def reasons-data [
-	{:title "1. We have invested in a global network of 3000+ qualified software development companies."
-	:content "We have profiled developers, who are some of the world's leading specialists, to ensure
-		our customers get developers who can actually do the job rather than just say they can."}
-	{:title "2. We guarantee another 3 developers if you aren’t satisfied."
-	:content "Among the 10,000 matches, we have yet to be asked to do this. Our customers usually
-		have the other problem, being unable to decide between the proposed developers."}
-	{:title "3. It is expensive and risky for customers to find and profile developers themselves."
-	:content "You may have referrals from others but do your apps have the same complexities? 60%
-		of our customers come to us when they have to restart projects due to a mismatch with developers."}
-	{:title "4. It is expensive and time-consuming for developers to create proposals."
-	:content "The best developers are available to us, as they know we offer great projects that fit."}
-	{:title "5. It ensures customers are serious."
-	:content "Often people just look to benchmark pricing or ideas and aren’t committed to the next
-		step, haven’t got a budget or aren’t the decision makers."}
+	{
+		:id :reason1
+		:title "1. We have invested in a global network of 3,000+ qualified software development companies."
+		:content "We have profiled developers, who are some of the world's leading specialists, to ensure
+			our customers get developers who can actually do the job rather than just say they can."}
+	{	
+		:id :reason2
+		:title "2. We guarantee you another 3 developers if you aren’t satisfied."
+		:content "Among the 10,000 matches, we have yet to be asked to do this. Our customers usually
+			have the other problem, being unable to decide between the proposed developers."}
+	{	
+		:id :reason3
+		:title "3. Choosing the wrong developer can be a very expensive mistake."
+		:content "You may have referrals from others but do your apps have the same complexities? 60%
+			of our customers come to us when they have to restart projects due to a mismatch with developers."}
 	])
 
 (def dev-community-items [
@@ -107,19 +108,33 @@
 		}
 		])
 
-(defc active-content false)
+(defc visible-reasons #{})
+(cell= (println "Visible Reasons:" visible-reasons))
 (defelem process-list-item [{:keys [title size]} kids]
 	(div :class "item"
 		(i :class (str size " checkmark teal icon"))
 		(div :class (str size "ui header content") title)))
+(defn reason-visibility [reason]
+	(if (@visible-reasons (:id @reason))
+		(swap! visible-reasons #(disj @visible-reasons (:id @reason)))
+		(swap! visible-reasons #(conj @visible-reasons (:id @reason)))))
 
 (defn reason-list-items [reason]
-	(h2 :class "ui header" (:title @reason)
-		(div :class "ui clearing")
-		(div :class "sub header" (:content @reason))))
+	(a :class "item"
+		:click #(reason-visibility reason)
+		(i :class "large top aligned teal triangle icon"
+			:do-class
+				(cell= {:down (visible-reasons (:id reason))
+						:right (not (visible-reasons (:id reason)))}))
+		(div :class "content"
+			(div (:title @reason))
+			(div :class "description" 
+				:toggle (cell= (visible-reasons (:id reason)))
+				(:content @reason)))
+		))
 
 (defn list-content []
-	(div :class "ui list"
+	(div :class "ui huge list"
 		(loop-tpl :bindings [reason reasons-data]
 			(reason-list-items reason))))
 
@@ -220,9 +235,9 @@
 					(div :class "content"
 					(list-content)))
 
-		(div :id "pricing-pack" :class "sixteen wide column"
+		(div :class "ab-pricing sixteen wide column"
 			(div :class "ui three column doubling stackable grid"
 				(loop-tpl :bindings [opt packages]
-					(pricing opt))))
+					(pricing2 opt))))
 	)
 )
