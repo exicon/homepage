@@ -14,7 +14,19 @@
 	(a :href (registration-link package)
 		(div :class "ui button" text)) )
 
+
 (defn sumome-popup []
 	(.click
 		(js/jQuery
 			".sumome-contactform-pullouttab.sumome-contactform-pullouttab-bottom-center")))
+
+
+(defelem textual-button [{:keys [message button-text destination-link]
+	:or {button-text "Start your project"}} kids]
+	[(when message
+		(h2 :class "ui header" message))
+	(a :class "ui big button"
+		:href destination-link
+		button-text)
+	kids])
+

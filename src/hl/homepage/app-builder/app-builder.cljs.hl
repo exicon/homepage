@@ -1,8 +1,8 @@
-(page "app-builder"
+(page "app-builder/index.html"
 	(:require
 		[homepage.layout :as layout]
 		[homepage.top-nav :as top-nav]
-		[homepage.common :as common]
+		[homepage.common :refer [textual-button]]
 		[tailrecursion.hoplon.reload :refer [reload-all]]
 		[homepage.app-builder.package-data :refer [packages]]
 		[homepage.app-builder.pricing :refer [pricing]]
@@ -13,11 +13,46 @@
 	{:title "The right developer for your project"}
 	{:title "The support you want"}])
 
-(defc active-content false)
-(defelem process-list-item [{:keys [title size]} kids]
-	(div :class "item"
-		(i :class (str size " checkmark teal icon"))
-		(div :class (str size " ui header content") title)))
+
+(def process-items [
+	{
+		:serial-number "1"
+		:title "Submit your idea"
+		:icon "/images/app-builder/lightbulb.svg"
+		:content  [
+		"Secure and Confidential"
+		"Quick and simple "
+		"Any file type"
+		]
+	}
+	{	:serial-number "2"
+		:title "Get advice"
+		:icon "/images/app-builder/advise.svg"
+		:content  [
+		"From skilled project managers and mobile experts"
+		"Projects of all sizes "
+		"Around the globe"
+		]
+	}
+	{	:serial-number "3"
+		:title "Get matched"
+		:icon "/images/app-builder/matching.svg"
+		:content  [
+		"3 shortlisted Developers"
+		"Based on budget, location, skills and experience"
+		"Choose the best fit for you"
+		]
+	}
+	{	:serial-number "4"
+		:title "Launch"
+		:icon "/images/app-builder/live.svg"
+		:content  [
+		"Ready to download"
+		"Be the app rockstar"
+		"Added bonus: 3 months free tracking & storage on the Exicon AppBoard"
+		]
+	}
+	])
 
 (def reasons-data [
 	{:title "1. We have invested in a global network of 3000+ qualified software development companies."
@@ -36,6 +71,48 @@
 		step, haven’t got a budget or aren’t the decision makers."}
 	])
 
+(def dev-community-items [
+	{
+		:title "Pre-qualified"
+		:icon "/images/app-builder/developer.svg"
+		:content "All developers are carefully vetted and selected with a portfolio of live applications."
+	}
+	{
+		:title "Professional"
+		:icon "/images/app-builder/professional.svg"
+		:content "Strong track record teams built around design, project management and technology."
+	}
+	{
+		:title "incorporated"
+		:icon "/images/app-builder/incorporated.svg"
+		:content "3,000+ companies with an average 15 engineers per company located around the globe."
+	}
+	])
+
+(def testimonials[
+	{
+		:icon "/images/app-builder/4Front-advisors.png"
+		:content "\"It has been an absolute pleasure to work with this team, consummate professionals through and through.
+			Working with Exicon at the start of this journey was critical in helping us determine what we wanted and needed,
+			then figuring out how to even begin to cast the net into the often confusing digital waters.\""
+		:contact-person "Melanie McGraw"
+		:company-name "4Front Advisors"
+		}
+		{
+			:icon"/images/app-builder/get-to-know-your-brain.png"
+			:content "\"Wow, great service - thanks! Thanks a million! Thanks for your support so far - we're getting close now!\""
+			:contact-person "Aran Dadswell"
+			:position "Founder"
+			:company-name "Get to know your Brain"
+		}
+		])
+
+(defc active-content false)
+(defelem process-list-item [{:keys [title size]} kids]
+	(div :class "item"
+		(i :class (str size " checkmark teal icon"))
+		(div :class (str size "ui header content") title)))
+
 (defn reason-list-items [reason]
 	(h2 :class "ui header" (:title @reason)
 		(div :class "ui clearing")
@@ -45,6 +122,41 @@
 	(div :class "ui list"
 		(loop-tpl :bindings [reason reasons-data]
 			(reason-list-items reason))))
+
+(defn features-list [feature]
+	(li :class "left align" :text feature))
+
+(defn process-column [item]
+	(div :class "center aligned column"
+		(div :class "ui teal circular label"
+			(:serial-number @item))
+		(h2 :class "ui header" (:title @item))
+		(div :class "ui basic segment"(img :class "ui small centered image":src (:icon @item)))
+		(div :class "ui basic left aligned segment"
+			:style "padding-top: 0;"
+			(ul :class "ui list"
+				(loop-tpl :bindings [feature (:content @item)]
+				(features-list feature))))
+		)
+	)
+
+(defn dev-community-column [item]
+	(div :class "column"
+		(h3 :class "ui large header" (:title @item))
+		(img :class "ui centered small image":src (:icon @item))
+		(div :class "content" (:content @item))))
+
+(defn testimonial-column [testimonial]
+	(div :class "column"
+		(div :class "ui stackable grid"
+			(div :class "three wide column" :style "padding-top: 0;"
+				 (img :class "ui top aligned tiny image" :src (:icon @testimonial)))
+			(div :class "thirteen wide column"
+				 (div :class "content" (:content @testimonial))
+				 (br)
+				 (div :class "sub content" (:contact-person @testimonial))
+				 (str (when (:position @testimonial) (str(:position @testimonial) ", "))
+				 	(:company-name @testimonial))))))
 
 (layout/main
 	:pagetitle "App Builder"
@@ -64,40 +176,49 @@
 		(div :class "four wide column"
 			(img :class "ui small image" :src "/images/app-builder/nda.png"))
 
-		(div :class "two column row"
-			(div :class "column"
-				(img :class "ui big image" :src "/images/app-builder/process.png"))
-			(div :class "column"
-				(div :class "ui list"
-					(loop-tpl :bindings [item process-list-items]
-						(process-list-item :title (cell= (:title item))
-							:size "big")))))
+		(div :class "doubling four column row"
+			(loop-tpl :bindings [item process-items]
+				(process-column item))
 
+			)
+		(div :class "center aligned row"
+			(div :class "column"(textual-button
+				:message "Now, let's get started"
+				:destination-link "")))
+
+		(div :class "ui hidden divider")
 
 		(div :class "center aligned row"
 			(div :class "column"
-				(a :class "ui big button"
-					:href "http://app.stg.exicon.link/?package=starter&returnUri=http://brief.stg.exicon.link#!/registration/"
-					 "Register")
-				(a :class "ui big button"
-					:href "http://app.stg.exicon.link/?package=starter&returnUri=http://brief.stg.exicon.link#!/login/"
-					 "Login")))
+				(h2 :class "ui huge header"
+					(img :class "ui tiny image" :src "/images/app-builder/development.svg")
+					(div :class "content" :style "text-align: left;"
+						"Our Development Community"
+						(div :class "sub header" "3,000+ developers globally" (br) "US400M in apps matched")))))
+		(div :class "center aligned row"
+			(img :class "ui massive centered image" :src "/images/app-builder/map-with-text.png"))
+
+		(div :class "center aligned three column doubling row"
+			(loop-tpl :bindings [item dev-community-items]
+				(dev-community-column item)))
+
+		(div :class "ui hidden divider")
 
 		(div :class "center aligned sixteen wide column"
-			(h2 :class "page-subtitle"
-			"We are confident that we are the only recruiters of developers for you, we will give your money back
-			 if you aren’t delighted with the developers we match you with. We look forward to getting started."))
+			(h2 :class "ui huge header"
+				"What our clients say about us"))
+			(div :class "center aligned two column row"
+				(loop-tpl :bindings [testimonial testimonials]
+					(testimonial-column testimonial)))
 
-		(div :class "sixteen wide column"
-			(div :class "ui fluid accordion"
-			(h2 :class "ui active title header" :style "color: #59d2d9"
-				:click #(swap! active-content not)
-				(i :class "caret icon" :style "text-align:left"
-					:do-class (cell={:down (not active-content) :up active-content}))
-				"5 Reasons why we charge for App Builder")
-				(div :class "content"
-					:do-class (cell= {:active active-content})
-					(list-content))))
+		(div :class "ui hidden divider")
+
+		(div :class "center aligned sixteen wide column"
+			(h2 :class "ui huge header"
+				"3 Reasons why App Builder is the tool for you"))
+				(div :class "sixteen wide column"
+					(div :class "content"
+					(list-content)))
 
 		(div :id "pricing-pack" :class "sixteen wide column"
 			(div :class "ui three column doubling stackable grid"
