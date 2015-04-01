@@ -1,21 +1,21 @@
 (ns homepage.app-builder.package-data)
 
 (def standard-list-items [
-	"30-minute consultation with Exicon app expert"
+	"30-minute consultation with an Exicon app expert"
 	"3 professional development proposals"
-	"3 months AppBoard subscription"
+	"Free AppBoard"
 	"In-app analytics"])
 
 (def pro-list-items [
 	"Everything in Standard, Plus:"
-	"150-minute consultation"
+	"2 hours consultation"
 	"Support to conceptualize a brief"
 	"Interpretation of developer proposals"])
 
 (def advanced-list-items [
 	"Everything in Pro, Plus:"
 	"Support to select the best developer"
-	"Brief documentation and proposal review"
+	"Documentation and proposal review"
 	"Project management and execution support"])
 
 (defn process-list-item [item size]

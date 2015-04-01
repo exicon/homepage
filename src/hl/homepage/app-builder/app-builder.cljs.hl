@@ -271,7 +271,7 @@
 
 		(div :class "ui hidden divider")
 		(h2 :class "ui header" "If you are an AppBoard user, please " (a :href appboard-login-link "log in."))
-		(h2 :class "ui header" "Below is our pricing structure. We will bring you back to this later when you submit your brief.")
+		(h2 :class "ui header" "Below is our pricing structure. We will bring you back to this later.")
 		(div :class "ui hidden divider")
 
 		(div :class "ab-pricing sixteen wide column"
