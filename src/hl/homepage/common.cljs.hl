@@ -20,13 +20,32 @@
 		(js/jQuery
 			".sumome-contactform-pullouttab.sumome-contactform-pullouttab-bottom-center")))
 
-
-(defelem textual-button [{:keys [message button-text destination-link]
+(defelem textual-button [{:keys [message button-text destination-link inline]
 	:or {button-text "Start your project"}} kids]
 	[(when message
-		(h2 :class "ui header" message))
+		(h2 :class "ui header"
+		:do-class{:inline-header inline} message))
 	(a :class "ui big button"
 		:href destination-link
 		button-text)
 	kids])
 
+(defc main-video-src "")
+
+(defn hide-main-video []
+	#(reset! main-video-src ""))
+
+(defn show-main-video [video]
+	(reset! main-video-src video)
+	(.modal (js/jQuery "#main-video.modal") "setting", "closable", false)
+	(.modal (js/jQuery "#main-video.modal") "show")
+	)
+
+(defn main-video-box []
+	(div :id "main-video" :class "ui modal"
+		(i :class "teal close icon"
+			:style "font-size: 35px;"
+			:on-click (hide-main-video))
+		(iframe :src main-video-src
+			:width "100%" :height "480" :frameboarder "0"
+			:allowfullscreen "" :webkitallowfullscreen "" :mozallowfullscreen "")))

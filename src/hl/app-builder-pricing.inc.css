@@ -1,7 +1,6 @@
 .ab-pricing .pack {
 	box-shadow: none;
 	border: 1px solid #59d2d9 !important;
-	/*border-top: 0*/
 }
 .ab-pricing .best-seller {
 	background-color: white;
@@ -11,7 +10,6 @@
 	box-shadow: none;
 	border-top: 1 !important;
 	border: 1px solid #59d2d9;
-	/*border-bottom: 0;*/
 }
 
 .ab-pricing .best-seller{
@@ -30,22 +28,26 @@
 	background-color: rgba(89,210,217,0.2);
 
 }
+
+.ab-pricing .regular.column{
+	margin-top: 3em;
+}
+
 .ab-pricing .segment.pack{
 	padding-left: 0 !important;
 	padding-right: 0 !important;
+	padding-top: 1em;
 }
 .ab-pricing .best-seller.show {
 	visibility: visible;
 	border: solid 3px #59d2d9;
 	border-bottom: none
-	/*background-color: #59d2d9 !important;*/
 	color: white;
 }
 
 .ab-pricing .pack {
 	box-shadow: none;
 	border: 1px solid #59d2d9;
-	border-top: 0
 }
 
 .ab-pricing .teal.header{
@@ -59,19 +61,17 @@
 
 .ab-pricing .pro-pack{
 	border: solid 4px #59d2d9 !important;
-	border-top: none !important;
-	padding-bottom: 6em;
+	padding-bottom: 4em;
 	padding-top: 0;
 }
 .ab-pricing .pro-pack .stand-out-bg{
 	padding-top: 3em !important;
-  	  height: 15.75em !important;
+	height: 15.75em !important;
 }
 .ab-pricing .pro-pack .header{
-	  margin-top: -0.5em;
+	padding-top: 0.5em;
 }
 .ab-pricing .pack-price-title{
-	/*color: #59d2d9;*/
 	font-size: 3rem;
 	margin: 0;
 }
@@ -85,6 +85,3 @@
 	color: #9b9b9b;
 	font-style: italic;
 }
-/*.ab-pricing .ui.attached:not(.top):not(.bottom).header{
-	border-top: 1 !important;
-}*/

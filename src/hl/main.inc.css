@@ -58,6 +58,18 @@ div p.small-text {
 	clear:both;
 	height: 1em;
 }
+
+.inline-header{
+	display: inline;
+	padding-right: 1em !important;
+	vertical-align: middle;
+}
+
+/*TEAL COLOR CUSTOMIZATION*/
+i.teal.icon {
+	color:#59d2d9 !important;
+}
+
 /* Exicon customized BUTTONS*/
 .ui.button{
 	text-transform: none !important;

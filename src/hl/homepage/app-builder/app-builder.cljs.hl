@@ -2,11 +2,15 @@
 	(:require
 		[homepage.layout :as layout]
 		[homepage.top-nav :as top-nav]
-		[homepage.common :refer [textual-button]]
+		[homepage.common :refer [textual-button show-main-video main-video-box hide-main-video]]
 		[tailrecursion.hoplon.reload :refer [reload-all]]
 		[homepage.app-builder.package-data :refer [packages]]
-		[homepage.app-builder.pricing :refer [pricing2]]
-		[tailrecursion.hoplon :refer [with-init!]]))
+		[homepage.app-builder.pricing :refer [app-builder-pricing]]
+		[tailrecursion.hoplon :refer [with-init!]])
+	(:require-macros [config :refer [appboard-url appbuilder-url]]))
+
+(def appboard-login-link (str (appboard-url)"/?package=starter&returnUri="(appbuilder-url)"#!/login/"))
+(def appboard-registration-link (str (appboard-url)"/?package=starter&returnUri="(appbuilder-url)"#!/registration/"))
 
 (def process-list-items [
 	{:title "Quick, secure and easy"}
@@ -60,12 +64,12 @@
 		:title "1. We have invested in a global network of 3,000+ qualified software development companies."
 		:content "We have profiled developers, who are some of the world's leading specialists, to ensure
 			our customers get developers who can actually do the job rather than just say they can."}
-	{	
+	{
 		:id :reason2
 		:title "2. We guarantee you another 3 developers if you aren’t satisfied."
 		:content "Among the 10,000 matches, we have yet to be asked to do this. Our customers usually
 			have the other problem, being unable to decide between the proposed developers."}
-	{	
+	{
 		:id :reason3
 		:title "3. Choosing the wrong developer can be a very expensive mistake."
 		:content "You may have referrals from others but do your apps have the same complexities? 60%
@@ -108,8 +112,19 @@
 		}
 		])
 
+(defc route @(route-cell ""))
+
+(route-cell route #(reset! route %))
+
+(defn video-page? [] (= @route "#play-video"))
+
 (defc visible-reasons #{})
-(cell= (println "Visible Reasons:" visible-reasons))
+
+(def app-builder-video-link "//www.youtube.com/embed/97EateflMdU?autoplay=1")
+
+(with-init!
+	(if (video-page?) (show-main-video app-builder-video-link)))
+
 (defelem process-list-item [{:keys [title size]} kids]
 	(div :class "item"
 		(i :class (str size " checkmark teal icon"))
@@ -128,7 +143,8 @@
 						:right (not (visible-reasons (:id reason)))}))
 		(div :class "content"
 			(div (:title @reason))
-			(div :class "description" 
+			(div :class "ui clearing")
+			(div :class "description"
 				:toggle (cell= (visible-reasons (:id reason)))
 				(:content @reason)))
 		))
@@ -144,6 +160,7 @@
 (defn process-column [item]
 	(div :class "center aligned column"
 		(div :class "ui teal circular label"
+			:style "font-size: 1em;"
 			(:serial-number @item))
 		(h2 :class "ui header" (:title @item))
 		(div :class "ui basic segment"(img :class "ui small centered image":src (:icon @item)))
@@ -182,24 +199,35 @@
 			(div :class "column"
 				(h1 "App Builder"))))
 
+	(main-video-box)
+
 	(div :class "ui page padded grid"
-		(div :class "center aligned twelve wide column"
-			(h2 :class "page-subtitle"
-			"This tool will help you refine and clarify your app
-			development project to match you to the best qualified development companies.
-			All confidential."))
-		(div :class "four wide column"
-			(img :class "ui small image" :src "/images/app-builder/nda.png"))
+		(div :class "ui hidden divider")
+		(div :class "center aligned sixteen wide column"
+			(h2 :class "ui header"
+				"The App Builder will help you scope your project to match you with the best developers for your app.
+				With a global network of over 3,000 qualified development companies, we guarantee you a great match."))
+		(div :class "center aligned sixteen wide column"
+			(h2 :class "ui header"
+				(img :class "ui tiny inline tiny image" :src "/images/app-builder/nda.png")
+			(div :class "content"
+			"And your idea is safe. Everyone is under NDA.")))
+
+		(div :class "center aligned sixteen wide column"
+			(a :class "ui big button"
+				:href "#play-video"
+				:click #(show-main-video app-builder-video-link)
+				(i :class "play icon") "Watch Video"))
 
 		(div :class "doubling four column row"
 			(loop-tpl :bindings [item process-items]
-				(process-column item))
+				(process-column item)))
 
-			)
 		(div :class "center aligned row"
 			(div :class "column"(textual-button
+				:inline false
 				:message "Now, let's get started"
-				:destination-link "")))
+				:destination-link appboard-registration-link)))
 
 		(div :class "ui hidden divider")
 
@@ -226,6 +254,12 @@
 				(loop-tpl :bindings [testimonial testimonials]
 					(testimonial-column testimonial)))
 
+		(div :class "center aligned row"
+			(div :class "column"(textual-button
+				:inline true
+				:message "Ready? Find your developer"
+				:destination-link appboard-registration-link)))
+
 		(div :class "ui hidden divider")
 
 		(div :class "center aligned sixteen wide column"
@@ -235,9 +269,25 @@
 					(div :class "content"
 					(list-content)))
 
+		(div :class "ui hidden divider")
+		(h2 :class "ui header" "If you are an AppBoard user, please " (a :href appboard-login-link "log in."))
+		(h2 :class "ui header" "Below is our pricing structure. We will bring you back to this later when you submit your brief.")
+		(div :class "ui hidden divider")
+
 		(div :class "ab-pricing sixteen wide column"
 			(div :class "ui three column doubling stackable grid"
 				(loop-tpl :bindings [opt packages]
-					(pricing2 opt))))
+					(app-builder-pricing opt))))
+		(div :class "ui hidden divider")
+
+		(div :class "center aligned row"
+			(div :class "column"(textual-button
+				:inline true
+				:message "Ready? Find your developer"
+				:destination-link (str (appboard-url)"/?package=starter&returnUri="(appbuilder-url)"#!/registration/")
+				#_(h2 :class "ui header" "*For FREE option, you can sign up for the AppBoard to access App Builder."
+					(a :href"Sign Up now"))
+				)))
+		(div :class "ui hidden divider")
 	)
 )

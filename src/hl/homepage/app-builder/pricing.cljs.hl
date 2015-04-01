@@ -15,14 +15,11 @@
 				(p :class "pack-price-title" :text price)
 				@content))))
 
-(defn pricing2 [opts]
+(defn app-builder-pricing [opts]
 	(cell-let [{:keys [best-label name title note price
 					content]} opts]
 		(div :class "column"
-			(h4 :class "ui attached center aligned header best-seller"
-				:style "border: 4px solid #59d2d9; border-bottom: none;"
-				:do-class (cell= {:show best-label})
-				(span :style "visibility:hidden;" "MOST POPULAR"))
+			:do-class (cell= {:regular (not best-label)})
 			(div :class "ui center aligned attached segment pack"
 				:do-class (cell= {:show best-label name true})
 				(h2 :class " ui teal huge header" :text title)
