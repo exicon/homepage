@@ -2,32 +2,20 @@
 	(:require-macros [config :refer [appboard-url]])
 	(:require
 		[homepage.layout :as layout]
-		[homepage.common :as common :refer [registration-link]]))
+		[homepage.common :as common :refer [registration-link main-video-box show-main-video]]))
 
 (defc route @(route-cell ""))
 (route-cell route #(reset! route %))
 
 (defn video-page? [] (= @route "#play-video"))
 
-(defc main-video-src "")
+(defn close-video []
+	(reset! main-video-src ""))
+
 (def main-video-link "//www.youtube.com/embed/Yiq8tNlH_7I?autoplay=1")
 
-(defn show-main-video []
-	(reset! main-video-src main-video-link)
-	(.modal (js/jQuery "#main-video.modal") "show"))
-
-(defn hide-main-video []
-	#(reset! main-video-src ""))
-
 (with-init!
-	(if (video-page?) (show-main-video)))
-
-(defn main-video-box []
-	(div :id "main-video" :class "ui modal"
-		(i :class "close icon" :on-click (hide-main-video))
-		(iframe :src main-video-src
-			:width "100%" :height "480" :frameboarder "0"
-			:allowfullscreen "" :webkitallowfullscreen "" :mozallowfullscreen "")))
+	(if (video-page?) (show-main-video main-video-link)))
 
 (defn intro []
 	(section :class "intro full-width-container"
@@ -39,7 +27,7 @@
 					(div :class "ui huge button"
 						"FREE Sign Up now!")))
 			(div :class "center aligned column"
-				(a :href "#play-video" :click show-main-video
+				(a :href "#play-video" :click #(show-main-video main-video-link)
 					(img :class "video-btn"
 						:src "images/play-btn-normal.png"
 						:click "ga('send', 'event', 'video', 'play', 'home')"))
