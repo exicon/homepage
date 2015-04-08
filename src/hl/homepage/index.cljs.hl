@@ -9,9 +9,6 @@
 
 (defn video-page? [] (= @route "#play-video"))
 
-(defn close-video []
-	(reset! main-video-src ""))
-
 (def main-video-link "//www.youtube.com/embed/Yiq8tNlH_7I?autoplay=1")
 
 (with-init!
