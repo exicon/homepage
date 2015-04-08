@@ -33,7 +33,7 @@
 	:pricing {:name "Pricing" :url "/appboard/pricing" }
 	:blog {:name "Blog" :url "http://blog.exiconglobal.com/corp/" }
 	:resources {:name "Resources" :submenu resources-submenu-items}
-	:app-builder{:name "App Builder" :url "/app-builder/"}
+	;:app-builder{:name "App Builder" :url "/app-builder/"}
 	})
 
 (defn sub-menu [items]
