@@ -5,7 +5,7 @@
 (def reports-list [
 	{
 	:title "Enterprise apps are exploding"
-	:detail "Enterprise have had to evolve in the face of a world gone mobile. Get to know more about the next wave in enterprise apps."
+	:detail "Enterprises have had to evolve in the face of a world gone mobile. Get to know more about the next wave in enterprise apps."
 	:image "/images/reports/Enterprise-Apps-Exploding.png"
 	:link "/report-download/enterprise-apps-exploding"
 	}
