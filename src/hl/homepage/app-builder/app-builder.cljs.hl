@@ -53,7 +53,6 @@
 		:content  [
 		"Ready to download"
 		"Be the app rockstar"
-		"Added bonus: 3 months free tracking & storage on the Exicon AppBoard"
 		]
 	}
 	])
@@ -88,7 +87,7 @@
 		:content "Strong track record teams built around design, project management and technology."
 	}
 	{
-		:title "incorporated"
+		:title "Incorporated"
 		:icon "/images/app-builder/incorporated.svg"
 		:content "3,000+ companies with an average 15 engineers per company located around the globe."
 	}

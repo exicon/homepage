@@ -9,7 +9,7 @@
 (def pro-list-items [
 	"Everything in Standard, Plus:"
 	"2 hours consultation"
-	"Support to conceptualize a brief"
+	"Support to conceptualize your idea"
 	"Interpretation of developer proposals"])
 
 (def advanced-list-items [
