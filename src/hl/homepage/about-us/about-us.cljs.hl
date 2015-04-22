@@ -237,6 +237,7 @@
 		{:logo "/images/about-us/partners/Oponiti-Partner-Logo.png"}
 		{:logo "/images/about-us/partners/Catalist-Partner-Logo.png"}
 		{:logo "/images/about-us/partners/Flurry.png"}
+		{:logo "/images/about-us/partners/Localytics.png"}
 	])
 
 
@@ -359,6 +360,7 @@
 		(h2 :class "ui header" "Our Partners")
 		(div :class "ui three column doubling grid"
 		(loop-tpl :bindings [prt partners] (partner prt)))
+		(div :class "ui hidden divider")
 		(a :href "https://i2a.exiconglobal.com/#!node-developers-sign-up"
 			(div :class "ui tiny button" "Developers"))))
 
