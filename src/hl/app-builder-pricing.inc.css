@@ -1,3 +1,32 @@
+
+#app-builder-pricing {
+	position: relative;
+}
+
+#app-builder-pricing .banner-img{
+	position: absolute;
+	z-index: 10;
+	left: -5%;
+	top: 28%;
+	width: 110% !important;
+}
+#app-builder-pricing .banner-img-mobile{
+	position: absolute;
+	z-index: 10;
+	left: -25%;
+	top: 10%;
+	width: 150% !important;
+}
+
+#app-builder-pricing .promotion-price{
+	font-size: 2em;
+	text-decoration: line-through;
+}
+#app-builder-pricing .promotion-header{
+	font-size: 3em;
+	margin: 0;
+}
+
 .ab-pricing .pack {
 	box-shadow: none;
 	border: 1px solid #59d2d9 !important;
@@ -17,7 +46,7 @@
 }
 
 .ab-pricing .ui.divided.list .item{
-	  border-top-color:#59d2d9 !important;
+	border-top-color:#59d2d9 !important;
 }
 .ab-pricing .divider{
 	border-top: solid 1px #59d2d9 !important;

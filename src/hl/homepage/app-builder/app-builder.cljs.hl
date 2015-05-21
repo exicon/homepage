@@ -273,8 +273,10 @@
 		(h2 :class "ui header" "Below is our pricing structure. We will bring you back to this later.")
 		(div :class "ui hidden divider")
 
-		(div :class "ab-pricing sixteen wide column"
-			(div :class "ui three column doubling stackable grid"
+		(div :id "app-builder-pricing" :class "ab-pricing sixteen wide column"
+			(div :class "ui three column stackable grid"
+        (img :class "ui computer tablet only row banner-img" :src "/images/app-builder/promotion-banner-diagonal.png")
+        (img :class "ui mobile only row banner-img-mobile" :src "/images/app-builder/promotion-banner-diagonal.png")
 				(loop-tpl :bindings [opt packages]
 					(app-builder-pricing opt))))
 		(div :class "ui hidden divider")
