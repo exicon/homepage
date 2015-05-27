@@ -1,0 +1,82 @@
+h3.ui.header, h4.ui.header{
+	font-weight: 400;
+}
+
+.homepage.sizer{
+	font-size: 26px !important;
+}
+
+.build-promote.horizontal.segment{
+	box-shadow: 2px 0px 0px white;
+}
+
+#intro .main.header{
+	margin-top: 20%;
+	font-weight: 400;
+}
+
+.ui.black.button{
+	background-color: black !important;
+	color: white !important;
+}
+
+.ui.black.button:hover{
+	color: white !important;
+	box-shadow:inset 0px 0px 0px 1px white;
+}
+
+.build-bg {
+	background: url('/images/landing-page/build-bg.png') center no-repeat;
+	background-position-y: 0;
+}
+
+.manage-bg {
+	background-color: rgb(250,250,250);
+}
+
+.promote-bg {
+	background: url('/images/landing-page/promote-bg.png') center no-repeat;
+}
+
+.feature-advantages {
+	margin: 13% 0;
+}
+
+.feature-description {
+	margin-bottom: 4%;
+}
+
+.feature-header {
+	margin-top: 2rem;
+}
+
+.feature-details .left.fixed.label{
+	top: 20px;
+	width: 130px;
+	text-align: right;
+	z-index: 10;
+}
+
+.full-width-bg{
+	background-size: initial;
+}
+
+.testimonial.segment .right.floated.image{
+	margin-left: 0;
+	max-width: 55%;
+}
+
+/* Big Screens*/
+@media only screen and (min-width: 1900px){
+	.full-width-bg{
+		background-size: 100% !important;
+	}
+}
+
+/* Mobile */
+@media only screen and (max-width: 767px){
+	.homepage.sizer{
+		font-size: 19px !important;
+	}
+
+}

@@ -40,13 +40,10 @@ html body .exicon-teal.bd {
 	border-right-color: #59d2d9 !important;
 }
 
-h2.ui.header, h3.ui.header, h4.ui.header{
+#app-builder h2.ui.header, #app-builder h3.ui.header, #app-builder h4.ui.header{
 	font-weight: 300;
 }
 
-#homepage section {
-	padding-top: 50px;
-}
 
 .default.text{
 	color: #333 !important;
@@ -273,9 +270,10 @@ i.teal.icon {
 
 /* Intro Section*/
 .intro{
-	background: url('/images/hero-image.jpg') center no-repeat;
+	background: url('/images/landing-page/header.png') center no-repeat;
 	background-color: #F0F0EE;
 	height: 600px;
+	background-position-y: 5px;
 }
 
 .intro .column.intro-right-info{
@@ -527,44 +525,42 @@ section.clients img{
 	width: 25px;
 }
 
+
 /* Tablet*/
 @media only screen and (max-width: 991px) and (min-width: 768px){
 	.intro {
 		height: 560px;
-		background-position: -459px 20px;
-		background-size: 1700px !important;
-		}
-
-		.intro h1{
-			font-size: 38px;
-		}
-
-		.intro h2{
-			font-size: 24px;
-		}
-
-		.intro .intro-right-info{
-			margin-top: 90px !important;
-		}
-		#top-nav ul.menu{
-			margin-left: 0px;
-		}
 	}
 
-/* Mobile */
+	.intro h1{
+		font-size: 38px;
+	}
 
+	.intro h2{
+		font-size: 24px;
+	}
 
-@media only screen and (max-width: 1000px){
-.equal.height.computer.three.column.only.row{
-	display: none;
-		}
+	.intro .intro-right-info{
+		margin-top: 90px !important;
+	}
+	#top-nav ul.menu{
+		margin-left: 0px;
+	}
 }
 
+@media only screen and (max-width: 1000px){
+	.equal.height.computer.three.column.only.row{
+		display: none;
+	}
+}
+
+/* Mobile */
 @media only screen and (max-width: 767px){
 	#get-in-touch, #subscribe-stick,
 	#subscribe-stick-layer, #subscribe-stick-form {
 		display: none !important;
 	}
+
 	#menu-container{
 		margin-top: -1px;
 	}
@@ -575,9 +571,7 @@ section.clients img{
 	}
 
 	.intro {
-		height: 660px;
-		background-size: 1500px;
-		background-position: 12% 93%;
+		height: 630px;
 	}
 	.intro .column{
 		width: 100% !important;
@@ -606,15 +600,3 @@ section.clients img{
 	}
 }
 
-/* Smaller mobiles*/
-@media only screen and (max-width: 550px) {
-	.intro{
-		height: 568px;
-		background-size: 1130px;
-		background-position: 20% 87%;
-		min-width: 320px;
-	}
-	#imaginary-quote .eight.wide.column{
-		width: 80%;
-	}
-}

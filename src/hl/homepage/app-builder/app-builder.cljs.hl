@@ -200,7 +200,7 @@
 
 	(main-video-box)
 
-	(div :class "ui page padded grid"
+	(div :id "app-builder" :class "ui page padded grid"
 		(div :class "ui hidden divider")
 		(div :class "center aligned sixteen wide column"
 			(h2 :class "ui header"
