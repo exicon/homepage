@@ -3,7 +3,11 @@ h3.ui.header, h4.ui.header{
 }
 
 .homepage.sizer{
-	font-size: 26px !important;
+	font-size: 32px !important;
+}
+
+.description.sizer{
+	font-size: 20px !important;
 }
 
 .build-promote.horizontal.segment{
@@ -12,7 +16,7 @@ h3.ui.header, h4.ui.header{
 
 #intro .main.header{
 	margin-top: 20%;
-	font-weight: 400;
+	/*font-weight: bolder;*/
 }
 
 .ui.black.button{
@@ -43,7 +47,7 @@ h3.ui.header, h4.ui.header{
 }
 
 .feature-description {
-	margin-bottom: 4%;
+	margin-bottom: 4% !important;
 }
 
 .feature-header {
@@ -66,6 +70,10 @@ h3.ui.header, h4.ui.header{
 	max-width: 55%;
 }
 
+p.testimonial {
+	font-size: 1.2em;
+}
+
 /* Big Screens*/
 @media only screen and (min-width: 1900px){
 	.full-width-bg{
@@ -73,10 +81,20 @@ h3.ui.header, h4.ui.header{
 	}
 }
 
+/* Laptop */
+@media only screen and (max-width: 1480px){
+	.homepage.sizer{
+	font-size: 26px !important;}
+}
+
 /* Mobile */
 @media only screen and (max-width: 767px){
 	.homepage.sizer{
-		font-size: 19px !important;
+		font-size: 21px !important;
+	}
+
+	.description.sizer{
+		font-size: 16px !important;
 	}
 
 }

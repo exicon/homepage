@@ -152,7 +152,7 @@
                                 :header "Driving [app]session"
                                 :sub-header "Tools to engage your users with mobile"
                                 :advantages ["Drive Downloads" "Stimulate Actions" "Increase Sessions"]
-                                :description "Getting onto relevant appstores and recommendation sites with optimized collateral can increase your downloads by up to 20% per store. - OpenAPI Create triggers to establish mobile as your channel to your users"
+                                :description "Getting onto relevant appstores and recommendation sites with optimized collateral can increase your downloads by up to 20% per store. - OpenAPI. Create triggers to establish mobile as your channel to your users"
                                 }
                        }
 
@@ -236,7 +236,8 @@
   (div :class  "center aligned column homepage sizer"
        (img :class"ui circular small centered inverted teal segment image" :src (cell= (:icon ftr)))
        (h3 :class"ui teal medium header" :text (cell= (:title ftr)))
-       (h3 :class "ui inverted header" :text (cell= (:desc ftr)))
+       (div :class "description sizer"
+       (h3 :class "ui small inverted header" :text (cell= (:desc ftr))))
        )
   )
 
@@ -246,12 +247,13 @@
            (div :class "ui hidden divider")
            (div :class "ui stackable page grid"
                 (div :class "sixteen wide center aligned column homepage sizer"
-                     (h2 :class "ui inverted large header"  "The AppBoard"
-                         (div :class  "sub header" "App management tools at your fingertips (and thumbs)")))
-                (div :class "three column row"
+                     (h2 :class "ui inverted large header"  "The AppBoard")
+                     (div :class "description sizer"
+                          (h3 :class "ui medium inverted header" "App management tools at your fingertips (and thumbs)")))
+                (div :class "three column row feature-description"
                      (loop-tpl :bindings [f feature-list]
                                (feature f))))
-           (div :class "ui hidden divider")))
+           ))
 
 (defn feature-advantage [adv is-mobile build-promote?]
   (div :class "center aligned column"
@@ -272,12 +274,15 @@
          (div :class "ui left fixed ribbon black inverted label"
               (img :class "ui mini inline image" :src (:icon feature))
               :text (:name feature))
-         (div :class "ui page grid"
+         (div :class "ui page padded grid"
               (div :class "sixteen wide column homepage sizer center aligned feature-header"
                    (h2 :class "ui large header"
                        :do-class {:inverted build-promote?}
-                       :text (:header feature)
-                       (div :class "sub header" :text (:sub-header feature))))
+                       :text (:header feature)))
+              (div :class "description sizer"
+                   (h3 :class "ui medium center aligned header"
+                       :do-class {:inverted build-promote?}
+                       :text (:sub-header feature)))
               (div :class "eleven wide centered column"
                    :toggle (= f :manage)
                    (img :class "ui massive centered image" :src "images/landing-page/manage-bg.png"))
@@ -291,8 +296,8 @@
                              (loop-tpl :bindings [adv (:advantages feature)]
                                        (feature-advantage adv false build-promote?)))
                         ))
-              (div :class "sixteen wide center aligned column feature-description"
-                   (h3 :class "ui header"
+              (div :class "sixteen wide center aligned column feature-description description sizer"
+                   (h3 :class "ui medium header"
                        :do-class {:inverted build-promote?}
                        :text (:description feature)))
               )))
