@@ -54,7 +54,8 @@
 			(subscribe-stick-btn subscribe-click)
 			(subscribe-stick-form subscribe-click)
 			(body
-				(top-nav/top-nav)
+				(top-nav/top-nav true)
+    		(top-nav/top-nav false)
 				(div (merge {:id "content"}
 					(dissoc attrs :pagetitle :pagedescription :pagekeywords))
 					content)

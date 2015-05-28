@@ -1,10 +1,18 @@
 #top-nav{
-	position: fixed;
 	background-color: white;
 	width: 101%;
 	top: 0;
 	border-bottom: 1px solid #e5e5e5;
 	z-index: 99;
+}
+
+.fixed-nav{
+	position: fixed;
+}
+
+.hidden-nav{
+	visibility: hidden;
+	margin: -14px !important;
 }
 
 #top-nav .row{
@@ -17,7 +25,7 @@
 }
 
 #top-nav .ui.basic.segment {
-	  padding-bottom: 0.5em;
+	padding-bottom: 0.5em;
 }
 
 #top-nav .ui.sub.menu {
@@ -32,20 +40,9 @@
 	display: none !important;
 }
 
-#content{
-	padding-top: 67px;
-}
-
-@media only screen and (max-width: 767px){
-	#content{
-	padding-top: 107px;}
-}
 
 @media only screen and (max-width: 550px){
-	#content{
-	padding-top: 125px;}
-
 	#top-nav {
 		width: 105%;}
-}
+	}
 

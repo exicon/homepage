@@ -16,7 +16,6 @@ h3.ui.header, h4.ui.header{
 
 #intro .main.header{
 	margin-top: 20%;
-	/*font-weight: bolder;*/
 }
 
 .ui.black.button{
@@ -84,17 +83,19 @@ p.testimonial {
 /* Laptop */
 @media only screen and (max-width: 1480px){
 	.homepage.sizer{
-	font-size: 26px !important;}
-}
-
-/* Mobile */
-@media only screen and (max-width: 767px){
-	.homepage.sizer{
-		font-size: 21px !important;
+		font-size: 26px !important;}
 	}
 
-	.description.sizer{
-		font-size: 16px !important;
-	}
 
-}
+
+	/* Mobile */
+	@media only screen and (max-width: 767px){
+		.homepage.sizer{
+			font-size: 21px !important;
+		}
+
+		.description.sizer{
+			font-size: 16px !important;
+		}
+
+	}
