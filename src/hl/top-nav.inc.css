@@ -4,6 +4,8 @@
 	top: 0;
 	border-bottom: 1px solid #e5e5e5;
 	z-index: 99;
+	margin-left: 0;
+	margin-right: 0;
 }
 
 .fixed-nav{
