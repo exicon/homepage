@@ -67,8 +67,10 @@
 		(div :id "page-subtitle" :class "center aligned row"
 			(div :class "column"
 				(h3 "Over 1,500 development houses matched with exciting projects")
-				(a :href "https://i2a.exiconglobal.com/#!node-developers-sign-up"
-					(div :class "ui button" "Create Portfolio")
+				(a :class "ui button"
+      	:click #(.click (js/jQuery
+                         ".sumome-contactform-pullouttab.sumome-contactform-pullouttab-bottom-center"))
+					"Contact us for more information"
 				)
 			)
 		)
@@ -128,11 +130,9 @@
 
 		(div :class "ui one column doubling page grid"
 			(div :class "column center aligned apply-button"
-				(a :href "https://i2a.exiconglobal.com/#!node-developers-sign-up"
-					(div :class "ui button" "Apply to Join Our Network")
-				)
-			)
-		)
-	)
-)
+        (a :class "ui button"
+           :click #(.click (js/jQuery
+                             ".sumome-contactform-pullouttab.sumome-contactform-pullouttab-bottom-center"))
+           "Contact us to join our Network")
+        ))))
 
