@@ -1,12 +1,3 @@
-#page-title h1 {
-  font-size: 2.5em;
-  padding-top: 80px;
-  margin: 0;
-  font-size: 45px;
-  color: #333333;
-  font-weight: 300;
-  text-align: center;
-}
 
 #page-subtitle h2 {
   font-size: 1.8em;
@@ -34,13 +25,6 @@ h3.page-subtitle{
   line-height: 30px;
   color: #333333;
   font-weight: 200;
-}
-
-
-#page-title {
-	background: url('/images/starter-pack-title.png') center no-repeat;
-	height: 200px;
-	background-color: #f0f0ee;
 }
 
 .page-details {

@@ -8,12 +8,6 @@
  text-align: center;
 }
 
-#pricing #page-title {
-	background: url('/images/starter-pack-title.png') center no-repeat;
-	height: 200px;
-	background-color: #f0f0ee;
-}
-
 #pricing-pack {
 	margin-top: 50px;
 }

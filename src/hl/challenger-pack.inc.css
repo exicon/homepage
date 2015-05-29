@@ -22,12 +22,6 @@
 	font-weight: 200;
 }
 
-#challenger-pack #page-title {
-	background: url('/images/starter-pack-title.png') center no-repeat;
-	height: 200px;
-	background-color: #f0f0ee;
-}
-
 #challenger-pack #page-details ul li{
 	font-size: 1.2em;
 	line-height: 30px;
