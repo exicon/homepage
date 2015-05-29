@@ -129,12 +129,11 @@
                        :build {
                                :name "Build"
                                :icon "images/landing-page/build-icon.png"
-                               :bg-image "images/landing-page/build-bg.png"
                                :header "Feeding your [app]etite"
                                :sub-header "Connecting you to the right mobile app development companies"
-                               :advantages ["Rapid Quality Development" "Unparalleled Expertise" "Curated Choice"]
-                               :description "Over the last 7 years we have made more than 10,000 connections between business and development companies.
-                                            We are so confident that we will give your money back if you aren't delighted with the developers we match you with."
+                               :advantages ["Quality Development" "Unparalleled Expertise" "Curated Choice"]
+                               :description #(h3 :class "ui medium header" "Over the last 7 years we have made more than 10,000 connections between business and development companies.
+                                            We are so confident that we will give your money back if you aren't delighted with the developers we match you with.")
                                             }
                        :manage{
                                :name "Manage"
@@ -143,16 +142,15 @@
                                :header "Getting a grip on your apps"
                                :sub-header "Manage all the information and metrics across your appsphere from the Appboard"
                                :advantages ["Secure your assets" "Hassle-free" "Collaborate & scale"]
-                               :description "With all your app related files, analytics and information in one place you can track, compare and assess your performance and empower your teams to make smart decisions across your mobile portfolio"
+                               :description #(h3 :class "ui medium header" "With all your app related files, analytics and information in one place you can track, compare and assess your performance and empower your teams to make smart decisions across your mobile portfolio")
                                }
                        :promote{
                                 :name "Promote"
                                 :icon "images/landing-page/promote-icon.png"
-                                :bg-image "images/landing-page/promote-bg.png"
                                 :header "Driving [app]session"
                                 :sub-header "Tools to engage your users with mobile"
                                 :advantages ["Drive Downloads" "Stimulate Actions" "Increase Sessions"]
-                                :description "Getting onto relevant appstores and recommendation sites with optimized collateral can increase your downloads by up to 20% per store. - OpenAPI. Create triggers to establish mobile as your channel to your users"
+                                :description #(h3 :class "ui medium inverted header" "Establish mobile as your channel to your users. Getting onto relevant appstores and recommendation sites with optimized collateral can increase your downloads by up to 20% per store - " (i "OpenAPI"))
                                 }
                        }
 
@@ -255,20 +253,22 @@
                                (feature f))))
            ))
 
-(defn feature-advantage [adv is-mobile build-promote?]
+(defn feature-advantage [adv is-mobile build-promote? inverted?]
   (div :class "center aligned column"
        (div :class "ui homepage sizer"
             :do-class {:horizontal (not is-mobile) :segment (not is-mobile)
-                       :build-promote build-promote?
+                       :white inverted?
+                       :dark (and (not inverted?) build-promote?)
                        :basic (not build-promote?)}
             (h2 :class "ui medium header"
-                :do-class {:inverted build-promote?
+                :do-class {:inverted inverted?
                            :teal (not build-promote?)} adv)))
   )
 
 (defn feature-details [f]
   (let [feature (f features-details)
-        build-promote? (or (= f :build) (= f :promote))]
+        build-promote? (or (= f :build) (= f :promote))
+        inverted? (= f :promote)]
     (div :do-class {:build-bg (= f :build) :manage-bg (= f :manage) :promote-bg (= f :promote)}
          :class "feature-details full-width-bg"
          (div :class "ui left fixed ribbon black inverted label"
@@ -277,29 +277,27 @@
          (div :class "ui page padded grid"
               (div :class "sixteen wide column homepage sizer center aligned feature-header"
                    (h2 :class "ui large header"
-                       :do-class {:inverted build-promote?}
+                       :do-class {:inverted inverted?}
                        :text (:header feature)))
               (div :class "description sizer"
                    (h3 :class "ui medium center aligned header"
-                       :do-class {:inverted build-promote?}
+                       :do-class {:inverted inverted?}
                        :text (:sub-header feature)))
               (div :class "eleven wide centered column"
                    :toggle (= f :manage)
-                   (img :class "ui massive centered image" :src "images/landing-page/manage-bg.png"))
+                   (img :class "ui massive centered image" :src (:bg-image feature)))
               (div :class "row"
                    :do-class {:feature-advantages build-promote?}
                    (div :class "ui three column stackable grid"
                         (div :class "mobile tablet only row "
                              (loop-tpl :bindings [adv (:advantages feature)]
-                                       (feature-advantage adv true build-promote?)))
+                                       (feature-advantage adv true build-promote? inverted?)))
                         (div :class "computer only row "
                              (loop-tpl :bindings [adv (:advantages feature)]
-                                       (feature-advantage adv false build-promote?)))
+                                       (feature-advantage adv false build-promote? inverted?)))
                         ))
               (div :class "sixteen wide center aligned column feature-description description sizer"
-                   (h3 :class "ui medium header"
-                       :do-class {:inverted build-promote?}
-                       :text (:description feature)))
+                   ((:description feature)))
               )))
   )
 

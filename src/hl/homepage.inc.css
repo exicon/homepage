@@ -10,8 +10,19 @@ h3.ui.header, h4.ui.header{
 	font-size: 20px !important;
 }
 
-.build-promote.horizontal.segment{
+.white.horizontal.segment{
 	box-shadow: 2px 0px 0px white;
+}
+
+.dark.horizontal.segment{
+	box-shadow: 2px 0px 0px;
+}
+
+.intro{
+	background: url('/images/landing-page/header.jpg') center no-repeat;
+	background-color: #F0F0EE;
+	height: 600px;
+	background-position-y: 5px;
 }
 
 #intro .main.header{
@@ -29,7 +40,7 @@ h3.ui.header, h4.ui.header{
 }
 
 .build-bg {
-	background: url('/images/landing-page/build-bg.png') center no-repeat;
+	background: url('/images/landing-page/build-bg.jpg') center no-repeat;
 	background-position-y: 0;
 }
 
@@ -38,7 +49,7 @@ h3.ui.header, h4.ui.header{
 }
 
 .promote-bg {
-	background: url('/images/landing-page/promote-bg.png') center no-repeat;
+	background: url('/images/landing-page/promote-bg.jpg') center no-repeat;
 }
 
 .feature-advantages {

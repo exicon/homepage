@@ -269,12 +269,6 @@ i.teal.icon {
 }
 
 /* Intro Section*/
-.intro{
-	background: url('/images/landing-page/header.png') center no-repeat;
-	background-color: #F0F0EE;
-	height: 600px;
-	background-position-y: 5px;
-}
 
 .intro .column.intro-right-info{
 	margin-top:90px;
