@@ -169,7 +169,7 @@
                            (p "She is currently based in Silicon Valley.")]
                      :linkedin "https://www.linkedin.com/in/rebeccalbragg"
                      }
-           :jeniffer {
+           :jennifer {
                       :image "/images/about-us/Cat.png"
                       :name "Jennifer Welch"
                       :position "Developer Onboarding"
@@ -356,8 +356,8 @@
     )
   )
 
-(def management-team (map team [:stefan :cat :tamas :eleanor :andrew :jennifer :tracy :rebecca :apter :ayaz :kenneth :laura]))
-(def board-team (map #(dissoc % :klout :bio-url) (map team [:stefan :cat :antoine :norman :stephen])))
+(def management-team (map team [:stefan :cat :tamas :eleanor :andrew :jennifer :tracy :rebecca :apter :ayaz :kenneth :laura :stephany]))
+(def board-team (map team [:stefan :cat :antoine]))
 (def advisory-team (map team [:ralph :charles :anthony :jeffrey]))
 
 (def awards
@@ -434,18 +434,27 @@
   )
 
 (defn team-member [profile]
-  (div :class "profile column"
-       (div :class "ui fade reveal"
-            (img :class "ui circular image visible content" :src (cell= (:image profile)))
-            (div :class "hidden content icons"
-                 (social-icons profile "computer")))
-       (div :class "info-labels"
-            (label :class "name" (text (:name profile))))
-       (div :class "info-labels"
-            (label :class "position" (text (:position profile))))
-       (div :class "social-media-icons"
-            (social-icons profile "mobile")
-            (if (:klout profile) (klout-widget profile)))))
+  (let [bio-visible (cell false)
+        show-hide-bio #(swap! bio-visible not)]
+  (div :class "center aligned column description sizer"
+                 (img :class "ui small left floated bio link image" :src (:image profile)
+                      :click show-hide-bio)
+                 (h3 :class "ui small left aligned link header" :text (:name profile)
+                 			:click show-hide-bio
+                     (div :class "sub header" :text (:position profile)))
+                 (div :class "ui left aligned basic bio segment"
+                      (a :href (:linkedin profile)
+                         :target "_blank"
+                         :toggle (:linkedin profile)
+                         (i :class "linkedin square large teal icon"))
+                      (a :href (str "https://twitter.com/" (:twitter profile))
+                         :toggle (:twitter profile)
+                         :target "_blank"
+                         (i :class "twitter square large teal icon")))
+                 (div :class "ui left aligned basic bio segment"
+                      :toggle (cell= bio-visible)
+                     (:bio profile)))))
+
 
 (defn videos-part []
   (let [
@@ -486,7 +495,7 @@
 
 (defelem team-section [{:keys [id link title members]} _]
   [(div :class "anchor" :id link)
-   (section :id id :class "ui five column doubling grid "
+   (section :class "ui page three column doubling stackable grid"
             (h2 :class "ui header" title)
             (loop-tpl :bindings [profile members]
                       (team-member @profile)))])
@@ -557,7 +566,6 @@
                                :width "100%" :height "650" :frameborder "0" )])
 
 (defc active-value-content nil)
-(cell= (println "Content-->" active-value-content))
 
 (defelem value-column [value]
   (div :class "center aligned column description sizer"
@@ -606,7 +614,7 @@
                      	(timeline-section)
                       (description-section timeline-description)
                       (vision-values-section)
-                       #_(team-section :id "management-team"
+                       (team-section :id "management-team"
                                      :link "management-team"
                                      :title "Management Team"
                                      :members management-team)
