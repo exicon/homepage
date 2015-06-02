@@ -216,57 +216,6 @@ i.teal.icon {
 	padding: 0;
 }
 
-#top-nav ul {
-	padding-left: 0;
-}
-
-#top-nav li {
-	display: inline-block;
-}
-
-#top-nav li:hover ul a:hover {
-	background: #19c589;
-	color: #fff;
-}
-
-#top-nav li ul {
-	display: none;
-}
-
-#top-nav li ul li {
-	display: inline-block;
-	float: none;
-}
-
-#top-nav li ul li a {
-	width: auto;
-	padding: 0 20px;
-}
-
-#top-nav ul li a:hover + .hidden,
-#top-nav .hidden:hover {
-	display: block;
-	background: transparent;
-}
-
-#show-menu-button {
-	display: none;
-	text-align: center;
-	color: #9b9b9b;
-	float: right;
-	margin: 0.85em 0.5em;
-	text-transform: uppercase!important;
-}
-
-#top-nav input[type=checkbox]{
-	display: none;
-	-webkit-appearance: none;
-}
-
-#top-nav input[type=checkbox]:checked ~ .menu{
-	display: block!important;
-	clear: both;
-}
 
 /* Intro Section*/
 
@@ -327,7 +276,6 @@ i.teal.icon {
 	width: 239px;
 	height: 400px;
 	color: white;
-	/*background-image: url(/images/header/subscribe-sidebox.png);*/
 	position: fixed;
 	z-index: 18;
 	right: 0px;
@@ -351,20 +299,14 @@ i.teal.icon {
 }
 
 /* Page Title */
-#page-title h1 {
-	font-size: 2.5em;
-	padding-top: 80px;
-	margin: 0;
-	font-size: 45px;
-	color: #333333;
-	font-weight: 300;
-	text-align: center;
-}
 
 #page-title {
 	background: url('/images/starter-pack-title.png') center no-repeat;
 	height: 200px;
 	background-color: #f0f0ee;
+	justify-content: center;
+	display: flex;
+	align-items: center;
 }
 
 /* Customer Quotes Section */

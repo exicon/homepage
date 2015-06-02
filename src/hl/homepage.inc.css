@@ -2,7 +2,7 @@ h3.ui.header, h4.ui.header{
 	font-weight: 400;
 }
 
-.homepage.sizer{
+.title.sizer{
 	font-size: 32px !important;
 }
 
@@ -93,7 +93,7 @@ p.testimonial {
 
 /* Laptop */
 @media only screen and (max-width: 1480px){
-	.homepage.sizer{
+	.title.sizer{
 		font-size: 26px !important;}
 	}
 
@@ -101,7 +101,7 @@ p.testimonial {
 
 	/* Mobile */
 	@media only screen and (max-width: 767px){
-		.homepage.sizer{
+		.title.sizer{
 			font-size: 21px !important;
 		}
 

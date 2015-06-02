@@ -8,6 +8,13 @@
 (defn row [] (div
 	:class "column sixteen wide center aligned"))
 
+(defelem secondary-header[{:keys [header sub-header]} kids]
+  (div  :id "page-title" :class "center aligned row"
+			(div :class "column title sizer"
+				(h1 :class "ui large center aligned header" :text header)
+    		(if sub-header
+        	(h2 :class "ui medium center aligned header" :text sub-header)))))
+
 (defn subscribe-stick-form [subscribe-click]
 	[
 		(div :id "subscribe-stick-layer"

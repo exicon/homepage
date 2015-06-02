@@ -18,7 +18,7 @@
   (section :id "intro" :class "intro full-width-container full-width-bg"
            (div :class "ui page stackable grid"
                 (div :class "row"
-                     (div :class "eleven wide column homepage sizer"
+                     (div :class "eleven wide column title sizer"
                           (h1 :class "ui inverted huge main header" "BUILD QUALITY CONNECTIONS WITH MOBILE USERS")))
                 (div :class "row"
                      (div :class "five wide left floated column"
@@ -231,7 +231,7 @@
               ])
 
 (defn feature [ftr]
-  (div :class  "center aligned column homepage sizer"
+  (div :class  "center aligned column title sizer"
        (img :class"ui circular small centered inverted teal segment image" :src (cell= (:icon ftr)))
        (h3 :class"ui teal medium header" :text (cell= (:title ftr)))
        (div :class "description sizer"
@@ -244,7 +244,7 @@
            (div :id "features" :class "anchor" )
            (div :class "ui hidden divider")
            (div :class "ui stackable page grid"
-                (div :class "sixteen wide center aligned column homepage sizer"
+                (div :class "sixteen wide center aligned column title sizer"
                      (h2 :class "ui inverted large header"  "The AppBoard")
                      (div :class "description sizer"
                           (h3 :class "ui medium inverted header" "App management tools at your fingertips (and thumbs)")))
@@ -255,7 +255,7 @@
 
 (defn feature-advantage [adv is-mobile build-promote? inverted?]
   (div :class "center aligned column"
-       (div :class "ui homepage sizer"
+       (div :class "ui title sizer"
             :do-class {:horizontal (not is-mobile) :segment (not is-mobile)
                        :white inverted?
                        :dark (and (not inverted?) build-promote?)
@@ -275,7 +275,7 @@
               (img :class "ui mini inline image" :src (:icon feature))
               :text (:name feature))
          (div :class "ui page padded grid"
-              (div :class "sixteen wide column homepage sizer center aligned feature-header"
+              (div :class "sixteen wide column title sizer center aligned feature-header"
                    (h2 :class "ui large header"
                        :do-class {:inverted inverted?}
                        :text (:header feature)))
@@ -355,7 +355,7 @@
 (defn packages-section []
   (section :class "packages full-width-container"
            (div :id "packages" :class "anchor" )
-           (div :class "homepage sizer"
+           (div :class "title sizer"
                 (h3 :class "ui small center aligned header"
                     "Check out our client testimonials!"))
            (div :class "ui hidden divider")
@@ -373,7 +373,7 @@
   (section :class "clients ui one column page grid"
            (div :id "clients" :class "anchor" )
            (div :class "ui hidden divider")
-           (div :class "center aligned column homepage sizer"
+           (div :class "center aligned column title sizer"
                 (h3 :class "ui center aligned small header" "Our Customer portfolio speaks for itself")
                 (div :class "ui hidden divider")
                 (div :class "ui basic segment"
