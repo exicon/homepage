@@ -1,11 +1,30 @@
-#about-us section{
-	margin-bottom: 3em;
+#about-us .light-grey.segment{
+	background: rgb(245, 245, 245);
 }
 
-.ui.image.centered {
+#about-us .circular.button {
+	width: 120px;
+	height: 120px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 0 auto;
+}
+
+
+
+
+
+
+/*#about-us section{
+	margin-bottom: 3em;
+}
+*/
+
+/*.ui.image.centered {
 	margin-left: auto;
 	margin-right: auto;
-}
+}*/
 
 #about-us .profile.column {
 	position: relative;
@@ -39,7 +58,7 @@
 }
 
 #about-us .profile.column .ui.fade.reveal:hover > .visible.content {
-  opacity: .2;
+	opacity: .2;
 }
 
 #about-us .profile.column .reveal img.visible.content:hover ~ .hidden.content {
@@ -67,8 +86,8 @@
 }
 
 #about-us .social-media-icons, .info-labels{
-		text-align: center;
-		margin-top: 0.5em;
+	text-align: center;
+	margin-top: 0.5em;
 }
 #about-us .social-media-icons, .info-labels .name{
 	font-weight: 600;
@@ -85,7 +104,7 @@
 	text-align: center;
 }
 #about-us .bio.button{
-margin-top: 1em;
+	margin-top: 1em;
 }
 #about-us .twitter.icon{
 	color:#00bfff;
@@ -100,7 +119,7 @@ margin-top: 1em;
 
 #office-list .office-email,
 #office-list .office-email *
- {
+{
 	font-size: 0.95em;
 }
 
@@ -162,7 +181,7 @@ label.klout-score{
 }
 
 /* Mobile */
-@media only screen and (max-width: 767px){
+/*@media only screen and (max-width: 767px){
 	#about-us #board-team {
 		margin-top: 0px;
 	}
@@ -183,7 +202,7 @@ label.klout-score{
 		font-size: 2rem;
 	}
 
-}
+}*/
 
 /* Tablet */
 @media only screen and (min-width: 767px) and (max-width: 992px){
