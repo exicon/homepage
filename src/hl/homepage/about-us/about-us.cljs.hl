@@ -1,7 +1,7 @@
 (page "about-us/index.html"
       (:require
         [homepage.layout :refer [secondary-header] :as layout])
-      (:require-macros [config :refer [timeline-url]]))
+      (:require-macros [config :refer [timeline-src]]))
 
 (def page-header {:header "About Us"
                   :sub-header"[app]sessed with mobile"})
@@ -585,7 +585,7 @@
         (div :class "ui hidden divider")
         (h2 :class "ui medium center aligned header" "How We Got Here"))
    (div :class "ui hidden divider")
-   (iframe :src (timeline-url)
+   (iframe :src (timeline-src)
            :width "100%" :height "650" :frameborder "0" )])
 
 (defc active-value-content nil)
