@@ -18,18 +18,18 @@ h3.ui.header, h4.ui.header{
 	box-shadow: 2px 0px 0px;
 }
 
-.intro{
+#intro {
 	background: url('/images/landing-page/header.jpg') center no-repeat;
 	background-color: #F0F0EE;
 	height: 600px;
 	background-position-y: 5px;
 }
 
-#intro .main.header{
+#intro .main.header {
 	margin-top: 20%;
 }
 
-.ui.black.button{
+.ui.black.button {
 	background-color: black !important;
 	color: white !important;
 }
@@ -39,16 +39,16 @@ h3.ui.header, h4.ui.header{
 	box-shadow:inset 0px 0px 0px 1px white;
 }
 
-.build-bg {
+#build {
 	background: url('/images/landing-page/build-bg.jpg') center no-repeat;
 	background-position-y: 0;
 }
 
-.manage-bg {
+#manage {
 	background-color: rgb(250,250,250);
 }
 
-.promote-bg {
+#promote {
 	background: url('/images/landing-page/promote-bg.jpg') center no-repeat;
 }
 
@@ -64,14 +64,14 @@ h3.ui.header, h4.ui.header{
 	margin-top: 2rem;
 }
 
-.feature-details .left.fixed.label{
+.feature-details .left.fixed.label {
 	top: 20px;
 	width: 130px;
 	text-align: right;
 	z-index: 10;
 }
 
-.full-width-bg{
+#content section {
 	background-size: initial;
 }
 
@@ -86,18 +86,16 @@ p.testimonial {
 
 /* Big Screens*/
 @media only screen and (min-width: 1900px){
-	.full-width-bg{
+	#content section {
 		background-size: 100% !important;
 	}
 }
 
 /* Laptop */
 @media only screen and (max-width: 1480px){
-	.title.sizer{
+	.title.sizer {
 		font-size: 26px !important;}
 	}
-
-
 
 	/* Mobile */
 	@media only screen and (max-width: 767px){

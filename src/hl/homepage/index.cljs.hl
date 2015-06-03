@@ -15,7 +15,7 @@
   (if (video-page?) (show-main-video main-video-link)))
 
 (defn intro []
-  (section :id "intro" :class "intro full-width-container full-width-bg"
+  (section :id "intro"
            (div :class "ui page stackable grid"
                 (div :class "row"
                      (div :class "eleven wide column title sizer"
@@ -125,37 +125,35 @@
                     }
                    ])
 
-(def features-details {
-                       :build {
-                               :name "Build"
-                               :icon "images/landing-page/build-icon.png"
-                               :header "Feeding your [app]etite"
-                               :sub-header "Connecting you to the right mobile app development companies"
-                               :advantages ["Quality Development" "Unparalleled Expertise" "Curated Choice"]
-                               :description #(h3 :class "ui medium header" "Over the last 7 years we have made more than 10,000 connections between business and development companies.
-                                            We are so confident that we will give your money back if you aren't delighted with the developers we match you with.")
-                                            }
-                       :manage{
-                               :name "Manage"
-                               :icon "images/landing-page/manage-icon.png"
-                               :bg-image "images/landing-page/manage-bg.png"
-                               :header "Getting a grip on your apps"
-                               :sub-header "Manage all the information and metrics across your appsphere from the Appboard"
-                               :advantages ["Secure your assets" "Hassle-free" "Collaborate & scale"]
-                               :description #(h3 :class "ui medium header" "With all your app related files, analytics and information in one place you can track, compare and assess your performance and empower your teams to make smart decisions across your mobile portfolio")
-                               }
-                       :promote{
-                                :name "Promote"
-                                :icon "images/landing-page/promote-icon.png"
-                                :header "Driving [app]session"
-                                :sub-header "Tools to engage your users with mobile"
-                                :advantages ["Drive Downloads" "Stimulate Actions" "Increase Sessions"]
-                                :description #(h3 :class "ui medium inverted header" "Establish mobile as your channel to your users. Getting onto relevant appstores and recommendation sites with optimized collateral can increase your downloads by up to 20% per store - " (i "OpenAPI"))
-                                }
-                       }
+(def build-details
+  {:name "Build"
+   :icon "images/landing-page/build-icon.png"
+   :header "Feeding your [app]etite"
+   :sub-header "Connecting you to the right mobile app development companies"
+   :advantages ["Quality Development" "Unparalleled Expertise" "Curated Choice"]
+   :description
+   #(h3 :class "ui medium header"
+        "Over the last 7 years we have made more than 10,000
+        connections between business and development companies.
+        We are so confident that we will give your money back if
+        you aren't delighted with the developers we match you with.")})
 
+(def manage-details
+  {:name "Manage"
+   :icon "images/landing-page/manage-icon.png"
+   :image "images/landing-page/manage-bg.png"
+   :header "Getting a grip on your apps"
+   :sub-header "Manage all the information and metrics across your appsphere from the Appboard"
+   :advantages ["Secure your assets" "Hassle-free" "Collaborate & scale"]
+   :description #(h3 :class "ui medium header" "With all your app related files, analytics and information in one place you can track, compare and assess your performance and empower your teams to make smart decisions across your mobile portfolio")})
 
-  )
+(def promote-details
+  {:name "Promote"
+   :icon "images/landing-page/promote-icon.png"
+   :header "Driving [app]session"
+   :sub-header "Tools to engage your users with mobile"
+   :advantages ["Drive Downloads" "Stimulate Actions" "Increase Sessions"]
+   :description #(h3 :class "ui medium inverted header" "Establish mobile as your channel to your users. Getting onto relevant appstores and recommendation sites with optimized collateral can increase your downloads by up to 20% per store - " (i "OpenAPI"))})
 
 (def testimonials {
                    :four-front {
@@ -209,7 +207,8 @@
                              :company "images/testimonials/650-lightsquared.jpg"
                              }})
 
-(def ux-list [
+(def ux-list
+   [
               {
                :icon "bar chart"
                :statement
@@ -262,49 +261,53 @@
                        :basic (not build-promote?)}
             (h2 :class "ui medium header"
                 :do-class {:inverted inverted?
-                           :teal (not build-promote?)} adv)))
-  )
+                           :teal (not build-promote?)} adv))))
 
-(defn feature-details [f]
-  (let [feature (f features-details)
-        build-promote? (or (= f :build) (= f :promote))
-        inverted? (= f :promote)]
-    (div :do-class {:build-bg (= f :build) :manage-bg (= f :manage) :promote-bg (= f :promote)}
-         :class "feature-details full-width-bg"
+(defelem feature-details
+  [{:keys [details inverted? build-promote?] :as attrs} kids]
+  (let [{:keys [icon name header sub-header image advantages description]} details
+        html-attrs (dissoc attrs :details :inverted? :build-promote?)]
+    ((section html-attrs)
+         :class "feature-details"
          (div :class "ui left fixed ribbon black inverted label"
-              (img :class "ui mini inline image" :src (:icon feature))
-              :text (:name feature))
+              (img :class "ui mini inline image" :src icon)
+              :text name)
          (div :class "ui page padded grid"
               (div :class "sixteen wide column title sizer center aligned feature-header"
                    (h2 :class "ui large header"
                        :do-class {:inverted inverted?}
-                       :text (:header feature)))
+                       :text header))
               (div :class "description sizer"
                    (h3 :class "ui medium center aligned header"
                        :do-class {:inverted inverted?}
-                       :text (:sub-header feature)))
+                       :text sub-header))
               (div :class "eleven wide centered column"
-                   :toggle (= f :manage)
-                   (img :class "ui massive centered image" :src (:bg-image feature)))
+                   :toggle image
+                   (img :class "ui massive centered image" :src image))
               (div :class "row"
                    :do-class {:feature-advantages build-promote?}
                    (div :class "ui three column stackable grid"
-                        (div :class "mobile tablet only row "
-                             (loop-tpl :bindings [adv (:advantages feature)]
+                        (div :class "mobile tablet only row"
+                             (loop-tpl :bindings [adv advantages]
                                        (feature-advantage adv true build-promote? inverted?)))
-                        (div :class "computer only row "
-                             (loop-tpl :bindings [adv (:advantages feature)]
-                                       (feature-advantage adv false build-promote? inverted?)))
-                        ))
+                        (div :class "computer only row"
+                             (loop-tpl :bindings [adv advantages]
+                                       (feature-advantage adv false build-promote? inverted?)))))
               (div :class "sixteen wide center aligned column feature-description description sizer"
-                   ((:description feature)))
-              )))
-  )
+                   (description))))))
 
 (defn features-details-section []
-  [(feature-details :build)
-   (feature-details :manage)
-   (feature-details :promote)])
+  [(feature-details :id "build"
+                    :details build-details
+                    :build-promote? true)
+
+   (feature-details :id "manage"
+                    :details manage-details)
+
+   (feature-details :id "promote"
+                    :details promote-details
+                    :build-promote? true
+                    :inverted? true)])
 
 (defelem pkg-tile [pkg]
   (div :class "column"
@@ -388,7 +391,6 @@
                 (div :class "content"
                      (text (str (:percentage attrs) "%"))))
             (:statement attrs))))
-
 
 (defn testimonials-section []
   (section :class "full-width-container"
