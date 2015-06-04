@@ -206,7 +206,13 @@
              :name "Patrick Parodi"
              :sub-title "VP of Ecosystem Development, LightSquared"
              :company "images/testimonials/650-lightsquared.jpg"
-             }})
+             }
+   :erik {
+          :image "images/testimonials/Erik-Contessi.png"
+          :testimonial "I am a regular Exicon user. We are launching a big campaign to promote the adoption of one application and the follow up is done by using Exicon. Hence it is a critical tool for us."
+          :name "Erik Contessi"
+          :sub-title "France Customer Care Process & Technology Senior Project Manager"
+          :company "images/testimonials/Schneider_Electric.png"}})
 
 (def ux-list
   [
@@ -324,14 +330,14 @@
                       (a :href (cell= (:link pkg)) "Find out more")
                       ))))
   )
-(defc show-more #{:brain})
+(defc show-more #{})
 
 (defn testimonial-block [testimonial-name]
   (let [testimonial (testimonial-name testimonials)
         testimonial-desc (:testimonial testimonial)
         too-long? (< 141 (count testimonial-desc))
         check-more (fn [] (if (@show-more testimonial-name) (disj @show-more testimonial-name) (conj @show-more testimonial-name)))
-        short-desc (if (= :schneider testimonial-name)
+        short-desc (if (or (= :schneider testimonial-name) (= :erik testimonial-name))
                      (str (.substr testimonial-desc 0 60) "...")
                      (str (.substr testimonial-desc 0 95) "..."))]
     [(div :class "column"
@@ -367,11 +373,11 @@
                 (div :class "three column computer only row"
                      (testimonial-block :hotels)
                      (testimonial-block :schneider)
-                     (testimonial-block :brain))
+                     (testimonial-block :erik))
                 (div :class "one column tablet mobile only row"
                      (testimonial-block :hotels)
                      (testimonial-block :schneider)
-                     (testimonial-block :brain)))))
+                     (testimonial-block :erik)))))
 
 (defn clients []
   (section :class "clients ui one column page grid"
