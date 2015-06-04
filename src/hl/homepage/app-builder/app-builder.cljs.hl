@@ -1,6 +1,6 @@
 (page "app-builder/index.html"
 	(:require
-		[homepage.layout :as layout]
+		[homepage.layout :refer [secondary-header] :as layout]
 		[homepage.top-nav :as top-nav]
 		[homepage.common :refer [textual-button show-main-video main-video-box hide-main-video]]
 		[tailrecursion.hoplon.reload :refer [reload-all]]
@@ -11,6 +11,8 @@
 
 (def appboard-login-link (str (appboard-url)"/?package=starter&returnUri="(appbuilder-url)"#!/login/"))
 (def appboard-registration-link (str (appboard-url)"/?package=starter&returnUri="(appbuilder-url)"#!/registration/"))
+
+(def page-header {:header "App Builder"})
 
 (def process-list-items [
 	{:title "Quick, secure and easy"}
@@ -190,105 +192,103 @@
 				 	(:company-name @testimonial))))))
 
 (layout/main
-	:pagetitle "App Builder"
-	:pagedescription "Find the right developer to get your app build"
-	:pagekeywords "Build an App, App Builder"
-	(section :class "ui one column full-width-container"
-		(div :id "page-title" :class "center aligned row"
-			(div :class "column"
-				(h1 "App Builder"))))
+  :pagetitle "App Builder"
+  :pagedescription "Find the right developer to get your app build"
+  :pagekeywords "Build an App, App Builder"
 
-	(main-video-box)
+  (secondary-header :header (:header page-header))
 
-	(div :id "app-builder" :class "ui page padded grid"
-		(div :class "ui hidden divider")
-		(div :class "center aligned sixteen wide column"
-			(h2 :class "ui header"
-				"The App Builder will help you scope your project to match you with the best developers for your app.
-				With a global network of over 3,000 qualified development companies, we guarantee you a great match."))
-		(div :class "center aligned sixteen wide column"
-			(h2 :class "ui header"
-				(img :class "ui tiny inline tiny image" :src "/images/app-builder/nda.png")
-			(div :class "content"
-			"And your idea is safe. Everyone is under NDA.")))
+  (main-video-box)
 
-		(div :class "center aligned sixteen wide column"
-			(a :class "ui big button"
-				:href "#play-video"
-				:click #(show-main-video app-builder-video-link)
-				(i :class "play icon") "Watch Video"))
+  (div :id "app-builder" :class "ui page padded grid"
+       (div :class "ui hidden divider")
+       (div :class "center aligned sixteen wide column"
+            (h2 :class "ui header"
+                "The App Builder will help you scope your project to match you with the best developers for your app.
+                With a global network of over 3,000 qualified development companies, we guarantee you a great match."))
+       (div :class "center aligned sixteen wide column"
+            (h2 :class "ui header"
+                (img :class "ui tiny inline tiny image" :src "/images/app-builder/nda.png")
+                (div :class "content"
+                     "And your idea is safe. Everyone is under NDA.")))
 
-		(div :class "doubling four column row"
-			(loop-tpl :bindings [item process-items]
-				(process-column item)))
+       #_(div :class "center aligned sixteen wide column"
+              (a :class "ui big button"
+                 :href "#play-video"
+                 :click #(show-main-video app-builder-video-link)
+                 (i :class "play icon") "Watch Video"))
 
-		(div :class "center aligned row"
-			(div :class "column"(textual-button
-				:inline false
-				:message "Now, let's get started"
-				:destination-link appboard-registration-link)))
+       (div :class "doubling four column row"
+            (loop-tpl :bindings [item process-items]
+                      (process-column item)))
 
-		(div :class "ui hidden divider")
+       (div :class "center aligned row"
+            (div :class "column"(textual-button
+                                  :inline false
+                                  :message "Now, let's get started"
+                                  :destination-link appboard-registration-link)))
 
-		(div :class "center aligned row"
-			(div :class "column"
-				(h2 :class "ui huge header"
-					(img :class "ui tiny image" :src "/images/app-builder/development.svg")
-					(div :class "content" :style "text-align: left;"
-						"Our Development Community"
-						(div :class "sub header" "3,000+ developers globally" (br) "US400M in apps matched")))))
-		(div :class "center aligned row"
-			(img :class "ui massive centered image" :src "/images/app-builder/map-with-text.png"))
+       (div :class "ui hidden divider")
 
-		(div :class "center aligned three column doubling row"
-			(loop-tpl :bindings [item dev-community-items]
-				(dev-community-column item)))
+       (div :class "center aligned row"
+            (div :class "column"
+                 (h2 :class "ui huge header"
+                     (img :class "ui tiny image" :src "/images/app-builder/development.svg")
+                     (div :class "content" :style "text-align: left;"
+                          "Our Development Community"
+                          (div :class "sub header" "3,000+ developers globally" (br) "US400M in apps matched")))))
+       (div :class "center aligned row"
+            (img :class "ui massive centered image" :src "/images/app-builder/map-with-text.png"))
 
-		(div :class "ui hidden divider")
+       (div :class "center aligned three column doubling row"
+            (loop-tpl :bindings [item dev-community-items]
+                      (dev-community-column item)))
 
-		(div :class "center aligned sixteen wide column"
-			(h2 :class "ui huge header"
-				"What our clients say about us"))
-			(div :class "center aligned two column row"
-				(loop-tpl :bindings [testimonial testimonials]
-					(testimonial-column testimonial)))
+       (div :class "ui hidden divider")
 
-		(div :class "center aligned row"
-			(div :class "column"(textual-button
-				:inline true
-				:message "Ready? Find your developer"
-				:destination-link appboard-registration-link)))
+       (div :class "center aligned sixteen wide column"
+            (h2 :class "ui huge header"
+                "What our clients say about us"))
+       (div :class "center aligned two column row"
+            (loop-tpl :bindings [testimonial testimonials]
+                      (testimonial-column testimonial)))
 
-		(div :class "ui hidden divider")
+       (div :class "center aligned row"
+            (div :class "column"(textual-button
+                                  :inline true
+                                  :message "Ready? Find your developer"
+                                  :destination-link appboard-registration-link)))
 
-		(div :class "center aligned sixteen wide column"
-			(h2 :class "ui huge header"
-				"3 Reasons why App Builder is the tool for you"))
-				(div :class "sixteen wide column"
-					(div :class "content"
-					(list-content)))
+       (div :class "ui hidden divider")
 
-		(div :class "ui hidden divider")
-		(h2 :class "ui header" "If you are an AppBoard user, please " (a :href appboard-login-link "log in."))
-		(h2 :class "ui header" "Below is our pricing structure. We will bring you back to this later.")
-		(div :class "ui hidden divider")
+       (div :class "center aligned sixteen wide column"
+            (h2 :class "ui huge header"
+                "3 Reasons why App Builder is the tool for you"))
+       (div :class "sixteen wide column"
+            (div :class "content"
+                 (list-content)))
 
-		(div :id "app-builder-pricing" :class "ab-pricing sixteen wide column"
-			(div :class "ui three column stackable grid"
-        (img :class "ui computer tablet only row banner-img" :src "/images/app-builder/promotion-banner-diagonal.png")
-        (img :class "ui mobile only row banner-img-mobile" :src "/images/app-builder/promotion-banner-diagonal.png")
-				(loop-tpl :bindings [opt packages]
-					(app-builder-pricing opt))))
-		(div :class "ui hidden divider")
+       (div :class "ui hidden divider")
+       (h2 :class "ui header" "If you are an AppBoard user, please " (a :href appboard-login-link "log in."))
+       (h2 :class "ui header" "Below is our pricing structure. We will bring you back to this later.")
+       (div :class "ui hidden divider")
 
-		(div :class "center aligned row"
-			(div :class "column"(textual-button
-				:inline true
-				:message "Ready? Find your developer"
-				:destination-link (str (appboard-url)"/?package=starter&returnUri="(appbuilder-url)"#!/registration/")
-				#_(h2 :class "ui header" "*For FREE option, you can sign up for the AppBoard to access App Builder."
-					(a :href"Sign Up now"))
-				)))
-		(div :class "ui hidden divider")
-	)
-)
+       (div :id "app-builder-pricing" :class "ab-pricing sixteen wide column"
+            (div :class "ui three column stackable grid"
+                 (img :class "ui computer tablet only row banner-img" :src "/images/app-builder/promotion-banner-diagonal.png")
+                 (img :class "ui mobile only row banner-img-mobile" :src "/images/app-builder/promotion-banner-diagonal.png")
+                 (loop-tpl :bindings [opt packages]
+                           (app-builder-pricing opt))))
+       (div :class "ui hidden divider")
+
+       (div :class "center aligned row"
+            (div :class "column"(textual-button
+                                  :inline true
+                                  :message "Ready? Find your developer"
+                                  :destination-link (str (appboard-url)"/?package=starter&returnUri="(appbuilder-url)"#!/registration/")
+                                  #_(h2 :class "ui header" "*For FREE option, you can sign up for the AppBoard to access App Builder."
+                                        (a :href"Sign Up now"))
+                                  )))
+       (div :class "ui hidden divider")
+       )
+  )

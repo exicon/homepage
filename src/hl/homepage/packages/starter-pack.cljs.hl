@@ -1,11 +1,13 @@
 (page "packages/starter-pack/index.html"
 	(:require
-		[homepage.layout :as layout]
+		[homepage.layout :refer [secondary-header] :as layout]
 		[homepage.top-nav :as top-nav]
 		[homepage.common :as common]
 		[tailrecursion.hoplon.reload :refer [reload-all]]
 		[homepage.packages :refer [starter-pack]]
 		[homepage.packages.pricing :refer [pricing]]))
+
+(def page-header {:header "Starter Pack"})
 
 (defc intelligent-newsfeed {
 	:image-side :right
@@ -127,28 +129,27 @@
 		)
 )
 
-(layout/main :id "starter-pack"
-	:pagetitle "Starter Pack | Intro To App Management & App Analytics"
-	:pagedescription "Starter Pack Is An Entry Tool For Those New To App Management, App Logistics & Analytics"
-	:pagekeywords "App Management, App Analytics"
-	(section :class "ui one column full-width-container"
-		(div :id "page-title" :class "center aligned row"
-			(div :class "column"
-				(h1 "Starter Pack"))))
+(layout/main
+  :id "starter-pack"
+  :pagetitle "Starter Pack | Intro To App Management & App Analytics"
+  :pagedescription "Starter Pack Is An Entry Tool For Those New To App Management, App Logistics & Analytics"
+  :pagekeywords "App Management, App Analytics"
 
-	(div :class "ui four column doubling page grid"
-	(section :class "twelve wide column"
-		(div :id "page-subtitle" :class "center aligned row"
-			(div :class "column"
-				(h2 "Get started in App Management with your very own AppBoard")
-				(h3 "Checkout what you'll get in your Starter Pack")))
-		(feature @intelligent-newsfeed)
-		(feature @leaderboard)
-		(feature @watchlist)
-		(feature @analytics)
-		(feature @app-brief-builder)
-		(feature @applocker)
-	)
-	(div :class "column" :id "pricing-pack"
-		(pricing starter-pack)))
-)
+  (secondary-header :header (:header page-header))
+
+  (div :class "ui four column doubling page grid"
+       (section :class "twelve wide column"
+                (div :id "page-subtitle" :class "center aligned row"
+                     (div :class "column"
+                          (h2 "Get started in App Management with your very own AppBoard")
+                          (h3 "Checkout what you'll get in your Starter Pack")))
+                (feature @intelligent-newsfeed)
+                (feature @leaderboard)
+                (feature @watchlist)
+                (feature @analytics)
+                (feature @app-brief-builder)
+                (feature @applocker)
+                )
+       (div :class "column" :id "pricing-pack"
+            (pricing starter-pack)))
+  )

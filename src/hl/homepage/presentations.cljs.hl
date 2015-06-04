@@ -1,23 +1,21 @@
 (page "presentations/index.html"
-	(:require
-		[homepage.layout :as layout]))
+      (:require
+        [homepage.layout :refer [secondary-header] :as layout]))
 
-(layout/main :id "presentations"
-	:pagetitle "Mobile | Presentations"
-	:pagedescription "All Thing Mobile Across Multiple Industries Including Automotive, Travel & Hospitality, Banking & Finance, & IoT."
-	(section :class "ui one column full-width-container"
-		(div  :id "page-title" :class "center aligned row"
-			(div :class "column"
-				(h1 "Presentations"))))
+(def page-header {:header "Presentations"})
 
-	(section :class "ui one column page grid basic segment"
-		(div :class "center aligned column"
-			(iframe :src "http://www.slideshare.net/Exicon/slideshelf"
-				:width "760px" :height "570px" :frameborder "0" :marginwidth "0"
-				:scrolling "no"
-				:allowfullscreen ""
-				:webkitallowfullscreen ""
-				:mozallowfullscreen "")
-		)
-	))
+(layout/main
+  :id "presentations"
+  :pagetitle "Mobile | Presentations"
+  :pagedescription "All Thing Mobile Across Multiple Industries Including Automotive, Travel & Hospitality, Banking & Finance, & IoT."
 
+  (secondary-header :header (:header page-header))
+
+  (section :class "ui one column page grid basic segment"
+           (div :class "center aligned column"
+                (iframe :src "http://www.slideshare.net/Exicon/slideshelf"
+                        :width "760px" :height "570px" :frameborder "0" :marginwidth "0"
+                        :scrolling "no"
+                        :allowfullscreen ""
+                        :webkitallowfullscreen ""
+                        :mozallowfullscreen ""))))

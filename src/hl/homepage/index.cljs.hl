@@ -15,7 +15,7 @@
   (if (video-page?) (show-main-video main-video-link)))
 
 (defn intro []
-  (section :id "intro" :class "intro full-width-container full-width-bg"
+  (section :id "intro"
            (div :class "ui page stackable grid"
                 (div :class "row"
                      (div :class "eleven wide column title sizer"
@@ -23,10 +23,10 @@
                 (div :class "row"
                      (div :class "five wide left floated column"
                           (a :class "ui huge black fluid button"
-                               :href "/appboard/pricing" "Check out our AppBoard"))
+                             :href "/appboard/pricing" "Check out our AppBoard"))
                      (div :class "seven wide left floated column"
                           (a :class "ui huge black fluid button"
-                               :href "/app-builder/" "Find the right developer for your app")))
+                             :href "/app-builder/" "Find the right developer for your app")))
                 )))
 
 (defc q1 {
@@ -125,117 +125,117 @@
                     }
                    ])
 
-(def features-details {
-                       :build {
-                               :name "Build"
-                               :icon "images/landing-page/build-icon.png"
-                               :header "Feeding your [app]etite"
-                               :sub-header "Connecting you to the right mobile app development companies"
-                               :advantages ["Quality Development" "Unparalleled Expertise" "Curated Choice"]
-                               :description #(h3 :class "ui medium header" "Over the last 7 years we have made more than 10,000 connections between business and development companies.
-                                            We are so confident that we will give your money back if you aren't delighted with the developers we match you with.")
-                                            }
-                       :manage{
-                               :name "Manage"
-                               :icon "images/landing-page/manage-icon.png"
-                               :bg-image "images/landing-page/manage-bg.png"
-                               :header "Getting a grip on your apps"
-                               :sub-header "Manage all the information and metrics across your appsphere from the Appboard"
-                               :advantages ["Secure your assets" "Hassle-free" "Collaborate & scale"]
-                               :description #(h3 :class "ui medium header" "With all your app related files, analytics and information in one place you can track, compare and assess your performance and empower your teams to make smart decisions across your mobile portfolio")
-                               }
-                       :promote{
-                                :name "Promote"
-                                :icon "images/landing-page/promote-icon.png"
-                                :header "Driving [app]session"
-                                :sub-header "Tools to engage your users with mobile"
-                                :advantages ["Drive Downloads" "Stimulate Actions" "Increase Sessions"]
-                                :description #(h3 :class "ui medium inverted header" "Establish mobile as your channel to your users. Getting onto relevant appstores and recommendation sites with optimized collateral can increase your downloads by up to 20% per store - " (i "OpenAPI"))
-                                }
-                       }
+(def build-details
+  {:name "Build"
+   :icon "images/landing-page/build-icon.png"
+   :header "Feeding your [app]etite"
+   :sub-header "Connecting you to the right mobile app development companies"
+   :advantages ["Quality Development" "Unparalleled Expertise" "Curated Choice"]
+   :description
+   #(h3 :class "ui medium header"
+        "Over the last 7 years we have made more than 10,000
+        connections between business and development companies.
+        We are so confident that we will give your money back if
+        you aren't delighted with the developers we match you with.")})
 
+(def manage-details
+  {:name "Manage"
+   :icon "images/landing-page/manage-icon.png"
+   :image "images/landing-page/manage-bg.png"
+   :header "Getting a grip on your apps"
+   :sub-header "Manage all the information and metrics across your appsphere from the AppBoard"
+   :advantages ["Secure your assets" "Hassle-free" "Collaborate & scale"]
+   :description #(h3 :class "ui medium header" "With all your app related files, analytics and information in one place you can track, compare and assess your performance and empower your teams to make smart decisions across your mobile portfolio")})
 
-  )
+(def promote-details
+  {:name "Promote"
+   :icon "images/landing-page/promote-icon.png"
+   :header "Driving [app]session"
+   :sub-header "Tools to engage your users with mobile"
+   :advantages ["Drive Downloads" "Stimulate Actions" "Increase Sessions"]
+   :description #(h3 :class "ui medium inverted header" "Establish mobile as your channel to your users. Getting onto relevant appstores and recommendation sites with optimized collateral can increase your downloads by up to 20% per store - " (i "OpenAPI"))})
 
-(def testimonials {
-                   :four-front {
-                                :image "images/testimonials/melanie-mcgraw-4front-advisors.png"
-                                :testimonial "It has been an absolute pleasure to work with this team, consummate professionals through and through. Working with Exicon at the start of this journey was critical in helping us determine what we wanted and needed, then figuring out how to even begin to cast the net into the often confusing digital waters."
-                                :name "Melanie McGraw"
-                                :sub-title "Corporate Training and Compliance Expert, 4Front Advisors"
-                                :company "images/testimonials/4Front.png"
+(def testimonials
+  {
+   :four-front {
+                :image "images/testimonials/melanie-mcgraw-4front-advisors.png"
+                :testimonial "It has been an absolute pleasure to work with this team, consummate professionals through and through. Working with Exicon at the start of this journey was critical in helping us determine what we wanted and needed, then figuring out how to even begin to cast the net into the often confusing digital waters."
+                :name "Melanie McGraw"
+                :sub-title "Corporate Training and Compliance Expert, 4Front Advisors"
+                :company "images/testimonials/4Front.png"
 
-                                }
-                   :brain {
-                           :image "images/testimonials/Aran-gettoknowyourbrain.png"
-                           :testimonial "Wow, great service - thanks! Thanks a million! Thanks for your support so far - we're getting close now!"
-                           :name "Aran Dadswell"
-                           :sub-title "Founder of Get to know your Brain"
-                           :company "images/testimonials/Get-to-know-your-brain.png"
-                           }
-                   :chartered {
-                               :image "images/testimonials/Mike-SC.png"
-                               :testimonial "The team at Exicon helped find some great, innovative developers in the mobile banking space. In fact, we ended up making an acquisition as a result of an introduction."
-                               :name "Mike Denoma"
-                               :sub-title "Ex-Head of Global Consumer Banking, Standard Chartered"
-                               :company "images/testimonials/800px-Standard_Chartered.svg.png"
-                               }
-                   :hotels {
-                            :image "images/testimonials/Richard-Every-hotels.png"
-                            :testimonial "I give them credit for teaching me everything I know about APIs! It has been a great partnership, they are smart, responsive and the access to apps made us think about our brands very differently in terms of what we could be doing in digital. On top of the work on APIs and APPs they have also been great at 'thought-provoking' with our brand and technology innovation and are ALWAYS and excellent resource for up to date thinking and industry insight."
-                            :name "Richard Sofer"
-                            :sub-title "Brand CEO, every hotels"
-                            :company "images/testimonials/Every-Hotels-logo.jpg"
-                            }
-                   :schneider {
-                               :image "images/testimonials/christopher-david.png"
-                               :testimonial "Managing developers was crucial to our business. Exicon helped us build the foundation on which to drive our new products, bringing new developers into our prefered developer programs in over 20 countries which helped us generate a whole suite of local applications for the different markets."
-                               :name "Christopher David"
-                               :sub-title "CTO Digital Customer Experience & SVP Software, Schneider Electric"
-                               :company "images/testimonials/Schneider_Electric.png"
-                               }
-                   :colin {
-                           :image "images/testimonials/Colin-Yeh.png"
-                           :testimonial "It's been great working with Stefan and Exicon - professional team and very well-connected in the industry. Their willingness to go the 'extra-mile' and their ability to attend to details was greatly appreciated."
-                           :name "Dr. Colin Yeh"
-                           :sub-title "Senior Director - Group Innovations & Partnerships, Ooredoo Group"
-                           :company "images/testimonials/ooredoo-logo.jpg"
-                           }
-                   :patrick {
-                             :image "images/testimonials/patrick-parodi.png"
-                             :testimonial "The Exicon team delivered some key strategic insights which helped us put together the best telco API strategy on the market. They were thorough and detailed oriented and provided actionable data we were able to put to work in building our 4G LTE SandBox."
-                             :name "Patrick Parodi"
-                             :sub-title "VP of Ecosystem Development, LightSquared"
-                             :company "images/testimonials/650-lightsquared.jpg"
-                             }})
-
-(def ux-list [
-              {
-               :icon "bar chart"
-               :statement
-               (p "of our customers said our work was " (b "Good") ": the rest said it was " (b "Impressive"))
-               :percentage 60
+                }
+   :brain {
+           :image "images/testimonials/Aran-gettoknowyourbrain.png"
+           :testimonial "Wow, great service - thanks! Thanks a million! Thanks for your support so far - we're getting close now!"
+           :name "Aran Dadswell"
+           :sub-title "Founder of Get to know your Brain"
+           :company "images/testimonials/Get-to-know-your-brain.png"
+           }
+   :chartered {
+               :image "images/testimonials/Mike-SC.png"
+               :testimonial "The team at Exicon helped find some great, innovative developers in the mobile banking space. In fact, we ended up making an acquisition as a result of an introduction."
+               :name "Mike Denoma"
+               :sub-title "Ex-Head of Global Consumer Banking, Standard Chartered"
+               :company "images/testimonials/800px-Standard_Chartered.svg.png"
                }
-              {
-               :icon "like"
-               :statement
-               (p "of our customers said we " (b "Overdelivered"))
-               :percentage 40
+   :hotels {
+            :image "images/testimonials/Richard-Every-hotels.png"
+            :testimonial "I give them credit for teaching me everything I know about APIs! It has been a great partnership, they are smart, responsive and the access to apps made us think about our brands very differently in terms of what we could be doing in digital. On top of the work on APIs and APPs they have also been great at 'thought-provoking' with our brand and technology innovation and are ALWAYS and excellent resource for up to date thinking and industry insight."
+            :name "Richard Sofer"
+            :sub-title "Brand CEO, every hotels"
+            :company "images/testimonials/Every-Hotels-logo.jpg"
+            }
+   :schneider {
+               :image "images/testimonials/christopher-david.png"
+               :testimonial "Managing developers was crucial to our business. Exicon helped us build the foundation on which to drive our new products, bringing new developers into our prefered developer programs in over 20 countries which helped us generate a whole suite of local applications for the different markets."
+               :name "Christopher David"
+               :sub-title "CTO Digital Customer Experience & SVP Software, Schneider Electric"
+               :company "images/testimonials/Schneider_Electric.png"
                }
-              {
-               :icon "thumbs up outline"
-               :statement
-               (p "of our respondents said they would " (b "Recommend us") " to other companies")
-               :percentage 100
-               }
-              ])
+   :colin {
+           :image "images/testimonials/Colin-Yeh.png"
+           :testimonial "It's been great working with Stefan and Exicon - professional team and very well-connected in the industry. Their willingness to go the 'extra-mile' and their ability to attend to details was greatly appreciated."
+           :name "Dr. Colin Yeh"
+           :sub-title "Senior Director - Group Innovations & Partnerships, Ooredoo Group"
+           :company "images/testimonials/ooredoo-logo.jpg"
+           }
+   :patrick {
+             :image "images/testimonials/patrick-parodi.png"
+             :testimonial "The Exicon team delivered some key strategic insights which helped us put together the best telco API strategy on the market. They were thorough and detailed oriented and provided actionable data we were able to put to work in building our 4G LTE SandBox."
+             :name "Patrick Parodi"
+             :sub-title "VP of Ecosystem Development, LightSquared"
+             :company "images/testimonials/650-lightsquared.jpg"
+             }})
+
+(def ux-list
+  [
+   {
+    :icon "bar chart"
+    :statement
+    (p "of our customers said our work was " (b "Good") ": the rest said it was " (b "Impressive"))
+    :percentage 60
+    }
+   {
+    :icon "like"
+    :statement
+    (p "of our customers said we " (b "Overdelivered"))
+    :percentage 40
+    }
+   {
+    :icon "thumbs up outline"
+    :statement
+    (p "of our respondents said they would " (b "Recommend us") " to other companies")
+    :percentage 100
+    }
+   ])
 
 (defn feature [ftr]
   (div :class  "center aligned column title sizer"
        (img :class"ui circular small centered inverted teal segment image" :src (cell= (:icon ftr)))
        (h3 :class"ui teal medium header" :text (cell= (:title ftr)))
        (div :class "description sizer"
-       (h3 :class "ui small inverted header" :text (cell= (:desc ftr))))
+            (h3 :class "ui small inverted header" :text (cell= (:desc ftr))))
        )
   )
 
@@ -262,49 +262,53 @@
                        :basic (not build-promote?)}
             (h2 :class "ui medium header"
                 :do-class {:inverted inverted?
-                           :teal (not build-promote?)} adv)))
-  )
+                           :teal (not build-promote?)} adv))))
 
-(defn feature-details [f]
-  (let [feature (f features-details)
-        build-promote? (or (= f :build) (= f :promote))
-        inverted? (= f :promote)]
-    (div :do-class {:build-bg (= f :build) :manage-bg (= f :manage) :promote-bg (= f :promote)}
-         :class "feature-details full-width-bg"
-         (div :class "ui left fixed ribbon black inverted label"
-              (img :class "ui mini inline image" :src (:icon feature))
-              :text (:name feature))
-         (div :class "ui page padded grid"
-              (div :class "sixteen wide column title sizer center aligned feature-header"
-                   (h2 :class "ui large header"
-                       :do-class {:inverted inverted?}
-                       :text (:header feature)))
-              (div :class "description sizer"
-                   (h3 :class "ui medium center aligned header"
-                       :do-class {:inverted inverted?}
-                       :text (:sub-header feature)))
-              (div :class "eleven wide centered column"
-                   :toggle (= f :manage)
-                   (img :class "ui massive centered image" :src (:bg-image feature)))
-              (div :class "row"
-                   :do-class {:feature-advantages build-promote?}
-                   (div :class "ui three column stackable grid"
-                        (div :class "mobile tablet only row "
-                             (loop-tpl :bindings [adv (:advantages feature)]
-                                       (feature-advantage adv true build-promote? inverted?)))
-                        (div :class "computer only row "
-                             (loop-tpl :bindings [adv (:advantages feature)]
-                                       (feature-advantage adv false build-promote? inverted?)))
-                        ))
-              (div :class "sixteen wide center aligned column feature-description description sizer"
-                   ((:description feature)))
-              )))
-  )
+(defelem feature-details
+  [{:keys [details inverted? build-promote?] :as attrs} kids]
+  (let [{:keys [icon name header sub-header image advantages description]} details
+        html-attrs (dissoc attrs :details :inverted? :build-promote?)]
+    ((section html-attrs)
+     :class "feature-details"
+     (div :class "ui left fixed ribbon black inverted label"
+          (img :class "ui mini inline image" :src icon)
+          :text name)
+     (div :class "ui page padded grid"
+          (div :class "sixteen wide column title sizer center aligned feature-header"
+               (h2 :class "ui large header"
+                   :do-class {:inverted inverted?}
+                   :text header))
+          (div :class "description sizer"
+               (h3 :class "ui medium center aligned header"
+                   :do-class {:inverted inverted?}
+                   :text sub-header))
+          (div :class "eleven wide centered column"
+               :toggle image
+               (img :class "ui massive centered image" :src image))
+          (div :class "row"
+               :do-class {:feature-advantages build-promote?}
+               (div :class "ui three column stackable grid"
+                    (div :class "mobile tablet only row"
+                         (loop-tpl :bindings [adv advantages]
+                                   (feature-advantage adv true build-promote? inverted?)))
+                    (div :class "computer only row"
+                         (loop-tpl :bindings [adv advantages]
+                                   (feature-advantage adv false build-promote? inverted?)))))
+          (div :class "sixteen wide center aligned column feature-description description sizer"
+               (description))))))
 
 (defn features-details-section []
-  [(feature-details :build)
-   (feature-details :manage)
-   (feature-details :promote)])
+  [(feature-details :id "build"
+                    :details build-details
+                    :build-promote? true)
+
+   (feature-details :id "manage"
+                    :details manage-details)
+
+   (feature-details :id "promote"
+                    :details promote-details
+                    :build-promote? true
+                    :inverted? true)])
 
 (defelem pkg-tile [pkg]
   (div :class "column"
@@ -348,8 +352,8 @@
                (p :class "testimonial" :style "display: inline"
                   :text (cell= (if (contains? show-more testimonial-name) testimonial-desc short-desc)))
                (a :toggle too-long?
-                    :click #(reset! show-more (check-more))
-                    (cell= (if (contains? show-more testimonial-name) (label " less " (i :class "caret up icon")) (label " more " (i :class "caret down icon")))))))
+                  :click #(reset! show-more (check-more))
+                  (cell= (if (contains? show-more testimonial-name) (label " less " (i :class "caret up icon")) (label " more " (i :class "caret down icon")))))))
      ]))
 
 (defn packages-section []
@@ -388,7 +392,6 @@
                 (div :class "content"
                      (text (str (:percentage attrs) "%"))))
             (:statement attrs))))
-
 
 (defn testimonials-section []
   (section :class "full-width-container"
@@ -431,5 +434,4 @@
   (features-details-section)
   (clients)
   #_(testimonials-section)
-  (packages-section)
-  )
+  (packages-section))
