@@ -6,19 +6,26 @@
 (def page-header {:header "About Us"
                   :sub-header"[app]sessed with mobile"})
 
-(def banner-header-dividers {
-                             :top {
-                                   :header "Providing you with the tools to mobilize your business"
-                                   :centered true}
-                             :middle {
-                                      :header "Get a grip on your [apps]"
-                                      :background true
-                                      :inverted true}
-                             :bottom {
-                                      :header "Let us feed your [app]etite"
-                                      :background true
-                                      :size "medium"
-                                      :centered true}}
+(def section-headers
+  {
+   :app-lifecycle {
+         :header "Providing you with the tools to mobilize your business"
+         :centered true}
+   :get-a-grip {
+            :header "Get a grip on your [apps]"
+            :background true
+            :inverted true
+            }
+   :vision-and-values {
+                       :header "Our Vision and Values"
+                       :centered true
+                       :size "medium"
+                       :color "gray"}
+   :offices {
+            :header "Let us feed your [app]etite"
+            :background true
+            :size "medium"
+            :centered true}}
   )
 
 (def about-exicon
@@ -57,15 +64,11 @@
                  industries with qualified professional developers' based on skills, location, expertise, language and budget.")
               (p "To promote XDC and BAM! we partnered with local boutique agencies to pioneer app workshops in over 20 leading cities
                  around the world, bringing brand managers and mobile development specialists together to build engaging apps.")
-              (p "Over time we realised that customers were struggling to and in some cases entirely absent. In order to save the
-                 client money and streamline efficiencies moving forward, they needed help putting all these pieces together and
-                 managing it from one place.")
-              (p "It was then, in 2013, the AppBoard was born helping companies \"get a grip\" on their apps.")
+              (p "Over time we realized businesses were struggling with their apps and in some cases entirely absent thereof. ")
+              (p "It was then, in 2013, the AppBoard was born helping companies \"get a grip\" on their apps, putting all these pieces together and managing it from one place.")
               (p "Combined with our tools and workflows we aggregate and integrate all relevant mobile information so businesses can build,
                  manage and promote their mobile apps all from one location across an organization everywhere in the world.")
-              (p "Our customers tap into our wealth of mobile experience having curated connections worth over 300M USD between our customers
-                 and development companies while we continue to enhance our product with features for businesses both large and small or from
-                 the app-preneur or the app-terprise to develop quality engagements with their mobile users.")]})
+              (p "We continue to enhance our product with features for businesses both large and small or from the app-preneur or the app-terprise to develop quality engagements with their mobile users.")]})
 
 (def value-items
   [
@@ -339,7 +342,17 @@
                 )
              :linkedin "http://www.linkedin.com/pub/jeffrey-belk/3/48b/a32"
              :twitter "jkbelk"
-             }})
+             }
+
+   :michael {
+             :image "/images/about-us/Michael.png"
+             :name "Michael Ricks"
+             :position "Director"}
+   :yoshihisa {
+               :image "/images/about-us/profile-image.png"
+               :name "Yoshihisa Ueno"
+               :position "Director"
+               }})
 
 (def office-list
   [{
@@ -388,81 +401,9 @@
 (def management-team
   [:stefan :cat :tamas :eleanor :andrew :jennifer :tracy
    :rebecca :apter :ayaz :kenneth :laura :stephany])
-(def board-team [:antoine :cat :stefan])
+(def board-team [:antoine
+                 :michael :yoshihisa :cat :stefan])
 (def advisory-team [:ralph :charles :anthony :jeffrey])
-
-(def awards
-  [
-   {:logo "/images/about-us/awards/MEF2.png"}
-   {:logo "/images/about-us/awards/ME2.png"}
-   {:logo "/images/about-us/awards/the-next-women2.png"}
-   {:logo "/images/about-us/awards/red-herring2.png"}
-   {:logo "/images/about-us/awards/IDC2.png"}
-   {:logo "/images/about-us/awards/momo2.png"}
-   {:logo "/images/about-us/awards/digital-matters-music-matters2.png"}])
-
-(def partners
-  [
-   {:logo "/images/about-us/partners/Priori.png"}
-   {:logo "/images/about-us/partners/Opentracker.png"}
-   {:logo "/images/about-us/partners/Bango.png"}
-   {:logo "/images/about-us/partners/Mippin-Partner-Logo.png"}
-   {:logo "/images/about-us/partners/Oponiti-Partner-Logo.png"}
-   {:logo "/images/about-us/partners/Catalist-Partner-Logo.png"}
-   {:logo "/images/about-us/partners/Flurry.png"}
-   {:logo "/images/about-us/partners/Localytics.png"}
-   {:logo "/images/about-us/partners/Codengo.png"}])
-
-
-(defc current-bio nil)
-
-(defn bio [profile]
-  (div :id "bio" :class "ui modal"
-       (i :class "close icon")
-       (div :class "header"
-            (h1 (cell= (:name profile)))
-            (h2 (cell= (:position profile)))
-            (div (cell= [
-                         (when (:birthday-image profile)
-                           (img :class "ui medium right floated image"
-                                :src (cell= (:birthday-image profile))))
-                         (:bio profile)]))
-            )))
-
-(defn show-bio [profile]
-  (reset! current-bio profile)
-  (.modal (js/jQuery "#bio.modal") "show"))
-
-(def klout-iframe
-  (iframe
-    :src "http://widgets.klout.com/badge/CatRust"
-    :style "border:0"
-    :scrolling "no"
-    :allowTransparency "true"
-    :frameBorder "0"
-    :width "100px"
-    :height "49px"))
-
-(defn klout-widget [profile]
-  (div
-    (img :class "klout icon"
-         :src "/images/about-us/kloud-50x39.png"
-         ;:src (cell= (str "http://www.kloutwidget.com/32/"(:twitter profile)".png"))
-         )
-    (label :class "klout-score" (text (:klout profile)))
-    ))
-
-(defn social-icons [profile media]
-  (div :class media
-       (a :click #(show-bio profile) :target "_blank"
-          (i :class "user tiny icon"))
-       (if (:linkedin profile)
-         (a :href (:linkedin profile) :target "_blank"
-            (i :class "linkedin tiny icon")))
-       (if (:twitter profile)
-         (a :href (str "http://twitter.com/" (:twitter profile)) :target "_blank"
-            (i :class "twitter tiny icon"))))
-  )
 
 (defn team-member [profile]
   (let [bio-visible (cell false)
@@ -488,31 +429,7 @@
            (div :class "ui left aligned basic bio segment"
                 :toggle bio-visible
                 :style "display:none"
-                (cell= (bio)))))))
-
-(defn videos-part []
-  (let [
-        video (cell "")
-        set-void #(reset! video "")
-        show-video-popup #((reset! video "http://www.youtube.com/embed/94XtUIDwQUU?autoplay=1")
-                           (.. (js/jQuery "#videos-popup-box.modal") (modal "setting" "onHide" set-void))
-                           (.. (js/jQuery "#videos-popup-box.modal") (modal "show")))]
-    [(div :class "ui center aligned grid"
-          (div :class "ten wide column"
-               (a :click #(show-video-popup)
-                  (div :class "ui center aligned basic segment"
-                       (div :class "videos-screenshot-box"
-                            (img :class "ui image" :src "/images/about-us/video1.png"))))))
-     (div :id "videos-popup-box" :class "ui modal"
-          (i :class "close icon"
-             :click set-void)
-          (div :class "header"
-               (h1 "The World is Going Mobile")
-               (div :class "video-frame"
-                    (iframe :width "90%" :height "430px;"
-                            :src (cell= video)
-                            :frameborder "0" :allowfullscreen ""
-                            :webkitallowfullscreen "" :mozallowfullscreen ""))))]))
+                (cell= (if bio (bio))))))))
 
 (defelem team-section [{:keys [id link title members]} _]
   [(div :class "anchor" :id link)
@@ -523,40 +440,18 @@
             (loop-tpl :bindings [profile (map team members)]
                       (team-member profile)))])
 
-(defn partner [logo]
-  (div :class "column"
-       (img :src (cell= (:logo logo)))))
-
-(defn partners-section []
-  (section :id "partners"
-           (h2 :class "ui header" "Our Partners")
-           (div :class "ui three column doubling grid"
-                (loop-tpl :bindings [prt partners] (partner prt)))
-           (div :class "ui hidden divider")
-           (a :href "https://i2a.exiconglobal.com/#!node-developers-sign-up"
-              (div :class "ui tiny button" "Developers"))))
-
-(defn award [logo]
-  (div :class "award column"
-       (img :src (cell= (:logo logo)))))
-
-(defn awards-section []
-  (section :id "awards"
-           (h2 :class "ui header" "Awards and Associations")
-           (div :class "ui four column doubling grid"
-                (loop-tpl :bindings [logo awards] (award logo)))))
-
-(defelem banner-header[{:keys [header]}]
-  (let [banner-h (header banner-header-dividers)
+(defelem section-header [{:keys [header]}]
+  (let [banner-h (header section-headers)
         background (:background banner-h)
         inverted (:inverted banner-h)
         size (or (:size banner-h) "small")
-        centered (:centered banner-h)]
+        centered (:centered banner-h)
+        color (or (:color banner-h) "")]
     (div :class "ui basic segment"
          :do-class {:tertiary background :inverted inverted}
          (div :class "ui hidden divider")
          (div :class "ui page grid title sizer"
-              (h2 :class (str "ui header " size )
+              (h2 :class (str "ui header " size " " color)
                   :do-class {:center centered
                              :aligned centered
                              :inverted inverted}
@@ -601,6 +496,7 @@
            :text (:header value))
        (div :class "ui hidden divider")
        (i :class "caret down teal big icon"
+          :style "display: none"
           :toggle (cell= (= (:id value) (:id active-value-content))))
        (div :class "ui grid"
             :toggle (cell= (= (:id value) (:id active-value-content)))
@@ -613,7 +509,17 @@
                                   (li :text (cell= item)))))))))
 
 (defelem vision-values-section []
-  (div :class "ui inverted basic segment"
+  (div :id "vision-and-values" :class "ui inverted basic segment"
+       (section-header :header :vision-and-values)
+       (div :class "ui hidden divider")
+       (div :class "title sizer ui basic center aligned segment"
+            (i :class "quote left large inverted icon")
+            (span :class "ui small inverted header" "We believe ")
+            (span :class "ui large inverted header" "Everything will be appcessorized,")
+            (br)
+            (span :class "ui tiny inverted header" (i "in other words "))
+            (span :class "ui large inverted header" (i "everything will be connected to an App. "))
+            (i :class "quote right large inverted icon"))
        (div :class "ui hidden divider")
        (div :class "ui page five column stackable grid"
             (loop-tpl :bindings [value value-items]
@@ -626,7 +532,7 @@
                       (ul
                         (loop-tpl :bindings [item (cell= (:content active-value-content))]
                                   (li :text (cell= item))))))
-            )))
+       (div :class "ui hidden divider"))))
 
 (layout/main :id "about-us"
              :pagetitle "About Exicon | App Management & Analytics | Our Team"
@@ -638,11 +544,11 @@
 
              (div :id "about-us"
 
-                  (banner-header :header :top)
+                  (section-header :header :app-lifecycle)
                   (app-lifecycle-section)
                   (description-section about-exicon)
 
-                  (banner-header :header :middle)
+                  (section-header :header :get-a-grip)
                   (timeline-section)
                   (description-section timeline-description)
                   (vision-values-section)
@@ -666,12 +572,5 @@
                                 :title "Advisory Board"
                                 :members advisory-team)
 
-                  (banner-header :header :bottom)
-                  #_(div :class "anchor" :id "our-partners")
-                  #_(partners-section)
-                  #_(awards-section)
-                  #_(bio current-bio)
-                  (office-options-section)
-
-
-                  ))
+                  (section-header :header :offices)
+                  (office-options-section)))
