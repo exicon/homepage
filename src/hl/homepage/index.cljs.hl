@@ -214,28 +214,6 @@
           :sub-title "France Customer Care Process & Technology Senior Project Manager"
           :company "images/testimonials/Schneider_Electric.png"}})
 
-(def ux-list
-  [
-   {
-    :icon "bar chart"
-    :statement
-    (p "of our customers said our work was " (b "Good") ": the rest said it was " (b "Impressive"))
-    :percentage 60
-    }
-   {
-    :icon "like"
-    :statement
-    (p "of our customers said we " (b "Overdelivered"))
-    :percentage 40
-    }
-   {
-    :icon "thumbs up outline"
-    :statement
-    (p "of our respondents said they would " (b "Recommend us") " to other companies")
-    :percentage 100
-    }
-   ])
-
 (defn feature [ftr]
   (div :class  "center aligned column title sizer"
        (img :class"ui circular small centered inverted teal segment image" :src (cell= (:icon ftr)))
@@ -328,8 +306,8 @@
                       ((:desc pkg))
                       (if (:note pkg) (p :class "pkg-note" (:note pkg)))
                       (a :href (cell= (:link pkg)) "Find out more")
-                      ))))
-  )
+                      )))))
+
 (defc show-more #{})
 
 (defn testimonial-block [testimonial-name]

@@ -347,11 +347,21 @@
    :michael {
              :image "/images/about-us/Michael.png"
              :name "Michael Ricks"
-             :position "Director"}
+             :position "Director"
+             :bio
+             #(vector
+                (p "Michael is a venture/growth capital investor working with technology companies based in Asia. He primarily works from his office in Beijing, and occasionally in Menlo Park, California.")
+                (p " He is currently on boards of a few expansion stage technology companies."))
+             :linkedin "https://www.linkedin.com/pub/michael-ricks/0/b4/385"
+             }
+
    :yoshihisa {
                :image "/images/about-us/profile-image.png"
                :name "Yoshihisa Ueno"
                :position "Director"
+               :bio
+               #(vector
+                  (p " Mr. Ueno is a serial entrepreneur and venture capitalist with over 30 years of operation and industrial expertise in the US, Europe, Japan and China."))
                }})
 
 (def office-list
@@ -460,9 +470,10 @@
 
 (defelem app-lifecycle-section []
   (div :class "ui light-grey basic segment"
-       (div :class "ui hidden divider")
+       (section-header :header :app-lifecycle)
        (div :class "ui page grid description sizer"
-            (h3 :class "ui medium header" "Designed to navigate the complexity of the Mobile Ecosystem"))
+            (h3 :class "ui medium center aligned header" "Designed to navigate the complexity of the Mobile Ecosystem")
+       (div :class "ui hidden divider"))
        (div :class "ui hidden divider")
        (img :class "ui centered image" :src "/images/about-us/app-lifecycle.jpg")
        (div :class "ui hidden divider")))
@@ -544,7 +555,7 @@
 
              (div :id "about-us"
 
-                  (section-header :header :app-lifecycle)
+
                   (app-lifecycle-section)
                   (description-section about-exicon)
 

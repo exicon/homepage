@@ -296,16 +296,6 @@ i.teal.icon {
 	border-radius: 0.2em;
 }
 
-/* Page Title */
-
-#page-title {
-	background: url('/images/starter-pack-title.png') center no-repeat;
-	height: 200px;
-	background-color: #f0f0ee;
-	justify-content: center;
-	display: flex;
-	align-items: center;
-}
 
 /* Customer Quotes Section */
 .customer-quote-list h2{
