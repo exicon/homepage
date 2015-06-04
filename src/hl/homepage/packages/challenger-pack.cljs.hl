@@ -1,143 +1,145 @@
 (page "packages/challenger-pack/index.html"
-	(:require
-		[homepage.layout :as layout]
-		[homepage.top-nav :as top-nav]
-		[homepage.common :refer [registration-link sumome-popup]]
-		[homepage.packages :refer [challenger-pack]]
-		[homepage.packages.pricing :refer [pricing]]))
+      (:require
+        [homepage.layout :refer [secondary-header] :as layout]
+        [homepage.top-nav :as top-nav]
+        [homepage.common :refer [registration-link sumome-popup]]
+        [homepage.packages :refer [challenger-pack]]
+        [homepage.packages.pricing :refer [pricing]]))
+
+(def page-header {:header "Challenger pack"})
 
 (defc competitors {
-	:screenshot "/images/competitor-insights-screenshots.png"
-	:anchor "competitors"
-	:content [
-		(p "Get to Know Where You Stand")
-		(ul
-			(li "Who are the leaders in your industry?")
-			(li "How are your apps performing in a specific market?")
-			(li "Do your competitors change by country?")
-			)
-		]
-	:content2 [
-		(p "Measure the Competition")
-		(ul
-			(li "What are the particular strengths of your competitors?")
-			(li "Engagement # by monthly average users")
-			(li "Popularity by monthly and total downloads")
-			(li "App Store presence")
-			(li "Competitor performance by monthly growth and app ratings"))
-	]
-})
+                   :screenshot "/images/competitor-insights-screenshots.png"
+                   :anchor "competitors"
+                   :content [
+                             (p "Get to Know Where You Stand")
+                             (ul
+                               (li "Who are the leaders in your industry?")
+                               (li "How are your apps performing in a specific market?")
+                               (li "Do your competitors change by country?")
+                               )
+                             ]
+                   :content2 [
+                              (p "Measure the Competition")
+                              (ul
+                                (li "What are the particular strengths of your competitors?")
+                                (li "Engagement # by monthly average users")
+                                (li "Popularity by monthly and total downloads")
+                                (li "App Store presence")
+                                (li "Competitor performance by monthly growth and app ratings"))
+                              ]
+                   })
 
 (defn feature [f]
-	(div :class "ui page-details aligned two column doubling grid"
-		(div :id "page-details" :class "anchor")
-		(div :class "column"
-			(div (cell= (:content f))))
-		(div :class "column"
-			(div (cell= (:content2 f))))))
+  (div :class "ui page-details aligned two column doubling grid"
+       (div :id "page-details" :class "anchor")
+       (div :class "column"
+            (div (cell= (:content f))))
+       (div :class "column"
+            (div (cell= (:content2 f))))))
 
 (defc by-brand {
-	:screenshot "/images/circle-company.png"
-	:icon "/images/icons/by-brand.png"
-	:title "By Brand"
-	:content [
-		(p "All apps released by a single brand")
-		]
-	})
+                :screenshot "/images/circle-company.png"
+                :icon "/images/icons/by-brand.png"
+                :title "By Brand"
+                :content [
+                          (p "All apps released by a single brand")
+                          ]
+                })
 
 (defc by-country {
-	:screenshot "/images/circle-country.png"
-	:icon "/images/icons/by-country.png"
-	:title "By Country"
-	:content [
-		(p "Top 10 apps of competitors within a country")
-		]
-	})
+                  :screenshot "/images/circle-country.png"
+                  :icon "/images/icons/by-country.png"
+                  :title "By Country"
+                  :content [
+                            (p "Top 10 apps of competitors within a country")
+                            ]
+                  })
 
 (defc by-industry {
-	:screenshot "/images/circle-industry.png"
-	:icon "/images/icons/by-industry.png"
-	:title "By Industry"
-	:content [
-		(p "Top 10 apps within an industry")
-		]
-	})
+                   :screenshot "/images/circle-industry.png"
+                   :icon "/images/icons/by-industry.png"
+                   :title "By Industry"
+                   :content [
+                             (p "Top 10 apps within an industry")
+                             ]
+                   })
 
 (defn snapshots [x]
-	(div :class "column"
-		(img :src (cell= (:screenshot x)))
-		(h2 (img :class "snapshots-icon" :src (cell= (:icon x))) (text (:title x)))
-		(div (cell= (:content x))) ) )
+  (div :class "column"
+       (img :src (cell= (:screenshot x)))
+       (h2 (img :class "snapshots-icon" :src (cell= (:icon x))) (text (:title x)))
+       (div (cell= (:content x))) ) )
 
 (def challenger-options [
-	{
-		:title "Try It Once - Single AppScan"
-		:subtitle "(I'm not a fan of commitment)"
-		:price "US$500"
-		:button "Start for free now"
-		:note (p " ")
-		:link :sumome
-	}
-	{
-		:title "Challenger Pack"
-		:subtitle "Including 1 Appscan per month"
-		:price "US$99*"
-		:button "Start for free now"
-		:note (p "*per app/month for 1 to 20 apps")
-		:link (registration-link :challenger)
-	}
-])
+                         {
+                          :title "Try It Once - Single AppScan"
+                          :subtitle "(I'm not a fan of commitment)"
+                          :price "US$500"
+                          :button "Start for free now"
+                          :note (p " ")
+                          :link :sumome
+                          }
+                         {
+                          :title "Challenger Pack"
+                          :subtitle "Including 1 Appscan per month"
+                          :price "US$99*"
+                          :button "Start for free now"
+                          :note (p "*per app/month for 1 to 20 apps")
+                          :link (registration-link :challenger)
+                          }
+                         ])
 
 (defn challenger-option-tile [opts]
-	(cell-let [{:keys [title subtitle price period link button note]} opts]
-		(div :class "column"
-			(div :class "ui center aligned segment"
-				(h2 :text title)
-				(h3 :text subtitle)
-				(h4 :class "text" :text price)
-				(if (= @link :sumome)
-					(a :click #(sumome-popup) (div :class "ui button" :text button))
-					(a :href link (div :class "ui button" :text button)))
-				(div note)))))
+  (cell-let [{:keys [title subtitle price period link button note]} opts]
+            (div :class "column"
+                 (div :class "ui center aligned segment"
+                      (h2 :text title)
+                      (h3 :text subtitle)
+                      (h4 :class "text" :text price)
+                      (if (= @link :sumome)
+                        (a :click #(sumome-popup) (div :class "ui button" :text button))
+                        (a :href link (div :class "ui button" :text button)))
+                      (div note)))))
 
 (defn challenger-option-section []
-	(section :id "challenger" :class "challenger full-width-container"
-		(div :class "ui two column doubling page grid"
-			(loop-tpl :bindings [opt challenger-options]
-				(challenger-option-tile opt)))))
+  (section :id "challenger" :class "challenger full-width-container"
+           (div :class "ui two column doubling page grid"
+                (loop-tpl :bindings [opt challenger-options]
+                          (challenger-option-tile opt)))))
 
-(layout/main :id "challenger-pack"
-	:pagetitle "Challenger | Competitive Benchmarking & App Analytics"
-	:pagedescription "The Challenger Pack Is An App Management & App Logistics Pack That Includes Competitive Benchmarking Insights"
-	:pagekeywords "Competitive Benchmarkeing and App Analytics"
-	(section :class "ui one column full-width-container"
-		(div :id "page-title" :class "center aligned row"
-			(div :class "column"
-				(h1 "Challenger Pack"))))
-	(div :class "ui four column doubling page grid"
-		(section :class "twelve wide column"
-			(div :id "page-subtitle" :class "center aligned row"
-				(div :class "column"
-					(h2 "How are your apps performing against current and potential competitors?
-						Stay ahead with your monthly AppScan.")))
-			(feature @competitors)
-			(div :class "page-subtitle center aligned row"
-				(div :class "column"
-					(h2 "You can zero in with “AppScans” by")))
-			(div :class "ui center aligned three column doubling grid"
-				(div :id "snapshots" :class "anchor")
-				(div :class "row"
-					(snapshots @by-brand)
-					(snapshots @by-country)
-					(snapshots @by-industry)))
-			(div :class "page-details center aligned row"
-				(div :id "insights" :class "anchor")
-				(div :class "column"
-					(p :class "small-text"
-						"Insights are aggregated from a proprietary statistical model,
-						using publicly available App Store data and analytics of
-						opt-in partners. Your AppBoard data is never shared by Exicon."))))
-		(div :class "column" :id "pricing-pack"
-			(pricing challenger-pack)))
-	(challenger-option-section)
-)
+(layout/main
+  :id "challenger-pack"
+  :pagetitle "Challenger | Competitive Benchmarking & App Analytics"
+  :pagedescription "The Challenger Pack Is An App Management & App Logistics Pack That Includes Competitive Benchmarking Insights"
+  :pagekeywords "Competitive Benchmarkeing and App Analytics"
+
+  (secondary-header :header (:header page-header))
+
+  (div :class "ui four column doubling page grid"
+       (section :class "twelve wide column"
+                (div :id "page-subtitle" :class "center aligned row"
+                     (div :class "column"
+                          (h2 "How are your apps performing against current and potential competitors?
+                              Stay ahead with your monthly AppScan.")))
+                (feature @competitors)
+                (div :class "page-subtitle center aligned row"
+                     (div :class "column"
+                          (h2 "You can zero in with “AppScans” by")))
+                (div :class "ui center aligned three column doubling grid"
+                     (div :id "snapshots" :class "anchor")
+                     (div :class "row"
+                          (snapshots @by-brand)
+                          (snapshots @by-country)
+                          (snapshots @by-industry)))
+                (div :class "page-details center aligned row"
+                     (div :id "insights" :class "anchor")
+                     (div :class "column"
+                          (p :class "small-text"
+                             "Insights are aggregated from a proprietary statistical model,
+                             using publicly available App Store data and analytics of
+                             opt-in partners. Your AppBoard data is never shared by Exicon."))))
+       (div :class "column" :id "pricing-pack"
+            (pricing challenger-pack)))
+  (challenger-option-section)
+  )

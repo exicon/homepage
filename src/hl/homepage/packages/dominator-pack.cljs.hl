@@ -1,134 +1,136 @@
 (page "packages/dominator-pack/index.html"
-	(:require
-		[homepage.layout :as layout]
-		[homepage.top-nav :as top-nav]
-		[homepage.common :refer [registration-button registration-link sumome-popup]]
-		[homepage.packages :refer [dominator-pack starter-pack challenger-pack]]
-		[homepage.packages.pricing :refer [pricing]]))
+      (:require
+        [homepage.layout :refer [secondary-header] :as layout]
+        [homepage.top-nav :as top-nav]
+        [homepage.common :refer [registration-button registration-link sumome-popup]]
+        [homepage.packages :refer [dominator-pack starter-pack challenger-pack]]
+        [homepage.packages.pricing :refer [pricing]]))
+
+
+(def page-header {:header "Dominator pack"})
 
 (defc app-store-distribution {
-	:image-side :right
-	:screenshot "/images/app-distribution.png"
-	:icon "/images/packages/dominatorpack.png"
-	:title "App Store Distribution"
-	:anchor "app-store-distribution"
-	:content [
-		(p "Increase the chances of your app being")
-		(ul
-			(li "Downloaded by up to "
-				(span :class "text" (b "200%")) " more")
-			(li "Featured by up to "
-				(span :class "text" (b "20")) " times more"
-				(br)(br)(br)))
-		(registration-button :dominator "Start for free now")
-		]
-	})
+                              :image-side :right
+                              :screenshot "/images/app-distribution.png"
+                              :icon "/images/packages/dominatorpack.png"
+                              :title "App Store Distribution"
+                              :anchor "app-store-distribution"
+                              :content [
+                                        (p "Increase the chances of your app being")
+                                        (ul
+                                          (li "Downloaded by up to "
+                                              (span :class "text" (b "200%")) " more")
+                                          (li "Featured by up to "
+                                              (span :class "text" (b "20")) " times more"
+                                              (br)(br)(br)))
+                                        (registration-button :dominator "Start for free now")
+                                        ]
+                              })
 
 (defc marketplace {
-	:image-side :left
-	:screenshot "/images/Marketplace.png"
-	:icon "/images/icons/marketplace.png"
-	:title "Marketplace"
-	:anchor "marketplace"
-	:content [
-		(p "Stand out from the crowd")
-		(ul
-			(li "Increase the discoverability of your Apps and APIs across your customers,
-			partners, suppliers and your organization with your own white labelled marketplace")
-			(li "Accessible from " (em "your own") " company website showcasing " (em "your own") " products"
-				(br)(br)(br)))
-		(registration-button :dominator "Start for free now")
-		]
-	})
+                   :image-side :left
+                   :screenshot "/images/Marketplace.png"
+                   :icon "/images/icons/marketplace.png"
+                   :title "Marketplace"
+                   :anchor "marketplace"
+                   :content [
+                             (p "Stand out from the crowd")
+                             (ul
+                               (li "Increase the discoverability of your Apps and APIs across your customers,
+                                   partners, suppliers and your organization with your own white labelled marketplace")
+                               (li "Accessible from " (em "your own") " company website showcasing " (em "your own") " products"
+                                   (br)(br)(br)))
+                             (registration-button :dominator "Start for free now")
+                             ]
+                   })
 
 (def distribution-options [
-	{
-		:title "Try It Once - Single App Distribution"
-		:subtitle "(I’m not a fan of commitment)"
-		:price "US$2500"
-		:period ""
-		:button "Start for free now"
-		:note (p " ")
-		:link :sumome
-	}
-	{
-		:title "Dominator Pack"
-		:subtitle "Including distribution onto 20 app stores"
-		:price "US$159*"
-		:period ""
-		:button "Start for free now"
-		:note (p "*per app/month for 1 to 50 apps")
-		:link (registration-link :dominator)
-	}
-	])
+                           {
+                            :title "Try It Once - Single App Distribution"
+                            :subtitle "(I’m not a fan of commitment)"
+                            :price "US$2500"
+                            :period ""
+                            :button "Start for free now"
+                            :note (p " ")
+                            :link :sumome
+                            }
+                           {
+                            :title "Dominator Pack"
+                            :subtitle "Including distribution onto 20 app stores"
+                            :price "US$159*"
+                            :period ""
+                            :button "Start for free now"
+                            :note (p "*per app/month for 1 to 50 apps")
+                            :link (registration-link :dominator)
+                            }
+                           ])
 
 (defn distribution-option-tile [opts]
-	(cell-let [{:keys [title subtitle price period link button note]} opts]
-		(div :class "column"
-			(div :class "ui center aligned segment"
-				(h2 :text title)
-				(h3 :text subtitle)
-				(h4 :class "text" :text price)
-				(if (= @link :sumome)
-					(a :click #(sumome-popup) (div :class "ui button" :text button))
-					(a :href link (div :class "ui button" :text button)))
-				(div note)))))
+  (cell-let [{:keys [title subtitle price period link button note]} opts]
+            (div :class "column"
+                 (div :class "ui center aligned segment"
+                      (h2 :text title)
+                      (h3 :text subtitle)
+                      (h4 :class "text" :text price)
+                      (if (= @link :sumome)
+                        (a :click #(sumome-popup) (div :class "ui button" :text button))
+                        (a :href link (div :class "ui button" :text button)))
+                      (div note)))))
 
 (defn feature [f]
-	(if (= (:image-side f) :left)
+  (if (= (:image-side f) :left)
 
-		(div :class "ui page-details middle aligned two column doubling grid"
-			(div :class "row"
-			(div :id (cell= (:anchor f)) :class "anchor")
-			(div :class "column"
-				(img :src (cell= (:screenshot f))))
-			(div :class "column"
-				(img :class "features-icon" :src (cell= (:icon f)))
-				(h2 (text (:title f)))
-				(div (cell= (:content f))))))
+    (div :class "ui page-details middle aligned two column doubling grid"
+         (div :class "row"
+              (div :id (cell= (:anchor f)) :class "anchor")
+              (div :class "column"
+                   (img :src (cell= (:screenshot f))))
+              (div :class "column"
+                   (img :class "features-icon" :src (cell= (:icon f)))
+                   (h2 (text (:title f)))
+                   (div (cell= (:content f))))))
 
-		(div :class "ui page-details middle aligned two column doubling grid"
-			(div :class "row"
-			(div :id (cell= (:anchor f)) :class "anchor")
-			(div :class "column"
-				(img :class "features-icon" :src (cell= (:icon f)))
-				(h2 (text (:title f)))
-				(div (cell= (:content f))))
-			(div :class "column"
-				(img :src (cell= (:screenshot f))))))))
+    (div :class "ui page-details middle aligned two column doubling grid"
+         (div :class "row"
+              (div :id (cell= (:anchor f)) :class "anchor")
+              (div :class "column"
+                   (img :class "features-icon" :src (cell= (:icon f)))
+                   (h2 (text (:title f)))
+                   (div (cell= (:content f))))
+              (div :class "column"
+                   (img :src (cell= (:screenshot f))))))))
 
 (defelem pricing-features [{:keys [starter challenger dominator]}]
 		[(div (cell= (nth (:content starter)2)))
-		(div (cell= (nth (:content challenger)4)))
-		(div (cell= (nth (:content dominator)4)))]
-	)
+   (div (cell= (nth (:content challenger)4)))
+   (div (cell= (nth (:content dominator)4)))]
+  )
 
-(layout/main :id "dominator-pack"
-	:pagetitle "Dominator | App Distribution onto Global Appstores"
-	:pagedescription "The Dominator Pack Is An App Management  & Logistics Pack That Includes Competitive Benchmarking & Appstore Distribution"
-	:pagekeywords "App Distribution, Appstores"
-	(header :class "ui one column full-width-container"
-		(div  :id "page-title" :class "center aligned row"
-			(div :class "column"
-				(h1 "Dominator Pack") ) )
-	)
-	(div :class "ui four column doubling page grid"
-	(section :id "how-to-find" :class "twelve wide column"
-		(div :id "page-subtitle" :class "center aligned row"
-			(div :class "column"
-				(h2 "How is your target audience going to find your apps?")
-				) )
+(layout/main
+  :id "dominator-pack"
+  :pagetitle "Dominator | App Distribution onto Global Appstores"
+  :pagedescription "The Dominator Pack Is An App Management  & Logistics Pack That Includes Competitive Benchmarking & Appstore Distribution"
+  :pagekeywords "App Distribution, Appstores"
 
-		(feature @app-store-distribution)
-		(feature @marketplace)
-	)
+  (secondary-header :header (:header page-header))
 
-	(div :class "column" :id "pricing-pack"
-		(pricing dominator-pack)))
+  (div :class "ui four column doubling page grid"
+       (section :id "how-to-find" :class "twelve wide column"
+                (div :id "page-subtitle" :class "center aligned row"
+                     (div :class "column"
+                          (h2 "How is your target audience going to find your apps?")
+                          ) )
 
-	(section :class "distribution full-width-container"
-	(div :id "distribution" :class "anchor")
-		(div :class "ui two column doubling page grid"
-			(loop-tpl :bindings [opt distribution-options]
-				(distribution-option-tile opt) ) )
-	) )
+                (feature @app-store-distribution)
+                (feature @marketplace)
+                )
+
+       (div :class "column" :id "pricing-pack"
+            (pricing dominator-pack)))
+
+  (section :class "distribution full-width-container"
+           (div :id "distribution" :class "anchor")
+           (div :class "ui two column doubling page grid"
+                (loop-tpl :bindings [opt distribution-options]
+                          (distribution-option-tile opt) ) )
+           ) )
