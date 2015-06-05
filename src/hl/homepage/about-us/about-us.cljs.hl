@@ -1,6 +1,6 @@
 (page "about-us/index.html"
       (:require
-        [homepage.layout :refer [secondary-header] :as layout])
+        [homepage.layout :refer [secondary-header section-header] :as layout])
       (:require-macros [config :refer [timeline-src]]))
 
 (def page-header {:header "About Us"
@@ -9,23 +9,22 @@
 (def section-headers
   {
    :app-lifecycle {
-         :header "Providing you with the tools to mobilize your business"
-         :centered true}
+                   :header "Providing you with the tools to mobilize your business"
+                   :centered true}
    :get-a-grip {
-            :header "Get a grip on your [apps]"
-            :background true
-            :inverted true
-            }
+                :header "Get a grip on your [apps]"
+                :background true
+                :inverted true
+                }
    :vision-and-values {
                        :header "Our Vision and Values"
                        :centered true
                        :size "medium"
                        :color "gray"}
    :offices {
-            :header "Let us feed your [app]etite"
-            :background true
-            :size "medium"
-            :centered true}}
+             :header "Let us feed your [app]etite"
+             :size "medium"
+             :centered true}}
   )
 
 (def about-exicon
@@ -203,7 +202,7 @@
              :position "Onboarding"
              :bio
              #(vector
-                (p "Eleanor leads engagement and on-boarding services for global and local clients.")
+                (p "Eleanor leads engagement and on-boarding services for global and local customers.")
                 (p "She has over 10 years international experience in project and programme management for corporates and startups and is based in Hong Kong"))
              :linkedin "https://www.linkedin.com/in/eleanorcherry"
              }
@@ -398,17 +397,14 @@
        (div :class "ui hidden divider")))
 
 (defn office-options-section []
-  (section
+  (section :class "ui light-grey basic segment"
     :id "office-list"
+    (section-header :header (:offices section-headers))
     (div :class "ui three column stackable page grid"
-         (div :class "ui title sizer"
-              (div :class "ui hidden divider")
-              (h2 :class "ui medium center aligned header" "Where we are")
-              (div :class "ui hidden divider"))
          (loop-tpl :bindings [opt office-list]
                    (office-options opt)))))
 
-(def management-team
+(def exicon-team
   [:stefan :cat :tamas :eleanor :andrew :jennifer :tracy
    :rebecca :apter :ayaz :kenneth :laura :stephany])
 (def board-team [:antoine
@@ -441,39 +437,47 @@
                 :style "display:none"
                 (cell= (if bio (bio))))))))
 
-(defelem team-section [{:keys [id link title members]} _]
-  [(div :class "anchor" :id link)
-   (section :class "ui page three column doubling stackable grid"
-            (div :class "ui hidden divider")
-            (h2 :class "ui dividing header" title)
+(defelem team-menu [{:keys [active-team is-mobile]} ]
+  [
+   (div :class "ui hidden divider")
+   (div :class "ui large text fluid menu title sizer"
+        (a :class "item"
+           :click #(reset! active-team "exicon-team")
+           (span :class "ui medium header"
+                 :do-class (cell= {:teal (= active-team "exicon-team")})
+                 "EXICON TEAM"))
+        (div :class "item"
+             :toggle (not is-mobile)
+             (span :class "ui medium header" "|"))
+        (a :class "item"
+           :click #(reset! active-team "advisory-team")
+           (span :class "ui medium header"
+                 :do-class (cell= {:teal (= active-team "advisory-team")})
+                 "ADVISORY BOARD MEMBERS"))
+        (div :class "item"
+             :toggle (not is-mobile)
+             (span :class "ui medium header" "|"))
+        (a :class "item"
+           :click #(reset! active-team "board-team")
+           (span :class "ui medium header"
+                 :do-class (cell= {:teal (= active-team "board-team")})
+                 "BOARD MEMBERS")))])
+
+(defelem team-section [{:keys [id link title members active-team]} _]
+   (div :class "ui page three column doubling stackable grid"
+            :do-class (cell= {:visible (= active-team id)
+                              :invisible (not= active-team id)})
+            :style "display: none"
             (div :class "ui hidden divider")
             (loop-tpl :bindings [profile (map team members)]
-                      (team-member profile)))])
-
-(defelem section-header [{:keys [header]}]
-  (let [banner-h (header section-headers)
-        background (:background banner-h)
-        inverted (:inverted banner-h)
-        size (or (:size banner-h) "small")
-        centered (:centered banner-h)
-        color (or (:color banner-h) "")]
-    (div :class "ui basic segment"
-         :do-class {:tertiary background :inverted inverted}
-         (div :class "ui hidden divider")
-         (div :class "ui page grid title sizer"
-              (h2 :class (str "ui header " size " " color)
-                  :do-class {:center centered
-                             :aligned centered
-                             :inverted inverted}
-                  :text (:header banner-h)))
-         (div :class "ui hidden divider"))))
+                      (team-member profile))))
 
 (defelem app-lifecycle-section []
   (div :class "ui light-grey basic segment"
-       (section-header :header :app-lifecycle)
+       (section-header :header (:app-lifecycle section-headers))
        (div :class "ui page grid description sizer"
             (h3 :class "ui medium center aligned header" "Designed to navigate the complexity of the Mobile Ecosystem")
-       (div :class "ui hidden divider"))
+            (div :class "ui hidden divider"))
        (div :class "ui hidden divider")
        (img :class "ui centered image" :src "/images/about-us/app-lifecycle.jpg")
        (div :class "ui hidden divider")))
@@ -487,12 +491,25 @@
                  (div :class "ui hidden divider")))))
 
 (defelem timeline-section []
-  [(div :class "title sizer ui page grid"
-        (div :class "ui hidden divider")
-        (h2 :class "ui medium center aligned header" "How We Got Here"))
-   (div :class "ui hidden divider")
-   (iframe :src (timeline-src)
-           :width "100%" :height "650" :frameborder "0" )])
+  (let [history-visible (cell false)
+        debug (println history-visible)]
+    [(div :class "title sizer ui page grid"
+          (div :class "ui hidden divider")
+          (h2 :class "ui medium center aligned header" "How We Got Here"))
+     (div :class "ui hidden divider")
+     (iframe :src (timeline-src)
+             :width "100%" :height "650" :frameborder "0" )
+
+     (div :class "ui page grid"
+          (div :class "centered row"
+          (div :class "ui medium button"
+               :click #(swap! history-visible not)
+               "Exicon's history"))
+
+          (div :class "sixteen wide column"
+               :toggle (cell= history-visible)
+               (div :class "description sizer" (:content timeline-description))
+               (div :class "ui hidden divider")))]))
 
 (defc active-value-content nil)
 
@@ -521,14 +538,14 @@
 
 (defelem vision-values-section []
   (div :id "vision-and-values" :class "ui inverted basic segment"
-       (section-header :header :vision-and-values)
+       (section-header :header (:vision-and-values section-headers))
        (div :class "ui hidden divider")
        (div :class "title sizer ui basic center aligned segment"
             (i :class "quote left large inverted icon")
             (span :class "ui small inverted header" "We believe ")
             (span :class "ui large inverted header" "Everything will be appcessorized,")
             (br)
-            (span :class "ui tiny inverted header" (i "in other words "))
+            (span :class "ui tiny inverted header" (i "a world where "))
             (span :class "ui large inverted header" (i "everything will be connected to an App. "))
             (i :class "quote right large inverted icon"))
        (div :class "ui hidden divider")
@@ -543,45 +560,50 @@
                       (ul
                         (loop-tpl :bindings [item (cell= (:content active-value-content))]
                                   (li :text (cell= item))))))
-       (div :class "ui hidden divider"))))
+            (div :class "ui hidden divider"))))
 
-(layout/main :id "about-us"
-             :pagetitle "About Exicon | App Management & Analytics | Our Team"
-             :pagedescription "Our Mission And The Road That Got Us Here As Well As The Team That Makes Exicon Tick."
-             :pagekeywords "Exicon, App Management, Analytics"
+(layout/main
+  :pagetitle "About Exicon | App Management & Analytics | Our Team"
+  :pagedescription "Our Mission And The Road That Got Us Here As Well As The Team That Makes Exicon Tick."
+  :pagekeywords "Exicon, App Management, Analytics"
 
-             (secondary-header :header (:header page-header)
-                               :sub-header (or (:sub-header page-header) nil))
+  (secondary-header :header (:header page-header)
+                    :sub-header (or (:sub-header page-header) nil)
+                    :page "about-us")
 
-             (div :id "about-us"
+  (div :id "about-us"
 
+       (app-lifecycle-section)
+       (description-section about-exicon)
 
-                  (app-lifecycle-section)
-                  (description-section about-exicon)
+       (div :class "title sizer"
+            (div :class "ui hidden divider")
+            (h2 :class "ui medium center aligned header" "Who We Are"))
+       (let [active-team (cell "exicon-team")]
+         [(section :id "team-section"
+          (div :class "ui page center aligned grid"
+               (div :class "computer tablet only row"
+                    (team-menu :active-team active-team :is-mobile false))
+               (div :class "mobile only row"
+                    (team-menu :active-team active-team :is-mobile true)))
+          (team-section :id "exicon-team"
+                       :link "exicon-team"
+                       :title "Exicon Team"
+                       :members exicon-team
+                       :active-team active-team)
 
-                  (section-header :header :get-a-grip)
-                  (timeline-section)
-                  (description-section timeline-description)
-                  (vision-values-section)
+         (team-section :id "board-team"
+                       :link "our-board"
+                       :title "Our Board"
+                       :members board-team
+                       :active-team active-team)
 
-                  (div :class "title sizer"
-                       (div :class "ui hidden divider")
-                       (h2 :class "ui medium center aligned header" "Who We Are"))
+         (team-section :id "advisory-team"
+                       :link "advisory-board"
+                       :title "Advisory Board"
+                       :members advisory-team
+                       :active-team active-team))])
 
-                  (team-section :id "management-team"
-                                :link "management-team"
-                                :title "Management Team"
-                                :members management-team)
-
-                  (team-section :id "board-team"
-                                :link "our-board"
-                                :title "Our Board"
-                                :members board-team)
-
-                  (team-section :id "advisory-team"
-                                :link "advisory-board"
-                                :title "Advisory Board"
-                                :members advisory-team)
-
-                  (section-header :header :offices)
-                  (office-options-section)))
+       (vision-values-section)
+       (timeline-section)
+       (office-options-section)))

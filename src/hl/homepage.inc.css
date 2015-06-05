@@ -21,6 +21,11 @@
 	text-align: center;
 }
 
+#page-title.about-us{
+	background: url('/images/about-us/header-bg.jpg') center no-repeat;
+	height: 470px;
+}
+
 #intro {
 	background: url('/images/landing-page/header.jpg') center no-repeat;
 	background-color: #F0F0EE;
@@ -51,6 +56,14 @@
 
 #vision-and-values span.header{
 	font-weight: 400;
+}
+
+#team-section .ui.stackable.grid.invisible{
+	display: none !important;
+}
+
+#team-section .ui.stackable.grid.visible {
+	display: block !important;
 }
 
 h3.ui.header, h4.ui.header{
