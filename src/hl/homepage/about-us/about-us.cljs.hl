@@ -428,7 +428,7 @@
                    :target "_blank"
                    :toggle linkedin
                    (i :class "linkedin square large teal icon"))
-                (a :href (str "https://twitter.com/" twitter)
+                (a :href (cell= (str "https://twitter.com/" twitter))
                    :toggle twitter
                    :target "_blank"
                    (i :class "twitter square large teal icon")))
