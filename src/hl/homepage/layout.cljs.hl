@@ -15,6 +15,25 @@
     		(if sub-header
         	(h2 :class "ui medium center aligned header" :text sub-header)))))
 
+(defelem section-header [{:keys [header] :as attr} kids]
+  (let [
+        background (:background header)
+        inverted (:inverted header)
+        size (or (:size header) "small")
+        centered (:centered header)
+        color (or (:color header) "")
+        ]
+    (div :class "ui basic segment"
+         :do-class {:tertiary background :inverted inverted}
+         (div :class "ui title sizer"
+              (h2 :class (str "ui header " size " " color)
+                  :do-class {:center centered
+                             :aligned centered
+                             :inverted inverted}
+                  :text (:header header)))
+         kids
+         (div :class "ui hidden divider"))))
+
 (defn subscribe-stick-form [subscribe-click]
 	[
 		(div :id "subscribe-stick-layer"
