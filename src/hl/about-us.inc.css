@@ -2,7 +2,7 @@
 	background: rgb(245, 245, 245);
 }
 
-#about-us .circular.button {
+#about-us #vision-and-values .circular.button {
 	width: 120px;
 	height: 120px;
 	display: flex;
@@ -16,12 +16,26 @@
 	max-width: 115px;
 	z-index: 9;
 	cursor: pointer;
-	}
+}
 
-	#about-us .bio.image:hover{
-		opacity: 0.6;
-	}
+#about-us .bio.image:hover{
+	opacity: 0.6;
+}
 
 #about-us .bio.segment{
 	padding: 0;
+}
+
+#about-exicon .fade-out{
+	opacity: 0;
+	transition: opacity .25s ease-in-out;
+	-moz-transition: opacity .25s ease-in-out;
+	-webkit-transition: opacity .25s ease-in-out;
+}
+
+#about-exicon .fade-in{
+	opacity: 1;
+	transition: opacity .25s ease-in-out;
+	-moz-transition: opacity .25s ease-in-out;
+	-webkit-transition: opacity .25s ease-in-out;
 }

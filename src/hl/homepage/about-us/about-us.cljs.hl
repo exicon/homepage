@@ -13,8 +13,7 @@
                    :centered true}
    :get-a-grip {
                 :header "Get a grip on your [apps]"
-                :background true
-                :inverted true
+                :color "orange"
                 }
    :vision-and-values {
                        :header "Our Vision and Values"
@@ -29,30 +28,30 @@
 
 (def about-exicon
   { :content [
-              (p "At Exicon we believe in the power of mobile as a way of connecting companies with users.")
-              (p "We know firsthand how long it takes to understand this highly fragmented industry and
-                 how difficult it is for those not experienced in mobile to feel truly confident about what
-                 decisions to make, and how to make them. ")
-              (p "Our platform was therefore designed to help companies bring together all of their mobile
-                 efforts while empowering their teams to be successful.")
-              (p "The key problems that we aim to solve are:")
-              (ul
-                (li (b "\"How to find a great developer for my mobile project\"")(br)
-                    "not just a list of the top developers but the best development companies for my idea,
-                    my budget, my location, my industry and the features I want ")
-                (li (b "\"How do I manage all the moving parts of mobile\"")(br)
-                    "as marketing and product divisions across organisations run to meet demand for mobile
+              (p "At Exicon we believe in the power of mobile as a way of connecting companies with users.
+                 The AppBoard is a software platform enabling you to manage the relationships with mobile users.")
+              (p "The key problems that we aim to solve are:")]})
+
+(def about-exicon-slider
+  {
+   :build {
+           :id :build
+           :header "\"How to find a great developer for my mobile project\""
+           :description "Not just a list of the top developers but the best development companies for my idea,
+                    my budget, my location, my industry and the features I want "}
+   :manage {
+            :id :manage
+            :header "\"How do I manage all the moving parts of mobile\""
+            :description "As marketing and product divisions across organisations run to meet demand for mobile
                     there is a need to address the shortage of brand standards, IP protection, best of breed
-                    practices, the enormous duplication of effort and wasted resources.")
-                (li (b "\"How do I address mobile as a channel to my customers and not simply a campaign\"")(br)
-                    "not just the design of your mobile solution but also how you get in front of your users
-                    while continuing to engage going forward."))
-              (p "The AppBoard is a \"virtual advisor\", sitting at your shoulder, helping you make smart
-                 decisions and guiding you through the entire journey -
-                 from Build, to Manage, to Promote - the key stages
-                 required to building quality connections with mobile users.")
-              (h2 :class "ui medium header" "Be the mobile expert")
-              ]})
+                    practices, the enormous duplication of effort and wasted resources."
+            }
+   :promote {
+             :id :promote
+             :header"\"How do I address mobile as a channel to my customers and not simply a campaign\""
+             :description "Not just the design of your mobile solution but also how you get in front of your users
+                    while continuing to engage going forward."}})
+
 
 (def timeline-description
   { :content [
@@ -473,7 +472,7 @@
                       (team-member profile))))
 
 (defelem app-lifecycle-section []
-  (div :class "ui light-grey basic segment"
+  (div :class "ui light-grey basic vertical segment"
        (section-header :header (:app-lifecycle section-headers))
        (div :class "ui page grid description sizer"
             (h3 :class "ui medium center aligned header" "Designed to navigate the complexity of the Mobile Ecosystem")
@@ -482,17 +481,55 @@
        (img :class "ui centered image" :src "/images/about-us/app-lifecycle.jpg")
        (div :class "ui hidden divider")))
 
-(defelem description-section [section]
-  (div :class "ui basic segment"
-       (div :class "ui page grid"
-            (div :class "sixteen wide column"
-                 (div :class "ui hidden divider")
-                 (div :class "description sizer" (:content section))
-                 (div :class "ui hidden divider")))))
+(defelem about-exicon-section []
+  (let [active-content (cell (:build about-exicon-slider))
+        build? (cell= (= :build (:id active-content)))
+        manage? (cell= (= :manage (:id active-content)))
+        promote? (cell= (= :promote (:id active-content)))
+        next-click-handler #(if @build?
+                              (reset! active-content (:manage about-exicon-slider))
+                              (reset! active-content (:promote about-exicon-slider)))
+        prev-click-handler #(if (= :promote (:id @active-content))
+                              (reset! active-content (:manage about-exicon-slider))
+                              (reset! active-content (:build about-exicon-slider)))
+        ]
+    (div :id "about-exicon" :class "ui tertiary basic vertical segment"
+         (div :class "ui page grid"
+              (div :class "row"
+                   (div :class "ui hidden divider")
+                   (div :class "description sizer" (:content about-exicon))
+                   (div :class "ui hidden divider"))
+              (div :class "description sizer centered row"
+                   (h2 :class "ui large orange header"
+                       :text (cell= (:header active-content))))
+              (div :class "three column centered row"
+                   (a :class "two wide description sizer column"
+                      :click prev-click-handler
+                        (i :class "left chevron black icon"
+                           :toggle (cell= (not build?))))
+                   (div :class "twelve wide description sizer column"
+                        (p :text (cell= (:description active-content))))
+                   (a :class "two wide description sizer right aligned column"
+                      :click next-click-handler
+                        (i :class "right chevron black icon"
+                           :toggle (cell= (not promote?)))))
+              (div :class "centered row"
+                   (div :class "ui circular orange button"
+                        :do-class (cell= {:inverted (not build?)})
+                        :click #(reset! active-content (:build about-exicon-slider))
+                        "1")
+                   (div :class "ui circular orange button"
+                        :do-class (cell= {:inverted (not manage?)})
+                        :click #(reset! active-content (:manage about-exicon-slider))
+                        "2")
+                   (div :class "ui circular orange button"
+                        :do-class (cell= {:inverted (not promote?)})
+                        :click #(reset! active-content (:promote about-exicon-slider))
+                        "3")))
+         (div :class "ui hidden divider"))))
 
 (defelem timeline-section []
-  (let [history-visible (cell false)
-        debug (println history-visible)]
+  (let [history-visible (cell false)]
     [(div :class "title sizer ui page grid"
           (div :class "ui hidden divider")
           (h2 :class "ui medium center aligned header" "How We Got Here"))
@@ -574,7 +611,7 @@
   (div :id "about-us"
 
        (app-lifecycle-section)
-       (description-section about-exicon)
+       (about-exicon-section)
 
        (div :class "title sizer"
             (div :class "ui hidden divider")

@@ -90,17 +90,6 @@ h3.ui.header, h4.ui.header{
 	color:#aaa;
 }
 
-
-.ui.black.button {
-	background-color: black !important;
-	color: white !important;
-}
-
-.ui.black.button:hover{
-	color: white !important;
-	box-shadow:inset 0px 0px 0px 1px white;
-}
-
 .feature-advantages {
 	margin: 13% 0;
 }

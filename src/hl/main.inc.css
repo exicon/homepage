@@ -73,8 +73,8 @@ i.teal.icon {
 	text-transform: none !important;
 	font-weight: 400;
 	letter-spacing: 0.03em;
-	background-color: #59d2d9 !important;
-	color: white !important;
+	background-color: #59d2d9;
+	color: white;
 	background-image: none !important;
 }
 .dark-green.ui.button{
@@ -122,51 +122,6 @@ i.teal.icon {
 	width: 2em;
 	text-align: center;
 	line-height: 1em;
-}
-
-/* Hover state of the Buttons*/
-.ui.button.dark-green:hover{
-	background-image: none;
-	background-color: transparent !important;
-	color: #379aa6 ;
-	box-shadow:inset 0px 0px 0px 1px #379aa6;
-}
-.ui.button:hover{
-	background-image: none;
-	background-color: transparent !important;
-	color: #59d2d9 !important;
-	box-shadow:inset 0px 0px 0px 1px #59d2d9;
-}
-.ui.button.white:hover{
-	color: white !important;
-	box-shadow:inset 0px 0px 0px 1px white;
-}
-.ui.button.gray:hover{
-	background-image: none;
-	background-color: transparent !important;
-	color: #cccccc ;
-	box-shadow:inset 0px 0px 0px 1px #cccccc;
-}
-.ui.inverted.white.button:hover{
-	box-shadow:inset 0px 0px 0px 1px #59d2d9;
-	background-color: #59d2d9 !important;
-	color: white;
-}
-.ui.inverted.button:hover{
-	background-color: #59d2d9 !important;
-	color: white;
-}
-.ui.inverted.dark-green.button:hover{
-	background-color: #379aa6 !important;
-	color: white;
-}
-.ui.inverted.gray.button:hover{
-	background-color: #cccccc !important;
-	color: white;
-}
-.ui.inverted.active.button{
-	background-color: #59d2d9 !important;
-	color: white !important;
 }
 
 /* Top Navigation */
