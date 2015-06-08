@@ -9,7 +9,7 @@
 (def section-headers
   {
    :app-lifecycle {
-                   :header "Providing you with the tools to mobilize your business"
+                   :header (span "Providing you with the tools to " (i "mobilize ")  "your business")
                    :centered true}
    :get-a-grip {
                 :header "Get a grip on your [apps]"

@@ -31,7 +31,7 @@
                   :do-class {:center centered
                              :aligned centered
                              :inverted inverted}
-                  :text (:header header)))
+                  (:header header)))
          kids
          (div :class "ui hidden divider"))))
 
