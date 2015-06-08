@@ -502,7 +502,7 @@
 
     (div :id "about-exicon" :class "ui tertiary basic vertical segment"
          (div :class "ui page grid"
-              (div :class "row"
+              (div :class "sixteen wide column"
                    (div :class "ui hidden divider")
                    (div :class "description sizer" (:content about-exicon))
                    (div :class "ui hidden divider"))

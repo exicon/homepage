@@ -1,18 +1,27 @@
 (ns homepage.top-nav
   (:require-macros [config :refer [appboard-url]]))
 
-(def features-submenu-items [
-                             {:id :feature-1 :name "Starter Pack" :url "/packages/starter-pack"}
-                             {:id :feature-2 :name "Challenger Pack" :url "/packages/challenger-pack"}
-                             {:id :feature-3 :name "Dominator Pack" :url "/packages/dominator-pack"}
-                             {:id :feature-4 :name "Amplifier Pack" :url "/packages/amplifier-pack"}
-                             ])
+(def features-submenu-items
+  [
+   {:id :feature-1 :name "Starter Pack" :url "/packages/starter-pack"}
+   {:id :feature-2 :name "Challenger Pack" :url "/packages/challenger-pack"}
+   {:id :feature-3 :name "Dominator Pack" :url "/packages/dominator-pack"}
+   {:id :feature-4 :name "Amplifier Pack" :url "/packages/amplifier-pack"}
+   ])
 
-(def resources-submenu-items [
-                              { :id :starter :name "Research" :url "/reports/"}
-                              { :id :dominator :name "Videos" :url "/videos/"}
-                              { :id :amplifier :name "Presentations" :url "/presentations/"}
-                              ])
+(def resources-submenu-items
+  [
+   { :id :starter :name "Research" :url "/reports/"}
+   { :id :dominator :name "Videos" :url "/videos/"}
+   { :id :amplifier :name "Presentations" :url "/presentations/"}
+   ])
+
+(def products-submenu-items
+  [
+   { :id :appboard :name "AppBoard" :url "/appboard/"}
+   { :id :appbuilder :name "App Builder" :url "/app-builder/"}
+   { :id :apiaxle :name "API Axle" :url "/apiaxle/"}
+   ])
 
 (defc clicked-main-menu-item nil)
 
@@ -29,11 +38,12 @@
 
 (def main-menu-items
   {
+   :products{:name "Products" :submenu products-submenu-items}
    :features {:name "Packages" :submenu features-submenu-items }
    :pricing {:name "Pricing" :url "/appboard/pricing" }
    :blog {:name "Blog" :url "http://blog.exiconglobal.com/corp/" }
    :resources {:name "Resources" :submenu resources-submenu-items}
-   :app-builder{:name "App Builder" :url "/app-builder/"}
+   :about-us {:name "About Us" :url "/about-us"}
    })
 
 (defn sub-menu [items]
@@ -90,12 +100,12 @@
                     :hidden-nav (not is-fixed)}
          (div :class "ui equal height computer only row"
               (div :class "four wide column"
-                   (div :class "ui basic segment"
-                        (a :href "/"
-                           (img :class "ui small image" :src "/images/exicon-logo.png" :alt "Exicon Global Ltd."))))
+                   (a :href "/"
+                      (img :class "ui small image top-nav-icon"
+                           :src "/images/exicon-logo.png" :alt "Exicon Global Ltd.")))
               (div :class "twelve wide column"
                    (div :class "ui basic segment"
-                        (div :class "ui borderless large menu"
+                        (div :class "ui borderless fluid large menu"
                              (div :class "menu"
                                   (main-menu
                                     main-menu-items
@@ -118,5 +128,4 @@
                         (signup-and-login-mobile)
                         (mobile-main-menu
                           main-menu-items
-                          clicked-main-menu-item))))
-         )))
+                          clicked-main-menu-item)))))))

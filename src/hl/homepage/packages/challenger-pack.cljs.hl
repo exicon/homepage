@@ -8,7 +8,7 @@
 
 (def page-header {:header "Challenger pack"})
 
-(defc competitors {
+(def competitors {
                    :screenshot "/images/competitor-insights-screenshots.png"
                    :anchor "competitors"
                    :content [
@@ -34,11 +34,11 @@
   (div :class "ui page-details aligned two column doubling grid"
        (div :id "page-details" :class "anchor")
        (div :class "column"
-            (div (cell= (:content f))))
+            (div (:content f)))
        (div :class "column"
-            (div (cell= (:content2 f))))))
+            (div (:content2 f)))))
 
-(defc by-brand {
+(def by-brand {
                 :screenshot "/images/circle-company.png"
                 :icon "/images/icons/by-brand.png"
                 :title "By Brand"
@@ -47,7 +47,7 @@
                           ]
                 })
 
-(defc by-country {
+(def by-country {
                   :screenshot "/images/circle-country.png"
                   :icon "/images/icons/by-country.png"
                   :title "By Country"
@@ -56,7 +56,7 @@
                             ]
                   })
 
-(defc by-industry {
+(def by-industry {
                    :screenshot "/images/circle-industry.png"
                    :icon "/images/icons/by-industry.png"
                    :title "By Industry"
@@ -67,9 +67,9 @@
 
 (defn snapshots [x]
   (div :class "column"
-       (img :src (cell= (:screenshot x)))
-       (h2 (img :class "snapshots-icon" :src (cell= (:icon x))) (text (:title x)))
-       (div (cell= (:content x))) ) )
+       (img :src (:screenshot x))
+       (h2 (img :class "snapshots-icon" :src (:icon x)) (text (:title x)))
+       (div (:content x)) ) )
 
 (def challenger-options [
                          {
@@ -122,16 +122,16 @@
                      (div :class "column"
                           (h2 "How are your apps performing against current and potential competitors?
                               Stay ahead with your monthly AppScan.")))
-                (feature @competitors)
+                (feature competitors)
                 (div :class "page-subtitle center aligned row"
                      (div :class "column"
                           (h2 "You can zero in with “AppScans” by")))
                 (div :class "ui center aligned three column doubling grid"
                      (div :id "snapshots" :class "anchor")
                      (div :class "row"
-                          (snapshots @by-brand)
-                          (snapshots @by-country)
-                          (snapshots @by-industry)))
+                          (snapshots by-brand)
+                          (snapshots by-country)
+                          (snapshots by-industry)))
                 (div :class "page-details center aligned row"
                      (div :id "insights" :class "anchor")
                      (div :class "column"

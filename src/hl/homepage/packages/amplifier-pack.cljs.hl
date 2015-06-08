@@ -8,7 +8,7 @@
 
 (def page-header {:header "Amplifier pack"})
 
-(defc api-management
+(def api-management
   {
    :image-side :right
    :screenshot "/images/api-mgt-screenshot.png"
@@ -24,7 +24,7 @@
              (a :href "http://exiconglobal.com/apiaxle" (div :class "ui button" "Learn More"))
              ] })
 
-(defc development-ecosystem
+(def development-ecosystem
   {
    :image-side :left
    :screenshot "/images/dev-ecosystem-screenshot.png"
@@ -36,7 +36,7 @@
                 to build a group of developers around your API, access our network of 4000+ software houses.")
              ] })
 
-(defc governance-module
+(def governance-module
   {
    :image-side :right
    :screenshot "/images/governance-module.png"
@@ -49,7 +49,7 @@
              ] })
 
 
-(defc manager-console
+(def manager-console
   {
    :image-side :left
    :screenshot "/images/manager-console-screenshot.png"
@@ -69,23 +69,23 @@
 
     (div :class "ui page-details middle aligned two column doubling grid"
          (div :class "row"
-              (div :id (cell= (:anchor f)) :class "anchor")
+              (div :id (:anchor f) :class "anchor")
               (div :class "column"
-                   (img :src (cell= (:screenshot f))))
+                   (img :src (:screenshot f)))
               (div :class "column"
-                   (img :class "features-icon" :src (cell= (:icon f)))
+                   (img :class "features-icon" :src (:icon f))
                    (h2 (text (:title f)))
-                   (div (cell= (:content f))))))
+                   (div (:content f)))))
 
     (div :class "ui page-details middle aligned two column doubling grid"
          (div :class "row"
-              (div :id (cell= (:anchor f)) :class "anchor")
+              (div :id (:anchor f) :class "anchor")
               (div :class "column"
-                   (img :class "features-icon" :src (cell= (:icon f)))
+                   (img :class "features-icon" :src (:icon f))
                    (h2 (text (:title f)))
-                   (div (cell= (:content f))))
+                   (div (:content f)))
               (div :class "column"
-                   (img :src (cell= (:screenshot f))))))))
+                   (img :src (:screenshot f)))))))
 
 (layout/main
   :id "amplifier-pack"
@@ -102,9 +102,9 @@
                           (h2 "Are you thinking bigger? Ready to open your API?
                               Consider leveraging 3rd party developers to your
                               amplify efforts.") ))
-                (feature @api-management)
-                (feature @development-ecosystem)
-                (feature @governance-module)
-                (feature @manager-console))
+                (feature api-management)
+                (feature development-ecosystem)
+                (feature governance-module)
+                (feature manager-console))
        (div :class "column" :id "pricing-pack"
             (pricing amplifier-pack))))

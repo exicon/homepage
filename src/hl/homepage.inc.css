@@ -21,7 +21,7 @@
 	text-align: center;
 }
 
-#page-title.about-us{
+#page-title.about-us, #page-title.appboard{
 	background: url('/images/about-us/header-bg.jpg') center no-repeat;
 	height: 470px;
 }
@@ -64,6 +64,12 @@
 
 #team-section .ui.stackable.grid.visible {
 	display: block !important;
+}
+
+#top-nav .top-nav-icon{
+	padding-top: 1em;
+	padding-left: 0.5em;
+	width: 120px
 }
 
 h3.ui.header, h4.ui.header{
