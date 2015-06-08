@@ -25,17 +25,3 @@
 #about-us .bio.segment{
 	padding: 0;
 }
-
-#about-exicon .fade-out{
-	opacity: 0;
-	transition: opacity .25s ease-in-out;
-	-moz-transition: opacity .25s ease-in-out;
-	-webkit-transition: opacity .25s ease-in-out;
-}
-
-#about-exicon .fade-in{
-	opacity: 1;
-	transition: opacity .25s ease-in-out;
-	-moz-transition: opacity .25s ease-in-out;
-	-webkit-transition: opacity .25s ease-in-out;
-}

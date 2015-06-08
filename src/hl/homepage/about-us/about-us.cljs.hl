@@ -14,6 +14,8 @@
    :get-a-grip {
                 :header "Get a grip on your [apps]"
                 :color "orange"
+                :centered true
+                :size "medium"
                 }
    :vision-and-values {
                        :header "Our Vision and Values"
@@ -486,13 +488,18 @@
         build? (cell= (= :build (:id active-content)))
         manage? (cell= (= :manage (:id active-content)))
         promote? (cell= (= :promote (:id active-content)))
-        next-click-handler #(if @build?
-                              (reset! active-content (:manage about-exicon-slider))
-                              (reset! active-content (:promote about-exicon-slider)))
-        prev-click-handler #(if (= :promote (:id @active-content))
-                              (reset! active-content (:manage about-exicon-slider))
-                              (reset! active-content (:build about-exicon-slider)))
-        ]
+        animate (fn [direction]  (.transition (js/jQuery "#about-exicon .slider-content") (str "slide " direction)))
+        next-click-handler #(do (if @build?
+                                  (reset! active-content (:manage about-exicon-slider))
+                                  (reset! active-content (:promote about-exicon-slider)))
+                              (animate "right")
+                              (animate "left"))
+        prev-click-handler #(do (if (= :promote (:id @active-content))
+                                  (reset! active-content (:manage about-exicon-slider))
+                                  (reset! active-content (:build about-exicon-slider)))
+                              (animate "left")
+                              (animate "right"))]
+
     (div :id "about-exicon" :class "ui tertiary basic vertical segment"
          (div :class "ui page grid"
               (div :class "row"
@@ -500,19 +507,19 @@
                    (div :class "description sizer" (:content about-exicon))
                    (div :class "ui hidden divider"))
               (div :class "description sizer centered row"
-                   (h2 :class "ui large orange header"
+                   (h2 :class "ui large orange header slider-content"
                        :text (cell= (:header active-content))))
-              (div :class "three column centered row"
+              (div :class "three column centered equal height row"
                    (a :class "two wide description sizer column"
                       :click prev-click-handler
-                        (i :class "left chevron black icon"
-                           :toggle (cell= (not build?))))
-                   (div :class "twelve wide description sizer column"
+                      (i :class "left chevron black icon"
+                         :toggle (cell= (not build?))))
+                   (div :class "twelve wide slider-content description sizer column"
                         (p :text (cell= (:description active-content))))
                    (a :class "two wide description sizer right aligned column"
                       :click next-click-handler
-                        (i :class "right chevron black icon"
-                           :toggle (cell= (not promote?)))))
+                      (i :class "right chevron black icon"
+                         :toggle (cell= (not promote?)))))
               (div :class "centered row"
                    (div :class "ui circular orange button"
                         :do-class (cell= {:inverted (not build?)})
@@ -526,7 +533,8 @@
                         :do-class (cell= {:inverted (not promote?)})
                         :click #(reset! active-content (:promote about-exicon-slider))
                         "3")))
-         (div :class "ui hidden divider"))))
+         (div :class "ui hidden divider")
+         (section-header :header (:get-a-grip section-headers)))))
 
 (defelem timeline-section []
   (let [history-visible (cell false)]
