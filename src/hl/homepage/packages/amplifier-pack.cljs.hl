@@ -104,7 +104,6 @@
                               amplify efforts.") ))
                 (feature api-management)
                 (feature development-ecosystem)
-                (feature governance-module)
-                (feature manager-console))
+                (feature governance-module))
        (div :class "column" :id "pricing-pack"
             (pricing amplifier-pack))))

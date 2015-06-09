@@ -51,7 +51,7 @@
 
 (def analytics
   {
-   :image-side :left
+   :image-side :right
    :screenshot "/images/analytics-screenshot.png"
    :icon "/images/icons/big-analytics.png"
    :title "Analytics"
@@ -71,7 +71,7 @@
 
 (def app-builder
   {
-   :image-side :right
+   :image-side :left
    :screenshot "/images/app-builder-screenshot.png"
    :icon "/images/icons/big-appbuilder.png"
    :title "App Builder"
@@ -182,27 +182,27 @@
                 and ensuring consistent brand values with our App Governance module, customizable for your needs.")
              ] })
 
+(def competitors {
+                  :image-side :left
+                   :screenshot "/images/competitor-insights-screenshots.png"
+                   :anchor "competitors"
+                   :title "Competitor Insights"
+                   :semantic-icon (i :class "search teal icon")
+                   :content [
+                             (p "Get to Know Where You Stand")
+                             (ul
+                               (li "Who are the leaders in your industry?")
+                               (li "How are your apps performing in a specific market?")
+                               (li "Do your competitors change by country?")
+                               )
+                             ]
+                   })
 
-(def manager-console
-  {
-   :image-side :left
-   :screenshot "/images/manager-console-screenshot.png"
-   :icon "/images/icons/manager-console.png"
-   :title "Manager Console"
-   :anchor "manager-console"
-   :content [
-             (p "Who in your team is really getting a return from the apps they have created and managed?
-                Understand who in your team is performing best and why, so that you can share learnings with
-                the team. Get the birds eye view of usage stats by individual and app portfolio.")
-             (p "Let’s get on a call to talk Amplifier Pack!")
-             (a :click #(common/sumome-popup) (div :class "ui button" "Get In Touch!"))
-             ] })
-
-
-(def feature-items [intelligent-newsfeed leaderboard watchlist analytics
-                    app-builder applocker app-store-distribution marketplace
-                    api-management development-ecosystem governance-module
-                    manager-console])
+(def feature-items [intelligent-newsfeed leaderboard analytics
+                    competitors watchlist app-builder governance-module applocker
+                    app-store-distribution marketplace
+                    api-management development-ecosystem
+                    ])
 
 (defn distribution-option-tile [opts]
   (cell-let [{:keys [title subtitle price period link button note]} opts]
@@ -225,13 +225,15 @@
          (div :class "ui hidden divider")
          (div :class "ui dividing header"
 
-              (h2 (img :class "features-icon" :src (:icon f))
+              (h2
+                (if (:icon f)
+                  (img :class "features-icon" :src (:icon f))
+                  (:semantic-icon f))
                   :text (:title f)))
          (div :class "column"
               (img :src (:screenshot f)))
-         (div :class "column"
-              (div (:content f)))
-         )
+         (div :class "description sizer column"
+              (div (:content f))))
 
     (div :class "two column row"
          (div :id (:anchor f) :class "anchor")
@@ -239,7 +241,7 @@
          (div :class "ui dividing header"
               (h2 (img :class "features-icon" :src (:icon f))
                   :text (:title f)))
-         (div :class "column"
+         (div :class "description sizer column"
               (div (:content f)))
          (div :class "column"
               (img :src (:screenshot f))))))
