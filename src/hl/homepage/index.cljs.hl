@@ -16,7 +16,7 @@
                 (div :class "row"
                      (div :class "five wide left floated column"
                           (a :class "ui huge black fluid button"
-                             :href "/appboard/pricing" "Check out our AppBoard"))
+                             :href "/appboard/pricing" "Check out The AppBoard"))
                      (div :class "seven wide left floated column"
                           (a :class "ui huge black fluid button"
                              :href "/app-builder/" "Find the right developer for your app"))))))
@@ -35,16 +35,19 @@
     :icon "images/landing-page/build-icon2.png"
     :title "Build"
     :desc "Matching your mobile needs with over 3,000 qualified development companies"
+    :link "/app-builder"
     }
    {
     :icon "images/landing-page/manage-icon2.png"
     :title "Manage"
     :desc "A single, secure dashboard with tools and insights to make the right mobile investments"
+    :link "/appboard"
     }
    {
     :icon "images/landing-page/promote-icon2.png"
     :title "Promote"
     :desc "Features and services to drive downloads and user engagement"
+    :link "/appboard/#app-store-distribution"
     }
    ])
 
@@ -52,8 +55,9 @@
   {:name "Build"
    :icon "images/landing-page/build-icon.png"
    :header "Feeding your [app]etite"
-   :sub-header "Connecting you to the right mobile app development companies"
+   :sub-header "Use the App Builder to connect to the right app development companies"
    :advantages ["Quality Development" "Unparalleled Expertise" "Curated Choice"]
+   :cta {:title "Find your developer" :link"/app-builder"}
    :description
    #(h3 :class "ui medium header"
         "Over the last 7 years we have made more than 10,000
@@ -79,6 +83,7 @@
    :header "Driving [app]session"
    :sub-header "Tools to engage your users with mobile"
    :advantages ["Drive Downloads" "Stimulate Actions" "Increase Sessions"]
+   :cta {:title "Check out The AppBoard" :link "/appboard"}
    :description
    #(h3 :class "ui medium inverted header"
         "Establish mobile as your channel to your users.
@@ -144,7 +149,8 @@
            :company "images/testimonials/Schneider_Electric.png"}})
 
 (defn feature [ftr]
-  (div :class  "center aligned column title sizer"
+  (a :class  "center aligned column title sizer"
+     :href (cell= (:link ftr))
        (img :class"ui circular small centered inverted teal segment image" :src (cell= (:icon ftr)))
        (h3 :class"ui teal medium header" :text (cell= (:title ftr)))
        (div :class "description sizer"
@@ -176,7 +182,7 @@
 
 (defelem feature-details
   [{:keys [details inverted? build-promote?] :as attrs} kids]
-  (let [{:keys [icon name header sub-header image advantages description]} details
+  (let [{:keys [icon name header sub-header image advantages description cta]} details
         html-attrs (dissoc attrs :details :inverted? :build-promote?)]
     ((section html-attrs)
      :class "feature-details"
@@ -204,6 +210,13 @@
                     (div :class "computer only row"
                          (loop-tpl :bindings [adv advantages]
                                    (feature-advantage adv false build-promote? inverted?)))))
+          (if cta
+            (div :class "centered row"
+                 (a :class "ui massive button"
+                    :do-class {:inverted inverted?
+                               :black (not inverted?)}
+                      :href (:link cta)
+                      :text (:title cta))))
           (div :class "sixteen wide center aligned column feature-description description sizer"
                (description))))))
 
