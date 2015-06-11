@@ -14,10 +14,13 @@
                      (div :class "eleven wide column title sizer"
                           (h1 :class "ui inverted huge main header" "BUILD QUALITY CONNECTIONS WITH MOBILE USERS")))
                 (div :class "row"
-                     (div :class "five wide left floated column"
+                     (div :class "six wide left floated column"
                           (a :class "ui huge black fluid button"
-                             :href "/appboard/pricing" "Check out The AppBoard"))
-                     (div :class "seven wide left floated column"
+                             :href "/appboard" "Check out The AppBoard"))
+                     (div :class "seven wide left floated computer only column"
+                          (a :class "ui huge black fluid button"
+                             :href "/app-builder/" "Find the right developer for your app"))
+                     (div :class "eight wide left floated tablet mobile only column"
                           (a :class "ui huge black fluid button"
                              :href "/app-builder/" "Find the right developer for your app"))))))
 
@@ -289,7 +292,7 @@
 
 (layout/main
   :pagetitle "Manage Your Apps | Exicon Cloud App Management AppBoard"
-  :pagedescription "Exicon AppBoard Is An App Management Platform That Helps SMEs & Enterprises Build, Measure & Manage Their Mobile Apps."
+  :pagedescription "Exicon AppBoard Is An App Management Platform That Helps SMEs & Enterprises Build, Manage & Promote Their Mobile Apps."
   :pagekeywords "Manage Apps, Exicon, Cloud, App Management, AppBoard"
 
   (intro)

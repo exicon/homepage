@@ -18,10 +18,9 @@
 	-ms-flex-align: center;
 	-webkit-align-items: center;
 	align-items: center;
-	text-align: center;
 }
 
-#page-title.about-us, #page-title.appboard{
+#page-title.about-us, #page-title.appboard {
 	background: url('/images/about-us/header-bg.jpg') center no-repeat;
 	height: 470px;
 }

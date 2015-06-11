@@ -4,7 +4,8 @@
         [appboard.features :refer [feature-items feature]])
       )
 
-(def page-header {:header "The AppBoard"})
+(def page-header {:header "The AppBoard"
+                  :sub-header "Get a grip on your [apps]"})
 
 
 
@@ -14,6 +15,7 @@
   :pagekeywords "Exicon, App Management, Analytics, App Stores, Application Manager, suppliers of mobile expertise"
 
   (secondary-header :header (:header page-header)
+                    :sub-header (:sub-header page-header)
                     :page "appboard")
   (div :class "ui stackable page grid"
        (loop-tpl :bindings [item feature-items]
