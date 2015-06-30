@@ -91,7 +91,7 @@
    #(h3 :class "ui medium inverted header"
         "Establish mobile as your channel to your users.
         Getting onto relevant appstores and recommendation sites with optimized collateral can increase your downloads
-        by up to 20% per store - " (i "OpenAPI"))})
+        by up to 20% per store - " (i "One Platform Foundation"))})
 
 (def testimonials
   {
