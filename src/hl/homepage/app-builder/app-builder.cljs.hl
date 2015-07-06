@@ -1,233 +1,245 @@
 (page "app-builder/index.html"
-	(:require
-		[homepage.layout :refer [secondary-header] :as layout]
-		[homepage.top-nav :as top-nav]
-		[homepage.common :refer [textual-button show-main-video main-video-box hide-main-video]]
-		[tailrecursion.hoplon.reload :refer [reload-all]]
-		[homepage.app-builder.package-data :refer [packages]]
-		[homepage.app-builder.pricing :refer [app-builder-pricing]]
-		[tailrecursion.hoplon :refer [with-init!]])
-	(:require-macros [config :refer [appboard-url appbuilder-url]]))
+      (:require
+        [homepage.layout :refer [secondary-header] :as layout]
+        [homepage.top-nav :as top-nav]
+        [homepage.common :refer [textual-button]]
+        [homepage.app-builder.package-data :refer [packages]]
+        [homepage.app-builder.pricing :refer [app-builder-pricing]]
+        [tailrecursion.hoplon :refer [with-init!]])
+      (:require-macros [config :refer [appboard-url appbuilder-url]]))
 
 (def appboard-login-link (str (appboard-url)"/?package=starter&returnUri="(appbuilder-url)"#!/login/"))
 (def appboard-registration-link (str (appboard-url)"/?package=starter&returnUri="(appbuilder-url)"#!/registration/"))
 
 (def page-header {:header "App Builder"})
 
-(def process-list-items [
-	{:title "Quick, secure and easy"}
-	{:title "The right developer for your project"}
-	{:title "The support you want"}])
+(def process-list-items
+  [
+   {:title "Quick, secure and easy"}
+   {:title "The right developer for your project"}
+   {:title "The support you want"}])
 
 
-(def process-items [
-	{
-		:serial-number "1"
-		:title "Submit your idea"
-		:icon "/images/app-builder/lightbulb.svg"
-		:content  [
-		"Secure and Confidential"
-		"Quick and simple "
-		"Any file type"
-		]
-	}
-	{	:serial-number "2"
-		:title "Get advice"
-		:icon "/images/app-builder/advise.svg"
-		:content  [
-		"From skilled project managers and mobile experts"
-		"Projects of all sizes "
-		"Around the globe"
-		]
-	}
-	{	:serial-number "3"
-		:title "Get matched"
-		:icon "/images/app-builder/matching.svg"
-		:content  [
-		"3 shortlisted Developers"
-		"Based on budget, location, skills and experience"
-		"Choose the best fit for you"
-		]
-	}
-	{	:serial-number "4"
-		:title "Launch"
-		:icon "/images/app-builder/live.svg"
-		:content  [
-		"Ready to download"
-		"Be the app rockstar"
-		]
-	}
-	])
+(def flow-items
+  [
+   {
+    :serial-number "1"
+    :title "Submit your idea"
+    :icon "/images/app-builder/lightbulb.svg"
+    :content  [
+               "Secure and Confidential"
+               "No matter what stage you're at"
+               ]
+    }
+   {	:serial-number "2"
+    :title "Get advice"
+    :icon "/images/app-builder/advise.svg"
+    :content  [
+               "From Exicon mobile experts"
+               "Global Projects of all sizes"
+               ]
+    }
+   {	:serial-number "3"
+    :title "Get matched"
+    :icon "/images/app-builder/matching.svg"
+    :content  [
+               "3 leading development companies for you to choose from"
+               "Based on budget, location, skills and experience"
+               ]
+    }
+   {	:serial-number "4"
+    :title "Launch"
+    :icon "/images/app-builder/live.svg"
+    :content  [
+               "Distribute directly onto multiple appstores"
+               "Start promoting your app"
+               ]
+    }
+   ])
 
-(def reasons-data [
-	{
-		:id :reason1
-		:title "1. We have invested in a global network of 3,000+ qualified software development companies."
-		:content "We have profiled developers, who are some of the world's leading specialists, to ensure
-			our customers get developers who can actually do the job rather than just say they can."}
-	{
-		:id :reason2
-		:title "2. We guarantee you another 3 developers if you aren’t satisfied."
-		:content "Among the 10,000 matches, we have yet to be asked to do this. Our customers usually
-			have the other problem, being unable to decide between the proposed developers."}
-	{
-		:id :reason3
-		:title "3. Choosing the wrong developer can be a very expensive mistake."
-		:content "You may have referrals from others but do your apps have the same complexities? 60%
-			of our customers come to us when they have to restart projects due to a mismatch with developers."}
-	])
+(def reasons-data
+  [
+   {
+    :id :reason1
+    :title "1. We have invested in a global network of 3,000+ qualified software development companies."
+    :content "We have profiled developers, who are some of the world's leading specialists, to ensure
+             our customers get developers who can actually do the job rather than just say they can."}
+   {
+    :id :reason2
+    :title "2. We guarantee you another 3 developers if you aren’t satisfied."
+    :content "Among the 10,000 matches, we have yet to be asked to do this. Our customers usually
+             have the other problem, being unable to decide between the proposed developers."}
+   {
+    :id :reason3
+    :title "3. Choosing the wrong developer can be a very expensive mistake."
+    :content "You may have referrals from others but do your apps have the same complexities? 60%
+             of our customers come to us when they have to restart projects due to a mismatch with developers."}
+   ])
 
-(def dev-community-items [
-	{
-		:title "Pre-qualified"
-		:icon "/images/app-builder/developer.svg"
-		:content "All developers are carefully vetted and selected with a portfolio of live applications."
-	}
-	{
-		:title "Professional"
-		:icon "/images/app-builder/professional.svg"
-		:content "Strong track record teams built around design, project management and technology."
-	}
-	{
-		:title "Incorporated"
-		:icon "/images/app-builder/incorporated.svg"
-		:content "3,000+ companies with an average 15 engineers per company located around the globe."
-	}
-	])
+(def dev-community-items
+  [
+   {
+    :title "Pre-qualified"
+    :icon "/images/app-builder/developer.svg"
+    :content "All developers are carefully vetted and selected with a portfolio of live applications."
+    }
+   {
+    :title "Professional"
+    :icon "/images/app-builder/professional.svg"
+    :content "Strong track record teams built around design, project management and technology."
+    }
+   {
+    :title "Incorporated"
+    :icon "/images/app-builder/incorporated.svg"
+    :content "3,000+ companies with an average 15 engineers per company located around the globe."
+    }
+   ])
 
-(def testimonials[
-	{
-		:icon "/images/app-builder/4Front-advisors.png"
-		:content "\"It has been an absolute pleasure to work with this team, consummate professionals through and through.
-			Working with Exicon at the start of this journey was critical in helping us determine what we wanted and needed,
-			then figuring out how to even begin to cast the net into the often confusing digital waters.\""
-		:contact-person "Melanie McGraw"
-		:company-name "4Front Advisors"
-		}
-		{
-			:icon"/images/app-builder/get-to-know-your-brain.png"
-			:content "\"Wow, great service - thanks! Thanks a million! Thanks for your support so far - we're getting close now!\""
-			:contact-person "Aran Dadswell"
-			:position "Founder"
-			:company-name "Get to know your Brain"
-		}
-		])
+(def testimonials
+  [
+   {
+    :icon "/images/app-builder/4Front-advisors.png"
+    :content "\"It has been an absolute pleasure to work with this team, consummate professionals through and through.
+             Working with Exicon at the start of this journey was critical in helping us determine what we wanted and needed,
+             then figuring out how to even begin to cast the net into the often confusing digital waters.\""
+             :contact-person "Melanie McGraw"
+             :company-name "4Front Advisors"
+             }
+   {
+    :icon"/images/app-builder/get-to-know-your-brain.png"
+    :content "\"Wow, great service - thanks! Thanks a million! Thanks for your support so far - we're getting close now!\""
+    :contact-person "Aran Dadswell"
+    :position "Founder"
+    :company-name "Get to know your Brain"
+    }
+   ])
 
 (defc route @(route-cell ""))
 
 (route-cell route #(reset! route %))
 
-(defn video-page? [] (= @route "#play-video"))
-
 (defc visible-reasons #{})
 
-(def app-builder-video-link "//www.youtube.com/embed/97EateflMdU?autoplay=1")
-
-(with-init!
-	(if (video-page?) (show-main-video app-builder-video-link)))
-
 (defelem process-list-item [{:keys [title size]} kids]
-	(div :class "item"
-		(i :class (str size " checkmark teal icon"))
-		(div :class (str size "ui header content") title)))
+  (div :class "item"
+       (i :class (str size " checkmark teal icon"))
+       (div :class (str size "ui header content") title)))
+
+(defn intro []
+  (section :id "intro" :class "app-builder"
+           (div :class "ui page stackable grid"
+                (div :class "row"
+                     (div :class "eleven wide column title sizer"
+                          (h1 :class "ui inverted huge main header" "App Builder"
+                              (div :class "sub header" "Matching you with the right development company"))))
+                (div :class "row"
+                     (div :class "six wide left floated computer only column"
+                          (a :class "ui huge black fluid button"
+                             :href "/app-builder/" "Watch one of our case studies"))
+                     (div :class "seven wide left floated tablet mobile only column"
+                          (a :class "ui huge black fluid button"
+                             :href "/app-builder/" "Watch one of our case studies"))))))
+
+(defn flow-item [item]
+  (div :class  "column description sizer"
+       (img :class"ui small centered inverted image"
+            :src (cell= (:icon item)))
+       (div :class "center aligned row"
+            (div :class "center aligned column"
+                 (div :class "ui teal circular label"
+                      :text (cell= (:serial-number item))
+                      :style "font-size: 0.8em")
+                 (h3 :class"ui teal medium header" :text (cell= (:title item)))))
+       (ul
+         (loop-tpl :bindings [item (cell= (:content item))]
+                   (li :text (cell= item))))))
+
+
+(defn app-builder-flow [flow-items]
+  (section :class "ui inverted black vertical segment"
+           (div :id "features" :class "anchor" )
+           (div :class "ui hidden divider")
+           (div :class "ui stackable page grid"
+                (div :class "four column row"
+                     (loop-tpl :bindings [f flow-items]
+                               (flow-item f)))
+                (div :class "center aligned row"
+                          (div :class "column"
+                               (textual-button
+                                 :inline false
+                                 :destination-link appboard-registration-link)))
+                (div :class "ui hidden divider"))))
+
 (defn reason-visibility [reason]
-	(if (@visible-reasons (:id @reason))
-		(swap! visible-reasons #(disj @visible-reasons (:id @reason)))
-		(swap! visible-reasons #(conj @visible-reasons (:id @reason)))))
+  (if (@visible-reasons (:id @reason))
+    (swap! visible-reasons #(disj @visible-reasons (:id @reason)))
+    (swap! visible-reasons #(conj @visible-reasons (:id @reason)))))
 
 (defn reason-list-items [reason]
-	(a :class "item"
-		:click #(reason-visibility reason)
-		(i :class "large top aligned teal triangle icon"
-			:do-class
-				(cell= {:down (visible-reasons (:id reason))
-						:right (not (visible-reasons (:id reason)))}))
-		(div :class "content"
-			(div (:title @reason))
-			(div :class "ui clearing")
-			(div :class "description"
-				:toggle (cell= (visible-reasons (:id reason)))
-				(:content @reason)))
-		))
+  (a :class "item"
+     :click #(reason-visibility reason)
+     (i :class "large top aligned teal triangle icon"
+        :do-class
+        (cell= {:down (visible-reasons (:id reason))
+                :right (not (visible-reasons (:id reason)))}))
+     (div :class "content"
+          (div (:title @reason))
+          (div :class "ui clearing")
+          (div :class "description"
+               :toggle (cell= (visible-reasons (:id reason)))
+               (:content @reason)))))
 
 (defn list-content []
-	(div :class "ui huge list"
-		(loop-tpl :bindings [reason reasons-data]
-			(reason-list-items reason))))
+  (div :class "ui huge list"
+       (loop-tpl :bindings [reason reasons-data]
+                 (reason-list-items reason))))
 
 (defn features-list [feature]
-	(li :class "left align" :text feature))
+  (li :class "left align" :text feature))
 
 (defn process-column [item]
-	(div :class "center aligned column"
-		(div :class "ui teal circular label"
-			:style "font-size: 1em;"
-			(:serial-number @item))
-		(h2 :class "ui header" (:title @item))
-		(div :class "ui basic segment"(img :class "ui small centered image":src (:icon @item)))
-		(div :class "ui basic left aligned segment"
-			:style "padding-top: 0;"
-			(ul :class "ui list"
-				(loop-tpl :bindings [feature (:content @item)]
-				(features-list feature))))
-		)
-	)
+  (div :class "center aligned column"
+       (div :class "ui teal circular label"
+            :style "font-size: 1em;"
+            (:serial-number @item))
+       (h2 :class "ui header" (:title @item))
+       (div :class "ui basic segment"(img :class "ui small centered image":src (:icon @item)))
+       (div :class "ui basic left aligned segment"
+            :style "padding-top: 0;"
+            (ul :class "ui list"
+                (loop-tpl :bindings [feature (:content @item)]
+                          (features-list feature))))))
 
 (defn dev-community-column [item]
-	(div :class "column"
-		(h3 :class "ui large header" (:title @item))
-		(img :class "ui centered small image":src (:icon @item))
-		(div :class "content" (:content @item))))
+  (div :class "column"
+       (h3 :class "ui large header" (:title @item))
+       (img :class "ui centered small image":src (:icon @item))
+       (div :class "content" (:content @item))))
 
 (defn testimonial-column [testimonial]
-	(div :class "column"
-		(div :class "ui stackable grid"
-			(div :class "three wide column" :style "padding-top: 0;"
-				 (img :class "ui top aligned tiny image" :src (:icon @testimonial)))
-			(div :class "thirteen wide column"
-				 (div :class "content" (:content @testimonial))
-				 (br)
-				 (div :class "sub content" (:contact-person @testimonial))
-				 (str (when (:position @testimonial) (str(:position @testimonial) ", "))
-				 	(:company-name @testimonial))))))
+  (div :class "column"
+       (div :class "ui stackable grid"
+            (div :class "three wide column" :style "padding-top: 0;"
+                 (img :class "ui top aligned tiny image" :src (:icon @testimonial)))
+            (div :class "thirteen wide column"
+                 (div :class "content" (:content @testimonial))
+                 (br)
+                 (div :class "sub content" (:contact-person @testimonial))
+                 (str (when (:position @testimonial) (str(:position @testimonial) ", "))
+                      (:company-name @testimonial))))))
 
 (layout/main
   :pagetitle "App Builder"
   :pagedescription "Find the right developer to get your app build"
   :pagekeywords "Build an App, App Builder"
 
-  (secondary-header :header (:header page-header))
+  (intro)
+  (app-builder-flow flow-items)
 
-  (main-video-box)
+  #_(secondary-header :header (:header page-header)
+                      :page "app-builder")
 
   (div :id "app-builder" :class "ui page padded grid"
-       (div :class "ui hidden divider")
-       (div :class "center aligned sixteen wide column"
-            (h2 :class "ui header"
-                "The App Builder will help you scope your project to match you with the best developers for your app.
-                With a global network of over 3,000 qualified development companies, we guarantee you a great match."))
-       (div :class "center aligned sixteen wide column"
-            (h2 :class "ui header"
-                (img :class "ui tiny inline tiny image" :src "/images/app-builder/nda.png")
-                (div :class "content"
-                     "And your idea is safe. Everyone is under NDA.")))
-
-       #_(div :class "center aligned sixteen wide column"
-              (a :class "ui big button"
-                 :href "#play-video"
-                 :click #(show-main-video app-builder-video-link)
-                 (i :class "play icon") "Watch Video"))
-
-       (div :class "doubling four column row"
-            (loop-tpl :bindings [item process-items]
-                      (process-column item)))
-
-       (div :class "center aligned row"
-            (div :class "column"(textual-button
-                                  :inline false
-                                  :message "Now, let's get started"
-                                  :destination-link appboard-registration-link)))
-
        (div :class "ui hidden divider")
 
        (div :class "center aligned row"
@@ -285,10 +297,5 @@
             (div :class "column"(textual-button
                                   :inline true
                                   :message "Ready? Find your developer"
-                                  :destination-link (str (appboard-url)"/?package=starter&returnUri="(appbuilder-url)"#!/registration/")
-                                  #_(h2 :class "ui header" "*For FREE option, you can sign up for the AppBoard to access App Builder."
-                                        (a :href"Sign Up now"))
-                                  )))
-       (div :class "ui hidden divider")
-       )
-  )
+                                  :destination-link (str (appboard-url)"/?package=starter&returnUri="(appbuilder-url)"#!/registration/"))))
+       (div :class "ui hidden divider")))

@@ -8,7 +8,6 @@
 (defn row [] (div
 	:class "column sixteen wide center aligned"))
 
-
 (defelem secondary-header[{:keys [header sub-header page]:or {page ""}} kids]
   (section :id "page-title" :class (str page " center aligned row")
 			(div :class "centered column title sizer"

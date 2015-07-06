@@ -20,5 +20,4 @@
   (div :class "ui stackable page grid"
        (loop-tpl :bindings [item feature-items]
                  (feature @item)))
-  (div :class "ui hidden divider")
-  )
+  (div :class "ui hidden divider"))
