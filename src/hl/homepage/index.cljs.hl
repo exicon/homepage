@@ -1,18 +1,11 @@
 (page "index.html"
       (:require-macros [config :refer [appboard-url]])
       (:require
-        [homepage.layout :as layout]
-        [homepage.common :as common :refer [registration-link main-video-box show-main-video]]))
+        [homepage.layout :refer [section-header] :as layout]
+        [homepage.common :as common :refer [registration-link]]))
 
 (defc route @(route-cell ""))
 (route-cell route #(reset! route %))
-
-(defn video-page? [] (= @route "#play-video"))
-
-(def main-video-link "//www.youtube.com/embed/Yiq8tNlH_7I?autoplay=1")
-
-(with-init!
-  (if (video-page?) (show-main-video main-video-link)))
 
 (defn intro []
   (section :id "intro"
@@ -21,116 +14,53 @@
                      (div :class "eleven wide column title sizer"
                           (h1 :class "ui inverted huge main header" "BUILD QUALITY CONNECTIONS WITH MOBILE USERS")))
                 (div :class "row"
-                     (div :class "five wide left floated column"
+                     (div :class "six wide left floated column"
                           (a :class "ui huge black fluid button"
-                             :href "/appboard/pricing" "Check out our AppBoard"))
-                     (div :class "seven wide left floated column"
+                             :href "/appboard" "Check out The AppBoard"))
+                     (div :class "seven wide left floated computer only column"
                           (a :class "ui huge black fluid button"
-                             :href "/app-builder/" "Find the right developer for your app")))
-                )))
+                             :href "/app-builder/" "Find the right developer for your app"))
+                     (div :class "eight wide left floated tablet mobile only column"
+                          (a :class "ui huge black fluid button"
+                             :href "/app-builder/" "Find the right developer for your app"))))))
 
-(defc q1 {
-          :title "Reduce Inefficiencies"
-          :msg "One of our customers has found out 100 of their apps, with an average cost of USD100k, are
-               redundant - they won’t be making that mistake again!"})
-
-(defc q2 {
-          :title "Protect Your Brand & IP"
-          :msg "Every customer with over 20 apps is unaware of apps published in their name. 50% of sales calls hear
-               about lost apps."})
-
-(defc q3 {
-          :title "Putting You in the Know"
-          :msg "Your apps, your competitors, your ROI and your APIs - all at your fingertips."})
-
-(defc q4 {
-          :title "Tools to Make the Changes"
-          :msg "News, Analytics, Distribution, Promotion, Competitor Intelligence, Secure Storage, Developer
-               Management."})
-
-(defn quote-column [x]
-  (div :class "column"
-       (h2 (text (get x :title)))
-       (p (text (get x :msg)))
-       )
-  )
-(defn customer-quote [x]
-  (div :class "column quote"
-       (h2 (text (get x :title)))
-       (p :class "quote" (i :class "quote small left blue icon") (text (get x :msg)) (i :class "quote small blue right icon"))))
-
-(defn quotes []
+(def section-headers
+  {
+   :testimonials {
+                  :header "Check out our client testimonials!"
+                  :centered true}
+   :customers {
+               :header "Our Customer portfolio speaks for itself"
+               :centered true}})
+(def feature-list
   [
-   (section :class "customer-quote-list ui four column doubling page grid"
-            (div :id "customer-quote-list")
-            (customer-quote q1)
-            (customer-quote q2)
-            (quote-column q3)
-            (quote-column q4))
-
-   (section :class "quote ui one column center aligned page grid"
-            (div :id "quote" :class "anchor" )
-            (div :class "eight wide column"
-                 (div :class "ui center aligned raised segment" (h2 (i :class "quote small left blue icon") "I thought we were doing well until we plugged our apps into the AppBoard." (i :class "quote small right blue icon"))(h3 :class "ui right aligned header" "Fortune 500 CEO"))))
-   ]
-  )
-
-(def pkgs [
-           {
-            :icon "images/packages/challengerpack.png"
-            :title "The Challenger Pack"
-            :subtitle "Competitor Insights"
-            :desc #(p "Benchmark yourself against those in your industry,
-                      specific countries or track every move of a specific competitor’s brand."
-                      (br)
-                      (br)
-                      "Stay ahead with your monthly AppScan.")
-            :link "/packages/challenger-pack"
-            }
-           {
-            :icon "images/packages/dominatorpack.png"
-            :title "The Dominator Pack"
-            :subtitle "Distribution"
-            :desc #(p "Increase the chance of your app being downloaded by up to 200% more and featured up to 20 times
-                      more*. Expand your reach by putting your apps onto multiple app stores.")
-            :link "/packages/dominator-pack"
-            :note "* Source: One Platform Foundation"
-            }
-           {
-            :icon "images/packages/amplifierpack.png"
-            :title "The Amplifier Pack"
-            :subtitle "API & More"
-            :desc #(p "Leverage your APIs to build your business. Monitor and manage traffic to all your API endpoints while using the developer portal to build your developer ecosystem."
-                      (br)
-                      "Everything customized to your needs.")
-            :link "/packages/amplifier-pack"
-            }
-           ])
-
-(def feature-list [
-                   {
-                    :icon "images/landing-page/build-icon2.png"
-                    :title "Build"
-                    :desc "Matching your mobile needs with over 3,000 qualified development companies"
-                    }
-                   {
-                    :icon "images/landing-page/manage-icon2.png"
-                    :title "Manage"
-                    :desc "A single, secure dashboard with tools and insights to make the right mobile investments"
-                    }
-                   {
-                    :icon "images/landing-page/promote-icon2.png"
-                    :title "Promote"
-                    :desc "Features and services to drive downloads and user engagement"
-                    }
-                   ])
+   {
+    :icon "images/landing-page/build-icon2.png"
+    :title "Build"
+    :desc "Matching your mobile needs with over 3,000 qualified development companies"
+    :link "/app-builder"
+    }
+   {
+    :icon "images/landing-page/manage-icon2.png"
+    :title "Manage"
+    :desc "A single, secure dashboard with tools and insights to make the right mobile investments"
+    :link "/appboard"
+    }
+   {
+    :icon "images/landing-page/promote-icon2.png"
+    :title "Promote"
+    :desc "Features and services to drive downloads and user engagement"
+    :link "/appboard/#app-store-distribution"
+    }
+   ])
 
 (def build-details
   {:name "Build"
    :icon "images/landing-page/build-icon.png"
    :header "Feeding your [app]etite"
-   :sub-header "Connecting you to the right mobile app development companies"
+   :sub-header "Use the App Builder to connect to the right app development companies"
    :advantages ["Quality Development" "Unparalleled Expertise" "Curated Choice"]
+   :cta {:title "Find your developer" :link"/app-builder"}
    :description
    #(h3 :class "ui medium header"
         "Over the last 7 years we have made more than 10,000
@@ -145,7 +75,10 @@
    :header "Getting a grip on your apps"
    :sub-header "Manage all the information and metrics across your appsphere from the AppBoard"
    :advantages ["Secure your assets" "Hassle-free" "Collaborate & scale"]
-   :description #(h3 :class "ui medium header" "With all your app related files, analytics and information in one place you can track, compare and assess your performance and empower your teams to make smart decisions across your mobile portfolio")})
+   :description
+   #(h3 :class "ui medium header"
+        "With all your app related files, analytics and information in one place you can track,
+        compare and assess your performance and empower your teams to make smart decisions across your mobile portfolio")})
 
 (def promote-details
   {:name "Promote"
@@ -153,7 +86,12 @@
    :header "Driving [app]session"
    :sub-header "Tools to engage your users with mobile"
    :advantages ["Drive Downloads" "Stimulate Actions" "Increase Sessions"]
-   :description #(h3 :class "ui medium inverted header" "Establish mobile as your channel to your users. Getting onto relevant appstores and recommendation sites with optimized collateral can increase your downloads by up to 20% per store - " (i "OpenAPI"))})
+   :cta {:title "Check out The AppBoard" :link "/appboard"}
+   :description
+   #(h3 :class "ui medium inverted header"
+        "Establish mobile as your channel to your users.
+        Getting onto relevant appstores and recommendation sites with optimized collateral can increase your downloads
+        by up to 20% per store - " (i "One Platform Foundation"))})
 
 (def testimonials
   {
@@ -163,7 +101,6 @@
                 :name "Melanie McGraw"
                 :sub-title "Corporate Training and Compliance Expert, 4Front Advisors"
                 :company "images/testimonials/4Front.png"
-
                 }
    :brain {
            :image "images/testimonials/Aran-gettoknowyourbrain.png"
@@ -207,43 +144,20 @@
              :sub-title "VP of Ecosystem Development, LightSquared"
              :company "images/testimonials/650-lightsquared.jpg"
              }
-   :erik {
-          :image "images/testimonials/Erik-Contessi.png"
-          :testimonial "I am a regular Exicon user. We are launching a big campaign to promote the adoption of one application and the follow up is done by using Exicon. Hence it is a critical tool for us."
-          :name "Erik Contessi"
-          :sub-title "France Customer Care Process & Technology Senior Project Manager"
-          :company "images/testimonials/Schneider_Electric.png"}})
-
-(def ux-list
-  [
-   {
-    :icon "bar chart"
-    :statement
-    (p "of our customers said our work was " (b "Good") ": the rest said it was " (b "Impressive"))
-    :percentage 60
-    }
-   {
-    :icon "like"
-    :statement
-    (p "of our customers said we " (b "Overdelivered"))
-    :percentage 40
-    }
-   {
-    :icon "thumbs up outline"
-    :statement
-    (p "of our respondents said they would " (b "Recommend us") " to other companies")
-    :percentage 100
-    }
-   ])
+   :erick {
+           :image "images/testimonials/Erick-Contessi.png"
+           :testimonial "I am a regular Exicon user. We are launching a big campaign to promote the adoption of one application and the follow up is done by using Exicon. Hence it is a critical tool for us."
+           :name "Erick Contessi"
+           :sub-title "France Customer Care Process & Technology Senior Project Manager"
+           :company "images/testimonials/Schneider_Electric.png"}})
 
 (defn feature [ftr]
-  (div :class  "center aligned column title sizer"
+  (a :class  "center aligned column title sizer"
+     :href (cell= (:link ftr))
        (img :class"ui circular small centered inverted teal segment image" :src (cell= (:icon ftr)))
        (h3 :class"ui teal medium header" :text (cell= (:title ftr)))
        (div :class "description sizer"
-            (h3 :class "ui small inverted header" :text (cell= (:desc ftr))))
-       )
-  )
+            (h3 :class "ui small inverted header" :text (cell= (:desc ftr))))))
 
 (defn features-section [feature-list]
   (section :class "ui inverted black vertical segment"
@@ -256,8 +170,7 @@
                           (h3 :class "ui medium inverted header" "App management tools at your fingertips (and thumbs)")))
                 (div :class "three column row feature-description"
                      (loop-tpl :bindings [f feature-list]
-                               (feature f))))
-           ))
+                               (feature f))))))
 
 (defn feature-advantage [adv is-mobile build-promote? inverted?]
   (div :class "center aligned column"
@@ -272,7 +185,7 @@
 
 (defelem feature-details
   [{:keys [details inverted? build-promote?] :as attrs} kids]
-  (let [{:keys [icon name header sub-header image advantages description]} details
+  (let [{:keys [icon name header sub-header image advantages description cta]} details
         html-attrs (dissoc attrs :details :inverted? :build-promote?)]
     ((section html-attrs)
      :class "feature-details"
@@ -300,6 +213,13 @@
                     (div :class "computer only row"
                          (loop-tpl :bindings [adv advantages]
                                    (feature-advantage adv false build-promote? inverted?)))))
+          (if cta
+            (div :class "centered row"
+                 (a :class "ui massive button"
+                    :do-class {:inverted inverted?
+                               :black (not inverted?)}
+                      :href (:link cta)
+                      :text (:title cta))))
           (div :class "sixteen wide center aligned column feature-description description sizer"
                (description))))))
 
@@ -316,28 +236,14 @@
                     :build-promote? true
                     :inverted? true)])
 
-(defelem pkg-tile [pkg]
-  (div :class "column"
-       (div :class "ui segment"
-            (div :class "ui two column grid"
-                 (div :class "icon column"
-                      (img :src (cell= (:icon pkg))))
-                 (div :class "details column"
-                      (h2 (text (:title pkg)))
-                      (h3 (text (:subtitle pkg)))
-                      ((:desc pkg))
-                      (if (:note pkg) (p :class "pkg-note" (:note pkg)))
-                      (a :href (cell= (:link pkg)) "Find out more")
-                      ))))
-  )
-(defc show-more #{})
+(defc show-more #{:brain})
 
 (defn testimonial-block [testimonial-name]
   (let [testimonial (testimonial-name testimonials)
         testimonial-desc (:testimonial testimonial)
         too-long? (< 141 (count testimonial-desc))
         check-more (fn [] (if (@show-more testimonial-name) (disj @show-more testimonial-name) (conj @show-more testimonial-name)))
-        short-desc (if (or (= :schneider testimonial-name) (= :erik testimonial-name))
+        short-desc (if (= :schneider testimonial-name)
                      (str (.substr testimonial-desc 0 60) "...")
                      (str (.substr testimonial-desc 0 95) "..."))]
     [(div :class "column"
@@ -359,85 +265,38 @@
                   :text (cell= (if (contains? show-more testimonial-name) testimonial-desc short-desc)))
                (a :toggle too-long?
                   :click #(reset! show-more (check-more))
-                  (cell= (if (contains? show-more testimonial-name) (label " less " (i :class "caret up icon")) (label " more " (i :class "caret down icon")))))))
-     ]))
-
-(defn packages-section []
-  (section :class "packages full-width-container"
-           (div :id "packages" :class "anchor" )
-           (div :class "title sizer"
-                (h3 :class "ui small center aligned header"
-                    "Check out our client testimonials!"))
-           (div :class "ui hidden divider")
-           (div :class "ui page grid"
-                (div :class "three column computer only row"
-                     (testimonial-block :hotels)
-                     (testimonial-block :schneider)
-                     (testimonial-block :erik))
-                (div :class "one column tablet mobile only row"
-                     (testimonial-block :hotels)
-                     (testimonial-block :schneider)
-                     (testimonial-block :erik)))))
-
-(defn clients []
-  (section :class "clients ui one column page grid"
-           (div :id "clients" :class "anchor" )
-           (div :class "ui hidden divider")
-           (div :class "center aligned column title sizer"
-                (h3 :class "ui center aligned small header" "Our Customer portfolio speaks for itself")
-                (div :class "ui hidden divider")
-                (div :class "ui basic segment"
-                     (img :class "ui massive centered image" :src "images/landing-page/clients.png" :alt "Exicon customers")))))
-
-(defelem ux-statement [attrs kids]
-  (div :class "column"
-       (div :class "ui secondary segment"
-            (h1 :class "ui teal header"
-                (div :class "ui ribbon label"
-                     (i :class (cell= (str (:icon attrs) " icon"))))
-                (div :class "content"
-                     (text (str (:percentage attrs) "%"))))
-            (:statement attrs))))
+                  (cell= (if (contains? show-more testimonial-name)
+                           (label " less " (i :class "caret up icon"))
+                           (label " more " (i :class "caret down icon")))))))]))
 
 (defn testimonials-section []
-  (section :class "full-width-container"
+  (section :class "ui basic tertiary segment full-width-container"
+           (section-header :header (:testimonials section-headers))
+           (div :class "ui page stackable grid"
+                (div :class "three column row"
+                     (testimonial-block :hotels)
+                     (testimonial-block :schneider)
+                     (testimonial-block :brain)))
+           (div :class "ui hidden divider")))
+
+(defn clients []
+  (section :class "clients ui basic segment"
+           (section-header :header (:customers section-headers))
            (div :class "ui page grid"
-                (div :id "testimonials" :class "anchor")
-                (h2 :class "ui center aligned header"
-                    "Check out our client testimonials!")
-                (div :class "testimonials two column row"
-                     (div :class "column"
-                          (div :class "ui segment"
-                               (testimonial-block :chartered))
-                          (div :class "ui segment"
-                               (testimonial-block :brain))
-                          (div :class "ui segment"
-                               (testimonial-block :hotels))
-                          (div :class "ui segment"
-                               (testimonial-block :colin))
-                          )
-                     (div :class "column"
-                          (div :class "ui segment"
-                               (testimonial-block :four-front)
-                               )
-                          (div :class "ui segment"
-                               (testimonial-block :sony)
-                               (div :class "ui divider ")
-                               (testimonial-block :schneider)
-                               )
-                          (div :class "ui segment"
-                               (testimonial-block :patrick))
-                          )))))
+                (div :id "clients" :class "anchor" )
+                (div :class "center aligned row"
+                     (div :class "ui basic segment"
+                          (img :class "ui massive centered image"
+                               :src "images/landing-page/clients.png"
+                               :alt "Exicon customers"))))))
 
 (layout/main
   :pagetitle "Manage Your Apps | Exicon Cloud App Management AppBoard"
-  :pagedescription "Exicon AppBoard Is An App Management Platform That Helps SMEs & Enterprises Build, Measure & Manage Their Mobile Apps."
+  :pagedescription "Exicon AppBoard Is An App Management Platform That Helps SMEs & Enterprises Build, Manage & Promote Their Mobile Apps."
   :pagekeywords "Manage Apps, Exicon, Cloud, App Management, AppBoard"
 
   (intro)
-  ; (quotes)
   (features-section feature-list)
   (features-details-section)
   (clients)
-  #_(testimonials-section)
-  (packages-section))
+  (testimonials-section))

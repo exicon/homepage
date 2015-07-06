@@ -8,12 +8,31 @@
 (defn row [] (div
 	:class "column sixteen wide center aligned"))
 
-(defelem secondary-header[{:keys [header sub-header]} kids]
-  (div  :id "page-title" :class "center aligned row"
-			(div :class "column title sizer"
+(defelem secondary-header[{:keys [header sub-header page]:or {page ""}} kids]
+  (section :id "page-title" :class (str page " center aligned row")
+			(div :class "centered column title sizer"
 				(h1 :class "ui large center aligned header" :text header)
     		(if sub-header
         	(h2 :class "ui medium center aligned header" :text sub-header)))))
+
+(defelem section-header [{:keys [header] :as attr} kids]
+  (let [
+        background (:background header)
+        inverted (:inverted header)
+        size (or (:size header) "small")
+        centered (:centered header)
+        color (or (:color header) "")
+        ]
+    (div :class "ui basic segment"
+         :do-class {:tertiary background :inverted inverted}
+         (div :class "ui title sizer"
+              (h2 :class (str "ui header " size " " color)
+                  :do-class {:center centered
+                             :aligned centered
+                             :inverted inverted}
+                  (:header header)))
+         kids
+         (div :class "ui hidden divider"))))
 
 (defn subscribe-stick-form [subscribe-click]
 	[

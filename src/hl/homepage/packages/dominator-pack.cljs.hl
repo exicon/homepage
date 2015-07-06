@@ -9,7 +9,7 @@
 
 (def page-header {:header "Dominator pack"})
 
-(defc app-store-distribution {
+(def app-store-distribution {
                               :image-side :right
                               :screenshot "/images/app-distribution.png"
                               :icon "/images/packages/dominatorpack.png"
@@ -27,7 +27,7 @@
                                         ]
                               })
 
-(defc marketplace {
+(def marketplace {
                    :image-side :left
                    :screenshot "/images/Marketplace.png"
                    :icon "/images/icons/marketplace.png"
@@ -82,23 +82,23 @@
 
     (div :class "ui page-details middle aligned two column doubling grid"
          (div :class "row"
-              (div :id (cell= (:anchor f)) :class "anchor")
+              (div :id (:anchor f) :class "anchor")
               (div :class "column"
-                   (img :src (cell= (:screenshot f))))
+                   (img :src (:screenshot f)))
               (div :class "column"
-                   (img :class "features-icon" :src (cell= (:icon f)))
+                   (img :class "features-icon" :src (:icon f))
                    (h2 (text (:title f)))
-                   (div (cell= (:content f))))))
+                   (div (:content f)))))
 
     (div :class "ui page-details middle aligned two column doubling grid"
          (div :class "row"
-              (div :id (cell= (:anchor f)) :class "anchor")
+              (div :id (:anchor f) :class "anchor")
               (div :class "column"
-                   (img :class "features-icon" :src (cell= (:icon f)))
+                   (img :class "features-icon" :src (:icon f))
                    (h2 (text (:title f)))
-                   (div (cell= (:content f))))
+                   (div (:content f)))
               (div :class "column"
-                   (img :src (cell= (:screenshot f))))))))
+                   (img :src (:screenshot f)))))))
 
 (defelem pricing-features [{:keys [starter challenger dominator]}]
 		[(div (cell= (nth (:content starter)2)))
@@ -121,8 +121,8 @@
                           (h2 "How is your target audience going to find your apps?")
                           ) )
 
-                (feature @app-store-distribution)
-                (feature @marketplace)
+                (feature app-store-distribution)
+                (feature marketplace)
                 )
 
        (div :class "column" :id "pricing-pack"

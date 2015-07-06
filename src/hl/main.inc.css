@@ -73,8 +73,8 @@ i.teal.icon {
 	text-transform: none !important;
 	font-weight: 400;
 	letter-spacing: 0.03em;
-	background-color: #59d2d9 !important;
-	color: white !important;
+	background-color: #59d2d9;
+	color: white;
 	background-image: none !important;
 }
 .dark-green.ui.button{
@@ -87,22 +87,17 @@ i.teal.icon {
 	color: #59d2d9 !important;
 }
 
-.gray.ui.button{
+.gray.ui.button {
 	background-color: #cccccc;
 	color: white;
 }
-.ui.inverted.white.button{
+.ui.inverted.white.button {
 	background-color: transparent !important;
 	color: white;
 	box-shadow:inset 0px 0px 0px 1px white;
 }
-.ui.inverted.button{
-	background-color: transparent !important;
-	background-image: none;
-	color: #59d2d9;
-	box-shadow:inset 0px 0px 0px 1px #59d2d9;
-}
-.ui.inverted.dark-green.button{
+
+.ui.inverted.dark-green.button {
 	background-image: none;
 	background-color: transparent !important;
 	color: #379aa6 ;
@@ -122,51 +117,6 @@ i.teal.icon {
 	width: 2em;
 	text-align: center;
 	line-height: 1em;
-}
-
-/* Hover state of the Buttons*/
-.ui.button.dark-green:hover{
-	background-image: none;
-	background-color: transparent !important;
-	color: #379aa6 ;
-	box-shadow:inset 0px 0px 0px 1px #379aa6;
-}
-.ui.button:hover{
-	background-image: none;
-	background-color: transparent !important;
-	color: #59d2d9 !important;
-	box-shadow:inset 0px 0px 0px 1px #59d2d9;
-}
-.ui.button.white:hover{
-	color: white !important;
-	box-shadow:inset 0px 0px 0px 1px white;
-}
-.ui.button.gray:hover{
-	background-image: none;
-	background-color: transparent !important;
-	color: #cccccc ;
-	box-shadow:inset 0px 0px 0px 1px #cccccc;
-}
-.ui.inverted.white.button:hover{
-	box-shadow:inset 0px 0px 0px 1px #59d2d9;
-	background-color: #59d2d9 !important;
-	color: white;
-}
-.ui.inverted.button:hover{
-	background-color: #59d2d9 !important;
-	color: white;
-}
-.ui.inverted.dark-green.button:hover{
-	background-color: #379aa6 !important;
-	color: white;
-}
-.ui.inverted.gray.button:hover{
-	background-color: #cccccc !important;
-	color: white;
-}
-.ui.inverted.active.button{
-	background-color: #59d2d9 !important;
-	color: white !important;
 }
 
 /* Top Navigation */
@@ -296,16 +246,6 @@ i.teal.icon {
 	border-radius: 0.2em;
 }
 
-/* Page Title */
-
-#page-title {
-	background: url('/images/starter-pack-title.png') center no-repeat;
-	height: 200px;
-	background-color: #f0f0ee;
-	justify-content: center;
-	display: flex;
-	align-items: center;
-}
 
 /* Customer Quotes Section */
 .customer-quote-list h2{
@@ -372,11 +312,6 @@ section.packages .details.column h2, section.packages .details.column h3{
 }
 section.packages .details.column h2{
 	color: #59d2d9;
-}
-
-/* Clients Section */
-section.clients img{
-	width: 100%;
 }
 
 /* Testimonials Section */

@@ -9,7 +9,7 @@
 
 (def page-header {:header "Starter Pack"})
 
-(defc intelligent-newsfeed {
+(def intelligent-newsfeed {
 	:image-side :right
 	:screenshot "/images/intelligent-newsfeed-screenshot.png"
 	:icon "/images/icons/big-newsfeed.png"
@@ -24,7 +24,7 @@
 		]
 	})
 
-(defc leaderboard {
+(def leaderboard {
 	:image-side :left
 	:screenshot "/images/leaderboard-screenshot.png"
 	:icon "/images/icons/big-leaderboard.png"
@@ -37,7 +37,7 @@
 		]
 	})
 
-(defc watchlist {
+(def watchlist {
 	:image-side :right
 	:screenshot "/images/watchlist-screenshot.png"
 	:icon "/images/icons/big-watchlist.png"
@@ -52,7 +52,7 @@
 	})
 
 
-(defc analytics {
+(def analytics {
 	:image-side :left
 	:screenshot "/images/analytics-screenshot.png"
 	:icon "/images/icons/big-analytics.png"
@@ -71,17 +71,17 @@
 		]
 	})
 
-(defc app-brief-builder	{
+(def app-builder	{
 	:image-side :right
-	:screenshot "/images/app-brief-builder-screenshot.png"
+	:screenshot "/images/app-builder-screenshot.png"
 	:icon "/images/icons/big-appbuilder.png"
-	:title "App Brief Builder"
-  :anchor "app-brief-builder"
+	:title "App Builder"
+  :anchor "app-builder"
 	:content [
-		(p "Get your app built properly using our App Brief Builder tool.")
+		(p "Get your app built properly using our App Builder tool.")
 		(ul
 			(li "Use our calculator to help define your project")
-			(li "Fill in our standard App Brief template - all secure")
+			(li "Fill in our standard App Builder template - all secure")
 			(li "Ensure consistency and standardization")
 			(li "Driving scale and minimizing duplication")
 			(li "Find 3 great developers from our database, all under NDA")
@@ -90,7 +90,7 @@
 			]
 	})
 
-(defc applocker{
+(def applocker{
 	:image-side :left
 	:screenshot "/images/applocker-screenshot.png"
 	:icon "/images/icons/big-applocker.png"
@@ -109,25 +109,23 @@
 	(if (= (:image-side f) :left)
 		(div :class "ui page-details middle aligned two column doubling grid"
 			(div :class "row"
-			(div :id (cell= (:anchor f)) :class "anchor")
+			(div :id (:anchor f) :class "anchor")
 			(div :class "column"
-				(img :src (cell= (:screenshot f))))
+				(img :src (:screenshot f)))
 			(div :class "column"
-				(img :class "features-icon" :src (cell= (:icon f)))
+				(img :class "features-icon" :src (:icon f))
 				(h2 (text (:title f)))
-				(div (cell= (:content f))))))
+				(div (:content f)))))
 
 		(div :class "ui page-details middle aligned two column doubling grid"
 			(div :class "row"
-			(div :id (cell= (:anchor f)) :class "anchor")
+			(div :id (:anchor f) :class "anchor")
 			(div :class "column"
-				(img :class "features-icon" :src (cell= (:icon f)))
+				(img :class "features-icon" :src (:icon f))
 				(h2 (text (:title f)))
-				(div (cell= (:content f))))
+				(div (:content f)))
 			(div :class "column"
-				(img :src (cell= (:screenshot f))))))
-		)
-)
+				(img :src (:screenshot f)))))))
 
 (layout/main
   :id "starter-pack"
@@ -143,12 +141,12 @@
                      (div :class "column"
                           (h2 "Get started in App Management with your very own AppBoard")
                           (h3 "Checkout what you'll get in your Starter Pack")))
-                (feature @intelligent-newsfeed)
-                (feature @leaderboard)
-                (feature @watchlist)
-                (feature @analytics)
-                (feature @app-brief-builder)
-                (feature @applocker)
+                (feature intelligent-newsfeed)
+                (feature leaderboard)
+                (feature watchlist)
+                (feature analytics)
+                (feature app-builder)
+                (feature applocker)
                 )
        (div :class "column" :id "pricing-pack"
             (pricing starter-pack)))
