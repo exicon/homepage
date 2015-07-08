@@ -27,6 +27,23 @@
 	margin: 0;
 }
 
+#qualified.feature-details{
+	background: url('/images/app-builder/qualified.jpg') center no-repeat;
+	background-position-y: 0;
+}
+
+#incorporated.feature-details {
+	background-color: #EEFAFB;
+}
+
+.shaded.segment {
+	background-color: rgba(0, 0, 0, 0.298039) !important;
+	padding-bottom: 4em;
+	padding-top: 4em;
+	margin-left: 1em;
+	margin-right: 1em;
+}
+
 .ab-pricing .pack {
 	box-shadow: none;
 	border: 1px solid #59d2d9 !important;
@@ -113,4 +130,8 @@
 	font-weight: 100;
 	color: #9b9b9b;
 	font-style: italic;
+}
+
+.dark-teal {
+	color: rgba(0, 110, 140, 1) !important;
 }
