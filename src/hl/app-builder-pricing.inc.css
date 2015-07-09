@@ -36,6 +36,13 @@
 	background-color: #EEFAFB;
 }
 
+#developer-map {
+	height: 450px;
+	background: url('/images/app-builder/developer-map.jpg') center no-repeat;
+	background-position-y: 0;
+	background-size: auto 100%;
+}
+
 .shaded.segment {
 	background-color: rgba(0, 0, 0, 0.298039) !important;
 	padding-bottom: 4em;
