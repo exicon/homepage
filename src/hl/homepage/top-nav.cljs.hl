@@ -12,7 +12,7 @@
 (def resources-submenu-items
   [
    { :id :starter :name "Research" :url "/reports/"}
-   { :id :dominator :name "Videos" :url "/videos/"}
+   ;{ :id :dominator :name "Videos" :url "/videos/"}
    { :id :amplifier :name "Presentations" :url "/presentations/"}
    ])
 
