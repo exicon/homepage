@@ -13,23 +13,23 @@
     :link "http://www.youtube.com/embed/X1g3mY7mChQ?autoplay=1"
     }
 
-   {
-    :title "The World is Going Mobile"
-    :image "/images/videos/world-going-mobile.png"
-    :link "http://www.youtube.com/embed/94XtUIDwQUU?autoplay=1"
-    }
+   ; {
+   ;  :title "The World is Going Mobile"
+   ;  :image "/images/videos/world-going-mobile.png"
+   ;  :link "http://www.youtube.com/embed/94XtUIDwQUU?autoplay=1"
+   ;  }
 
-   {
-    :title "Exicon's AppBoard"
-    :image "/images/videos/homepage-video.png"
-    :link "http://www.youtube.com/embed/Yiq8tNlH_7I?autoplay=1"
-    }
+   ; {
+   ;  :title "Exicon's AppBoard"
+   ;  :image "/images/videos/homepage-video.png"
+   ;  :link "http://www.youtube.com/embed/Yiq8tNlH_7I?autoplay=1"
+   ;  }
 
-   {
-    :title "Indigo Digital Marketing Case Study 2014"
-    :image "/images/videos/Indigo.png"
-    :link "http://www.youtube.com/embed/97EateflMdU?autoplay=1"
-    }
+   ; {
+   ;  :title "Indigo Digital Marketing Case Study 2014"
+   ;  :image "/images/videos/Indigo.png"
+   ;  :link "http://www.youtube.com/embed/97EateflMdU?autoplay=1"
+   ;  }
 
    {
     :title "myFOX App on Brew MP"
