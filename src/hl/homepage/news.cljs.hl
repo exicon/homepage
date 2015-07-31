@@ -6,7 +6,16 @@
 (reload-all 200)
 
 (def announcement-list
-  [{:title "Jul. 2015 - Mobile App Distribution Goes Global with Exicon"
+  [{:title
+    "Aug. 2015 - Mobile Relationship Management Platform
+    Builds Momentum with Powerful App Analytics"
+    :image "/images/analytics-screenshot.png"
+    :detail
+    "Exicon's AppBoard Customers Win with New Tools for Mobile Relationship Management "
+    :link "http://blog.exiconglobal.com/mobile-relationship-management-with-powerful-app-analytics"
+    :note "yes"}
+
+   {:title "Jul. 2015 - Mobile App Distribution Goes Global with Exicon"
     :image "/images/app-distribution.png"
     :detail
     "New distribution deals allow Exicon’s AppBoard customers to
