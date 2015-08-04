@@ -389,9 +389,9 @@
            (div :class "ui hidden divider")))
 
 (layout/main
-  :pagetitle "App Builder"
-  :pagedescription "Find the right developer to get your app build"
-  :pagekeywords "Build an App, App Builder"
+  :page-title "App Builder"
+  :description "Find the right developer to get your app build"
+  :keywords "Build an App, App Builder"
 
   (intro-section)
   (flow-section flow-items)

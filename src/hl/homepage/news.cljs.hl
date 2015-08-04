@@ -259,9 +259,9 @@
                       (momo-options @momo)))))
 
 (layout/main :id "news"
-             :pagetitle "News"
-             :pagedescription "The Exicon Team In The Public Eye"
-             :pagekeywords "Exicon App Management"
+             :page-title "News"
+             :description "The Exicon Team In The Public Eye"
+             :keywords "Exicon App Management"
 
              (section :class "ui one column full-width-container"
                       (div  :id "page-title" :class "center aligned row"

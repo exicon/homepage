@@ -106,8 +106,8 @@
                                   :webkitallowfullscreen "" :mozallowfullscreen ""))))))
 
 (layout/main :id "videos"
-             :pagetitle "Videos | Mobile | Apps | AppBoard"
-             :pagedescription "Watch Videos About Mobile, Apps, APIs & Developers. Oh, And The Exicon AppBoard!"
+             :page-title "Videos | Mobile | Apps | AppBoard"
+             :description "Watch Videos About Mobile, Apps, APIs & Developers. Oh, And The Exicon AppBoard!"
 
              (secondary-header :header (:header page-header))
 

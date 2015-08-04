@@ -129,9 +129,9 @@
 
 (layout/main
   :id "starter-pack"
-  :pagetitle "Starter Pack | Intro To App Management & App Analytics"
-  :pagedescription "Starter Pack Is An Entry Tool For Those New To App Management, App Logistics & Analytics"
-  :pagekeywords "App Management, App Analytics"
+  :page-title "Starter Pack | Intro To App Management & App Analytics"
+  :description "Starter Pack Is An Entry Tool For Those New To App Management, App Logistics & Analytics"
+  :keywords "App Management, App Analytics"
 
   (secondary-header :header (:header page-header))
 

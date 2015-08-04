@@ -151,9 +151,9 @@
 
 
 (layout/main :id "customers"
-	:pagetitle "Exicon Customers | Reviews | Testimonials"
-	:pagedescription "Global Fans Of Exicon's AppBoard, Products & Services"
-	:pagekeywords "Exicon"
+	:page-title "Exicon Customers | Reviews | Testimonials"
+	:description "Global Fans Of Exicon's AppBoard, Products & Services"
+	:keywords "Exicon"
 	(section :class "ui one column full-width-container"
 		(div  :id "page-title" :class "center aligned row"
 			(div :class "column"

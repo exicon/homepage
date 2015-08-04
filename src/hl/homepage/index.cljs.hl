@@ -95,20 +95,18 @@
 
 (def testimonials
   {
-   :four-front {
-                :image "images/testimonials/melanie-mcgraw-4front-advisors.png"
+   :four-front {:image "images/testimonials/melanie-mcgraw-4front-advisors.png"
                 :testimonial "It has been an absolute pleasure to work with this team, consummate professionals through and through. Working with Exicon at the start of this journey was critical in helping us determine what we wanted and needed, then figuring out how to even begin to cast the net into the often confusing digital waters."
                 :name "Melanie McGraw"
                 :sub-title "Corporate Training and Compliance Expert, 4Front Advisors"
-                :company "images/testimonials/4Front.png"
-                }
-   :brain {
-           :image "images/testimonials/Aran-gettoknowyourbrain.png"
+                :company "images/testimonials/4Front.png"}
+
+   :brain {:image "images/testimonials/Aran-gettoknowyourbrain.png"
            :testimonial "Wow, great service - thanks! Thanks a million! Thanks for your support so far - we're getting close now!"
            :name "Aran Dadswell"
            :sub-title "Founder of Get to know your Brain"
-           :company "images/testimonials/Get-to-know-your-brain.png"
-           }
+           :company "images/testimonials/Get-to-know-your-brain.png"}
+
    :chartered {
                :image "images/testimonials/Mike-SC.png"
                :testimonial "The team at Exicon helped find some great, innovative developers in the mobile banking space. In fact, we ended up making an acquisition as a result of an introduction."
@@ -154,10 +152,10 @@
 (defn feature [ftr]
   (a :class  "center aligned column title sizer"
      :href (cell= (:link ftr))
-       (img :class"ui circular small centered inverted teal segment image" :src (cell= (:icon ftr)))
-       (h3 :class"ui teal medium header" :text (cell= (:title ftr)))
-       (div :class "description sizer"
-            (h3 :class "ui small inverted header" :text (cell= (:desc ftr))))))
+     (img :class"ui circular small centered inverted teal segment image" :src (cell= (:icon ftr)))
+     (h3 :class"ui teal medium header" :text (cell= (:title ftr)))
+     (div :class "description sizer"
+          (h3 :class "ui small inverted header" :text (cell= (:desc ftr))))))
 
 (defn features-section [feature-list]
   (section :class "ui inverted black vertical segment"
@@ -218,8 +216,8 @@
                  (a :class "ui massive button"
                     :do-class {:inverted inverted?
                                :black (not inverted?)}
-                      :href (:link cta)
-                      :text (:title cta))))
+                    :href (:link cta)
+                    :text (:title cta))))
           (div :class "sixteen wide center aligned column feature-description description sizer"
                (description))))))
 
@@ -291,9 +289,11 @@
                                :alt "Exicon customers"))))))
 
 (layout/main
-  :pagetitle "Manage Your Apps | Exicon Cloud App Management AppBoard"
-  :pagedescription "Exicon AppBoard Is An App Management Platform That Helps SMEs & Enterprises Build, Manage & Promote Their Mobile Apps."
-  :pagekeywords "Manage Apps, Exicon, Cloud, App Management, AppBoard"
+  :page-title "Manage Your Apps | Exicon Cloud App Management AppBoard"
+  :description (str "Exicon AppBoard Is An App Management Platform "
+                    "That Helps SMEs & Enterprises Build, "
+                    "Manage & Promote Their Mobile Apps.")
+  :keywords "Manage Apps, Exicon, Cloud, App Management, AppBoard"
 
   (intro)
   (features-section feature-list)

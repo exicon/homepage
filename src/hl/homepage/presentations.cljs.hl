@@ -6,8 +6,8 @@
 
 (layout/main
   :id "presentations"
-  :pagetitle "Mobile | Presentations"
-  :pagedescription "All Thing Mobile Across Multiple Industries Including Automotive, Travel & Hospitality, Banking & Finance, & IoT."
+  :page-title "Mobile | Presentations"
+  :description "All Thing Mobile Across Multiple Industries Including Automotive, Travel & Hospitality, Banking & Finance, & IoT."
 
   (secondary-header :header (:header page-header))
 

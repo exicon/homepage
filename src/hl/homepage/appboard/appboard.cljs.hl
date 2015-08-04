@@ -10,9 +10,9 @@
 
 
 (layout/main
-  :pagetitle "The AppBoard | Build Manage Promote"
-  :pagedescription " The App Portfolio management system that allows you to build, manage and promote your mobile applications"
-  :pagekeywords "Exicon, App Management, Analytics, App Stores, Application Manager, suppliers of mobile expertise"
+  :page-title "The AppBoard | Build Manage Promote"
+  :description " The App Portfolio management system that allows you to build, manage and promote your mobile applications"
+  :keywords "Exicon, App Management, Analytics, App Stores, Application Manager, suppliers of mobile expertise"
 
   (secondary-header :header (:header page-header)
                     :sub-header (:sub-header page-header)

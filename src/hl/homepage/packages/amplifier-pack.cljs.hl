@@ -89,9 +89,9 @@
 
 (layout/main
   :id "amplifier-pack"
-  :pagetitle "Amplifier | API Management Platform & Developer Console"
-  :pagedescription "Amplifier Pack Combines The Best Of Our App Management & Logistics Packs While Adding Our API Management Platform & Developer Console For You To Leverage Partner Developers."
-  :pagekeywords "API Management, Developer Console"
+  :page-title "Amplifier | API Management Platform & Developer Console"
+  :description "Amplifier Pack Combines The Best Of Our App Management & Logistics Packs While Adding Our API Management Platform & Developer Console For You To Leverage Partner Developers."
+  :keywords "API Management, Developer Console"
 
   (secondary-header :header (:header page-header))
 

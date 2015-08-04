@@ -314,8 +314,8 @@
 
 
 (layout/main :id "reports"
-             :pagetitle "Research"
-             :pagedescription "Research"
+             :page-title "Research"
+             :description "Research"
 
              (secondary-header :header (:header page-header))
 

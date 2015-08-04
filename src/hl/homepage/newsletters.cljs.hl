@@ -9,7 +9,7 @@
 	:issue "Issue #026 December 22, 2014"
 	:image "/images/newsletters/issue_26.png"
 	:url "http://us3.campaign-archive1.com/?u=59165e464834675ada250903e&id=d1286c9a0c"
-	}	
+	}
 
 		{
 	:title "Exicon's Holiday Gift to You"
@@ -210,8 +210,8 @@
 )
 
 (layout/main :id "newsletters"
-	:pagetitle "Exicon Newsletter | Mobile Apps"
-	:pagedescription "Sign Up For Exicon's Weekly Newsletter About All Things Mobile."
+	:page-title "Exicon Newsletter | Mobile Apps"
+	:description "Sign Up For Exicon's Weekly Newsletter About All Things Mobile."
 	(section :class "ui one column full-width-container"
 		(div  :id "page-title" :class "center aligned row"
 			(div :class "column"

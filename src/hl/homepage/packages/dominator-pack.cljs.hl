@@ -108,9 +108,9 @@
 
 (layout/main
   :id "dominator-pack"
-  :pagetitle "Dominator | App Distribution onto Global Appstores"
-  :pagedescription "The Dominator Pack Is An App Management  & Logistics Pack That Includes Competitive Benchmarking & Appstore Distribution"
-  :pagekeywords "App Distribution, Appstores"
+  :page-title "Dominator | App Distribution onto Global Appstores"
+  :description "The Dominator Pack Is An App Management  & Logistics Pack That Includes Competitive Benchmarking & Appstore Distribution"
+  :keywords "App Distribution, Appstores"
 
   (secondary-header :header (:header page-header))
 

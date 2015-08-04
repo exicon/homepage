@@ -608,9 +608,9 @@
             (div :class "ui hidden divider"))))
 
 (layout/main
-  :pagetitle "About Exicon | App Management & Analytics | Our Team"
-  :pagedescription "Our Mission And The Road That Got Us Here As Well As The Team That Makes Exicon Tick."
-  :pagekeywords "Exicon, App Management, Analytics"
+  :page-title "About Exicon | App Management & Analytics | Our Team"
+  :description "Our Mission And The Road That Got Us Here As Well As The Team That Makes Exicon Tick."
+  :keywords "Exicon, App Management, Analytics"
 
   (secondary-header :header (:header page-header)
                     :sub-header (or (:sub-header page-header) nil)

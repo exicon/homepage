@@ -1,28 +1,28 @@
 (ns homepage.layout
-	(:require
-		[homepage.top-nav :as top-nav]
-		[homepage.bottom-nav :as bottom-nav]
-		[tailrecursion.hoplon.reload :refer [reload-all]]
-		))
+  (:require
+    [homepage.top-nav :as top-nav]
+    [homepage.bottom-nav :as bottom-nav]
+    [tailrecursion.hoplon.reload :refer [reload-all]]
+    ))
 
-(defn row [] (div
-	:class "column sixteen wide center aligned"))
+(defn row []
+  (div
+    :class "column sixteen wide center aligned"))
 
-(defelem secondary-header[{:keys [header sub-header page]:or {page ""}} kids]
+(defelem secondary-header
+  [{:keys [header sub-header page]:or {page ""}} kids]
   (section :id "page-title" :class (str page " center aligned row")
-			(div :class "centered column title sizer"
-				(h1 :class "ui large center aligned header" :text header)
-    		(if sub-header
-        	(h2 :class "ui medium center aligned header" :text sub-header)))))
+           (div :class "centered column title sizer"
+                (h1 :class "ui large center aligned header" :text header)
+                (if sub-header
+                  (h2 :class "ui medium center aligned header" :text sub-header)))))
 
 (defelem section-header [{:keys [header] :as attr} kids]
-  (let [
-        background (:background header)
+  (let [background (:background header)
         inverted (:inverted header)
         size (or (:size header) "small")
         centered (:centered header)
-        color (or (:color header) "")
-        ]
+        color (or (:color header) "")]
     (div :class "ui basic segment"
          :do-class {:tertiary background :inverted inverted}
          (div :class "ui title sizer"
@@ -35,54 +35,56 @@
          (div :class "ui hidden divider"))))
 
 (defn subscribe-stick-form [subscribe-click]
-	[
-		(div :id "subscribe-stick-layer"
-			:do-class (cell= {:show subscribe-click}))
-		(div :id "subscribe-stick-form"
-			:class "ui header"
-			:do-class (cell= {:show subscribe-click})
-			(div :class "ui grid"
-				((row)
-					(h4 :class "ui header" "Subscribe to our FREE")
-					(p "Newsletter • Reports • Infographs")
-					(div :class "ui divider hidden header")
-					(img :src "/images/header/subscribe.png"))
-				((row)
-					(form
-						:action "//exiconglobal.us3.list-manage.com/subscribe/post?u=59165e464834675ada250903e&amp;id=2df8fbeed9"
-						:method "post"
-						:target "_blank"
-						:id "subscribe-form"
-						(div :class "ui input basic"
-							(input :type "text" :name "EMAIL" :placeholder "email-address"))
-						(div :class "ui divider hidden header")
-						(input :type "submit" :class "ui button tiny" :value "Subscribe")))))])
+  [(div :id "subscribe-stick-layer"
+        :do-class (cell= {:show subscribe-click}))
+   (div :id "subscribe-stick-form"
+        :class "ui header"
+        :do-class (cell= {:show subscribe-click})
+        (div :class "ui grid"
+             ((row)
+              (h4 :class "ui header" "Subscribe to our FREE")
+              (p "Newsletter • Reports • Infographs")
+              (div :class "ui divider hidden header")
+              (img :src "/images/header/subscribe.png"))
+             ((row)
+              (form :id "subscribe-form"
+                    :action "//exiconglobal.us3.list-manage.com/subscribe/post?u=59165e464834675ada250903e&amp;id=2df8fbeed9"
+                    :method "post"
+                    :target "_blank"
+                    (div :class "ui input basic"
+                         (input :type "text" :name "EMAIL"
+                                :placeholder "email-address"))
+                    (div :class "ui divider hidden header")
+                    (input :type "submit" :class "ui button tiny"
+                           :value "Subscribe"
+                           :click #(.submit (aget (js/jQuery "#subscribe-form") 0)))))))])
 
 (defn subscribe-stick-btn [subscribe-click]
-	(a :href "javascript:void(0);"
-		:click #(reset! subscribe-click true)
-		(div :id "subscribe-stick" :do-class
-			(cell= {:show (not subscribe-click)}))))
+  (a :href "javascript:void(0);"
+     :click #(reset! subscribe-click true)
+     (div :id "subscribe-stick" :do-class
+          (cell= {:show (not subscribe-click)}))))
 
-(defelem main [{:keys [pagecss pagetitle pagedescription pagekeywords] :as attrs} content]
-	(let [subscribe-click (cell false)]
-		(html
-			(head
-				(title pagetitle)
-				(meta :name "description" :content pagedescription)
-				(meta :name "keywords" :content pagekeywords)
-				(meta :name "viewport" :content "width=device-width, initial-scale=1.0")
-				(link :href "/images/favicon.ico" :rel "shortcut icon")
-				(if pagecss (link :href pagecss :rel "stylesheet"))
-				(script :src "//load.sumome.com/"
-					:data-sumo-site-id "ebf284bbaebf222290fb6ad21ded0363d1b94fddbbb9138e7930124b6645bbcb"
-					:async))
-			(subscribe-stick-btn subscribe-click)
-			(subscribe-stick-form subscribe-click)
-			(body
-				(top-nav/top-nav true)
-    		(top-nav/top-nav false)
-				(div (merge {:id "content"}
-					(dissoc attrs :pagetitle :pagedescription :pagekeywords))
-					content)
-				(bottom-nav/bottom-nav)))))))
+(defelem main
+  [{:keys [pagecss page-title description keywords] :as attrs} content]
+  (let [subscribe-click (cell false)]
+    (html
+      (head
+        (title page-title)
+        (meta :name "description" :content description)
+        (meta :name "keywords" :content keywords)
+        (meta :name "viewport" :content "width=device-width, initial-scale=1.0")
+        (link :href "/images/favicon.ico" :rel "shortcut icon")
+        (if pagecss (link :href pagecss :rel "stylesheet"))
+        (script :src "//load.sumome.com/"
+                :data-sumo-site-id "ebf284bbaebf222290fb6ad21ded0363d1b94fddbbb9138e7930124b6645bbcb"
+                :async))
+      (body
+        (subscribe-stick-btn subscribe-click)
+        (subscribe-stick-form subscribe-click)
+        (top-nav/top-nav true)
+        (top-nav/top-nav false)
+        (div (merge {:id "content"}
+                    (dissoc attrs :page-title :description :keywords))
+             content)
+        (bottom-nav/bottom-nav)))))))

@@ -146,9 +146,9 @@
 
 (layout/main
   :id "pricing"
-  :pagetitle "Product Pricing | Analytics & App Management | Exicon"
-  :pagedescription "Pricing For Exicon's App Management & Logistics Platform That Scales With Your App Portfolio, Analytics, Distribution & API Management."
-  :pagekeywords "Analytics, App Management, Exicon"
+  :page-title "Product Pricing | Analytics & App Management | Exicon"
+  :description "Pricing For Exicon's App Management & Logistics Platform That Scales With Your App Portfolio, Analytics, Distribution & API Management."
+  :keywords "Analytics, App Management, Exicon"
 
   (secondary-header :header (:header page-header))
 
