@@ -1,0 +1,9 @@
+img.responsive {
+	-webkit-filter: hue-rotate(83deg);
+	filter: hue-rotate(83deg);
+}
+
+div.inverted.segment.light-teal-bg{
+	background-color: rgba(89,210,217, 0.5) !important;
+	border-radius: 3px;
+}
