@@ -19,7 +19,7 @@
 (require '[tailrecursion.hoplon.boot :refer :all]
 	'[tailrecursion.castra.task :as c])
 
-(def server (c/castra-dev-server 'homepage.api :port 3003))
+(def server (c/castra-dev-server 'homepage.api :port 3103))
 
 (deftask development
 	"Build homepage for development."
