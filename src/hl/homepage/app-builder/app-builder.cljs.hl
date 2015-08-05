@@ -390,7 +390,7 @@
 
 (layout/main
   :page-title "App Builder"
-  :description "Find the right developer to get your app build"
+  :description "Find the right developer for your app build"
   :keywords "Build an App, App Builder"
 
   (intro-section)
