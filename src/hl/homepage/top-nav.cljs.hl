@@ -32,13 +32,14 @@
 
 (defelem signup-and-login []
   [(a :href "/appboard/pricing"
-      (div :class "ui small button" "Sign Up"))
+      (div :class "ui tiny button" "Sign Up"))
    (a :href (appboard-url) :class "item"
       "Log In")])
 
 (def main-menu-items
   {
    :products{:name "Products" :submenu products-submenu-items}
+   :app-calc{:name "Calculator" :url "/app-calculator"}
    :features {:name "Packages" :submenu features-submenu-items }
    :pricing {:name "Pricing" :url "/appboard/pricing" }
    :blog {:name "Blog" :url "http://blog.exiconglobal.com/corp/" }
@@ -99,11 +100,11 @@
          :do-class {:fixed-nav is-fixed
                     :hidden-nav (not is-fixed)}
          (div :class "ui equal height computer only row"
-              (div :class "four wide column"
+              (div :class "three wide column"
                    (a :href "/"
                       (img :class "ui small image top-nav-icon"
                            :src "/images/exicon-logo.png" :alt "Exicon Global Ltd.")))
-              (div :class "twelve wide column"
+              (div :class "thirteen wide column"
                    (div :class "ui basic segment"
                         (div :class "ui borderless fluid large menu"
                              (div :class "menu"

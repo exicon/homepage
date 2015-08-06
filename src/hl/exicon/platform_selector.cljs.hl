@@ -26,7 +26,7 @@
                                           :cost-result cost-result}))))))
 
 (defelem platform-selector [{:keys [class data cost-result] :as attr} kids]
-  (div :class "ui four column doubling stackable platform-selector grid"
+  (div :class "ui four column doubling platform-selector grid"
        (checkbox-grp :title "Wearables" :image "/images/app-calc/iwatch.png"
                      :data data
                      :cost-result cost-result

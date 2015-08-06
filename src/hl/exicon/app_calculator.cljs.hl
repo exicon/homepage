@@ -8,6 +8,12 @@
       platforms-items stage-items]]
     [exicon.platform-selector :refer [platform-selector toggle-in-set]]))
 
+(with-init!
+  (.sticky (js/jQuery "#computer-cost-summary")
+        (clj->js {:context "#computer-relative-container"
+                  :offset 110
+                  :pushing true})))
+
 (defn grouping-number [val]
   (-> val
       str
@@ -42,7 +48,7 @@
   [{:keys [class items title data columns cost-result toggle-data selected?]}]
   ((div :class "ui attached segment") :class class
    (h3 title)
-   (div :class (str "ui "columns" column center aligned doubling stackable grid")
+   (div :class (str "ui "columns" column center aligned doubling grid")
         (loop-tpl :bindings [item items]
                   (img-option
                     :item @item
@@ -121,47 +127,66 @@
           :class "bottom" (text "Stage:")
           (text (join "" (value-title selected-stage stage-items)))))])
 
-(defn app-calculator []
-  (div :class "ui form page grid"
-       (div :id "relative-container" :class "relative twelve wide column"
-            (div :class "ui top attached segment"
-                 (h3 "Which devices will the app run on?" (br)
-                     "(You can select multiple)")
-                 (div
-                   (platform-selector
-                     :data selected-platforms
-                     :cost-result result)))
-            (single-select
-              :data selected-size
-              :columns "three"
-              :cost-result result
-              :items size-items
-              :title "How big will the app be?")
-            (single-select
-              :data selected-login
-              :columns "three"
-              :cost-result result
-              :items login-items
-              :title "How will your users sign into the app?")
-            (multi-select
-              :data selected-features
-              :columns "three"
-              :cost-result result
-              :items features-items
-              :title ["Which features will your app include?"
-                      (br)
-                      "(You can select multiple)"])
-            (range-select
-              :data selected-languages
-              :cost-result result
-              :title "How many markets?")
-            (single-select
-              :class "bottom"
-              :data selected-stage
-              :cost-result result
-              :columns "four"
-              :items stage-items
-              :title "At what stage is your project?"))
+(defn calculator-fields []
+  [(div :class "ui top attached segment"
+        (h3 "Which devices will the app run on?" (br)
+            "(You can select multiple)")
+        (div
+          (platform-selector
+            :data selected-platforms
+            :cost-result result)))
+   (single-select
+     :data selected-size
+     :columns "three"
+     :cost-result result
+     :items size-items
+     :title "How big will the app be?")
+   (single-select
+     :data selected-login
+     :columns "three"
+     :cost-result result
+     :items login-items
+     :title "How will your users sign into the app?")
+   (multi-select
+     :data selected-features
+     :columns "three"
+     :cost-result result
+     :items features-items
+     :title ["Which features will your app include?"
+             (br)
+             "(You can select multiple)"])
+   (range-select
+     :data selected-languages
+     :cost-result result
+     :title "How many markets?")
+   (single-select
+     :class "bottom"
+     :data selected-stage
+     :cost-result result
+     :columns "four"
+     :items stage-items
+     :title "At what stage is your project?")])
 
-       (div :id "cost-summary" :style "padding-right:0;" :class "four wide column"
-            (cost-summary))))
+(defn app-calculator []
+  [
+   (div :class "ui form page computer tablet only grid"
+        (div :id "computer-relative-container" :class "twelve wide column"
+             (calculator-fields))
+        (div :class "four wide column"
+             (div :id "computer-cost-summary" :style "padding-right:0;" :class "ui sticky"
+                  (cost-summary))))
+
+   (div :class "ui form mobile only page grid"
+        (div :class "sixteen wide column"
+             (div :class "ui fixed borderless bottom large inverted teal one item menu"
+                  (div :class "item"
+                    :toggle (cell= (not(= (first result) 0)))
+                    (text (str "Total (USD): "
+                         (if (zero? (last result))
+                             (str (usd-currency 0))
+                             (str
+                               (usd-currency (first result))
+                               " - "
+                               (usd-currency (last result)))))))))
+        (div :class "sixteen wide column"
+             (calculator-fields)))])

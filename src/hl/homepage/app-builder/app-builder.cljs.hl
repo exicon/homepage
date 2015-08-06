@@ -5,9 +5,8 @@
         [homepage.common :refer [textual-button]]
         [homepage.app-builder.package-data :refer [packages]]
         [homepage.app-builder.pricing :refer [app-builder-pricing]]
-        [tailrecursion.hoplon :refer [with-init!]]
-        [exicon.app-calculator :refer [app-calculator]])
-      (:require-macros [config :refer [appboard-url appbuilder-url app-calc-feature]]))
+        [tailrecursion.hoplon :refer [with-init!]])
+      (:require-macros [config :refer [appboard-url appbuilder-url]]))
 
 (def appboard-login-link (str (appboard-url)"/?package=starter&returnUri="(appbuilder-url)"#!/login/"))
 (def appboard-registration-link (str (appboard-url)"/?package=starter&returnUri="(appbuilder-url)"#!/registration/"))
@@ -398,5 +397,4 @@
   (developer-section)
   (features-details-section)
   (testimonials-section)
-  (if (app-calc-feature) (app-calculator) (div))
   (reasons-section))
