@@ -1,9 +1,20 @@
 (ns homepage.layout
+  (:require-macros [config :refer [inspectlet-wid inspectlet-feature]])
   (:require
     [homepage.top-nav :as top-nav]
     [homepage.bottom-nav :as bottom-nav]
     [tailrecursion.hoplon.reload :refer [reload-all]]
     ))
+
+
+(defn inspect [field details]
+  (.push js/__insp
+         (clj->js [field details])))
+
+(with-init!
+  (when (inspectlet-feature)
+    (js/__ldinsp)
+    (inspect "wid" (inspectlet-wid))))
 
 (defn row []
   (div
@@ -71,6 +82,7 @@
     (html
       (head
         (title page-title)
+        (script :type "text/javascript" "window.__insp = window.__insp || [];")
         (meta :name "description" :content description)
         (meta :name "keywords" :content keywords)
         (meta :name "viewport" :content "width=device-width, initial-scale=1.0")

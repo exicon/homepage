@@ -6,3 +6,6 @@
 (defmacro timeline-src [] (or (getenv "TIMELINE_SRC") "//cdn.knightlab.com/libs/timeline/latest/embed/index.html?source=1_OogiCWCFjzW1iSvRpifWbdWkERFyEAhQKWwNjVw-lQ&font=Bevan-PotanoSans&maptype=toner&lang=en&height=650"))
 (defmacro app-calc-feature []
   (= "true" (clojure.string/lower-case (str (getenv "APP_CALC_FEATURE")))))
+(defmacro inspectlet-feature []
+  (= "true" (clojure.string/lower-case (str (getenv "INSPECTLET_FEATURE")))))
+(defmacro inspectlet-wid [] (getenv "INSPECTLET_WID"))
