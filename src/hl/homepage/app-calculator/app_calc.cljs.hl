@@ -4,12 +4,21 @@
         [exicon.app-calculator :refer [app-calculator]]))
 
 
-(def page-header {:header "App Calculator"})
+(def page-header {:header "App Cost Calculator"})
+
+(def intro
+  {:header "Welcome to Exicon's App Cost Calculator!"
+   :description
+   [(p"Plug in your requirements (don't worry you don't have to
+      share anything confidential!) and you'll get a range
+      of possible costs to build an app.")
+    (p "The price will vary dependent upon the developers' location,
+       skills and experience.")]})
 
 (layout/main
-  :page-title "App Calculator"
-  :description ""
-  :keywords ""
+  :page-title "App Cost Calculator"
+  :description "How much it costs to build an app"
+  :keywords "App cost calculator, costs to build an app"
 
   (secondary-header :header (:header page-header)
                     :sub-header (or (:sub-header page-header) nil)
@@ -17,10 +26,23 @@
 
   (div :id "app-calculator"
        (div :class "ui hidden divider")
+       (div :class "ui page grid"
+            (div :class "ui title sizer basic segment"
+                 (h2 :class "ui small center aligned header"
+                     :text (:header intro)))
+            (div :class "sixteen wide column description sizer"
+              (:description intro)))
+
        (app-calculator)
+
        (div :class "ui hidden divider")
-       (div :class "ui center aligned basic segment"
+       (div :class "ui center aligned basic segment description sizer"
+            (h3 :class "ui medium header"
+                "Ready to get going?")
             (a :href "/app-builder"
                :class "ui huge button"
-               "Find a developer"))
+               "Find out more about App Builder")
+            #_(a :href "/app-builder"
+               :class "ui huge button"
+               "Match me with a great developer"))
        (div :class "ui hidden divider")))

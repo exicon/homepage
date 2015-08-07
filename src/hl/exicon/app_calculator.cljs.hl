@@ -169,14 +169,14 @@
 
 (defn app-calculator []
   [
-   (div :class "ui form page computer tablet only grid"
+   (div :class "ui form page computer only grid"
         (div :id "computer-relative-container" :class "twelve wide column"
              (calculator-fields))
         (div :class "four wide column"
              (div :id "computer-cost-summary" :style "padding-right:0;" :class "ui sticky"
                   (cost-summary))))
 
-   (div :class "ui form mobile only page grid"
+   (div :class "ui form mobile tablet only page grid"
         (div :class "sixteen wide column"
              (div :class "ui fixed borderless bottom large inverted teal one item menu"
                   (div :class "item"
