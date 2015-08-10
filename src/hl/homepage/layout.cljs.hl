@@ -15,18 +15,7 @@
 (with-init!
   (when (inspectlet-feature)
     (js/__ldinsp)
-    (inspect "wid" (inspectlet-wid)))
-  (let [opts (clj->js
-               {:target "#hs-form"
-                :css ""
-                :cssClass "ui small form basic segment"
-                :inlineMessage "Thank you for subscribing!"
-                :submitButtonClass "ui submit teal button"
-                :errorMessageClass "ui error message"
-                :portalId (hs-portal-id)
-                :formId (hs-form-id)})]
-    (.setTimeout js/window
-                 #(.. js/hbspt -forms (create opts)) 3000)))
+    (inspect "wid" (inspectlet-wid))))
 
 (defn row []
   (div
@@ -58,7 +47,19 @@
          (div :class "ui hidden divider"))))
 
 (defn subscribe-stick-form [subscribe-click]
-  [(div :id "subscribe-stick-layer"
+  (let [opts (clj->js
+               {:target "#hs-form"
+                :css ""
+                :cssClass "ui small form basic segment"
+                :inlineMessage "Thank you for subscribing!"
+                :submitButtonClass "ui submit teal button"
+                :errorMessageClass "ui error message"
+                :portalId (hs-portal-id)
+                :formId (hs-form-id)})
+        render-form #(.. js/hbspt -forms (create opts))
+        debug (cell= (when subscribe-click (render-form)))]
+
+    [(div :id "subscribe-stick-layer"
         :do-class (cell= {:show subscribe-click}))
    (div :id "subscribe-stick-form"
         :class "ui fixed right basic segment"
@@ -72,7 +73,7 @@
               (div :class "ui divider hidden header")
               (img :src "/images/header/subscribe.png"))
              (div :class "sixteen wide column"
-              (div :id "hs-form")
+              (div :id "hs-form" "Loading ....")
               #_(form :id "subscribe-form"
                     :action "//exiconglobal.us3.list-manage.com/subscribe/post?u=59165e464834675ada250903e&amp;id=2df8fbeed9"
                     :method "post"
@@ -83,7 +84,7 @@
                     (div :class "ui divider hidden header")
                     (input :type "submit" :class "ui button tiny"
                            :value "Subscribe"
-                           :click #(.submit (aget (js/jQuery "#subscribe-form") 0)))))))])
+                           :click #(.submit (aget (js/jQuery "#subscribe-form") 0)))))))]))
 
 (defn subscribe-stick-btn [subscribe-click]
   (a :href "javascript:void(0);"
