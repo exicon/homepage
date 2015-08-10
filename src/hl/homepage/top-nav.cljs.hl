@@ -31,20 +31,22 @@
     false))
 
 (defelem signup-and-login []
-  [(a :href "/appboard/pricing"
-      (div :class "ui tiny button" "Sign Up"))
+  [(div :class "item"
+      (a :href "/appboard/pricing"
+         :class "ui mini button" "Sign Up"))
    (a :href (appboard-url) :class "item"
       "Log In")])
 
 (def main-menu-items
   {
-   :products{:name "Products" :submenu products-submenu-items}
+   :products{:name "Products" :submenu products-submenu-items :right-menu false}
    :app-calc{:name "Calculator" :url "/app-calculator"}
-   :features {:name "Packages" :submenu features-submenu-items }
-   :pricing {:name "Pricing" :url "/appboard/pricing" }
+   :features {:name "Packages" :submenu features-submenu-items :right-menu false}
+   :pricing {:name "Pricing" :url "/appboard/pricing"  right-menu false}
    :blog {:name "Blog" :url "http://blog.exiconglobal.com/corp/" }
-   :resources {:name "Resources" :submenu resources-submenu-items}
-   :about-us {:name "About Us" :url "/about-us"}
+   :resources {:name "Resources" :submenu resources-submenu-items :right-menu false}
+   :about-us {:name "About Us" :url "/about-us" :right-menu false}
+   :signup-and-login {:right-menu true}
    })
 
 (defn sub-menu [items]
@@ -55,6 +57,9 @@
 
 (defn main-menu [items clicked-item]
   (loop-tpl :bindings [[id item] items]
+            (if (:right-menu @item)
+            (div :class "right menu"
+                 (signup-and-login))
             (a :class "item"
                :do-class (cell=
                            {:ui (submenu? item)
@@ -71,7 +76,9 @@
                                         :visible (= clicked-item id)
                                         :invisble (not (= clicked-item id))
                                         })
-                      (sub-menu (:submenu @item)))))))
+                      (sub-menu (:submenu @item)))))
+
+            )))
 
 (defn mobile-main-menu [items clicked-item]
   (loop-tpl :bindings [[id item] items]
@@ -106,13 +113,10 @@
                            :src "/images/exicon-logo.png" :alt "Exicon Global Ltd.")))
               (div :class "thirteen wide column"
                    (div :class "ui basic segment"
-                        (div :class "ui borderless fluid large menu"
-                             (div :class "menu"
+                        (div :class "ui borderless secondary fluid menu"
                                   (main-menu
                                     main-menu-items
-                                    clicked-main-menu-item)
-                                  (div :class "right menu"
-                                       (signup-and-login)))))))
+                                    clicked-main-menu-item)))))
          (div :class "tablet mobile only row"
               (div :class "ui fluid two item small menu"
                    :style "margin-bottom:0"

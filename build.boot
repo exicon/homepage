@@ -9,7 +9,7 @@
 		[tailrecursion/boot.task    "2.2.4"]
 		[tailrecursion/hoplon       "5.10.24"]
 		[com.novemberain/validateur "2.4.2"]
-		[exicon/hoplon5-semantic-ui "1.10.2-SNAPSHOT"]]
+		[exicon/hoplon5-semantic-ui "2.0.6-SNAPSHOT"]]
 	:out-path     "resources/public"
 	:src-paths    #{"src/hl" "src/cljs" "src/clj" "assets/javascript"})
 

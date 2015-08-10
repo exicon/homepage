@@ -13,16 +13,14 @@
                 (div :class "row"
                      (div :class "eleven wide column title sizer"
                           (h1 :class "ui inverted huge main header" "BUILD QUALITY CONNECTIONS WITH MOBILE USERS")))
-                (div :class "row"
-                     (div :class "six wide left floated column"
+                (div :class "three column row"
+                     (div :class "seven wide column"
                           (a :class "ui huge black fluid button"
                              :href "/appboard" "Check out The AppBoard"))
-                     (div :class "seven wide left floated computer only column"
+                     (div :class "eight wide column"
                           (a :class "ui huge black fluid button"
                              :href "/app-builder/" "Find the right developer for your app"))
-                     (div :class "eight wide left floated tablet mobile only column"
-                          (a :class "ui huge black fluid button"
-                             :href "/app-builder/" "Find the right developer for your app"))))))
+                     ))))
 
 (def section-headers
   {
@@ -172,11 +170,10 @@
 
 (defn feature-advantage [adv is-mobile build-promote? inverted?]
   (div :class "center aligned column"
-       (div :class "ui title sizer"
+       (div :class "ui title sizer basic"
             :do-class {:horizontal (not is-mobile) :segment (not is-mobile)
                        :white inverted?
-                       :dark (and (not inverted?) build-promote?)
-                       :basic (not build-promote?)}
+                       :dark (and (not inverted?) build-promote?)}
             (h2 :class "ui medium header"
                 :do-class {:inverted inverted?
                            :teal (not build-promote?)} adv))))
@@ -194,11 +191,11 @@
           (div :class "sixteen wide column title sizer center aligned feature-header"
                (h2 :class "ui large header"
                    :do-class {:inverted inverted?}
-                   :text header))
+                   :text header)
           (div :class "description sizer"
                (h3 :class "ui medium center aligned header"
                    :do-class {:inverted inverted?}
-                   :text sub-header))
+                   :text sub-header)))
           (div :class "eleven wide centered column"
                :toggle image
                (img :class "ui massive centered image" :src image))
@@ -282,7 +279,7 @@
            (section-header :header (:customers section-headers))
            (div :class "ui page grid"
                 (div :id "clients" :class "anchor" )
-                (div :class "center aligned row"
+                (div :class "center aligned sixteen wide column"
                      (div :class "ui basic segment"
                           (img :class "ui massive centered image"
                                :src "images/landing-page/clients.png"
