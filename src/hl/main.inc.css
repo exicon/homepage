@@ -222,13 +222,23 @@ i.teal.icon {
 
 #subscribe-stick-layer, #subscribe-stick-form {
 	width: 239px;
-	height: 400px;
+	background-color: rgba(0,0,0,0.4);
 	color: white;
 	position: fixed;
 	z-index: 18;
 	right: 0px;
 	top: 260px;
 	display:none;
+}
+
+#subscribe-stick-form .ui.submit.button{
+	margin-top: 1em;
+}
+
+#subscribe-stick-form .close.icon{
+	margin-top: -1em;
+	margin-left: -0.5em;
+	cursor: pointer;
 }
 
 #subscribe-stick-layer.show, #subscribe-stick-form.show, #subscribe-stick.show {

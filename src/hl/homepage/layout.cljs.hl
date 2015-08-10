@@ -1,5 +1,6 @@
 (ns homepage.layout
-  (:require-macros [config :refer [inspectlet-wid inspectlet-feature]])
+  (:require-macros [config :refer [inspectlet-wid inspectlet-feature
+                                   hs-portal-id hs-form-id]])
   (:require
     [homepage.top-nav :as top-nav]
     [homepage.bottom-nav :as bottom-nav]
@@ -14,7 +15,18 @@
 (with-init!
   (when (inspectlet-feature)
     (js/__ldinsp)
-    (inspect "wid" (inspectlet-wid))))
+    (inspect "wid" (inspectlet-wid)))
+  (let [opts (clj->js
+               {:target "#hs-form"
+                :css ""
+                :cssClass "ui small form basic segment"
+                :inlineMessage "Thank you for subscribing!"
+                :submitButtonClass "ui submit teal button"
+                :errorMessageClass "ui error message"
+                :portalId (hs-portal-id)
+                :formId (hs-form-id)})]
+    (.setTimeout js/window
+                 #(.. js/hbspt -forms (create opts)) 3000)))
 
 (defn row []
   (div
@@ -49,16 +61,19 @@
   [(div :id "subscribe-stick-layer"
         :do-class (cell= {:show subscribe-click}))
    (div :id "subscribe-stick-form"
-        :class "ui header"
+        :class "ui fixed right basic segment"
         :do-class (cell= {:show subscribe-click})
+        (i :class "large close icon"
+           :click #(reset! subscribe-click false))
         (div :class "ui grid"
-             ((row)
+             (div :class "sixteen wide center aligned column"
               (h4 :class "ui header" "Subscribe to our FREE")
               (p "Newsletter • Reports • Infographs")
               (div :class "ui divider hidden header")
               (img :src "/images/header/subscribe.png"))
-             ((row)
-              (form :id "subscribe-form"
+             (div :class "sixteen wide column"
+              (div :id "hs-form")
+              #_(form :id "subscribe-form"
                     :action "//exiconglobal.us3.list-manage.com/subscribe/post?u=59165e464834675ada250903e&amp;id=2df8fbeed9"
                     :method "post"
                     :target "_blank"
@@ -83,6 +98,9 @@
       (head
         (title page-title)
         (script :type "text/javascript" "window.__insp = window.__insp || [];")
+        (script :charset "utf-8"
+            :type "text/javascript"
+            :src "//js.hsforms.net/forms/v2.js")
         (meta :name "description" :content description)
         (meta :name "keywords" :content keywords)
         (meta :name "viewport" :content "width=device-width, initial-scale=1.0")
