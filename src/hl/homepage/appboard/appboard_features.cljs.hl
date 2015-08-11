@@ -12,7 +12,7 @@
    :anchor "intelligent-newsfeeds"
    :content [
              (p "Stay up to speed with what's happening with your app portfolio
-                when you login. See the significant changes in performace
+                when you login. See the significant changes in performance
                 across your apps from app store rankings to downloads and
                 reviews.")
              (common/registration-button :starter "Get My Free Pack")
