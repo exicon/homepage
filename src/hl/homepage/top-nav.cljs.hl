@@ -42,7 +42,7 @@
    :products{:name "Products" :submenu products-submenu-items :right-menu false}
    :app-calc{:name "Calculator" :url "/app-calculator"}
    :features {:name "Packages" :submenu features-submenu-items :right-menu false}
-   :pricing {:name "Pricing" :url "/appboard/pricing"  right-menu false}
+   :pricing {:name "Pricing" :url "/appboard/pricing"  :right-menu false}
    :blog {:name "Blog" :url "http://blog.exiconglobal.com/corp/" }
    :resources {:name "Resources" :submenu resources-submenu-items :right-menu false}
    :about-us {:name "About Us" :url "/about-us" :right-menu false}

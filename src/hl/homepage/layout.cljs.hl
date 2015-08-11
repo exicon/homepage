@@ -1,6 +1,6 @@
 (ns homepage.layout
   (:require-macros [config :refer [inspectlet-wid inspectlet-feature
-                                   hs-portal-id hs-form-id]])
+                                   hs-portal-id hs-newsletter-id]])
   (:require
     [homepage.top-nav :as top-nav]
     [homepage.bottom-nav :as bottom-nav]
