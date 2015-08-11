@@ -4,8 +4,7 @@
   (:require
     [homepage.top-nav :as top-nav]
     [homepage.bottom-nav :as bottom-nav]
-    [tailrecursion.hoplon.reload :refer [reload-all]]
-    ))
+    [tailrecursion.hoplon.reload :refer [reload-all]]))
 
 
 (defn inspect [field details]

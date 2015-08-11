@@ -1,8 +1,8 @@
 (page "app-calculator/index.html"
+      (:require-macros [config :refer [hs-app-calc-id hs-portal-id]])
       (:require
         [homepage.layout :refer [secondary-header section-header] :as layout]
         [exicon.app-calculator :refer [app-calculator]]))
-
 
 (def page-header {:header "App Cost Calculator"})
 
@@ -14,6 +14,17 @@
       of possible costs to build an app.")
     (p "The price will vary dependent upon the developers' location,
        skills and experience.")]})
+
+(defc app-calc-click false)
+
+(defn app-calc-form []
+  (let [opts (clj->js
+               {:target "#hs-app-calc-form"
+                :submitButtonClass "ui submit teal button"
+                :errorMessageClass "ui error message"
+                :portalId (hs-portal-id)
+                :formId (hs-app-calc-id)})]
+    (.setTimeout js/window #(.. js/hbspt -forms (create opts)) 2000)))
 
 (layout/main
   :page-title "App Cost Calculator"
@@ -31,18 +42,18 @@
                  (h2 :class "ui small center aligned header"
                      :text (:header intro)))
             (div :class "sixteen wide column description sizer"
-              (:description intro)))
+                 (:description intro)))
 
        (app-calculator)
-
        (div :class "ui hidden divider")
        (div :class "ui center aligned basic segment description sizer"
             (h3 :class "ui medium header"
-                "Ready to get going?")
+                "Enter your details below to book your 30-minute FREE App Builder consultation.")
+            (div :class "ui hidden divider")
+            (div :class "ui container grid"
+                 (div :class "eight wide centered column" :id "hs-app-calc-form"
+                      (app-calc-form)))
+            (div :class "ui hidden divider")
             (a :href "/app-builder"
                :class "ui huge button"
-               "Find out more about App Builder")
-            #_(a :href "/app-builder"
-               :class "ui huge button"
-               "Match me with a great developer"))
-       (div :class "ui hidden divider")))
+               "Find out more about App Builder"))))
