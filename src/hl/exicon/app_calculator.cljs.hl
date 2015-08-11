@@ -178,7 +178,7 @@
 
    (div :class "ui form mobile tablet only page grid"
         (div :class "sixteen wide column"
-             (div :class "ui fixed borderless bottom large inverted teal one item menu"
+             (div :class "ui bottom fixed menu inverted teal large borderless"
                   (div :class "item"
                     :toggle (cell= (not(= (first result) 0)))
                     (text (str "Total (USD): "

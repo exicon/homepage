@@ -184,7 +184,7 @@
         html-attrs (dissoc attrs :details :inverted? :build-promote?)]
     ((section html-attrs)
      :class "feature-details"
-     (div :class "ui left fixed ribbon black inverted label"
+     (div :class "ui left fixed ribbon black inverted large label"
           (img :class "ui mini inline image" :src icon)
           :text name)
      (div :class "ui page padded grid"

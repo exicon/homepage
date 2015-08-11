@@ -286,7 +286,7 @@
 
 (defn features-details-section []
   [(section :id "qualified" :class "feature-details"
-            (div :class "ui left fixed ribbon black inverted label"
+            (div :class "ui left fixed ribbon black inverted large label"
                  (img :class "ui mini inline image" :src (:icon qualified-details))
                  :text (:name qualified-details))
             (div :class "ui page padded grid"
@@ -305,7 +305,7 @@
 
    (section :id "professional"
             :class "feature-details"
-            (div :class "ui left fixed ribbon black inverted label"
+            (div :class "ui left fixed ribbon black inverted large label"
                  (img :class "ui mini inline image"
                       :src (:icon professional-details))
                  :text (:name professional-details))
@@ -329,7 +329,7 @@
                  (div :class "ui hidden divider")))
 
    (section :id "incorporated" :class "feature-details"
-            (div :class "ui left fixed ribbon black inverted label"
+            (div :class "ui left fixed ribbon black inverted large label"
                  (img :class "ui mini inline image" :src (:icon incorporated-details))
                  :text (:name incorporated-details))
             (div :class "ui page padded grid"

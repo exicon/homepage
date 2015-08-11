@@ -127,8 +127,8 @@
                    (a :class "borderless item" :href "/"
                       (img :class "ui tiny image" :src "/images/exicon-logo.png" :alt "Exicon Global Ltd.")))
 
-              (div :class "ui vertical left sidebar overlay inverted only large menu"
-                   :style "top: 44px;"
+              (div :class "ui vertical left sidebar overlay inverted only huge menu"
+                   :style "top: 50px;"
                    :do-class (cell= {:visible mobile-menu-visible})
                    (div :class "menu"
                         (signup-and-login-mobile)
