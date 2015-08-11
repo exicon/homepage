@@ -28,7 +28,17 @@
 	background: url('/images/landing-page/header.jpg') center no-repeat;
 	background-color: #F0F0EE;
 	height: 600px;
-	background-position-y: 5px;
+	justify-content: center;
+	-webkit-justify-content: center;
+	display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+	display: -ms-flexbox; /* TWEENER - IE 10 */
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-align: center;
+	-webkit-flex-align: center;
+	-ms-flex-align: center;
+	-webkit-align-items: center;
+	align-items: center;
 }
 
 #intro .main.header {

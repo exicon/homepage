@@ -70,11 +70,12 @@
                :click #(reset! clicked-item @id)
                (text (:name item))
                (if (submenu? @item)
-                 (div :class "menu" :style "display: none;"
+                 (div :class "menu transition visible"
+                      :style "margin-top: 0px;"  ;TODO Refactor top-nav later
                       :mouseover #(reset! clicked-item @id)
                       :do-class (cell= {
                                         :visible (= clicked-item id)
-                                        :invisble (not (= clicked-item id))
+                                        :hidden (not (= clicked-item id))
                                         })
                       (sub-menu (:submenu @item)))))
 

@@ -11,7 +11,9 @@
 (def appboard-login-link (str (appboard-url)"/?package=starter&returnUri="(appbuilder-url)"#!/login/"))
 (def appboard-registration-link (str (appboard-url)"/?package=starter&returnUri="(appbuilder-url)"#!/registration/"))
 
-(def page-header {:header "App Builder"})
+(def page-header {:header "App Builder"
+                  :sub-header "Matching you with the right development company"
+                  :center false})
 
 (def process-list-items
   [
@@ -172,11 +174,16 @@
             :src (cell= (:icon item)))
        (div :class "center aligned row"
             (div :class "center aligned column"
-                 (div :class "ui teal circular label"
+                 #_(div :class "ui teal circular label"
                       :text (cell= (:serial-number item))
                       :style "font-size: 0.8em")
-                 (h3 :class"ui teal medium header" :text (cell= (:title item)))))
-       (ul
+                 (div :class"ui center aligned container"
+                     (div :class "ui teal circular label"
+                          :text (cell= (:serial-number item))
+                          :style "font-size: 0.8em")
+                     (h3 :class "ui teal medium header"
+                         :text (cell= (:title item))))))
+       (ul :class "ui bulleted list"
          (loop-tpl :bindings [item (cell= (:content item))]
                    (li :text (cell= item))))))
 
@@ -330,8 +337,8 @@
                       (h2 :class "ui large header"
                           :text (:header incorporated-details)))
                  (div :class "ui hidden divider")
-                 (div :class "row"
-                      (img :class "ui centered massive image"
+                 (div :class "ui container basic segment"
+                      (img :class "ui centered image"
                            :src (:image incorporated-details)))
                  (div :class "ui hidden divider")))])
 
@@ -392,7 +399,11 @@
   :description "Find the right developer for your app build"
   :keywords "Build an App, App Builder"
 
-  (intro-section)
+  (secondary-header :header (:header page-header)
+                    :sub-header (:sub-header page-header)
+                    :page "app-builder"
+                    :id "intro")
+  #_(intro-section)
   (flow-section flow-items)
   (developer-section)
   (features-details-section)

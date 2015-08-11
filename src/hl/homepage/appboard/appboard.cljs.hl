@@ -16,8 +16,9 @@
 
   (secondary-header :header (:header page-header)
                     :sub-header (:sub-header page-header)
-                    :page "appboard")
-  (div :class "ui stackable page grid"
+                    :page "appboard"
+                    :id "intro")
+  (div
        (loop-tpl :bindings [item feature-items]
                  (feature @item)))
   (div :class "ui hidden divider"))

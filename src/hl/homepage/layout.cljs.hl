@@ -22,12 +22,18 @@
     :class "column sixteen wide center aligned"))
 
 (defelem secondary-header
-  [{:keys [header sub-header page]:or {page ""}} kids]
-  (section :id "page-title" :class (str page " center aligned row")
-           (div :class "centered column title sizer"
-                (h1 :class "ui large center aligned header" :text header)
+  [{:keys [header sub-header page center id]:or {page "" center true id "page-title"}} kids]
+  (section :id id :class (str page " aligned row")
+           :do-class {:center center}
+           (div :class "column title sizer"
+                :do-class {:centered center}
+                (h1 :class "ui large header" :text header
+                    :do-class {:center center
+                               :aligned center})
                 (if sub-header
-                  (h2 :class "ui medium center aligned header" :text sub-header)))))
+                  (h2 :class "ui small header" :text sub-header
+                      :do-class {:center center
+                                 :aligned center})))))
 
 (defelem section-header [{:keys [header] :as attr} kids]
   (let [background (:background header)

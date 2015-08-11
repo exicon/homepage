@@ -441,7 +441,7 @@
 (defelem team-menu [{:keys [active-team is-mobile]} ]
   [
    (div :class "ui hidden divider")
-   (div :class "ui large text fluid menu title sizer"
+   (div :class "ui secondary fluid stackable menu description sizer"
         (a :class "item"
            :click #(reset! active-team "exicon-team")
            (span :class "ui medium header"
@@ -602,7 +602,7 @@
             (div :class "computer tablet only row"
                  (div :class "eleven wide centered column description sizer"
                       (h2 :class "ui large teal center aligned header" :text (cell= (:header active-value-content)))
-                      (ul
+                      (ul :class "ui bulleted list"
                         (loop-tpl :bindings [item (cell= (:content active-value-content))]
                                   (li :text (cell= item))))))
             (div :class "ui hidden divider"))))
@@ -626,7 +626,7 @@
             (h2 :class "ui medium center aligned header" "Who We Are"))
        (let [active-team (cell "exicon-team")]
          [(section :id "team-section"
-          (div :class "ui page center aligned grid"
+          (div :class "ui center aligned container grid"
                (div :class "computer tablet only row"
                     (team-menu :active-team active-team :is-mobile false))
                (div :class "mobile only row"

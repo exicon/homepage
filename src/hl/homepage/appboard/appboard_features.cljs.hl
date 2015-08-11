@@ -57,7 +57,7 @@
    :title "Analytics"
    :anchor "analytics"
    :content [
-             (ul
+             (ul :class "ui bulleted list"
                (li "AppStore Analytics")
                (li "In-App Analytics")
                (li "You own your analytics"))
@@ -78,7 +78,7 @@
    :anchor "app-builder"
    :content [
              (p "Get your app built properly using our App Builder tool.")
-             (ul
+             (ul :class "ui bulleted list"
                (li "Use our calculator to help define your project")
                (li "Fill in our standard App Builder template - all secure")
                (li "Ensure consistency and standardization")
@@ -114,7 +114,7 @@
    :anchor "app-store-distribution"
    :content [
              (p "Increase the chances of your app being")
-             (ul
+             (ul :class "ui bulleted list"
                (li "Downloaded by up to "
                    (span :class "text" (b "200%")) " more")
                (li "Featured by up to "
@@ -133,7 +133,7 @@
    :anchor "marketplace"
    :content [
              (p "Stand out from the crowd")
-             (ul
+             (ul :class "ui bulleted list"
                (li "Increase the discoverability of your Apps and APIs across your customers,
                    partners, suppliers and your organization with your own white labelled marketplace")
                (li "Accessible from " (em "your own") " company website showcasing " (em "your own") " products"
@@ -151,7 +151,7 @@
    :anchor "api-management"
    :content [
              (p " The Internet's easiest API Management Platform.")
-             (ul
+             (ul :class "ui bulleted list"
                (li "Free and easy to use")
                (li "Flexible")
                (li "Open source"))
@@ -190,7 +190,7 @@
                    :semantic-icon (i :class "search teal icon")
                    :content [
                              (p "Get to Know Where You Stand")
-                             (ul
+                             (ul :class "ui bulleted list"
                                (li "Who are the leaders in your industry?")
                                (li "How are your apps performing in a specific market?")
                                (li "Do your competitors change by country?")
@@ -220,28 +220,29 @@
 
 (defn feature [f]
   (if (= (:image-side f) :left)
-    (div :class "two column row"
+    (div :class "ui container stackable grid"
          (div :id (:anchor f) :class "anchor")
          (div :class "ui hidden divider")
-         (div :class "ui dividing header"
-
+         (div :class "ui dividing header row"
               (h2
                 (if (:icon f)
                   (img :class "features-icon" :src (:icon f))
                   (:semantic-icon f))
-                  :text (:title f)))
-         (div :class "column"
-              (img :src (:screenshot f)))
-         (div :class "description sizer column"
-              (div (:content f))))
+                :text (:title f)))
+         (div :class "two column row"
+              (div :class "column"
+                   (img :src (:screenshot f)))
+              (div :class "description sizer column"
+                   (div (:content f)))))
 
-    (div :class "two column row"
+    (div :class "ui container stackable grid"
          (div :id (:anchor f) :class "anchor")
          (div :class "ui hidden divider")
-         (div :class "ui dividing header"
+         (div :class "ui dividing header row"
               (h2 (img :class "features-icon" :src (:icon f))
                   :text (:title f)))
-         (div :class "description sizer column"
-              (div (:content f)))
-         (div :class "column"
-              (img :src (:screenshot f))))))
+         (div :class "two column row"
+              (div :class "description sizer column"
+                   (div (:content f)))
+              (div :class "column"
+                   (img :src (:screenshot f)))))))
