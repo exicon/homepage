@@ -55,7 +55,7 @@
                 :submitButtonClass "ui submit teal button"
                 :errorMessageClass "ui error message"
                 :portalId (hs-portal-id)
-                :formId (hs-form-id)})
+                :formId (hs-newsletter-id)})
         render-form #(.. js/hbspt -forms (create opts))
         debug (cell= (when subscribe-click (render-form)))]
 

@@ -231,7 +231,7 @@ i.teal.icon {
 	display:none;
 }
 
-#subscribe-stick-form .ui.submit.button{
+.hs_submit .ui.submit.button{
 	margin-top: 1em;
 }
 

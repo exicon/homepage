@@ -8,4 +8,4 @@
   (= "true" (clojure.string/lower-case (str (getenv "INSPECTLET_FEATURE")))))
 (defmacro inspectlet-wid [] (getenv "INSPECTLET_WID"))
 (defmacro hs-portal-id [] (getenv "HS_PORTAL_ID"))
-(defmacro hs-form-id [] (getenv "HS_FORM_ID"))
+(defmacro hs-newsletter-id [] (getenv "HS_NEWSLETTER_ID"))
