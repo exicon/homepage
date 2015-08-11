@@ -250,6 +250,10 @@ i.teal.icon {
 	margin: 0;
 }
 
+#subscribe-stick-form label{
+	color:white;
+}
+
 #subscribe-stick-layer {
 	background-color: black;
 	opacity: 0.4;
