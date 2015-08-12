@@ -1,3 +1,29 @@
+#pricing .dotted-left-frame{
+	border-left: 2px dashed rgba(0,0,0,0.05);
+	border-bottom: 2px dashed rgba(0,0,0,0.05);
+	margin-left: -0.8em;
+}
+
+#pricing .dotted-middle-frame{
+	border-bottom: 2px dashed rgba(0,0,0,0.05);
+}
+
+#pricing .dotted-right-frame{
+	border-left: 2px dashed rgba(0,0,0,0.05);
+	border-right: 2px dashed rgba(0,0,0,0.05);
+	border-bottom: 2px dashed rgba(0,0,0,0.05);
+}
+
+#pricing .vertically-centered {
+	height: 90px !important;
+	text-align: left;
+	justify-content: left !important;
+	align-items: center !important;
+	-webkit-align-items: center !important;
+	display: -webkit-flex !important;
+	display: flex !important;
+}
+
 #pricing-pack {
 	margin-top: 50px;
 }

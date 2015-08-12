@@ -132,6 +132,13 @@ p.testimonial {
 	font-size: 1.2em;
 }
 
+.centered-content{
+	align-items: center !important;
+	-webkit-align-items: center !important;
+	justify-content: center !important;
+	display: -webkit-flex !important;
+	display: flex !important;
+}
 
 /* Big Screens*/
 @media only screen and (min-width: 1900px){

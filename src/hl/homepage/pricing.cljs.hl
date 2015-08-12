@@ -2,17 +2,170 @@
       (:require
         [homepage.layout :refer [secondary-header]:as layout]
         [homepage.packages :refer [packages]]
-        [homepage.packages.pricing :refer [pricing]]))
+        [homepage.packages.pricing :refer [pricing]])
+      (:require-macros [config :refer [appboard-url]]))
 
 (def page-header {:header "Pricing"})
 
+(defn appboard-registration-link [arg] (str (appboard-url) "/?package="(name arg)"#!/registration/"))
+
+(def features-list
+  [
+   {:label "Number of apps"
+    :description nil
+    :highlighted true
+    :free (h3 :class "ui huge blue header"
+              "Up to " (b "7 ")"apps")
+    :paid (h3 :class "ui huge teal header"
+              "More than " (b "8 ")"apps"
+              (div :class"sub header"
+                   (b "US$ 100 ")"per app/month"
+                   (br)
+                   (b "US$ 1000 ")"per app/year")
+              )}
+
+   {:label "AppStore Analytics"
+    :description "Automatically pull your metrics from the appstores. e.g. downloads, uninstalls, updates etc."
+                 :free true :paid true }
+   {:label "In-app Analytics"
+    :description "Track user metrics from within your apps, regardless of your provider. e.g. sessions, session length, etc."
+                 :free true :paid true }
+   {
+    :label "AppLocker"
+    :description "Store your app assets securely. e.g. images, text, licenses, contracts, APK files, etc."
+                 :free true :paid true }
+
+   {:label "Leaderboards"
+    :description "Your apps within your portfolio ranked and compared."
+                 :free true :paid true }
+
+   ;{:label "Intelligent Newsfeed"
+    ;:description "Relevant changes about your apps become transparent."
+    ;             :free true :paid true }
+
+   {:label "Watchlist"
+    :description "Create lists of apps you want to follow, to track your competitors or for inspiration."
+                 :free true :paid true }
+
+   {:label "AppBuilder"
+    :description "A matchmaking tool to find the best development house for your next mobile app."
+                 :free true :paid true }])
+
+(defn value-add-cta-button [cta]
+  (let [generate-button
+        (fn [label href info]
+          (div :class "ui container"
+               (a :class "ui blue fluid button"
+                  :href href
+                  label)
+               (when info
+               (p (i "*We'll display your snapshots in the AppBoard, even if you don't have an app.")))))]
+  (cond (= cta :insights) (generate-button "Sign up inside the AppBoard" (appboard-registration-link :competitor-insights) true)
+        (= cta :distribution) (generate-button "Sign up inside the AppBoard" (appboard-registration-link :distribution) false)
+        (= cta :developer) (generate-button "Contact Us" "href" false)
+        (= cta :management) (generate-button "Contact Us" "href" false)
+        (= cta :inception) (generate-button "Contact Us" "href" false))))
+
+(def value-adds
+  [
+   {:label "Competitive Insights"
+    :description "Get snapshots of key competitor app data by brand (globally or by country)."
+    :price1 (h2 :class "ui medium header" "US$ 200 / Snapshot" (br) "US$ 2,000 / Year")
+    :cta (value-add-cta-button :insights)
+    }
+   {:label "App Distribution"
+    :description "Increase downloads by up to 200% by distributing onto additional Android stores."
+    :price1 [ (h2 :class "ui medium header"
+                  (div :class "sub header" "Distribute to")
+                  "10 Stores / US$ 7,000" (br) "20 Stores / US$ 10,000")]
+    :cta (value-add-cta-button :distribution)
+    }
+   {:label "Assisted AppBuilder"
+    :description "Help you through developer jargon."
+    :price1 (h2 :class "ui medium header" "US$ 999")
+    :cta (value-add-cta-button :developer)
+    }
+   {:label "App Ideation Workshop"
+    :description "Focus on features and priorities for your app, to estimate cost and timing while reducing risk."
+    :price1 ""
+    :cta (value-add-cta-button :inception)
+    }
+   {:label "Project Management"
+    :description "You don't even have to learn developer jargon. We'll make sure your project is delivered for you."
+    :price1 ""
+    :cta (value-add-cta-button :management)
+    }])
+
+(defn feature-row [f]
+  (let [print-check? (fn [plan color]
+                       (if (true? plan)
+                         (i :class (str color " check circle icon")
+                            :style "font-size: 3em"
+                             :toggle plan)
+                         plan))
+        bg-color (if (:highlighted @f) "inverted secondary vertically-centered" "tertiary")
+        txt-color (if (:highlighted @f) "" "grey")]
+    (div :class "three column row" :style "padding:0.10em"
+         (div :class "column"
+              (div :class (str "ui basic " bg-color " segment")
+                   (h3 :class (str"ui " txt-color " large header")
+                       :text (:label @f)
+                       (div :class "sub header"
+                            :text (:description @f)))))
+         (div :class "centered-content column dotted-left-frame"
+
+              (print-check? (:free @f) "blue"))
+         (div :class "centered-content column dotted-right-frame"
+              (print-check? (:paid @f) "teal")))))
+
 (defn pricing-section []
   (section
-    :id "pricing-pack"
-    :class "full-width-container"
-    (div :class "ui four column doubling page grid"
-         (loop-tpl :bindings [opt packages]
-                   (pricing opt)))))
+    :id "pricing"
+    :class "ui container grid"
+    (div :class "three column row"
+         (div :class "column")
+         (div :class "blue center aligned column"
+              :style "margin-left: -0.8em"
+              (h2 :class "ui inverted header" "Free"))
+         (div :class "teal center aligned column"
+              (h2 :class "ui inverted header" "Paid")))
+    (loop-tpl :bindings [f features-list]
+              (feature-row f))))
+
+(defn cta-section []
+  (section :class "ui container grid"
+           (div :class "three column row"
+                (div :class "column")
+                (div :class "center aligned column"
+                     :style "margin-left: -0.8em"
+                     (a :class "ui blue huge button" :href (appboard-registration-link :free) "Sign up now"))
+                (div :class "center aligned column"
+                     (a :class "ui teal huge button" :href (appboard-registration-link :paid) "Sign up now")))))
+
+
+(defn value-add-row [value]
+  (div :class "three column row"
+       :style "padding:0.10em"
+      (div :class "column"
+           (div :class "ui basic tertiary segment"
+                (h3 :class "ui grey large header"
+                    :text (:label @value)
+                    (div :class "sub header"
+                         (:description @value)))))
+      (div :class "centered-content column dotted-left-frame"
+           (:price1 @value))
+      (div :class "centered-content column dotted-right-frame"
+           (:cta @value))))
+
+(defn value-add-section []
+  (section :class "ui container grid"
+           (div :class "one column row"
+                :style "padding:0.10em"
+                (div :class "column"
+                     (div :class "ui secondary basic segment"
+                          (h3 :class "ui large header" "Additional Services"))))
+           (loop-tpl :bindings [value value-adds]
+                     (value-add-row value))))
 
 (def faq-detail
   [
@@ -128,12 +281,9 @@
                    :click #(swap! opened not)
                    (i :class "dropdown icon")
                    (text (:question q)))
-
               (div :class "content"
                    :do-class (cell= {:active opened})
-                   (cell= (:answer q))))
-         ))
-  )
+                   (cell= (:answer q)))))))
 
 (defn faq-list-section []
   (section
@@ -151,6 +301,11 @@
   :keywords "Analytics, App Management, Exicon"
 
   (secondary-header :header (:header page-header))
-
+  (div :class "ui hidden divider")
   (pricing-section)
-  (faq-list-section))
+  (cta-section)
+  (div :class "ui hidden divider")
+  (div :class "ui hidden divider")
+  (value-add-section)
+  (div :class "ui hidden divider")
+  #_(faq-list-section))
