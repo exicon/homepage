@@ -89,7 +89,7 @@
         :toggle (not= class "bottom"))))
 
 (defelem cost-summary [attr kids]
-  [(h5 :class "ui top attached header" "Summary")
+  [(h5 :class "ui top attached header" "App Build Cost")
    (div :class "ui bottom attached segment"
         (div
           :toggle (cell= (not(= (first result) 0)))
@@ -102,31 +102,32 @@
                      (usd-currency (first result))
                      " - "
                      (usd-currency (last result)))))))
-          (div :class "ui divider"))
+          #_(div :class "ui divider"))
 
-        (cost-section
-          :class "top" (text "Platforms:")
-          (text (join ", " (value-title selected-platforms platforms-items))))
+        ; (cost-section
+        ;   :class "top" (text "Platforms:")
+        ;   (text (join ", " (value-title selected-platforms platforms-items))))
 
-        (cost-section
-          (text "Size:")
-          (text (join "" (value-title selected-size size-items))))
+        ; (cost-section
+        ;   (text "Size:")
+        ;   (text (join "" (value-title selected-size size-items))))
 
-        (cost-section
-          (text "Login:")
-          (text (join "" (value-title selected-login login-items))))
+        ; (cost-section
+        ;   (text "Login:")
+        ;   (text (join "" (value-title selected-login login-items))))
 
-        (cost-section
-          (text "Features:")
-          (text (join ", " (value-title selected-features features-items))))
+        ; (cost-section
+        ;   (text "Features:")
+        ;   (text (join ", " (value-title selected-features features-items))))
 
-        (cost-section
-          (text "Markets:")
-          (text (str selected-languages " markets")))
+        ; (cost-section
+        ;   (text "Markets:")
+        ;   (text (str selected-languages " markets")))
 
-        (cost-section
-          :class "bottom" (text "Stage:")
-          (text (join "" (value-title selected-stage stage-items)))))])
+        ; (cost-section
+        ;   :class "bottom" (text "Stage:")
+        ;   (text (join "" (value-title selected-stage stage-items))))
+        )])
 
 (defn calculator-fields []
   [(div :class "ui top attached segment"

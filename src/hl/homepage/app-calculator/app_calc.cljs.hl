@@ -48,7 +48,7 @@
        (div :class "ui hidden divider")
        (div :class "ui center aligned basic segment description sizer"
             (h3 :class "ui medium header"
-                "Enter your details below to book your 30-minute FREE App Builder consultation.")
+                "Book your 30-minute FREE App Builder consultation.")
             (div :class "ui hidden divider")
             (div :class "ui container grid"
                  (div :class "eight wide centered column" :id "hs-app-calc-form"
