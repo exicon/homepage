@@ -1,0 +1,134 @@
+(ns homepage.layout
+  (:require-macros
+    [config :refer [inspectlet-wid inspectlet-feature
+                    hs-portal-id hs-newsletter-id]])
+  (:require
+    [homepage.top-nav :as top-nav]
+    [homepage.bottom-nav :as bottom-nav]))
+
+
+(defn inspect [field details]
+  (.push js/__insp
+         (clj->js [field details])))
+
+(with-init!
+  (when (inspectlet-feature)
+    (js/__ldinsp)
+    (inspect "wid" (inspectlet-wid))))
+
+(defn row []
+  (div
+    :class "column sixteen wide center aligned"))
+
+(defelem secondary-header
+  [{:keys [header sub-header page center id]
+    :or {page "" center true id "page-title"}} kids]
+  ((section :id id :class (str page " aligned row"))
+   :class {:center center}
+   ((div :class "column title sizer")
+    :class {:centered center}
+    ((h1 :class "ui large header") :text header
+     :class {:center center
+             :aligned center})
+    (if sub-header
+      ((h2 :class "ui small header") :text sub-header
+       :class {:center center
+               :aligned center})))))
+
+(defelem section-header [{:keys [header] :as attr} kids]
+  (let [background (:background header)
+        inverted (:inverted header)
+        size (or (:size header) "small")
+        centered (:centered header)
+        color (or (:color header) "")]
+    ((div :class "ui basic segment")
+     :class {:tertiary background :inverted inverted}
+     (div :class "ui title sizer"
+          ((h2 :class (str "ui header " size " " color))
+           :class {:center centered
+                   :aligned centered
+                   :inverted inverted}
+           (:header header)))
+     kids
+     (div :class "ui hidden divider"))))
+
+(defn subscribe-stick-form [subscribe-click]
+  (let [opts (clj->js
+               {:target "#hs-form"
+                :css ""
+                :cssClass "ui small form basic segment"
+                :inlineMessage "Thank you for subscribing!"
+                :submitButtonClass "ui submit teal button"
+                :errorMessageClass "ui error message"
+                :portalId (hs-portal-id)
+                :formId (hs-newsletter-id)})
+        render-form #(.. js/hbspt -forms (create opts))
+        debug (cell= (when subscribe-click (render-form)))]
+
+    [((div :id "subscribe-stick-layer")
+      :class (cell= {:show subscribe-click}))
+     ((div :id "subscribe-stick-form")
+      :class "ui fixed right basic segment"
+      :class (cell= {:show subscribe-click})
+      (i :class "large close icon"
+         :click #(reset! subscribe-click false))
+      (div :class "ui grid"
+           (div :class "sixteen wide center aligned column"
+                (h4 :class "ui header" "Subscribe to our FREE")
+                (p "Newsletter • Reports • Infographs")
+                (div :class "ui divider hidden header")
+                (img :src "/images/header/subscribe.png"))
+           (div :class "sixteen wide column"
+                (div :id "hs-form" "Loading ....")
+                #_(form :id "subscribe-form"
+                        :action "//exiconglobal.us3.list-manage.com/subscribe/post?u=59165e464834675ada250903e&amp;id=2df8fbeed9"
+                        :method "post"
+                        :target "_blank"
+                        (div :class "ui input basic"
+                             (input :type "text" :name "EMAIL"
+                                    :placeholder "email-address"))
+                        (div :class "ui divider hidden header")
+                        (input :type "submit" :class "ui button tiny"
+                               :value "Subscribe"
+                               :click #(.submit (aget (js/jQuery "#subscribe-form") 0)))))))]))
+
+(defn subscribe-stick-btn [subscribe-click]
+  (a :href "javascript:void(0);"
+     :click #(reset! subscribe-click true)
+     (div :id "subscribe-stick" :class
+          (cell= {:show (not subscribe-click)}))))
+
+(defelem primary
+  [{:keys [page-css page-title description keywords] :as attrs} content]
+  (let [subscribe-click (cell false)]
+    (html
+      (head
+        (title page-title)
+        (script :type "text/javascript" "window.__insp = window.__insp || [];")
+        (script :charset "utf-8"
+                :type "text/javascript"
+                :src "//js.hsforms.net/forms/v2.js")
+        (html-meta :name "description" :content description)
+        (html-meta :name "keywords" :content keywords)
+        (html-meta :name "viewport" :content "width=device-width, initial-scale=1.0")
+        (link :href "/images/favicon.ico" :rel "shortcut icon")
+
+        (link :href "/semantic-ui.css" :rel "stylesheet")
+
+        (link :href "/homepage.inc.css" :rel "stylesheet")
+        (link :href "/main.inc.css" :rel "stylesheet")
+        (link :href "/top-nav.inc.css" :rel "stylesheet")
+
+        (link :href page-css :rel "stylesheet")
+        (script :src "//load.sumome.com/"
+                :data-sumo-site-id "ebf284bbaebf222290fb6ad21ded0363d1b94fddbbb9138e7930124b6645bbcb"
+                :async))
+      (body
+        (subscribe-stick-btn subscribe-click)
+        (subscribe-stick-form subscribe-click)
+        (top-nav/top-nav true)
+        (top-nav/top-nav false)
+        (div (merge {:id "content"}
+                    (dissoc attrs :page-title :description :keywords :page-css))
+             content)
+        (bottom-nav/bottom-nav)))))))

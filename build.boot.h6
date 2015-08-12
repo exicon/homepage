@@ -2,13 +2,13 @@
   :project 'homepage
   :version "0.1.0-SNAPSHOT"
   :dependencies
-  '[[tailrecursion/boot-hoplon "0.1.0"]
-    [tailrecursion/hoplon "6.0.0-alpha2"]
+  '[[tailrecursion/boot-hoplon "0.1.0-SNAPSHOT"]
+    [tailrecursion/hoplon "6.0.0-alpha4"]
     [adzerk/boot-reload "0.3.1"]
-    [pandeiro/boot-http "0.6.3"]
+    [pandeiro/boot-http "0.6.3-SNAPSHOT"]
     [adzerk/boot-cljs "1.7.48-SNAPSHOT"]
     [cljsjs/boot-cljsjs "0.5.0" :scope "test"]
-    [exicon/semantic-ui "2.0.6-SNAPSHOT"]]
+    [exicon/semantic-ui "1.12.2-SNAPSHOT"]]
   :source-paths #{"src"}
   :resource-paths #{"assets"})
 
@@ -35,7 +35,7 @@
     (hoplon :pretty-print true)
     (reload)
     (cljs :optimizations :none
-          :source-map false)
+          :source-map true)
     (speak)))
 
 (deftask prod

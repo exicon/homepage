@@ -1,0 +1,414 @@
+(page "app-builder/index.html"
+      (:require
+        [homepage.layout :refer [secondary-header section-header] :as layout]
+        [homepage.common :refer [textual-button]]
+        [tailrecursion.hoplon :refer [with-init!]])
+      (:require-macros [config :refer [appboard-url appbuilder-url]]))
+
+(def appboard-login-link (str (appboard-url)"/?package=starter&returnUri="(appbuilder-url)"#!/login/"))
+(def appboard-registration-link (str (appboard-url)"/?package=starter&returnUri="(appbuilder-url)"#!/registration/"))
+
+(def page-header {:header "App Builder"
+                  :sub-header "Matching you with the right development company"
+                  :center false})
+
+(def process-list-items
+  [
+   {:title "Quick, secure and easy"}
+   {:title "The right developer for your project"}
+   {:title "The support you want"}])
+
+(def section-headers
+  {
+   :testimonials
+   {
+    :header "What our customers say"
+    :centered true}})
+
+(def flow-items
+  [
+   {
+    :serial-number "1"
+    :title "Submit your idea"
+    :icon "/images/app-builder/lightbulb.svg"
+    :content  [
+               "Secure and Confidential"
+               "No matter what stage you're at"
+               ]
+    }
+   {	:serial-number "2"
+    :title "Get advice"
+    :icon "/images/app-builder/advise.svg"
+    :content  [
+               "From Exicon mobile experts"
+               "Global Projects of all sizes"
+               ]
+    }
+   {	:serial-number "3"
+    :title "Get matched"
+    :icon "/images/app-builder/matching.svg"
+    :content  [
+               "3 leading development companies for you to choose from"
+               "Based on budget, location, skills and experience"
+               ]
+    }
+   {	:serial-number "4"
+    :title "Launch"
+    :icon "/images/app-builder/live.svg"
+    :content  [
+               "Distribute directly onto multiple appstores"
+               "Start promoting your app"]}])
+
+(def qualified-details
+  {:name " Qualified"
+   :icon "/images/app-builder/qualified-icon.svg"
+   :header "Our Network of Development Companies"
+   :advantages ["Released and updated mobile software" "Have strong track record in mobililty"
+                "Reviewed by experts and customers"]})
+
+(def professional-details
+  {:name "Professional"
+   :icon "/images/app-builder/professional-icon.svg"
+   :header "Experienced in relevant areas"
+   :sub-header "Connecting you with..."
+   :advantages [{:description "Seniority and type of Contacts" :image "/images/app-builder/seniority.png" }
+                {:description "and these skills" :image "/images/app-builder/category.png" }]})
+
+(def incorporated-details
+  {:name "Incorporated"
+   :icon "/images/app-builder/incorporated-icon.svg"
+   :header "Matching your app requirements"
+   :image "/images/app-builder/incorporated.png" })
+
+(def reasons-data
+  [
+   {
+    :id :reason1
+    :title "1. We have invested in a global network of 3,000+ qualified software development companies."
+    :content "We have profiled developers, who are some of the world's leading specialists, to ensure
+             our customers get developers who can actually do the job rather than just say they can."}
+   {
+    :id :reason2
+    :title "2. We guarantee you another 3 developers if you aren’t satisfied."
+    :content "Among the 10,000 matches, we have yet to be asked to do this. Our customers usually
+             have the other problem, being unable to decide between the proposed developers."}
+   {
+    :id :reason3
+    :title "3. Choosing the wrong developer can be a very expensive mistake."
+    :content "You may have referrals from others but do your apps have the same complexities? 60%
+             of our customers come to us when they have to restart projects due to a mismatch with developers."}
+   ])
+
+(def dev-community-items
+  [
+   {
+    :title "Qualified"
+    :icon "/images/app-builder/qualified-icon2.svg"
+    :content "Carefully vetted by skill, industry and experience"
+    }
+   {
+    :title "Professional"
+    :icon "/images/app-builder/professional-icon2.svg"
+    :content "Strong track record teams built around design, UX, project management and technology."
+    }
+   {
+    :title "Incorporated"
+    :icon "/images/app-builder/incorporated-icon2.svg"
+    :content "Over 3,000 companies with an average 15 engineers located everywhere on the planet."
+    }
+   ])
+
+(def testimonials
+  {
+   :four-front {
+                :image "/images/testimonials/melanie-mcgraw-4front-advisors.png"
+                :testimonial "It has been an absolute pleasure to work with this team, consummate professionals
+                             through and through. Working with Exicon at the start of this journey was critical
+                             in helping us determine what we wanted and needed, then figuring out how to even
+                             begin to cast the net into the often confusing digital waters."
+                             :name "Melanie McGraw"
+                             :sub-title "Corporate Training and Compliance Expert, 4Front Advisors"
+                             :company "/images/testimonials/4Front.png"
+                             }
+   :brain {
+           :image "/images/testimonials/Aran-gettoknowyourbrain.png"
+           :testimonial "Wow, great service - thanks! Thanks a million! Thanks for your support so far - we're getting close now!"
+           :name "Aran Dadswell"
+           :sub-title "Founder of Get to know your Brain"
+           :company "/images/testimonials/Get-to-know-your-brain.png"}})
+
+(defc route @(route-cell ""))
+
+(route-cell route #(reset! route %))
+
+(defc visible-reasons #{})
+
+(defc show-more #{:brain})
+
+(defelem process-list-item [{:keys [title size]} kids]
+  (div :class "item"
+       (i :class (str size " checkmark teal icon"))
+       (div :class (str size "ui header content") title)))
+
+(defn intro-section []
+  (section :id "intro" :class "app-builder"
+           (div :class "ui page stackable grid"
+                (div :class "row"
+                     (div :class "eleven wide column title sizer"
+                          (h1 :class "ui huge main header" "App Builder"
+                              (div :class "sub header" "Matching you with the right development company"))))
+                #_(div :class "row" ; [#98617918]
+                       (div :class "six wide left floated computer only column"
+                            (a :class "ui huge black fluid button"
+                               :href "/app-builder/" "Watch one of our case studies"))
+                       (div :class "seven wide left floated tablet mobile only column"
+                            (a :class "ui huge black fluid button"
+                               :href "/app-builder/" "Watch one of our case studies"))))))
+
+(defn flow-item [item]
+  (div :class  "column description sizer"
+       (img :class"ui small centered inverted image"
+            :src (cell= (:icon item)))
+       (div :class "center aligned row"
+            (div :class "center aligned column"
+                 #_(div :class "ui teal circular label"
+                        :text (cell= (:serial-number item))
+                        :style "font-size: 0.8em")
+                 (div :class"ui center aligned container"
+                      (div :class "ui teal circular label"
+                           :text (cell= (:serial-number item))
+                           :style "font-size: 0.8em")
+                      (h3 :class "ui teal medium header"
+                          :text (cell= (:title item))))))
+       (ul :class "ui bulleted list"
+           (loop-tpl :bindings [item (cell= (:content item))]
+                     (li :text (cell= item))))))
+
+
+(defn flow-section [flow-items]
+  (section :class "ui inverted black vertical segment"
+           (div :id "features" :class "anchor" )
+           (div :class "ui hidden divider")
+           (div :class "ui stackable page grid"
+                (div :class "four column row"
+                     (loop-tpl :bindings [f flow-items]
+                               (flow-item f)))
+                (div :class "center aligned row"
+                     (div :class "column"
+                          (textual-button
+                            :inline false
+                            :destination-link appboard-registration-link)))
+                (div :class "ui hidden divider"))))
+
+(defn dev-community-column [item]
+  (div :class "column"
+       (div :class "title sizer"
+            (img :class "ui circular centered small inverted teal segment image":src (:icon @item))
+            (h2 :class "ui medium header dark-teal" (:title @item)))
+       (div :class "content" (:content @item))))
+
+(defn developer-section []
+  (section :class "ui page stackable padded grid"
+           (div :class "center aligned row"
+                (div :class "column"
+                     (h2 :class "ui huge header"
+                         (img :class "ui tiny image"
+                              :src "/images/app-builder/development.png")
+                         (div :class "content" :style "text-align: left;"
+                              "Our Development Community"
+                              (div :class "sub header" "3,000+ developers globally" (br) "US400M in apps matched")))))
+           (div :id "developer-map" :class "tablet computer only center aligned two column row"
+                (div :class "column"
+                     (img :class "ui small left floated image"
+                          :src "/images/app-builder/platform.png"))
+                (div :class "column"
+                     (img :class "ui small right floated image"
+                          :src "/images/app-builder/country.png")))
+
+           (div :class "mobile only center aligned three column stackable row"
+                (div :class "column"
+                     (img :class "ui centered image"
+                          :src "/images/app-builder/developer-map.jpg"))
+                (div :class "column"
+                     (img :class "ui centered image"
+                          :src "/images/app-builder/platform.png"))
+                (div :class "column"
+                     (img :class "ui centered image"
+                          :src "/images/app-builder/country.png")))
+
+           (div :class "center aligned three column row"
+                (loop-tpl :bindings [item dev-community-items]
+                          (dev-community-column item)))
+           (div :class "ui hidden divider")))
+
+(defn feature-advantage [adv is-mobile]
+  (div :class "center aligned column"
+       (div :class "ui description sizer basic shaded"
+            :do-class {:horizontal (not is-mobile)
+                       :segment (not is-mobile)}
+            (h2 :class "ui small inverted header" adv))))
+
+
+(defn testimonial-block [testimonial-name]
+  (let [testimonial (testimonial-name testimonials)
+        testimonial-desc (:testimonial testimonial)
+        too-long? (< 141 (count testimonial-desc))
+        check-more (fn [] (if (@show-more testimonial-name) (disj @show-more testimonial-name) (conj @show-more testimonial-name)))
+        short-desc (if (= :schneider testimonial-name)
+                     (str (.substr testimonial-desc 0 60) "...")
+                     (str (.substr testimonial-desc 0 95) "..."))]
+    [(div :class "column"
+          (div :class "ui testimonial segment"
+               (if (some identity (map testimonial [:name :image :sub-title]))
+                 (div :class "ui header"
+                      (if (:image testimonial)
+                        (div :class "ui tiny circular image icon" (img :src (cell= (:image testimonial)))))
+                      (img :class "ui small right floated image"
+                           :src (:company testimonial))
+                      (div :class "ui hidden divider")
+                      (div :class "middle aligned content"
+                           (if (:name testimonial)
+                             (span (text (:name testimonial))))
+                           (if (:sub-title testimonial)
+                             (div :class "sub header"
+                                  (text (:sub-title testimonial)))))))
+               (p :class "testimonial" :style "display: inline"
+                  :text (cell= (if (contains? show-more testimonial-name) testimonial-desc short-desc)))
+               (a :toggle too-long?
+                  :click #(reset! show-more (check-more))
+                  (cell= (if (contains? show-more testimonial-name)
+                           (label " less " (i :class "caret up icon"))
+                           (label " more " (i :class "caret down icon")))))))]))
+
+
+(defn features-details-section []
+  [(section :id "qualified" :class "feature-details"
+            (div :class "ui left fixed ribbon black inverted large label"
+                 (img :class "ui mini inline image" :src (:icon qualified-details))
+                 :text (:name qualified-details))
+            (div :class "ui page padded grid"
+                 (div :class "sixteen wide column title sizer center aligned feature-header"
+                      (h2 :class "ui large inverted header"
+                          :text (:header qualified-details)))
+                 (div :class "row"
+                      (div :class "ui three columns stackable grid"
+                           (div :class "mobile tablet only row"
+                                (loop-tpl :bindings [adv (:advantages qualified-details)]
+                                          (feature-advantage adv true)))
+                           (div :class "computer only row"
+                                (loop-tpl :bindings [adv (:advantages qualified-details)]
+                                          (feature-advantage adv false))))))
+            (div :class "ui hidden divider"))
+
+   (section :id "professional"
+            :class "feature-details"
+            (div :class "ui left fixed ribbon black inverted large label"
+                 (img :class "ui mini inline image"
+                      :src (:icon professional-details))
+                 :text (:name professional-details))
+            (div :class "ui page padded grid"
+                 (div :class "sixteen wide column title sizer center aligned feature-header"
+                      (h2 :class "ui large header"
+                          :text (:header professional-details)))
+                 (div :class "description sizer"
+                      (h3 :class "ui medium center aligned header"
+                          :text (:sub-header professional-details)))
+                 (div :class "ui hidden divider")
+                 (div :class "ui two columns stackable grid"
+                      (div :class "two column row"
+                           (loop-tpl :bindings [adv (:advantages professional-details)]
+                                     ((div :class "column"
+                                           (div :class "description sizer"
+                                                (h3 :class "ui medium left aligned header"
+                                                    :text (:description @adv)))
+                                           (img :class "ui centered image"
+                                                :src (:image @adv)))))))
+                 (div :class "ui hidden divider")))
+
+   (section :id "incorporated" :class "feature-details"
+            (div :class "ui left fixed ribbon black inverted large label"
+                 (img :class "ui mini inline image" :src (:icon incorporated-details))
+                 :text (:name incorporated-details))
+            (div :class "ui page padded grid"
+                 (div :class "sixteen wide column title sizer center aligned feature-header"
+                      (h2 :class "ui large header"
+                          :text (:header incorporated-details)))
+                 (div :class "ui hidden divider")
+                 (div :class "ui container basic segment"
+                      (img :class "ui centered image"
+                           :src (:image incorporated-details)))
+                 (div :class "ui hidden divider")))])
+
+
+(defn testimonials-section []
+  (section :class "ui basic tertiary segment full-width-container"
+           :style "margin-top: -1em;"
+           (section-header :header (:testimonials section-headers))
+           (div :class "ui page stackable grid"
+                (div :class "two column row"
+                     (testimonial-block :four-front)
+                     (testimonial-block :brain)))
+           (div :class "ui hidden divider")))
+
+(defn reason-visibility [reason]
+  (if (@visible-reasons (:id @reason))
+    (swap! visible-reasons #(disj @visible-reasons (:id @reason)))
+    (swap! visible-reasons #(conj @visible-reasons (:id @reason)))))
+
+(defn reason-list-items [reason]
+  (a :class "item"
+     :click #(reason-visibility reason)
+     (i :class "large top aligned teal triangle icon"
+        :do-class
+        (cell= {:down (visible-reasons (:id reason))
+                :right (not (visible-reasons (:id reason)))}))
+     (div :class "content"
+          (div (:title @reason))
+          (div :class "ui clearing")
+          (div :class "description"
+               :toggle (cell= (visible-reasons (:id reason)))
+               (:content @reason)))))
+
+(defn list-content []
+  (div :class "ui huge list"
+       (loop-tpl :bindings [reason reasons-data]
+                 (reason-list-items reason))))
+
+(defn reasons-section []
+  (section :class "ui padded page grid"
+           (div :class "center aligned sixteen wide column title sizer"
+                (h3 :class "ui small header"
+                    "3 Reasons why App Builder is the tool for you"))
+           (div :class "ui hidden divider")
+           (div :class "sixteen wide column"
+                (div :class "content"
+                     (list-content)))
+           (div :class "center aligned row"
+                (div
+                  :class "column"
+                  (textual-button
+                    :inline true
+                    :button-text "Find your App Builder NOW"
+                    :destination-link (str (appboard-url)
+                                           "/?package=starter&returnUri="
+                                           (appbuilder-url)
+                                           "#!/registration/"))))
+           (div :class "ui hidden divider")
+           (div :class "ui hidden divider")))
+
+(layout/primary
+  :page-title "App Builder"
+  :description "Find the right developer for your app build"
+  :keywords "Build an App, App Builder"
+  :page-css "index.inc.css"
+
+  (secondary-header
+    :header (:header page-header)
+    :sub-header (:sub-header page-header)
+    :page "app-builder"
+    :id "intro")
+  (flow-section flow-items)
+  (developer-section)
+  (features-details-section)
+  (testimonials-section)
+  (reasons-section))

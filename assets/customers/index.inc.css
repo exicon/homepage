@@ -1,0 +1,41 @@
+.page-details {
+	padding-bottom: 35px!important;
+	padding-top: 50px!important;
+}
+
+.page-details h2 {
+	font-size: 1.8em;
+	line-height: 43px;
+	color: #333333;
+	font-weight: 400;
+}
+
+.page-details h4 {
+	font-size: 1.3em;
+	line-height: 30px;
+	color: #666666;
+	font-weight: 400;
+}
+
+.page-details p {
+	font-size: 1em;
+	line-height: 30px;
+	color: #333333;
+	font-weight: 100;
+}
+
+.right-image img {
+	margin-bottom: 20px;
+	text-align: right;
+	float: right;
+}
+
+.left-image img {
+	margin-bottom: 20px;
+}
+
+.customer-logo {
+	margin-right: 50px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}

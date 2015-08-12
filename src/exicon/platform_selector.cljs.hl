@@ -1,0 +1,54 @@
+(ns exicon.platform-selector
+  (:require
+    [exicon.calculator :refer [result]]))
+
+(defn toggle-in-set [set val]
+  ((if (set val) disj conj) set val))
+
+(defelem a-checkbox [{:keys [data val] :as attr} kids]
+  (let [id (gensym)]
+    (div :class "column" :style "padding-bottom: 0;"
+         (div :class "fields"
+              (div :class "ui checkbox field"
+                   (input :type "checkbox" :id id
+                          :value (cell= (contains? data val))
+                          :click #(swap! data toggle-in-set val))
+                   (label :for id (:label attr)))))))
+
+(defelem checkbox-grp
+  [{:keys [image title data]} checkboxes]
+  (div :class "center aligned column"
+       (img :class "responsive" :src (cell= image))
+       (p title)
+       (div :style "width:50%; margin:0 auto;"
+            (loop-tpl
+              :bindings [cb checkboxes]
+              (a-checkbox (merge {:data data} @cb))))))
+
+(defelem platform-selector [{:keys [class data] :as attr} kids]
+  (div :class "ui four column doubling platform-selector grid"
+       (checkbox-grp
+         :title "Wearables"
+         :image "/images/app-calc/iwatch.png"
+         :data data
+         [{:label "Apple Watch" :val :wearables}])
+       (checkbox-grp
+         :title "Smartphone"
+         :image "/images/app-calc/smartphone.png"
+         :data data
+         [{:label "iPhone" :val :iphone}
+          {:label "Android" :val :android-phone}
+          {:label "Windows" :val :windows-phone}
+          {:label "Blackberry" :val :blackberry}])
+       (checkbox-grp
+         :title "Tablet"
+         :image "/images/app-calc/tablets2.png"
+         :data data
+         [{:label "iPad" :val :ipad}
+          {:label "Android" :val :android-tablet}
+          {:label "Windows" :val :windows-tablet}])
+       (checkbox-grp
+         :title "Desktop"
+         :image "/images/app-calc/mac-pc2.png"
+         :data data
+         [{:label "PC/Mac (Web browser)" :val :desktop}])))

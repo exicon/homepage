@@ -1,0 +1,41 @@
+#developers-list .developers-title {
+	font-weight: 500 !important;
+	font-size: 1.3em;
+	line-height: 4em;
+}
+
+.developers-testimonials {
+	padding-top: 50px !important;
+}
+
+.testimonials-name {
+	font-weight: 600 !important;
+}
+
+.developers-connects-title {
+	font-weight: 600 !important;
+}
+
+.exicon-connect {
+	padding-top: 50px !important;
+	border-top: 1px solid #eaeaea;
+}
+
+.apply-button {
+	padding-top: 20px !important;
+	padding-bottom: 90px !important;
+}
+
+#page-subtitle h2 {
+	font-size: 1.8em;
+	line-height: 50px;
+	color: #333333;
+	font-weight: 400;
+}
+
+#page-subtitle h3 {
+	font-size: 1.4em;
+	line-height: 30px;
+	color: #333333;
+	font-weight: 200;
+}

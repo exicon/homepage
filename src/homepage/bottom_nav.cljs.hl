@@ -1,0 +1,88 @@
+(ns homepage.bottom-nav
+  (:require-macros [config :refer [appboard-url]]))
+
+(defelem bottom-nav []
+  (footer
+    :id "bottom-nav" :class "full-width-container" :style "background-color: gray;"
+    (div
+      :class "ui five column vertically padded doubling page grid"
+      (div :class "column"
+           (ul
+             (li :class "header" "Company")
+             (li (a :href "/about-us/" "About Us"))
+             (li (a :href "/customers/" "Customers"))
+             (li (a :href "/news/" "Media & Press"))))
+      (div :class "column"
+           (ul
+             (li :class "header" "Products")
+             (li (a :href (str (appboard-url) "/api-dir/") "API Directory"))
+             (li (a :href (str (appboard-url) "/app-dir/") "App Directory"))
+             (li (a :href "/apiaxle/" "ApiAxle"))  ; FIXME migrate
+             (li (a :href "/app-builder/" "App Builder"))))
+      (div :class "column"
+           (ul
+             (li :class "header"
+                 (a :href "/developers/" "Developers"))))
+      (div :class "column"
+           (ul
+             (li :class "header" "Legal")
+             (li (a :href "/privacy-policy/" "Privacy"))
+             (li (a :href "/terms-of-use/" "Terms & Conditions"))))
+      (div
+        :class "column"
+        (ul
+          (li :class "header" "Follow Us")
+          (li :class "follow-us-icon"
+              (a :target "_blank"
+                 :href "https://plus.google.com/115123733707845359729/posts"
+                 (img :alt "Google+"
+                      :src "/images/footer/white-g.png"))
+              (a :target "_blank"
+                 :href "https://www.facebook.com/exicon.mobi"
+                 (img :alt "Facebook"
+                      :src "/images/footer/white-fb.png"))
+              (a :target "_blank"
+                 :href "https://twitter.com/exicon"
+                 (img :alt "Twitter"
+                      :src "/images/footer/white-twitter.png"))
+              (a :target "_blank"
+                 :href "http://www.linkedin.com/company/exicon-ltd."
+                 (img :alt "LinkedIn"
+                      :src "/images/footer/white-linkedIn.png")))
+          (li :class "follow-us-icon"
+              (a :target "_blank"
+                 :href "https://www.youtube.com/user/Exicon1"
+                 (img :alt "YouTube"
+                      :src "/images/footer/white-youtube.png"))
+              (a :target "_blank"
+                 :href "http://www.weibo.com/u/3147916252"
+                 (img :alt "Weibo"
+                      :src "/images/footer/white-weibo.png"))
+              (a :target "_blank"
+                 :href "http://feeds.feedburner.com/Exiconglobal"
+                 (img :alt "RSS"
+                      :src "/images/footer/white-rss.png"))
+              (a :target "_blank"
+                 :href "http://www.pinterest.com/exicon/pins/follow/?guid=CqzN7JCYsQQy-0"
+                 (img :alt "Pinterest"
+                      :src "/images/footer/white-pinterest.png"))))))
+
+    ; Google Analytics tracking code
+    (script
+      "(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-31491340-1', 'auto');
+      ga('require', 'displayfeatures');
+      ga('send', 'pageview');
+      ga('require', 'displayfeatures');")
+
+    ; Async HubSpot Analytics Code
+    #_(script "(function(d,s,i,r) {
+            if (d.getElementById(i)){return;}
+            var n=d.createElement(s),e=d.getElementsByTagName(s)[0];
+            n.id=i;n.src='//js.hs-analytics.net/analytics/'+(Math.ceil(new Date()/r)*r)+'/511335.js';
+            e.parentNode.insertBefore(n, e);
+            })(document,\"script\",\"hs-analytics\",300000);")))
