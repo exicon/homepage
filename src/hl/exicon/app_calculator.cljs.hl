@@ -76,7 +76,7 @@
                  (img :class "responsive"
                       :src "/images/app-calc/market-localization.png"))
             (div :class "four wide column"
-                 (select :class "markets"
+                 (select :class "ui large fluid input"
                          :change #(reset! data @%)
                          :value selected-languages
                          (map #(option :value % (str %)) (range 1 11)))))))

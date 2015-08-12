@@ -15,9 +15,9 @@
                  (label :for id (:label attr))))))
 
 (defelem checkbox-grp [{:keys [image title data cost-result]} checkboxes]
-  (div :class "center aligned column"
-       (img :class "responsive" :src (cell= image))
-       (p title)
+  (div :class "column"
+       (img :class "ui centered image responsive" :src (cell= image))
+       (p :class "ui center aligned small header" title)
        (div :style "width:50%; margin:0 auto;"
             (loop-tpl :bindings [cb checkboxes] :bind-ids [id]
                       (a-checkbox (merge @cb
