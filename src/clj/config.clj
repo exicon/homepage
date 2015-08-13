@@ -10,3 +10,4 @@
 (defmacro hs-portal-id [] (getenv "HS_PORTAL_ID"))
 (defmacro hs-newsletter-id [] (getenv "HS_NEWSLETTER_ID"))
 (defmacro hs-app-calc-id [] (getenv "HS_APP_CALC_ID"))
+(defmacro hs-contact-us-id [] (getenv "HS_CONTACT_US_ID"))

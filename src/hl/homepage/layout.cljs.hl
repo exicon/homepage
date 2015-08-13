@@ -19,6 +19,24 @@
 (defn row []
   (div
     :class "column sixteen wide center aligned"))
+(defc modal-visible? false)
+
+(defelem modal-dialog
+  [{:keys [id visible title bg-action]
+    :or {title ""}}
+   kids]
+  (let [hide #(reset! visible false)
+        bg-click (if bg-action bg-action hide)]
+    [(div :class "modal-bg"
+          :do-class (cell= {:show-modal visible})
+          :click bg-click )
+     (div :class "ui small modal"
+          :style "min-heigth:100px"
+          :do-class (cell= {:visible visible})
+          (div :class "header" title)
+          (div :id id :class "content"
+               "Loading...")
+          kids)]))
 
 (defelem secondary-header
   [{:keys [header sub-header page center id]:or {page "" center true id "page-title"}} kids]
@@ -51,45 +69,50 @@
          kids
          (div :class "ui hidden divider"))))
 
+(defn contact-us-modal [active?]
+  (div :class "ui modal"
+       :do-class (cell= {:active true})
+       (i :class "close red icon"
+          :click #(reset! active? false))))
+
 (defn subscribe-stick-form [subscribe-click]
   (let [opts (clj->js
                {:target "#hs-form"
                 :css ""
                 :cssClass "ui small form basic segment"
-                :inlineMessage "Thank you for subscribing!"
                 :submitButtonClass "ui submit teal button"
                 :errorMessageClass "ui error message"
                 :portalId (hs-portal-id)
                 :formId (hs-newsletter-id)})
         render-form #(.. js/hbspt -forms (create opts))
-        debug (cell= (when subscribe-click (render-form)))]
+        trigger-form (cell= (when subscribe-click (render-form)))]
 
     [(div :id "subscribe-stick-layer"
-        :do-class (cell= {:show subscribe-click}))
-   (div :id "subscribe-stick-form"
-        :class "ui fixed right basic segment"
-        :do-class (cell= {:show subscribe-click})
-        (i :class "large close icon"
-           :click #(reset! subscribe-click false))
-        (div :class "ui grid"
-             (div :class "sixteen wide center aligned column"
-              (h4 :class "ui header" "Subscribe to our FREE")
-              (p "Newsletter • Reports • Infographs")
-              (div :class "ui divider hidden header")
-              (img :src "/images/header/subscribe.png"))
-             (div :class "sixteen wide column"
-              (div :id "hs-form" "Loading ....")
-              #_(form :id "subscribe-form"
-                    :action "//exiconglobal.us3.list-manage.com/subscribe/post?u=59165e464834675ada250903e&amp;id=2df8fbeed9"
-                    :method "post"
-                    :target "_blank"
-                    (div :class "ui input basic"
-                         (input :type "text" :name "EMAIL"
-                                :placeholder "email-address"))
+          :do-class (cell= {:show subscribe-click}))
+     (div :id "subscribe-stick-form"
+          :class "ui fixed right basic segment"
+          :do-class (cell= {:show subscribe-click})
+          (i :class "large close icon"
+             :click #(reset! subscribe-click false))
+          (div :class "ui grid"
+               (div :class "sixteen wide center aligned column"
+                    (h4 :class "ui header" "Subscribe to our FREE")
+                    (p "Newsletter • Reports • Infographs")
                     (div :class "ui divider hidden header")
-                    (input :type "submit" :class "ui button tiny"
-                           :value "Subscribe"
-                           :click #(.submit (aget (js/jQuery "#subscribe-form") 0)))))))]))
+                    (img :src "/images/header/subscribe.png"))
+               (div :class "sixteen wide column"
+                    (div :id "hs-form" "Loading ....")
+                    #_(form :id "subscribe-form"
+                            :action "//exiconglobal.us3.list-manage.com/subscribe/post?u=59165e464834675ada250903e&amp;id=2df8fbeed9"
+                            :method "post"
+                            :target "_blank"
+                            (div :class "ui input basic"
+                                 (input :type "text" :name "EMAIL"
+                                        :placeholder "email-address"))
+                            (div :class "ui divider hidden header")
+                            (input :type "submit" :class "ui button tiny"
+                                   :value "Subscribe"
+                                   :click #(.submit (aget (js/jQuery "#subscribe-form") 0)))))))]))
 
 (defn subscribe-stick-btn [subscribe-click]
   (a :href "javascript:void(0);"
@@ -105,8 +128,8 @@
         (title page-title)
         (script :type "text/javascript" "window.__insp = window.__insp || [];")
         (script :charset "utf-8"
-            :type "text/javascript"
-            :src "//js.hsforms.net/forms/v2.js")
+                :type "text/javascript"
+                :src "//js.hsforms.net/forms/v2.js")
         (meta :name "description" :content description)
         (meta :name "keywords" :content keywords)
         (meta :name "viewport" :content "width=device-width, initial-scale=1.0")
@@ -118,6 +141,9 @@
       (body
         (subscribe-stick-btn subscribe-click)
         (subscribe-stick-form subscribe-click)
+        (modal-dialog :visible modal-visible?
+                      :id "hs-contact-us"
+                      :title "Contact Us")
         (top-nav/top-nav true)
         (top-nav/top-nav false)
         (div (merge {:id "content"}

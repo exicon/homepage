@@ -1,9 +1,9 @@
 (page "appboard/pricing/index.html"
       (:require
-        [homepage.layout :refer [secondary-header]:as layout]
+        [homepage.layout :refer [secondary-header contact-us-modal modal-visible? modal-dialog]:as layout]
         [homepage.packages :refer [packages]]
         [homepage.packages.pricing :refer [pricing]])
-      (:require-macros [config :refer [appboard-url]]))
+      (:require-macros [config :refer [appboard-url hs-contact-us-id hs-portal-id]]))
 
 (def page-header {:header "Pricing"})
 
@@ -26,46 +26,58 @@
 
    {:label "AppStore Analytics"
     :description "Automatically pull your metrics from the appstores. e.g. downloads, uninstalls, updates etc."
-                 :free true :paid true }
+    :free true :paid true }
    {:label "In-app Analytics"
     :description "Track user metrics from within your apps, regardless of your provider. e.g. sessions, session length, etc."
-                 :free true :paid true }
+    :free true :paid true }
    {
     :label "AppLocker"
     :description "Store your app assets securely. e.g. images, text, licenses, contracts, APK files, etc."
-                 :free true :paid true }
+    :free true :paid true }
 
    {:label "Leaderboards"
     :description "Your apps within your portfolio ranked and compared."
-                 :free true :paid true }
+    :free true :paid true }
 
    ;{:label "Intelligent Newsfeed"
-    ;:description "Relevant changes about your apps become transparent."
-    ;             :free true :paid true }
+   ;:description "Relevant changes about your apps become transparent."
+   ;             :free true :paid true }
 
    {:label "Watchlist"
     :description "Create lists of apps you want to follow, to track your competitors or for inspiration."
-                 :free true :paid true }
+    :free true :paid true }
 
    {:label "AppBuilder"
     :description "A matchmaking tool to find the best development house for your next mobile app."
-                 :free true :paid true }])
+    :free true :paid true }])
 
 (defn value-add-cta-button [cta]
-  (let [generate-button
+  (let [opts (clj->js
+               {:target ".ui.modal"
+                :css ""
+                :cssClass "ui small form basic segment"
+                :submitButtonClass "ui submit teal button"
+                :errorMessageClass "ui error message"
+                :portalId (hs-portal-id)
+                :formId (hs-contact-us-id)})
+        render-form #(.. js/hbspt -forms (create opts))
+        trigger-form (cell= (when modal-visible? (render-form)))
+        debug (cell= (println "visible? " modal-visible?))
+        generate-button
         (fn [label href flag]
           (div :class "ui container"
                (a :class "ui blue fluid button"
                   :toggle (not= :hideme flag)
-                  :href href
+                  :click #(when (= :contact-us flag) (reset! modal-visible? true))
+                  :href (when (not= :contact-us flag) href)
                   :text label)
                (when (= flag :info)
-               (p (i "*We'll display your snapshots in the AppBoard, even if you don't have an app.")))))]
-  (cond (= cta :insights) (generate-button "Sign up inside the AppBoard" (appboard-registration-link :competitor-insights) :info)
-        (= cta :distribution) (generate-button "Sign up inside the AppBoard" (appboard-registration-link :distribution) nil)
-        (= cta :developer) (generate-button "Contact Us" "" :hideme)
-        (= cta :management) (generate-button "Contact Us" "" :hideme)
-        (= cta :inception) (generate-button "Contact Us" "" :hideme))))
+                 (p (i "*We'll display your snapshots in the AppBoard, even if you don't have an app.")))))]
+    (cond (= cta :insights) (generate-button "Sign up inside the AppBoard" (appboard-registration-link :competitor-insights) :info)
+          (= cta :distribution) (generate-button "Sign up inside the AppBoard" (appboard-registration-link :distribution) nil)
+          (= cta :developer) (generate-button "Contact Us" "" :contact-us)
+          (= cta :management) (generate-button "Contact Us" "" :contact-us)
+          (= cta :inception) (generate-button "Contact Us" "" :contact-us))))
 
 (def value-adds
   [
@@ -102,7 +114,7 @@
                        (if (true? plan)
                          (i :class (str color " check circle icon")
                             :style "font-size: 3em"
-                             :toggle plan)
+                            :toggle plan)
                          plan))
         bg-color (if (:highlighted @f) "inverted secondary vertically-centered" "tertiary")
         txt-color (if (:highlighted @f) "" "grey")]
@@ -147,16 +159,16 @@
 (defn value-add-row [value]
   (div :class "three column row"
        :style "padding:0.10em"
-      (div :class "column"
-           (div :class "ui basic tertiary segment"
-                (h3 :class "ui grey large header"
-                    :text (:label @value)
-                    (div :class "sub header"
-                         (:description @value)))))
-      (div :class "centered-content column dotted-left-frame"
-           (:price1 @value))
-      (div :class "centered-content column dotted-right-frame"
-           (:cta @value))))
+       (div :class "column"
+            (div :class "ui basic tertiary segment"
+                 (h3 :class "ui grey large header"
+                     :text (:label @value)
+                     (div :class "sub header"
+                          (:description @value)))))
+       (div :class "centered-content column dotted-left-frame"
+            (:price1 @value))
+       (div :class "centered-content column dotted-right-frame"
+            (:cta @value))))
 
 (defn value-add-section []
   (section :class "ui container grid"
@@ -300,7 +312,6 @@
   :page-title "Product Pricing | Analytics & App Management | Exicon"
   :description "Pricing For Exicon's App Management & Logistics Platform That Scales With Your App Portfolio, Analytics, Distribution & API Management."
   :keywords "Analytics, App Management, Exicon"
-
   (secondary-header :header (:header page-header))
   (div :class "ui hidden divider")
   (pricing-section)
