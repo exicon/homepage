@@ -53,18 +53,19 @@
 
 (defn value-add-cta-button [cta]
   (let [generate-button
-        (fn [label href info]
+        (fn [label href flag]
           (div :class "ui container"
                (a :class "ui blue fluid button"
+                  :toggle (not= :hideme flag)
                   :href href
-                  label)
-               (when info
+                  :text label)
+               (when (= flag :info)
                (p (i "*We'll display your snapshots in the AppBoard, even if you don't have an app.")))))]
-  (cond (= cta :insights) (generate-button "Sign up inside the AppBoard" (appboard-registration-link :competitor-insights) true)
-        (= cta :distribution) (generate-button "Sign up inside the AppBoard" (appboard-registration-link :distribution) false)
-        (= cta :developer) (generate-button "Contact Us" "href" false)
-        (= cta :management) (generate-button "Contact Us" "href" false)
-        (= cta :inception) (generate-button "Contact Us" "href" false))))
+  (cond (= cta :insights) (generate-button "Sign up inside the AppBoard" (appboard-registration-link :competitor-insights) :info)
+        (= cta :distribution) (generate-button "Sign up inside the AppBoard" (appboard-registration-link :distribution) nil)
+        (= cta :developer) (generate-button "Contact Us" "" :hideme)
+        (= cta :management) (generate-button "Contact Us" "" :hideme)
+        (= cta :inception) (generate-button "Contact Us" "" :hideme))))
 
 (def value-adds
   [
