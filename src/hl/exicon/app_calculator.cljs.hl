@@ -104,29 +104,29 @@
                      (usd-currency (last result)))))))
           #_(div :class "ui divider"))
 
-        ; (cost-section
-        ;   :class "top" (text "Platforms:")
-        ;   (text (join ", " (value-title selected-platforms platforms-items))))
+        (cost-section
+          :class "top" (text "Platforms:")
+          (text (join ", " (value-title selected-platforms platforms-items))))
 
-        ; (cost-section
-        ;   (text "Size:")
-        ;   (text (join "" (value-title selected-size size-items))))
+        (cost-section
+          (text "Size:")
+          (text (join "" (value-title selected-size size-items))))
 
-        ; (cost-section
-        ;   (text "Login:")
-        ;   (text (join "" (value-title selected-login login-items))))
+        (cost-section
+          (text "Login:")
+          (text (join "" (value-title selected-login login-items))))
 
-        ; (cost-section
-        ;   (text "Features:")
-        ;   (text (join ", " (value-title selected-features features-items))))
+        (cost-section
+          (text "Features:")
+          (text (join ", " (value-title selected-features features-items))))
 
-        ; (cost-section
-        ;   (text "Markets:")
-        ;   (text (str selected-languages " markets")))
+        (cost-section
+          (text "Markets:")
+          (text (str selected-languages " markets")))
 
-        ; (cost-section
-        ;   :class "bottom" (text "Stage:")
-        ;   (text (join "" (value-title selected-stage stage-items))))
+        (cost-section
+          :class "bottom" (text "Stage:")
+          (text (join "" (value-title selected-stage stage-items))))
         )])
 
 (defn calculator-fields []
@@ -172,14 +172,14 @@
 
 (defn app-calculator []
   [
-   (div :class "ui container computer only grid"
+   (div :class "ui page computer only grid"
         (div :id "computer-relative-container" :class "twelve wide column"
              (calculator-fields))
         (div :class "four wide column"
-             (div :id "computer-cost-summary" :style "padding-right:0;" :class "ui sticky"
+             (div :id "computer-cost-summary" :style "padding-right:0; z-index:10" :class "ui sticky"
                   (cost-summary))))
 
-   (div :class "ui form mobile tablet only container grid"
+   (div :class "ui form mobile tablet only page grid"
         (div :class "sixteen wide column"
              (div :class "ui bottom fixed menu inverted teal large borderless"
                   (div :class "item"

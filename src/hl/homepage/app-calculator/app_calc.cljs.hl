@@ -20,6 +20,8 @@
 (defn app-calc-form []
   (let [opts (clj->js
                {:target "#hs-app-calc-form"
+                :css ""
+                :cssClass "ui small form segment"
                 :submitButtonClass "ui submit teal button"
                 :errorMessageClass "ui error message"
                 :portalId (hs-portal-id)
@@ -46,12 +48,12 @@
 
        (app-calculator)
        (div :class "ui hidden divider")
-       (div :class "ui center aligned basic segment description sizer"
+       (div :class "ui center aligned basic secondary segment description sizer"
             (h3 :class "ui medium header"
                 "Book your 30-minute FREE App Builder consultation.")
             (div :class "ui hidden divider")
             (div :class "ui container grid"
-                 (div :class "eight wide centered column" :id "hs-app-calc-form"
+                 (div :class "eight wide centered left aligned column" :id "hs-app-calc-form"
                       (app-calc-form)))
             (div :class "ui hidden divider")
             (a :href "/app-builder"
