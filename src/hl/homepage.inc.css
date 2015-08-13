@@ -80,6 +80,14 @@
 	width: 120px
 }
 
+#contact-us-btn{
+	position: fixed;
+	bottom: -2px;
+	right: 10%;
+	z-index: 100;
+	background-color: rgb(55, 154, 166) !important;
+}
+
 /* Modal pop up and dimmer background*/
 .modal-bg {
 	position: fixed;

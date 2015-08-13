@@ -1,6 +1,6 @@
 (page "appboard/pricing/index.html"
       (:require
-        [homepage.layout :refer [secondary-header contact-us-modal modal-visible? modal-dialog]:as layout]
+        [homepage.layout :refer [secondary-header contact-us-modal contact-us-visible? contact-us-btn]:as layout]
         [homepage.packages :refer [packages]]
         [homepage.packages.pricing :refer [pricing]])
       (:require-macros [config :refer [appboard-url hs-contact-us-id hs-portal-id]]))
@@ -52,32 +52,19 @@
     :free true :paid true }])
 
 (defn value-add-cta-button [cta]
-  (let [opts (clj->js
-               {:target ".ui.modal"
-                :css ""
-                :cssClass "ui small form basic segment"
-                :submitButtonClass "ui submit teal button"
-                :errorMessageClass "ui error message"
-                :portalId (hs-portal-id)
-                :formId (hs-contact-us-id)})
-        render-form #(.. js/hbspt -forms (create opts))
-        trigger-form (cell= (when modal-visible? (render-form)))
-        debug (cell= (println "visible? " modal-visible?))
-        generate-button
+  (let [generate-button
         (fn [label href flag]
           (div :class "ui container"
                (a :class "ui blue fluid button"
-                  :toggle (not= :hideme flag)
-                  :click #(when (= :contact-us flag) (reset! modal-visible? true))
-                  :href (when (not= :contact-us flag) href)
+                  :href href
                   :text label)
                (when (= flag :info)
                  (p (i "*We'll display your snapshots in the AppBoard, even if you don't have an app.")))))]
     (cond (= cta :insights) (generate-button "Sign up inside the AppBoard" (appboard-registration-link :competitor-insights) :info)
           (= cta :distribution) (generate-button "Sign up inside the AppBoard" (appboard-registration-link :distribution) nil)
-          (= cta :developer) (generate-button "Contact Us" "" :contact-us)
-          (= cta :management) (generate-button "Contact Us" "" :contact-us)
-          (= cta :inception) (generate-button "Contact Us" "" :contact-us))))
+          (= cta :developer) (contact-us-btn :css-class "blue fluid")
+          (= cta :management) (contact-us-btn :css-class "blue fluid")
+          (= cta :inception) (contact-us-btn :css-class "blue fluid"))))
 
 (def value-adds
   [

@@ -1,11 +1,10 @@
 (ns homepage.layout
   (:require-macros [config :refer [inspectlet-wid inspectlet-feature
-                                   hs-portal-id hs-newsletter-id]])
+                                   hs-portal-id hs-newsletter-id hs-contact-us-id]])
   (:require
     [homepage.top-nav :as top-nav]
     [homepage.bottom-nav :as bottom-nav]
     [tailrecursion.hoplon.reload :refer [reload-all]]))
-
 
 (defn inspect [field details]
   (.push js/__insp
@@ -19,7 +18,7 @@
 (defn row []
   (div
     :class "column sixteen wide center aligned"))
-(defc modal-visible? false)
+(defc contact-us-visible? false)
 
 (defelem modal-dialog
   [{:keys [id visible title bg-action]
@@ -120,6 +119,23 @@
      (div :id "subscribe-stick" :do-class
           (cell= {:show (not subscribe-click)}))))
 
+(defelem contact-us-btn [{:keys [id css-class txt]
+                          :or {id "" css-class "" txt "Contact Us"}}]
+  (let [opts (clj->js
+               {:target "#hs-contact-us"
+                :css ""
+                :cssClass "ui small form basic segment"
+                :submitButtonClass "ui submit teal button"
+                :errorMessageClass "ui error message"
+                :portalId (hs-portal-id)
+                :formId (hs-contact-us-id)})
+        render-form #(.. js/hbspt -forms (create opts))
+        trigger-form (cell= (when contact-us-visible? (render-form)))
+        ]
+    (div :id id :class (str "ui "css-class" button")
+         :click #(reset! contact-us-visible? true)
+         :text txt)))
+
 (defelem main
   [{:keys [pagecss page-title description keywords] :as attrs} content]
   (let [subscribe-click (cell false)]
@@ -134,16 +150,16 @@
         (meta :name "keywords" :content keywords)
         (meta :name "viewport" :content "width=device-width, initial-scale=1.0")
         (link :href "/images/favicon.ico" :rel "shortcut icon")
-        (if pagecss (link :href pagecss :rel "stylesheet"))
-        (script :src "//load.sumome.com/"
-                :data-sumo-site-id "ebf284bbaebf222290fb6ad21ded0363d1b94fddbbb9138e7930124b6645bbcb"
-                :async))
+        (if pagecss (link :href pagecss :rel "stylesheet")))
       (body
         (subscribe-stick-btn subscribe-click)
         (subscribe-stick-form subscribe-click)
-        (modal-dialog :visible modal-visible?
+        (modal-dialog :visible contact-us-visible?
                       :id "hs-contact-us"
                       :title "Contact Us")
+        (contact-us-btn
+          :id "contact-us-btn"
+          :css-class "small")
         (top-nav/top-nav true)
         (top-nav/top-nav false)
         (div (merge {:id "content"}
