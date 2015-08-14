@@ -11,9 +11,10 @@
 (def appboard-login-link (str (appboard-url)"/?package=starter&returnUri="(appbuilder-url)"#!/login/"))
 (def appboard-registration-link (str (appboard-url)"/?package=starter&returnUri="(appbuilder-url)"#!/registration/"))
 
-(def page-header {:header "App Builder"
-                  :sub-header "Matching you with the right development company"
-                  :center false})
+(def page-header
+  {:header "App Builder"
+   :sub-header "Matching you with the right development company"
+   :center false})
 
 (def process-list-items
   [
@@ -29,38 +30,26 @@
     :centered true}})
 
 (def flow-items
-  [
-   {
-    :serial-number "1"
+  [{:serial-number "1"
     :title "Submit your idea"
     :icon "/images/app-builder/lightbulb.svg"
-    :content  [
-               "Secure and Confidential"
-               "No matter what stage you're at"
-               ]
-    }
-   {	:serial-number "2"
+    :content ["Secure and Confidential"
+              "No matter what stage you're at"]}
+   {:serial-number "2"
     :title "Get advice"
     :icon "/images/app-builder/advise.svg"
-    :content  [
-               "From Exicon mobile experts"
-               "Global Projects of all sizes"
-               ]
-    }
-   {	:serial-number "3"
+    :content ["From Exicon mobile experts"
+              "Global Projects of all sizes"]}
+   {:serial-number "3"
     :title "Get matched"
     :icon "/images/app-builder/matching.svg"
-    :content  [
-               "3 leading development companies for you to choose from"
-               "Based on budget, location, skills and experience"
-               ]
-    }
-   {	:serial-number "4"
+    :content ["3 leading development companies for you to choose from"
+              "Based on budget, location, skills and experience"]}
+   {:serial-number "4"
     :title "Launch"
     :icon "/images/app-builder/live.svg"
-    :content  [
-               "Distribute directly onto multiple appstores"
-               "Start promoting your app"]}])
+    :content ["Distribute directly onto multiple appstores"
+              "Start promoting your app"]}])
 
 (def qualified-details
   {:name " Qualified"
@@ -68,6 +57,14 @@
    :header "Our Network of Development Companies"
    :advantages ["Released and updated mobile software" "Have strong track record in mobililty"
                 "Reviewed by experts and customers"]})
+
+(def developers-by-country
+  [{:country "USA" :quantity "705"}
+   {:country "CHINA" :quantity "400"}
+   {:country "INDIA" :quantity "263"}
+   {:country "UK" :quantity "187"}
+   {:country "GERMANY" :quantity "171"}
+   {:country "FRANCE" :quantity "105"}])
 
 (def professional-details
   {:name "Professional"
@@ -129,10 +126,10 @@
                              through and through. Working with Exicon at the start of this journey was critical
                              in helping us determine what we wanted and needed, then figuring out how to even
                              begin to cast the net into the often confusing digital waters."
-                :name "Melanie McGraw"
-                :sub-title "Corporate Training and Compliance Expert, 4Front Advisors"
-                :company "/images/testimonials/4Front.png"
-                }
+                             :name "Melanie McGraw"
+                             :sub-title "Corporate Training and Compliance Expert, 4Front Advisors"
+                             :company "/images/testimonials/4Front.png"
+                             }
    :brain {
            :image "/images/testimonials/Aran-gettoknowyourbrain.png"
            :testimonial "Wow, great service - thanks! Thanks a million! Thanks for your support so far - we're getting close now!"
@@ -175,18 +172,17 @@
        (div :class "center aligned row"
             (div :class "center aligned column"
                  #_(div :class "ui teal circular label"
-                      :text (cell= (:serial-number item))
-                      :style "font-size: 0.8em")
+                        :text (cell= (:serial-number item))
+                        :style "font-size: 0.8em")
                  (div :class"ui center aligned container"
-                     (div :class "ui teal circular label"
-                          :text (cell= (:serial-number item))
-                          :style "font-size: 0.8em")
-                     (h3 :class "ui teal medium header"
-                         :text (cell= (:title item))))))
+                      (div :class "ui teal circular label"
+                           :text (cell= (:serial-number item))
+                           :style "font-size: 0.8em")
+                      (h3 :class "ui teal medium header"
+                          :text (cell= (:title item))))))
        (ul :class "ui bulleted list"
-         (loop-tpl :bindings [item (cell= (:content item))]
-                   (li :text (cell= item))))))
-
+           (loop-tpl :bindings [item (cell= (:content item))]
+                     (li :text (cell= item))))))
 
 (defn flow-section [flow-items]
   (section :class "ui inverted black vertical segment"
@@ -211,38 +207,100 @@
        (div :class "content" (:content @item))))
 
 (defn developer-section []
-  (section :class "ui page stackable padded grid"
-           (div :class "center aligned row"
-                (div :class "column"
-                     (h2 :class "ui huge header"
-                         (img :class "ui tiny image"
-                              :src "/images/app-builder/development.png")
-                         (div :class "content" :style "text-align: left;"
-                              "Our Development Community"
-                              (div :class "sub header" "3,000+ developers globally" (br) "US400M in apps matched")))))
-           (div :id "developer-map" :class "tablet computer only center aligned two column row"
-                (div :class "column"
-                     (img :class "ui small left floated image"
-                     :src "/images/app-builder/platform.png"))
-                (div :class "column"
-                     (img :class "ui small right floated image"
-                     :src "/images/app-builder/country.png")))
+  (section
+    :class "ui page stackable padded grid"
+    (div :class "center aligned row"
+         (div :class "column"
+              (h2 :class "ui huge header"
+                  (img :class "ui tiny image"
+                       :src "/images/app-builder/development.png")
+                  (div :class "content" :style "text-align: left;"
+                       "Our Development Community"
+                       (div :class "sub header"
+                            "3,000+ developers globally" (br)
+                            "US400M in apps matched")))))
+    (div :id "developer-map"
+         :class "tablet computer only center aligned two column row"
+         (div :class "column"
+              (img :class "ui small left floated image"
+                   :src "/images/app-builder/platform.png"))
+         (div :class "column"
+              (img :class "ui small right floated image"
+                   :src "/images/app-builder/country.png")))
 
-           (div :class "mobile only center aligned three column stackable row"
-                (div :class "column"
-                     (img :class "ui centered image"
-                     :src "/images/app-builder/developer-map.jpg"))
-                (div :class "column"
-                     (img :class "ui centered image"
-                     :src "/images/app-builder/platform.png"))
-                (div :class "column"
-                     (img :class "ui centered image"
-                     :src "/images/app-builder/country.png")))
+    (div :class "mobile only center aligned three column stackable row"
+         (div :class "column"
+              (img :class "ui centered image"
+                   :src "/images/app-builder/developer-map.jpg"))
+         (div :class "column"
+              (img :class "ui centered image"
+                   :src "/images/app-builder/platform.png"))
+         (div :class "column"
+              (img :class "ui centered image"
+                   :src "/images/app-builder/country.png")))
 
-           (div :class "center aligned three column row"
-                (loop-tpl :bindings [item dev-community-items]
-                          (dev-community-column item)))
-           (div :class "ui hidden divider")))
+    (div :class "center aligned three column row"
+         (loop-tpl :bindings [item dev-community-items]
+                   (dev-community-column item)))
+    (div :class "ui hidden divider")))
+
+(defn developer-section* []
+  (section
+    :class "ui page stackable padded grid"
+    (div :class "center aligned row"
+         (div :class "column"
+              (h2 :class "ui huge header"
+                  (img :class "ui tiny image"
+                       :src "/images/app-builder/development.png")
+                  (div :class "content" :style "text-align: left;"
+                       "Our Development Community"
+                       (div :class "sub header"
+                            "3,000+ developers globally" (br)
+                            "US400M in apps matched")))))
+    (div :id "developer-map"
+         :class "tablet computer only center aligned three column row"
+         (div :class "two wide column"
+              (table :class "ui striped table"
+                     (thead
+                       (tr
+                         (th :colspan "2" "By Country")))
+                     (tbody
+                       (loop-tpl
+                         :bindings
+                         [{:keys [country quantity]} developers-by-country]
+                         (tr
+                           (td country)
+                           (td quantity))))))
+
+         (div :class "ten wide column")
+         (div :class "two wide column"
+              (table :class "ui striped table"
+                     (thead
+                       (tr
+                         (th :colspan "2" "By Country")))
+                     (tbody
+                       (loop-tpl
+                         :bindings
+                         [{:keys [country quantity]} developers-by-country]
+                         (tr
+                           (td country)
+                           (td quantity)))))))
+
+    (div :class "mobile only center aligned three column stackable row"
+         (div :class "column"
+              (img :class "ui centered image"
+                   :src "/images/app-builder/developer-map.jpg"))
+         (div :class "column"
+              (img :class "ui centered image"
+                   :src "/images/app-builder/platform.png"))
+         (div :class "column"
+              (img :class "ui centered image"
+                   :src "/images/app-builder/country.png")))
+
+    (div :class "center aligned three column row"
+         (loop-tpl :bindings [item dev-community-items]
+                   (dev-community-column item)))
+    (div :class "ui hidden divider")))
 
 (defn feature-advantage [adv is-mobile]
   (div :class "center aligned column"
@@ -256,7 +314,9 @@
   (let [testimonial (testimonial-name testimonials)
         testimonial-desc (:testimonial testimonial)
         too-long? (< 141 (count testimonial-desc))
-        check-more (fn [] (if (@show-more testimonial-name) (disj @show-more testimonial-name) (conj @show-more testimonial-name)))
+        check-more (fn [] (if (@show-more testimonial-name)
+                            (disj @show-more testimonial-name)
+                            (conj @show-more testimonial-name)))
         short-desc (if (= :schneider testimonial-name)
                      (str (.substr testimonial-desc 0 60) "...")
                      (str (.substr testimonial-desc 0 95) "..."))]
@@ -265,7 +325,8 @@
                (if (some identity (map testimonial [:name :image :sub-title]))
                  (div :class "ui header"
                       (if (:image testimonial)
-                        (div :class "ui tiny circular image icon" (img :src (cell= (:image testimonial)))))
+                        (div :class "ui tiny circular image icon"
+                             (img :src (cell= (:image testimonial)))))
                       (img :class "ui small right floated image"
                            :src (:company testimonial))
                       (div :class "ui hidden divider")
@@ -276,13 +337,14 @@
                              (div :class "sub header"
                                   (text (:sub-title testimonial)))))))
                (p :class "testimonial" :style "display: inline"
-                  :text (cell= (if (contains? show-more testimonial-name) testimonial-desc short-desc)))
+                  :text (cell= (if (contains? show-more testimonial-name)
+                                 testimonial-desc
+                                 short-desc)))
                (a :toggle too-long?
                   :click #(reset! show-more (check-more))
                   (cell= (if (contains? show-more testimonial-name)
                            (label " less " (i :class "caret up icon"))
                            (label " more " (i :class "caret down icon")))))))]))
-
 
 (defn features-details-section []
   [(section :id "qualified" :class "feature-details"
@@ -341,7 +403,6 @@
                       (img :class "ui centered image"
                            :src (:image incorporated-details)))
                  (div :class "ui hidden divider")))])
-
 
 (defn testimonials-section []
   (section :class "ui basic tertiary segment full-width-container"
