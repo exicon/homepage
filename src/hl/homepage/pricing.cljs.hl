@@ -14,14 +14,14 @@
    {:label "Number of apps"
     :description nil
     :highlighted true
-    :free (h3 :class "ui huge blue header"
-              "Up to " (b "7 ")"apps")
-    :paid (h3 :class "ui huge teal header"
-              "More than " (b "8 ")"apps"
-              (div :class"sub header"
-                   (b "US$ 100 ")"per app/month"
-                   (br)
-                   (b "US$ 1000 ")"per app/year"))}
+    :free (h3 :class "ui huge header"
+                "Up to " (b "7 ")"apps")
+    :paid (h3 :class "ui huge header"
+                "More than " (b "8 ")"apps"
+                (div :class"sub header"
+                     (b "US$ 100 ")"per app/month"
+                     (br)
+                     (b "US$ 1000 ")"per app/year"))}
 
    {:label "AppStore Analytics"
     :description "Automatically pull your metrics from the appstores. e.g. downloads, uninstalls, updates etc."
@@ -83,30 +83,46 @@
     :cta (value-add-cta-button :management)}])
 
 (defn feature-row [f]
+  (cell-let [{:keys [label description highlighted free paid]} f]
   (let [print-check? (fn [plan color]
                        (if (true? plan)
                          (i :class (str color " check circle icon")
                             :style "font-size: 3em"
                             :toggle plan)
                          plan))
-        bg-color (if (:highlighted @f) "inverted secondary vertically-centered" "tertiary")
-        txt-color (if (:highlighted @f) "" "grey")]
+        bg-color (cell= (if highlighted "inverted secondary vertically-centered" "tertiary"))
+        txt-color (cell= (if highlighted "" "grey"))]
     (div :class "three column row" :style "padding:0.10em"
          (div :class "column"
-              (div :class (str "ui basic " bg-color " segment")
-                   (h3 :class (str"ui " txt-color " large header")
-                       :text (:label @f)
+              (div :class (cell= (str "ui basic " bg-color " segment"))
+                   (h3 :class (cell= (str"ui " txt-color " large header"))
+                       (span label)
                        (div :class "sub header"
-                            :text (:description @f)))))
+                            :text description))))
          (div :class "centered-content column dotted-left-frame"
-              (print-check? (:free @f) "blue"))
+              (cell= (print-check? free "blue")))
          (div :class "centered-content column dotted-right-frame"
-              (print-check? (:paid @f) "teal")))))
+              (cell= (print-check? paid "teal")))))))
+
+(defn feature-row-mobile [feature]
+  (cell-let
+    [{:keys [label description free paid]} feature]
+    (div :class "three column row" :style "padding:0.10em"
+         (div :class "twelve wide column"
+              (div :class "ui basic tertiary segment"
+                   (h3 :class "ui medium header"
+                       (span label)
+                       (div :class "sub header"
+                            :text description))))
+         (div :class "two wide centered-content dotted-left-frame column "
+              (i :class "check circle blue large icon"))
+         (div :class "two wide centered-content dotted-right-frame column"
+              (i :class "check circle teal large icon")))))
 
 (defn pricing-section []
   (section
     :id "pricing"
-    :class "ui container grid"
+    :class "ui container computer only grid"
     (div :class "three column row"
          (div :class "column")
          (div :class "blue center aligned column"
@@ -117,15 +133,55 @@
     (loop-tpl :bindings [f features-list]
               (feature-row f))))
 
+(defn pricing-section-mobile []
+  (let [[head & features] features-list]
+    (section
+      :id "pricing"
+      :class "ui container mobile tablet only grid"
+      (div :class "two column row"
+           (div :class "blue centered-content column"
+                (h3 :class "ui inverted huge center aligned header" "Free"
+                    (div :class "sub header" "Up to 7 apps")))
+           (div :class "teal centered-content column"
+                (h3 :class "ui inverted huge center aligned header" "Paid"
+                    (div :class "sub header"
+                         "US$ 100 per app/month"
+                         (br)
+                         "US$ 1000 per app/year"))))
+      (div :class "ui hidden divider")
+      (div :class "three column row"
+           :style "padding: 0.10em"
+           (div :class "twelve wide column"
+                (div :class "ui secondary basic segment"
+                    (h3 :class "ui medium header"
+                    "Features")))
+           (div :class "two wide centered-content column"
+                :style "background-color: rgba(0,0,0,0.05);
+                       margin-left: -0.8em;"
+                    (h3 :class "ui medium blue header"
+                    "Free"))
+           (div :class "two wide centered-content column"
+                :style "background-color: rgba(0,0,0,0.05)"
+                    (h3 :class "ui medium teal header"
+                    "Paid")))
+      (loop-tpl :bindings [f features]
+                (feature-row-mobile f)))))
+
 (defn cta-section []
   (section :class "ui container grid"
-           (div :class "three column row"
+           (div :class "three column computer only row"
                 (div :class "column")
                 (div :class "center aligned column"
                      :style "margin-left: -0.8em"
                      (a :class "ui blue huge button" :href (appboard-registration-link :free) "Sign up now"))
                 (div :class "center aligned column"
-                     (a :class "ui teal huge button" :href (appboard-registration-link :paid) "Sign up now")))))
+                     (a :class "ui teal huge button" :href (appboard-registration-link :paid) "Sign up now")))
+
+           (div :class "one column tablet mobile only row"
+                (div :class "center aligned column"
+                     :style "margin-left: -0.8em"
+                     (a :class "ui blue large button" :href (appboard-registration-link :free) "Sign up now")
+                     (a :class "ui teal large button" :href (appboard-registration-link :paid) "Sign up now")))))
 
 
 (defn value-add-row [value]
@@ -143,7 +199,7 @@
             (:cta @value))))
 
 (defn value-add-section []
-  (section :class "ui container grid"
+  (section :class "ui container stackable grid"
            (div :class "one column row"
                 :style "padding:0.10em"
                 (div :class "column"
@@ -259,6 +315,7 @@
   (secondary-header :header (:header page-header))
   (div :class "ui hidden divider")
   (pricing-section)
+  (pricing-section-mobile)
   (cta-section)
   (div :class "ui hidden divider")
   (div :class "ui hidden divider")
