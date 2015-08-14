@@ -1,38 +1,26 @@
 (page "developers/index.html"
 	(:require
-		[homepage.layout :as layout]
+		[homepage.layout :refer [contact-us-btn] :as layout]
 		[tailrecursion.hoplon.reload :refer [reload-all]] ))
 
 (reload-all 200)
 
 (def developers-list [
-	{
-	:title "Connect"
+	{:title "Connect"
 	:image "/images/developers/connect.png"
-	:details "...with new, serious business prospects"
-	}
-
-	{
-	:title "Be Discovered"
+	:details "...with new, serious business prospects"}
+	{:title "Be Discovered"
 	:image "/images/developers/be-discovered.png"
-	:details "...by brands and OEMs looking for your specific skill set"
-	}
-
-	{
-	:title "Additional benefits"
+	:details "...by brands and OEMs looking for your specific skill set"}
+	{:title "Additional benefits"
 	:image "/images/developers/additional-benefits.png"
-	:details "...using the AppBoard to manage client apps that you've already built"
-	}
-]
-)
+	:details "...using the AppBoard to manage client apps that you've already built"}])
 
 (defn developers-options [opts]
 	(div :class "center aligned column"
 		(h2 :class "developers-title" (text (:title opts)))
 		(img :class "developers-icon" :src (cell= (:image opts)))
-		(p :class "developers-details" (text (:details opts)))
-	)
-)
+		(p :class "developers-details" (text (:details opts)))))
 
 (defn developers-options-section []
 	(section
@@ -40,26 +28,20 @@
 		:class "full-width-container"
 		(div :class "ui three column doubling page grid"
 			(loop-tpl :bindings [opt developers-list]
-			(developers-options opt))
-		)
-	)
-)
+			(developers-options opt)))))
 
 
 (layout/main :id "developers" :page-title "Developers"
 	(section :class "ui one column full-width-container"
 		(div  :id "page-title" :class "center aligned row"
 			(div :class "column"
-				(h1 "Developers")))
-	)
+				(h1 "Developers"))))
 
 	(section :class "ui one column page grid"
 		(div :id "page-subtitle" :class "center aligned row"
 			(div :class "column"
 				(h2 "Exicon connects its clients with the best developers around the world")
-				(h3 "If you're the best, show us why"))
-		)
-	)
+				(h3 "If you're the best, show us why"))))
 
 	(developers-options-section)
 
@@ -67,14 +49,7 @@
 		(div :id "page-subtitle" :class "center aligned row"
 			(div :class "column"
 				(h3 "Over 1,500 development houses matched with exciting projects")
-				(a :class "ui button"
-      	:click #(.click (js/jQuery
-                         ".sumome-contactform-pullouttab.sumome-contactform-pullouttab-bottom-center"))
-					"Contact us for more information"
-				)
-			)
-		)
-	)
+        (contact-us-btn :css-class "teal" :txt "Contact us for more information"))))
 
 	(section :class "full-width-container"
 		(div :class "ui two column doubling page grid developers-testimonials"
@@ -85,8 +60,7 @@
 					engagements processes. We found Exicon a trustworthy, professional and helpful
 					organization.")
 				(p :class "testimonials-name" "Ambuj Tayal")
-				(p "AlgoWorks")
-			)
+				(p "AlgoWorks"))
 			(div :class "column"
 				(p :class "developers-testimonials-title" "Exicon connected us with Fox, a client that
 					was ready to create something
@@ -95,19 +69,13 @@
 					the road, viewers are able to stay tuned in to the news most valuable to them from
 					sources they have come to know.")
 				(p :class "testimonials-name" "Nimish Shrivastava")
-				(p "CEO of eMbience")
-			)
-		)
-	)
+				(p "CEO of eMbience"))))
 
 	(section :class "ui one column page grid"
 		(div :id "page-subtitle" :class "center aligned row exicon-connect"
 			(div :class "column"
 				(img :src "/images/developers/puz.png")
-				(h2 "Exicon connects its clients with the best developers around the world")
-			)
-		)
-	)
+				(h2 "Exicon connects its clients with the best developers around the world"))))
 
 	(section :class "full-width-container"
 		(div :class "ui two column doubling page grid"
@@ -117,22 +85,15 @@
 					true creativity is in the hands of the developer.")
 				(p "That's why we're building an ecosystem of developers around the infrastructure,
 					services, and products you use. Join us to work more closely together with major
-					brands, OEMs, and service operators (all at their cost, not yours).")
-			)
+					brands, OEMs, and service operators (all at their cost, not yours)."))
 			(div :class "column"
 				(p :class "developers-connects-title" "Node Matching Services")
 				(p "If our client has no developer, we match them with a Node Developer.")
 				(p "3 developers are asked to bid for each project and the client choose the best
 					offer, based on your skill set, experience, language, location, and price. No matter
-					what your specialty may be, we'll soon find clients looking for a developer like you.")
-			)
-		)
+					what your specialty may be, we'll soon find clients looking for a developer like you.")))
 
 		(div :class "ui one column doubling page grid"
 			(div :class "column center aligned apply-button"
-        (a :class "ui button"
-           :click #(.click (js/jQuery
-                             ".sumome-contactform-pullouttab.sumome-contactform-pullouttab-bottom-center"))
-           "Contact us to join our Network")
-        ))))
+        (contact-us-btn :css-class "teal" :txt "Contact us to join our Network")))))
 

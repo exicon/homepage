@@ -37,8 +37,7 @@
    :blog {:name "Blog" :url "http://blog.exiconglobal.com/corp/" }
    :resources {:name "Resources" :submenu resources-submenu-items :right-menu false}
    :about-us {:name "About Us" :url "/about-us" :right-menu false}
-   :signup-and-login {:right-menu true}
-   })
+   :signup-and-login {:right-menu true}})
 
 (defn sub-menu [items]
   (loop-tpl :bindings [item items]
@@ -68,9 +67,7 @@
                                         :visible (= clicked-item id)
                                         :hidden (not (= clicked-item id))
                                         })
-                      (sub-menu (:submenu @item)))))
-
-            )))
+                      (sub-menu (:submenu @item))))))))
 
 (defn mobile-main-menu [items clicked-item]
   (loop-tpl :bindings [[id item] items]
@@ -82,8 +79,7 @@
                (text (:name item))
                (if (submenu? @item)
                  (div :class "menu"
-                      (sub-menu (:submenu @item)))
-                 ))))
+                      (sub-menu (:submenu @item)))))))
 
 (defelem signup-and-login-mobile[]
   [(a :class "ui tiny item fluid button"

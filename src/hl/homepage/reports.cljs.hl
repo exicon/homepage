@@ -303,22 +303,16 @@
                (h2 :class "reports-title" (text (:title opts)))
                (p :class "reports-issue" (text (:detail opts)))
                (div :class "reports-screenshot-box"
-                    (img :class "reports-screenshot" :src (cell= (:image opts))))))
-       )
-  )
+                    (img :class "reports-screenshot" :src (cell= (:image opts))))))))
 
 (defn reports-options-section []
   (loop-tpl :bindings [opt reports-list]
-            (reports-options opt))
-  )
-
+            (reports-options opt)))
 
 (layout/main :id "reports"
              :page-title "Research"
              :description "Research"
-
              (secondary-header :header (:header page-header))
-
              (section :id "reports-list"
                       :class "full-width-container"
                       (div :class "ui three column vertically padded doubling page grid"

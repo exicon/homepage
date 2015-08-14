@@ -13,8 +13,7 @@
 		(li "LeaderBoard")
 		(li "Intelligent Newsfeeds")
 		(li "Watchlist")
-		(li "App builder")
-		))
+		(li "App builder")))
 
 (def challenger-pack-desc
 	#(ul :class "challenger-pack-desc"
@@ -44,8 +43,7 @@
 			(sign-up-button)
 			(div :class "ui exicon-teal divider small bd")
 			(starter-pack-desc)
-			]
-	})
+			]})
 
 (def challenger-pack
 	{
@@ -75,8 +73,7 @@
 		(starter-pack-desc)
 		(h3 :class "ui exicon-teal header word sub-pack-title starter-pack-desc" "+")
 
-		(challenger-pack-desc)
-		]})
+		(challenger-pack-desc)]})
 
 (def dominator-pack
 	{
@@ -111,8 +108,7 @@
 
 		(ul
 			(li "Distribution onto 20 app stores")
-			(li "White label marketplace"))]
-	})
+			(li "White label marketplace"))]})
 
 (defn amplifier-pack-button []
 	(.click

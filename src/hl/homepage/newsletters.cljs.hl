@@ -193,10 +193,7 @@
 		(a :href (cell= (:url opts))(div :class "ui center aligned segment"
 			(h2 :class "newsletters-title" (text (:title opts)))
 			(p :class "newsletters-issue" (text (:issue opts)))
-			(div :class "newsletters-screenshot-box" (img :class "newsletters-screenshot" :src (cell= (:image opts))))
-		))
-	)
-)
+			(div :class "newsletters-screenshot-box" (img :class "newsletters-screenshot" :src (cell= (:image opts))))))))
 
 (defn newsletters-options-section []
 	(section
@@ -204,10 +201,7 @@
 		:class "full-width-container"
 		(div :class "ui three column doubling page grid"
 			(loop-tpl :bindings [opt newsletters-list]
-			(newsletters-options opt))
-		)
-	)
-)
+			(newsletters-options opt)))))
 
 (layout/main :id "newsletters"
 	:page-title "Exicon Newsletter | Mobile Apps"
@@ -215,7 +209,5 @@
 	(section :class "ui one column full-width-container"
 		(div  :id "page-title" :class "center aligned row"
 			(div :class "column"
-				(h1 "Newsletters")))
-	)
-	(newsletters-options-section)
-)
+				(h1 "Newsletters"))))
+	(newsletters-options-section))

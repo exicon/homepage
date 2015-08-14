@@ -28,8 +28,7 @@
 			Without an IT bottleneck, app owners have direct access to all their analytics and the
 			AppBoard automatically lets them know when there are significant changes. Future app
 			development projects are managed with more care and insight, resulting in lower lifetime
-			costs."
-	})
+			costs."})
 
 (defc app-newbie {
 	:image-side :right
@@ -48,8 +47,7 @@
 			Exicon can even manage the project all the way to launch and set you up on the AppBoard for continued
 			maintenance.")]
 	:result "Exicon has been matching customers and developers in successful app projects for over seven years.
-			Whether your idea is big or small, we can set you on the right path to success."
-	})
+			Whether your idea is big or small, we can set you on the right path to success."})
 
 (defc advertising-agency {
 	:image-side :left
@@ -65,8 +63,7 @@
 			can seamlessly blend into your existing offerings. Exicon's expertise is now yours to employ."
 	:result "With new service offerings, your clients have more reason than ever to stick to your agency and expand
 			their business with you. The AppBoard also provides you with new opportunities to upsell services to clients and
-			build a closer relationship with them."
-})
+			build a closer relationship with them."})
 
 (defc mobile-apps-developer {
 	:image-side :right
@@ -83,8 +80,7 @@
 			canceled late into development."
 	:result "With a long-term relationship in place, you'll be in a better position to work with
 			your customers on future projects. You'll see the same data that they see and you'll be able
-			to proactively address any problems that arise."
-})
+			to proactively address any problems that arise."})
 
 (defc data-warehouse {
 	:image-side :left
@@ -99,8 +95,7 @@
 			you can easily manage developer keys, rate-limit API calls, and collect analytics of your API usage. If you
 			do have an app portfolio, the API data sits on the AppBoard right next to the rest of your analytics."
 	:result "Whether your company is connecting to consumers using apps or APIs, Exicon makes it easy to connect
-			all of your data sources into a common platform."
-})
+			all of your data sources into a common platform."})
 
 
 (defn customer [f]
@@ -110,8 +105,7 @@
       (div :id (cell= (:anchor f)) :class "anchor")
 			(div :class "column left-image"
 				(img :src (cell= (:screenshot1 f)))
-				(img :src (cell= (:screenshot2 f)))
-			)
+				(img :src (cell= (:screenshot2 f))))
 			(div :class "column"
 				(h2 (:title f))
 				(h4 "Challenge")
@@ -123,9 +117,7 @@
 				(img :class "customer-logo" :src (cell= (:customer-logo1 f)))
 				(img :class "customer-logo" :src (cell= (:customer-logo2 f)))(br)(br)
 				(a :href "/appboard/pricing"
-					(div :class "ui button" "Get started now"))
-			)
-		)
+					(div :class "ui button" "Get started now"))))
 
 		(div :class "page-details middle aligned two column doubling row"
       (div :id (cell= (:anchor f)) :class "anchor")
@@ -139,15 +131,10 @@
 				(h4 "Result")
 				(p (:result f)) (br)(br)
 				(a :href "/appboard/pricing"
-					(div :class "ui button" "Get started now"))
-			)
+					(div :class "ui button" "Get started now")))
 			(div :class "column right-image"
 				(img :src (cell= (:screenshot1 f)))
-				(img :src (cell= (:screenshot2 f)))
-			)
-		)
-	)
-)
+				(img :src (cell= (:screenshot2 f)))))))
 
 
 (layout/main :id "customers"
@@ -157,14 +144,11 @@
 	(section :class "ui one column full-width-container"
 		(div  :id "page-title" :class "center aligned row"
 			(div :class "column"
-				(h1 "Customers")))
-	)
+				(h1 "Customers"))))
 
 	(section :class "ui one column page grid"
 		(customer @multinational)
 		(customer @app-newbie)
 		(customer @advertising-agency)
 		(customer @mobile-apps-developer)
-		(customer @data-warehouse)
-	)
-)
+		(customer @data-warehouse)))
