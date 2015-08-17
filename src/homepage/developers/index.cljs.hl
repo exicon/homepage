@@ -1,6 +1,6 @@
 (page "developers/index.html"
       (:require
-        [homepage.layout :as layout]))
+        [homepage.layout :refer [contact-us-btn] :as layout]))
 
 (def developers-list
   [{:title "Connect"
@@ -53,11 +53,9 @@
     (div :id "page-subtitle" :class "center aligned row"
          (div :class "column"
               (h3 "Over 1,500 development houses matched with exciting projects")
-              (a :class "ui button"
-                 :click
-                 #(.click (js/jQuery
-                            ".sumome-contactform-pullouttab-bottom-center"))
-                 "Contact us for more information"))))
+              (contact-us-btn
+                :css-class "teal"
+                :txt "Contact us for more information"))))
 
   (section
     :class "full-width-container"
@@ -109,8 +107,7 @@
 
     (div :class "ui one column doubling page grid"
          (div :class "column center aligned apply-button"
-              (a :class "ui button"
-                 :click #(.click (js/jQuery
-                                   ".sumome-contactform-pullouttab-bottom-center"))
-                 "Contact us to join our Network")))))
+              (contact-us-btn
+                :css-class "teal"
+                :txt "Contact us to join our Network")))))
 

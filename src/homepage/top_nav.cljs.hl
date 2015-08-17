@@ -76,7 +76,7 @@
 
 (defelem signup-and-login-mobile []
   [(a :class "ui tiny item fluid button"
-      :href "/appboard/pricing"
+      :href "/appboard/pricing/"
       "Sign up")
    (a :class "ui tiny item fluid black button"
       :href (appboard-url)

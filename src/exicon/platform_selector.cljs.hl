@@ -17,9 +17,9 @@
 
 (defelem checkbox-grp
   [{:keys [image title data]} checkboxes]
-  (div :class "center aligned column"
-       (img :class "responsive" :src (cell= image))
-       (p title)
+  (div :class "column"
+       (img :class "ui centered image responsive" :src (cell= image))
+       (p :class "ui center aligned small header" title)
        (div :style "width:50%; margin:0 auto;"
             (loop-tpl
               :bindings [cb checkboxes]

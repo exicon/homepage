@@ -194,7 +194,8 @@
                (h2 :class "newsletters-title" (text (:title opts)))
                (p :class "newsletters-issue" (text (:issue opts)))
                (div :class "newsletters-screenshot-box"
-                    (img :class "newsletters-screenshot" :src (cell= (:image opts))))))))
+                    (img :class "newsletters-screenshot"
+                         :src (cell= (:image opts))))))))
 
 (defn newsletters-options-section []
   (section

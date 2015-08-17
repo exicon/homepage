@@ -1,0 +1,7 @@
+export HS_CONTACT_US_ID=XXXXXX # https://app.hubspot.com/forms/511335/75a9222d-e214-4a89-a778-97de1f9c5ef9/edit/
+export HS_PORTAL_ID=XXXXXX
+export HS_NEWSLETTER_ID=XXXXXXX
+export HS_APP_CALC_ID=XXXXXXX
+export INSPECTLET_FEATURE=true
+export INSPECTLET_WID=1724490325
+boot dev speak

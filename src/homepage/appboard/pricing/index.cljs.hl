@@ -1,156 +1,169 @@
 (page "appboard/pricing/index.html"
       (:require
-        [homepage.layout :refer [secondary-header]:as layout]
-        [homepage.packages :refer [packages]]
-        [homepage.packages.pricing :refer [pricing]]))
+        [homepage.layout
+         :refer [secondary-header contact-us-modal contact-us-btn]
+         :as layout])
+      (:require-macros
+        [config :refer [appboard-url hs-contact-us-id hs-portal-id]]))
 
 (def page-header {:header "Pricing"})
 
+(defn appboard-registration-link [arg] (str (appboard-url) "/?package="(name arg)"#!/registration/"))
+
+(def features-list
+  [
+   {:label "Number of apps"
+    :description nil
+    :highlighted true
+    :free (h3 :class "ui huge blue header"
+              "Up to " (b "7 ")"apps")
+    :paid (h3 :class "ui huge teal header"
+              "More than " (b "8 ")"apps"
+              (div :class"sub header"
+                   (b "US$ 100 ")"per app/month"
+                   (br)
+                   (b "US$ 1000 ")"per app/year"))}
+
+   {:label "AppStore Analytics"
+    :description "Automatically pull your metrics from the appstores. e.g. downloads, uninstalls, updates etc."
+    :free true :paid true }
+   {:label "In-app Analytics"
+    :description "Track user metrics from within your apps, regardless of your provider. e.g. sessions, session length, etc."
+    :free true :paid true }
+   {:label "AppLocker"
+    :description "Store your app assets securely. e.g. images, text, licenses, contracts, APK files, etc."
+    :free true :paid true }
+   {:label "Leaderboards"
+    :description "Your apps within your portfolio ranked and compared."
+    :free true :paid true }
+   {:label "Watchlist"
+    :description "Create lists of apps you want to follow, to track your competitors or for inspiration."
+    :free true :paid true }
+   {:label "AppBuilder"
+    :description "A matchmaking tool to find the best development house for your next mobile app."
+    :free true :paid true }])
+
+(defn value-add-cta-button [cta]
+  (let [generate-button
+        (fn [label href flag]
+          (div :class "ui container"
+               (a :class "ui blue fluid button"
+                  :href href
+                  :text label)
+               (when (= flag :info)
+                 (p (i "*We'll display your snapshots in the AppBoard, even if you don't have an app.")))))]
+    (cond (= cta :insights) (generate-button "Sign up inside the AppBoard" (appboard-registration-link :competitor-insights) :info)
+          (= cta :distribution) (generate-button "Sign up inside the AppBoard" (appboard-registration-link :distribution) nil)
+          (= cta :developer) (contact-us-btn :css-class "blue fluid")
+          (= cta :management) (contact-us-btn :css-class "blue fluid")
+          (= cta :inception) (contact-us-btn :css-class "blue fluid"))))
+
+(def value-adds
+  [{:label "Competitive Insights"
+    :description "Get snapshots of key competitor app data by brand (globally or by country)."
+    :price1 (h2 :class "ui medium header" "US$ 200 / Snapshot" (br) "US$ 2,000 / Year")
+    :cta (value-add-cta-button :insights)}
+   {:label "App Distribution"
+    :description "Increase downloads by up to 200% by distributing onto additional Android stores."
+    :price1 [ (h2 :class "ui medium header"
+                  (div :class "sub header" "Distribute to")
+                  "10 Stores / US$ 7,000" (br) "20 Stores / US$ 10,000")]
+    :cta (value-add-cta-button :distribution)}
+   {:label "Assisted AppBuilder"
+    :description "Help you through developer jargon."
+    :price1 (h2 :class "ui medium header" "US$ 999")
+    :cta (value-add-cta-button :developer)}
+   {:label "App Ideation Workshop"
+    :description "Focus on features and priorities for your app, to estimate cost and timing while reducing risk."
+    :price1 ""
+    :cta (value-add-cta-button :inception)}
+   {:label "Project Management"
+    :description "You don't even have to learn developer jargon. We'll make sure your project is delivered for you."
+    :price1 ""
+    :cta (value-add-cta-button :management)}])
+
+(defn feature-row [f]
+  (let [print-check? (fn [plan color]
+                       (if (true? plan)
+                         (i :class (str color " check circle icon")
+                            :style "font-size: 3em"
+                            :toggle plan)
+                         plan))
+        bg-color (if (:highlighted @f) "inverted secondary vertically-centered" "tertiary")
+        txt-color (if (:highlighted @f) "" "grey")]
+    (div :class "three column row" :style "padding:0.10em"
+         (div :class "column"
+              (div :class (str "ui basic " bg-color " segment")
+                   (h3 :class (str"ui " txt-color " large header")
+                       :text (:label @f)
+                       (div :class "sub header"
+                            :text (:description @f)))))
+         (div :class "centered-content column dotted-left-frame"
+              (print-check? (:free @f) "blue"))
+         (div :class "centered-content column dotted-right-frame"
+              (print-check? (:paid @f) "teal")))))
+
 (defn pricing-section []
   (section
-    :id "pricing-pack"
-    :class "full-width-container"
-    (div :class "ui four column doubling page grid"
-         (loop-tpl :bindings [opt packages]
-                   (pricing opt)))))
+    :id "pricing"
+    :class "ui container grid"
+    (div :class "three column row"
+         (div :class "column")
+         (div :class "blue center aligned column"
+              :style "margin-left: -0.8em"
+              (h2 :class "ui inverted header" "Free"))
+         (div :class "teal center aligned column"
+              (h2 :class "ui inverted header" "Paid")))
+    (loop-tpl :bindings [f features-list]
+              (feature-row f))))
 
-(def faq-detail
-  [
-   {
-    :question "Do I get all the features for free with the Starter Pack?"
-    :answer [
-             (p "We want to make sure that you get the best “taste” you can of the value that the
-                AppBoard can bring you and your company. So we have added all of the features that
-                don’t have to be customised for you for free. We have however limited the number of
-                apps that you can try out with up to 5 (so those of you with 5 apps or less, your
-                day just got even better!)")
-             ]
-    }
+(defn cta-section []
+  (section :class "ui container grid"
+           (div :class "three column row"
+                (div :class "column")
+                (div :class "center aligned column"
+                     :style "margin-left: -0.8em"
+                     (a :class "ui blue huge button" :href (appboard-registration-link :free) "Sign up now"))
+                (div :class "center aligned column"
+                     (a :class "ui teal huge button" :href (appboard-registration-link :paid) "Sign up now")))))
 
-   {
-    :question "Do I need to give my credit card details when I sign up for the Starter pack?"
-    :answer [
-             (p "No, you just need to set up an account and you can start immediately.")
-             ]
-    }
 
-   {
-    :question "What is NOT included in the Starter Pack?"
-    :answer [
-             (p "The short answer is Competitor Insight (Challenger Pack), Automated Distribution
-                (Distributor Pack) onto multiple stores and our API Portal (API Axle).")
-             (p "You can get access to all of these features by upgrading to one of our other packs
-                (Challenger - Competitor Insight; Dominator - Competitor Insight and Distribution
-                onto multiple App Stores; Amplifier - customized solution Contact us).")
-             ]
-    }
+(defn value-add-row [value]
+  (div :class "three column row"
+       :style "padding:0.10em"
+       (div :class "column"
+            (div :class "ui basic tertiary segment"
+                 (h3 :class "ui grey large header"
+                     :text (:label @value)
+                     (div :class "sub header"
+                          (:description @value)))))
+       (div :class "centered-content column dotted-left-frame"
+            (:price1 @value))
+       (div :class "centered-content column dotted-right-frame"
+            (:cta @value))))
 
-   {
-    :question "How can I find out how many apps I have?"
-    :answer [
-             (p "When you first set up your AppBoard you will be asked to either securely connect your
-                Google Play and iTunes account so that all of your apps are pulled straight to your AppBoard
-                almost immediately, or you can add them manually. Every separate submission you make to an
-                app store will be counted as 1 separate app. E.g. Acme iPad app + Acme iPhone app + Acme Android
-                app = 3 apps in total.")
-             ]
-    }
-
-   {
-    :question "I have more than 5 apps. Can I still use the free Starter Pack?"
-    :answer [
-             (p "Yes, if you have more than 5 apps you will be asked to select which 5 apps you’d like to display
-                in your AppBoard. If you have more than 5, be aware that you cannot change which apps you display later.
-                We’d recommend that you use apps that you are just starting so that you can track them from end to end
-                and keep on top of everything, and apps that you have as much data about as possible e.g. who in your
-                team started the app, App Store analytics, who built it and in-app analytics if you have them (don’t worry
-                if you don’t we can help you out). If you have more than 5 apps and want to display them all, move up to Challenger or Dominator Pack.")
-             ]
-    }
-
-   {
-    :question "Can I upgrade to the Challenger or Dominator pack after signing up for the Starter Pack?"
-    :answer [
-             (p "Yes. If (or should I say when) you decide that you want to add more apps or more features you can upgrade at
-                any time. You can upgrade to the Challenger pack by going to “Competitor Insight” in your AppBoard where you will
-                be given the choice to upgrade or to buy one-off reports. You can upgrade to the Dominator Pack by going to “Distribution”
-                in your AppBoard where you will be given the choice to upgrade or to buy distribution for one-off a specific app.")
-             ]
-    }
-
-   {
-    :question "If I have signed up for the Challenger Pack can I add additional Competitor Insight on top of those I get as part of the subscription?"
-    :answer [
-             (p "Yes, you can buy as many Competitor Insights as you like on a one-off basis. You can buy Competitor Insight by going to “Competitor Insight”
-                in your AppBoard where you will be given the choice to upgrade or to buy one-off reports.")
-             ]
-    }
-
-   {
-    :question "Can I use the Competitor Insight and enlarge my Distribution without upgrading to the Challenger or Dominator Pack?"
-    :answer [
-             (p "Yes, you can buy these features on a one off basis although it is more expensive per unit than upgrading. You can buy Competitive
-                insights by going to 'Competitive Insights' in your AppBoard where you will be given the choice to upgrade or to buy one-off reports.
-                You can buy the Distribution onto multiple appstores by going to “Distribution” in your AppBoard where you will be given the choice
-                to upgrade or to buy distribution for a specific app.")
-             ]
-    }
-
-   {
-    :question "In the Challenger Pack, can I change my Competitor Insight parameters eg. country, industry, competitive brand?"
-    :answer [
-             (p "Yes, you can change this once every quarter.")
-             ]
-    }
-
-   {
-    :question "Can I spread my apps over different packages?"
-    :answer [
-             (p "The bundles were designed to match clear user types which is typically correlated to the number of apps you have.
-                Don't worry though, you can buy Competitor Insight + Distribution on a one-off basis no matter which package you signed up for.")
-             ]
-    }
-
-   {
-    :question "I have more questions. Who do I ask?"
-    :answer [
-             (p "Contact us through the contact form " (a :click #(.click (js/jQuery ".sumome-contactform-pullouttab.sumome-contactform-pullouttab-bottom-center")) "here") " or call or send us an email. We’d be happy to chat with you.")
-             ]
-    }
-   ])
-
-(defn faq-list [q]
-  (let [opened (cell false)]
-    (div :class "column"
-         (div :class "ui accordion"
-              (div :class "title"
-                   :do-class (cell= {:active opened})
-                   :click #(swap! opened not)
-                   (i :class "dropdown icon")
-                   (text (:question q)))
-
-              (div :class "content"
-                   :do-class (cell= {:active opened})
-                   (cell= (:answer q))))
-         ))
-  )
-
-(defn faq-list-section []
-  (section
-    :id "faq-help"
-    :class "full-width-container"
-    (h2 :class "ui center aligned header" "FAQ")
-    (div :class "ui one column page grid"
-         (loop-tpl :bindings [opt faq-detail]
-                   (faq-list opt)))))
+(defn value-add-section []
+  (section :class "ui container grid"
+           (div :class "one column row"
+                :style "padding:0.10em"
+                (div :class "column"
+                     (div :class "ui secondary basic segment"
+                          (h3 :class "ui large header" "Additional Services"))))
+           (loop-tpl :bindings [value value-adds]
+                     (value-add-row value))))
 
 (layout/primary
   :id "pricing"
   :page-title "Product Pricing | Analytics & App Management | Exicon"
   :description "Pricing For Exicon's App Management & Logistics Platform That Scales With Your App Portfolio, Analytics, Distribution & API Management."
   :keywords "Analytics, App Management, Exicon"
+  :page-css "../../pricing/index.inc.css"
 
   (secondary-header :header (:header page-header))
-
+  (div :class "ui hidden divider")
   (pricing-section)
-  (faq-list-section))
+  (cta-section)
+  (div :class "ui hidden divider")
+  (div :class "ui hidden divider")
+  (value-add-section)
+  (div :class "ui hidden divider"))

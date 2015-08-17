@@ -1,10 +1,10 @@
 (ns homepage.layout
   (:require-macros
     [config :refer [inspectlet-wid inspectlet-feature
-                    hs-portal-id hs-newsletter-id]])
+                    hs-portal-id hs-newsletter-id hs-contact-us-id]])
   (:require
-    [homepage.top-nav :as top-nav]
-    [homepage.bottom-nav :as bottom-nav]))
+    [homepage.top-nav :refer [top-nav]]
+    [homepage.bottom-nav :refer [bottom-nav]]))
 
 
 (defn inspect [field details]
@@ -19,6 +19,24 @@
 (defn row []
   (div
     :class "column sixteen wide center aligned"))
+(defc contact-us-visible? false)
+
+(defelem modal-dialog
+  [{:keys [id visible title bg-action]
+    :or {title ""}}
+   kids]
+  (let [hide #(reset! visible false)
+        bg-click (if bg-action bg-action hide)]
+    [(div :class "modal-bg"
+          :do-class (cell= {:show-modal visible})
+          :click bg-click )
+     (div :class "ui small modal"
+          :style "min-heigth:100px"
+          :do-class (cell= {:visible visible})
+          (div :class "header" title)
+          (div :id id :class "content"
+               "Loading...")
+          kids)]))
 
 (defelem secondary-header
   [{:keys [header sub-header page center id]
@@ -52,18 +70,23 @@
      kids
      (div :class "ui hidden divider"))))
 
+(defn contact-us-modal [active?]
+  (div :class "ui modal"
+       :do-class (cell= {:active true})
+       (i :class "close red icon"
+          :click #(reset! active? false))))
+
 (defn subscribe-stick-form [subscribe-click]
   (let [opts (clj->js
                {:target "#hs-form"
                 :css ""
                 :cssClass "ui small form basic segment"
-                :inlineMessage "Thank you for subscribing!"
                 :submitButtonClass "ui submit teal button"
                 :errorMessageClass "ui error message"
                 :portalId (hs-portal-id)
                 :formId (hs-newsletter-id)})
         render-form #(.. js/hbspt -forms (create opts))
-        debug (cell= (when subscribe-click (render-form)))]
+        trigger-form (cell= (when subscribe-click (render-form)))]
 
     [((div :id "subscribe-stick-layer")
       :class (cell= {:show subscribe-click}))
@@ -79,24 +102,29 @@
                 (div :class "ui divider hidden header")
                 (img :src "/images/header/subscribe.png"))
            (div :class "sixteen wide column"
-                (div :id "hs-form" "Loading ....")
-                #_(form :id "subscribe-form"
-                        :action "//exiconglobal.us3.list-manage.com/subscribe/post?u=59165e464834675ada250903e&amp;id=2df8fbeed9"
-                        :method "post"
-                        :target "_blank"
-                        (div :class "ui input basic"
-                             (input :type "text" :name "EMAIL"
-                                    :placeholder "email-address"))
-                        (div :class "ui divider hidden header")
-                        (input :type "submit" :class "ui button tiny"
-                               :value "Subscribe"
-                               :click #(.submit (aget (js/jQuery "#subscribe-form") 0)))))))]))
+                (div :id "hs-form" "Loading ...."))))]))
 
 (defn subscribe-stick-btn [subscribe-click]
   (a :href "javascript:void(0);"
      :click #(reset! subscribe-click true)
      (div :id "subscribe-stick" :class
           (cell= {:show (not subscribe-click)}))))
+
+(defelem contact-us-btn [{:keys [id css-class txt]
+                          :or {id "" css-class "" txt "Contact Us"}}]
+  (let [opts (clj->js
+               {:target "#hs-contact-us"
+                :css ""
+                :cssClass "ui small form basic segment"
+                :submitButtonClass "ui submit teal button"
+                :errorMessageClass "ui error message"
+                :portalId (hs-portal-id)
+                :formId (hs-contact-us-id)})
+        render-form #(.. js/hbspt -forms (create opts))
+        trigger-form (cell= (when contact-us-visible? (render-form)))]
+    (div :id id :class (str "ui "css-class" button")
+         :click #(reset! contact-us-visible? true)
+         :text txt)))
 
 (defelem primary
   [{:keys [page-css page-title description keywords] :as attrs} content]
@@ -119,16 +147,19 @@
         (link :href "/main.inc.css" :rel "stylesheet")
         (link :href "/top-nav.inc.css" :rel "stylesheet")
 
-        (link :href page-css :rel "stylesheet")
-        (script :src "//load.sumome.com/"
-                :data-sumo-site-id "ebf284bbaebf222290fb6ad21ded0363d1b94fddbbb9138e7930124b6645bbcb"
-                :async))
+        (link :href page-css :rel "stylesheet"))
       (body
         (subscribe-stick-btn subscribe-click)
         (subscribe-stick-form subscribe-click)
-        (top-nav/top-nav true)
-        (top-nav/top-nav false)
+        (modal-dialog :visible contact-us-visible?
+                      :id "hs-contact-us"
+                      :title "Contact Us")
+        (contact-us-btn
+          :id "contact-us-btn"
+          :css-class "small")
+        (top-nav true)
+        (top-nav false)
         (div (merge {:id "content"}
                     (dissoc attrs :page-title :description :keywords :page-css))
              content)
-        (bottom-nav/bottom-nav)))))))
+        (bottom-nav)))))))

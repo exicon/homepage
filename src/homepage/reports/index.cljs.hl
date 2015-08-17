@@ -314,9 +314,7 @@
   :page-title "Research"
   :description "Research"
   :page-css "index.inc.css"
-
   (secondary-header :header (:header page-header))
-
   (section :id "reports-list"
            :class "full-width-container"
            (div :class "ui three column vertically padded doubling page grid"

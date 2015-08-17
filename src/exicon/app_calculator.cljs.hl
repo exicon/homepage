@@ -9,7 +9,7 @@
     [exicon.platform-selector :refer [platform-selector toggle-in-set]]))
 
 (with-init!
-  #_(.sticky (js/jQuery "#computer-cost-summary")
+  (.sticky (js/jQuery "#computer-cost-summary")
         (clj->js {:context "#computer-relative-container"
                   :offset 110
                   :pushing true})))
@@ -37,12 +37,13 @@
   [{:keys [selected click]
     {:keys [value title image description]} :item}]
   (a :class "img-option center aligned column" :click click
-     ((div :class "ui center aligned basic segment" :style "margin-bottom:0;")
-          :class (cell= {:inverted selected :light-teal-bg selected})
-          (img :class "responsive"
-               :src (cell= (str "/images/app-calc/" image))))
-     (div :class "center aligned column title" title
-          (div description))))
+     ((div :class "ui center aligned basic app-calc segment")
+      :class (cell= {:inverted selected :light-teal-bg selected})
+      (img :class "responsive"
+           :src (cell= (str "/images/app-calc/" image)))
+      (div :class "center aligned column title"
+           (span :class"ui small header"
+                 title (br) description)))))
 
 (defelem img-select
   [{:keys [class items title data columns cost-result toggle-data selected?]}]
@@ -75,7 +76,7 @@
                  (img :class "responsive"
                       :src "/images/app-calc/market-localization.png"))
             (div :class "four wide column"
-                 (select :class "markets"
+                 (select :class "ui large fluid input"
                          :change #(reset! data @%)
                          :value selected-languages
                          (map #(option :value % (str %)) (range 1 11)))))))
@@ -88,7 +89,7 @@
         :toggle (not= class "bottom"))))
 
 (defelem cost-summary [attr kids]
-  [(h5 :class "ui top attached header" "Summary")
+  [(h5 :class "ui top attached header" "App Build Cost")
    (div :class "ui bottom attached segment"
         (div
           :toggle (cell= (not(= (first result) 0)))
@@ -101,7 +102,7 @@
                      (usd-currency (first result))
                      " - "
                      (usd-currency (last result)))))))
-          (div :class "ui divider"))
+          #_(div :class "ui divider"))
 
         (cost-section
           :class "top" (text "Platforms:")
@@ -125,7 +126,8 @@
 
         (cost-section
           :class "bottom" (text "Stage:")
-          (text (join "" (value-title selected-stage stage-items)))))])
+          (text (join "" (value-title selected-stage stage-items))))
+        )])
 
 (defn calculator-fields []
   [(div :class "ui top attached segment"
@@ -159,6 +161,7 @@
      :data selected-languages
      :cost-result result
      :title "How many markets?")
+
    (single-select
      :class "bottom"
      :data selected-stage
@@ -168,11 +171,11 @@
      :title "At what stage is your project?")])
 
 (defn app-calculator []
-  [(div :class "ui form page computer only grid"
+  [(div :class "ui page computer only grid"
         (div :id "computer-relative-container" :class "twelve wide column"
              (calculator-fields))
         (div :class "four wide column"
-             (div :id "computer-cost-summary" :style "padding-right:0;" :class "ui sticky"
+             (div :id "computer-cost-summary" :style "padding-right:0; z-index:10" :class "ui sticky"
                   (cost-summary))))
 
    (div :class "ui form mobile tablet only page grid"
