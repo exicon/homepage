@@ -2,7 +2,7 @@
   :project 'homepage
   :version "0.1.0-SNAPSHOT"
   :dependencies
-  '[[tailrecursion/boot-hoplon "0.1.0"]
+  '[[exicon/boot-hoplon "0.1.2-SNAPSHOT"]
     [tailrecursion/hoplon "6.0.0-alpha2"]
     [adzerk/boot-reload "0.3.1"]
     [pandeiro/boot-http "0.6.3"]
