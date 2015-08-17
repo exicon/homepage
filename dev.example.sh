@@ -4,4 +4,4 @@ export HS_NEWSLETTER_ID=XXXXXXX
 export HS_APP_CALC_ID=XXXXXXX
 export INSPECTLET_FEATURE=true
 export INSPECTLET_WID=1724490325
-boot dev speak
+boot dev

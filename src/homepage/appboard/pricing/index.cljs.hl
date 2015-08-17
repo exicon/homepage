@@ -11,21 +11,20 @@
 (defn appboard-registration-link [arg] (str (appboard-url) "/?package="(name arg)"#!/registration/"))
 
 (def features-list
-  [
-   {:label "Number of apps"
+  [{:label "Number of apps"
     :description nil
     :highlighted true
     :free (h3 :class "ui huge header"
-                "Up to " (b "7 ")"apps")
+              "Up to " (b "7 ")"apps")
     :paid (h3 :class "ui huge header"
-                "More than " (b "8 ")"apps"
-                (div :class"sub header"
-                     (b "US$ 100 ")"per app/month"
-                     (br)
-                     (b "US$ 1000 ")"per app/year"))}
+              "More than " (b "8 ")"apps"
+              (div :class"sub header"
+                   (b "US$ 100 ")"per app/month"
+                   (br)
+                   (b "US$ 1000 ")"per app/year"))}
 
    {:label "AppStore Analytics"
-    :description "Automatically pull your metrics from the appstores. e.g. downloads, uninstalls, updates etc."
+    :description "Automatically pull your metrics from the appstores.e.g. downloads, uninstalls, updates etc."
     :free true :paid true }
    {:label "In-app Analytics"
     :description "Track user metrics from within your apps, regardless of your provider. e.g. sessions, session length, etc."
@@ -44,19 +43,23 @@
     :free true :paid true }])
 
 (defn value-add-cta-button [cta]
-  (let [generate-button
+  (let [btn
         (fn [label href flag]
           (div :class "ui container"
                (a :class "ui blue fluid button"
                   :href href
                   :text label)
                (when (= flag :info)
-                 (p (i "*We'll display your snapshots in the AppBoard, even if you don't have an app.")))))]
-    (cond (= cta :insights) (generate-button "Sign up inside the AppBoard" (appboard-registration-link :competitor-insights) :info)
-          (= cta :distribution) (generate-button "Sign up inside the AppBoard" (appboard-registration-link :distribution) nil)
-          (= cta :developer) (contact-us-btn :css-class "blue fluid")
-          (= cta :management) (contact-us-btn :css-class "blue fluid")
-          (= cta :inception) (contact-us-btn :css-class "blue fluid"))))
+                 (p (i "*We'll display your snapshots in the AppBoard,"
+                       " even if you don't have an app.")))))]
+    (case cta
+      :insights (btn "Sign up inside the AppBoard"
+                     (appboard-registration-link :competitor-insights) :info)
+      :distribution (btn "Sign up inside the AppBoard"
+                         (appboard-registration-link :distribution) nil)
+      :developer (contact-us-btn :css-class "blue fluid")
+      :management (contact-us-btn :css-class "blue fluid")
+      :inception (contact-us-btn :css-class "blue fluid"))))
 
 (def value-adds
   [{:label "Competitive Insights"
@@ -65,9 +68,9 @@
     :cta (value-add-cta-button :insights)}
    {:label "App Distribution"
     :description "Increase downloads by up to 200% by distributing onto additional Android stores."
-    :price1 [ (h2 :class "ui medium header"
-                  (div :class "sub header" "Distribute to")
-                  "10 Stores / US$ 7,000" (br) "20 Stores / US$ 10,000")]
+    :price1 (h2 :class "ui medium header"
+                (div :class "sub header" "Distribute to")
+                "10 Stores / US$ 7,000" (br) "20 Stores / US$ 10,000")
     :cta (value-add-cta-button :distribution)}
    {:label "Assisted AppBuilder"
     :description "Help you through developer jargon."
@@ -84,25 +87,25 @@
 
 (defn feature-row [f]
   (cell-let [{:keys [label description highlighted free paid]} f]
-  (let [print-check? (fn [plan color]
-                       (if (true? plan)
-                         (i :class (str color " check circle icon")
-                            :style "font-size: 3em"
-                            :toggle plan)
-                         plan))
-        bg-color (cell= (if highlighted "inverted secondary vertically-centered" "tertiary"))
-        txt-color (cell= (if highlighted "" "grey"))]
-    (div :class "three column row" :style "padding:0.10em"
-         (div :class "column"
-              (div :class (cell= (str "ui basic " bg-color " segment"))
-                   (h3 :class (cell= (str"ui " txt-color " large header"))
-                       (span label)
-                       (div :class "sub header"
-                            :text description))))
-         (div :class "centered-content column dotted-left-frame"
-              (cell= (print-check? free "blue")))
-         (div :class "centered-content column dotted-right-frame"
-              (cell= (print-check? paid "teal")))))))
+            (let [print-check? (fn [plan color]
+                                 (if (true? plan)
+                                   (i :class (str color " check circle icon")
+                                      :style "font-size: 3em"
+                                      :toggle plan)
+                                   plan))
+                  bg-color (cell= (if highlighted "inverted secondary vertically-centered" "tertiary"))
+                  txt-color (cell= (if highlighted "" "grey"))]
+              (div :class "three column row" :style "padding:0.10em"
+                   (div :class "column"
+                        (div :class (cell= (str "ui basic " bg-color " segment"))
+                             (h3 :class (cell= (str"ui " txt-color " large header"))
+                                 (span label)
+                                 (div :class "sub header"
+                                      :text description))))
+                   (div :class "centered-content column dotted-left-frame"
+                        (cell= (print-check? free "blue")))
+                   (div :class "centered-content column dotted-right-frame"
+                        (cell= (print-check? paid "teal")))))))
 
 (defn feature-row-mobile [feature]
   (cell-let
@@ -153,50 +156,54 @@
            :style "padding: 0.10em"
            (div :class "twelve wide column"
                 (div :class "ui secondary basic segment"
-                    (h3 :class "ui medium header"
-                    "Features")))
+                     (h3 :class "ui medium header"
+                         "Features")))
            (div :class "two wide centered-content column"
                 :style "background-color: rgba(0,0,0,0.05);
                        margin-left: -0.8em;"
-                    (h3 :class "ui medium blue header"
-                    "Free"))
+                       (h3 :class "ui medium blue header"
+                           "Free"))
            (div :class "two wide centered-content column"
                 :style "background-color: rgba(0,0,0,0.05)"
-                    (h3 :class "ui medium teal header"
+                (h3 :class "ui medium teal header"
                     "Paid")))
       (loop-tpl :bindings [f features]
                 (feature-row-mobile f)))))
 
+(defelem signup-btn [{:keys [plan] :as attrs} _]
+  ((a (dissoc attrs :plan))
+   :href (appboard-registration-link plan)
+   "Sign up now"))
+
 (defn cta-section []
-  (section :class "ui container grid"
-           (div :class "three column computer only row"
-                (div :class "column")
-                (div :class "center aligned column"
-                     :style "margin-left: -0.8em"
-                     (a :class "ui blue huge button" :href (appboard-registration-link :free) "Sign up now"))
-                (div :class "center aligned column"
-                     (a :class "ui teal huge button" :href (appboard-registration-link :paid) "Sign up now")))
+  (section
+    :class "ui container grid"
+    (div :class "three column computer only row"
+         (div :class "column")
+         (div :class "center aligned column"
+              :style "margin-left: -0.8em"
+              (signup-btn :class "ui blue huge button" :plan :free))
+         (div :class "center aligned column"
+              (signup-btn :class "ui teal huge button" :plan :paid)))
 
-           (div :class "one column tablet mobile only row"
-                (div :class "center aligned column"
-                     :style "margin-left: -0.8em"
-                     (a :class "ui blue large button" :href (appboard-registration-link :free) "Sign up now")
-                     (a :class "ui teal large button" :href (appboard-registration-link :paid) "Sign up now")))))
+    (div :class "one column tablet mobile only row"
+         (div :class "center aligned column"
+              :style "margin-left: -0.8em"
+              (signup-btn :class "ui blue large button" :plan :free)
+              (signup-btn :class "ui teal large button" :plan :paid)))))
 
-
-(defn value-add-row [value]
-  (div :class "three column row"
-       :style "padding:0.10em"
-       (div :class "column"
-            (div :class "ui basic tertiary segment"
-                 (h3 :class "ui grey large header"
-                     :text (:label @value)
-                     (div :class "sub header"
-                          (:description @value)))))
-       (div :class "centered-content column dotted-left-frame"
-            (:price1 @value))
-       (div :class "centered-content column dotted-right-frame"
-            (:cta @value))))
+(defn value-add-row [value-add]
+  (cell-let
+    [{:keys [label description price1 cta]} value-add]
+    (div :class "three column row"
+         :style "padding:0.10em"
+         (div :class "column"
+              (div :class "ui basic tertiary segment"
+                   (h3 :class "ui grey large header"
+                       (span label)
+                       (div :class "sub header" description))))
+         (div :class "centered-content column dotted-left-frame" price1)
+         (div :class "centered-content column dotted-right-frame" cta))))
 
 (defn value-add-section []
   (section :class "ui container stackable grid"
@@ -204,7 +211,8 @@
                 :style "padding:0.10em"
                 (div :class "column"
                      (div :class "ui secondary basic segment"
-                          (h3 :class "ui large header" "Additional Services"))))
+                          (h3 :class "ui large header"
+                              "Additional Services"))))
            (loop-tpl :bindings [value value-adds]
                      (value-add-row value))))
 
