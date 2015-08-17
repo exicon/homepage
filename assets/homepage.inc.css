@@ -182,6 +182,7 @@ p.testimonial {
 	align-items: center !important;
 	-webkit-align-items: center !important;
 	justify-content: center !important;
+	-webkit-justify-content: center !important;
 	display: -webkit-flex !important;
 	display: flex !important;
 }
