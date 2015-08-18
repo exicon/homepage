@@ -9,7 +9,7 @@
 
 (defn intro []
   (section :id "intro"
-           (div :class "ui page stackable grid"
+           (div :class "ui container stackable grid"
                 (div :class "row"
                      (div :class "eleven wide column title sizer"
                           (h1 :class "ui inverted huge main header" "BUILD QUALITY CONNECTIONS WITH MOBILE USERS")))
@@ -138,7 +138,7 @@
   (section :class "ui inverted black vertical segment"
            (div :id "features" :class "anchor" )
            (div :class "ui hidden divider")
-           (div :class "ui stackable page grid"
+           (div :class "ui stackable container grid"
                 (div :class "sixteen wide center aligned column title sizer"
                      (h2 :class "ui inverted large header"  "The AppBoard")
                      (div :class "description sizer"
@@ -149,12 +149,12 @@
 
 (defn feature-advantage [adv is-mobile build-promote? inverted?]
   (div :class "center aligned column"
-       (div :class "ui title sizer basic"
-            :do-class {:horizontal (not is-mobile) :segment (not is-mobile)
+       ((div :class "ui title sizer basic")
+            :class {:horizontal (not is-mobile) :segment (not is-mobile)
                        :white inverted?
                        :dark (and (not inverted?) build-promote?)}
-            (h2 :class "ui medium header"
-                :do-class {:inverted inverted?
+            ((h2 :class "ui medium header")
+                :class {:inverted inverted?
                            :teal (not build-promote?)} adv))))
 
 (defelem feature-details
@@ -166,20 +166,20 @@
      (div :class "ui left fixed ribbon black inverted large label"
           (img :class "ui mini inline image" :src icon)
           :text name)
-     (div :class "ui page padded grid"
+     (div :class "ui container grid"
           (div :class "sixteen wide column title sizer center aligned feature-header"
-               (h2 :class "ui large header"
-                   :do-class {:inverted inverted?}
+               ((h2 :class "ui large header")
+                   :class {:inverted inverted?}
                    :text header)
           (div :class "description sizer"
-               (h3 :class "ui medium center aligned header"
-                   :do-class {:inverted inverted?}
+               ((h3 :class "ui medium center aligned header")
+                   :class {:inverted inverted?}
                    :text sub-header)))
           (div :class "eleven wide centered column"
                :toggle image
                (img :class "ui massive centered image" :src image))
-          (div :class "row"
-               :do-class {:feature-advantages build-promote?}
+          ((div :class "row")
+               :class {:feature-advantages build-promote?}
                (div :class "ui three column stackable grid"
                     (div :class "mobile tablet only row"
                          (loop-tpl :bindings [adv advantages]
@@ -189,8 +189,8 @@
                                    (feature-advantage adv false build-promote? inverted?)))))
           (if cta
             (div :class "centered row"
-                 (a :class "ui massive button"
-                    :do-class {:inverted inverted?
+                 ((a :class "ui massive button")
+                    :class {:inverted inverted?
                                :black (not inverted?)}
                     :href (:link cta)
                     :text (:title cta))))
@@ -246,7 +246,7 @@
 (defn testimonials-section []
   (section :class "ui basic tertiary segment full-width-container"
            (section-header :header (:testimonials section-headers))
-           (div :class "ui page stackable grid"
+           (div :class "ui container stackable grid"
                 (div :class "three column row"
                      (testimonial-block :hotels)
                      (testimonial-block :schneider)
@@ -256,7 +256,7 @@
 (defn clients []
   (section :class "clients ui basic segment"
            (section-header :header (:customers section-headers))
-           (div :class "ui page grid"
+           (div :class "ui container grid"
                 (div :id "clients" :class "anchor" )
                 (div :class "center aligned sixteen wide column"
                      (div :class "ui basic segment"

@@ -171,14 +171,14 @@
      :title "At what stage is your project?")])
 
 (defn app-calculator []
-  [(div :class "ui page computer only grid"
+  [(div :class "ui computer only container grid"
         (div :id "computer-relative-container" :class "twelve wide column"
              (calculator-fields))
         (div :class "four wide column"
              (div :id "computer-cost-summary" :style "padding-right:0; z-index:10" :class "ui sticky"
                   (cost-summary))))
 
-   (div :class "ui form mobile tablet only page grid"
+   (div :class "ui form mobile tablet only container grid"
         (div :class "sixteen wide column"
              (div :class "ui bottom fixed menu inverted teal large borderless"
                   (div :class "item"

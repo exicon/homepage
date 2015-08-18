@@ -40,7 +40,7 @@
 
   (div :id "app-calculator"
        (div :class "ui hidden divider")
-       (div :class "ui page grid"
+       (div :class "ui container grid"
             (div :class "ui title sizer basic segment"
                  (h2 :class "ui small center aligned header"
                      :text (:header intro)))

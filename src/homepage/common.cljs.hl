@@ -22,8 +22,8 @@
 (defelem textual-button [{:keys [message button-text destination-link inline]
                           :or {button-text "Start your project"}} kids]
   [(when message
-     (h2 :class "ui header"
-         :do-class{:inline-header inline} message))
+     ((h2 :class "ui header")
+         :class {:inline-header inline} message))
    (a :class "ui big button"
       :href destination-link
       button-text)

@@ -3,7 +3,7 @@
   :version "0.1.0-SNAPSHOT"
   :dependencies
   '[[exicon/boot-hoplon "0.1.2-SNAPSHOT"]
-    [tailrecursion/hoplon "6.0.0-alpha2"]
+    [tailrecursion/hoplon "6.0.0-alpha5"]
     [adzerk/boot-reload "0.3.1"]
     [pandeiro/boot-http "0.6.3"]
     [adzerk/boot-cljs "1.7.48-SNAPSHOT"]

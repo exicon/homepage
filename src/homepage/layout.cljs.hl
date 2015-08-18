@@ -27,12 +27,12 @@
    kids]
   (let [hide #(reset! visible false)
         bg-click (if bg-action bg-action hide)]
-    [(div :class "modal-bg"
-          :do-class (cell= {:show-modal visible})
+    [((div :class "modal-bg")
+          :class (cell= {:show-modal visible})
           :click bg-click )
-     (div :class "ui small modal"
+     ((div :class "ui small modal")
           :style "min-heigth:100px"
-          :do-class (cell= {:visible visible})
+          :class (cell= {:visible visible})
           (div :class "header" title)
           (div :id id :class "content"
                "Loading...")
@@ -71,8 +71,8 @@
      (div :class "ui hidden divider"))))
 
 (defn contact-us-modal [active?]
-  (div :class "ui modal"
-       :do-class (cell= {:active true})
+  ((div :class "ui modal")
+       :class (cell= {:active true})
        (i :class "close red icon"
           :click #(reset! active? false))))
 
@@ -128,7 +128,9 @@
 
 (defelem primary
   [{:keys [page-css page-title description keywords] :as attrs} content]
-  (let [subscribe-click (cell false)]
+  (let [subscribe-click (cell false)
+        content-attrs (dissoc attrs
+                              :page-title :description :keywords :page-css)]
     (html
       (head
         (title page-title)
@@ -157,9 +159,9 @@
         (contact-us-btn
           :id "contact-us-btn"
           :css-class "small")
-        (top-nav true)
-        (top-nav false)
-        (div (merge {:id "content"}
-                    (dissoc attrs :page-title :description :keywords :page-css))
-             content)
+
+        (div :id "top-nav"
+             (top-nav :class "fluid hidden")
+             (top-nav :class "fixed"))
+        ((div :id "content") content-attrs content)
         (bottom-nav)))))))

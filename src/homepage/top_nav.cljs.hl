@@ -8,12 +8,11 @@
     true
     false))
 
-(defelem signup-and-login []
-  [(div :class "item"
-        (a :href "/appboard/pricing/"
-           :class "ui mini button" "Sign Up"))
-   (a :href (appboard-url) :class "item"
-      "Log In")])
+(defelem signup-menu-item [attrs _]
+  ((a :href "/appboard/pricing/") attrs "Sign up"))
+
+(defelem login-menu-item [attrs _]
+  ((a :href (appboard-url)) attrs "Login"))
 
 (def main-menu-items
   {:products
@@ -29,8 +28,7 @@
     :submenu [{ :id :starter :name "Research" :url "/reports/"}
               ;{ :id :dominator :name "Videos" :url "/videos/"}
               { :id :amplifier :name "Presentations" :url "/presentations/"}]}
-   :about-us {:name "About Us" :url "/about-us/"}
-   :signup-and-login {:right-menu true}})
+   :about-us {:name "About Us" :url "/about-us/"}})
 
 (defn sub-menu [items]
   (loop-tpl :bindings [item items]
@@ -41,80 +39,69 @@
 (defn main-menu [items clicked-item]
   (loop-tpl
     :bindings [[id item] items]
-    (if (:right-menu @item)
-      (div :class "right menu"
-           (signup-and-login))
-      ((a :class "item")
-       :class (cell=
-                {:ui (submenu? item)
-                 :dropdown (submenu? item)})
-       :href (cell= (:url item))
-       :hover #(reset! clicked-item @id)
-       :mouseout #(reset! clicked-item nil)
-       :click #(reset! clicked-item @id)
-       (text (:name item))
-       (if (submenu? @item)
-         ((div :class "menu transition visible")
-          :style "margin-top: 0px;"  ;TODO Refactor top-nav later
-          :mouseover #(reset! clicked-item @id)
-          :class (cell= {:visible (= clicked-item id)
-                         :hidden (not (= clicked-item id))})
-          (sub-menu (:submenu @item))))))))
+    ((a :class "item")
+     :class (cell= {:ui (submenu? item)
+                    :dropdown (submenu? item)})
+     :href (cell= (:url item))
+     :mouseover #(reset! clicked-item @id)
+     :mouseout #(reset! clicked-item nil)
+     :click #(reset! clicked-item @id)
+     (text (:name item))
+     (if (submenu? @item)
+       ((div :class "menu transition")
+        :class (cell= {:visible (= clicked-item id)
+                       :hidden (not (= clicked-item id))})
+        (sub-menu (:submenu @item)))))))
 
 (defn mobile-main-menu [items clicked-item]
   (loop-tpl
     :bindings [[id item] items]
     (a :class "header item"
        :href (cell= (:url item))
-       :hover #(reset! clicked-item @id)
-       :mouseout #(reset! clicked-item nil)
        :click #(reset! clicked-item @id)
        (text (:name item))
        (if (submenu? @item)
          (div :class "menu"
               (sub-menu (:submenu @item)))))))
 
-(defelem signup-and-login-mobile []
-  [(a :class "ui tiny item fluid button"
-      :href "/appboard/pricing/"
-      "Sign up")
-   (a :class "ui tiny item fluid black button"
-      :href (appboard-url)
-      "Login")])
+(defelem logo [attrs _]
+  ((img :class "ui image"
+        :src "/images/exicon-logo.png"
+        :alt "Exicon Global Ltd.") attrs))
 
-(defn top-nav [is-fixed]
+(defelem top-nav [attrs _]
   (let [mobile-menu-visible (cell false)]
-    ((div :id "top-nav" :class "ui grid")
-     :class {:fixed-nav is-fixed
-             :hidden-nav (not is-fixed)}
-     (div :class "ui equal height computer only row"
-          (div :class "three wide column"
-               (a :href "/"
-                  (img :class "ui small image top-nav-icon"
-                       :src "/images/exicon-logo.png"
-                       :alt "Exicon Global Ltd.")))
-          (div :class "thirteen wide column"
-               (div :class "ui basic segment"
-                    (div :class "ui borderless secondary fluid menu"
-                         (main-menu
-                           main-menu-items
-                           clicked-main-menu-item)))))
-     (div :class "tablet mobile only row"
-          (div :class "ui fluid two item small menu"
-               :style "margin-bottom:0"
-               (a :class "item"
-                  :click #(swap! mobile-menu-visible not)
-                  (i :class "content big icon"))
-               (a :class "borderless item" :href "/"
-                  (img :class "ui tiny image"
-                       :src "/images/exicon-logo.png"
-                       :alt "Exicon Global Ltd.")))
-
-          ((div :class "ui vertical left sidebar overlay inverted only huge menu")
-           :style "top: 50px;"
-           :class (cell= {:visible mobile-menu-visible})
-           (div :class "menu"
-                (signup-and-login-mobile)
-                (mobile-main-menu
+    [(div :class "ui computer only grid"
+          ((div :class "ui borderless menu") attrs
+           (div :class "ui container"
+                (a :class "header item" :href "/"
+                   (logo :class "small"))
+                (main-menu
                   main-menu-items
-                  clicked-main-menu-item)))))))
+                  clicked-main-menu-item)
+                (div :class "right menu"
+                     (div :class "item"
+                          (signup-menu-item :class "ui mini button"))
+                     (login-menu-item :class "item")))))
+
+     (div :class "grid-connector")
+
+     (div :class "ui tablet mobile only grid"
+          ((div :class "ui two item small menu") attrs
+           (a :class "item"
+              :click #(swap! mobile-menu-visible not)
+              (i :class "content big icon"))
+           (a :class "borderless item" :href "/"
+              (logo :class "tiny"))))
+
+     (div :class "grid-connector")
+
+     ((div :class "ui vertical left sidebar overlay inverted only huge menu")
+      :style "top: 52px;"
+      :class (cell= {:visible mobile-menu-visible})
+      (div :class "menu"
+           (signup-menu-item :class "item")
+           (login-menu-item :class "item")
+           (mobile-main-menu
+             main-menu-items
+             clicked-main-menu-item)))]))

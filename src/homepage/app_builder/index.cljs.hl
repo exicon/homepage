@@ -301,10 +301,10 @@
 
 (defn feature-advantage [adv is-mobile]
   (div :class "center aligned column"
-       (div :class "ui description sizer basic shaded"
-            :do-class {:horizontal (not is-mobile)
-                       :segment (not is-mobile)}
-            (h2 :class "ui small inverted header" adv))))
+       ((div :class "ui description sizer basic shaded")
+        :class {:horizontal (not is-mobile)
+                :segment (not is-mobile)}
+        (h2 :class "ui small inverted header" adv))))
 
 
 (defn testimonial-block [testimonial-name]
@@ -419,10 +419,9 @@
 (defn reason-list-items [reason]
   (a :class "item"
      :click #(reason-visibility reason)
-     (i :class "large top aligned teal triangle icon"
-        :do-class
-        (cell= {:down (visible-reasons (:id reason))
-                :right (not (visible-reasons (:id reason)))}))
+     ((i :class "large top aligned teal triangle icon")
+      :class (cell= {:down (visible-reasons (:id reason))
+                     :right (not (visible-reasons (:id reason)))}))
      (div :class "content"
           (div (:title @reason))
           (div :class "ui clearing")

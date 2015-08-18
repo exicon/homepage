@@ -1,48 +1,6 @@
-#top-nav{
-	background-color: white;
-	width: 101%;
-	top: 0;
-	border-bottom: 1px solid #e5e5e5;
-	z-index: 99;
-	margin: 0px;
-}
-
-.fixed-nav{
-	position: fixed;
-}
-
-.hidden-nav{
+/* Simulate "fixed menu" margins for the invisible spacer menu */
+#top-nav .hidden {
 	visibility: hidden;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
 }
-
-#top-nav .row{
-	padding: 0;
-}
-
-#top-nav .ui.menu {
-	box-shadow: none;
-	-webkit-box-shadow: none;
-}
-
-#top-nav .ui.basic.segment {
-	padding-bottom: 0.5em;
-}
-
-#top-nav .ui.sub.menu {
-	border: none;
-}
-
-.menu.visible {
-	display: block !important;
-}
-
-.menu.invisible {
-	display: none !important;
-}
-
-
-@media only screen and (max-width: 550px){
-	#top-nav {
-		width: 105%;}
-	}
-
