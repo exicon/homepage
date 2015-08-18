@@ -50,3 +50,5 @@
     (cljs :optimizations :simple)
     (sift :invert true :include #{#"^out/"})
     (prerender)))
+
+(deftask stg [] (prod))
