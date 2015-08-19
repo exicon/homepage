@@ -244,11 +244,11 @@
 (defn testimonials-section []
   (section :class "ui basic tertiary segment"
            (section-header (:testimonials section-headers))
-           (div :class "ui vertically padded stackable container grid")
+           (div :class "ui vertically padded stackable container grid"
                 (div :class "three column row"
                      (testimonial-block :hotels)
                      (testimonial-block :schneider)
-                     (testimonial-block :brain))
+                     (testimonial-block :brain)))
            (div :class "ui hidden divider")))
 
 (defn clients []
