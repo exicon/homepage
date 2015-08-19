@@ -126,6 +126,13 @@
          :click #(reset! contact-us-visible? true)
          :text txt)))
 
+(defn when-hubspot [f]
+  (timeout
+    (fn try-again []
+      (if-not (aget js/window "hbspt")
+        (timeout try-again 20)
+        (f)))))
+
 (defelem primary
   [{:keys [page-css page-title description keywords] :as attrs} content]
   (let [subscribe-click (cell false)
@@ -135,9 +142,7 @@
       (head
         (title page-title)
         (script :type "text/javascript" "window.__insp = window.__insp || [];")
-        (script :charset "utf-8"
-                :type "text/javascript"
-                :src "//js.hsforms.net/forms/v2.js")
+
         (html-meta :name "description" :content description)
         (html-meta :name "keywords" :content keywords)
         (html-meta :name "viewport" :content "width=device-width, initial-scale=1.0")
@@ -164,4 +169,7 @@
                  (top-nav :class "fluid hidden")
                  (top-nav :class "fixed"))
             ((div :id "content") content-attrs content)
-            (bottom-nav)))))))
+            (bottom-nav)
+            (script :charset "utf-8"
+                    :type "text/javascript"
+                    :src "//js.hsforms.net/forms/v2.js")))))))

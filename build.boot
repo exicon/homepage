@@ -36,7 +36,7 @@
     (hoplon :pretty-print true)
     (reload)
     (cljs :optimizations :none
-          :source-map false)
+          :source-map true)
     (speak)))
 
 (deftask prod
