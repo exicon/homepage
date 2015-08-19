@@ -1,0 +1,15 @@
+(ns exicon.app-details)
+
+(defc app-details nil)
+(cell= (println app-details))
+
+(defelem form-input [{:keys [label-txt data type required]
+                      :or {type "text" required nil}} kids]
+  ((div :class "field")
+   :class {:required required}
+   (label :text label-txt)
+   (if (= type :textarea)
+     (textarea :change #(reset! app-details (assoc @app-details data @%)))
+     (input :type type
+            :change #(reset! app-details (assoc @app-details data @%))))
+   kids))

@@ -1,0 +1,85 @@
+(page "app-builder/submission/index.html"
+      (:require-macros [config :refer [hs-app-calc-id hs-portal-id]])
+      (:require
+        [homepage.layout :refer [secondary-header section-header] :as layout]
+        [exicon.app-calculator :refer [app-calculator]]
+        [exicon.app-details :refer [form-input]]))
+
+(def page-header {:header "App Builder Submission"})
+
+(defn app-calc-form []
+  (let [opts (clj->js
+               {:target "#hs-app-calc-form"
+                :css ""
+                :cssClass "ui small form segment"
+                :submitButtonClass "ui submit teal button"
+                :errorMessageClass "ui error message"
+                :portalId (hs-portal-id)
+                :formId (hs-app-calc-id)})]
+    (.setTimeout js/window #(.. js/hbspt -forms (create opts)) 2000)))
+
+(defc active-step :calculator)
+
+(defelem step [{:keys [id title]} kids]
+  ((a :class "step")
+   :class (cell= {:active (= id active-step)})
+   :click #(reset! active-step id)
+   kids
+   (div :class "title"
+        :text title)))
+
+(defelem app-details []
+  (div :class "ui form segment"
+       (form-input :label-txt "App Name"
+                   :data :app-name)
+       (p "Summarize your app in text or attach files in any format.")
+       (p "The more you tell us the better we can match you
+          to the right developer.")
+       (form-input :label-txt "Summary"
+                   :data :summary
+                   :type :textarea)
+       (form-input :label-txt "How much budget do you have for your app development? (USD)"
+                   :data :budget
+                   :required true)
+       (form-input :label-txt "Estimated launch date"
+                   :data :launch-date
+                   :required true
+                   (p "Usually it takes 3 months to build a native app"))))
+
+(layout/primary
+  :page-title "App Builder Submission"
+  :description ""
+  :keywords ""
+  :page-css "/app-calculator/index.inc.css"
+  (secondary-header :header (:header page-header)
+                    :page "app-builder-submission")
+
+  (div :id "app-builder-submission"
+       (div :class "ui hidden divider")
+       (div :class "ui container"
+            (div :class "ui fluid steps"
+                 (step :id :calculator :title "App Calculator")
+                 (step :id :app-details :title "App Details")))
+
+       (div :class "ui hidden divider")
+
+       (div :toggle (cell= (= :calculator active-step))
+         (app-calculator))
+
+       (div :class "ui hidden divider")
+
+       (div :toggle (cell= (= :app-details active-step))
+         :class "ui container"
+         (app-details))
+
+       (div :class "ui center aligned basic secondary segment description sizer"
+            (h3 :class "ui medium header"
+                "Book your 30-minute FREE App Builder consultation.")
+            (div :class "ui hidden divider")
+            (div :class "ui container grid"
+                 (div :class "eight wide centered left aligned column" :id "hs-app-calc-form"
+                      (app-calc-form)))
+            (div :class "ui hidden divider")
+            (a :href "/app-builder"
+               :class "ui huge button"
+               "Find out more about App Builder"))))
