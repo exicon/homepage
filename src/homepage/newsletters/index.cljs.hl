@@ -1,5 +1,6 @@
 (page "newsletters/index.html"
       (:require
+        [homepage.layout :refer [secondary-header] :as layout]
         [homepage.layout :as layout]))
 
 (def newsletters-list
@@ -200,8 +201,7 @@
 (defn newsletters-options-section []
   (section
     :id "newsletters-list"
-    :class "full-width-container"
-    (div :class "ui three column doubling page grid"
+    (div :class "ui three column vertically padded doubling container grid"
          (loop-tpl :bindings [opt newsletters-list]
                    (newsletters-options opt)))))
 
@@ -211,9 +211,5 @@
   :description "Sign Up For Exicon's Weekly Newsletter About All Things Mobile."
   :page-css "index.inc.css"
 
-  (section :class "ui one column full-width-container"
-           (div  :id "page-title" :class "center aligned row"
-                (div :class "column"
-                     (h1 "Newsletters"))))
-
+  (secondary-header :header "Newsletters")
   (newsletters-options-section))

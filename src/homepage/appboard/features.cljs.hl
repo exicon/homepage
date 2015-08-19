@@ -220,7 +220,7 @@
 
 (defn feature [f]
   (if (= (:image-side f) :left)
-    (div :class "ui container stackable grid"
+    (div :class "ui stackable container grid"
          (div :id (:anchor f) :class "anchor")
          (div :class "ui hidden divider")
          (div :class "ui dividing header row"
@@ -235,7 +235,7 @@
               (div :class "description sizer column"
                    (div (:content f)))))
 
-    (div :class "ui container stackable grid"
+    (div :class "ui stackable container grid"
          (div :id (:anchor f) :class "anchor")
          (div :class "ui hidden divider")
          (div :class "ui dividing header row"

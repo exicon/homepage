@@ -149,7 +149,7 @@
 
 (defn intro-section []
   (section :id "intro" :class "app-builder"
-           (div :class "ui page stackable grid"
+           (div :class "ui stackable container grid"
                 (div :class "row"
                      (div :class "eleven wide column title sizer"
                           (h1 :class "ui huge main header" "App Builder"
@@ -185,7 +185,7 @@
   (section :class "ui inverted black vertical segment"
            (div :id "features" :class "anchor" )
            (div :class "ui hidden divider")
-           (div :class "ui stackable page grid"
+           (div :class "ui stackable container grid"
                 (div :class "four column row"
                      (loop-tpl :bindings [f flow-items]
                                (flow-item f)))
@@ -205,7 +205,7 @@
 
 (defn developer-section []
   (section
-    :class "ui page stackable padded grid"
+    :class "ui vertically padded stackable container grid"
     (div :class "center aligned row"
          (div :class "column"
               (h2 :class "ui huge header"
@@ -243,7 +243,7 @@
 
 (defn developer-section* []
   (section
-    :class "ui page stackable padded grid"
+    :class "ui stackable container grid"
     (div :class "center aligned row"
          (div :class "column"
               (h2 :class "ui huge header"
@@ -348,7 +348,7 @@
             (div :class "ui left fixed ribbon black inverted large label"
                  (img :class "ui mini inline image" :src (:icon qualified-details))
                  :text (:name qualified-details))
-            (div :class "ui page padded grid"
+            (div :class "ui container grid"
                  (div :class "sixteen wide column title sizer center aligned feature-header"
                       (h2 :class "ui large inverted header"
                           :text (:header qualified-details)))
@@ -368,7 +368,7 @@
                  (img :class "ui mini inline image"
                       :src (:icon professional-details))
                  :text (:name professional-details))
-            (div :class "ui page padded grid"
+            (div :class "ui container grid"
                  (div :class "sixteen wide column title sizer center aligned feature-header"
                       (h2 :class "ui large header"
                           :text (:header professional-details)))
@@ -391,7 +391,7 @@
             (div :class "ui left fixed ribbon black inverted large label"
                  (img :class "ui mini inline image" :src (:icon incorporated-details))
                  :text (:name incorporated-details))
-            (div :class "ui page padded grid"
+            (div :class "ui container grid"
                  (div :class "sixteen wide column title sizer center aligned feature-header"
                       (h2 :class "ui large header"
                           :text (:header incorporated-details)))
@@ -402,10 +402,10 @@
                  (div :class "ui hidden divider")))])
 
 (defn testimonials-section []
-  (section :class "ui basic tertiary segment full-width-container"
+  (section :class "ui basic tertiary segment"
            :style "margin-top: -1em;"
-           (section-header :header (:testimonials section-headers))
-           (div :class "ui page stackable grid"
+           (section-header (:testimonials section-headers))
+           (div :class "ui stackable container grid"
                 (div :class "two column row"
                      (testimonial-block :four-front)
                      (testimonial-block :brain)))
@@ -435,7 +435,7 @@
                  (reason-list-items reason))))
 
 (defn reasons-section []
-  (section :class "ui padded page grid"
+  (section :class "ui vertically padded container grid"
            (div :class "center aligned sixteen wide column title sizer"
                 (h3 :class "ui small header"
                     "3 Reasons why App Builder is the tool for you"))

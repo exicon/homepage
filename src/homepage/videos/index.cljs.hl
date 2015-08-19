@@ -89,8 +89,8 @@
                     (img :class "videos-screenshot" :src (cell= (:image video))))))))
 
 (defn videos-options-section []
-  (section :id "video-list" :class "full-width-container"
-           (div :class "ui three column doubling page grid basic segment"
+  (section :id "video-list"
+           (div :class "ui three column doubling container grid basic segment"
                 (loop-tpl :bindings [video video-list-with-hash]
                           (videos-options video)))
 
@@ -105,10 +105,11 @@
                                   :frameborder "0" :allowfullscreen ""
                                   :webkitallowfullscreen "" :mozallowfullscreen ""))))))
 
-(layout/primary :id "videos"
-             :page-title "Videos | Mobile | Apps | AppBoard"
-             :description "Watch Videos About Mobile, Apps, APIs & Developers. Oh, And The Exicon AppBoard!"
+(layout/primary
+  :id "videos"
+  :page-title "Videos | Mobile | Apps | AppBoard"
+  :description "Watch Videos About Mobile, Apps, APIs & Developers. Oh, And The Exicon AppBoard!"
+  :page-css "index.inc.css"
 
-             (secondary-header :header (:header page-header))
-
-             (videos-options-section))
+  (secondary-header :header (:header page-header))
+  (videos-options-section))

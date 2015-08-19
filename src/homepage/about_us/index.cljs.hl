@@ -3,61 +3,63 @@
         [homepage.layout :refer [secondary-header section-header] :as layout])
       (:require-macros [config :refer [timeline-src]]))
 
-(def page-header {:header "About Us"
-                  :sub-header"[app]sessed with mobile"})
+(def page-header
+  {:header "About Us"
+   :sub-header"[app]sessed with mobile"})
 
 (def section-headers
-  {
-   :app-lifecycle {
-                   :header (span "Providing you with the tools to " (i "mobilize ")  "your business")
-                   :centered true}
-   :get-a-grip {
-                :header "Get a grip on your [apps]"
-                :color "orange"
-                :centered true
-                :size "medium"
-                }
-   :vision-and-values {
-                       :header "Our Vision and Values"
-                       :centered true
-                       :size "medium"
-                       :color "gray"}
-   :offices {
-             :header "Let us feed your [app]etite"
-             :size "medium"
-             :centered true}}
-  )
+  {:app-lifecycle
+   {:header (span
+              "Providing you with the tools to "
+              (i "mobilize ")  "your business")
+    :centered true}
+
+   :get-a-grip
+   {:header "Get a grip on your [apps]"
+    :color "orange"
+    :centered true
+    :size "medium"}
+
+   :vision-and-values
+   {:header "Our Vision and Values"
+    :centered true
+    :size "medium"
+    :color "gray"}
+
+   :offices
+   {:header "Let us feed your [app]etite"
+    :size "medium"
+    :centered true}
+   })
 
 (def about-exicon
-  { :content [
-              (p "At Exicon we believe in the power of mobile as a way of connecting companies with users.
-                 The AppBoard is a software platform enabling you to manage the relationships with mobile users.")
-              (p "The key problems that we aim to solve are:")]})
+  {:content [(p "At Exicon we believe in the power of mobile as a way of connecting companies with users.
+                The AppBoard is a software platform enabling you to manage the relationships with mobile users.")
+             (p "The key problems that we aim to solve are:")]})
 
 (def about-exicon-slider
   {
-   :build {
-           :id :build
-           :header "\"How to find a great developer for my mobile project\""
-           :description "Not just a list of the top developers but the best development companies for my idea,
-                        my budget, my location, my industry and the features I want "}
-   :manage {
-            :id :manage
-            :header "\"How do I manage all the moving parts of mobile\""
-            :description "As marketing and product divisions across organisations run to meet demand for mobile
-                         there is a need to address the shortage of brand standards, IP protection, best of breed
-                         practices, the enormous duplication of effort and wasted resources."
-                         }
-   :promote {
-             :id :promote
-             :header"\"How do I address mobile as a channel to my customers and not simply a campaign\""
-             :description "Not just the design of your mobile solution but also how you get in front of your users
-                          while continuing to engage going forward."}})
+   :build
+   {:id :build
+    :header "\"How to find a great developer for my mobile project\""
+    :description "Not just a list of the top developers but the best development companies for my idea,
+                 my budget, my location, my industry and the features I want "}
+   :manage
+   {:id :manage
+    :header "\"How do I manage all the moving parts of mobile\""
+    :description "As marketing and product divisions across organisations run to meet demand for mobile
+                 there is a need to address the shortage of brand standards, IP protection, best of breed
+                 practices, the enormous duplication of effort and wasted resources."
+                 }
+   :promote
+   {:id :promote
+    :header"\"How do I address mobile as a channel to my customers and not simply a campaign\""
+    :description "Not just the design of your mobile solution but also how you get in front of your users
+                 while continuing to engage going forward."}})
 
 
 (def timeline-description
-  { :content [
-              (p "Exicon was born in 2007 as a developer agency working with the world's leading mobile handset manufacturers.")
+  { :content [(p "Exicon was born in 2007 as a developer agency working with the world's leading mobile handset manufacturers.")
               (p "After 2 years we launched XDC, \"Exicon Developers Connect\" with a qualified network of over 3,000 mobile software
                  development companies for customers like Sony, Blackberry, Nokia, HP, Qualcomm, and Huawei.")
               (p "Next we built BAM! \"Branded App Matchmaker\" , an automated solution matching marketers and businesses across all
@@ -71,20 +73,17 @@
               (p "We continue to enhance our product with features for businesses both large and small or from the app-preneur or the app-terprise to develop quality engagements with their mobile users.")]})
 
 (def value-items
-  [
-   {:header "Always be learning"
+  [{:header "Always be learning"
     :id :learning
     :icon "book"
-    :content [
-              "Acquire knowledge leveraging our partner network"
+    :content ["Acquire knowledge leveraging our partner network"
               "Apply lateral thinking to create and develop innovative new models"
               "Be the expert and teach"]}
 
    {:header "Innovative"
     :id :innovative
     :icon "idea"
-    :content [
-              "Creative thinking"
+    :content ["Creative thinking"
               "Design with simple and intuitive user experience"
               "Continual iteration"]}
    {:header "Open"
@@ -106,8 +105,7 @@
    {:header "Quality delivery"
     :id :quality
     :icon "thumbs up"
-    :content [
-              "Project management"
+    :content ["Project management"
               "Manage by metrics"
               "Capture all data"]}])
 
@@ -400,8 +398,8 @@
 (defn office-options-section []
   (section :class "ui light-grey basic segment"
            :id "office-list"
-           (section-header :header (:offices section-headers))
-           (div :class "ui three column stackable page grid"
+           (section-header (:offices section-headers))
+           (div :class "ui three column stackable container grid"
                 (loop-tpl :bindings [opt office-list]
                           (office-options opt)))))
 
@@ -445,38 +443,38 @@
         (a :class "item"
            :click #(reset! active-team "exicon-team")
            ((span :class "ui medium header")
-                 :class (cell= {:teal (= active-team "exicon-team")})
-                 "EXICON TEAM"))
+            :class (cell= {:teal (= active-team "exicon-team")})
+            "EXICON TEAM"))
         (div :class "item"
              :toggle (not is-mobile)
              (span :class "ui medium header" "|"))
         (a :class "item"
            :click #(reset! active-team "advisory-team")
            ((span :class "ui medium header")
-                 :class (cell= {:teal (= active-team "advisory-team")})
-                 "ADVISORY BOARD MEMBERS"))
+            :class (cell= {:teal (= active-team "advisory-team")})
+            "ADVISORY BOARD MEMBERS"))
         (div :class "item"
              :toggle (not is-mobile)
              (span :class "ui medium header" "|"))
         (a :class "item"
            :click #(reset! active-team "board-team")
            ((span :class "ui medium header")
-                 :class (cell= {:teal (= active-team "board-team")})
-                 "BOARD MEMBERS")))])
+            :class (cell= {:teal (= active-team "board-team")})
+            "BOARD MEMBERS")))])
 
 (defelem team-section [{:keys [id link title members active-team]} _]
-  ((div :class "ui page three column doubling stackable grid")
-       :class (cell= {:visible (= active-team id)
-                         :invisible (not= active-team id)})
-       :style "display: none"
-       (div :class "ui hidden divider")
-       (loop-tpl :bindings [profile (map team members)]
-                 (team-member profile))))
+  ((div :class "ui three column doubling stackable container grid")
+   :class (cell= {:visible (= active-team id)
+                  :invisible (not= active-team id)})
+   :style "display: none"
+   (div :class "ui hidden divider")
+   (loop-tpl :bindings [profile (map team members)]
+             (team-member profile))))
 
 (defelem app-lifecycle-section []
   (div :class "ui light-grey basic vertical segment"
-       (section-header :header (:app-lifecycle section-headers))
-       (div :class "ui page grid description sizer"
+       (section-header (:app-lifecycle section-headers))
+       (div :class "ui container grid description sizer"
             (h3 :class "ui medium center aligned header" "Designed to navigate the complexity of the Mobile Ecosystem")
             (div :class "ui hidden divider"))
        (div :class "ui hidden divider")
@@ -501,7 +499,7 @@
                               (animate "right"))]
 
     (div :id "about-exicon" :class "ui tertiary basic vertical segment"
-         (div :class "ui page grid"
+         (div :class "ui container grid"
               (div :class "sixteen wide column"
                    (div :class "ui hidden divider")
                    (div :class "description sizer" (:content about-exicon))
@@ -522,30 +520,30 @@
                          :toggle (cell= (not promote?)))))
               (div :class "centered row"
                    ((div :class "ui circular orange button")
-                        :class (cell= {:inverted (not build?)})
-                        :click #(reset! active-content (:build about-exicon-slider))
-                        "1")
+                    :class (cell= {:inverted (not build?)})
+                    :click #(reset! active-content (:build about-exicon-slider))
+                    "1")
                    ((div :class "ui circular orange button")
-                        :class (cell= {:inverted (not manage?)})
-                        :click #(reset! active-content (:manage about-exicon-slider))
-                        "2")
+                    :class (cell= {:inverted (not manage?)})
+                    :click #(reset! active-content (:manage about-exicon-slider))
+                    "2")
                    ((div :class "ui circular orange button")
-                        :class (cell= {:inverted (not promote?)})
-                        :click #(reset! active-content (:promote about-exicon-slider))
-                        "3")))
+                    :class (cell= {:inverted (not promote?)})
+                    :click #(reset! active-content (:promote about-exicon-slider))
+                    "3")))
          (div :class "ui hidden divider")
-         (section-header :header (:get-a-grip section-headers)))))
+         (section-header (:get-a-grip section-headers)))))
 
 (defelem timeline-section []
   (let [history-visible (cell false)]
-    [(div :class "title sizer ui page grid"
+    [(div :class "title sizer ui container grid"
           (div :class "ui hidden divider")
           (h2 :class "ui medium center aligned header" "How We Got Here"))
      (div :class "ui hidden divider")
      (iframe :src (timeline-src)
              :width "100%" :height "650" :frameborder "0" )
 
-     (div :class "ui page grid"
+     (div :class "ui container grid"
           (div :class "centered row"
                (div :class "ui medium button"
                     :click #(swap! history-visible not)
@@ -558,52 +556,61 @@
 
 (defc active-value-content nil)
 
-(defelem value-column [value]
-  (div :class "center aligned column description sizer"
-       :click #(reset! active-value-content {:id (:id value) :content (:content value) :header (:header value)})
-       ((div :class "ui circular icon basic teal inverted massive button")
-            :class (cell= {:active (= (:id value) (:id active-value-content))})
-            (i :class (str "big icon " (:icon value))))
-       (h2 :class "ui medium inverted center aligned header"
-           :toggle (cell= (not= (:id value) (:id active-value-content)))
-           :text (:header value))
-       (div :class "ui hidden divider")
-       (i :class "caret down teal big icon"
-          :style "display: none"
-          :toggle (cell= (= (:id value) (:id active-value-content))))
-       (div :class "ui grid"
-            :toggle (cell= (= (:id value) (:id active-value-content)))
-            (div :class "mobile only row"
-                 (div :class "ui hidden divider")
-                 (div :class "eleven wide centered left aligned column description sizer"
-                      (h2 :class "ui large teal center aligned header" :text (cell= (:header active-value-content)))
-                      (ul
-                        (loop-tpl :bindings [item (cell= (:content active-value-content))]
-                                  (li :text (cell= item)))))))))
+(defelem value-column
+  [{:keys [header id content icon] :as value}]
+  (cell-let
+    [active? (cell= (= id (:id active-value-content)))
+     inactive? (cell= (not active?))]
+    (div :class "center aligned column description sizer"
+         :click #(reset! active-value-content value)
+         ((div :class "ui circular icon basic teal inverted massive button")
+          :class (cell= {:active active?})
+          (i :class (str "big icon " icon)))
+         (h2 :class "ui medium inverted center aligned header"
+             :toggle inactive?
+             :text header)
+         (div :class "ui hidden divider")
+         (i :class "caret down teal big icon"
+            :toggle active?)
+         (div :class "ui grid"
+              :toggle active?
+              (div :class "mobile only row"
+                   (div :class "ui hidden divider")
+                   (div :class "eleven wide centered left aligned column description sizer"
+                        (h2 :class "ui large teal center aligned header"
+                            :text (cell= (:header active-value-content)))
+                        (ul
+                          (loop-tpl :bindings
+                                    [item (cell= (:content active-value-content))]
+                                    (li :text (cell= item))))))))))
 
 (defelem vision-values-section []
   (div :id "vision-and-values" :class "ui inverted basic segment"
-       (section-header :header (:vision-and-values section-headers))
+       (section-header (:vision-and-values section-headers))
        (div :class "ui hidden divider")
        (div :class "title sizer ui basic center aligned segment"
             (i :class "quote left large inverted icon")
             (span :class "ui small inverted header" "We believe ")
-            (span :class "ui large inverted header" "Everything will be appcessorized,")
+            (span :class "ui large inverted header"
+                         "Everything will be appcessorized,")
             (br)
             (span :class "ui tiny inverted header" (i "a world where "))
-            (span :class "ui large inverted header" (i "everything will be connected to an App. "))
+            (span :class "ui large inverted header"
+                  (i "everything will be connected to an App. "))
             (i :class "quote right large inverted icon"))
        (div :class "ui hidden divider")
-       (div :class "ui page five column stackable grid"
+       (div :class "ui five column stackable container grid"
             (loop-tpl :bindings [value value-items]
                       (value-column @value)))
-       (div :class "ui page grid"
+       (div :class "ui container grid"
             :toggle (cell= active-value-content)
             (div :class "computer tablet only row"
                  (div :class "eleven wide centered column description sizer"
-                      (h2 :class "ui large teal center aligned header" :text (cell= (:header active-value-content)))
+                      (h2 :class "ui large teal center aligned header"
+                          :text (cell= (:header active-value-content)))
                       (ul :class "ui bulleted list"
-                          (loop-tpl :bindings [item (cell= (:content active-value-content))]
+                          (loop-tpl :bindings
+                                    [item (cell= (:content active-value-content))]
                                     (li :text (cell= item))))))
             (div :class "ui hidden divider"))))
 
@@ -625,7 +632,8 @@
        (div :class "title sizer"
             (div :class "ui hidden divider")
             (h2 :class "ui medium center aligned header"
-                       "Who We Are"))
+                "Who We Are"))
+
        (let [active-team (cell "exicon-team")]
          [(section
             :id "team-section"

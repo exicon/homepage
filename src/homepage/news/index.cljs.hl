@@ -1,5 +1,6 @@
 (page "news/index.html"
       (:require
+        [homepage.layout :refer [secondary-header] :as layout]
         [homepage.layout :as layout]))
 
 (def announcement-list
@@ -262,14 +263,10 @@
   :keywords "Exicon App Management"
   :page-css "index.inc.css"
 
-  (section :class "ui one column full-width-container"
-           (div  :id "page-title" :class "center aligned row"
-                (div :class "column"
-                     (h1 "News"))))
-
+  (secondary-header :header "News")
   (section
     :id "news-list"
-    :class "ui one column page grid"
+    :class "ui one column container grid"
     (div :class "ui two column doubling row"
          (div :class "thirteen wide column"
               (press-options-section)

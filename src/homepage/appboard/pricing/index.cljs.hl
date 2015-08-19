@@ -125,7 +125,7 @@
 (defn pricing-section []
   (section
     :id "pricing"
-    :class "ui container computer only grid"
+    :class "ui computer only container grid"
     (div :class "three column row"
          (div :class "column")
          (div :class "blue center aligned column"
@@ -140,7 +140,7 @@
   (let [[head & features] features-list]
     (section
       :id "pricing"
-      :class "ui container mobile tablet only grid"
+      :class "ui mobile tablet only container grid"
       (div :class "two column row"
            (div :class "blue centered-content column"
                 (h3 :class "ui inverted huge center aligned header" "Free"
@@ -206,7 +206,7 @@
          (div :class "centered-content column dotted-right-frame" cta))))
 
 (defn value-add-section []
-  (section :class "ui container stackable grid"
+  (section :class "ui stackable container grid"
            (div :class "one column row"
                 :style "padding:0.10em"
                 (div :class "column"

@@ -7,12 +7,12 @@
   :page-title "Privacy Policy"
   :page-css "index.inc.css"
 
-	(section :class "ui one column full-width-container"
+	(section :class "ui one column"
 		(div  :id "page-title" :class "center aligned row"
 			(div :class "column"
 				(h1 "Privacy Policy")))
 	)
-	(section :class "ui one column page grid basic segment"
+	(section :class "ui one column container grid basic segment"
 		(div :class "column privacy-details"
 			(p "Exicon takes the privacy of its users seriously. We are committed to safeguarding
 				the privacy of our users while providing a personalised and valuable service. This

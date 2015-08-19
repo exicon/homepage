@@ -1,5 +1,6 @@
 (page "customers/index.html"
       (:require
+        [homepage.layout :refer [secondary-header] :as layout]
         [homepage.layout :as layout]))
 
 (defc multinational
@@ -155,12 +156,8 @@
   :keywords "Exicon"
   :page-css "index.inc.css"
 
-  (section :class "ui one column full-width-container"
-           (div  :id "page-title" :class "center aligned row"
-                (div :class "column"
-                     (h1 "Customers"))))
-
-  (section :class "ui one column page grid"
+  (secondary-header :header "Customers")
+  (section :class "ui one column container grid"
            (customer @multinational)
            (customer @app-newbie)
            (customer @advertising-agency)

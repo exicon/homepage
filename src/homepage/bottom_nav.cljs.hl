@@ -3,9 +3,9 @@
 
 (defelem bottom-nav []
   (footer
-    :id "bottom-nav" :class "full-width-container" :style "background-color: gray;"
+    :id "bottom-nav"
     (div
-      :class "ui five column vertically padded doubling page grid"
+      :class "ui five column vertically padded doubling container grid"
       (div :class "column"
            (ul
              (li :class "header" "Company")

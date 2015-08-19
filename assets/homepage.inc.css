@@ -74,10 +74,8 @@
 	display: block !important;
 }
 
-#top-nav .top-nav-icon{
-	padding-top: 1em;
-	padding-left: 0.5em;
-	width: 120px
+#bottom-nav {
+	background-color: gray;
 }
 
 #contact-us-btn{
@@ -138,15 +136,15 @@ h3.ui.header, h4.ui.header{
 	font-size: 20px !important;
 }
 
-.white.horizontal.segment{
+.white.horizontal.segment {
 	box-shadow: 2px 0px 0px white;
 }
 
-.dark.horizontal.segment{
+.dark.horizontal.segment {
 	box-shadow: 2px 0px 0px;
 }
 
-.ui.header.gray{
+.ui.header.gray {
 	color:#aaa;
 }
 
@@ -178,7 +176,7 @@ p.testimonial {
 	font-size: 1.2em;
 }
 
-.centered-content{
+.centered-content {
 	align-items: center !important;
 	-webkit-align-items: center !important;
 	justify-content: center !important;

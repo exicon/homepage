@@ -28,15 +28,15 @@
   (let [hide #(reset! visible false)
         bg-click (if bg-action bg-action hide)]
     [((div :class "modal-bg")
-          :class (cell= {:show-modal visible})
-          :click bg-click )
+      :class (cell= {:show-modal visible})
+      :click bg-click )
      ((div :class "ui small modal")
-          :style "min-heigth:100px"
-          :class (cell= {:visible visible})
-          (div :class "header" title)
-          (div :id id :class "content"
-               "Loading...")
-          kids)]))
+      :style "min-heigth:100px"
+      :class (cell= {:visible visible})
+      (div :class "header" title)
+      (div :id id :class "content"
+           "Loading...")
+      kids)]))
 
 (defelem secondary-header
   [{:keys [header sub-header page center id]
@@ -53,28 +53,27 @@
        :class {:center center
                :aligned center})))))
 
-(defelem section-header [{:keys [header] :as attr} kids]
-  (let [background (:background header)
-        inverted (:inverted header)
-        size (or (:size header) "small")
-        centered (:centered header)
-        color (or (:color header) "")]
-    ((div :class "ui basic segment")
-     :class {:tertiary background :inverted inverted}
-     (div :class "ui title sizer"
-          ((h2 :class (str "ui header " size " " color))
-           :class {:center centered
-                   :aligned centered
-                   :inverted inverted}
-           (:header header)))
-     kids
-     (div :class "ui hidden divider"))))
+(defelem section-header
+  [{:keys [background inverted size centered color header]
+    :or {:size "small"
+         :color ""}}
+   kids]
+  ((div :class "ui basic segment")
+   :class {:tertiary background :inverted inverted}
+   (div :class "ui title sizer"
+        ((h2 :class (str "ui header " size " " color))
+         :class {:center centered
+                 :aligned centered
+                 :inverted inverted}
+         header))
+   kids
+   (div :class "ui hidden divider")))
 
 (defn contact-us-modal [active?]
   ((div :class "ui modal")
-       :class (cell= {:active true})
-       (i :class "close red icon"
-          :click #(reset! active? false))))
+   :class (cell= {:active true})
+   (i :class "close red icon"
+      :click #(reset! active? false))))
 
 (defn subscribe-stick-form [subscribe-click]
   (let [opts (clj->js
@@ -110,8 +109,9 @@
      (div :id "subscribe-stick" :class
           (cell= {:show (not subscribe-click)}))))
 
-(defelem contact-us-btn [{:keys [id css-class txt]
-                          :or {id "" css-class "" txt "Contact Us"}}]
+(defelem contact-us-btn
+  [{:keys [id css-class txt]
+    :or {id "" css-class "" txt "Contact Us"}}]
   (let [opts (clj->js
                {:target "#hs-contact-us"
                 :css ""
@@ -150,18 +150,16 @@
         (link :href "/top-nav.inc.css" :rel "stylesheet")
 
         (link :href page-css :rel "stylesheet"))
-      (body
-        (subscribe-stick-btn subscribe-click)
-        (subscribe-stick-form subscribe-click)
-        (modal-dialog :visible contact-us-visible?
-                      :id "hs-contact-us"
-                      :title "Contact Us")
-        (contact-us-btn
-          :id "contact-us-btn"
-          :css-class "small")
 
-        (div :id "top-nav"
-             (top-nav :class "fluid hidden")
-             (top-nav :class "fixed"))
-        ((div :id "content") content-attrs content)
-        (bottom-nav)))))))
+            (subscribe-stick-btn subscribe-click)
+            (subscribe-stick-form subscribe-click)
+            (modal-dialog :id "hs-contact-us" :title "Contact Us"
+                          :visible contact-us-visible?)
+
+            (contact-us-btn :id "contact-us-btn" :css-class "small")
+
+            (div :id "top-nav"
+                 (top-nav :class "fluid hidden")
+                 (top-nav :class "fixed"))
+            ((div :id "content") content-attrs content)
+            (bottom-nav)))))))

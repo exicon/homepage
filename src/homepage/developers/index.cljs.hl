@@ -1,5 +1,6 @@
 (page "developers/index.html"
       (:require
+        [homepage.layout :refer [secondary-header] :as layout]
         [homepage.layout :refer [contact-us-btn] :as layout]))
 
 (def developers-list
@@ -22,8 +23,7 @@
 (defn developers-options-section []
   (section
     :id "developers-list"
-    :class "full-width-container"
-    (div :class "ui three column doubling page grid"
+    (div :class "ui three column doubling container grid"
          (loop-tpl :bindings [opt developers-list]
                    (developers-options opt)))))
 
@@ -33,14 +33,9 @@
   :page-title "Developers"
   :page-css "index.inc.css"
 
+  (secondary-header :header "Developers")
   (section
-    :class "ui one column full-width-container"
-    (div  :id "page-title" :class "center aligned row"
-         (div :class "column"
-              (h1 "Developers"))))
-
-  (section
-    :class "ui one column page grid"
+    :class "ui one column container grid"
     (div :id "page-subtitle" :class "center aligned row"
          (div :class "column"
               (h2 "Exicon connects its clients with the best developers around the world")
@@ -49,7 +44,7 @@
   (developers-options-section)
 
   (section
-    :class "ui one column page grid"
+    :class "ui one column container grid"
     (div :id "page-subtitle" :class "center aligned row"
          (div :class "column"
               (h3 "Over 1,500 development houses matched with exciting projects")
@@ -57,40 +52,42 @@
                 :css-class "teal"
                 :txt "Contact us for more information"))))
 
-  (section
-    :class "full-width-container"
-    (div :class "ui two column doubling page grid developers-testimonials"
-         (div :class "column"
-              (p :class "developers-testimonials-title"
-                 "Exicon helped us connect with people looking
-                 for small app development.
-                 They have very defined and seamless process on vendor on-boarding and proposal
-                 engagements processes. We found Exicon a trustworthy, professional and helpful
-                 organization.")
-              (p :class "testimonials-name" "Ambuj Tayal")
-              (p "AlgoWorks"))
-
-         (div :class "column"
-              (p :class "developers-testimonials-title"
-                 "Exicon connected us with Fox, a client that
-                 was ready to create something
-                 unique for the Brew platform. The app was built as an amalgamation of what FOX
-                 local station devotees are seeking: familiarity and trust. Whether at home or on
-                 the road, viewers are able to stay tuned in to the news most valuable to them from
-                 sources they have come to know.")
-              (p :class "testimonials-name" "Nimish Shrivastava")
-              (p "CEO of eMbience"))))
+  (div :class "ui hidden divider")
 
   (section
-    :class "ui one column page grid"
+    :class "ui two column doubling container grid"
+    (div :class "column"
+         (p :class "developers-testimonials-title"
+            "Exicon helped us connect with people looking
+            for small app development.
+            They have very defined and seamless process on vendor on-boarding and proposal
+            engagements processes. We found Exicon a trustworthy, professional and helpful
+            organization.")
+         (p :class "testimonials-name" "Ambuj Tayal")
+         (p "AlgoWorks"))
+
+    (div :class "column"
+         (p :class "developers-testimonials-title"
+            "Exicon connected us with Fox, a client that
+            was ready to create something
+            unique for the Brew platform. The app was built as an amalgamation of what FOX
+            local station devotees are seeking: familiarity and trust. Whether at home or on
+            the road, viewers are able to stay tuned in to the news most valuable to them from
+            sources they have come to know.")
+         (p :class "testimonials-name" "Nimish Shrivastava")
+         (p "CEO of eMbience")))
+
+  (div :class "ui hidden divider")
+
+  (section
+    :class "ui one column container grid"
     (div :id "page-subtitle" :class "center aligned row exicon-connect"
          (div :class "column"
               (img :src "/images/developers/puz.png")
               (h2 "Exicon connects its clients with the best developers around the world"))))
 
   (section
-    :class "full-width-container"
-    (div :class "ui two column doubling page grid"
+    (div :class "ui two column doubling container grid"
          (div :class "column"
               (p :class "developers-connects-title" "Developer Network Directory")
               (p "Exicon and its clients realize that in a world of fast-changing technologies,
@@ -105,9 +102,8 @@
                  offer, based on your skill set, experience, language, location, and price. No matter
                  what your specialty may be, we'll soon find clients looking for a developer like you.")))
 
-    (div :class "ui one column doubling page grid"
+    (div :class "ui one column doubling container grid"
          (div :class "column center aligned apply-button"
               (contact-us-btn
                 :css-class "teal"
                 :txt "Contact us to join our Network")))))
-

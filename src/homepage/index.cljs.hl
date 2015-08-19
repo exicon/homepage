@@ -9,7 +9,7 @@
 
 (defn intro []
   (section :id "intro"
-           (div :class "ui container stackable grid"
+           (div :class "ui stackable container grid"
                 (div :class "row"
                      (div :class "eleven wide column title sizer"
                           (h1 :class "ui inverted huge main header" "BUILD QUALITY CONNECTIONS WITH MOBILE USERS")))
@@ -22,13 +22,11 @@
                              :href "/app-builder/" "Find the right developer for your app"))))))
 
 (def section-headers
-  {
-   :testimonials {
-                  :header "Check out our client testimonials!"
+  {:testimonials {:header "Check out our client testimonials!"
                   :centered true}
-   :customers {
-               :header "Our Customer portfolio speaks for itself"
+   :customers {:header "Our Customer portfolio speaks for itself"
                :centered true}})
+
 (def feature-list
   [
    {:icon "images/landing-page/build-icon2.png"
@@ -244,18 +242,18 @@
                            (label " more " (i :class "caret down icon")))))))]))
 
 (defn testimonials-section []
-  (section :class "ui basic tertiary segment full-width-container"
-           (section-header :header (:testimonials section-headers))
-           (div :class "ui container stackable grid"
+  (section :class "ui basic tertiary segment"
+           (section-header (:testimonials section-headers))
+           (div :class "ui vertically padded stackable container grid")
                 (div :class "three column row"
                      (testimonial-block :hotels)
                      (testimonial-block :schneider)
-                     (testimonial-block :brain)))
+                     (testimonial-block :brain))
            (div :class "ui hidden divider")))
 
 (defn clients []
   (section :class "clients ui basic segment"
-           (section-header :header (:customers section-headers))
+           (section-header (:customers section-headers))
            (div :class "ui container grid"
                 (div :id "clients" :class "anchor" )
                 (div :class "center aligned sixteen wide column"
