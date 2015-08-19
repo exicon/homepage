@@ -141,6 +141,7 @@
         (html-meta :name "description" :content description)
         (html-meta :name "keywords" :content keywords)
         (html-meta :name "viewport" :content "width=device-width, initial-scale=1.0")
+        (style "body {display: none}")
         (link :href "/images/favicon.ico" :rel "shortcut icon")
 
         (link :href "/semantic-ui.css" :rel "stylesheet")
@@ -151,6 +152,7 @@
 
         (link :href page-css :rel "stylesheet"))
 
+      (body :toggle (cell true)
             (subscribe-stick-btn subscribe-click)
             (subscribe-stick-form subscribe-click)
             (modal-dialog :id "hs-contact-us" :title "Contact Us"
