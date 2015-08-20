@@ -20,13 +20,7 @@
     (when-hubspot #(.. js/hbspt -forms (create opts)))))
 
 (defn inspect [field details]
-  (.push js/__insp
-         (clj->js [field details])))
-
-(with-init!
-  (when (inspectlet-feature)
-    (js/__ldinsp)
-    (inspect "wid" (inspectlet-wid))))
+  (.push js/__insp (clj->js [field details])))
 
 (defn row []
   (div
@@ -89,10 +83,10 @@
 
 (defn subscribe-stick-form [subscribe-click]
   (let [opts {:target "#hs-form"
-                :cssClass "ui small form basic segment"
-                :submitButtonClass "ui submit teal button"
-                :errorMessageClass "ui error message"
-                :formId (hs-newsletter-id)}
+              :cssClass "ui small form basic segment"
+              :submitButtonClass "ui submit teal button"
+              :errorMessageClass "ui error message"
+              :formId (hs-newsletter-id)}
         trigger-form (cell= (when subscribe-click
                               (create-hs-form opts)))]
     [((div :id "subscribe-stick-layer")
@@ -131,15 +125,40 @@
          :click #(reset! contact-us-visible? true)
          :text txt)))
 
+(defn load-inspectlet! []
+  (with-timeout
+    2000
+    (let [document-protocol (-> js/document .-location .-protocol)
+          inspectlet-src-compatible-with-file-protocol
+          (str "http" (when (= document-protocol "https:") "s")
+               "://cdn.inspectlet.com/inspectlet.js")
+          inspectlet-src "//cdn.inspectlet.com/inspectlet.js"
+          inspectlet-script (script :id "inspsync" :type "text/javascript"
+                                    :async true :src inspectlet-src)
+          head-elem (aget (.getElementsByTagName js/document "head") 0)]
+      (.appendChild head-elem inspectlet-script))))
+
+(defn load-dbg-inspectlet! []
+  (with-timeout
+    2000
+    (let [inspectlet-script
+          (script :id "inspsync" :type "text/javascript" :src "/inspectlet.js")
+          head-elem
+          (aget (.getElementsByTagName js/document "head") 0)]
+      (.appendChild head-elem inspectlet-script))))
+
 (defelem primary
   [{:keys [page-css page-title description keywords] :as attrs} content]
   (let [subscribe-click (cell false)
         content-attrs (dissoc attrs
                               :page-title :description :keywords :page-css)]
+    (when (inspectlet-feature)
+      (js* "window.__insp = window.__insp || [];")
+      (inspect "wid" (inspectlet-wid))
+      (with-init! (load-inspectlet!)))
     (html
       (head
         (title page-title)
-        (script :type "text/javascript" "window.__insp = window.__insp || [];")
         (html-meta :name "description" :content description)
         (html-meta :name "keywords" :content keywords)
         (html-meta :name "viewport"
