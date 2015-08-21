@@ -1,17 +1,19 @@
 (ns exicon.app-details)
 
 (defc app-details {:tnc false :location #{}})
+(defc user-details nil)
+
 (defc warning-message nil)
 
-(defelem form-input [{:keys [label-txt data type required]
+(defelem form-input [{:keys [label-txt object data type required]
                       :or {type "text" required nil}} kids]
   ((div :class "field")
    :class {:required required}
    (label :text label-txt)
    (if (= type :textarea)
-     (textarea :change #(reset! app-details (assoc @app-details data @%)))
+     (textarea :change #(reset! object (assoc @object data @%)))
      (input :type type
-            :change #(reset! app-details (assoc @app-details data @%))))
+            :change #(reset! object (assoc @object data @%))))
    kids))
 
 (defn show-warning-message []
@@ -43,8 +45,8 @@
                         :checked (cell= (checkbox-checked
                                           ((:id item) app-details)
                                           (:checkbox1-id item)))
-                :click #(swap! app-details assoc (:id @item)
-                                          (checkbox-state ((:id @item) @app-details) (:checkbox1-id @item))))
+                        :click #(swap! app-details assoc (:id @item)
+                                       (checkbox-state ((:id @item) @app-details) (:checkbox1-id @item))))
                  (label :for (:checkbox1-id @item) (text (:label1 item)))))))
 
 (defn target-customers []

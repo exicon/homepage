@@ -5,7 +5,8 @@
         [exicon.calculator :refer [cost-calculator]]
         [exicon.app-calculator :refer [app-calculator]]
         [homepage.app-builder.rpc :refer [public-appbuilder-email]]
-        [exicon.app-details :refer [form-input nda-terms-conditions target-customers app-details]]))
+        [exicon.app-details :refer [form-input nda-terms-conditions
+                                    target-customers app-details user-details]]))
 
 (def page-header {:header "App Builder Submission"})
 
@@ -36,10 +37,6 @@
    kids
    (div :class "title"
         :text title)))
-(def user
-  {:name "John Doe"
-   :email "johndoe@email.com"
-   :company-id "111111"})
 
 (defelem nav-buttons []
   (div :class "ui container grid"
@@ -59,7 +56,7 @@
                  (div :class "ui fluid button"
                       :click #(when (validation @app-details)
                                 (public-appbuilder-email
-                                  user @app-details @cost-calculator)
+                                  @user-details @app-details @cost-calculator)
                                 (reset! active-step :thank-you))
                       "Submit")))))
 
@@ -67,25 +64,59 @@
   (div :class "ui form segment"
        (nda-terms-conditions)
        (form-input :label-txt "App Name"
+                   :object app-details
                    :data :app-name)
        (p "Summarize your app.")
        (p "The more you tell us the better we can match you
           to the right developer.")
        (ul :class "ui bulleted list"
-         (li "Key features.")
-         (li "Business benefits of the app.")
-         (li "Key metrics and success criteria.")
-         (li "Customer demographic and size of the opportunity."))
+           (li "Key features.")
+           (li "Business benefits of the app.")
+           (li "Key metrics and success criteria.")
+           (li "Customer demographic and size of the opportunity."))
+
        (form-input :label-txt "Summary"
                    :data :summary
+                   :object app-details
                    :type :textarea)
 
        (div :class "two fields"
             (form-input :label-txt "How much budget do you have for your app development? (USD)"
+                        :object app-details
                         :data :budget)
             (form-input :label-txt "Estimated launch date - Usually it takes 3 months to build a native app"
+                        :object app-details
                         :data :launch-date))
-       (target-customers)))
+
+       (target-customers)
+
+       (div :class "field"
+            (h2 :class "ui small dividing header" "Registration"))
+
+       (div :class "two fields"
+            (form-input
+              :label-txt "Name"
+              :object user-details
+              :data :name
+              :required true)
+            (form-input
+              :label-txt "Email"
+              :object user-details
+              :data :email
+              :type "email"
+              :required true))
+       (div :class "two fields"
+            (form-input
+              :label-txt "Company name"
+              :object user-details
+              :data :company-name
+              :required true)
+            (form-input
+              :label-txt "password"
+              :object user-details
+              :data :password
+              :type "password"
+              :required true))))
 
 (layout/primary
   :page-title "App Builder Submission"
@@ -106,12 +137,12 @@
        (div :class "ui hidden divider")
 
        (div :id "app-calculator"
-         :toggle (cell= (= :calculator active-step))
-         (app-calculator))
+            :toggle (cell= (= :calculator active-step))
+            (app-calculator))
 
        (div :toggle (cell= (= :app-details active-step))
-         :class "ui container"
-         (app-details-form))
+            :class "ui container"
+            (app-details-form))
 
        (div :class "ui container center aligned segment"
             :toggle (cell= (= :thank-you active-step))
