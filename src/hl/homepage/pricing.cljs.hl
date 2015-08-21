@@ -51,8 +51,8 @@
                   :text label)
                (when (= flag :info)
                  (p (i "*We'll display your snapshots in the AppBoard, even if you don't have an app.")))))]
-    (cond (= cta :insights) (generate-button "Sign up inside the AppBoard" (appboard-registration-link :competitor-insights) :info)
-          (= cta :distribution) (generate-button "Sign up inside the AppBoard" (appboard-registration-link :distribution) nil)
+    (cond (= cta :insights) (generate-button "Sign up inside the AppBoard" (appboard-registration-link :free) :info)
+          (= cta :distribution) (generate-button "Sign up inside the AppBoard" (appboard-registration-link :free) nil)
           (= cta :developer) (contact-us-btn :css-class "blue fluid")
           (= cta :management) (contact-us-btn :css-class "blue fluid")
           (= cta :inception) (contact-us-btn :css-class "blue fluid"))))

@@ -40,14 +40,15 @@
 			should you expect to budget? How do I know if the app is actually helping my business?"
 	:solution [
 		(text "The AppBoard isn't only for existing apps, it supports you through the full App LifeCycle.
-			If you have 'No Developer,' Exicon has ") (a :href "https://i2a.exiconglobal.com" "Node")
+			If you are looking for a developer check out our ") (a :href "/app-builder" "AppBuilder")
 			(text". You'll get help defining the app you need and Exicon
 			will send your requirements to three experienced developers with the qualifications you need. We
 			help you choose the proposal that makes the most sense for your requirements and negotiate a contract.
 			Exicon can even manage the project all the way to launch and set you up on the AppBoard for continued
 			maintenance.")]
 	:result "Exicon has been matching customers and developers in successful app projects for over seven years.
-			Whether your idea is big or small, we can set you on the right path to success."})
+			Whether your idea is big or small, we can set you on the right path to success."
+   :cta-link "/app-builder"})
 
 (defc advertising-agency {
 	:image-side :left
@@ -97,8 +98,8 @@
 	:result "Whether your company is connecting to consumers using apps or APIs, Exicon makes it easy to connect
 			all of your data sources into a common platform."})
 
-
 (defn customer [f]
+  (let [cta-link (if (:cta-link f) (:cta-link f) "/appboard/pricing")]
 	(if (= (:image-side f) :left)
 
 		(div :class "page-details middle aligned two column doubling row"
@@ -116,7 +117,7 @@
 				(p (:result f))
 				(img :class "customer-logo" :src (cell= (:customer-logo1 f)))
 				(img :class "customer-logo" :src (cell= (:customer-logo2 f)))(br)(br)
-				(a :href "/appboard/pricing"
+				(a :href cta-link
 					(div :class "ui button" "Get started now"))))
 
 		(div :class "page-details middle aligned two column doubling row"
@@ -130,11 +131,11 @@
 				(p (:solution f))
 				(h4 "Result")
 				(p (:result f)) (br)(br)
-				(a :href "/appboard/pricing"
+				(a :href cta-link
 					(div :class "ui button" "Get started now")))
 			(div :class "column right-image"
 				(img :src (cell= (:screenshot1 f)))
-				(img :src (cell= (:screenshot2 f)))))))
+				(img :src (cell= (:screenshot2 f))))))))
 
 
 (layout/main :id "customers"

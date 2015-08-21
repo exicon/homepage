@@ -8,8 +8,8 @@
         [tailrecursion.hoplon :refer [with-init!]])
       (:require-macros [config :refer [appboard-url appbuilder-url]]))
 
-(def appboard-login-link (str (appboard-url)"/?package=starter&returnUri="(appbuilder-url)"#!/login/"))
-(def appboard-registration-link (str (appboard-url)"/?package=starter&returnUri="(appbuilder-url)"#!/registration/"))
+(def appboard-login-link (str (appboard-url)"/?package=free&returnUri="(appbuilder-url)"#!/login/"))
+(def appboard-registration-link (str (appboard-url)"/?package=free&returnUri="(appbuilder-url)"#!/registration/"))
 
 (def page-header
   {:header "App Builder"
@@ -451,7 +451,7 @@
                 (div :class "column"(textual-button
                                       :inline true
                                       :button-text "Find your App Builder NOW"
-                                      :destination-link (str (appboard-url)"/?package=starter&returnUri="(appbuilder-url)"#!/registration/"))))
+                                      :destination-link (str (appboard-url)"/?package=free&returnUri="(appbuilder-url)"#!/registration/"))))
            (div :class "ui hidden divider")
            (div :class "ui hidden divider")))
 
