@@ -8,3 +8,4 @@
 /checkouts
 .nrepl-*
 dev.sh
+config.edn

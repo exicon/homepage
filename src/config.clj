@@ -1,4 +1,6 @@
-(ns config)
+(ns config
+  (:require
+    [clojure.edn :as edn]))
 
 (defmacro getenv [key] (System/getenv key))
 (defmacro appboard-url [] (or (getenv "APPBOARD_URL") "http://localhost:3000"))
@@ -13,3 +15,9 @@
 (defmacro hs-newsletter-id [] (getenv "HS_NEWSLETTER_ID"))
 (defmacro hs-app-calc-id [] (getenv "HS_APP_CALC_ID"))
 (defmacro hs-contact-us-id [] (getenv "HS_CONTACT_US_ID"))
+
+(defmacro config
+  [& keys]
+  (let [env-cfg-file (str "./config.edn")
+        config-opts (edn/read-string (slurp env-cfg-file))]
+    (get-in config-opts keys)))

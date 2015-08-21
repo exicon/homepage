@@ -2,7 +2,7 @@
   (:require
     [clojure.string :refer [join reverse replace]]
     [exicon.calculator :refer
-     [current-submission selected-platforms selected-size
+     [selected-platforms selected-size
       selected-login selected-features selected-languages selected-stage result
       value-title app-name-item size-items login-items features-items
       platforms-items stage-items]]

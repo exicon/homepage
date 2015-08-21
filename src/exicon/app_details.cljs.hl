@@ -1,7 +1,7 @@
 (ns exicon.app-details)
 
-(defc app-details nil)
-(cell= (println app-details))
+(defc app-details {:tnc false :location #{}})
+(defc warning-message nil)
 
 (defelem form-input [{:keys [label-txt data type required]
                       :or {type "text" required nil}} kids]
@@ -13,3 +13,70 @@
      (input :type type
             :change #(reset! app-details (assoc @app-details data @%))))
    kids))
+
+(defn show-warning-message []
+  (reset! warning-message :terms-conditions))
+
+(defn checkbox-state [field elem]
+  (if (field elem) (disj field elem) (conj field elem)))
+
+(defn checkbox-checked [id elem]
+  (if (id elem) true false))
+
+(defn tbl [keys & vals]
+  (map (partial zipmap keys) (partition (count keys) vals)))
+
+(def location-items (tbl [:id :image :label1 :checkbox1-id :sub-label]
+                         :location "/images/app-builder/internal.png" "Internal Audience" :internal "(Employees, Partners, Suppliers)"
+                         :location "/images/app-builder/local.png" "Local" :local "(1 language)"
+                         :location "/images/app-builder/regional.png" "Regional" :regional "(2 or more languages)"
+                         :location "/images/app-builder/global.png" "Global" :global "(Over 5 languages)"
+                         ))
+
+(defn item-checkbox [item]
+  (div :class "center aligned column"
+       (div :class "device-img-container" (img :class "responsive" :src (cell= (:image item))))
+       (div :class "device-checkboxes-container"
+            (p (text (:title item)))
+            (div :class "ui checkbox field"
+                 (input :type "checkbox" :id (:checkbox1-id @item)
+                        :checked (cell= (checkbox-checked
+                                          ((:id item) app-details)
+                                          (:checkbox1-id item)))
+                :click #(swap! app-details assoc (:id @item)
+                                          (checkbox-state ((:id @item) @app-details) (:checkbox1-id @item))))
+                 (label :for (:checkbox1-id @item) (text (:label1 item)))))))
+
+(defn target-customers []
+  (div :id "target-customers" :class "ui form basic segment"
+       (div :class "field"
+            (p :class "ui small header" "Who are your target customers?")
+            (div :class "ui four column doubling grid"
+                 (loop-tpl :bindings [item location-items]
+                           (item-checkbox item))))))
+
+(defelem nda-terms-conditions [{:keys []}]
+  [(div :class "sixteen wide column"
+        (div :class "ui negative message" :style "display:none;"
+             :toggle (cell= (= warning-message :terms-conditions))
+             (div :class "header" "We're sorry, you can't submit")
+             (p "Please accept the terms and conditions"))
+        (div :class "ui center aligned basic segment"
+             (h2 :class "ui large header"
+                 (img :class "ui tiny inline image" :src "http://www.exiconglobal.com/images/app-builder/nda.png")
+                 (div :class "center aligned content" "Your app idea is safe, everyone is under NDA.")))
+        (div :class "ui hidden divider")
+        (div :class "ui secondary basic center aligned segment"
+             (div :class "ui checkbox"
+                  (input :type "checkbox" :name "terms-conditions" :id "nda"
+                         :checked (cell= (:tnc app-details))
+                         :click #(reset! app-details
+                                         (assoc @app-details :tnc
+                                           (not (:tnc @app-details)))))
+                  (label :for "nda" "I agree to Exicon's "
+                         (a :href "http://blog.exiconglobal.com/corp/legal/terms-of-use/"
+                            :target "_blank"
+                            "Terms & Conditions")
+                         " and "
+                         (a :href "/docs/nda.pdf" :target "_blank" "NDA")))))
+   (div :class "ui hidden divider")])

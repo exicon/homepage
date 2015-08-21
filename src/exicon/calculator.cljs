@@ -90,7 +90,6 @@
 
               :range 1500})
 
-(defc current-submission nil)
 (defc selected-platforms #{})
 (defc selected-size nil)
 (defc selected-login nil)
