@@ -126,26 +126,48 @@
          :text txt)))
 
 (defn load-inspectlet! []
-  (with-timeout
-    2000
-    (let [document-protocol (-> js/document .-location .-protocol)
-          inspectlet-src-compatible-with-file-protocol
-          (str "http" (when (= document-protocol "https:") "s")
-               "://cdn.inspectlet.com/inspectlet.js")
-          inspectlet-src "//cdn.inspectlet.com/inspectlet.js"
-          inspectlet-script (script :id "inspsync" :type "text/javascript"
-                                    :async true :src inspectlet-src)
-          head-elem (aget (.getElementsByTagName js/document "head") 0)]
-      (.appendChild head-elem inspectlet-script))))
+  (let [document-protocol (-> js/document .-location .-protocol)
+        inspectlet-src-compatible-with-file-protocol
+        (str "http" (when (= document-protocol "https:") "s")
+             "://cdn.inspectlet.com/inspectlet.js")
+        inspectlet-src "//cdn.inspectlet.com/inspectlet.js"
+        inspectlet-script (script :id "inspsync" :type "text/javascript"
+                                  :async true :src inspectlet-src)
+        head-elem (aget (.getElementsByTagName js/document "head") 0)]
+    (.appendChild head-elem inspectlet-script)))
 
 (defn load-dbg-inspectlet! []
-  (with-timeout
-    2000
-    (let [inspectlet-script
-          (script :id "inspsync" :type "text/javascript" :src "/inspectlet.js")
-          head-elem
-          (aget (.getElementsByTagName js/document "head") 0)]
-      (.appendChild head-elem inspectlet-script))))
+  (let [inspectlet-script
+        (script :id "inspsync" :type "text/javascript" :src "/inspectlet.js")
+        head-elem
+        (aget (.getElementsByTagName js/document "head") 0)]
+    (.appendChild head-elem inspectlet-script)))
+
+(defelem google-analytics []
+  (script
+    "(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-31491340-1', 'auto');
+    ga('require', 'displayfeatures');
+    ga('send', 'pageview');
+    ga('require', 'displayfeatures');"))
+
+(defelem hubspot-analytics []
+  (script
+    "(function(d,s,i,r) {
+    if (d.getElementById(i)){return;}
+    var n=d.createElement(s),e=d.getElementsByTagName(s)[0];
+    n.id=i;n.src='//js.hs-analytics.net/analytics/'+(Math.ceil(new Date()/r)*r)+'/511335.js';
+    e.parentNode.insertBefore(n, e);
+    })(document,\"script\",\"hs-analytics\",300000);"))
+
+(defelem hubspot-forms []
+  (script :charset "utf-8"
+          :type "text/javascript"
+          :src "//js.hsforms.net/forms/v2.js"))
 
 (defelem primary
   [{:keys [page-css page-title description keywords] :as attrs} content]
@@ -157,30 +179,31 @@
       (inspect "wid" (inspectlet-wid))
       (with-init! (load-inspectlet!)))
     (html
-      (head
-        (title page-title)
-        (html-meta :name "description" :content description)
-        (html-meta :name "keywords" :content keywords)
-        (html-meta :name "viewport"
-                   :content "width=device-width, initial-scale=1.0")
-        (style "body {display: none}")
-        (link :href "/images/favicon.ico" :rel "shortcut icon")
-        (link :href "/semantic-ui.css" :rel "stylesheet")
-        (link :href "/homepage.inc.css" :rel "stylesheet")
-        (link :href "/main.inc.css" :rel "stylesheet")
-        (link :href "/top-nav.inc.css" :rel "stylesheet")
-        (link :href page-css :rel "stylesheet"))
-      (body :toggle (cell true)
-            (subscribe-stick-btn subscribe-click)
-            (subscribe-stick-form subscribe-click)
-            (modal-dialog :id "hs-contact-us" :title "Contact Us"
-                          :visible contact-us-visible?)
-            (contact-us-btn :id "contact-us-btn" :css-class "small")
-            (div :id "top-nav"
-                 (top-nav :class "fluid hidden")
-                 (top-nav :class "fixed"))
-            ((div :id "content") content-attrs content)
-            (bottom-nav)
-            (script :charset "utf-8"
-                    :type "text/javascript"
-                    :src "//js.hsforms.net/forms/v2.js")))))))
+      (static
+        (head
+          (title page-title)
+          (html-meta :name "description" :content description)
+          (html-meta :name "keywords" :content keywords)
+          (html-meta :name "viewport"
+                     :content "width=device-width, initial-scale=1.0")
+          ; (style "body {display: none}")
+          (link :href "/images/favicon.ico" :rel "shortcut icon")
+          (link :href "/semantic-ui.css" :rel "stylesheet")
+          (link :href "/homepage.inc.css" :rel "stylesheet")
+          (link :href "/main.inc.css" :rel "stylesheet")
+          (link :href "/top-nav.inc.css" :rel "stylesheet")
+          (link :href page-css :rel "stylesheet")))
+      (body
+        (subscribe-stick-btn subscribe-click)
+        (subscribe-stick-form subscribe-click)
+        (modal-dialog :id "hs-contact-us" :title "Contact Us"
+                      :visible contact-us-visible?)
+        (contact-us-btn :id "contact-us-btn" :css-class "small")
+        (div :id "top-nav"
+             (top-nav :class "fluid hidden")
+             (top-nav :class "fixed"))
+        ((div :id "content") content-attrs content)
+        (bottom-nav)
+        (google-analytics)
+        (hubspot-analytics)
+        (hubspot-forms)))))

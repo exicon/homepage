@@ -1,8 +1,9 @@
-(page "terms-of-use/index.html"
+(ns homepage.terms-of-use.index
 	(:require
 		[homepage.layout :as layout]))
 
-(layout/primary
+(defn pg []
+  (layout/primary
   :id "terms-of-use"
   :page-title "Terms of Use"
   :page-css "index.inc.css"
@@ -664,11 +665,4 @@
 						(td "Exicon Limited")
 						(td "302 Wilson House 19-27 Wyndham Street, Central, Hong Kong")
 						(td "Hong Kong")
-						(td "Hong Kong")
-					)
-				)
-			)
-		)
-
-	)
-)
+						(td "Hong Kong"))))))))

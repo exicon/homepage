@@ -1,4 +1,4 @@
-(page "videos/index.html"
+(ns homepage.videos.index
       (:require
         [homepage.layout :refer [secondary-header] :as layout]
         [clojure.string :refer [replace lower-case]]))
@@ -105,11 +105,12 @@
                                   :frameborder "0" :allowfullscreen ""
                                   :webkitallowfullscreen "" :mozallowfullscreen ""))))))
 
-(layout/primary
+(defn pg []
+  (layout/primary
   :id "videos"
   :page-title "Videos | Mobile | Apps | AppBoard"
   :description "Watch Videos About Mobile, Apps, APIs & Developers. Oh, And The Exicon AppBoard!"
   :page-css "index.inc.css"
 
   (secondary-header :header (:header page-header))
-  (videos-options-section))
+  (videos-options-section)))

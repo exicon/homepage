@@ -1,8 +1,9 @@
-(page "privacy-policy/index.html"
+(ns homepage.privacy-policy.index
 	(:require
 		[homepage.layout :as layout]))
 
-(layout/primary
+(defn pg []
+  (layout/primary
   :id "privacy"
   :page-title "Privacy Policy"
   :page-css "index.inc.css"
@@ -164,10 +165,4 @@
 						(ul
 							(li "This policy is effective from 4th April 2011. From time to time we may make changes to this privacy
 								policy statement to reflect any changes to our privacy practices in accordance with changes to legislation,
-								best practice or website enhancements.")
-						)
-					)
-			)
-		)
-	)
-)
+								best practice or website enhancements."))))))))

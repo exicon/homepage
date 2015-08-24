@@ -1,4 +1,4 @@
-(page "app-builder/index.html"
+(ns homepage.app-builder.index
       (:require
         [homepage.layout :refer [secondary-header section-header] :as layout]
         [homepage.common :refer [textual-button]]
@@ -456,7 +456,8 @@
            (div :class "ui hidden divider")
            (div :class "ui hidden divider")))
 
-(layout/primary
+(defn pg []
+  (layout/primary
   :page-title "App Builder"
   :description "Find the right developer for your app build"
   :keywords "Build an App, App Builder"
@@ -471,4 +472,4 @@
   (developer-section)
   (features-details-section)
   (testimonials-section)
-  (reasons-section))
+  (reasons-section)))

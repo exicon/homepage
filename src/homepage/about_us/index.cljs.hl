@@ -1,4 +1,4 @@
-(page "about-us/index.html"
+(ns homepage.about-us.index
       (:require
         [homepage.layout :refer [secondary-header section-header] :as layout])
       (:require-macros [config :refer [timeline-src]]))
@@ -614,7 +614,8 @@
                                     (li :text (cell= item))))))
             (div :class "ui hidden divider"))))
 
-(layout/primary
+(defn pg []
+  (layout/primary
   :page-title "About Exicon | App Management & Analytics | Our Team"
   :description "Our Mission And The Road That Got Us Here As Well As The Team That Makes Exicon Tick."
   :keywords "Exicon, App Management, Analytics"
@@ -662,4 +663,4 @@
 
        (vision-values-section)
        (timeline-section)
-       (office-options-section)))
+       (office-options-section))))

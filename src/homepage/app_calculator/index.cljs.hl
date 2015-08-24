@@ -1,4 +1,4 @@
-(page "app-calculator/index.html"
+(ns homepage.app-calculator.index
       (:require-macros [config :refer [hs-app-calc-id hs-portal-id]])
       (:require
         [homepage.layout
@@ -25,7 +25,8 @@
    :errorMessageClass "ui error message"
    :formId (hs-app-calc-id)})
 
-(layout/primary
+(defn pg []
+  (layout/primary
   :page-title "App Cost Calculator"
   :description "How much it costs to build an app"
   :keywords "App cost calculator, costs to build an app"
@@ -56,4 +57,4 @@
             (div :class "ui hidden divider")
             (a :href "/app-builder"
                :class "ui huge button"
-               "Find out more about App Builder"))))
+               "Find out more about App Builder")))))

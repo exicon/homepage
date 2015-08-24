@@ -1,4 +1,4 @@
-(page "news/index.html"
+(ns homepage.news.index
       (:require
         [homepage.layout :refer [secondary-header] :as layout]
         [homepage.layout :as layout]))
@@ -256,7 +256,8 @@
             (loop-tpl :bindings [momo momo-list]
                       (momo-options @momo)))))
 
-(layout/primary
+(defn pg []
+  (layout/primary
   :id "news"
   :page-title "News"
   :description "The Exicon Team In The Public Eye"
@@ -277,4 +278,4 @@
               (img :class "awards-icon" :src "/images/news/Award-Asia.png")
               (p "2012 Red Herring 100 Asia Winner")
               (img :class "awards-icon" :src "/images/news/Award-Global.png")
-              (p "2012 Red Herring 100 Global Winner")))))
+              (p "2012 Red Herring 100 Global Winner"))))))

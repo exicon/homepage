@@ -1,4 +1,4 @@
-(page "app-builder/submission/index.html"
+(ns homepage.app-builder-submission.index
       (:require-macros [config :refer [hs-app-calc-id hs-portal-id]])
       (:require
         [homepage.layout :refer [secondary-header section-header] :as layout]
@@ -118,7 +118,8 @@
               :type "password"
               :required true))))
 
-(layout/primary
+(defn pg []
+  (layout/primary
   :page-title "App Builder Submission"
   :description ""
   :keywords ""
@@ -168,4 +169,4 @@
             (div :class "ui hidden divider")
             (a :href "/app-builder"
                :class "ui huge button"
-               "Find out more about App Builder"))))
+               "Find out more about App Builder")))))

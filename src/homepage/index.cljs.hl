@@ -2,7 +2,22 @@
       (:require-macros [config :refer [appboard-url]])
       (:require
         [homepage.layout :refer [section-header] :as layout]
-        [homepage.common :as common :refer [registration-link]]))
+        [homepage.common :as common :refer [registration-link]]
+        [homepage.about-us.index]
+        [homepage.app-builder.index]
+        [homepage.app-builder-submission.index]
+        [homepage.app-calculator.index]
+        [homepage.appboard.index]
+        [homepage.customers.index]
+        [homepage.developers.index]
+        [homepage.news.index]
+        [homepage.newsletters.index]
+        [homepage.presentations.index]
+        [homepage.privacy-policy.index]
+        [homepage.reports.index]
+        [homepage.terms-of-use.index]
+        [homepage.videos.index]
+        ))
 
 (defc route @(route-cell ""))
 (route-cell route #(reset! route %))
@@ -148,12 +163,12 @@
 (defn feature-advantage [adv is-mobile build-promote? inverted?]
   (div :class "center aligned column"
        ((div :class "ui title sizer basic")
-            :class {:horizontal (not is-mobile) :segment (not is-mobile)
-                       :white inverted?
-                       :dark (and (not inverted?) build-promote?)}
-            ((h2 :class "ui medium header")
-                :class {:inverted inverted?
-                           :teal (not build-promote?)} adv))))
+        :class {:horizontal (not is-mobile) :segment (not is-mobile)
+                :white inverted?
+                :dark (and (not inverted?) build-promote?)}
+        ((h2 :class "ui medium header")
+         :class {:inverted inverted?
+                 :teal (not build-promote?)} adv))))
 
 (defelem feature-details
   [{:keys [details inverted? build-promote?] :as attrs} kids]
@@ -167,31 +182,31 @@
      (div :class "ui container grid"
           (div :class "sixteen wide column title sizer center aligned feature-header"
                ((h2 :class "ui large header")
-                   :class {:inverted inverted?}
-                   :text header)
-          (div :class "description sizer"
-               ((h3 :class "ui medium center aligned header")
-                   :class {:inverted inverted?}
-                   :text sub-header)))
+                :class {:inverted inverted?}
+                :text header)
+               (div :class "description sizer"
+                    ((h3 :class "ui medium center aligned header")
+                     :class {:inverted inverted?}
+                     :text sub-header)))
           (div :class "eleven wide centered column"
                :toggle image
                (img :class "ui massive centered image" :src image))
           ((div :class "row")
-               :class {:feature-advantages build-promote?}
-               (div :class "ui three column stackable grid"
-                    (div :class "mobile tablet only row"
-                         (loop-tpl :bindings [adv advantages]
-                                   (feature-advantage adv true build-promote? inverted?)))
-                    (div :class "computer only row"
-                         (loop-tpl :bindings [adv advantages]
-                                   (feature-advantage adv false build-promote? inverted?)))))
+           :class {:feature-advantages build-promote?}
+           (div :class "ui three column stackable grid"
+                (div :class "mobile tablet only row"
+                     (loop-tpl :bindings [adv advantages]
+                               (feature-advantage adv true build-promote? inverted?)))
+                (div :class "computer only row"
+                     (loop-tpl :bindings [adv advantages]
+                               (feature-advantage adv false build-promote? inverted?)))))
           (if cta
             (div :class "centered row"
                  ((a :class "ui massive button")
-                    :class {:inverted inverted?
-                               :black (not inverted?)}
-                    :href (:link cta)
-                    :text (:title cta))))
+                  :class {:inverted inverted?
+                          :black (not inverted?)}
+                  :href (:link cta)
+                  :text (:title cta))))
           (div :class "sixteen wide center aligned column feature-description description sizer"
                (description))))))
 
@@ -262,15 +277,33 @@
                                :src "images/landing-page/clients.png"
                                :alt "Exicon customers"))))))
 
-(layout/primary
-  :page-title "Manage Your Apps | Exicon Cloud App Management AppBoard"
-  :description (str "Exicon AppBoard Is An App Management Platform "
-                    "That Helps SMEs & Enterprises Build, "
-                    "Manage & Promote Their Mobile Apps.")
-  :keywords "Manage Apps, Exicon, Cloud, App Management, AppBoard"
+(defn pg []
+  (layout/primary
+    :page-title "Manage Your Apps | Exicon Cloud App Management AppBoard"
+    :description (str "Exicon AppBoard Is An App Management Platform "
+                      "That Helps SMEs & Enterprises Build, "
+                      "Manage & Promote Their Mobile Apps.")
+    :keywords "Manage Apps, Exicon, Cloud, App Management, AppBoard"
 
-  (intro)
-  (features-section feature-list)
-  (features-details-section)
-  (clients)
-  (testimonials-section))
+    (intro)
+    (features-section feature-list)
+    (features-details-section)
+    (clients)
+    (testimonials-section)))
+
+((case (.. js/window -location -pathname)
+   "/about-us/" homepage.about-us.index/pg
+   "/app-builder/" homepage.app-builder.index/pg
+   "/app-builder-submission/" homepage.app-builder-submission.index/pg
+   "/app-calculator/" homepage.app-calculator.index/pg
+   "/appboard/" homepage.appboard.index/pg
+   "/customers/" homepage.customers.index/pg
+   "/developers/" homepage.developers.index/pg
+   "/news/" homepage.news.index/pg
+   "/newsletters/" homepage.newsletters.index/pg
+   "/presentations/" homepage.presentations.index/pg
+   "/privacy-policy/" homepage.privacy-policy.index/pg
+   "/reports/" homepage.reports.index/pg
+   "/terms-of-use/" homepage.terms-of-use.index/pg
+   "/videos/" homepage.videos.index/pg
+   pg))

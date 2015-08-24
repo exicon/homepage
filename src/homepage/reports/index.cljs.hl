@@ -1,4 +1,4 @@
-(page "reports/index.html"
+(ns homepage.reports.index
       (:require
         [homepage.layout :refer [secondary-header] :as layout]))
 
@@ -309,7 +309,8 @@
   (loop-tpl :bindings [opt reports-list]
             (reports-options opt)))
 
-(layout/primary
+(defn pg []
+  (layout/primary
   :id "reports"
   :page-title "Research"
   :description "Research"
@@ -317,4 +318,4 @@
   (secondary-header :header (:header page-header))
   (section :id "reports-list"
            (div :class "ui three column vertically padded doubling container grid"
-                (reports-options-section))))
+                (reports-options-section)))))

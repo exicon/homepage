@@ -3,8 +3,8 @@
   :version "0.1.0-SNAPSHOT"
   :dependencies
   '[[tailrecursion/castra "3.0.0-SNAPSHOT"]
-    [exicon/boot-hoplon "0.1.2-SNAPSHOT"]
-    [tailrecursion/hoplon "6.0.0-alpha5"]
+    [tailrecursion/boot-hoplon "0.1.3"]
+    [tailrecursion/hoplon "6.0.0-alpha6"]
     ; [tailrecursion/javelin "3.8.0"]
     ; [cljsjs/jquery "2.1.4-0"]
     [adzerk/boot-reload "0.3.1"]
@@ -16,14 +16,46 @@
   :resource-paths #{"assets"})
 
 (require
+  ; '[boot.core :refer [commit!]]
   '[tailrecursion.boot-hoplon :refer [hoplon prerender html2cljs]]
   '[adzerk.boot-reload :refer [reload]]
   '[pandeiro.boot-http :refer [serve]]
   '[adzerk.boot-cljs :refer [cljs]]
-  '[cljsjs.boot-cljsjs :refer [from-cljsjs]])
+  '[cljsjs.boot-cljsjs :refer [from-cljsjs]]
+  '[clojure.java.io :as io])
 
 (task-options!
   speak { :theme "woodblock" })
+
+; (deftask copy-index-htmls'
+;   "Copy the master index.html and its related .js file and its .out/ dir under a subdirectory"
+;   [s sub-page-path SUBPAGE str "Path to a subpage"]
+;   (with-pre-wrap
+;     fileset
+;     (let [slash-index-related-files (->> fileset output-files (by-re [#"^index.html.*"]))
+;           copy-to-subpage (fn [fs {:keys [path] :as f}]
+;                             (let [sub-page (io/file (str sub-page-path path))
+;                                   _ (prn sub-page)]
+;                               (cp fs f sub-page)))]
+;       (commit!
+;         (reduce copy-to-subpage fileset slash-index-related-files)))))
+
+; (deftask copy-index-htmls
+;   "Copy the master index.html and its related .js file and its .out/ dir under a subdirectory"
+;   [s sub-page-path SUBPAGE str "Path to a subpage"]
+;   (with-pre-wrap
+;     fileset
+;     (let [slash-index-related-files (->> fileset output-files (by-re [#"^index.html.*"]))
+;           ]
+;       (commit!
+;         (.add-tmp fileset sub-page-path slash-index-related-files)))))
+
+(deftask xxx []
+  (with-pre-wrap
+    fileset
+    (do
+      (map prn (ls (.add-tmp fileset "video" (->> fileset ls (by-re [#"index.*"])))))
+      fileset)))
 
 (deftask dev
   "Build homepage for development."
@@ -39,6 +71,7 @@
     (reload)
     (cljs :optimizations :none
           :source-map true)
+    ; (copy-index-htmls)
     (speak)))
 
 (deftask prod

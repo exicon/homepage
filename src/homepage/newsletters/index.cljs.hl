@@ -1,4 +1,4 @@
-(page "newsletters/index.html"
+(ns homepage.newsletters.index
       (:require
         [homepage.layout :refer [secondary-header] :as layout]
         [homepage.layout :as layout]))
@@ -205,11 +205,12 @@
          (loop-tpl :bindings [opt newsletters-list]
                    (newsletters-options opt)))))
 
-(layout/primary
+(defn pg []
+  (layout/primary
   :id "newsletters"
   :page-title "Exicon Newsletter | Mobile Apps"
   :description "Sign Up For Exicon's Weekly Newsletter About All Things Mobile."
   :page-css "index.inc.css"
 
   (secondary-header :header "Newsletters")
-  (newsletters-options-section))
+  (newsletters-options-section)))

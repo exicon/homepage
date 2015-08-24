@@ -1,4 +1,4 @@
-(page "customers/index.html"
+(ns homepage.customers.index
       (:require
         [homepage.layout :refer [secondary-header] :as layout]
         [homepage.layout :as layout]))
@@ -149,7 +149,8 @@
               (img :src (cell= (:screenshot2 f)))))))
 
 
-(layout/primary
+(defn pg []
+  (layout/primary
   :id "customers"
   :page-title "Exicon Customers | Reviews | Testimonials"
   :description "Global Fans Of Exicon's AppBoard, Products & Services"
@@ -162,4 +163,4 @@
            (customer @app-newbie)
            (customer @advertising-agency)
            (customer @mobile-apps-developer)
-           (customer @data-warehouse)))
+           (customer @data-warehouse))))

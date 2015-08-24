@@ -1,4 +1,4 @@
-(page "developers/index.html"
+(ns homepage.developers.index
       (:require
         [homepage.layout :refer [secondary-header] :as layout]
         [homepage.layout :refer [contact-us-btn] :as layout]))
@@ -28,7 +28,8 @@
                    (developers-options opt)))))
 
 
-(layout/primary
+(defn pg []
+  (layout/primary
   :id "developers"
   :page-title "Developers"
   :page-css "index.inc.css"
@@ -106,4 +107,4 @@
          (div :class "column center aligned apply-button"
               (contact-us-btn
                 :css-class "teal"
-                :txt "Contact us to join our Network")))))
+                :txt "Contact us to join our Network"))))))
