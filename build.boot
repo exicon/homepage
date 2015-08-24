@@ -4,7 +4,7 @@
   :dependencies
   '[[tailrecursion/castra "3.0.0-SNAPSHOT"]
     [exicon/boot-hoplon "0.1.2-SNAPSHOT"]
-    [tailrecursion/hoplon "6.0.0-alpha6"]
+    [tailrecursion/hoplon "6.0.0-alpha5"]
     ; [tailrecursion/javelin "3.8.0"]
     ; [cljsjs/jquery "2.1.4-0"]
     [adzerk/boot-reload "0.3.1"]
