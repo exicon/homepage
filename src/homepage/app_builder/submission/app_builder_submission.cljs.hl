@@ -47,15 +47,15 @@
             (div :class "left floated four wide column"
                  :toggle (cell= (= :app-details active-step))
                  (a :class "ui fluid button"
-                      :href "#calculator"
-                      :click #(reset-route "#calculator")
-                      "< Previous"))
+                    :href "#calculator"
+                    :click #(reset-route "#calculator")
+                    "< Previous"))
             (div :class "right floated four wide column"
                  :toggle (cell= (= :calculator active-step))
                  (a :class "ui fluid button"
                     :href "#app-builder"
                     :click #(reset-route "#app-builder")
-                      "Next >"))
+                    "Build this app >"))
             (div :class "right floated four wide column"
                  :toggle (cell= (= :app-details active-step))
                  (a :class "ui fluid button"
@@ -66,8 +66,8 @@
                                 (reset-route "#thank-you")
                                 (reset! warning-message false))
                               (reset! warning-message true))
-                      :href (cell= (if validated? "#thank-you" "javascript:void(0)"))
-                      "Submit")))))
+                    :href (cell= (if validated? "#thank-you" "javascript:void(0)"))
+                    "Submit")))))
 
 (defelem app-details-form []
   (div :class "ui form segment"
@@ -145,6 +145,12 @@
                  (step :id :app-details :href "#app-builder" :title "App Builder")))
 
        (div :class "ui hidden divider")
+       (div :toggle (cell= (= :calculator active-step))
+            :class "ui container description sizer"
+            (a :href "#consultation" "Book a free 30 min consultation")
+            (p "Try out our App Cost Calculator to get a range of possible
+               costs to build your app")
+            (div :class "ui hidden divider"))
 
        (div :id "app-calculator"
             :toggle (cell= (= :calculator active-step))
@@ -174,7 +180,7 @@
 
        (div :class "ui hidden divider")
 
-       (div :class "ui center aligned basic secondary segment description sizer"
+       (div :id "consultation" :class "ui center aligned basic secondary segment description sizer"
             :toggle (cell= (= :calculator active-step))
             (h3 :class "ui medium header"
                 "Book your 30-minute FREE App Builder consultation.")
@@ -182,7 +188,4 @@
             (div :class "ui container grid"
                  (div :class "eight wide centered left aligned column" :id "hs-app-calc-form"
                       (app-calc-form)))
-            (div :class "ui hidden divider")
-            #_(a :href "/app-builder"
-               :class "ui huge button"
-               "Find out more about App Builder"))))
+            (div :class "ui hidden divider"))))

@@ -19,11 +19,12 @@
   ((a :href (appboard-url)) attrs "Login"))
 
 (def main-menu-items
-  {:appboard {:name "AppBoard" :url "/appboard/"}
+  {:app-calc {:name "Calculator" :url "/app-builder/submission/#calculator"
+              :route "#calculator"}
    :app-builder {:name "App Builder"
                  :url "/app-builder/"}
-   :app-calc {:name "Calculator" :url "/app-builder/submission/#calculator"
-              :route "#calculator"}
+   :appboard {:name "AppBoard" :url "/appboard/"}
+
    :pricing {:name "Pricing" :url "/appboard/pricing/"}
    :blog {:name "Blog" :url "http://blog.exiconglobal.com/corp/"}
    :resources
