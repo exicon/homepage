@@ -160,7 +160,7 @@
             :class "ui container"
             (app-details-form))
 
-       (div :class "ui container centered-content basic segment"
+       (div :class "ui container center aligned basic segment"
             :style "height:30rem"
             :toggle (cell= (= :thank-you active-step))
             (div :class "ui hidden divider")
