@@ -16,7 +16,6 @@
   :resource-paths #{"assets"})
 
 (require
-  ; '[boot.core :refer [commit!]]
   '[tailrecursion.boot-hoplon :refer [hoplon prerender html2cljs]]
   '[adzerk.boot-reload :refer [reload]]
   '[pandeiro.boot-http :refer [serve]]
@@ -27,35 +26,23 @@
 (task-options!
   speak { :theme "woodblock" })
 
-; (deftask copy-index-htmls'
-;   "Copy the master index.html and its related .js file and its .out/ dir under a subdirectory"
-;   [s sub-page-path SUBPAGE str "Path to a subpage"]
-;   (with-pre-wrap
-;     fileset
-;     (let [slash-index-related-files (->> fileset output-files (by-re [#"^index.html.*"]))
-;           copy-to-subpage (fn [fs {:keys [path] :as f}]
-;                             (let [sub-page (io/file (str sub-page-path path))
-;                                   _ (prn sub-page)]
-;                               (cp fs f sub-page)))]
-;       (commit!
-;         (reduce copy-to-subpage fileset slash-index-related-files)))))
-
-; (deftask copy-index-htmls
-;   "Copy the master index.html and its related .js file and its .out/ dir under a subdirectory"
-;   [s sub-page-path SUBPAGE str "Path to a subpage"]
-;   (with-pre-wrap
-;     fileset
-;     (let [slash-index-related-files (->> fileset output-files (by-re [#"^index.html.*"]))
-;           ]
-;       (commit!
-;         (.add-tmp fileset sub-page-path slash-index-related-files)))))
-
-(deftask xxx []
+(deftask copy-index-htmls
+  [d dirs DIRS #{str} "Directories for the main index.html to be accessible under"]
   (with-pre-wrap
     fileset
-    (do
-      (map prn (ls (.add-tmp fileset "video" (->> fileset ls (by-re [#"index.*"])))))
-      fileset)))
+    (let [index-html* (->> fileset ls
+                           (by-re [#"^index.html$"
+                                   #"^index.html.js$"
+                                   #"^index.html.out"]))
+          in-subdir (fn [f subdir]
+                      (let [subdir-f (str subdir (.path f))]
+                        {subdir-f (assoc f :path subdir-f)}))
+          dirs-with-index (into {}
+                                (for [dir dirs
+                                      f index-html*]
+                                  (in-subdir f dir)))
+          fileset' (update-in fileset [:tree] merge dirs-with-index)]
+      (commit! fileset'))))
 
 (deftask dev
   "Build homepage for development."
@@ -68,10 +55,22 @@
     (sift :move {#"^semantic-ui.inc.css$" "semantic-ui.css"})
     (watch)
     (hoplon :pretty-print true)
-    (reload)
-    (cljs :optimizations :none
-          :source-map true)
-    ; (copy-index-htmls)
+    ; (reload)
+    (cljs :optimizations :none :source-map true)
+    (copy-index-htmls
+      :dirs #{"app-builder/"
+              "app-builder-submission/"
+              "app-calculator/"
+              "appboard/"
+              "customers/"
+              "developers/"
+              "news/"
+              "newsletters/"
+              "presentations/"
+              "privacy-policy/"
+              "reports/"
+              "terms-of-use/"
+              "videos/"})
     (speak)))
 
 (deftask prod
