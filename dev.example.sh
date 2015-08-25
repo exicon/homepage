@@ -4,4 +4,4 @@ export HS_NEWSLETTER_ID=1492e5ad-c59f-4cb7-aa33-1375cffa1722 # https://app.hubsp
 export HS_APP_CALC_ID=0d6c99ac-c675-4e45-b6b1-8d623effef48 # https://app.hubspot.com/forms/511335/0d6c99ac-c675-4e45-b6b1-8d623effef48/edit/
 export INSPECTLET_FEATURE=false
 export INSPECTLET_WID=1724490325
-boot dev
+time boot dev

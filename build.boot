@@ -9,7 +9,7 @@
     ; [cljsjs/jquery "2.1.4-0"]
     [adzerk/boot-reload "0.3.1"]
     [pandeiro/boot-http "0.6.3"]
-    [adzerk/boot-cljs "1.7.48-SNAPSHOT"]
+    [adzerk/boot-cljs "1.7.48-3"]
     [cljsjs/boot-cljsjs "0.5.0" :scope "test"]
     [exicon/semantic-ui "2.0.6-SNAPSHOT"]]
   :source-paths #{"src"}
@@ -21,28 +21,49 @@
   '[pandeiro.boot-http :refer [serve]]
   '[adzerk.boot-cljs :refer [cljs]]
   '[cljsjs.boot-cljsjs :refer [from-cljsjs]]
-  '[clojure.java.io :as io])
+  '[clojure.java.io :as io]
+  '[clojure.pprint :refer :all]
+  '[boot.util :refer [info]])
 
 (task-options!
   speak { :theme "woodblock" })
 
-(deftask copy-index-htmls
-  [d dirs DIRS #{str} "Directories for the main index.html to be accessible under"]
+(deftask copy-index-html
+  [t to DIRS #{str} "Directories for the main index.html to be accessible under"]
   (with-pre-wrap
     fileset
-    (let [index-html* (->> fileset ls
+    (let [_ (info "Copying index.html...\n")
+          index-html* (->> fileset ls
                            (by-re [#"^index.html$"
                                    #"^index.html.js$"
                                    #"^index.html.out"]))
-          in-subdir (fn [f subdir]
-                      (let [subdir-f (str subdir (.path f))]
-                        {subdir-f (assoc f :path subdir-f)}))
-          dirs-with-index (into {}
-                                (for [dir dirs
-                                      f index-html*]
-                                  (in-subdir f dir)))
-          fileset' (update-in fileset [:tree] merge dirs-with-index)]
+          copy-in (fn [subdir file]
+                    (let [file-in-subdir (str subdir (.path file))]
+                      {file-in-subdir (assoc file :path file-in-subdir)}))
+          copies-in (fn [subdir]
+                      (info "• %s\n" subdir)
+                      (into {} (map (partial copy-in subdir)
+                                    index-html*)))
+          all-copies (into {} (map copies-in to))
+          fileset' (update-in fileset [:tree] merge all-copies)]
       (commit! fileset'))))
+
+(deftask copy-index-htmls []
+  (copy-index-html
+    :to #{"about-us/"
+          "app-builder/"
+          "app-builder-submission/"
+          "app-calculator/"
+          "appboard/"
+          "customers/"
+          "developers/"
+          "news/"
+          "newsletters/"
+          "presentations/"
+          "privacy-policy/"
+          "reports/"
+          "terms-of-use/"
+          "videos/"}))
 
 (deftask dev
   "Build homepage for development."
@@ -57,20 +78,7 @@
     (hoplon :pretty-print true)
     ; (reload)
     (cljs :optimizations :none :source-map true)
-    (copy-index-htmls
-      :dirs #{"app-builder/"
-              "app-builder-submission/"
-              "app-calculator/"
-              "appboard/"
-              "customers/"
-              "developers/"
-              "news/"
-              "newsletters/"
-              "presentations/"
-              "privacy-policy/"
-              "reports/"
-              "terms-of-use/"
-              "videos/"})
+    (copy-index-htmls)
     (speak)))
 
 (deftask prod
@@ -82,8 +90,9 @@
     (sift :to-resource #{#"semantic-ui.min.inc.css"})
     (sift :move {#"^semantic-ui.min.inc.css$" "semantic-ui.css"})
     (hoplon)
-    (cljs :optimizations :simple)
-    (sift :invert true :include #{#"^out/"})
+    (cljs :optimizations :none)
+    ; (sift :invert true :include #{#"^out/"})
+    (copy-index-htmls)
     (prerender)))
 
 (deftask stg [] (prod))
