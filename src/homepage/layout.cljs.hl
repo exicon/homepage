@@ -4,13 +4,14 @@
                     hs-portal-id hs-newsletter-id hs-contact-us-id]])
   (:require
     [homepage.top-nav :refer [top-nav]]
-    [homepage.bottom-nav :refer [bottom-nav]]))
+    [homepage.bottom-nav :refer [bottom-nav]]
+    [goog.object :as o]))
 
 (defn when-hubspot [f]
   (timeout
     (fn try-again []
       (if-not (aget js/window "hbspt")
-        (timeout try-again 20)
+         (timeout try-again 100)
         (f)))))
 
 (defn create-hs-form [custom-opts]
@@ -126,22 +127,13 @@
          :text txt)))
 
 (defn load-inspectlet! []
-  (let [document-protocol (-> js/document .-location .-protocol)
-        inspectlet-src-compatible-with-file-protocol
-        (str "http" (when (= document-protocol "https:") "s")
-             "://cdn.inspectlet.com/inspectlet.js")
-        inspectlet-src "//cdn.inspectlet.com/inspectlet.js"
-        inspectlet-script (script :id "inspsync" :type "text/javascript"
-                                  :async true :src inspectlet-src)
-        head-elem (aget (.getElementsByTagName js/document "head") 0)]
-    (.appendChild head-elem inspectlet-script)))
-
-(defn load-dbg-inspectlet! []
-  (let [inspectlet-script
-        (script :id "inspsync" :type "text/javascript" :src "/inspectlet.js")
-        head-elem
-        (aget (.getElementsByTagName js/document "head") 0)]
-    (.appendChild head-elem inspectlet-script)))
+  (let [https? (= "https:" (-> js/document .-location .-protocol))
+        ; Compatibility with the file:// protocol
+        inspectlet-src (str "http" (when https? "s")
+                            "://cdn.inspectlet.com/inspectlet.js")]
+    (.append (js/jQuery "head")
+             (script :id "inspsync" :type "text/javascript"
+                     :async true :src inspectlet-src))))
 
 (defelem google-analytics []
   (script
@@ -169,15 +161,20 @@
           :type "text/javascript"
           :src "//js.hsforms.net/forms/v2.js"))
 
+(defn inspectlet []
+  (when (inspectlet-feature)
+    (o/set js/window "__insp"
+           (or (o/get js/window "__insp")
+               (array)))
+    (inspect "wid" (inspectlet-wid))
+    (with-init! (load-inspectlet!))))
+
 (defelem primary
   [{:keys [page-css page-title description keywords] :as attrs} content]
   (let [subscribe-click (cell false)
         content-attrs (dissoc attrs
                               :page-title :description :keywords :page-css)]
-    (when (inspectlet-feature)
-      (js* "window.__insp = window.__insp || [];")
-      (inspect "wid" (inspectlet-wid))
-      (with-init! (load-inspectlet!)))
+    (inspectlet)
     (html
       (head
         (title page-title)
@@ -193,16 +190,17 @@
         (link :href "/top-nav.inc.css" :rel "stylesheet")
         (link :href page-css :rel "stylesheet"))
       (body :toggle (cell true)
-        (subscribe-stick-btn subscribe-click)
-        (subscribe-stick-form subscribe-click)
-        (modal-dialog :id "hs-contact-us" :title "Contact Us"
-                      :visible contact-us-visible?)
-        (contact-us-btn :id "contact-us-btn" :css-class "small")
-        (div :id "top-nav"
-             (top-nav :class "fluid hidden")
-             (top-nav :class "fixed"))
-        ((div :id "content") content-attrs content)
-        (bottom-nav)
-        (google-analytics)
-        (hubspot-analytics)
-        (hubspot-forms)))))
+            (subscribe-stick-btn subscribe-click)
+            (subscribe-stick-form subscribe-click)
+            (modal-dialog :id "hs-contact-us" :title "Contact Us"
+                          :visible contact-us-visible?)
+            (contact-us-btn :id "contact-us-btn" :css-class "small")
+            (div :id "top-nav"
+                 (top-nav :class "fluid hidden")
+                 (top-nav :class "fixed"))
+            ((div :id "content") content-attrs content)
+            (bottom-nav)
+            ; (google-analytics)
+            ; (hubspot-analytics)
+            ; (hubspot-forms)
+            ))))
