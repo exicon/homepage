@@ -291,7 +291,11 @@
     (clients)
     (testimonials-section)))
 
-((case (.. js/window -location -pathname)
+(defn pg? [pg curr-pg]
+  (pr :current-page curr-pg)
+  (re-matches (re-pattern (str pg "(index.html)?")) curr-pg))
+
+((condp pg? (.. js/window -location -pathname)
    "/about-us/" homepage.about-us.index/pg
    "/app-builder/" homepage.app-builder.index/pg
    "/app-builder-submission/" homepage.app-builder-submission.index/pg
@@ -306,4 +310,4 @@
    "/reports/" homepage.reports.index/pg
    "/terms-of-use/" homepage.terms-of-use.index/pg
    "/videos/" homepage.videos.index/pg
-   pg))
+   "/" pg))
