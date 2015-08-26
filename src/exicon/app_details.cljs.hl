@@ -5,7 +5,7 @@
 
 (defc warning-message false)
 
-(defc required-fields #{:name :email :company-name :password :tnc})
+(defc required-fields #{:first-name :last-name :phone :email :company-name :password :tnc})
 
 (defn check-required [data content]
   (if (empty? content)

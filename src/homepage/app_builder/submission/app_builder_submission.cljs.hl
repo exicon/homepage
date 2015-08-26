@@ -5,10 +5,9 @@
         [homepage.layout :refer [secondary-header section-header] :as layout]
         [exicon.calculator :refer [cost-calculator]]
         [exicon.app-calculator :refer [app-calculator]]
-        [homepage.app-builder.rpc :refer [public-appbuilder-email]]
+        [homepage.app-builder.rpc :refer [save-submission submission-state submission-error]]
         [exicon.app-details :refer [form-input nda-terms-conditions warning-message
                                     required-fields target-customers app-details user-details]]))
-
 (def page-header {:header "App Builder Submission"})
 
 (defn app-calc-form []
@@ -61,8 +60,8 @@
                  (a :class "ui fluid button"
                     :click #(if @validated?
                               (do
-                                (public-appbuilder-email
-                                  @user-details @app-details @cost-calculator)
+                                (save-submission
+                                  @user-details @cost-calculator @app-details)
                                 (reset-route "#thank-you")
                                 (reset! warning-message false))
                               (reset! warning-message true))
@@ -92,7 +91,7 @@
        (div :class "two fields"
             (form-input :label-txt "How much budget do you have for your app development? (USD)"
                         :object app-details
-                        :data :budget)
+                        :data :development-budget)
             (form-input :label-txt "Estimated launch date - Usually it takes 3 months to build a native app"
                         :object app-details
                         :data :launch-date))
@@ -104,16 +103,28 @@
 
        (div :class "two fields"
             (form-input
-              :label-txt "Name"
+              :label-txt "First name"
               :object user-details
-              :data :name
+              :data :first-name
               :required true)
+            (form-input
+              :label-txt "Last name"
+              :object user-details
+              :data :last-name
+              :required true))
+       (div :class "two fields"
             (form-input
               :label-txt "Email"
               :object user-details
               :data :email
               :type "email"
+              :required true)
+            (form-input
+              :label-txt "Phone number"
+              :object user-details
+              :data :phone
               :required true))
+
        (div :class "two fields"
             (form-input
               :label-txt "Company name"
@@ -121,7 +132,7 @@
               :data :company-name
               :required true)
             (form-input
-              :label-txt "password"
+              :label-txt "Password"
               :object user-details
               :data :password
               :type "password"
@@ -160,16 +171,29 @@
             :class "ui container"
             (app-details-form))
 
-       (div :class "ui container center aligned basic segment"
+       ((div :class "ui container center aligned basic segment")
+            :class (cell= {:loading (and
+                                      (= :undefined submission-state)
+                                      (nil? submission-error))})
             :style "height:30rem"
             :toggle (cell= (= :thank-you active-step))
             (div :class "ui hidden divider")
-            (h2 :class "ui large header"
+            (h2 :toggle (cell= (and (nil? submission-error) (not= :undefined submission-state)))
+              :class "ui large header"
                 "Thank you for submitting your app proposal"
                 (div :class "sub header"
                      "We'll contact you soon!")
                 (div :class "ui hidden divider")
                 (a :href "/app-builder" "Get to know more about App Builder"))
+
+            (h2 :toggle (cell= submission-error)
+              :class "ui large header"
+                "Our servers are busy now"
+                (div :class "sub header"
+                     "Try to submit your request later")
+                (div :class "ui hidden divider")
+                (a :href "/app-builder" "Get to know more about App Builder"))
+
             (div :class "ui hidden divider"))
 
        (div :class "ui hidden divider")
