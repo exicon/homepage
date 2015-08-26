@@ -29,7 +29,7 @@
   speak { :theme "woodblock" })
 
 (deftask copy-index-html
-  [t to DIRS #{str} "Directories for the main index.html to be accessible under"]
+  [d dirs DIRS #{str} "Directories for the main index.html to be accessible under"]
   (with-pre-wrap
     fileset
     (let [_ (info "Copying index.html...\n")
@@ -37,33 +37,32 @@
                            (by-re [#"^index.html$"
                                    #"^index.html.js$"
                                    #"^index.html.out"]))
-          copy-in (fn [subdir file]
-                    (let [file-in-subdir (str subdir (.path file))]
-                      {file-in-subdir (assoc file :path file-in-subdir)}))
-          copies-in (fn [subdir]
-                      (info "• %s\n" subdir)
-                      (into {} (map (partial copy-in subdir)
-                                    index-html*)))
-          all-copies (into {} (map copies-in to))
-          fileset' (update-in fileset [:tree] merge all-copies)]
-      (commit! fileset'))))
+          copy-into (fn [subdir fs file]
+                      (let [file-in-subdir (str subdir (tmp-path file))]
+                        (cp fs (tmp-file file)
+                            (assoc file :path file-in-subdir))))
+          copy-index-html-into (fn [fs subdir]
+                                 (info "• %s\n" subdir)
+                                 (reduce (partial copy-into subdir)
+                                         fs index-html*))]
+      (commit! (reduce copy-index-html-into fileset dirs)))))
 
 (deftask copy-index-htmls []
   (copy-index-html
-    :to #{"about-us/"
-          "app-builder/"
-          "app-builder-submission/"
-          "app-calculator/"
-          "appboard/"
-          "customers/"
-          "developers/"
-          "news/"
-          "newsletters/"
-          "presentations/"
-          "privacy-policy/"
-          "reports/"
-          "terms-of-use/"
-          "videos/"}))
+    :dirs #{"about-us/"
+            "app-builder/"
+            "app-builder-submission/"
+            "app-calculator/"
+            "appboard/"
+            "customers/"
+            "developers/"
+            "news/"
+            "newsletters/"
+            "presentations/"
+            "privacy-policy/"
+            "reports/"
+            "terms-of-use/"
+            "videos/"}))
 
 (deftask dev
   "Build homepage for development."
