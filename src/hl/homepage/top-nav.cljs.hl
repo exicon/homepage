@@ -32,7 +32,7 @@
 (def main-menu-items
   {
    :products{:name "Products" :submenu products-submenu-items :right-menu false}
-   :app-calc{:name "Calculator" :url "/app-calculator"}
+   :app-calc{:name "Calculator" :url "/app-builder/my-app/#calculator"}
    :pricing {:name "Pricing" :url "/appboard/pricing"  :right-menu false}
    :blog {:name "Blog" :url "http://blog.exiconglobal.com/corp/" }
    :resources {:name "Resources" :submenu resources-submenu-items :right-menu false}

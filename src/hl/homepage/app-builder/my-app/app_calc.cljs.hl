@@ -1,4 +1,4 @@
-(page "app-calculator/index.html"
+(page "app-builder/my-app/index.html"
       (:require-macros [config :refer [hs-app-calc-id hs-portal-id]])
       (:require
         [homepage.layout :refer [secondary-header section-header] :as layout]
