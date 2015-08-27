@@ -6,11 +6,17 @@
     [homepage.bottom-nav :as bottom-nav]
     [tailrecursion.hoplon.reload :refer [reload-all]]))
 
+(defc route @(route-cell ""))
+
 (defn inspect [field details]
   (.push js/__insp
          (clj->js [field details])))
 
+(defn set-route! [r]
+  (reset! route r))
+
 (with-init!
+  (route-cell route set-route!)
   (when (inspectlet-feature)
     (js/__ldinsp)
     (inspect "wid" (inspectlet-wid))))

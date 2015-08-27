@@ -1,0 +1,11 @@
+(page "app-builder/index.html"
+      (:require
+        [homepage.layout :refer [route set-route!]]
+        [homepage.app-builder.info]
+        [homepage.app-builder.app-calc]))
+
+(cell= (pr "route" route))
+
+(cell= (if (= route "")
+         (homepage.app-builder.info/index)
+         (homepage.app-builder.app-calc/index)))

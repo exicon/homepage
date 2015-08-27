@@ -1,11 +1,12 @@
-(page "app-builder/index.html"
+(ns homepage.app-builder.info
       (:require
-        [homepage.layout :refer [secondary-header section-header] :as layout]
+        [homepage.layout :refer [secondary-header section-header route set-route!]
+         :as layout]
         [homepage.top-nav :as top-nav]
         [homepage.common :refer [textual-button]]
         [homepage.app-builder.package-data :refer [packages]]
         [homepage.app-builder.pricing :refer [app-builder-pricing]]
-        [tailrecursion.hoplon :refer [with-init!]])
+        [homepage.app-builder.app-calc])
       (:require-macros [config :refer [appboard-url appbuilder-url]]))
 
 (def appboard-login-link (str (appboard-url)"/?package=free&returnUri="(appbuilder-url)"#!/login/"))
@@ -137,9 +138,6 @@
            :sub-title "Founder of Get to know your Brain"
            :company "/images/testimonials/Get-to-know-your-brain.png"}})
 
-(defc route @(route-cell ""))
-
-(route-cell route #(reset! route %))
 
 (defc visible-reasons #{})
 
@@ -455,18 +453,19 @@
            (div :class "ui hidden divider")
            (div :class "ui hidden divider")))
 
-(layout/main
-  :page-title "App Builder"
-  :description "Find the right developer for your app build"
-  :keywords "Build an App, App Builder"
+(defn index []
+  (layout/main
+    :page-title "App Builder"
+    :description "Find the right developer for your app build"
+    :keywords "Build an App, App Builder"
 
-  (secondary-header :header (:header page-header)
-                    :sub-header (:sub-header page-header)
-                    :page "app-builder"
-                    :id "intro")
-  #_(intro-section)
-  (flow-section flow-items)
-  (developer-section)
-  (features-details-section)
-  (testimonials-section)
-  (reasons-section))
+    (secondary-header :header (:header page-header)
+                      :sub-header (:sub-header page-header)
+                      :page "app-builder"
+                      :id "intro")
+    #_(intro-section)
+    (flow-section flow-items)
+    (developer-section)
+    (features-details-section)
+    (testimonials-section)
+    (reasons-section)))
