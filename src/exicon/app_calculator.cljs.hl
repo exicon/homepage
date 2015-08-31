@@ -9,7 +9,7 @@
     [exicon.platform-selector :refer [platform-selector toggle-in-set]]))
 
 (with-init!
-  (.sticky (js/jQuery "#computer-cost-summary")
+  #_(.sticky (js/jQuery "#computer-cost-summary")
         (clj->js {:context "#computer-relative-container"
                   :offset 110
                   :pushing true})))

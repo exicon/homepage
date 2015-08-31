@@ -4,7 +4,7 @@
   :dependencies
   '[[tailrecursion/castra "3.0.0-SNAPSHOT"]
     [tailrecursion/boot-hoplon "0.1.3"]
-    [tailrecursion/hoplon "6.0.0-alpha6"]
+    [tailrecursion/hoplon "6.0.0-alpha7"]
     ; [tailrecursion/javelin "3.8.0"]
     ; [cljsjs/jquery "2.1.4-0"]
     [adzerk/boot-reload "0.3.1"]
@@ -26,7 +26,13 @@
   '[boot.util :refer [info]])
 
 (task-options!
-  speak { :theme "woodblock" })
+  speak {:theme "woodblock"}
+  cljs {:compiler-options
+        {:pseudo-names false
+         ; FIXME still getting: WARNING - unreachable code
+         ;    ga('create', 'UA-31491340-1', 'auto')
+         :externs ["inspectlet.ext.js"
+                   "google-analytics.ext.js"]}})
 
 (deftask copy-index-html
   [d dirs DIRS #{str} "Directories for the main index.html to be accessible under"]
@@ -76,8 +82,10 @@
     (watch)
     (hoplon :pretty-print true)
     ; (reload)
-    (cljs :optimizations :none :source-map true)
+    (cljs :optimizations :none
+          :source-map true)
     (copy-index-htmls)
+    (prerender)
     (speak)))
 
 (deftask prod
@@ -89,9 +97,9 @@
     (sift :to-resource #{#"semantic-ui.min.inc.css"})
     (sift :move {#"^semantic-ui.min.inc.css$" "semantic-ui.css"})
     (hoplon)
-    (cljs :optimizations :none)
-    ; (sift :invert true :include #{#"^out/"})
+    (cljs :optimizations :simple)
     (copy-index-htmls)
-    (prerender)))
+    (prerender)
+    (sift :invert true :include #{#"index.html.out/"})))
 
 (deftask stg [] (prod))

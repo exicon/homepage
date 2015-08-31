@@ -1,5 +1,4 @@
 /.boot/
-/resources/public/
 /.nrepl-port
 /.repl-history
 /.lein-*
@@ -7,5 +6,5 @@
 /classes
 /checkouts
 .nrepl-*
-dev.sh
+config.sh
 config.edn

@@ -12,8 +12,8 @@ A Hoplon project to implement the custom part of Exicon's public homepage.
 1. Start the auto-compiler. In a terminal:
 
     ```bash
-    $ cp dev.example.sh dev.sh
-    $ bash dev.sh
+    $ cp config.example.sh config.sh
+    $ source config.sh; boot dev
     ```
 
 2. Go to [http://localhost:3103][3] in your browser.
@@ -28,7 +28,7 @@ The result will be in the `target/` directory, from where it can be served
 with any webserver capable of serving static files.
 
     ```bash
-    $ boot prod
+    $ source config.sh; boot prod
     $ (cd target; python -mSimpleHTTPServer 3103)
     ```
 

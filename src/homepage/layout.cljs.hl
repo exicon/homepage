@@ -1,32 +1,16 @@
 (ns homepage.layout
   (:require-macros
-    [config :refer [inspectlet-wid inspectlet-feature
-                    hs-portal-id hs-newsletter-id hs-contact-us-id]])
+    [config :refer
+     [inspectlet-wid inspectlet-feature
+      hs-portal-id hs-newsletter-id hs-contact-us-id hs-app-calc-id]])
   (:require
     [homepage.top-nav :refer [top-nav]]
     [homepage.bottom-nav :refer [bottom-nav]]
-    [goog.object :as o]))
-
-(defn when-hubspot [f]
-  (timeout
-    (fn try-again []
-      (if-not (aget js/window "hbspt")
-         (timeout try-again 100)
-        (f)))))
-
-(defn create-hs-form [custom-opts]
-  (let [default-opts {:css ""
-                      :portalId (hs-portal-id)}
-        opts (clj->js (merge default-opts custom-opts))]
-    (when-hubspot #(.. js/hbspt -forms (create opts)))))
-
-(defn inspect [field details]
-  (.push js/__insp (clj->js [field details])))
+    [exicon.integrations]))
 
 (defn row []
   (div
     :class "column sixteen wide center aligned"))
-(defc contact-us-visible? false)
 
 (defelem modal-dialog
   [{:keys [id visible title bg-action]
@@ -76,6 +60,8 @@
    kids
    (div :class "ui hidden divider")))
 
+(defc contact-us-visible? false)
+
 (defn contact-us-modal [active?]
   ((div :class "ui modal")
    :class (cell= {:active true})
@@ -83,28 +69,21 @@
       :click #(reset! active? false))))
 
 (defn subscribe-stick-form [subscribe-click]
-  (let [opts {:target "#hs-form"
-              :cssClass "ui small form basic segment"
-              :submitButtonClass "ui submit teal button"
-              :errorMessageClass "ui error message"
-              :formId (hs-newsletter-id)}
-        trigger-form (cell= (when subscribe-click
-                              (create-hs-form opts)))]
-    [((div :id "subscribe-stick-layer")
-      :class (cell= {:show subscribe-click}))
-     ((div :id "subscribe-stick-form")
-      :class "ui fixed right basic segment"
-      :class (cell= {:show subscribe-click})
-      (i :class "large close icon"
-         :click #(reset! subscribe-click false))
-      (div :class "ui grid"
-           (div :class "sixteen wide center aligned column"
-                (h4 :class "ui header" "Subscribe to our FREE")
-                (p "Newsletter • Reports • Infographs")
-                (div :class "ui divider hidden header")
-                (img :src "/images/header/subscribe.png"))
-           (div :class "sixteen wide column"
-                (div :id "hs-form" "Loading ...."))))]))
+  [((div :id "subscribe-stick-layer")
+    :class (cell= {:show subscribe-click}))
+   ((div :id "subscribe-stick-form")
+    :class "ui fixed right basic segment"
+    :class (cell= {:show subscribe-click})
+    (i :class "large close icon"
+       :click #(reset! subscribe-click false))
+    (div :class "ui grid"
+         (div :class "sixteen wide center aligned column"
+              (h4 :class "ui header" "Subscribe to our FREE")
+              (p "Newsletter • Reports • Infographs")
+              (div :class "ui divider hidden header")
+              (img :src "/images/header/subscribe.png"))
+         (div :class "sixteen wide column"
+              (div :id "hs-newsletter-form" "Loading ...."))))])
 
 (defn subscribe-stick-btn [subscribe-click]
   (a :href "javascript:void(0);"
@@ -115,66 +94,48 @@
 (defelem contact-us-btn
   [{:keys [id css-class txt]
     :or {id "" css-class "" txt "Contact Us"}}]
-  (let [opts {:target "#hs-contact-us"
-              :cssClass "ui small form basic segment"
-              :submitButtonClass "ui submit teal button"
-              :errorMessageClass "ui error message"
-              :formId (hs-contact-us-id)}
-        trigger-form (cell= (when contact-us-visible?
-                              (create-hs-form opts)))]
-    (div :id id :class (str "ui "css-class" button")
-         :click #(reset! contact-us-visible? true)
-         :text txt)))
+  (div :id id :class (str "ui "css-class" button")
+       :click #(reset! contact-us-visible? true)
+       :text txt))
 
-(defn load-inspectlet! []
-  (let [https? (= "https:" (-> js/document .-location .-protocol))
-        ; Compatibility with the file:// protocol
-        inspectlet-src (str "http" (when https? "s")
-                            "://cdn.inspectlet.com/inspectlet.js")]
-    (.append (js/jQuery "head")
-             (script :id "inspsync" :type "text/javascript"
-                     :async true :src inspectlet-src))))
+(when-not prerendering?
+  (exicon.integrations/hubspot-forms
+    :portal-id (hs-portal-id)
+    :onload (fn []
+              (exicon.integrations/create-hubspot-form
+                {:target "#hs-contact-us-form"
+                 :cssClass "ui small form basic segment"
+                 :submitButtonClass "ui submit teal button"
+                 :errorMessageClass "ui error message"
+                 :portalId (hs-portal-id)
+                 :formId (hs-contact-us-id)})
+              (exicon.integrations/create-hubspot-form
+                {:target "#hs-newsletter-form"
+                 :cssClass "ui small form basic segment"
+                 :submitButtonClass "ui submit teal button"
+                 :errorMessageClass "ui error message"
+                 :portalId (hs-portal-id)
+                 :formId (hs-newsletter-id)})
+              ; FIXME this should be in src/homepage/app_calculator/index.cljs.hl
+              ; because that's where it's used
+              (exicon.integrations/create-hubspot-form
+                {:target "#hs-app-calc-form"
+                 :cssClass "ui small form segment"
+                 :submitButtonClass "ui submit teal button"
+                 :errorMessageClass "ui error message"
+                 :portalId (hs-portal-id)
+                 :formId (hs-app-calc-id)})
+              (print "HubSpot forms loaded")))
 
-(defelem google-analytics []
-  (script
-    "(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-31491340-1', 'auto');
-    ga('require', 'displayfeatures');
-    ga('send', 'pageview');
-    ga('require', 'displayfeatures');"))
-
-(defelem hubspot-analytics []
-  (script
-    "(function(d,s,i,r) {
-    if (d.getElementById(i)){return;}
-    var n=d.createElement(s),e=d.getElementsByTagName(s)[0];
-    n.id=i;n.src='//js.hs-analytics.net/analytics/'+(Math.ceil(new Date()/r)*r)+'/511335.js';
-    e.parentNode.insertBefore(n, e);
-    })(document,\"script\",\"hs-analytics\",300000);"))
-
-(defelem hubspot-forms []
-  (script :charset "utf-8"
-          :type "text/javascript"
-          :src "//js.hsforms.net/forms/v2.js"))
-
-(defn inspectlet []
-  (when (inspectlet-feature)
-    (o/set js/window "__insp"
-           (or (o/get js/window "__insp")
-               (array)))
-    (inspect "wid" (inspectlet-wid))
-    (with-init! (load-inspectlet!))))
+  (exicon.integrations/inspectlet (inspectlet-wid))
+  (exicon.integrations/google-analytics)
+  (exicon.integrations/hubspot-analytics))
 
 (defelem primary
   [{:keys [page-css page-title description keywords] :as attrs} content]
   (let [subscribe-click (cell false)
         content-attrs (dissoc attrs
                               :page-title :description :keywords :page-css)]
-    (inspectlet)
     (html
       (head
         (title page-title)
@@ -183,6 +144,9 @@
         (html-meta :name "viewport"
                    :content "width=device-width, initial-scale=1.0")
         (style "body {display: none}")
+        ; FIXME it's not appearing in the prerendered HTML
+        (script :id "3rd-party-libs"
+                "// will insert themselves before this element")
         (link :href "/images/favicon.ico" :rel "shortcut icon")
         (link :href "/semantic-ui.css" :rel "stylesheet")
         (link :href "/homepage.inc.css" :rel "stylesheet")
@@ -192,15 +156,11 @@
       (body :toggle (cell true)
             (subscribe-stick-btn subscribe-click)
             (subscribe-stick-form subscribe-click)
-            (modal-dialog :id "hs-contact-us" :title "Contact Us"
+            (modal-dialog :id "hs-contact-us-form" :title "Contact Us"
                           :visible contact-us-visible?)
             (contact-us-btn :id "contact-us-btn" :css-class "small")
             (div :id "top-nav"
                  (top-nav :class "fluid hidden")
                  (top-nav :class "fixed"))
             ((div :id "content") content-attrs content)
-            (bottom-nav)
-            ; (google-analytics)
-            ; (hubspot-analytics)
-            ; (hubspot-forms)
-            ))))
+            (bottom-nav)))))
