@@ -1,9 +1,9 @@
 (ns homepage.app-builder.rpc
   (:require-macros
-    [tailrecursion.javelin :refer [defc defc=]]
+    [javelin.core :refer [defc defc=]]
     [config :as compile-time])
   (:require
-   [tailrecursion.javelin :refer [cell]]
+   [javelin.core :refer [cell]]
    [tailrecursion.castra :refer [mkremote]]))
 
 (defc state {:random nil})

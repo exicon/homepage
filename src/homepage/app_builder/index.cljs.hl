@@ -1,8 +1,7 @@
 (ns homepage.app-builder.index
       (:require
         [homepage.layout :refer [secondary-header section-header] :as layout]
-        [homepage.common :refer [textual-button]]
-        [tailrecursion.hoplon :refer [with-init!]])
+        [homepage.common :refer [textual-button]])
       (:require-macros [config :refer [appboard-url appbuilder-url]]))
 
 (def appboard-login-link (str (appboard-url)"/?package=starter&returnUri="(appbuilder-url)"#!/login/"))

@@ -1,8 +1,8 @@
 (ns exicon.integrations
   (:require-macros
-    [tailrecursion.hoplon :refer [with-init! defelem]])
+    [hoplon.core :refer [with-init! defelem]])
   (:require
-    [tailrecursion.hoplon :refer [script prerendering?]]
+    [hoplon.core :refer [script prerendering?]]
     [goog.object :as o]))
 
 (defn append-head [elem] (-> (js/$ "head") (aget 0) (.appendChild elem)))

@@ -3,20 +3,21 @@
   :version "0.1.0-SNAPSHOT"
   :dependencies
   '[[tailrecursion/castra "3.0.0-SNAPSHOT"]
-    [tailrecursion/boot-hoplon "0.1.3"]
-    [tailrecursion/hoplon "6.0.0-alpha7"]
+    [hoplon/boot-hoplon "0.1.7"]
+    [hoplon/hoplon "6.0.0-alpha9"]
     ; [tailrecursion/javelin "3.8.0"]
     ; [cljsjs/jquery "2.1.4-0"]
     [adzerk/boot-reload "0.3.1"]
     [pandeiro/boot-http "0.6.3"]
     [adzerk/boot-cljs "1.7.48-3"]
+    [org.clojure/clojurescript "1.7.48"]
     [cljsjs/boot-cljsjs "0.5.0" :scope "test"]
     [exicon/semantic-ui "2.0.6-SNAPSHOT"]]
   :source-paths #{"src"}
   :resource-paths #{"assets"})
 
 (require
-  '[tailrecursion.boot-hoplon :refer [hoplon prerender html2cljs]]
+  '[hoplon.boot-hoplon :refer [hoplon prerender html2cljs]]
   '[adzerk.boot-reload :refer [reload]]
   '[pandeiro.boot-http :refer [serve]]
   '[adzerk.boot-cljs :refer [cljs]]

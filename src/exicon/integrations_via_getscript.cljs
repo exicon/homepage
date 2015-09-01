@@ -1,8 +1,8 @@
 (ns exicon.integrations-via-getscript
   (:require-macros
-    [tailrecursion.hoplon :refer [with-init! with-timeout defelem]])
+    [hoplon.core :refer [with-init! with-timeout defelem]])
   (:require
-    [tailrecursion.hoplon :refer [script prerendering? timeout]]
+    [hoplon.core :refer [script prerendering? timeout]]
     [goog.object :as o]))
 
 (print "Using jQuery.getScript")

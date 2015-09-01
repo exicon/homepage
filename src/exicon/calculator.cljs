@@ -1,6 +1,6 @@
 (ns exicon.calculator
   (:require-macros
-    [tailrecursion.javelin :refer [defc defc= cell=]]))
+    [javelin.core :refer [defc defc= cell=]]))
 
 (defn tbl [keys & vals]
   (map (partial zipmap keys) (partition (count keys) vals)))
