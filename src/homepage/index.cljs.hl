@@ -11,7 +11,6 @@
         [homepage.customers.index]
         [homepage.developers.index]
         [homepage.news.index]
-        [homepage.newsletters.index]
         [homepage.presentations.index]
         [homepage.privacy-policy.index]
         [homepage.reports.index]
@@ -306,7 +305,6 @@
    "/customers/" homepage.customers.index/pg
    "/developers/" homepage.developers.index/pg
    "/news/" homepage.news.index/pg
-   "/newsletters/" homepage.newsletters.index/pg
    "/presentations/" homepage.presentations.index/pg
    "/privacy-policy/" homepage.privacy-policy.index/pg
    "/reports/" homepage.reports.index/pg
