@@ -28,11 +28,7 @@
 (task-options!
   speak {:theme "woodblock"}
   cljs {:compiler-options
-        {:pseudo-names false
-         ; FIXME still getting: WARNING - unreachable code
-         ;    ga('create', 'UA-31491340-1', 'auto')
-         :externs ["inspectlet.ext.js"
-                   "google-analytics.ext.js"]}})
+        {:pseudo-names false}})
 
 (deftask copy-index-html
   [d dirs DIRS #{str} "Directories for the main index.html to be accessible under"]
@@ -82,9 +78,9 @@
     (watch)
     (hoplon :pretty-print true)
     ; (reload)
-    (cljs :optimizations :none
+    (cljs :optimizations :simple
           :source-map true)
-    (copy-index-htmls)
+    ; (copy-index-htmls)
     (prerender)
     (speak)))
 

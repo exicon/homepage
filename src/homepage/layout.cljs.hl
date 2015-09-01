@@ -6,7 +6,9 @@
   (:require
     [homepage.top-nav :refer [top-nav]]
     [homepage.bottom-nav :refer [bottom-nav]]
-    [exicon.integrations]))
+    ; [exicon.integrations :as integrations]
+    [exicon.integrations-via-getscript :as integrations]
+    ))
 
 (defn row []
   (div
@@ -99,37 +101,37 @@
        :text txt))
 
 (when-not prerendering?
-  (exicon.integrations/hubspot-forms
-    :portal-id (hs-portal-id)
-    :onload (fn []
-              (exicon.integrations/create-hubspot-form
-                {:target "#hs-contact-us-form"
-                 :cssClass "ui small form basic segment"
-                 :submitButtonClass "ui submit teal button"
-                 :errorMessageClass "ui error message"
-                 :portalId (hs-portal-id)
-                 :formId (hs-contact-us-id)})
-              (exicon.integrations/create-hubspot-form
-                {:target "#hs-newsletter-form"
-                 :cssClass "ui small form basic segment"
-                 :submitButtonClass "ui submit teal button"
-                 :errorMessageClass "ui error message"
-                 :portalId (hs-portal-id)
-                 :formId (hs-newsletter-id)})
-              ; FIXME this should be in src/homepage/app_calculator/index.cljs.hl
-              ; because that's where it's used
-              (exicon.integrations/create-hubspot-form
-                {:target "#hs-app-calc-form"
-                 :cssClass "ui small form segment"
-                 :submitButtonClass "ui submit teal button"
-                 :errorMessageClass "ui error message"
-                 :portalId (hs-portal-id)
-                 :formId (hs-app-calc-id)})
-              (print "HubSpot forms loaded")))
+  (integrations/hubspot-forms
+    (fn []
+      (integrations/create-hubspot-form
+        {:target "#hs-contact-us-form"
+         :cssClass "ui small form basic segment"
+         :submitButtonClass "ui submit teal button"
+         :errorMessageClass "ui error message"
+         :portalId (hs-portal-id)
+         :formId (hs-contact-us-id)})
+      (integrations/create-hubspot-form
+        {:target "#hs-newsletter-form"
+         :cssClass "ui small form basic segment"
+         :submitButtonClass "ui submit teal button"
+         :errorMessageClass "ui error message"
+         :portalId (hs-portal-id)
+         :formId (hs-newsletter-id)})
+      ; FIXME this should be in src/homepage/app_calculator/index.cljs.hl
+      ; because that's where it's used
+      (integrations/create-hubspot-form
+        {:target "#hs-app-calc-form"
+         :cssClass "ui small form segment"
+         :submitButtonClass "ui submit teal button"
+         :errorMessageClass "ui error message"
+         :portalId (hs-portal-id)
+         :formId (hs-app-calc-id)})
+      (print "HubSpot forms loaded")))
 
-  (exicon.integrations/inspectlet (inspectlet-wid))
-  (exicon.integrations/google-analytics)
-  (exicon.integrations/hubspot-analytics))
+  (integrations/inspectlet (inspectlet-wid))
+  (integrations/google-analytics)
+  (integrations/hubspot-analytics)
+  )
 
 (defelem primary
   [{:keys [page-css page-title description keywords] :as attrs} content]
