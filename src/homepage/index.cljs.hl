@@ -5,9 +5,9 @@
         [homepage.common :as common :refer [registration-link]]
         [homepage.about-us.index]
         [homepage.app-builder.index]
-        [homepage.app-builder-submission.index]
         [homepage.app-calculator.index]
         [homepage.appboard.index]
+        [homepage.pricing.index]
         [homepage.customers.index]
         [homepage.developers.index]
         [homepage.news.index]
@@ -15,11 +15,8 @@
         [homepage.privacy-policy.index]
         [homepage.reports.index]
         [homepage.terms-of-use.index]
-        [homepage.videos.index]
+        ; [homepage.videos.index]
         ))
-
-(defc route @(route-cell ""))
-(route-cell route #(reset! route %))
 
 (defn intro []
   (section :id "intro"
@@ -297,11 +294,11 @@
            curr-pg))
 
 ((condp pg? (.. js/window -location -pathname)
-   "/about-us/" homepage.about-us.index/pg
-   "/app-builder/" homepage.app-builder.index/pg
-   "/app-builder-submission/" homepage.app-builder-submission.index/pg
    "/app-calculator/" homepage.app-calculator.index/pg
+   "/app-builder/" homepage.app-builder.index/pg
+   "/pricing/" homepage.pricing.index/pg
    "/appboard/" homepage.appboard.index/pg
+   "/about-us/" homepage.about-us.index/pg
    "/customers/" homepage.customers.index/pg
    "/developers/" homepage.developers.index/pg
    "/news/" homepage.news.index/pg
@@ -309,6 +306,6 @@
    "/privacy-policy/" homepage.privacy-policy.index/pg
    "/reports/" homepage.reports.index/pg
    "/terms-of-use/" homepage.terms-of-use.index/pg
-   "/videos/" homepage.videos.index/pg
+   ; "/videos/" homepage.videos.index/pg
    "/" pg
    #(html (body (h1 "Unknown path")))))

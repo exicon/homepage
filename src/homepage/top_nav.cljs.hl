@@ -1,10 +1,6 @@
 (ns homepage.top-nav
   (:require-macros [config :refer [appboard-url]]))
 
-(defc route @(route-cell ""))
-(defn reset-route [url]
-  (reset! route url))
-
 (defc clicked-main-menu-item nil)
 
 (defn submenu? [item]
@@ -13,20 +9,18 @@
     false))
 
 (defelem signup-menu-item [attrs _]
-  ((a :href "/appboard/pricing/") attrs "Sign up"))
+  ((a :href "/pricing/") attrs "Sign up"))
 
 (defelem login-menu-item [attrs _]
   ((a :href (appboard-url)) attrs "Login"))
 
 (def main-menu-items
-  {:app-calc {:name "Calculator" :url "/app-builder/submission/#calculator"
-              :route "#calculator"}
-   :app-builder {:name "App Builder"
-                 :url "/app-builder/"}
+  {:app-calc {:name "Calculator" :url "/app-builder-submission/#calculator"}
+   :app-builder {:name "App Builder" :url "/app-builder/#"}
    :appboard {:name "AppBoard" :url "/appboard/"}
 
-   :pricing {:name "Pricing" :url "/appboard/pricing/"}
-   :blog {:name "Blog" :url "http://blog.exiconglobal.com/corp/"}
+   :pricing {:name "Pricing" :url "/pricing/"}
+   :blog {:name "Blog" :url "http://blog.exiconglobal.com/"}
    :resources
    {:name "Resources"
     :submenu [{ :id :starter :name "Research" :url "/reports/"}
@@ -38,7 +32,6 @@
   (loop-tpl :bindings [item items]
             (a :class "item"
                :href (cell= (:url item))
-               :click #(reset-route (:route @item))
                (text (:name item)))))
 
 (defn main-menu [items clicked-item]
@@ -50,9 +43,7 @@
      :href (cell= (:url item))
      :mouseover #(reset! clicked-item @id)
      :mouseout #(reset! clicked-item nil)
-     :click #(do
-               (reset! clicked-item @id)
-               (reset-route (:route @item)))
+     :click #(reset! clicked-item @id)
      (text (:name item))
      (if (submenu? @item)
        ((div :class "menu transition")

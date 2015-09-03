@@ -1,0 +1,200 @@
+(ns homepage.app-builder.submission
+  (:require
+    [homepage.layout :refer [secondary-header section-header route] :as layout]
+    [exicon.calculator :refer [cost-calculator]]
+    [exicon.app-calculator :refer [app-calculator]]
+    [homepage.app-builder.rpc :refer [save-submission submission-state submission-error]]
+    [exicon.app-details :refer [form-input tnc-and-nda warning-message
+                                required-fields target-customers app-details user-details]]))
+
+(defc= validated? (empty? required-fields))
+
+(defc= active-step (case route
+                     "#calculator" :calculator
+                     "#submission" :submission
+                     "#thank-you" :thank-you
+                     :unknow-subpage))
+
+(defelem step [{:keys [id title href]} kids]
+  ((a :class "step")
+   :class (cell= {:active (= id active-step)})
+   :href href
+   kids
+   (div :class "title"
+        :text title)))
+
+(defelem nav-buttons []
+  (div :class "ui container grid"
+       (div :class "row"
+            (div :class "left floated four wide column"
+                 :toggle (cell= (= :submission active-step))
+                 (a :class "ui fluid button"
+                    :href "#calculator"
+                    "< Previous"))
+            (div :class "right floated four wide column"
+                 :toggle (cell= (= :calculator active-step))
+                 (a :class "ui fluid button"
+                    :href "#submission"
+                    "Build this app >"))
+            (div :class "right floated four wide column"
+                 :toggle (cell= (= :submission active-step))
+                 (a :class "ui fluid button"
+                    :click #(do
+                              (when @validated?
+                                (save-submission
+                                  @user-details @cost-calculator @app-details))
+                              (reset! warning-message @validated?))
+                    :href (cell= (if validated? "#thank-you" "javascript:void(0)"))
+                    "Submit")))))
+
+(defelem app-details-form []
+  (div :class "ui form segment"
+       (tnc-and-nda)
+       (form-input
+         :label-txt "App Name"
+         :object app-details
+         :data :app-name)
+       (p "Summarize your app.")
+       (p "The more you tell us the better we can match you
+          to the right developer.")
+       (ul :class "ui bulleted list"
+           (li "Key features.")
+           (li "Business benefits of the app.")
+           (li "Key metrics and success criteria.")
+           (li "Customer demographic and size of the opportunity."))
+
+       (form-input
+         :label-txt "Summary"
+         :data :summary
+         :object app-details
+         :type :textarea)
+
+       (div :class "two fields"
+            (form-input
+              :label-txt "How much budget do you have for your app development? (USD)"
+              :object app-details
+              :data :development-budget)
+            (form-input
+              :label-txt "Estimated launch date - Usually it takes 3 months to build a native app"
+              :object app-details
+              :data :launch-date))
+
+       (target-customers)
+
+       (div :class "field"
+            (h2 :class "ui small dividing header" "Registration"))
+
+       (div :class "two fields"
+            (form-input
+              :label-txt "First name"
+              :object user-details
+              :data :first-name
+              :required true)
+            (form-input
+              :label-txt "Last name"
+              :object user-details
+              :data :last-name
+              :required true))
+       (div :class "two fields"
+            (form-input
+              :label-txt "Email"
+              :object user-details
+              :data :email
+              :type "email"
+              :required true)
+            (form-input
+              :label-txt "Phone number"
+              :object user-details
+              :data :phone
+              :required true))
+
+       (div :class "two fields"
+            (form-input
+              :label-txt "Company name"
+              :object user-details
+              :data :company-name
+              :required true)
+            (form-input
+              :label-txt "Password"
+              :object user-details
+              :data :password
+              :type "password"
+              :required true))))
+
+(defn pg []
+  (layout/primary
+    :page-title "App Builder Submission"
+    :description ""
+    :keywords ""
+    :page-css "/app-calculator/index.inc.css"
+    :page "app-builder-submission"
+
+    (div :id "app-builder-submission"
+         (div :class "ui hidden divider")
+
+         (div :class "ui container"
+              :toggle (cell= (not= :thank-you active-step))
+              (div :class "ui two steps"
+                   (step :id :calculator :href "#calculator" :title "App Cost Calculator")
+                   (step :id :submission :href "#submission" :title "App Builder")))
+
+         (div :class "ui hidden divider")
+         (div :toggle (cell= (= :calculator active-step))
+              :class "ui container description sizer"
+              (a :href "#consultation" "Book a free 30 min consultation")
+              (p "Try out our App Cost Calculator to get a range of possible
+                 costs to build your app")
+              (div :class "ui hidden divider"))
+
+         (div :id "app-calculator"
+              :toggle (cell= (= :calculator active-step))
+              (app-calculator))
+
+         (div :toggle (cell= (= :submission active-step))
+              :class "ui container"
+              (app-details-form))
+
+         ((div :class "ui container center aligned basic segment")
+          :class (cell= {:loading (and
+                                    (= :undefined submission-state)
+                                    (nil? submission-error))})
+          :style "height:30rem"
+          :toggle (cell= (= :thank-you active-step))
+          (div :class "ui hidden divider")
+          (h2 :toggle (cell= (and (nil? submission-error) (not= :undefined submission-state)))
+              :class "ui large header"
+              "Thank you for submitting your app proposal"
+              (div :class "sub header"
+                   "We'll contact you soon!")
+              (div :class "ui hidden divider")
+              (a :href "/app-builder" "Get to know more about App Builder"))
+
+          (h2 :toggle (cell= submission-error)
+              :class "ui large header"
+              "Our servers are busy now"
+              (div :class "sub header"
+                   "Try to submit your request later")
+              (div :class "ui hidden divider")
+              (a :href "/app-builder" "Get to know more about App Builder"))
+
+          (div :class "ui hidden divider"))
+
+         (div :class "ui hidden divider")
+         (nav-buttons)
+
+         (div :class "ui container error message"
+              :toggle (cell= warning-message)
+              "Please review all the mandatory fields and agree with the Terms & Conditions")
+
+         (div :class "ui hidden divider")
+
+         (div :id "consultation"
+              :class "ui center aligned basic secondary segment description sizer"
+              :toggle (cell= (= :calculator active-step))
+              (h3 :class "ui medium header"
+                  "Book your 30-minute FREE App Builder consultation.")
+              (div :class "ui hidden divider")
+              (div :class "ui container grid"
+                   (div :id "hs-app-calc-form"
+                        :class "eight wide centered left aligned column"))
+              (div :class "ui hidden divider")))))

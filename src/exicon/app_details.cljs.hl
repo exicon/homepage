@@ -67,7 +67,7 @@
                  (loop-tpl :bindings [item location-items]
                            (item-checkbox item))))))
 
-(defelem nda-terms-conditions [{:keys []}]
+(defelem tnc-and-nda []
   [(div :class "sixteen wide column"
         (div :class "ui center aligned basic segment"
              (h2 :class "ui large header"

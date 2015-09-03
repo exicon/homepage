@@ -54,9 +54,9 @@
   (copy-index-html
     :dirs #{"about-us/"
             "app-builder/"
-            "app-builder-submission/"
             "app-calculator/"
             "appboard/"
+            "pricing/"
             "customers/"
             "developers/"
             "news/"
@@ -65,7 +65,8 @@
             "privacy-policy/"
             "reports/"
             "terms-of-use/"
-            "videos/"}))
+            ; "videos/"
+            }))
 
 (deftask dev
   "Build homepage for development."
@@ -79,10 +80,10 @@
     (watch)
     (hoplon :pretty-print true)
     ; (reload)
-    (cljs :optimizations :simple
+    (cljs :optimizations :none
           :source-map true)
-    ; (copy-index-htmls)
-    (prerender)
+    (copy-index-htmls)
+    ; (prerender)
     (speak)))
 
 (deftask prod
