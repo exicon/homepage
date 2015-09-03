@@ -94,9 +94,9 @@
     (sift :to-resource #{#"semantic-ui.min.inc.css"})
     (sift :move {#"^semantic-ui.min.inc.css$" "semantic-ui.css"})
     (hoplon)
-    (cljs :optimizations :simple)
+    (cljs :optimizations :advanced :source-map true)
     (copy-index-htmls)
     (prerender)
-    (sift :invert true :include #{#"index.html.out/"})))
+    #_(sift :invert true :include #{#"index.html.out/"})))
 
 (deftask stg [] (prod))

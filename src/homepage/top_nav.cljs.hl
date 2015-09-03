@@ -1,6 +1,10 @@
 (ns homepage.top-nav
   (:require-macros [config :refer [appboard-url]]))
 
+(defc route @(route-cell ""))
+(defn reset-route [url]
+  (reset! route url))
+
 (defc clicked-main-menu-item nil)
 
 (defn submenu? [item]
@@ -15,12 +19,12 @@
   ((a :href (appboard-url)) attrs "Login"))
 
 (def main-menu-items
-  {:products
-   {:name "Products"
-    :submenu [{ :id :appboard :name "AppBoard" :url "/appboard/"}
-              { :id :appbuilder :name "App Builder" :url "/app-builder/"}
-              { :id :apiaxle :name "API Axle" :url "/apiaxle/"}]}
-   :app-calc {:name "Calculator" :url "/app-calculator/"}
+  {:app-calc {:name "Calculator" :url "/app-builder/submission/#calculator"
+              :route "#calculator"}
+   :app-builder {:name "App Builder"
+                 :url "/app-builder/"}
+   :appboard {:name "AppBoard" :url "/appboard/"}
+
    :pricing {:name "Pricing" :url "/appboard/pricing/"}
    :blog {:name "Blog" :url "http://blog.exiconglobal.com/corp/"}
    :resources
@@ -34,6 +38,7 @@
   (loop-tpl :bindings [item items]
             (a :class "item"
                :href (cell= (:url item))
+               :click #(reset-route (:route @item))
                (text (:name item)))))
 
 (defn main-menu [items clicked-item]
@@ -45,7 +50,9 @@
      :href (cell= (:url item))
      :mouseover #(reset! clicked-item @id)
      :mouseout #(reset! clicked-item nil)
-     :click #(reset! clicked-item @id)
+     :click #(do
+               (reset! clicked-item @id)
+               (reset-route (:route @item)))
      (text (:name item))
      (if (submenu? @item)
        ((div :class "menu transition")

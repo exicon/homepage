@@ -3,27 +3,37 @@
 (defc app-details {:tnc false :location #{}})
 (defc user-details nil)
 
-(defc warning-message nil)
+(defc warning-message false)
+
+(defc required-fields #{:first-name :last-name :phone :email :company-name :password :tnc})
+
+(defn check-required [data content]
+  (if (empty? content)
+    (reset! required-fields (conj @required-fields data))
+    (reset! required-fields (disj @required-fields data))))
 
 (defelem form-input [{:keys [label-txt object data type required]
                       :or {type "text" required nil}} kids]
   ((div :class "field")
-   :class {:required required}
+   :class (cell= {:required required
+                  :error (if (and warning-message (required-fields data)) true false)})
    (label :text label-txt)
    (if (= type :textarea)
      (textarea :change #(reset! object (assoc @object data @%)))
      (input :type type
-            :change #(reset! object (assoc @object data @%))))
+            :change #(do
+                       (reset! object (assoc @object data @%))
+                       (when required
+                         (check-required data @%)))))
    kids))
 
-(defn show-warning-message []
-  (reset! warning-message :terms-conditions))
 
 (defn checkbox-state [field elem]
   (if (field elem) (disj field elem) (conj field elem)))
 
 (defn checkbox-checked [id elem]
-  (if (id elem) true false))
+  (if (id elem)
+    true false))
 
 (defn tbl [keys & vals]
   (map (partial zipmap keys) (partition (count keys) vals)))
@@ -59,10 +69,6 @@
 
 (defelem nda-terms-conditions [{:keys []}]
   [(div :class "sixteen wide column"
-        (div :class "ui negative message" :style "display:none;"
-             :toggle (cell= (= warning-message :terms-conditions))
-             (div :class "header" "We're sorry, you can't submit")
-             (p "Please accept the terms and conditions"))
         (div :class "ui center aligned basic segment"
              (h2 :class "ui large header"
                  (img :class "ui tiny inline image" :src "http://www.exiconglobal.com/images/app-builder/nda.png")
@@ -72,9 +78,11 @@
              (div :class "ui checkbox"
                   (input :type "checkbox" :name "terms-conditions" :id "nda"
                          :checked (cell= (:tnc app-details))
-                         :click #(reset! app-details
-                                         (assoc @app-details :tnc
-                                           (not (:tnc @app-details)))))
+                         :click #(do
+                                   (reset! app-details
+                                           (assoc @app-details :tnc
+                                             (not (:tnc @app-details))))
+                                   (reset! required-fields (checkbox-state @required-fields :tnc))))
                   (label :for "nda" "I agree to Exicon's "
                          (a :href "http://blog.exiconglobal.com/corp/legal/terms-of-use/"
                             :target "_blank"

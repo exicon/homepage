@@ -6,6 +6,7 @@
 
 (def appboard-login-link (str (appboard-url)"/?package=starter&returnUri="(appbuilder-url)"#!/login/"))
 (def appboard-registration-link (str (appboard-url)"/?package=starter&returnUri="(appbuilder-url)"#!/registration/"))
+(def app-builder-submission-lik "/app-builder/submission/#calculator")
 
 (def page-header
   {:header "App Builder"
@@ -192,7 +193,7 @@
                      (div :class "column"
                           (textual-button
                             :inline false
-                            :destination-link appboard-registration-link)))
+                            :destination-link app-builder-submission-lik)))
                 (div :class "ui hidden divider"))))
 
 (defn dev-community-column [item]
@@ -448,10 +449,7 @@
                   (textual-button
                     :inline true
                     :button-text "Find your App Builder NOW"
-                    :destination-link (str (appboard-url)
-                                           "/?package=starter&returnUri="
-                                           (appbuilder-url)
-                                           "#!/registration/"))))
+                    :destination-link app-builder-submission-lik)))
            (div :class "ui hidden divider")
            (div :class "ui hidden divider")))
 
