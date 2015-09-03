@@ -1,4 +1,3 @@
-;
 var $i = {};
 var __insp = {};
 var __insp_ = {};

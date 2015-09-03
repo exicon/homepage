@@ -6,9 +6,7 @@
   (:require
     [homepage.top-nav :refer [top-nav]]
     [homepage.bottom-nav :refer [bottom-nav]]
-    ; [exicon.integrations :as integrations]
-    [exicon.integrations-via-getscript :as integrations]
-    ))
+    [exicon.integrations :as integrations]))
 
 (defn row []
   (div
@@ -126,12 +124,7 @@
          :errorMessageClass "ui error message"
          :portalId (hs-portal-id)
          :formId (hs-app-calc-id)})
-      (print "HubSpot forms loaded")))
-
-  (integrations/inspectlet (inspectlet-wid))
-  (integrations/google-analytics)
-  (integrations/hubspot-analytics)
-  )
+      (print "HubSpot forms loaded"))))
 
 (defelem primary
   [{:keys [page-css page-title description keywords] :as attrs} content]
@@ -140,22 +133,22 @@
                               :page-title :description :keywords :page-css)]
     (html
       (head
-        (title page-title)
-        (html-meta :name "description" :content description)
-        (html-meta :name "keywords" :content keywords)
-        (html-meta :name "viewport"
-                   :content "width=device-width, initial-scale=1.0")
-        (style "body {display: none}")
-        ; FIXME it's not appearing in the prerendered HTML
-        (script :id "3rd-party-libs"
-                "// will insert themselves before this element")
-        (link :href "/images/favicon.ico" :rel "shortcut icon")
-        (link :href "/semantic-ui.css" :rel "stylesheet")
-        (link :href "/homepage.inc.css" :rel "stylesheet")
-        (link :href "/main.inc.css" :rel "stylesheet")
-        (link :href "/top-nav.inc.css" :rel "stylesheet")
-        (link :href page-css :rel "stylesheet"))
-      (body :toggle (cell true)
+            (title page-title)
+            (html-meta :name "description" :content description)
+            (html-meta :name "keywords" :content keywords)
+            (html-meta :name "viewport"
+                       :content "width=device-width, initial-scale=1.0")
+            (style "body {display: none}")
+            ; FIXME it's not appearing in the prerendered HTML
+            (script :id "3rd-party-libs"
+                    "// will insert themselves before this element")
+            (link :href "/images/favicon.ico" :rel "shortcut icon")
+            (link :href "/semantic-ui.css" :rel "stylesheet")
+            (link :href "/homepage.inc.css" :rel "stylesheet")
+            (link :href "/main.inc.css" :rel "stylesheet")
+            (link :href "/top-nav.inc.css" :rel "stylesheet")
+            (link :href page-css :rel "stylesheet"))
+      (body :toggle (cell= true)
             (subscribe-stick-btn subscribe-click)
             (subscribe-stick-form subscribe-click)
             (modal-dialog :id "hs-contact-us-form" :title "Contact Us"
@@ -165,4 +158,44 @@
                  (top-nav :class "fluid hidden")
                  (top-nav :class "fixed"))
             ((div :id "content") content-attrs content)
-            (bottom-nav)))))
+            (bottom-nav)
+            (when-not prerendering?
+              ; Google Analytics
+              [(script
+                "(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+                ga('create', 'UA-31491340-1', 'auto');
+                ga('require', 'displayfeatures');
+                ga('send', 'pageview');
+                ga('require', 'displayfeatures');")
+              (script "console.log('Google Analytics kicked off')")
+
+              ; Inspectlet
+              (script
+                "window.__insp = window.__insp || [];
+                __insp.push(['wid', 517103481]);
+                (function() {
+                function __ldinsp(){var insp = document.createElement('script');
+                insp.type = 'text/javascript';
+                insp.async = true;
+                insp.id = \"inspsync\";
+                insp.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://cdn.inspectlet.com/inspectlet.js';
+                var x = document.getElementsByTagName('script')[0];
+                x.parentNode.insertBefore(insp, x);
+                };
+                document.readyState != \"complete\" ? (window.attachEvent ? window.attachEvent('onload', __ldinsp) : window.addEventListener('load', __ldinsp, false)) : __ldinsp();
+                })();")
+              (script "console.log('Inspectlet kicked off')")
+
+              ; HubSpot analytics
+              (script
+                "(function(d,s,i,r) {
+                if (d.getElementById(i)){return;}
+                var n=d.createElement(s),e=d.getElementsByTagName(s)[0];
+                n.id=i;n.src='//js.hs-analytics.net/analytics/'+(Math.ceil(new Date()/r)*r)+'/511335.js';
+                e.parentNode.insertBefore(n, e);
+                })(document,'script','hs-analytics',300000);")
+              (script "console.log('HubSpot analytics kicked off')")])))))
