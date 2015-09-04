@@ -1,10 +1,10 @@
 (ns homepage.pricing.index
-      (:require
-        [homepage.layout
-         :refer [secondary-header contact-us-modal contact-us-btn]
-         :as layout])
-      (:require-macros
-        [config :refer [appboard-url hs-contact-us-id hs-portal-id]]))
+  (:require
+    [homepage.layout
+     :refer [secondary-header contact-us-modal contact-us-btn]
+     :as layout])
+  (:require-macros
+    [config :refer [appboard-url hs-contact-us-id hs-portal-id]]))
 
 (def page-header {:header "Pricing"})
 
@@ -218,18 +218,18 @@
 
 (defn pg []
   (layout/primary
-  :id "pricing"
-  :page-title "Product Pricing | Analytics & App Management | Exicon"
-  :description "Pricing For Exicon's App Management & Logistics Platform That Scales With Your App Portfolio, Analytics, Distribution & API Management."
-  :keywords "Analytics, App Management, Exicon"
-  :page-css "../../pricing/index.inc.css"
+    :id "pricing"
+    :page-title "Product Pricing | Analytics & App Management | Exicon"
+    :description "Pricing For Exicon's App Management & Logistics Platform That Scales With Your App Portfolio, Analytics, Distribution & API Management."
+    :keywords "Analytics, App Management, Exicon"
+    :page-css "../../pricing/index.inc.css"
 
-  (secondary-header :header (:header page-header))
-  (div :class "ui hidden divider")
-  (pricing-section)
-  (pricing-section-mobile)
-  (cta-section)
-  (div :class "ui hidden divider")
-  (div :class "ui hidden divider")
-  (value-add-section)
-  (div :class "ui hidden divider")))
+    (secondary-header :header (:header page-header))
+    (div :class "ui hidden divider")
+    (pricing-section)
+    (pricing-section-mobile)
+    (cta-section)
+    (div :class "ui hidden divider")
+    (div :class "ui hidden divider")
+    (value-add-section)
+    (div :class "ui hidden divider")))

@@ -9,6 +9,7 @@
     [exicon.integrations :as integrations]))
 
 (def route (route-cell))
+; (cell= (print "Route changed to:" route))
 
 (defn row []
   (div :class "column sixteen wide center aligned"))
@@ -19,16 +20,17 @@
    kids]
   (let [hide #(reset! visible false)
         bg-click (if bg-action bg-action hide)]
-    [((div :class "modal-bg")
-      :class (cell= {:show-modal visible})
-      :click bg-click )
-     ((div :class "ui small modal")
-      :style "min-heigth:100px"
-      :class (cell= {:visible visible})
-      (div :class "header" title)
-      (div :id id :class "content"
-           "Loading...")
-      kids)]))
+    (spliced
+      ((div :class "modal-bg")
+       :class (cell= {:show-modal visible})
+       :click bg-click )
+      ((div :class "ui small modal")
+       :style "min-heigth:100px"
+       :class (cell= {:visible visible})
+       (div :class "header" title)
+       (div :id id :class "content"
+            "Loading...")
+       kids))))
 
 (defelem secondary-header
   [{:keys [header sub-header page center id]
@@ -99,29 +101,31 @@
        :click #(reset! contact-us-visible? true)
        :text txt))
 
-(integrations/load-hubspot-form
-  {:target "#hs-contact-us-form"
-   :cssClass "ui small form basic segment"
-   :submitButtonClass "ui submit teal button"
-   :errorMessageClass "ui error message"
-   :portalId (hs-portal-id)
-   :formId (hs-contact-us-id)})
-
-(integrations/load-hubspot-form
-  {:target "#hs-newsletter-form"
-   :cssClass "ui small form basic segment"
-   :submitButtonClass "ui submit teal button"
-   :errorMessageClass "ui error message"
-   :portalId (hs-portal-id)
-   :formId (hs-newsletter-id)})
-
-(when-not prerendering? (integrations/hubspot-forms))
 
 (defelem primary
   [{:keys [page-css page-title description keywords] :as attrs} content]
   (let [subscribe-click (cell false)
         content-attrs (dissoc attrs
                               :page-title :description :keywords :page-css)]
+
+    (when-not prerendering? (integrations/hubspot-forms))
+
+    (integrations/load-hubspot-form
+      {:target "#hs-contact-us-form"
+       :cssClass "ui small form basic segment"
+       :submitButtonClass "ui submit teal button"
+       :errorMessageClass "ui error message"
+       :portalId (hs-portal-id)
+       :formId (hs-contact-us-id)})
+
+    (integrations/load-hubspot-form
+      {:target "#hs-newsletter-form"
+       :cssClass "ui small form basic segment"
+       :submitButtonClass "ui submit teal button"
+       :errorMessageClass "ui error message"
+       :portalId (hs-portal-id)
+       :formId (hs-newsletter-id)})
+
     (html
       (head
         (title page-title)
@@ -151,6 +155,7 @@
             ((div :id "content") content-attrs content)
             (bottom-nav)
             (when-not prerendering?
-              [(integrations/google-analytics)
-               (integrations/inspectlet)
-               (integrations/hubspot-analytics)])))))
+              (spliced
+                (integrations/google-analytics)
+                (integrations/inspectlet)
+                (integrations/hubspot-analytics)))))))

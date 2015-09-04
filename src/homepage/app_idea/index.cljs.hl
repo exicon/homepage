@@ -1,17 +1,20 @@
-(ns homepage.app-builder.submission
+(ns homepage.app-idea.index
+  (:require-macros [config :refer [hs-app-calc-id hs-portal-id]])
   (:require
     [homepage.layout :refer [secondary-header section-header route] :as layout]
+    [exicon.integrations :refer [load-hubspot-form]]
     [exicon.calculator :refer [cost-calculator]]
     [exicon.app-calculator :refer [app-calculator]]
-    [homepage.app-builder.rpc :refer [save-submission submission-state submission-error]]
+    [homepage.app-idea.rpc :refer [save-submission submission-state submission-error]]
     [exicon.app-details :refer [form-input tnc-and-nda warning-message
                                 required-fields target-customers app-details user-details]]))
 
 (defc= validated? (empty? required-fields))
 
 (defc= active-step (case route
-                     "#calculator" :calculator
-                     "#submission" :submission
+                     "#calculate" :calculate
+                     "#consult" :calculate
+                     "#submit" :submit
                      "#thank-you" :thank-you
                      :unknow-subpage))
 
@@ -27,17 +30,17 @@
   (div :class "ui container grid"
        (div :class "row"
             (div :class "left floated four wide column"
-                 :toggle (cell= (= :submission active-step))
+                 :toggle (cell= (= :submit active-step))
                  (a :class "ui fluid button"
-                    :href "#calculator"
+                    :href "#calculate"
                     "< Previous"))
             (div :class "right floated four wide column"
-                 :toggle (cell= (= :calculator active-step))
+                 :toggle (cell= (= :calculate active-step))
                  (a :class "ui fluid button"
-                    :href "#submission"
+                    :href "#submit"
                     "Build this app >"))
             (div :class "right floated four wide column"
-                 :toggle (cell= (= :submission active-step))
+                 :toggle (cell= (= :submit active-step))
                  (a :class "ui fluid button"
                     :click #(do
                               (when @validated?
@@ -122,35 +125,45 @@
               :required true))))
 
 (defn pg []
+  (load-hubspot-form
+    {:target "#hs-app-calc-form"
+     :cssClass "ui small form segment"
+     :submitButtonClass "ui submit teal button"
+     :errorMessageClass "ui error message"
+     :portalId (hs-portal-id)
+     :formId (hs-app-calc-id)})
+
   (layout/primary
     :page-title "App Builder Submission"
     :description ""
     :keywords ""
-    :page-css "/app-calculator/index.inc.css"
-    :page "app-builder-submission"
+    :page-css "index.inc.css"
+    :page "app-idea"
 
-    (div :id "app-builder-submission"
+    (div :id "app-idea"
+         (div :id "submit" :class "anchor")
+         (div :id "calculate" :class "anchor")
          (div :class "ui hidden divider")
 
          (div :class "ui container"
               :toggle (cell= (not= :thank-you active-step))
               (div :class "ui two steps"
-                   (step :id :calculator :href "#calculator" :title "App Cost Calculator")
-                   (step :id :submission :href "#submission" :title "App Builder")))
+                   (step :id :calculate :href "#calculate" :title "App Cost Calculator")
+                   (step :id :submit :href "#submit" :title "App Builder")))
 
          (div :class "ui hidden divider")
-         (div :toggle (cell= (= :calculator active-step))
+         (div :toggle (cell= (= :calculate active-step))
               :class "ui container description sizer"
-              (a :href "#consultation" "Book a free 30 min consultation")
+              (a :href "#consult" "Book a free 30 min consultation")
               (p "Try out our App Cost Calculator to get a range of possible
                  costs to build your app")
               (div :class "ui hidden divider"))
 
          (div :id "app-calculator"
-              :toggle (cell= (= :calculator active-step))
+              :toggle (cell= (= :calculate active-step))
               (app-calculator))
 
-         (div :toggle (cell= (= :submission active-step))
+         (div :toggle (cell= (= :submit active-step))
               :class "ui container"
               (app-details-form))
 
@@ -188,9 +201,9 @@
 
          (div :class "ui hidden divider")
 
-         (div :id "consultation"
+         (div :id "consult"
               :class "ui center aligned basic secondary segment description sizer"
-              :toggle (cell= (= :calculator active-step))
+              :toggle (cell= (= :calculate active-step))
               (h3 :class "ui medium header"
                   "Book your 30-minute FREE App Builder consultation.")
               (div :class "ui hidden divider")

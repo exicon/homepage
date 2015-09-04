@@ -15,8 +15,8 @@
   ((a :href (appboard-url)) attrs "Login"))
 
 (def main-menu-items
-  {:app-calc {:name "Calculator" :url "/app-builder-submission/#calculator"}
-   :app-builder {:name "App Builder" :url "/app-builder/#"}
+  {:app-calc {:name "Calculator" :url "/app-idea/#calculate"}
+   :app-builder {:name "AppBuilder" :url "/appbuilder/"}
    :appboard {:name "AppBoard" :url "/appboard/"}
 
    :pricing {:name "Pricing" :url "/pricing/"}

@@ -1,4 +1,4 @@
-(ns homepage.app-builder.rpc
+(ns homepage.app-idea.rpc
   (:require-macros
     [javelin.core :refer [defc defc=]]
     [config :as compile-time])

@@ -4,8 +4,8 @@
         [homepage.layout :refer [section-header] :as layout]
         [homepage.common :as common :refer [registration-link]]
         [homepage.about-us.index]
-        [homepage.app-builder.index]
-        [homepage.app-calculator.index]
+        [homepage.appbuilder.index]
+        [homepage.app-idea.index]
         [homepage.appboard.index]
         [homepage.pricing.index]
         [homepage.customers.index]
@@ -294,8 +294,8 @@
            curr-pg))
 
 ((condp pg? (.. js/window -location -pathname)
-   "/app-calculator/" homepage.app-calculator.index/pg
-   "/app-builder/" homepage.app-builder.index/pg
+   "/appbuilder/" homepage.appbuilder.index/pg
+   "/app-idea/" homepage.app-idea.index/pg
    "/pricing/" homepage.pricing.index/pg
    "/appboard/" homepage.appboard.index/pg
    "/about-us/" homepage.about-us.index/pg

@@ -53,8 +53,8 @@
 (deftask copy-index-htmls []
   (copy-index-html
     :dirs #{"about-us/"
-            "app-builder/"
-            "app-calculator/"
+            "appbuilder/"
+            "app-idea/"
             "appboard/"
             "pricing/"
             "customers/"

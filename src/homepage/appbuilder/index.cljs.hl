@@ -1,15 +1,20 @@
-(ns homepage.app-builder.info
-      (:require
-        [homepage.layout :refer [secondary-header section-header] :as layout]
-        [homepage.common :refer [textual-button]])
-      (:require-macros [config :refer [appboard-url appbuilder-url]]))
+(ns homepage.appbuilder.index
+  (:require
+    [homepage.layout :refer [secondary-header section-header] :as layout]
+    [homepage.common :refer [textual-button]])
+  (:require-macros [config :refer [appboard-url appbuilder-url]]))
 
-(def appboard-login-link (str (appboard-url)"/?package=starter&returnUri="(appbuilder-url)"#!/login/"))
-(def appboard-registration-link (str (appboard-url)"/?package=starter&returnUri="(appbuilder-url)"#!/registration/"))
-(def app-builder-submission-lik "/app-builder/submission/#calculator")
+(def appboard-login-link
+  (str (appboard-url)"/?package=starter&returnUri="(appbuilder-url)"#!/login/"))
+
+(def appboard-registration-link
+  (str (appboard-url)"/?package=starter&returnUri="(appbuilder-url)"#!/registration/"))
+
+(def app-builder-submission-link
+  "/app-idea/#calculate")
 
 (def page-header
-  {:header "App Builder"
+  {:header "AppBuilder"
    :sub-header "Matching you with the right development company"
    :center false})
 
@@ -134,10 +139,6 @@
            :sub-title "Founder of Get to know your Brain"
            :company "/images/testimonials/Get-to-know-your-brain.png"}})
 
-(defc route @(route-cell ""))
-
-(route-cell route #(reset! route %))
-
 (defc visible-reasons #{})
 
 (defc show-more #{:brain})
@@ -193,7 +194,7 @@
                      (div :class "column"
                           (textual-button
                             :inline false
-                            :destination-link app-builder-submission-lik)))
+                            :destination-link app-builder-submission-link)))
                 (div :class "ui hidden divider"))))
 
 (defn dev-community-column [item]
@@ -438,7 +439,7 @@
   (section :class "ui vertically padded container grid"
            (div :class "center aligned sixteen wide column title sizer"
                 (h3 :class "ui small header"
-                    "3 Reasons why App Builder is the tool for you"))
+                    "3 Reasons why AppBuilder is the tool for you"))
            (div :class "ui hidden divider")
            (div :class "sixteen wide column"
                 (div :class "content"
@@ -448,25 +449,25 @@
                   :class "column"
                   (textual-button
                     :inline true
-                    :button-text "Find your App Builder NOW"
-                    :destination-link app-builder-submission-lik)))
+                    :button-text "Find your AppBuilder NOW"
+                    :destination-link app-builder-submission-link)))
            (div :class "ui hidden divider")
            (div :class "ui hidden divider")))
 
 (defn pg []
   (layout/primary
-  :page-title "App Builder"
-  :description "Find the right developer for your app build"
-  :keywords "Build an App, App Builder"
-  :page-css "index.inc.css"
+    :page-title "AppBuilder"
+    :description "Find the right developer for your app build"
+    :keywords "Build an App, AppBuilder"
+    :page-css "index.inc.css"
 
-  (secondary-header
-    :header (:header page-header)
-    :sub-header (:sub-header page-header)
-    :page "app-builder"
-    :id "intro")
-  (flow-section flow-items)
-  (developer-section)
-  (features-details-section)
-  (testimonials-section)
-  (reasons-section)))
+    (secondary-header
+      :header (:header page-header)
+      :sub-header (:sub-header page-header)
+      :page "app-builder"
+      :id "intro")
+    (flow-section flow-items)
+    (developer-section)
+    (features-details-section)
+    (testimonials-section)
+    (reasons-section)))

@@ -1,6 +1,6 @@
 (ns homepage.videos.index
       (:require
-        [homepage.layout :refer [secondary-header] :as layout]
+        [homepage.layout :refer [secondary-header route] :as layout]
         [clojure.string :refer [replace lower-case]]))
 
 (def page-header {:header "Videos"})
@@ -69,8 +69,6 @@
         with-some-hash #(assoc % :hash (title-if-no-hash %))]
     (map with-some-hash video-list)))
 
-(defc route @(route-cell ""))
-(route-cell route #(reset! route %))
 (defc= current-video
   (first (filter #(= (:hash %) route) video-list-with-hash)))
 
