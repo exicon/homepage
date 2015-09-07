@@ -5,12 +5,10 @@
   '[[tailrecursion/castra "3.0.0-SNAPSHOT"]
     [hoplon/boot-hoplon "0.1.7"]
     [hoplon/hoplon "6.0.0-alpha9"]
-    ; [tailrecursion/javelin "3.8.0"]
-    ; [cljsjs/jquery "2.1.4-0"]
     [adzerk/boot-reload "0.3.1"]
     [pandeiro/boot-http "0.6.3"]
-    [adzerk/boot-cljs "1.7.48-3"]
     [org.clojure/clojurescript "1.7.48"]
+    [adzerk/boot-cljs "1.7.48-3"]
     [cljsjs/boot-cljsjs "0.5.0" :scope "test"]
     [exicon/semantic-ui "2.0.6-SNAPSHOT"]]
   :source-paths #{"src"}
@@ -79,7 +77,7 @@
     (sift :move {#"^semantic-ui.inc.css$" "semantic-ui.css"})
     (watch)
     (hoplon :pretty-print true)
-    ; (reload)
+    (reload)
     (cljs :optimizations :none
           :source-map true)
     (copy-index-htmls)

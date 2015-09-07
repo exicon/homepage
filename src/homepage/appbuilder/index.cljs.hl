@@ -153,15 +153,16 @@
            (div :class "ui stackable container grid"
                 (div :class "row"
                      (div :class "eleven wide column title sizer"
-                          (h1 :class "ui huge main header" "App Builder"
-                              (div :class "sub header" "Matching you with the right development company"))))
+                          (h1 :class "ui huge main header" "AppBuilder"
+                              (div :class "sub header"
+                                   "Matching you with the right development company"))))
                 #_(div :class "row" ; [#98617918]
                        (div :class "six wide left floated computer only column"
                             (a :class "ui huge black fluid button"
-                               :href "/app-builder/" "Watch one of our case studies"))
+                               :href "/appbuilder/" "Watch one of our case studies"))
                        (div :class "seven wide left floated tablet mobile only column"
                             (a :class "ui huge black fluid button"
-                               :href "/app-builder/" "Watch one of our case studies"))))))
+                               :href "/appbuilder/" "Watch one of our case studies"))))))
 
 (defn flow-item [item]
   (div :class  "column description sizer"
