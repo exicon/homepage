@@ -30,7 +30,7 @@
                              :href "/appboard" "Check out The AppBoard"))
                      (div :class "eight wide column"
                           (a :class "ui huge black fluid button"
-                             :href "/app-builder/" "Find the right developer for your app"))))))
+                             :href "/appbuilder/" "Find the right developer for your app"))))))
 
 (def section-headers
   {:testimonials {:header "Check out our client testimonials!"

@@ -151,7 +151,7 @@
               :toggle (cell= (not= :thank-you active-step))
               (div :class "ui two steps"
                    (step :id :calculate :href "#calculate" :title "App Cost Calculator")
-                   (step :id :submit :href "#submit" :title "App Builder")))
+                   (step :id :submit :href "#submit" :title "AppBuilder")))
 
          (div :class "ui hidden divider")
          (div :toggle (cell= (= :calculate active-step))
@@ -182,7 +182,7 @@
               (div :class "sub header"
                    "We'll contact you soon!")
               (div :class "ui hidden divider")
-              (a :href "/app-builder/" "Get to know more about App Builder"))
+              (a :href "/appbuilder/" "Get to know more about App Builder"))
 
           (h2 :toggle (cell= (or submission-error (= false (:status submission-state))))
               :class "ui large header"
@@ -193,7 +193,7 @@
                    (a :href (appboard-url) " login here ")
                    "and submit your request")
               (div :class "ui hidden divider")
-              (a :href "/app-builder/" "Get to know more about App Builder"))
+              (a :href "/appbuilder/" "Get to know more about App Builder"))
 
           (div :class "ui hidden divider"))
 
