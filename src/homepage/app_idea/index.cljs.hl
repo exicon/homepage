@@ -1,5 +1,5 @@
 (ns homepage.app-idea.index
-  (:require-macros [config :refer [hs-app-calc-id hs-portal-id]])
+  (:require-macros [config :refer [hs-app-calc-id hs-portal-id appboard-url]])
   (:require
     [homepage.layout :refer [secondary-header section-header route] :as layout]
     [exicon.integrations :refer [load-hubspot-form]]
@@ -176,21 +176,24 @@
           :style "height:30rem"
           :toggle (cell= (= :thank-you active-step))
           (div :class "ui hidden divider")
-          (h2 :toggle (cell= (and (nil? submission-error) (not= :undefined submission-state)))
+          (h2 :toggle (cell= (and (nil? submission-error) (:status submission-state)))
               :class "ui large header"
               "Thank you for submitting your app proposal"
               (div :class "sub header"
                    "We'll contact you soon!")
               (div :class "ui hidden divider")
-              (a :href "/app-builder" "Get to know more about App Builder"))
+              (a :href "/app-builder/" "Get to know more about App Builder"))
 
-          (h2 :toggle (cell= submission-error)
+          (h2 :toggle (cell= (or submission-error (= false (:status submission-state))))
               :class "ui large header"
-              "Our servers are busy now"
+              (cell= (:errmsg submission-state))
               (div :class "sub header"
-                   "Try to submit your request later")
+                   "Review your form and submit again" (br)
+                   "If you already have an AppBoard account, you can"
+                   (a :href (appboard-url) " login here ")
+                   "and submit your request")
               (div :class "ui hidden divider")
-              (a :href "/app-builder" "Get to know more about App Builder"))
+              (a :href "/app-builder/" "Get to know more about App Builder"))
 
           (div :class "ui hidden divider"))
 
