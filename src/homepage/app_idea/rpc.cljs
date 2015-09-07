@@ -12,7 +12,6 @@
 (defc error nil)
 (defc loading [])
 (defc config nil)
-(defc= random-number (get state :random))
 
 (defn remote [fn-name result & [error* loading*]]
   (mkremote (symbol (str "public-app-builder.api/" fn-name))

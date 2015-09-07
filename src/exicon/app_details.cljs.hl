@@ -2,10 +2,9 @@
 
 (defc app-details {:tnc false :location #{}})
 (defc user-details nil)
-
-(defc warning-message false)
-
 (defc required-fields #{:first-name :last-name :phone :email :company-name :password :tnc})
+(defc= validated? (empty? required-fields))
+(defc warning-message false)
 
 (defn check-required [data content]
   (if (empty? content)

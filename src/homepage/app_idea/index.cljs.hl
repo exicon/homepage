@@ -6,10 +6,8 @@
     [exicon.calculator :refer [cost-calculator]]
     [exicon.app-calculator :refer [app-calculator]]
     [homepage.app-idea.rpc :refer [save-submission submission-state submission-error]]
-    [exicon.app-details :refer [form-input tnc-and-nda warning-message
-                                required-fields target-customers app-details user-details]]))
-
-(defc= validated? (empty? required-fields))
+    [exicon.app-details :refer [form-input tnc-and-nda warning-message required-fields validated?
+                                target-customers app-details user-details]]))
 
 (defc= active-step (case route
                      "#calculate" :calculate
@@ -25,6 +23,14 @@
    kids
    (div :class "title"
         :text title)))
+
+(defn submit-app-idea []
+  (when @validated?
+    (save-submission
+      @user-details @cost-calculator @app-details)
+    (reset! warning-message false))
+  (when (not @validated?)
+    (reset! warning-message true)))
 
 (defelem nav-buttons []
   (div :class "ui container grid"
@@ -42,11 +48,7 @@
             (div :class "right floated four wide column"
                  :toggle (cell= (= :submit active-step))
                  (a :class "ui fluid button"
-                    :click #(do
-                              (when @validated?
-                                (save-submission
-                                  @user-details @cost-calculator @app-details))
-                              (reset! warning-message @validated?))
+                    :click #(submit-app-idea)
                     :href (cell= (if validated? "#thank-you" "javascript:void(0)"))
                     "Submit")))))
 
