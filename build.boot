@@ -3,11 +3,12 @@
   :version "0.1.0-SNAPSHOT"
   :dependencies
   '[[tailrecursion/castra "3.0.0-SNAPSHOT"]
-    [hoplon/boot-hoplon "0.1.7"]
+    [hoplon/boot-hoplon "0.1.8"]
     [hoplon/hoplon "6.0.0-alpha9"]
     ; [adzerk/boot-reload "0.3.2"]
     [pandeiro/boot-http "0.6.3"]
-    [org.clojure/clojurescript "1.7.48"]
+    [org.clojure/clojurescript "1.7.122"]
+    [adzerk/cljs-console "0.1.1"]
     [adzerk/boot-cljs "1.7.48-3"]
     [cljsjs/boot-cljsjs "0.5.0" :scope "test"]
     [exicon/semantic-ui "2.0.6-SNAPSHOT"]]
