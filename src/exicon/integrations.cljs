@@ -1,8 +1,9 @@
 (ns exicon.integrations
   (:require-macros
+    [config :refer [inspectlet-feature inspectlet-wid]]
     [hoplon.core :refer [with-init! defelem]])
   (:require
-    [hoplon.core :refer [script]]))
+    [hoplon.core :refer [script spliced]]))
 
 (def ^:private hubspot-forms-to-load (atom []))
 
@@ -44,15 +45,20 @@
    (script "console.log('Google Analytics kicked off')")])
 
 (defelem inspectlet []
-  [(script
-     :id "inspectletjs"
-     "window.__insp = window.__insp || [];
-     __insp.push(['wid', 1724490325]);
-     (function() {
-     function ldinsp(){var insp = document.createElement('script'); insp.type = 'text/javascript'; insp.async = true; insp.id = \"inspsync\"; insp.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://cdn.inspectlet.com/inspectlet.js'; var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(insp, x); };
-     document.readyState != \"complete\" ? (window.attachEvent ? window.attachEvent('onload', ldinsp) : window.addEventListener('load', ldinsp, false)) : ldinsp();
-     })();")
-   (script "console.log('Inspectlet kicked off')")])
+  (when (inspectlet-feature)
+    (spliced
+      (script
+        :id "inspectletjs"
+        (str
+          "window.__insp = window.__insp || [];
+          __insp.push(['wid', "
+          (inspectlet-wid)
+          "]);
+          (function() {
+          function ldinsp(){var insp = document.createElement('script'); insp.type = 'text/javascript'; insp.async = true; insp.id = \"inspsync\"; insp.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://cdn.inspectlet.com/inspectlet.js'; var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(insp, x); };
+          document.readyState != \"complete\" ? (window.attachEvent ? window.attachEvent('onload', ldinsp) : window.addEventListener('load', ldinsp, false)) : ldinsp();
+          })();"))
+      (script "console.log('Inspectlet kicked off')"))))
 
 (defn inspect [field details]
   (js/__insp.push (array field details)))
