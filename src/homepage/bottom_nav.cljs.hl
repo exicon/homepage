@@ -17,7 +17,7 @@
              (li :class "header" "Products")
              (li (a :href (str (appboard-url) "/api-dir/") "API Directory"))
              (li (a :href (str (appboard-url) "/app-dir/") "App Directory"))
-             (li (a :href "/apiaxle/" "ApiAxle"))  ; FIXME migrate
+             (li (a :href "http://apiaxle.com/" "ApiAxle"))
              (li (a :href "/appbuilder/" "AppBuilder"))))
       (div :class "column"
            (ul

@@ -4,120 +4,41 @@
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-
 <url>
-  <loc>http://www.exiconglobal.com/</loc>
+  <loc>https://www.exiconglobal.com/</loc>
   <priority>1.00</priority>
 </url>
 <url>
-  <loc>http://www.exiconglobal.com/about-us/</loc>
+  <loc>https://www.exiconglobal.com/about-us/</loc>
 </url>
 <url>
-  <loc>http://www.exiconglobal.com/developers/</loc>
+  <loc>https://www.exiconglobal.com/developers/</loc>
 </url>
 <url>
-  <loc>http://www.exiconglobal.com/news/</loc>
+  <loc>https://www.exiconglobal.com/news/</loc>
 </url>
 <url>
-  <loc>http://www.exiconglobal.com/reports/</loc>
+  <loc>https://www.exiconglobal.com/reports/</loc>
 </url>
 <url>
-  <loc>http://www.exiconglobal.com/about-us/media/</loc>
+  <loc>https://www.exiconglobal.com/about-us/media/</loc>
 </url>
 <url>
-  <loc>http://www.exiconglobal.com/about-us/</loc>
+  <loc>https://www.exiconglobal.com/about-us/</loc>
 </url>
 <url>
-  <loc>http://www.exiconglobal.com/privacy-policy/</loc>
+  <loc>https://www.exiconglobal.com/privacy-policy/</loc>
 </url>
 <url>
-  <loc>http://www.exiconglobal.com/terms-of-use/</loc>
+  <loc>https://www.exiconglobal.com/terms-of-use/</loc>
 </url>
 <url>
-  <loc>http://www.exiconglobal.com/customers/</loc>
+  <loc>https://www.exiconglobal.com/customers/</loc>
 </url>
 <url>
-  <loc>http://www.exiconglobal.com/newsletters/</loc>
+  <loc>https://www.exiconglobal.com/presentations/</loc>
 </url>
 <url>
-  <loc>http://www.exiconglobal.com/videos/</loc>
-</url>
-<url>
-  <loc>http://www.exiconglobal.com/presentations/</loc>
-</url>
-<url>
-  <loc>http://www.exiconglobal.com/appboard/pricing/</loc>
-</url>
-<url>
-  <loc>http://www.exiconglobal.com/packages/starter-pack/</loc>
-</url>
-<url>
-  <loc>http://www.exiconglobal.com/packages/challenger-pack/</loc>
-</url>
-<url>
-  <loc>http://www.exiconglobal.com/packages/dominator-pack/</loc>
-</url>
-<url>
-  <loc>http://www.exiconglobal.com/packages/amplifier-pack/</loc>
-</url>
-<url>
-  <loc>http://www.exiconglobal.com/apiaxle/</loc>
-</url>
-<url>
-  <loc>http://www.exiconglobal.com/report-download/going-mobile</loc>
-</url>
-<url>
-  <loc>http://www.exiconglobal.com/report-download/olympics2012</loc>
-</url>
-<url>
-  <loc>http://www.exiconglobal.com/report-download/air-line</loc>
-</url>
-<url>
-  <loc>http://www.exiconglobal.com/report-download/alcohol</loc>
-</url>
-<url>
-  <loc>http://www.exiconglobal.com/report-download/automotive</loc>
-</url>
-<url>
-  <loc>http://www.exiconglobal.com/report-download/cosmetics</loc>
-</url>
-<url>
-  <loc>http://www.exiconglobal.com/report-download/finance</loc>
-</url>
-<url>
-  <loc>http://www.exiconglobal.com/report-download/fmcg</loc>
-</url>
-<url>
-  <loc>http://www.exiconglobal.com/report-download/hospitality</loc>
-</url>
-<url>
-  <loc>http://www.exiconglobal.com/report-download/hotel-industry-disruption</loc>
-</url>
-<url>
-  <loc>http://www.exiconglobal.com/report-download/life-of-a-start-up</loc>
-</url>
-<url>
-  <loc>http://www.exiconglobal.com/report-download/luxury-fashion</loc>
-</url>
-<url>
-  <loc>http://www.exiconglobal.com/report-download/mobile-industry-in-china</loc>
-</url>
-<url>
-  <loc>http://www.exiconglobal.com/report-download/retail</loc>
-</url>
-<url>
-  <loc>http://www.exiconglobal.com/report-download/saas</loc>
-</url>
-<url>
-  <loc>http://www.exiconglobal.com/report-download/sportswear</loc>
-</url>
-<url>
-  <loc>http://www.exiconglobal.com/staff/bios/Stefan_Rust_Bio.pdf</loc>
-</url>
-<url>
-  <loc>http://www.exiconglobal.com/staff/bios/Cat_Purvis_Bio.pdf</loc>
-</url>
-<url>
-  <loc>http://www.exiconglobal.com/app-directory</loc>
+  <loc>https://www.exiconglobal.com/appboard/pricing/</loc>
 </url>
 </urlset>

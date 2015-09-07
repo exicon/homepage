@@ -155,7 +155,8 @@
                (li "Free and easy to use")
                (li "Flexible")
                (li "Open source"))
-             (a :href "http://exiconglobal.com/apiaxle" (div :class "ui button" "Learn More"))
+             (a :href "http://apiaxle.com"
+                (div :class "ui button" "Learn More"))
              ] })
 
 (def development-ecosystem
