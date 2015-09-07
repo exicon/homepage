@@ -70,8 +70,10 @@
   [(div :class "sixteen wide column"
         (div :class "ui center aligned basic segment"
              (h2 :class "ui large header"
-                 (img :class "ui tiny inline image" :src "http://www.exiconglobal.com/images/app-builder/nda.png")
-                 (div :class "center aligned content" "Your app idea is safe, everyone is under NDA.")))
+                 (img :class "ui tiny inline image"
+                      :src "/images/app-builder/nda.png")
+                 (div :class "center aligned content"
+                             "Your app idea is safe, everyone is under NDA.")))
         (div :class "ui hidden divider")
         (div :class "ui secondary basic center aligned segment"
              (div :class "ui checkbox"

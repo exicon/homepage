@@ -14,7 +14,7 @@
 
   (section :class "ui one column container grid basic segment"
            (div :class "center aligned column"
-                (iframe :src "http://www.slideshare.net/Exicon/slideshelf"
+                (iframe :src "//www.slideshare.net/Exicon/slideshelf"
                         :width "760px" :height "570px" :frameborder "0" :marginwidth "0"
                         :scrolling "no"
                         :allowfullscreen ""
