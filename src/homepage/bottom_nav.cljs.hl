@@ -17,7 +17,7 @@
              (li :class "header" "Products")
              (li (a :href (str (appboard-url) "/api-dir/") "API Directory"))
              (li (a :href (str (appboard-url) "/app-dir/") "App Directory"))
-             (li (a :href "http://apiaxle.com/" "ApiAxle"))
+             (li (a :href "http://apiaxle.com/" :target "_blank" "ApiAxle"))
              (li (a :href "/appbuilder/" "AppBuilder"))))
       (div :class "column"
            (ul
@@ -65,5 +65,4 @@
               (a :target "_blank"
                  :href "http://www.pinterest.com/exicon/pins/follow/?guid=CqzN7JCYsQQy-0"
                  (img :alt "Pinterest"
-                      :src "/images/footer/white-pinterest.png"))))))
-    ))
+                      :src "/images/footer/white-pinterest.png"))))))))
