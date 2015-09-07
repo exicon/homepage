@@ -85,9 +85,9 @@
                                              (not (:tnc @app-details))))
                                    (reset! required-fields (checkbox-state @required-fields :tnc))))
                   (label :for "nda" "I agree to Exicon's "
-                         (a :href "http://blog.exiconglobal.com/corp/legal/terms-of-use/"
+                         (a :href "/terms-of-use/"
                             :target "_blank"
                             "Terms & Conditions")
                          " and "
-                         (a :href "/docs/nda.pdf" :target "_blank" "NDA")))))
+                         (a :href "/Exicon-Mutual-NDA-2014-09-18.pdf" :target "_blank" "NDA")))))
    (div :class "ui hidden divider")])
