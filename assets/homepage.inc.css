@@ -45,6 +45,10 @@
 	margin-top: 20%;
 }
 
+#intro.app-builder {
+	height: 240px;
+}
+
 #build, #intro.app-builder {
 	background: url('/images/landing-page/build-bg.jpg') center no-repeat;
 	background-position-y: 0;

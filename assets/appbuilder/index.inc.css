@@ -6,3 +6,20 @@
 #incorporated.feature-details {
 	background-color: #EEFAFB;
 }
+
+#developer-map {
+	background: url('/images/app-builder/developer-map.jpg') center no-repeat;
+}
+
+#developer-section .segment.dev-feature {
+	padding: 0.85em;
+	background-color: rgb(185,234,236);
+}
+
+.dev-feature.column label{
+	 font-size: 0.85em;
+}
+
+#dev-community {
+	background-color: rgb(185,234,236);
+}
