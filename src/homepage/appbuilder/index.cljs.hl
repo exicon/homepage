@@ -317,7 +317,10 @@
          (div :class "column"
               (div :class "row"
                         (h3 :class"ui header" "Features:"))
-              (div :class "ui six column container grid"
+              (div :class "computer tablet only ui six column container grid"
+                   (loop-tpl :bindings [item dev-features]
+                             (dev-feature item)))
+              (div :class "mobile only ui three column container grid"
                    (loop-tpl :bindings [item dev-features]
                              (dev-feature item)))))
 
@@ -333,7 +336,7 @@
 (defn dev-community []
   (section :id "dev-community"
            (div :class "ui hidden divider")
-           (div :class "ui container grid"
+           (div :class "ui container stackable grid"
                 (div :class "center aligned three column row"
                      (loop-tpl :bindings [item dev-community-items]
                                (dev-community-column item)))
