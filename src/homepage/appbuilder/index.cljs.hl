@@ -18,11 +18,6 @@
    :sub-header "Matching you with the right mobile app development company"
    :center false})
 
-(def process-list-items
-  [
-   {:title "Quick, secure and easy"}
-   {:title "The right developer for your project"}
-   {:title "The support you want"}])
 
 (def section-headers
   {
@@ -198,11 +193,6 @@
 
 (defc show-more #{:brain})
 
-(defelem process-list-item [{:keys [title size]} kids]
-  (div :class "item"
-       (i :class (str size " checkmark teal icon"))
-       (div :class (str size "ui header content") title)))
-
 (defn intro-section []
   (section :id "intro" :class "app-builder"
            (div :class "ui stackable container grid"
@@ -233,12 +223,12 @@
                       (h3 :class "ui teal medium header"
                           :text (cell= (:title item)))))
             (when cta
-                   (a :class "ui tiny button"
+                   (a :class "ui tiny teal button"
                       :style "margin-top: 2em"
                       :href (:link cta)
                       :text (:title cta))))
 
-       (ul :class "ui bulleted small list"
+       (ul :class "ui bulleted tiny list"
            (loop-tpl :bindings [item (cell= (:content item))]
                      (li :text (cell= item)))))))
 
@@ -261,7 +251,7 @@
   (div :class "column"
        (div :class "title sizer"
             (img :class "ui circular centered small inverted teal segment image":src (:icon @item))
-            (h2 :class "ui medium header dark-teal" (:title @item)))
+            (h2 :class "ui tiny header dark-teal" (:title @item)))
        (div :class "content" (:content @item))))
 
 (defn dev-feature [item]
@@ -276,8 +266,9 @@
     :class "ui vertically padded stackable container grid"
     (div :class "center aligned row"
          (div :class "title sizer column"
-              (h2 :class "ui medium header"
-                  (img :src "/images/app-builder/development.png")
+              (h2 :class "ui small header"
+                  (img :class "ui small image"
+                    :src "/images/app-builder/development.png")
                   (div :class "content"
                        "3000 Quality Mobile App Development Companies"
                        (div :class "sub header"
@@ -383,7 +374,7 @@
 
             (div :class "ui container grid"
                  (div :class "sixteen wide column title sizer center aligned feature-header"
-                      (h2 :class "ui large header"
+                      (h2 :class "ui small header"
                           :text (:header incorporated-details)))
                  (div :class "ui hidden divider")
                  (div :class "ui container basic segment"
@@ -394,7 +385,7 @@
 (defn testimonials-section []
   (section :class "ui basic tertiary segment"
            :style "margin-top: -1em;"
-           (section-header (:testimonials section-headers))
+           (section-header (:testimonials section-headers) :size "small")
            (div :class "ui stackable container grid"
                 (div :class "two column row"
                      (testimonial-block :four-front)

@@ -140,6 +140,10 @@ h3.ui.header, h4.ui.header{
 	font-size: 20px !important;
 }
 
+.title.sizer h2.ui.header .sub.header{
+	font-size: 1.6rem;
+}
+
 .white.horizontal.segment {
 	box-shadow: 2px 0px 0px white;
 }
