@@ -6,8 +6,23 @@
     [exicon.calculator :refer [cost-calculator]]
     [exicon.app-calculator :refer [app-calculator]]
     [homepage.app-idea.rpc :refer [save-submission submission-state submission-error]]
-    [exicon.app-details :refer [form-input tnc-and-nda warning-message required-fields validated?
-                                target-customers app-details user-details]]))
+    [exicon.app-details :refer [form-input tnc-and-nda problems error-fields label-map
+                                target-customers app-details user-details validate-app-idea]]
+    [exicon.form-validations :refer [value-title]]
+    [clojure.string :refer [join]]))
+
+(defn submit-app-idea []
+  (do
+    (validate-app-idea)
+    (when (empty? @problems)
+      (save-submission @user-details @cost-calculator @app-details))) )
+
+(defn render-problems [problems]
+  (div :class "ui error message container"
+       :toggle (cell= (not-empty problems))
+       (ul
+         (loop-tpl :bindings [prob problems]
+                   (li :text (str (join ", "  (value-title (:keys @prob) label-map))": "(:msg @prob)))))))
 
 (defc= active-step (case route
                      "#calculate" :calculate
@@ -23,14 +38,6 @@
    kids
    (div :class "title"
         :text title)))
-
-(defn submit-app-idea []
-  (when @validated?
-    (save-submission
-      @user-details @cost-calculator @app-details)
-    (reset! warning-message false))
-  (when (not @validated?)
-    (reset! warning-message true)))
 
 (defelem nav-buttons []
   (div :class "ui container grid"
@@ -49,7 +56,7 @@
                  :toggle (cell= (= :submit active-step))
                  (a :class "ui fluid button"
                     :click #(submit-app-idea)
-                    :href (cell= (if validated? "#thank-you" "javascript:void(0)"))
+                    :href (cell= (if (empty? problems)  "#thank-you" "javascript:void(0)"))
                     "Submit")))))
 
 (defelem app-details-form []
@@ -111,7 +118,7 @@
               :label-txt "Phone number"
               :object user-details
               :data :phone
-              :required true))
+              :to-validate true))
 
        (div :class "two fields"
             (form-input
@@ -200,11 +207,9 @@
          (div :class "ui hidden divider")
          (nav-buttons)
 
-         (div :class "ui container error message"
-              :toggle (cell= warning-message)
-              "Please review all the mandatory fields and agree with the Terms & Conditions")
-
          (div :class "ui hidden divider")
+
+         (cell= (when problems (render-problems problems)))
 
          (div :id "consult"
               :class "ui center aligned basic secondary segment description sizer"

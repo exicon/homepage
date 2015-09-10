@@ -1,29 +1,46 @@
-(ns exicon.app-details)
+(ns exicon.app-details
+  (:require
+    [exicon.form-validations :refer [tbl valid-user-details]]
+    [formative.parse :as fp]))
 
 (defc app-details {:tnc false :location #{}})
 (defc user-details nil)
-(defc required-fields #{:first-name :last-name :phone :email :company-name :password :tnc})
-(defc= validated? (empty? required-fields))
-(defc warning-message false)
+(defc problems nil)
+(defc= error-fields (set (flatten (map #(:keys %) problems))))
 
-(defn check-required [data content]
-  (if (empty? content)
-    (reset! required-fields (conj @required-fields data))
-    (reset! required-fields (disj @required-fields data))))
+(def label-map
+  (tbl [:value :title]
+       :first-name "First Name"
+       :last-name "Last Name"
+       :email "Email"
+       :phone "Phone number"
+       :company-name "Company name"
+       :password "Password"
+       :tnc "Terms & Conditions"
+       ))
 
-(defelem form-input [{:keys [label-txt object data type required]
-                      :or {type "text" required nil}} kids]
+(defn validate-app-idea []
+  (try
+    (do
+      (fp/parse-params valid-user-details (assoc  @user-details :tnc (:tnc @app-details)))
+      (reset! problems {}))
+    (catch js/Error e
+      (reset! problems (:problems (.-data e))))))
+
+
+(defelem form-input [{:keys [label-txt object data type required to-validate]
+                      :or {type "text" required nil to-validate false}} kids]
   ((div :class "field")
    :class (cell= {:required required
-                  :error (if (and warning-message (required-fields data)) true false)})
+                  :error (if (error-fields data) true false)})
    (label :text label-txt)
    (if (= type :textarea)
      (textarea :change #(reset! object (assoc @object data @%)))
      (input :type type
             :change #(do
                        (reset! object (assoc @object data @%))
-                       (when required
-                         (check-required data @%)))))
+                       (when (or required to-validate)
+                         (validate-app-idea)))))
    kids))
 
 
@@ -33,9 +50,6 @@
 (defn checkbox-checked [id elem]
   (if (id elem)
     true false))
-
-(defn tbl [keys & vals]
-  (map (partial zipmap keys) (partition (count keys) vals)))
 
 (def location-items (tbl [:id :image :label1 :checkbox1-id :sub-label]
                          :location "/images/app-builder/internal.png" "Internal Audience" :internal "(Employees, Partners, Suppliers)"
@@ -79,11 +93,9 @@
              (div :class "ui checkbox"
                   (input :type "checkbox" :name "terms-conditions" :id "nda"
                          :checked (cell= (:tnc app-details))
-                         :click #(do
-                                   (reset! app-details
+                         :click #(reset! app-details
                                            (assoc @app-details :tnc
-                                             (not (:tnc @app-details))))
-                                   (reset! required-fields (checkbox-state @required-fields :tnc))))
+                                             (not (:tnc @app-details)))) )
                   (label :for "nda" "I agree to Exicon's "
                          (a :href "/terms-of-use/"
                             :target "_blank"
