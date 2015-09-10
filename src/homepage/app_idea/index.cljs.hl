@@ -136,9 +136,9 @@
      :formId (hs-app-calc-id)})
 
   (layout/primary
-    :page-title "App Builder Submission"
-    :description ""
-    :keywords ""
+    :page-title "AppBuilder Submission"
+    :description "Calculate The Cost Of Your App, Submit Your AppBuild"
+    :keywords "App Cost Calculator, AppBuilder, Build an App, App Builder"
     :page-css "index.inc.css"
     :page "app-idea"
 
