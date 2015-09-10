@@ -138,6 +138,7 @@
            :sub-title "Founder of Get to know your Brain"
            :company "/images/testimonials/Get-to-know-your-brain.png"}})
 
+;\u00ad
 (def dev-features
   [
    {
@@ -150,11 +151,15 @@
     }
    {
     :img "/images/app-builder/communication-blue.png"
-    :label "Communica\u00adtion"
+    :label "Communication"
+    }
+      {
+    :img "/images/app-builder/sync-blue.png"
+    :label "Sync"
     }
    {
     :img "/images/app-builder/gamification-blue.png"
-    :label "Gamifica\u00adtion"
+    :label "Gamification"
     }
    {
     :img "/images/app-builder/location-blue.png"
@@ -170,11 +175,7 @@
     }
    {
     :img "/images/app-builder/social-media-blue.png"
-    :label "Social Media"
-    }
-   {
-    :img "/images/app-builder/sync-blue.png"
-    :label "Synchroni\u00adzation"
+    :label "Social"
     }
    {
     :img "/images/app-builder/coupon.png"
@@ -249,14 +250,16 @@
 
 (defn dev-community-column [item]
   (div :class "column"
+       (div :class "ui hidden divider")
        (div :class "title sizer"
             (img :class "ui circular centered small inverted teal segment image":src (:icon @item))
             (h2 :class "ui tiny header dark-teal" (:title @item)))
-       (div :class "content" (:content @item))))
+       (div :class "content" (:content @item))
+       (div :class "ui hidden divider")))
 
 (defn dev-feature [item]
   (div :class "dev-feature center aligned column"
-  (div :class "ui circular centered small inverted dev-feature segment"
+  (div :class "ui circular center aligned small inverted dev-feature segment"
        (img :class "ui image":src (:img @item)))
        (label (:label @item))))
 
@@ -309,9 +312,10 @@
               (div :class "row"
                         (h3 :class"ui header" "Features:"))
               (div :class "computer tablet only ui six column container grid"
+                   :style "margin-top:0.05em;"
                    (loop-tpl :bindings [item dev-features]
                              (dev-feature item)))
-              (div :class "mobile only ui three column container grid"
+              (div :class "mobile only ui four column container grid"
                    (loop-tpl :bindings [item dev-features]
                              (dev-feature item)))))
 
@@ -326,12 +330,10 @@
 
 (defn dev-community []
   (section :id "dev-community"
-           (div :class "ui hidden divider")
            (div :class "ui container stackable grid"
                 (div :class "center aligned three column row"
                      (loop-tpl :bindings [item dev-community-items]
-                               (dev-community-column item)))
-                (div :class "ui hidden divider"))))
+                               (dev-community-column item))))))
 
 (defn testimonial-block [testimonial-name]
   (let [testimonial (testimonial-name testimonials)
@@ -384,7 +386,6 @@
 
 (defn testimonials-section []
   (section :class "ui basic tertiary segment"
-           :style "margin-top: -1em;"
            (section-header (:testimonials section-headers) :size "small")
            (div :class "ui stackable container grid"
                 (div :class "two column row"
