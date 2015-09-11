@@ -1,7 +1,6 @@
 (ns exicon.app-details
   (:require
     [exicon.utils :refer [tbl]]
-    [formative.core :as f]
     [formative.parse :as fp]))
 
 (defc app-details {:tnc false :location #{}})
