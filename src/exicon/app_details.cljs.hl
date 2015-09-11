@@ -1,6 +1,7 @@
 (ns exicon.app-details
   (:require
-    [exicon.form-validations :refer [tbl valid-user-details]]
+    [exicon.utils :refer [tbl]]
+    [formative.core :as f]
     [formative.parse :as fp]))
 
 (defc app-details {:tnc false :location #{}})
@@ -19,10 +20,22 @@
        :tnc "Terms & Conditions"
        ))
 
+(def valid-app-idea
+  {:fields [{:name :first-name :type :text}
+            {:name :last-name :type :text}
+            {:name :email :type :email}
+            {:name :company-name :type :text}
+            {:name :password :type :password}
+            {:name :phone :type :int}
+            {:name :tnc :type :boolean}]
+   :validations [[:required [:first-name :last-name :email :password :company-name :tnc] ]
+                 [:min-length 6 :password]
+                 ]})
+
 (defn validate-app-idea []
   (try
     (do
-      (fp/parse-params valid-user-details (assoc  @user-details :tnc (:tnc @app-details)))
+      (fp/parse-params valid-app-idea (assoc  @user-details :tnc (:tnc @app-details)))
       (reset! problems {}))
     (catch js/Error e
       (reset! problems (:problems (.-data e))))))

@@ -8,7 +8,7 @@
     [homepage.app-idea.rpc :refer [save-submission submission-state submission-error]]
     [exicon.app-details :refer [form-input tnc-and-nda problems error-fields label-map
                                 target-customers app-details user-details validate-app-idea]]
-    [exicon.form-validations :refer [value-title]]
+    [exicon.utils :refer [value-title]]
     [clojure.string :refer [join]]))
 
 (defn submit-app-idea []

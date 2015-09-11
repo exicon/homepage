@@ -1,0 +1,17 @@
+(ns exicon.utils)
+
+(defn tbl [keys & vals]
+  (map (partial zipmap keys) (partition (count keys) vals)))
+
+(defn make-hash [obj]
+  (if (coll? obj) obj #{obj}))
+
+(defn value-title [value items]
+  (let [restruct {}]
+    (map
+      (apply assoc restruct
+        (flatten
+          (map #(vector (:value %) (:title %)) items))) (make-hash value))))
+
+
+
