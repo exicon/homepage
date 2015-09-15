@@ -7,6 +7,13 @@
 (def reports-list
   [
    {
+    :title "The Business Revenue of Building an Apple Watch App"
+    :detail "The Apple Watch - Apple’s changing the world. Apple’s changed the way we use apps. Now its changing the way we use watches."
+    :image "/images/reports/What-is-the-Business-Revenue-of-Building-an-Apple-Watch-App.png"
+    :link "http://info.exiconglobal.com/download-infographic-business-revenue-of-building-an-apple-watch-app"
+    }
+
+   {
     :title "Once you've built your app"
     :detail "With more than 3 million apps on the top 5 international app stores, you want to make sure your app get’s discovered, and the users you're targeting know your app."
     :image "/images/reports/Once-You-Built-Your-App.png"
