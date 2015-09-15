@@ -20,7 +20,8 @@
 (defn render-problems []
   (div :class "ui error message container"
        :toggle (cell= (not-empty problems))
-       (ul
+       "Please review all the mandatory fields and agree with the Terms & Conditions"
+       #_(ul
          (loop-tpl :bindings [prob problems]
                    (li :text (cell= (str (join ", "  (value-title (:keys prob) label-map))": "(:msg prob))))))))
 
