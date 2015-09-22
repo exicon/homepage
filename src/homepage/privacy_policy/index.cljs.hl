@@ -5,7 +5,9 @@
 (defn pg []
   (layout/primary
   :id "privacy"
-  :page-title "Privacy Policy"
+  :page-title "Exicon | Privacy Policy"
+  :description "Privacy Policy of Exicon"
+  :keywords "Exicon"
   :page-css "index.inc.css"
 
 	(section :class "ui one column"

@@ -6,6 +6,8 @@
   (layout/primary
   :id "terms-of-use"
   :page-title "Terms of Use"
+  :description "Exicon's Terms And Conditions"
+  :keywords "Exicon"
   :page-css "index.inc.css"
 
 	(section :class "ui one column"

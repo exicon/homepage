@@ -645,3 +645,13 @@ resources/public/themes/default/assets/fonts/icons.woff
 resources/public/themes/default/assets/fonts/icons.woff2
 resources/public/themes/default/assets/images/flags.png
 resources/public/videos/index.html
+.DS_Store
+are-you-tracking
+assets/.DS_Store
+assets/images/reports/.DS_Store
+mobile-ad-spend
+resources/.DS_Store
+resources/public/.DS_Store
+resources/public/images/.DS_Store
+resources/public/images/reports/.DS_Store
+resources/public/images/testimonials/.DS_Store

@@ -395,9 +395,9 @@
 
 (defn pg []
   (layout/primary
-    :page-title "AppBuilder Matching You With The Right App Development Company"
-    :description "AppBuilder Connects You With The Right App Development Company"
-    :keywords "Build an App, AppBuilder, App Builder, Mobile App Development Company, App Development Companies, App Cost Calculator"
+    :page-title "AppBuilder Matches You With The Right App Development Company"
+    :description "AppBuilder Connects You With The Right App Developer for Your App Idea"
+    :keywords "Build an App, AppBuilder, App Development Companies, App Cost Calculator, App Developers, Find the Right Developer For My App, Developer Matching, App Development Company, Mobile App Development Company"
     :page-css "index.inc.css"
 
     (secondary-header

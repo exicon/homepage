@@ -7,8 +7,9 @@
 (defn pg []
   (layout/primary
   :id "presentations"
-  :page-title "Mobile | Presentations"
+  :page-title "Exicon | Presentations"
   :description "All Thing Mobile Across Multiple Industries Including Automotive, Travel & Hospitality, Banking & Finance, & IoT."
+  :keywords "Mobile Research, Mobile Insights, Mobile App Strategy, App Strategy"
 
   (secondary-header :header (:header page-header))
 

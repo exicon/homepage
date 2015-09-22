@@ -618,7 +618,7 @@
   (layout/primary
   :page-title "About Exicon | App Management & Analytics | Our Team"
   :description "Our Mission And The Road That Got Us Here As Well As The Team That Makes Exicon Tick."
-  :keywords "Exicon, App Management, Analytics"
+  :keywords "Exicon, App Management, Analytics, AppBoard, AppBuilder, How To Find A Great Developer"
   :page-css "index.inc.css"
 
   (secondary-header :header (:header page-header)

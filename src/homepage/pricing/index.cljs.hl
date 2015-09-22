@@ -221,7 +221,7 @@
     :id "pricing"
     :page-title "Product Pricing | Analytics & App Management | Exicon"
     :description "Pricing For Exicon's App Management & Logistics Platform That Scales With Your App Portfolio, Analytics, Distribution & API Management."
-    :keywords "Analytics, App Management, Exicon"
+    :keywords "AppBoard, Analytics, App Management, Exicon Pricing, AppBoard Subscription, Mobile Relationship Management Pricing, Mobile Relationship Management Subscription "
     :page-css "../../pricing/index.inc.css"
 
     (secondary-header :header (:header page-header))

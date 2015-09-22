@@ -154,7 +154,7 @@
   :id "customers"
   :page-title "Exicon Customers | Reviews | Testimonials"
   :description "Global Fans Of Exicon's AppBoard, Products & Services"
-  :keywords "Exicon"
+  :keywords "Exicon, Exicon Customers, Exicon Case Studies, Schneider Mobile, Glh Mobile, Standard Chartered Mobile, "
   :page-css "index.inc.css"
 
   (secondary-header :header "Customers")

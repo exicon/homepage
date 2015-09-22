@@ -319,8 +319,9 @@
 (defn pg []
   (layout/primary
   :id "reports"
-  :page-title "Research"
-  :description "Research"
+  :page-title "Exicon | Research"
+  :description "Exicons Reports, Infographics And White Papers On Apps"
+  :keywords "Mobile Research, Mobile Insights, Mobile App Strategy, App Strategy"
   :page-css "index.inc.css"
   (secondary-header :header (:header page-header))
   (section :id "reports-list"

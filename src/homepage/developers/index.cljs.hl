@@ -32,6 +32,8 @@
   (layout/primary
   :id "developers"
   :page-title "Developers"
+  :description "Exicon's Developer Network"
+  :keywords "App Developers, Developer Network, Great App Developers, App Development Companies, App Development Company, Mobile App Development Company, The Right Developer, Developer Matching,"
   :page-css "index.inc.css"
 
   (secondary-header :header "Developers")

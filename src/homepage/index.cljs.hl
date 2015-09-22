@@ -275,11 +275,13 @@
 
 (defn pg []
   (layout/primary
-    :page-title "Manage Your Apps | Exicon Cloud App Management AppBoard"
+    :page-title "Manage Your Apps | Exicon | Mobile Relationship Management | AppBoard"
     :description (str "Exicon AppBoard Is An App Management Platform "
                       "That Helps SMEs & Enterprises Build, "
                       "Manage & Promote Their Mobile Apps.")
-    :keywords "Manage Apps, Exicon, Cloud, App Management, AppBoard"
+    :keywords "Manage Apps, Exicon, App Management, Mobile Relationship Management, What Is Mobile Relationship Management, MRM, AppBoard, 
+              Find The Right Developer, Mobile App Strategy, Do I Need Mobile Analytics,
+              Best Tool for Mobile App Analytics, Digital Asset Management"
 
     (intro)
     (features-section feature-list)

@@ -261,7 +261,7 @@
   :id "news"
   :page-title "News"
   :description "The Exicon Team In The Public Eye"
-  :keywords "Exicon App Management"
+  :keywords "Exicon App Management, Exicon Global, Stefan Rust, Cat Purvis, Best Tool For Mobile App Analytics, Competitive Analytics"
   :page-css "index.inc.css"
 
   (secondary-header :header "News")

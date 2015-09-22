@@ -146,7 +146,7 @@
   (layout/primary
     :page-title "AppBuilder Submission"
     :description "Calculate The Cost Of Your App, Submit Your AppBuild"
-    :keywords "App Cost Calculator, AppBuilder, Build an App, App Builder"
+    :keywords "App Cost Calculator, AppBuilder, Build an App, App Builder, Find the Right Developer for My App, Developer Matching, Mobile App Development, Best Tools for Finding Developers"
     :page-css "index.inc.css"
     :page "app-idea"
 
