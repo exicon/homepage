@@ -6,6 +6,7 @@
       selected-login selected-features selected-languages selected-stage result
       value-title app-name-item size-items login-items features-items
       platforms-items stage-items]]
+    [homepage.image :as image]
     [exicon.platform-selector :refer [platform-selector toggle-in-set]]))
 
 (with-init!
@@ -39,7 +40,7 @@
   (a :class "img-option center aligned column" :click click
      ((div :class "ui center aligned basic app-calc segment")
       :class (cell= {:inverted selected :light-teal-bg selected})
-      (img :class "responsive"
+      (image/elem :class-opts "responsive"
            :src (cell= (str "/images/app-calc/" image)))
       (div :class "center aligned column title"
            (span :class"ui small header"
@@ -73,7 +74,7 @@
        (h3 title)
        (div :class "ui grid"
             (div :class "five wide column"
-                 (img :class "responsive"
+                 (image/elem :class-opts "ui image responsive"
                       :src "/images/app-calc/market-localization.png"))
             (div :class "four wide column"
                  (select :class "ui large fluid input"

@@ -6,7 +6,8 @@
   (:require
     [homepage.top-nav :refer [top-nav]]
     [homepage.bottom-nav :refer [bottom-nav]]
-    [exicon.integrations :as integrations]))
+    [exicon.integrations :as integrations]
+    [homepage.image :as image]))
 
 (def route (route-cell))
 ; (cell= (print "Route changed to:" route))
@@ -84,7 +85,7 @@
               (h4 :class "ui header" "Subscribe to our FREE")
               (p "Newsletter • Reports • Infographs")
               (div :class "ui divider hidden header")
-              (img :src "/images/header/subscribe.png"))
+              (image/elem :src "/images/header/subscribe.png"))
          (div :class "sixteen wide column"
               (div :id "hs-newsletter-form" "Loading ...."))))])
 

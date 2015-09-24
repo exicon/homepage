@@ -1,5 +1,6 @@
 (ns appboard.features
   (:require
+    [homepage.image :as image]
     [homepage.common :as common]))
 
 
@@ -227,12 +228,12 @@
          (div :class "ui dividing header row"
               (h2
                 (if (:icon f)
-                  (img :class "features-icon" :src (:icon f))
+                  (image/elem :class-opts "features-icon" :src (:icon f))
                   (:semantic-icon f))
                 :text (:title f)))
          (div :class "two column row"
               (div :class "column"
-                   (img :src (:screenshot f)))
+                   (image/elem :src (:screenshot f)))
               (div :class "description sizer column"
                    (div (:content f)))))
 
@@ -240,10 +241,10 @@
          (div :id (:anchor f) :class "anchor")
          (div :class "ui hidden divider")
          (div :class "ui dividing header row"
-              (h2 (img :class "features-icon" :src (:icon f))
+              (h2 (image/elem :class-opts "features-icon" :src (:icon f))
                   :text (:title f)))
          (div :class "two column row"
               (div :class "description sizer column"
                    (div (:content f)))
               (div :class "column"
-                   (img :src (:screenshot f)))))))
+                   (image/elem :src (:screenshot f)))))))

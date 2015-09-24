@@ -1,5 +1,6 @@
 (ns homepage.top-nav
-  (:require-macros [config :refer [appboard-url]]))
+  (:require-macros [config :refer [appboard-url]])
+  (:require [homepage.image :as image]))
 
 (defc clicked-main-menu-item nil)
 
@@ -63,9 +64,8 @@
               (sub-menu (:submenu @item)))))))
 
 (defelem logo [attrs _]
-  ((img :class "ui image"
-        :src "/images/exicon-logo.png"
-        :alt "Exicon Global Ltd.") attrs))
+  ((image/elem :class-opts "ui image"
+        :src "/images/exicon-logo.png") attrs))
 
 (defelem top-nav [attrs _]
   (let [mobile-menu-visible (cell false)]

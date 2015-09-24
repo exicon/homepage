@@ -1,5 +1,6 @@
 (ns exicon.platform-selector
   (:require
+    [homepage.image :as image]
     [exicon.calculator :refer [result]]))
 
 (defn toggle-in-set [set val]
@@ -18,7 +19,7 @@
 (defelem checkbox-grp
   [{:keys [image title data]} checkboxes]
   (div :class "column"
-       (img :class "ui centered image responsive" :src (cell= image))
+       (image/elem :class-opts "ui centered image responsive" :src (cell= image))
        (p :class "ui center aligned small header" title)
        (div :style "width:50%; margin:0 auto;"
             (loop-tpl

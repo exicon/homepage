@@ -1,7 +1,7 @@
 (ns homepage.customers.index
       (:require
         [homepage.layout :refer [secondary-header] :as layout]
-        [homepage.layout :as layout]))
+        [homepage.image :as image]))
 
 (defc multinational
   {:image-side :left
@@ -116,8 +116,8 @@
     (div :class "page-details middle aligned two column doubling row"
          (div :id (cell= (:anchor f)) :class "anchor")
          (div :class "column left-image"
-              (img :src (cell= (:screenshot1 f)))
-              (img :src (cell= (:screenshot2 f))))
+              (image/elem :src (cell= (:screenshot1 f)))
+              (image/elem :src (cell= (:screenshot2 f))))
          (div :class "column"
               (h2 (:title f))
               (h4 "Challenge")
@@ -126,15 +126,15 @@
               (p (:solution f))
               (h4 "Result")
               (p (:result f))
-              (img :class "customer-logo" :src (cell= (:customer-logo1 f)))
-              (img :class "customer-logo" :src (cell= (:customer-logo2 f)))(br)(br)
+              (image/elem :class-opts "customer-logo" :src (cell= (:customer-logo1 f)))
+              (image/elem :class-opts "customer-logo" :src (cell= (:customer-logo2 f)))(br)(br)
               (a :href "/appboard/pricing"
                  (div :class "ui button" "Get started now"))))
 
     (div :class "page-details middle aligned two column doubling row"
          (div :id (cell= (:anchor f)) :class "anchor")
          (div :class "column"
-              (img :class "features-icon" :src (cell= (:icon f)))
+              (image/elem :class-opts "features-icon" :src (cell= (:icon f)))
               (h2 (:title f))
               (h4 "Challenge")
               (p (:challenge f))
@@ -145,8 +145,8 @@
               (a :href "/appboard/pricing"
                  (div :class "ui button" "Get started now")))
          (div :class "column right-image"
-              (img :src (cell= (:screenshot1 f)))
-              (img :src (cell= (:screenshot2 f)))))))
+              (image/elem :src (cell= (:screenshot1 f)))
+              (image/elem :src (cell= (:screenshot2 f)))))))
 
 
 (defn pg []

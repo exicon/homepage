@@ -1,7 +1,7 @@
 (ns homepage.developers.index
       (:require
-        [homepage.layout :refer [secondary-header] :as layout]
-        [homepage.layout :refer [contact-us-btn] :as layout]))
+        [homepage.layout :refer [secondary-header contact-us-btn] :as layout]
+        [homepage.image :as image]))
 
 (def developers-list
   [{:title "Connect"
@@ -17,7 +17,7 @@
 (defn developers-options [opts]
   (div :class "center aligned column"
        (h2 :class "developers-title" (text (:title opts)))
-       (img :class "developers-icon" :src (cell= (:image opts)))
+       (image/elem :class-opts "developers-icon" :src (cell= (:image opts)))
        (p :class "developers-details" (text (:details opts)))))
 
 (defn developers-options-section []
@@ -86,7 +86,7 @@
     :class "ui one column container grid"
     (div :id "page-subtitle" :class "center aligned row exicon-connect"
          (div :class "column"
-              (img :src "/images/developers/puz.png")
+              (image/elem :src "/images/developers/puz.png")
               (h2 "Exicon connects its clients with the best developers around the world"))))
 
   (section

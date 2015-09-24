@@ -1,7 +1,7 @@
 (ns homepage.news.index
       (:require
         [homepage.layout :refer [secondary-header] :as layout]
-        [homepage.layout :as layout]))
+        [homepage.image :as image]))
 
 (def announcement-list
   [{:title
@@ -95,7 +95,7 @@
 (defn press-options [opts]
   (div :class "ui two column doubling grid"
        (div :class "three wide column"
-            (img :class "press-screenshot" :src (cell= (:image opts))))
+            (image/elem :class-opts "press-screenshot" :src (cell= (:image opts))))
        (div :class "eleven wide column"
             (h2 :class "ui header" (text (:title opts)))
             (p (text (:detail opts))
@@ -159,7 +159,7 @@
 (defn speaking-options [opts]
   (div :class "ui two middle aligned column doubling grid"
        (div :class "three wide column"
-            (img :class "press-screenshot" :src (cell= (:image opts))))
+            (image/elem :class-opts "press-screenshot" :src (cell= (:image opts))))
        (div :class "eleven wide column"
             (h2 (text (:title opts)))
             (p (text (:detail opts))
@@ -225,19 +225,19 @@
   (div :class "ui column"
        (div :class "column"
             (h2 (text (:title opts)))
-            (img :class "events-screenshot" :src (cell= (:image1 opts)))
-            (img :class "events-screenshot" :src (cell= (:image2 opts)))
-            (img :class "events-screenshot" :src (cell= (:image3 opts)))
-            (img :class "events-screenshot" :src (cell= (:image4 opts))))))
+            (image/elem :class-opts "events-screenshot" :src (cell= (:image1 opts)))
+            (image/elem :class-opts "events-screenshot" :src (cell= (:image2 opts)))
+            (image/elem :class-opts "events-screenshot" :src (cell= (:image3 opts)))
+            (image/elem :class-opts "events-screenshot" :src (cell= (:image4 opts))))))
 
 (defn momo-options [m]
   (div :class "ui column"
        (div :class "column"
             (h2 (text (:title m)))
-            (img :class "events-screenshot" :src (cell= (:image1 m)))
-            (img :class "events-screenshot" :src (cell= (:image2 m)))
-            (img :class "events-screenshot" :src (cell= (:image3 m)))
-            (img :class "events-screenshot" :src (cell= (:image4 m))))))
+            (image/elem :class-opts "events-screenshot" :src (cell= (:image1 m)))
+            (image/elem :class-opts "events-screenshot" :src (cell= (:image2 m)))
+            (image/elem :class-opts "events-screenshot" :src (cell= (:image3 m)))
+            (image/elem :class-opts "events-screenshot" :src (cell= (:image4 m))))))
 
 (defn events-options-section []
   (div :class "ui column"
@@ -275,7 +275,7 @@
               (events-options-section))
          (div :class "three wide column"
               (h1 "Awards")(br)(br)
-              (img :class "awards-icon" :src "/images/news/Award-Asia.png")
+              (image/elem :class-opts "awards-icon" :src "/images/news/Award-Asia.png")
               (p "2012 Red Herring 100 Asia Winner")
-              (img :class "awards-icon" :src "/images/news/Award-Global.png")
+              (image/elem :class-opts "awards-icon" :src "/images/news/Award-Global.png")
               (p "2012 Red Herring 100 Global Winner"))))))

@@ -1,7 +1,8 @@
 (ns exicon.app-details
   (:require
     [exicon.utils :refer [tbl]]
-    [formative.parse :as fp]))
+    [formative.parse :as fp]
+    [homepage.image :as image]))
 
 (defc app-details {:tnc false :location #{}})
 (defc user-details nil)
@@ -72,7 +73,7 @@
 
 (defn item-checkbox [item]
   (div :class "center aligned column"
-       (div :class "device-img-container" (img :class "responsive" :src (cell= (:image item))))
+       (div :class "device-img-container" (image/elem :class-opts "responsive" :src (cell= (:image item))))
        (div :class "device-checkboxes-container"
             (p (text (:title item)))
             (div :class "ui checkbox field"
@@ -96,7 +97,7 @@
   [(div :class "sixteen wide column"
         (div :class "ui center aligned basic segment"
              (h2 :class "ui large header"
-                 (img :class "ui tiny inline image"
+                 (image/elem :class-opts "ui tiny inline image"
                       :src "/images/app-builder/nda.png")
                  (div :class "center aligned content"
                              "Your app idea is safe, everyone is under NDA.")))

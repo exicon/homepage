@@ -1,6 +1,7 @@
 (ns homepage.appbuilder.index
   (:require
     [homepage.layout :refer [secondary-header section-header] :as layout]
+    [homepage.image :as image]
     [homepage.common :refer [textual-button]])
   (:require-macros [config :refer [appboard-url appbuilder-url]]))
 
@@ -213,7 +214,7 @@
 (defn flow-item [item]
   (let [cta (:cta @item)]
     (div :class  "column description sizer"
-       (img :class"ui small centered inverted image"
+       (image/elem :class-opts "ui small centered inverted image"
             :src (cell= (:icon item)))
        (div :class "ui center aligned container"
             (div :class "center aligned column"
@@ -252,7 +253,7 @@
   (div :class "column"
        (div :class "ui hidden divider")
        (div :class "title sizer"
-            (img :class "ui circular centered small inverted teal segment image":src (:icon @item))
+            (image/elem :class-opts "ui circular centered small inverted teal segment image":src (:icon @item))
             (h2 :class "ui tiny header dark-teal" (:title @item)))
        (div :class "content" (:content @item))
        (div :class "ui hidden divider")))
@@ -260,7 +261,7 @@
 (defn dev-feature [item]
   (div :class "dev-feature center aligned column"
   (div :class "ui circular center aligned small inverted dev-feature segment"
-       (img :class "ui image":src (:img @item)))
+       (image/elem :class-opts "ui image":src (:img @item)))
        (label (:label @item))))
 
 (defn developer-section []
@@ -270,7 +271,7 @@
     (div :class "center aligned row"
          (div :class "title sizer column"
               (h2 :class "ui small header"
-                  (img :class "ui small image"
+                  (image/elem :class-opts "ui small image"
                     :src "/images/app-builder/development.png")
                   (div :class "content"
                        "3000 Quality Mobile App Development Companies"
@@ -280,7 +281,7 @@
                             "US$ 400M worth of projects matched across all industries")))))
 
     (div :class "ui center aligned container"
-         (img :class "ui centered image"
+         (image/elem :class-opts "ui centered image"
               :src "/images/app-builder/developer-map.png"))
 
     (div :class "ui doubling stackable two column row"
@@ -288,7 +289,7 @@
          (div :class "column"
               (div :class "ui container"
                    (h3 :class"ui header" "Platforms:")
-                   (img :class "ui image"
+                   (image/elem :class-opts "ui image"
                         :src "/images/app-builder/platforms.png"))
               (div :class "ui hidden divider")
 
@@ -350,9 +351,10 @@
                (if (some identity (map testimonial [:name :image :sub-title]))
                  (div :class "ui header"
                       (if (:image testimonial)
-                        (div :class "ui tiny circular image icon"
-                             (img :src (cell= (:image testimonial)))))
-                      (img :class "ui small right floated image"
+                             (image/elem
+                               :class-opts "ui tiny circular image icon"
+                               :src (cell= (:image testimonial))))
+                      (image/elem :class-opts "ui small right floated image"
                            :src (:company testimonial))
                       (div :class "ui hidden divider")
                       (div :class "middle aligned content"
@@ -380,7 +382,7 @@
                           :text (:header incorporated-details)))
                  (div :class "ui hidden divider")
                  (div :class "ui container basic segment"
-                      (img :class "ui centered image"
+                      (image/elem :class-opts "ui centered image"
                            :src (:image incorporated-details)))
                  (div :class "ui hidden divider"))))
 

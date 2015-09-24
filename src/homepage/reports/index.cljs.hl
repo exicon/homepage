@@ -1,6 +1,7 @@
 (ns homepage.reports.index
       (:require
-        [homepage.layout :refer [secondary-header] :as layout]))
+        [homepage.layout :refer [secondary-header] :as layout]
+        [homepage.image :as image]))
 
 (def page-header {:header "Research"})
 
@@ -310,7 +311,7 @@
                (h2 :class "reports-title" (text (:title opts)))
                (p :class "reports-issue" (text (:detail opts)))
                (div :class "reports-screenshot-box"
-                    (img :class "reports-screenshot" :src (cell= (:image opts))))))))
+                    (image/elem :class-opts "reports-screenshot" :src (cell= (:image opts))))))))
 
 (defn reports-options-section []
   (loop-tpl :bindings [opt reports-list]

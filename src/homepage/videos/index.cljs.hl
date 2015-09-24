@@ -1,6 +1,7 @@
 (ns homepage.videos.index
       (:require
         [homepage.layout :refer [secondary-header route] :as layout]
+        [homepage.image :as image]
         [clojure.string :refer [replace lower-case]]))
 
 (def page-header {:header "Videos"})
@@ -84,7 +85,7 @@
           (div :class "ui center aligned segment"
                (h2 :class "videos-title" (text (:title video)))
                (div :class "videos-screenshot-box"
-                    (img :class "videos-screenshot" :src (cell= (:image video))))))))
+                    (image/elem :class-opts "videos-screenshot" :src (cell= (:image video))))))))
 
 (defn videos-options-section []
   (section :id "video-list"
