@@ -22,8 +22,8 @@
        :toggle (cell= (not-empty problems))
        "Please review all the mandatory fields and agree with the Terms & Conditions"
        #_(ul
-         (loop-tpl :bindings [prob problems]
-                   (li :text (cell= (str (join ", "  (value-title (:keys prob) label-map))": "(:msg prob))))))))
+           (loop-tpl :bindings [prob problems]
+                     (li :text (cell= (str (join ", "  (value-title (:keys prob) label-map))": "(:msg prob))))))))
 
 (defc= active-step (case route
                      "#calculate" :calculate
@@ -31,6 +31,10 @@
                      "#submit" :submit
                      "#thank-you" :thank-you
                      :unknow-subpage))
+
+(defc= set-default-route
+  (when-not route
+    (set! (.. js/window -location -hash) "calculate")))
 
 (defelem step [{:keys [id title href]} kids]
   ((a :class "step")
