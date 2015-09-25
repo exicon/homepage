@@ -33,7 +33,9 @@
                      :unknow-subpage))
 
 (defc= set-default-route
-  (when-not route
+  (when (and (not route)
+             (= (.. js/window -location -pathname)
+                "/app-idea/"))
     (set! (.. js/window -location -hash) "calculate")))
 
 (defelem step [{:keys [id title href]} kids]
