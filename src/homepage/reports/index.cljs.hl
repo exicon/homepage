@@ -6,14 +6,48 @@
 (def page-header {:header "Research"})
 
 (def reports-list
-  [
+  [{
+    :title "China's App Addicts"
+    :detail "Todays Chinese urbanite does everything on their phone and it tells in the numbers."
+    :image "/images/reports/china-s-addiction-to-apps.png"
+    :link "http://info.exiconglobal.com/download-our-china-app-addict-infographic"
+    }
+  {
+    :title "App Glossary"
+    :detail "The App Glossary of key terms to know when building an app"
+    :image "/images/reports/glossary-preview.png"
+    :link "http://info.exiconglobal.com/download-the-app-glossary-key-terms-for-an-appbuilder"
+    }
+   {
+    :title "Checklist Build an App"
+    :detail "We've put together a starter-level checklist to help you get your mobile app project started and get you on the way to becoming mobile app experts."
+    :image "/images/reports/preview-dB-checklist.png"
+    :link "http://info.exiconglobal.com/download-your-building-an-app-checklist"
+    }
+   {
+    :title "Checklist Managing an App"
+    :detail "This checklist follows our Build, Manage and Promote apps flow and picks up where the \"Building an App\" checklist left off"
+    :image "/images/reports/manage-a-mobie-app-checklist.jpg"
+    :link "http://info.exiconglobal.com/download-the-managing-a-mobile-app-checklist"
+    }
+   {
+    :title "Increase your App Downloads Ebook"
+    :detail "A successful app is about functionality and discoverability; great design is not enough. Get to know more about the importance of being where your users can find you."
+    :image "/images/reports/ebook-1.png"
+    :link "http://info.exiconglobal.com/download-e-book-increasing-app-downloads-part-1?"
+    }
+   {
+    :title "Mobile Insurance"
+    :detail "The Do's and Don'ts of Mobile Insurance Apps, including real-world examples."
+    :image "/images/reports/insurance-mobile.png"
+    :link "http://info.exiconglobal.com/download-insurance-and-mobile-app-report"
+    }
    {
     :title "The Business Revenue of Building an Apple Watch App"
     :detail "The Apple Watch - Apple’s changing the world. Apple’s changed the way we use apps. Now its changing the way we use watches."
     :image "/images/reports/What-is-the-Business-Revenue-of-Building-an-Apple-Watch-App.png"
     :link "http://info.exiconglobal.com/download-infographic-business-revenue-of-building-an-apple-watch-app"
     }
-
    {
     :title "Once you've built your app"
     :detail "With more than 3 million apps on the top 5 international app stores, you want to make sure your app get’s discovered, and the users you're targeting know your app."

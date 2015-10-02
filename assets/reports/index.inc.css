@@ -15,12 +15,12 @@
 	font-weight: 400;
 	color: #333333;
 	text-align: left;
-	height: 89px;
+
 }
 
 #reports-list .reports-screenshot {
 	max-width: 100%;
-	max-height: 254px;
+	max-height: 200px;
 }
 
 #reports-list .reports-screenshot-box {
