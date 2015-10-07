@@ -4,12 +4,12 @@
   :dependencies
   '[[tailrecursion/castra "3.0.0-SNAPSHOT"]
     [hoplon/boot-hoplon "0.1.8"]
-    [hoplon/hoplon "6.0.0-alpha9"]
-    ; [adzerk/boot-reload "0.3.2"]
+    [hoplon/hoplon "6.0.0-alpha10"]
+    [adzerk/boot-reload "0.4.0"]
     [pandeiro/boot-http "0.6.3"]
-    [org.clojure/clojurescript "1.7.122"]
+    [org.clojure/clojurescript "1.7.48"]
     [adzerk/cljs-console "0.1.1"]
-    [adzerk/boot-cljs "1.7.48-3"]
+    [adzerk/boot-cljs "1.7.48-5"]
     [cljsjs/boot-cljsjs "0.5.0" :scope "test"]
     [exicon/semantic-ui "2.0.6-SNAPSHOT"]
     [formative "0.8.8"]]
@@ -18,7 +18,7 @@
 
 (require
   '[hoplon.boot-hoplon :refer [hoplon prerender html2cljs]]
-  ; '[adzerk.boot-reload :refer [reload]]
+  '[adzerk.boot-reload :refer [reload]]
   '[pandeiro.boot-http :refer [serve]]
   '[adzerk.boot-cljs :refer [cljs]]
   '[cljsjs.boot-cljsjs :refer [from-cljsjs]]
@@ -27,7 +27,7 @@
   '[boot.util :refer [info]])
 
 (task-options!
-  speak {:theme "woodblock"}
+  reload {:open-file "echo %s -- %s -- %s -- subl %3$s:%1$s"}
   cljs {:compiler-options
         {:pseudo-names false}})
 
@@ -79,12 +79,10 @@
     (sift :move {#"^semantic-ui.inc.css$" "semantic-ui.css"})
     (watch)
     (hoplon :pretty-print true)
-    ; (reload)
+    (reload)
     (cljs :optimizations :none
           :source-map true)
-    (copy-index-htmls)
-    ; (prerender)
-    (speak)))
+    (copy-index-htmls)))
 
 (deftask prod
   "Build homepage for production."
