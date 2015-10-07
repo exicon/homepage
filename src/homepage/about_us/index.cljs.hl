@@ -361,7 +361,7 @@
                :bio
                #(vector
                   (p "Mr. Ueno is a serial entrepreneur & an independent venture capitalist with 30 years of extensive global management & operational expertise in the US, Europe and China. Having the entrepreneurial operation experience and building start-ups in the Information Communication & Energy (ICE) technologies spaces. Mr. Ueno has been currently the founding partner of Synapse Partners and servers Synapse’s active portfolio companies.")
-                  (p "Also, Mr. Ueno has been a lead investor and a board member of 21Vianet Group Ltd (NASDAQ:VNET) and its affiliated companies since 2006 and currently leads a corporate venture capital arm of VENT, 21Vianet Ventures, which is focus on the strategic investment in the emerging next generation technologies starts-ups in ICT space."))
+                  (p "Also, Mr. Ueno has been a lead investor and a board member of 21Vianet Group Ltd (NASDAQ:VNET) and its affiliated companies since 2006 and currently leads a corporate venture capital arm of VNET, 21Vianet Ventures, which is focus on the strategic investment in the emerging next generation technologies starts-ups in ICT space."))
                }})
 
 (def office-list
