@@ -222,9 +222,7 @@
               :class "ui center aligned basic secondary segment description sizer"
               :toggle (cell= (= :calculate active-step))
               (h3 :class "ui medium header"
-                  (a :href "http://info.exiconglobal.com/contact-us"
-                     :target "_blank"
-                     "Book your 30-minute FREE App Builder consultation."))
+                  "Book your 30-minute FREE App Builder consultation.")
               (div :class "ui hidden divider")
               (div :class "ui container grid"
                    (div :id "hs-app-calc-form"

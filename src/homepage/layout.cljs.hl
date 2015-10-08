@@ -90,18 +90,18 @@
               (div :id "hs-newsletter-form" "Loading ...."))))])
 
 (defn subscribe-stick-btn [subscribe-click]
-  (a :href "http://info.exiconglobal.com/newsletter"
-     :target "_blank"
+  (a :href "javascript:void(0);"
+     :click #(reset! subscribe-click true)
      (div :id "subscribe-stick" :class
           (cell= {:show (not subscribe-click)}))))
 
 (defelem contact-us-btn
   [{:keys [id css-class txt]
     :or {id "" css-class "" txt "Contact Us"}}]
-  (a :href "http://info.exiconglobal.com/contact-us"
-     :target "_blank"
-     (div :id id :class (str "ui "css-class" button")
-          :text txt)))
+  (div :id id :class (str "ui "css-class" button")
+       :click #(reset! contact-us-visible? true)
+       :text txt))
+
 
 (defelem primary
   [{:keys [page-css page-title description keywords] :as attrs} content]
