@@ -3,9 +3,9 @@
   :version "0.1.0-SNAPSHOT"
   :dependencies
   '[[tailrecursion/castra "3.0.0-SNAPSHOT"]
-    [hoplon/boot-hoplon "0.1.8"]
+    [hoplon/boot-hoplon "0.1.9"]
     [hoplon/hoplon "6.0.0-alpha10"]
-    [adzerk/boot-reload "0.4.0"]
+    ; [adzerk/boot-reload "0.4.0"]
     [pandeiro/boot-http "0.6.3"]
     [org.clojure/clojurescript "1.7.48"]
     [adzerk/cljs-console "0.1.1"]
@@ -18,7 +18,7 @@
 
 (require
   '[hoplon.boot-hoplon :refer [hoplon prerender html2cljs]]
-  '[adzerk.boot-reload :refer [reload]]
+  ; '[adzerk.boot-reload :refer [reload]]
   '[pandeiro.boot-http :refer [serve]]
   '[adzerk.boot-cljs :refer [cljs]]
   '[cljsjs.boot-cljsjs :refer [from-cljsjs]]
@@ -27,7 +27,7 @@
   '[boot.util :refer [info]])
 
 (task-options!
-  reload {:open-file "echo %s -- %s -- %s -- subl %3$s:%1$s"}
+  ; reload {:open-file "echo %s -- %s -- %s -- subl %3$s:%1$s"}
   cljs {:compiler-options
         {:pseudo-names false}})
 
@@ -78,8 +78,9 @@
     (sift :to-resource #{#"semantic-ui.inc.css"})
     (sift :move {#"^semantic-ui.inc.css$" "semantic-ui.css"})
     (watch)
+    (speak)
     (hoplon :pretty-print true)
-    (reload)
+    ; (reload)   ; Causes the `with-init` functions called infinitely
     (cljs :optimizations :none
           :source-map true)
     (copy-index-htmls)))
