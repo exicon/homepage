@@ -109,23 +109,23 @@
         content-attrs (dissoc attrs
                               :page-title :description :keywords :page-css)]
 
-    (when-not prerendering? (integrations/hubspot-forms))
+    ; (when-not prerendering? (integrations/hubspot-forms))
 
-    (integrations/load-hubspot-form
-      {:target "#hs-contact-us-form"
-       :cssClass "ui small form basic segment"
-       :submitButtonClass "ui submit teal button"
-       :errorMessageClass "ui error message"
-       :portalId (hs-portal-id)
-       :formId (hs-contact-us-id)})
+    ; (integrations/load-hubspot-form
+    ;   {:target "#hs-contact-us-form"
+    ;    :cssClass "ui small form basic segment"
+    ;    :submitButtonClass "ui submit teal button"
+    ;    :errorMessageClass "ui error message"
+    ;    :portalId (hs-portal-id)
+    ;    :formId (hs-contact-us-id)})
 
-    (integrations/load-hubspot-form
-      {:target "#hs-newsletter-form"
-       :cssClass "ui small form basic segment"
-       :submitButtonClass "ui submit teal button"
-       :errorMessageClass "ui error message"
-       :portalId (hs-portal-id)
-       :formId (hs-newsletter-id)})
+    ; (integrations/load-hubspot-form
+    ;   {:target "#hs-newsletter-form"
+    ;    :cssClass "ui small form basic segment"
+    ;    :submitButtonClass "ui submit teal button"
+    ;    :errorMessageClass "ui error message"
+    ;    :portalId (hs-portal-id)
+    ;    :formId (hs-newsletter-id)})
 
     (html
       (head
