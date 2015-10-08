@@ -28,7 +28,7 @@
                 (div :class "three column row"
                      (div :class "seven wide column"
                           (a :class "ui huge black fluid button"
-                             :href "/appboard" "Check out The AppBoard"))
+                             :href "/appboard/" "Check out The AppBoard"))
                      (div :class "eight wide column"
                           (a :class "ui huge black fluid button"
                              :href "/appbuilder/" "Find the right developer for your app"))))))
@@ -48,7 +48,7 @@
    {:icon "/images/landing-page/manage-icon2.png"
     :title "Manage"
     :desc "A single, secure dashboard with tools and insights to make the right mobile investments"
-    :link "/appboard"}
+    :link "/appboard/"}
    {:icon "/images/landing-page/promote-icon2.png"
     :title "Promote"
     :desc "Features and services to drive downloads and user engagement"
