@@ -227,7 +227,7 @@ i.teal.icon {
 	position: fixed;
 	z-index: 18;
 	right: 0px;
-	top: 260px;
+	top: 7em;
 	display:none;
 }
 
@@ -259,7 +259,6 @@ i.teal.icon {
 	opacity: 0.4;
 	border-radius: 0.2em;
 }
-
 
 /* Customer Quotes Section */
 .customer-quote-list h2{

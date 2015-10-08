@@ -15,7 +15,7 @@
 (defn row []
   (div :class "column sixteen wide center aligned"))
 
-(defelem modal-dialog
+(defelem contact-us-dialog
   [{:keys [id visible title bg-action]
     :or {title ""}}
    kids]
@@ -25,7 +25,7 @@
       ((div :class "modal-bg")
        :class (cell= {:show-modal visible})
        :click bg-click )
-      ((div :class "ui small modal")
+      ((div :id "contact-us-modal" :class "ui small modal")
        :style "min-heigth:100px"
        :class (cell= {:visible visible})
        (div :class "header" title)
@@ -147,7 +147,7 @@
       (body :toggle (cell= true)
             (subscribe-stick-btn subscribe-click)
             (subscribe-stick-form subscribe-click)
-            (modal-dialog :id "hs-contact-us-form" :title "Contact Us"
+            (contact-us-dialog :id "hs-contact-us-form" :title "Contact Us"
                           :visible contact-us-visible?)
             (contact-us-btn :id "contact-us-btn" :css-class "small")
             (div :id "top-nav"

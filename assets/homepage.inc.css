@@ -82,9 +82,11 @@
 	background-color: gray;
 }
 
-#contact-us-btn{
+#contact-us-btn {
 	position: fixed;
-	bottom: -2px;
+	bottom: 0;
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
 	right: 10%;
 	z-index: 100;
 	background-color: rgb(55, 154, 166) !important;
@@ -126,6 +128,9 @@
 	color: teal;
 }
 
+#contact-us-modal {
+	top: 7em;
+}
 
 
 h3.ui.header, h4.ui.header{
