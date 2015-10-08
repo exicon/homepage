@@ -11,7 +11,7 @@
     [adzerk/cljs-console "0.1.1"]
     [adzerk/boot-cljs "1.7.48-5"]
     [cljsjs/boot-cljsjs "0.5.0" :scope "test"]
-    [exicon/semantic-ui "2.0.6-SNAPSHOT"]
+    [exicon/semantic-ui "2.1.4-SNAPSHOT"]
     [formative "0.8.8"]]
   :source-paths #{"src"}
   :resource-paths #{"assets"})
