@@ -28,6 +28,20 @@
     }
 
    {
+    :title "The Top Android Appstores and Marketplaces Globally"
+    :detail "Get noticed on the top Android Appstores Globally"
+    :image "http://cdn2.hubspot.net/hubfs/511335/Research_download_pages/Preview-top-android-marketplaces-globally.png"
+    :link "http://info.exiconglobal.com/the-top-android-app-marketplaces-globally"
+    }
+
+   {
+    :title "This is how you create a great app!"
+    :detail "What should you do in order to create your best app yet?"
+    :image "http://info.exiconglobal.com/hubfs/Research_download_pages/2-key-steps-preview.png"
+    :link "http://info.exiconglobal.com/download-infographic-2-key-steps-to-creating-a-great-app"
+    }
+
+   {
     :title "Checklist Build an App"
     :detail "We've put together a starter-level checklist to help you get your mobile app project started and get you on the way to becoming mobile app experts."
     :image "/images/reports/preview-db-checklist.png"
@@ -125,12 +139,12 @@
     :link "http://info.exiconglobal.com/the-power-of-apis"
     }
 
-   {
-    :title "Mobile Ecosystem"
-    :detail "App Creation is a complicated business because there are so many different parties involved."
-    :image "/images/reports/Mobile-Ecosystem.png"
-    :link "http://info.exiconglobal.com/download-mobile-ecosystem-infographic"
-    }
+   ;{
+   ; :title "Mobile Ecosystem"
+   ; :detail "App Creation is a complicated business because there are so many different parties involved."
+   ; :image "/images/reports/Mobile-Ecosystem.png"
+   ; :link "http://info.exiconglobal.com/download-mobile-ecosystem-infographic"
+   ; }
 
    {
     :title "11 Signs of a Poorly Planned App"
@@ -156,7 +170,7 @@
    {
     :title "Wearables Landscape"
     :detail "We Have uncovered some starting statistics that can help you understand the burgeoning wearable landscape and make sure your strategy is working for you."
-    :image "/images/reports/Wearables.png"
+    :image "http://info.exiconglobal.com/hubfs/Research_download_pages/Wearables-API.png"
     :link "http://info.exiconglobal.com/wearables-landscape"
     }
 
@@ -167,12 +181,12 @@
    ;  :link "/report-download/who-uses-which-social-channels-for-doing-what"
    ;  }
 
-   {
-    :title "If Building An App Was Like Building A House"
-    :detail "Check out the 'If buidling an app was like building a house' infographic."
-    :image "/images/reports/If-Building-An-App-Was-Like-Building-A-House.png"
-    :link "http://info.exiconglobal.com/if-building-app-was-like-building-a-house"
-    }
+  ; {
+  ;  :title "If Building An App Was Like Building A House"
+  ;  :detail "Check out the 'If buidling an app was like building a house' infographic."
+  ;  :image "/images/reports/If-Building-An-App-Was-Like-Building-A-House.png"
+  ;  :link "http://info.exiconglobal.com/if-building-app-was-like-building-a-house"
+  ;  }
 
    {
     :title "Future Travel Experience"
@@ -219,7 +233,7 @@
    {
     :title "6 key challenges when entering mobile"
     :detail "Mobile is the remote control to your lifestyle and as technology evolves so does the ability of mobile to do more. Your app is, therefore, a continually evolving proposition..."
-    :image "/images/reports/Six-Key-Challenges.png"
+    :image "http://info.exiconglobal.com/hubfs/Research_download_pages/Screen_Shot_2015-06-18_at_9.56.39_am.png"
     :link "http://info.exiconglobal.com/download-whitepaper-6-key-challenges-when-entering-mobile"
     }
 
