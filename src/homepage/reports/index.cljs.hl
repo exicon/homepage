@@ -6,7 +6,15 @@
 (def page-header {:header "Research"})
 
 (def reports-list
-  [{
+  [
+   {
+    :title "The costs & risks of managing apps "
+    :detail "Your company has embraced the need to be mobile. Apps have been, and are being, built."
+    :image "http://info.exiconglobal.com/hubfs/Research_download_pages/Costs_of_Managing_your_own_apps.png"
+    :link "http://info.exiconglobal.com/download-the-costs-risks-of-managing-apps"
+    }
+
+   {
     :title "The Mobile Relationship Management 'Pipe' "
     :detail "Step-by-Step, getting mobile right."
     :image "/images/reports/how-to-manage-your-apps-thumb.png"
