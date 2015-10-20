@@ -4,7 +4,16 @@
         [homepage.image :as image]))
 
 (def announcement-list
-  [{:title
+  [
+  {:title
+    "Oct. 2015 - Mobile Relationship Management Platform Accelerates Mobile Adoption"
+    :image "http://info.exiconglobal.com/hubfs/blog-files/Exicon-kony.png"
+    :detail
+    "Equipping Enterprises and SMBs to Develop and Deliver Mobile App – From Ideation Through Commercialization"
+    :link "http://blog.exiconglobal.com/mobile-relationship-management-accelerates-mobile-adoption-exicon-kony"
+    :note "yes"}
+
+  {:title
     "Aug. 2015 - Mobile Relationship Management Platform
     Builds Momentum with Powerful App Analytics"
     :image "/images/analytics-screenshot.png"
