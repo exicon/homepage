@@ -235,10 +235,9 @@ i.teal.icon {
 	margin-top: 1em;
 }
 
-#subscribe-stick-form .close.icon{
-	margin-top: -1em;
-	margin-left: -0.5em;
+#subscribe-stick-form .remove.icon{
 	cursor: pointer;
+	margin-bottom: 0.5em;
 }
 
 #subscribe-stick-layer.show, #subscribe-stick-form.show, #subscribe-stick.show {

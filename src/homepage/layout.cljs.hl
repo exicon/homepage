@@ -66,19 +66,13 @@
 
 (defc contact-us-visible? false)
 
-(defn contact-us-modal [active?]
-  ((div :class "ui modal")
-   :class (cell= {:active true})
-   (i :class "close red icon"
-      :click #(reset! active? false))))
-
 (defn subscribe-stick-form [subscribe-click]
   [((div :id "subscribe-stick-layer")
     :class (cell= {:show subscribe-click}))
    ((div :id "subscribe-stick-form")
     :class "ui fixed right basic segment"
     :class (cell= {:show subscribe-click})
-    (i :class "large close icon"
+    (i :class "large remove icon"
        :click #(reset! subscribe-click false))
     (div :class "ui grid"
          (div :class "sixteen wide center aligned column"

@@ -1,7 +1,7 @@
 (ns homepage.pricing.index
   (:require
     [homepage.layout
-     :refer [secondary-header contact-us-modal contact-us-btn]
+     :refer [secondary-header contact-us-btn]
      :as layout])
   (:require-macros
     [config :refer [appboard-url hs-contact-us-id hs-portal-id]]))
