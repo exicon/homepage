@@ -16,10 +16,9 @@
       (div :class "column"
            (ul
              (li :class "header" "Products")
-             (li (a :href (str (appboard-url) "/api-dir/") "API Directory"))
-             (li (a :href (str (appboard-url) "/app-dir/") "App Directory"))
              (li (a :href "http://apiaxle.com/" :target "_blank" "ApiAxle"))
-             (li (a :href "/appbuilder/" "AppBuilder"))))
+             (li (a :href "/appbuilder/" "AppBuilder"))
+             (li (a :href "/appboard/" "AppBoard"))))
       (div :class "column"
            (ul
              (li :class "header"
@@ -37,33 +36,33 @@
               (a :target "_blank"
                  :href "https://plus.google.com/115123733707845359729/posts"
                  (image/elem
-                      :src "/images/footer/white-g.png"))
+                   :src "/images/footer/white-g.png"))
               (a :target "_blank"
                  :href "https://www.facebook.com/exicon.mobi"
                  (image/elem
-                      :src "/images/footer/white-fb.png"))
+                   :src "/images/footer/white-fb.png"))
               (a :target "_blank"
                  :href "https://twitter.com/exicon"
                  (image/elem
-                      :src "/images/footer/white-twitter.png"))
+                   :src "/images/footer/white-twitter.png"))
               (a :target "_blank"
-                 :href "http://www.linkedin.com/company/exicon-ltd."
+                 :href "http://www.linkedin.com/company/exicon-ltd-"
                  (image/elem
-                      :src "/images/footer/white-linkedIn.png")))
+                   :src "/images/footer/white-linkedIn.png")))
           (li :class "follow-us-icon"
               (a :target "_blank"
                  :href "https://www.youtube.com/user/Exicon1"
                  (image/elem
-                      :src "/images/footer/white-youtube.png"))
+                   :src "/images/footer/white-youtube.png"))
               (a :target "_blank"
                  :href "http://www.weibo.com/u/3147916252"
                  (image/elem
-                      :src "/images/footer/white-weibo.png"))
+                   :src "/images/footer/white-weibo.png"))
               (a :target "_blank"
                  :href "http://feeds.feedburner.com/Exiconglobal"
                  (image/elem
-                      :src "/images/footer/white-rss.png"))
+                   :src "/images/footer/white-rss.png"))
               (a :target "_blank"
                  :href "http://www.pinterest.com/exicon/pins/follow/?guid=CqzN7JCYsQQy-0"
                  (image/elem
-                      :src "/images/footer/white-pinterest.png"))))))))
+                   :src "/images/footer/white-pinterest.png"))))))))
