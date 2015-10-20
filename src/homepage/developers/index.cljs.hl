@@ -99,9 +99,9 @@
                  services, and products you use. Join us to work more closely together with major
                  brands, OEMs, and service operators (all at their cost, not yours)."))
          (div :class "column"
-              (p :class "developers-connects-title" "Node Matching Services")
-              (p "If our client has no developer, we match them with a Node Developer.")
-              (p "3 developers are asked to bid for each project and the client choose the best
+              (p :class "developers-connects-title" "Developer Matching Services")
+              (p "If our client has no developer, we match them with a developer in our worldwide network.")
+              (p "3 developers are asked to bid for each project and the client chooses the best
                  offer, based on your skill set, experience, language, location, and price. No matter
                  what your specialty may be, we'll soon find clients looking for a developer like you.")))
 
