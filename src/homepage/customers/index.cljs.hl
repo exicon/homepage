@@ -42,8 +42,8 @@
    should you expect to budget? How do I know if the app is actually helping my business?"
    :solution
    [(text "The AppBoard isn't only for existing apps, it supports you through the full App LifeCycle.
-          If you have 'No Developer,' Exicon has ") (a :href "https://i2a.exiconglobal.com" "Node")
-    (text". You'll get help defining the app you need and Exicon
+         With Exicon's ") (a :href "/appbuilder/" "AppBuilder")
+    (text" you'll get help defining the app you need and Exicon
          will send your requirements to three experienced developers with the qualifications you need. We
          help you choose the proposal that makes the most sense for your requirements and negotiate a contract.
          Exicon can even manage the project all the way to launch and set you up on the AppBoard for continued
