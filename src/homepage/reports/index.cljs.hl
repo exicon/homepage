@@ -8,6 +8,13 @@
 (def reports-list
   [
    {
+    :title "Options for managing your apps "
+    :detail "The role of mobile asset management - you know you should be doing more to get better returns."
+    :image "http://info.exiconglobal.com/hubfs/Research_download_pages/Options-for-managing-your-apps-prev.png"
+    :link "http://info.exiconglobal.com/download-options-for-managing-your-apps"
+    }
+
+   {
     :title "The costs & risks of managing apps "
     :detail "Your company has embraced the need to be mobile. Apps have been, and are being, built."
     :image "http://info.exiconglobal.com/hubfs/Research_download_pages/Costs_of_Managing_your_own_apps.png"
@@ -176,8 +183,8 @@
     }
 
    {
-    :title "Wearables Landscape"
-    :detail "We Have uncovered some starting statistics that can help you understand the burgeoning wearable landscape and make sure your strategy is working for you."
+    :title "Wearables & APIs"
+    :detail "Get insights to the expanding wearables market and understand the impact of APIs."
     :image "http://info.exiconglobal.com/hubfs/Research_download_pages/Wearables-API.png"
     :link "http://info.exiconglobal.com/wearables-landscape"
     }
