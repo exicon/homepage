@@ -7,6 +7,13 @@
 
 (def reports-list
   [
+    {
+    :title "Empowering Education through technology "
+    :detail "Education is being changed from within by mobile"
+    :image "http://cdn2.hubspot.net/hubfs/511335/Research_download_pages/Education-and-Apps-prev.png"
+    :link "http://info.exiconglobal.com/download-our-report-empowering-education-through-tech"
+    }
+
    {
     :title "Options for managing your apps "
     :detail "The role of mobile asset management - you know you should be doing more to get better returns."
