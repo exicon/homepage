@@ -31,7 +31,15 @@
     :note "yes"}])
 
 (def press-list
-  [{:title "May. 2014 - The List: Women of Hope"
+  [
+  {:title "Dec. 2015 - ‘Who owns it is almost secondary’: Hong Kong-based entrepreneurs share tips on ways of monetising big data"
+    :image "http://info.exiconglobal.com/hubfs/Who-owns-it-is-almost-secondary.jpg"
+    :detail
+    "Companies should team up and share information as there is more potential to monetise big data by working together rather than acting alone, according to a prominent entrepreneur in Hong Kong. "
+    :link "http://www.scmp.com/tech/start-ups/article/1886512/who-owns-it-almost-secondary-hong-kong-based-entrepreneurs-share-tips"
+    :note "yes"}
+
+  {:title "May. 2014 - The List: Women of Hope"
     :image "/images/news/The-List.png"
     :detail
     "Tech entrepreneur Cat Purvis Rust was born in Hong Kong and has worked in
