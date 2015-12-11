@@ -4,11 +4,14 @@
      :refer [secondary-header contact-us-btn]
      :as layout])
   (:require-macros
-    [config :refer [appboard-url hs-contact-us-id hs-portal-id]]))
+    [config :refer
+     [appboard-url appbuilder-url hs-contact-us-id hs-portal-id]]))
 
 (def page-header {:header "Pricing"})
 
-(defn appboard-registration-link [arg] (str (appboard-url) "/?package="(name arg)"#!/registration/"))
+(defn appboard-registration-link [arg] (str (appboard-url) "/?package="(name arg)
+                                            "&returnUri=" (appbuilder-url)
+                                            "#!/registration/"))
 
 (def features-list
   [{:label "Number of apps"
