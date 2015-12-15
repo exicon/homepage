@@ -27,7 +27,7 @@
 #intro {
 	background: url('/images/landing-page/header.jpg') center no-repeat;
 	background-color: #F0F0EE;
-	height: 600px;
+	height: 500px;
 	justify-content: center;
 	-webkit-justify-content: center;
 	display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */

@@ -7,8 +7,7 @@
 (def intelligent-newsfeed
   {
    :image-side :right
-   :screenshot "/images/intelligent-newsfeed-screenshot.png"
-   :icon "/images/icons/big-newsfeed.png"
+   :screenshot "http://info.exiconglobal.com/hubfs/website/appboard/Newsfeed.png"
    :title "Intelligent Newsfeeds"
    :anchor "intelligent-newsfeeds"
    :content [
@@ -23,49 +22,31 @@
 (def leaderboard
   {
    :image-side :left
-   :screenshot "/images/leaderboard-screenshot.png"
-   :icon "/images/icons/big-leaderboard.png"
+   :screenshot "http://info.exiconglobal.com/hubfs/website/appboard/Leaderboard.png"
    :title "Leaderboard"
    :anchor "leaderboard"
    :content [
-             (p "Easily track your best and worst positioned apps sorted by downloads, revenue,
-                engagement adjusted for the last week or month.")
+             (p "Easily track your best and worst positioned apps sorted by life time downloads, and
+                engagement for the last week or month.")
              (common/registration-button :starter "Get Started Now")
              ]
    })
-
-(def watchlist
-  {
-   :image-side :right
-   :screenshot "/images/watchlist-screenshot.png"
-   :icon "/images/icons/big-watchlist.png"
-   :title "Watchlist"
-   :anchor "watchlist"
-   :content [
-             (p "Set up lists of apps you want to follow using our tool. You can easily
-                collate apps from competitors or from companies that are just great
-                at apps for inspiration for your next project.")
-             (common/registration-button :starter "Get Started Now")
-             ]
-   })
-
 
 (def analytics
   {
    :image-side :right
-   :screenshot "/images/analytics-screenshot.png"
-   :icon "/images/icons/big-analytics.png"
+   :screenshot "http://info.exiconglobal.com/hubfs/website/appboard/analytics.png "
    :title "Analytics"
    :anchor "analytics"
    :content [
              (ul :class "ui bulleted list"
-               (li "AppStore Analytics")
-               (li "In-App Analytics")
-               (li "You own your analytics"))
-             (p "Pull in analytics and reviews from all the different stores you publish in.
+                 (li "AppStore Analytics")
+                 (li "In-App Analytics")
+                 (li "You own your analytics"))
+             (p "Pull analytics and reviews from all the different stores you publish in.
                 Additionally, we'll provide you with In-App Analytics that let you know how users
                 are actually using your apps. What's more, you’ll own your data, unlike other
-                free providers. However, if you already have a provider you can plug that in too.")
+                free providers.")
              (common/registration-button :starter "Get Started Now")
              ]
    })
@@ -73,19 +54,18 @@
 (def app-builder
   {
    :image-side :left
-   :screenshot "/images/app-builder-screenshot.png"
-   :icon "/images/icons/big-appbuilder.png"
-   :title "App Builder"
+   :screenshot "http://info.exiconglobal.com/hubfs/website/appboard/AppBuilder.png "
+   :title "AppBuilder"
    :anchor "app-builder"
    :content [
-             (p "Get your app built properly using our App Builder tool.")
+             (p "Build your app properly using our AppBuilder tool.")
              (ul :class "ui bulleted list"
-               (li "Use our calculator to help define your project")
-               (li "Fill in our standard App Builder template - all secure")
-               (li "Ensure consistency and standardization")
-               (li "Driving scale and minimizing duplication")
-               (li "Find 3 great developers from our database, all under NDA")
-               (li "Collaborate on the progress of mobile development projects"))
+                 (li "Use our calculator to help define your project")
+                 (li "Fill in our standard AppBuilder template - all secure")
+                 (li "Ensure consistency and standardization")
+                 (li "Driving scale and minimizing duplication")
+                 (li "Find 3 great developers from our database, all under NDA")
+                 (li "Collaborate on the progress of mobile development projects"))
              (common/registration-button :starter "Get Me Started")
              ]
    })
@@ -94,7 +74,6 @@
   {
    :image-side :left
    :screenshot "/images/applocker-screenshot.png"
-   :icon "/images/icons/big-applocker.png"
    :title "AppLocker"
    :anchor "appLocker"
    :content [
@@ -106,39 +85,51 @@
              ]
    })
 
+(def app-store-search
+  {
+   :image-side :left
+   :screenshot "http://info.exiconglobal.com/hubfs/website/appboard/appstore-search.png"
+   :title "App Store Search"
+   :anchor "appstore search"
+   :content [
+             ( p "Search the App Stores directly from your AppBoard, see your own apps and your competitors side by side.")
+             (common/registration-button :starter "I'm ready to signup!")
+             ]
+   })
+
 (def app-store-distribution
   {
    :image-side :right
-   :screenshot "/images/app-distribution.png"
-   :icon "/images/packages/dominatorpack.png"
+   :screenshot "http://info.exiconglobal.com/hubfs/website/appboard/App-Distribution.png "
    :title "App Store Distribution"
    :anchor "app-store-distribution"
    :content [
-             (p "Increase the chances of your app being")
+             (p "Distribute onto multiple android stores globally. Increase the chances of your app being")
              (ul :class "ui bulleted list"
-               (li "Downloaded by up to "
-                   (span :class "text" (b "200%")) " more")
-               (li "Featured by up to "
-                   (span :class "text" (b "20")) " times more"
-                   (br)(br)(br)))
-             (common/registration-button :dominator "Start for free now")
-             ]
+                 (li "Downloaded by up to "
+                     (span :class "text" (b "200%")) " more")
+                 (li "Featured by up to "
+                     (span :class "text" (b "20")) " times more"))
+             (a :href "http://onepf.org/"
+                :target "_blank"
+                (i "— One Platform Foundation"))
+             (br)(br)(br)
+             (common/registration-button :dominator "Start for free now")]
    })
 
 (def marketplace
   {
    :image-side :left
    :screenshot "/images/Marketplace.png"
-   :icon "/images/icons/marketplace.png"
    :title "Marketplace"
    :anchor "marketplace"
    :content [
              (p "Stand out from the crowd")
              (ul :class "ui bulleted list"
-               (li "Increase the discoverability of your Apps and APIs across your customers,
-                   partners, suppliers and your organization with your own white labelled marketplace")
-               (li "Accessible from " (em "your own") " company website showcasing " (em "your own") " products"
-                   (br)(br)(br)))
+                 (li "Increase the discoverability of your Apps and APIs across your customers,
+                     partners, suppliers and your organization with your own white labelled marketplace")
+                 (li "Accessible from " (em "your own") " company website showcasing " (em "your own") " products"
+                     (br)(br)(br)))
              (common/registration-button :dominator "Start for free now")
              ]
    })
@@ -147,15 +138,14 @@
   {
    :image-side :right
    :screenshot "/images/api-mgt-screenshot.png"
-   :icon "/images/icons/api-mgt.png"
    :title "API Management"
    :anchor "api-management"
    :content [
              (p " The Internet's easiest API Management Platform.")
              (ul :class "ui bulleted list"
-               (li "Free and easy to use")
-               (li "Flexible")
-               (li "Open source"))
+                 (li "Free and easy to use")
+                 (li "Flexible")
+                 (li "Open source"))
              (a :href "http://apiaxle.com"
                 (div :class "ui button" "Learn More"))
              ] })
@@ -164,7 +154,6 @@
   {
    :image-side :left
    :screenshot "/images/dev-ecosystem-screenshot.png"
-   :icon "/images/icons/dev-ecosystem.png"
    :title "Development Ecosystem"
    :anchor "development-ecosystem"
    :content [
@@ -176,7 +165,6 @@
   {
    :image-side :right
    :screenshot "/images/governance-module.png"
-   :icon "/images/icons/governance-module.png"
    :title "Governance Module"
    :anchor "governance-module"
    :content [
@@ -186,23 +174,23 @@
 
 (def competitors {
                   :image-side :left
-                   :screenshot "/images/competitor-insights-screenshots.png"
-                   :anchor "competitors"
-                   :title "Competitor Insights"
-                   :semantic-icon (i :class "search teal icon")
-                   :content [
-                             (p "Get to Know Where You Stand")
-                             (ul :class "ui bulleted list"
-                               (li "Who are the leaders in your industry?")
-                               (li "How are your apps performing in a specific market?")
-                               (li "Do your competitors change by country?")
-                               )
-                             ]
-                   })
+                  :screenshot "/images/competitor-insights-screenshots.png"
+                  :anchor "competitors"
+                  :title "Competitor Insights"
+                  :semantic-icon (i :class "search teal icon")
+                  :content [
+                            (p "Get to Know Where You Stand")
+                            (ul :class "ui bulleted list"
+                                (li "Who are the leaders in your industry?")
+                                (li "How are your apps performing in a specific market?")
+                                (li "Do your competitors change by country?")
+                                )
+                            ]
+                  })
 
-(def feature-items [intelligent-newsfeed leaderboard analytics
-                    competitors watchlist app-builder governance-module applocker
-                    app-store-distribution marketplace
+(def feature-items [intelligent-newsfeed app-builder governance-module leaderboard analytics
+                    app-store-search competitors app-store-distribution
+                    applocker marketplace
                     api-management development-ecosystem
                     ])
 
@@ -226,11 +214,7 @@
          (div :id (:anchor f) :class "anchor")
          (div :class "ui hidden divider")
          (div :class "ui dividing header row"
-              (h2
-                (if (:icon f)
-                  (image/elem :class-opts "features-icon" :src (:icon f))
-                  (:semantic-icon f))
-                :text (:title f)))
+              (h2 :text (:title f)))
          (div :class "two column row"
               (div :class "column"
                    (image/elem :src (:screenshot f)))
