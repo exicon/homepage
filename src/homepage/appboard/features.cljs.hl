@@ -19,12 +19,12 @@
              ]
    })
 
-(def leaderboard
+(def leaderboards
   {
    :image-side :left
    :screenshot "http://info.exiconglobal.com/hubfs/website/appboard/Leaderboard.png"
-   :title "Leaderboard"
-   :anchor "leaderboard"
+   :title "Leaderboards"
+   :anchor "leaderboards"
    :content [
              (p "Easily track your best and worst positioned apps sorted by life time downloads, and
                 engagement for the last week or month.")
@@ -188,7 +188,7 @@
                             ]
                   })
 
-(def feature-items [intelligent-newsfeed app-builder governance-module leaderboard analytics
+(def feature-items [intelligent-newsfeed app-builder governance-module leaderboards analytics
                     app-store-search competitors app-store-distribution
                     applocker marketplace
                     api-management development-ecosystem
