@@ -38,8 +38,8 @@
    {:label "Leaderboards"
     :description "Your apps within your portfolio ranked and compared."
     :free true :paid true }
-   {:label "Watchlist"
-    :description "Create lists of apps you want to follow, to track your competitors or for inspiration."
+   {:label "App Store Search"
+    :description "Easily find your apps and your competitors apps across the stores."
     :free true :paid true }
    {:label "AppBuilder"
     :description "A matchmaking tool to find the best development house for your next mobile app."
