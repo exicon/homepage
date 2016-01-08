@@ -24,7 +24,7 @@
    :blog {:name "Blog" :url "http://blog.exiconglobal.com/"}
    :resources
    {:name "Resources"
-    :submenu [{ :id :starter :name "Research" :url "/reports/"}
+    :submenu [{ :id :starter :name "Reports & Infographics" :url "/reports/"}
               ;{ :id :dominator :name "Videos" :url "/videos/"}
               { :id :amplifier :name "Presentations" :url "/presentations/"}]}
    :about-us {:name "About Us" :url "/about-us/"}})

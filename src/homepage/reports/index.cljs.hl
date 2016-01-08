@@ -3,7 +3,7 @@
         [homepage.layout :refer [secondary-header] :as layout]
         [homepage.image :as image]))
 
-(def page-header {:header "Research"})
+(def page-header {:header "Reports & Infographics"})
 
 (def reports-list
   [
@@ -404,7 +404,7 @@
 (defn pg []
   (layout/primary
   :id "reports"
-  :page-title "Exicon | Research"
+  :page-title "Exicon | Reports & Infographics"
   :description "Exicons Reports, Infographics And White Papers On Apps"
   :keywords "Mobile Research, Mobile Insights, Mobile App Strategy, App Strategy"
   :page-css "index.inc.css"
