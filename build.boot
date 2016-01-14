@@ -12,6 +12,7 @@
     [adzerk/boot-cljs "1.7.48-5"]
     [cljsjs/boot-cljsjs "0.5.0" :scope "test"]
     [exicon/semantic-ui "2.1.4-SNAPSHOT"]
+    [camel-snake-kebab "0.3.2"]
     [formative "0.8.8"]]
   :source-paths #{"src"}
   :resource-paths #{"assets"})
@@ -29,7 +30,9 @@
 (task-options!
   ; reload {:open-file "echo %s -- %s -- %s -- subl %3$s:%1$s"}
   cljs {:compiler-options
-        {:pseudo-names false}})
+        {:pseudo-names false}}
+  pom {:project 'homepage
+       :version "0.1.0"})
 
 (deftask copy-index-html
   [d dirs DIRS #{str} "Directories for the main index.html to be accessible under"]

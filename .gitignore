@@ -7,8 +7,11 @@
 /classes
 /checkouts
 .nrepl-*
+.idea
 config.sh
 config.edn
+/config.sh
+/config.edn
 dev.sh
 resources/public/about-us/index.html
 resources/public/app-builder/index.html

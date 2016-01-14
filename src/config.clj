@@ -1,6 +1,6 @@
 (ns config
   (:require
-    [clojure.edn :as edn]))
+    [camel-snake-kebab.core :refer [->SCREAMING_SNAKE_CASE_STRING]]))
 
 (defmacro getenv [key] (System/getenv key))
 (defmacro appboard-url [] (or (getenv "APPBOARD_URL") "http://localhost:3000"))
@@ -16,8 +16,8 @@
 (defmacro hs-app-calc-id [] (getenv "HS_APP_CALC_ID"))
 (defmacro hs-contact-us-id [] (getenv "HS_CONTACT_US_ID"))
 
-(defmacro config
-  [& keys]
-  (let [env-cfg-file (str "./config.edn")
-        config-opts (edn/read-string (slurp env-cfg-file))]
-    (get-in config-opts keys)))
+(def lookup
+  {:backend-url           "http://localhost:3001"})
+
+(defmacro config [key] (or (System/getenv (->SCREAMING_SNAKE_CASE_STRING key))
+                           (get lookup key)))
