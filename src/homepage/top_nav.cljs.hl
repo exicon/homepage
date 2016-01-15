@@ -94,7 +94,7 @@
 
      (div :class "grid-connector")
 
-     ((div :class "ui vertical top sidebar overlay inverted only huge menu")
+     ((div :class "ui vertical left sidebar overlay inverted only huge menu")
       :style "top: 52px;"
       :class (cell= {:visible mobile-menu-visible})
       (div :class "menu"
