@@ -8,6 +8,13 @@
 (def reports-list
   [
     {
+    :title "5 steps to defining your app"
+    :detail "Get your kit for building a really great app!"
+    :image "http://cdn2.hubspot.net/hub/511335/hubfs/Research_download_pages/5-step-deck-prev.png"
+    :link "http://info.exiconglobal.com/download-template-5-steps-to-defining-your-app"
+    }
+
+    {
     :title "Empowering Education through technology "
     :detail "Education is being changed from within by mobile"
     :image "http://cdn2.hubspot.net/hubfs/511335/Research_download_pages/Education-and-Apps-prev.png"
