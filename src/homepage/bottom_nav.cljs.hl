@@ -55,14 +55,6 @@
                  (image/elem
                    :src "/images/footer/white-youtube.png"))
               (a :target "_blank"
-                 :href "http://www.weibo.com/u/3147916252"
-                 (image/elem
-                   :src "/images/footer/white-weibo.png"))
-              (a :target "_blank"
-                 :href "http://feeds.feedburner.com/Exiconglobal"
-                 (image/elem
-                   :src "/images/footer/white-rss.png"))
-              (a :target "_blank"
                  :href "http://www.pinterest.com/exicon/pins/follow/?guid=CqzN7JCYsQQy-0"
                  (image/elem
                    :src "/images/footer/white-pinterest.png"))))))))
