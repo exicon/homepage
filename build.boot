@@ -101,6 +101,7 @@
     (cljs :optimizations :advanced :source-map true)
     (copy-index-htmls)
     (prerender)
+    (target)
     #_(sift :invert true :include #{#"index.html.out/"})))
 
 (deftask stg [] (prod))
