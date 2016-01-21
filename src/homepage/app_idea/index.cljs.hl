@@ -1,5 +1,5 @@
 (ns homepage.app-idea.index
-  (:require-macros [config :refer [hs-app-calc-id hs-portal-id appboard-url]])
+  (:require-macros [config :refer [hs-app-calc-id hs-portal-id node-appboard-url]])
   (:require
     [homepage.layout :refer [secondary-header section-header route] :as layout]
     [exicon.integrations :refer [load-hubspot-form]]
@@ -205,7 +205,7 @@
                (div :class "sub header"
                     "Review your form and submit again" (br)
                     "If you already have an AppBoard account, you can"
-                    (a :href (appboard-url) " login here ")
+                    (a :href (node-appboard-url) " login here ")
                     "and submit your request")
                (div :class "ui hidden divider")
                (a :href "/appbuilder/" "Get to know more about App Builder"))

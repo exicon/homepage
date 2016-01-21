@@ -3,8 +3,8 @@
     [camel-snake-kebab.core :refer [->SCREAMING_SNAKE_CASE_STRING]]))
 
 (defmacro getenv [key] (System/getenv key))
-(defmacro appboard-url [] (or (getenv "APPBOARD_URL") "http://localhost:3000"))
-(defmacro appbuilder-url [] (or (getenv "APPBUILDER_URL") "http://localhost:3104"))
+(defmacro node-appboard-url [] (or (getenv "APPBOARD_URL") "http://localhost:3000"))
+(defmacro appboard-url [] (or (getenv "APPBUILDER_URL") "http://localhost:3104"))
 (defmacro timeline-src []
   (or (getenv "TIMELINE_SRC")
       "//cdn.knightlab.com/libs/timeline/latest/embed/index.html?source=1_OogiCWCFjzW1iSvRpifWbdWkERFyEAhQKWwNjVw-lQ&font=Bevan-PotanoSans&maptype=toner&lang=en&height=650"))

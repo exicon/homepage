@@ -1,5 +1,5 @@
 (ns homepage.bottom-nav
-  (:require-macros [config :refer [appboard-url]])
+  (:require-macros [config :refer [node-appboard-url]])
   (:require [homepage.image :as image]))
 
 (defelem bottom-nav []

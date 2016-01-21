@@ -1,5 +1,5 @@
 (page "index.html"
-      (:require-macros [config :refer [appboard-url]])
+      (:require-macros [config :refer [node-appboard-url]])
       (:require
         [homepage.layout :refer [section-header] :as layout]
         [homepage.common :as common :refer [registration-link]]

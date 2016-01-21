@@ -1,5 +1,5 @@
 (ns homepage.common
-  (:require-macros [config :refer [appboard-url]]))
+  (:require-macros [config :refer [node-appboard-url]]))
 
 
 (defn registration-link [package]
@@ -8,7 +8,7 @@
   ; Not sure how to fix it
   ;
   ; { :pre [(#{:starter :dominator :challanger} package)] }
-  (str (appboard-url)"/?package=" (name package) "#!/registration/"))
+  (str (node-appboard-url)"/?package=" (name package) "#!/registration/"))
 
 (defn registration-button [package text]
   (a :href (registration-link package)

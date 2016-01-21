@@ -1,5 +1,5 @@
 (ns homepage.top-nav
-  (:require-macros [config :refer [appboard-url]])
+  (:require-macros [config :refer [node-appboard-url appboard-url]])
   (:require [homepage.image :as image]))
 
 (defc clicked-main-menu-item nil)
@@ -13,7 +13,7 @@
   ((a :href "/pricing/") attrs "Sign up"))
 
 (defelem login-menu-item [attrs _]
-  ((a :href (appboard-url)) attrs "Login"))
+  ((a :href (node-appboard-url)) attrs "Login"))
 
 (def main-menu-items
   {:app-calc {:name "Calculator" :url "/app-idea/#calculate"}
