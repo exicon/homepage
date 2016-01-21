@@ -15,7 +15,7 @@
                 when you login. See the significant changes in performance
                 across your apps from app store rankings to downloads and
                 reviews.")
-             (common/registration-button :starter "Get My Free Pack")
+             (common/registration-button "Get My Free Pack")
              ]
    })
 
@@ -28,7 +28,7 @@
    :content [
              (p "Easily track your best and worst positioned apps sorted by life time downloads, and
                 engagement for the last week or month.")
-             (common/registration-button :starter "Get Started Now")
+             (common/registration-button "Get Started Now")
              ]
    })
 
@@ -47,7 +47,7 @@
                 Additionally, we'll provide you with In-App Analytics that let you know how users
                 are actually using your apps. What's more, you’ll own your data, unlike other
                 free providers.")
-             (common/registration-button :starter "Get Started Now")
+             (common/registration-button "Get Started Now")
              ]
    })
 
@@ -66,7 +66,7 @@
                  (li "Driving scale and minimizing duplication")
                  (li "Find 3 great developers from our database, all under NDA")
                  (li "Collaborate on the progress of mobile development projects"))
-             (common/registration-button :starter "Get Me Started")
+             (common/registration-button "Get Me Started")
              ]
    })
 
@@ -81,7 +81,7 @@
                  Images and photos from designers, source code and binaries from developers, screenshots
                  and meta data for stores, developer contracts, image licenses etc.
                  Accessible and ready to use anytime.")
-             (common/registration-button :starter "I'm ready to signup!")
+             (common/registration-button "I'm ready to signup!")
              ]
    })
 
@@ -93,7 +93,7 @@
    :anchor "appstore search"
    :content [
              ( p "Search the App Stores directly from your AppBoard, see your own apps and your competitors side by side.")
-             (common/registration-button :starter "I'm ready to signup!")
+             (common/registration-button "I'm ready to signup!")
              ]
    })
 
@@ -114,7 +114,7 @@
                 :target "_blank"
                 (i "— One Platform Foundation"))
              (br)(br)(br)
-             (common/registration-button :dominator "Start for free now")]
+             (common/registration-button "Start for free now")]
    })
 
 (def marketplace
@@ -130,7 +130,7 @@
                      partners, suppliers and your organization with your own white labelled marketplace")
                  (li "Accessible from " (em "your own") " company website showcasing " (em "your own") " products"
                      (br)(br)(br)))
-             (common/registration-button :dominator "Start for free now")
+             (common/registration-button "Start for free now")
              ]
    })
 
@@ -193,20 +193,6 @@
                     applocker marketplace
                     api-management development-ecosystem
                     ])
-
-(defn distribution-option-tile [opts]
-  (cell-let [{:keys [title subtitle price period link button note]} opts]
-            (div :class "column"
-                 (div :class "ui center aligned segment"
-                      (h2 :text title)
-                      (h3 :text subtitle)
-                      (h4 :class "text" :text price)
-                      (if (= @link :sumome)
-                        (a :click #(common/sumome-popup) (div :class "ui button" :text button))
-                        (a :href link (div :class "ui button" :text button)))
-                      (div note)))))
-
-
 
 (defn feature [f]
   (if (= (:image-side f) :left)

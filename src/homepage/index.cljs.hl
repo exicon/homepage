@@ -2,13 +2,11 @@
       (:require-macros [config :refer [node-appboard-url]])
       (:require
         [homepage.layout :refer [section-header] :as layout]
-        [homepage.common :as common :refer [registration-link]]
         [homepage.image :as image]
         [homepage.about-us.index]
         [homepage.appbuilder.index]
         [homepage.app-idea.index]
         [homepage.appboard.index]
-        [homepage.pricing.index]
         [homepage.customers.index]
         [homepage.developers.index]
         [homepage.news.index]
@@ -301,7 +299,6 @@
 ((condp pg? (.. js/window -location -pathname)
    "/appbuilder/" homepage.appbuilder.index/pg
    "/app-idea/" homepage.app-idea.index/pg
-   "/pricing/" homepage.pricing.index/pg
    "/appboard/" homepage.appboard.index/pg
    "/about-us/" homepage.about-us.index/pg
    "/customers/" homepage.customers.index/pg
