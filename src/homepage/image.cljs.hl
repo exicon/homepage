@@ -232,8 +232,9 @@
    "/images/header/subscribe.png" "subscribe"
    })
 
-(defelem elem [{:keys [src class-opts]
+(defelem elem [{:keys [src class-opts click]
                 :or {class-opts ""}} kids]
   (img :class class-opts
        :src src
-       :alt (cell= (image-alts src))))
+       :alt (cell= (image-alts src))
+       :click click))
