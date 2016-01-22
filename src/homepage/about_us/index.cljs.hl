@@ -175,27 +175,6 @@
             :twitter "andrewmtweets"
             }
 
-   :rebecca {
-             :image "/images/about-us/Rebecca.png"
-             :name "Rebecca Bragg"
-             :position "Sales"
-             :bio
-             #(vector
-                (p "Rebecca is experienced in driving revenue at all points of the customer lifecycle.")
-                (p "She has international experience in advertising, marketing and sales and has a strong track record of success working for major brands and startups.")
-                (p "She is currently based in Silicon Valley."))
-             :linkedin "https://www.linkedin.com/in/rebeccalbragg"
-             }
-   :jennifer {
-              :image "/images/about-us/Jennifer.png"
-              :name "Jennifer Welch"
-              :position "Developer Onboarding"
-              :bio
-              #(vector
-                 (p "Jennifer has extensive digital ops experience, having worked at CondeNast Publications and Rodale, Inc. in New York.")
-                 (p "She started her career at ACNielsen and has enjoyed freelance writing projects while living in Hong Kong before joining the Exicon Team in 2015."))
-              }
-
    :eleanor {
              :image "/images/about-us/Eleanor.png"
              :name "Eleanor Cherry"
@@ -239,6 +218,7 @@
                 (p "Having now settled in Hong Kong he is putting his experience in research, from his time with Disney Research and Trinity College Dublin, to solving real world problems with Exicon.")
                 (p "Kenneth's strengths lie in his analytical and deliberate approach to problem solving, along with his drive to be constantly learning."))
              :linkedin "https://hk.linkedin.com/in/ryallk"
+             :twitter "KennethRyall"
              }
 
    :ayaz {
@@ -406,8 +386,8 @@
                           (office-options opt)))))
 
 (def exicon-team
-  [:stefan :cat :tamas :eleanor :andrew :jennifer :tracy
-   :rebecca :apter :ayaz :kenneth :laura :stephany])
+  [:stefan :cat :tamas :eleanor :andrew :tracy
+   :apter :ayaz :kenneth :laura :stephany])
 (def board-team [:antoine
                  :michael :yoshihisa :cat :stefan])
 (def advisory-team [:ralph :charles :anthony :jeffrey])
