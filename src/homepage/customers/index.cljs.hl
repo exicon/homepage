@@ -1,7 +1,6 @@
 (ns homepage.customers.index
       (:require
         [homepage.layout :refer [secondary-header] :as layout]
-        [homepage.common :refer [appboard-registration-link]]
         [homepage.image :as image]))
 
 (defc multinational
@@ -129,7 +128,7 @@
               (p (:result f))
               (image/elem :class-opts "customer-logo" :src (cell= (:customer-logo1 f)))
               (image/elem :class-opts "customer-logo" :src (cell= (:customer-logo2 f)))(br)(br)
-              (a :href appboard-registration-link
+              (a :href "/pricing/"
                  (div :class "ui button" "Get started now"))))
 
     (div :class "page-details middle aligned two column doubling row"
@@ -143,7 +142,7 @@
               (p (:solution f))
               (h4 "Result")
               (p (:result f)) (br)(br)
-              (a :href appboard-registration-link
+              (a :href "/pricing/"
                  (div :class "ui button" "Get started now")))
          (div :class "column right-image"
               (image/elem :src (cell= (:screenshot1 f)))

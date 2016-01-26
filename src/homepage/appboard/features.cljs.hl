@@ -3,6 +3,9 @@
     [homepage.image :as image]
     [homepage.common :as common]))
 
+(defn go-to-pricing-btn [text]
+  (a :href "/pricing/"
+     (div :class "ui button" text)))
 
 (def intelligent-newsfeed
   {
@@ -15,7 +18,7 @@
                 when you login. See the significant changes in performance
                 across your apps from app store rankings to downloads and
                 reviews.")
-             (common/registration-button "Get My Free Pack")
+             (go-to-pricing-btn "Get My Free Pack")
              ]
    })
 
@@ -28,7 +31,7 @@
    :content [
              (p "Easily track your best and worst positioned apps sorted by life time downloads, and
                 engagement for the last week or month.")
-             (common/registration-button "Get Started Now")
+             (go-to-pricing-btn "Get Started Now")
              ]
    })
 
@@ -47,7 +50,7 @@
                 Additionally, we'll provide you with In-App Analytics that let you know how users
                 are actually using your apps. What's more, you’ll own your data, unlike other
                 free providers.")
-             (common/registration-button "Get Started Now")
+             (go-to-pricing-btn "Get Started Now")
              ]
    })
 
@@ -66,7 +69,7 @@
                  (li "Driving scale and minimizing duplication")
                  (li "Find 3 great developers from our database, all under NDA")
                  (li "Collaborate on the progress of mobile development projects"))
-             (common/registration-button "Get Me Started")
+             (go-to-pricing-btn "Get Me Started")
              ]
    })
 
@@ -81,7 +84,7 @@
                  Images and photos from designers, source code and binaries from developers, screenshots
                  and meta data for stores, developer contracts, image licenses etc.
                  Accessible and ready to use anytime.")
-             (common/registration-button "I'm ready to signup!")
+             (go-to-pricing-btn "I'm ready to signup!")
              ]
    })
 
@@ -93,7 +96,7 @@
    :anchor "appstore search"
    :content [
              ( p "Search the App Stores directly from your AppBoard, see your own apps and your competitors side by side.")
-             (common/registration-button "I'm ready to signup!")
+             (go-to-pricing-btn "I'm ready to signup!")
              ]
    })
 
@@ -114,7 +117,7 @@
                 :target "_blank"
                 (i "— One Platform Foundation"))
              (br)(br)(br)
-             (common/registration-button "Start for free now")]
+             (go-to-pricing-btn "Start for free now")]
    })
 
 (def marketplace
@@ -130,7 +133,7 @@
                      partners, suppliers and your organization with your own white labelled marketplace")
                  (li "Accessible from " (em "your own") " company website showcasing " (em "your own") " products"
                      (br)(br)(br)))
-             (common/registration-button "Start for free now")
+             (go-to-pricing-btn "Start for free now")
              ]
    })
 
