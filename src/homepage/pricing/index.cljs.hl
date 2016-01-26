@@ -1,0 +1,129 @@
+(ns homepage.pricing.index
+  (:require
+    [homepage.layout :refer [contact-us-btn secondary-header]
+     :as layout]
+    [clojure.string :refer [lower-case]])
+  (:require-macros
+    [config :refer
+     [node-appboard-url appboard-url hs-contact-us-id hs-portal-id]]))
+
+(def page-header {:header "Pricing"})
+(defn appboard-registration-link [arg] (str (node-appboard-url) "/?package="(name arg)
+                                            "&returnUri=" (appboard-url)
+                                            "#!/registration/"))
+
+(def plan-pricing
+  [{:plan "Basic"
+    :monthly-price "US$ 199"
+    :yearly-price "US$ 1,999"
+    :info "An Entry level solution for those new to app management"}
+   {:plan "Pro"
+    :monthly-price "US$ 499"
+    :yearly-price "US$ 4,999"
+    :info "An intergrated solution for managing apps for digital natives"}
+   {:plan "Enterprise"
+    :info "An intelligent way to manage your apps for your teams"}])
+
+(def features-list
+  [{:feature "Unlimited Users" :plans #{:basic :pro :enterprise}}
+   {:feature "Unlimited Apps Tracked" :plans #{:basic :pro :enterprise}}
+   {:feature "LeaderBoard Portfolio App Ranking" :plans #{:basic :pro :enterprise}}
+   {:feature "AppStore Search" :plans #{:basic :pro :enterprise}}
+   {:feature "AppBuilder" :plans #{:basic :pro :enterprise}}
+   {:feature "App Development Calculator" :plans #{:basic :pro :enterprise}}
+   {:feature "Workflow App Management" :plans #{:basic :pro :enterprise}}
+   {:feature "Newsfedd Portfolio Intelligence" :plans #{:basic :pro :enterprise}}
+   {:feature "Notifications" :plans #{:basic :pro :enterprise}}
+   {:feature "AppStore Analytics Integration" :plans #{:basic :pro :enterprise}}
+   {:feature "Appstore Reviews and Ratings" :plans #{:basic :pro :enterprise}}
+   {:feature "In App Analytics Intergration" :plans #{:basic :pro :enterprise}}
+   {:feature "Data Export" :plans #{:pro :enterprise}}
+   {:feature "Email Reports" :plans #{:pro :enterprise}}
+   {:feature "AppLocker Repository integration" :plans #{:enterprise}}
+   {:feature "AppBuilder App Governance Module" :plans #{:enterprise}}
+   {:feature "Single Sign On" :plans #{:enterprise}}
+   {:feature "Marketplace for your apps" :plans #{:enterprise}}
+   {:feature "SMS alert" :plans #{:enterprise}}
+   {:feature "Company style customisation" :plans #{:enterprise}}
+   {:feature "Distribution (Excluding China)"
+    :info {:basic "1 app per month to up to 33 Global Android Stores"
+           :pro "5 apps per month to up to 33 Global Android Stores"
+           :enterprise "Unlimited apps per month to up to 33 Global Android Stores"}}
+   {:feature "China Distribution"
+    :info {:basic "Priced on request per app"
+           :pro "Priced on request per app"
+           :enterprise "On request"}}
+   {:feature "Competitor Insights"
+    :info {:basic "No sample of real report industry specific"
+           :pro "1 global report on a competitor per month"
+           :enterprise "On request"}}])
+
+(defn feature-row [f]
+  (cell-let [{:keys [feature plans info]} f]
+            (let [basic-color "rgb(89,210,217)"
+                  pro-color "rgb(55,154,166)"
+                  enterprise-color "rgb(77,182,172)"
+                  check-icon (fn [color plan]
+                               (div :style "text-align:center"
+                                 (i :class "big check circle icon"
+                                    :style (str "color:" color)
+                                    :toggle (cell= (contains? plans plan)))
+                                 (cell= (when info
+                                          (plan info)))))]
+              (div :class "four column feature row" :style "padding:0.10em"
+                   (div :class "column"
+                        :style "background-color:rgb(245,245,245);"
+                        feature)
+                   (div :class "centered column" (check-icon basic-color :basic))
+                   (div :class "centered column" (check-icon pro-color :pro))
+                   (div :class "centered column" (check-icon enterprise-color :enterprise))))))
+
+(defn pricing-section []
+  (section
+    :id "pricing"
+    :class "ui container doubling grid"
+    (div :class "four column header row"
+         (div :class "trial column"
+              (h2 :class "ui medium header"
+                  "*Free 30 day Trial"
+                  (div :class "sub header"
+                       "(no distro, competitive in the trial period)")))
+         (loop-tpl :bindings [{:keys [plan monthly-price yearly-price]} plan-pricing]
+                   (div :class (str (lower-case @plan) " column")
+                        (div (str "AppBoard - " @plan))
+                        (h2 :class "header"
+                            (cell= (or monthly-price "Contact Us"))
+                            (span :toggle monthly-price
+                                  " /mo"))
+                        (div :toggle yearly-price
+                             (str @yearly-price " per year")))))
+    (div :class "four column header row"
+         (div :class "column")
+         (loop-tpl :bindings [{:keys [plan info]} plan-pricing]
+                   (div :class  (str (lower-case @plan) " info column")
+                        (i info))))
+    (loop-tpl :bindings [f features-list]
+              (feature-row f))))
+
+(defelem signup-btn [{:keys [plan] :as attrs} _]
+         ((a (dissoc attrs :plan))
+           :href (appboard-registration-link plan)
+           "30-Day Free Trial"))
+(defn cta-section []
+  (section
+    :class "ui container grid"
+    (div :class "centered row"
+         (signup-btn :class "ui teal huge button" :plan :free))))
+
+(defn pg []
+  (layout/primary
+    :id "pricing"
+    :page-title "Product Pricing | Analytics & App Management | Exicon"
+    :description "Pricing For Exicon's App Management & Logistics Platform That Scales With Your App Portfolio, Analytics, Distribution & API Management."
+    :keywords "AppBoard, Analytics, App Management, Exicon Pricing, AppBoard Subscription, Mobile Relationship Management Pricing, Mobile Relationship Management Subscription "
+    :page-css "../../pricing/index.inc.css"
+    (secondary-header :header (:header page-header) :page "pricing")
+    (div :class "ui hidden divider")
+    (pricing-section)
+    (cta-section)
+    (div :class "ui hidden divider")))

@@ -60,6 +60,7 @@
             "appbuilder/"
             "app-idea/"
             "appboard/"
+            "pricing/"
             "customers/"
             "developers/"
             "news/"

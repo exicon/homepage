@@ -1,8 +1,7 @@
 (ns homepage.top-nav
   (:require-macros [config :refer [node-appboard-url appboard-url]])
   (:require
-    [homepage.image :as image]
-    [homepage.common :refer [appboard-registration-link]]))
+    [homepage.image :as image]))
 
 (defc clicked-main-menu-item nil)
 
@@ -12,7 +11,7 @@
     false))
 
 (defelem signup-menu-item [attrs _]
-  ((a :href appboard-registration-link) attrs "Sign up"))
+  ((a :href "/pricing/") attrs "Sign up"))
 
 (defelem login-menu-item [attrs _]
   ((a :href (node-appboard-url)) attrs "Login"))
@@ -21,6 +20,7 @@
   {:app-calc {:name "Calculator" :url "/app-idea/#calculate"}
    :app-builder {:name "AppBuilder" :url "/appbuilder/"}
    :appboard {:name "AppBoard" :url "/appboard/"}
+   :pricing {:name "Pricing" :url "/pricing/"}
    :blog {:name "Blog" :url "http://blog.exiconglobal.com/"}
    :resources
    {:name "Resources"
