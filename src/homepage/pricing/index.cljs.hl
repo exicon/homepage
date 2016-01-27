@@ -36,6 +36,7 @@
    {:feature "AppBuilder" :plans #{:basic :pro :enterprise}}
    {:feature "App Development Calculator" :plans #{:basic :pro :enterprise}}
    {:feature "Workflow App Management" :plans #{:basic :pro :enterprise}}
+   {:feature "App Profile" :plans #{:basic :pro :enterprise}}
    {:feature "Newsfedd Portfolio Intelligence" :plans #{:basic :pro :enterprise}}
    {:feature "Notifications" :plans #{:basic :pro :enterprise}}
    {:feature "AppStore Analytics Integration" :plans #{:basic :pro :enterprise}}
@@ -56,9 +57,9 @@
    {:feature "China Distribution"
     :info    {:basic      "Priced on request per app"
               :pro        "Priced on request per app"
-              :enterprise "On request"}}
+              :enterprise "Priced on request per app"}}
    {:feature "Competitor Insights"
-    :info    {:basic      "No sample of real report industry specific"
+    :info    {:basic      "Sample report"
               :pro        "1 global report on a competitor per month"
               :enterprise "On request"}}])
 
@@ -115,7 +116,7 @@
               (h2 :class "ui header"
                   "*Free 30 day Trial"
                   (div :class "sub header"
-                       "(no distro, competitive in the trial period)")))
+                       "(no distro, competitor insights in the trial period)")))
          (loop-tpl :bindings [{:keys [plan monthly-price yearly-price]} plan-pricing]
                    (div :class (str (lower-case @plan) " column")
                         (header-content plan monthly-price yearly-price))))
