@@ -11,7 +11,7 @@ background-color: #e2dcda;
 #pricing .feature.row .centered.column{
     justify-content: center;
 }
-#pricing .header.row{
+#pricing .header.row, #pricing .info.row{
    padding: 0 0.5em;
 }
 #pricing .header.row .trial.column {
@@ -29,19 +29,18 @@ background-color: #e2dcda;
     background-color: rgba(77,182,172, 0.1);
 }
 
-#pricing .basic.column .header{
-    color: rgb(89,210,217);
+#pricing .header.row .header{
+    margin: 0.25em 0;
 }
-#pricing .pro.column .header{
-    color: rgb(55,154,166);
+
+#pricing .header.row .ui.medium.header {
+    font-weight: 400;
 }
-#pricing .enterprise.column .header{
-    color: rgb(77,182,172);
-}
+
 #pricing .basic.column .header span,
 #pricing .pro.column .header span{
-    font-size: 0.65em;
-    color: gray;
+    font-size: 0.60em;
+    color: black;
     font-weight: 400;
 }
 #pricing .info.column{
@@ -58,7 +57,9 @@ background-color: #e2dcda;
     background-color: rgb(77,182,172);
 }
 
-#pricing .header.row .column {
+#pricing .header.row .column,
+#pricing .info.row .column {
     padding: 1em;
     border: solid 1px white;
 }
+

@@ -12,6 +12,10 @@
                                             "&returnUri=" (appboard-url)
                                             "#!/registration/"))
 
+(def basic-color "rgb(89,210,217)")
+(def pro-color "rgb(55,154,166)")
+(def enterprise-color "rgb(77,182,172)")
+
 (def plan-pricing
   [{:plan "Basic"
     :monthly-price "US$ 199"
@@ -25,8 +29,8 @@
     :info "An intelligent way to manage your apps for your teams"}])
 
 (def features-list
-  [{:feature "Unlimited Users" :plans #{:basic :pro :enterprise}}
-   {:feature "Unlimited Apps Tracked" :plans #{:basic :pro :enterprise}}
+  [{:feature "Unlimited Users" :plans #{:basic :pro :enterprise} :bg-color "rgba(89,210,217, 0.3)"}
+   {:feature "Unlimited Apps Tracked" :plans #{:basic :pro :enterprise} :bg-color "rgba(89,210,217, 0.3)"}
    {:feature "LeaderBoard Portfolio App Ranking" :plans #{:basic :pro :enterprise}}
    {:feature "AppStore Search" :plans #{:basic :pro :enterprise}}
    {:feature "AppBuilder" :plans #{:basic :pro :enterprise}}
@@ -39,31 +43,37 @@
    {:feature "In App Analytics Intergration" :plans #{:basic :pro :enterprise}}
    {:feature "Data Export" :plans #{:pro :enterprise}}
    {:feature "Email Reports" :plans #{:pro :enterprise}}
-   {:feature "AppLocker Repository integration" :plans #{:enterprise}}
-   {:feature "AppBuilder App Governance Module" :plans #{:enterprise}}
-   {:feature "Single Sign On" :plans #{:enterprise}}
-   {:feature "Marketplace for your apps" :plans #{:enterprise}}
-   {:feature "SMS alert" :plans #{:enterprise}}
-   {:feature "Company style customisation" :plans #{:enterprise}}
+   {:feature "AppLocker Repository integration" :plans #{:enterprise} :bg-color "rgba(245,245,245, 0.4)"}
+   {:feature "AppBuilder App Governance Module" :plans #{:enterprise} :bg-color "rgba(245,245,245, 0.4)"}
+   {:feature "Single Sign On" :plans #{:enterprise} :bg-color "rgba(245,245,245, 0.4)"}
+   {:feature "Marketplace for your apps" :plans #{:enterprise} :bg-color "rgba(245,245,245, 0.4)"}
+   {:feature "SMS alert" :plans #{:enterprise} :bg-color "rgba(245,245,245, 0.4)"}
+   {:feature "Company style customisation" :plans #{:enterprise} :bg-color "rgba(245,245,245, 0.4)"}
    {:feature "Distribution (Excluding China)"
-    :info {:basic "1 app per month to up to 33 Global Android Stores"
-           :pro "5 apps per month to up to 33 Global Android Stores"
-           :enterprise "Unlimited apps per month to up to 33 Global Android Stores"}}
+    :info    {:basic      "1 app per month to up to 33 Global Android Stores"
+              :pro        "5 apps per month to up to 33 Global Android Stores"
+              :enterprise "Unlimited apps per month to up to 33 Global Android Stores"}}
    {:feature "China Distribution"
-    :info {:basic "Priced on request per app"
-           :pro "Priced on request per app"
-           :enterprise "On request"}}
+    :info    {:basic      "Priced on request per app"
+              :pro        "Priced on request per app"
+              :enterprise "On request"}}
    {:feature "Competitor Insights"
-    :info {:basic "No sample of real report industry specific"
-           :pro "1 global report on a competitor per month"
-           :enterprise "On request"}}])
+    :info    {:basic      "No sample of real report industry specific"
+              :pro        "1 global report on a competitor per month"
+              :enterprise "On request"}}])
+
+(defelem signup-btn [{:keys [plan] :as attrs} _]
+         ((a (dissoc attrs :plan))
+           :href (appboard-registration-link plan)
+           "30-Day Free Trial"))
+
+(defn cta-section []
+  (div :class "sixteen wide center aligned column"
+       (signup-btn :class "ui teal huge button" :plan :free)))
 
 (defn feature-row [f]
-  (cell-let [{:keys [feature plans info]} f]
-            (let [basic-color "rgb(89,210,217)"
-                  pro-color "rgb(55,154,166)"
-                  enterprise-color "rgb(77,182,172)"
-                  check-icon (fn [color plan]
+  (cell-let [{:keys [feature plans info bg-color]} f]
+            (let [check-icon (fn [color plan]
                                (div :style "text-align:center"
                                  (i :class "big check circle icon"
                                     :style (str "color:" color)
@@ -72,7 +82,7 @@
                                           (plan info)))))]
               (div :class "four column feature row" :style "padding:0.10em"
                    (div :class "column"
-                        :style "background-color:rgb(245,245,245);"
+                        :style (cell= (str "background-color:" (or bg-color "rgb(245,245,245)")))
                         feature)
                    (div :class "centered column" (check-icon basic-color :basic))
                    (div :class "centered column" (check-icon pro-color :pro))
@@ -84,36 +94,31 @@
     :class "ui container doubling grid"
     (div :class "four column header row"
          (div :class "trial column"
-              (h2 :class "ui medium header"
+              (h2 :class "ui header"
                   "*Free 30 day Trial"
                   (div :class "sub header"
                        "(no distro, competitive in the trial period)")))
          (loop-tpl :bindings [{:keys [plan monthly-price yearly-price]} plan-pricing]
                    (div :class (str (lower-case @plan) " column")
-                        (div (str "AppBoard - " @plan))
-                        (h2 :class "header"
+                        (div :class "ui medium header" (str "AppBoard - " @plan))
+                        (h2 :class "ui huge header"
+                            :style (str "color:" (case (lower-case @plan)
+                                                   "basic" basic-color
+                                                   "pro" pro-color
+                                                   "enterprise" enterprise-color))
                             (cell= (or monthly-price "Contact Us"))
                             (span :toggle monthly-price
                                   " /mo"))
-                        (div :toggle yearly-price
+                        (div :class "ui medium header" :toggle yearly-price
                              (str @yearly-price " per year")))))
-    (div :class "four column header row"
+    (div :class "four column info row"
          (div :class "column")
          (loop-tpl :bindings [{:keys [plan info]} plan-pricing]
                    (div :class  (str (lower-case @plan) " info column")
                         (i info))))
     (loop-tpl :bindings [f features-list]
-              (feature-row f))))
-
-(defelem signup-btn [{:keys [plan] :as attrs} _]
-         ((a (dissoc attrs :plan))
-           :href (appboard-registration-link plan)
-           "30-Day Free Trial"))
-(defn cta-section []
-  (section
-    :class "ui container grid"
-    (div :class "centered row"
-         (signup-btn :class "ui teal huge button" :plan :free))))
+              (feature-row f))
+    (cta-section)))
 
 (defn pg []
   (layout/primary
@@ -125,5 +130,4 @@
     (secondary-header :header (:header page-header) :page "pricing")
     (div :class "ui hidden divider")
     (pricing-section)
-    (cta-section)
     (div :class "ui hidden divider")))
