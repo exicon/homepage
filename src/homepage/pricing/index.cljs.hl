@@ -8,7 +8,7 @@
      [node-appboard-url appboard-url hs-contact-us-id hs-portal-id]]))
 
 (def page-header {:header "Pricing"})
-(defn appboard-registration-link [arg] (str (node-appboard-url) "/?package="(name arg)
+(defn appboard-registration-link [arg] (str (node-appboard-url) "/?package=" (name arg)
                                             "&returnUri=" (appboard-url)
                                             "#!/registration/"))
 
@@ -17,14 +17,14 @@
 (def enterprise-color "rgb(77,182,172)")
 
 (def plan-pricing
-  [{:plan "Basic"
+  [{:plan          "Basic"
     :monthly-price "US$ 199"
-    :yearly-price "US$ 1,999"
-    :info "An Entry level solution for those new to app management"}
-   {:plan "Pro"
+    :yearly-price  "US$ 1,999"
+    :info          "An Entry level solution for those new to app management"}
+   {:plan          "Pro"
     :monthly-price "US$ 499"
-    :yearly-price "US$ 4,999"
-    :info "An intergrated solution for managing apps for digital natives"}
+    :yearly-price  "US$ 4,999"
+    :info          "An intergrated solution for managing apps for digital natives"}
    {:plan "Enterprise"
     :info "An intelligent way to manage your apps for your teams"}])
 
@@ -71,15 +71,21 @@
   (div :class "sixteen wide center aligned column"
        (signup-btn :class "ui teal huge button" :plan :free)))
 
+(defn plan-color [plan]
+  (case (lower-case plan)
+    "basic" basic-color
+    "pro" pro-color
+    "enterprise" enterprise-color))
+
 (defn feature-row [f]
   (cell-let [{:keys [feature plans info bg-color]} f]
             (let [check-icon (fn [color plan]
                                (div :style "text-align:center"
-                                 (i :class "big check circle icon"
-                                    :style (str "color:" color)
-                                    :toggle (cell= (contains? plans plan)))
-                                 (cell= (when info
-                                          (plan info)))))]
+                                    (i :class "big check circle icon"
+                                       :style (str "color:" color)
+                                       :toggle (cell= (contains? plans plan)))
+                                    (cell= (when info
+                                             (plan info)))))]
               (div :class "four column feature row" :style "padding:0.10em"
                    (div :class "column"
                         :style (cell= (str "background-color:" (or bg-color "rgb(245,245,245)")))
@@ -88,10 +94,22 @@
                    (div :class "centered column" (check-icon pro-color :pro))
                    (div :class "centered column" (check-icon enterprise-color :enterprise))))))
 
+(defn header-content [plan monthly-price yearly-price]
+  (spliced
+    (div :class "ui medium header" (str "AppBoard - " @plan))
+    (h2 :class "ui huge header"
+        :style (str "color:" (plan-color @plan))
+        (cell= (or monthly-price "Contact Us"))
+        (span :toggle monthly-price
+              " /mo"))
+    (when @yearly-price
+      (div :class "ui medium header"
+           (str @yearly-price " per year")))))
+
 (defn pricing-section []
   (section
     :id "pricing"
-    :class "ui container doubling grid"
+    :class "ui container doubling computer tablet only grid"
     (div :class "four column header row"
          (div :class "trial column"
               (h2 :class "ui header"
@@ -100,29 +118,39 @@
                        "(no distro, competitive in the trial period)")))
          (loop-tpl :bindings [{:keys [plan monthly-price yearly-price]} plan-pricing]
                    (div :class (str (lower-case @plan) " column")
-                        (div :class "ui medium header" (str "AppBoard - " @plan))
-                        (h2 :class "ui huge header"
-                            :style (str "color:" (case (lower-case @plan)
-                                                   "basic" basic-color
-                                                   "pro" pro-color
-                                                   "enterprise" enterprise-color))
-                            (cell= (or monthly-price "Contact Us"))
-                            (span :toggle monthly-price
-                                  " /mo"))
-                        (div :class "ui medium header" :toggle yearly-price
-                             (str @yearly-price " per year")))))
+                        (header-content plan monthly-price yearly-price))))
     (div :class "four column info row"
          (div :class "column")
          (loop-tpl :bindings [{:keys [plan info]} plan-pricing]
-                   (div :class  (str (lower-case @plan) " info column")
+                   (div :class (str (lower-case @plan) " info column")
                         (i info))))
     (loop-tpl :bindings [f features-list]
               (feature-row f))
     (cta-section)))
 
+(defn pricing-section-mobile []
+  (section :id "pricing"
+           ((div :class "ui one column mobile only container grid"
+                 (loop-tpl :bindings [{:keys [plan monthly-price yearly-price info]} plan-pricing]
+                           (div :class "mobile center aligned column"
+                                (div :class "header row"
+                                     (div :class (str (lower-case @plan) " column")
+                                          (header-content plan monthly-price yearly-price)))
+                                (div :class "info row"
+                                     (div :class "column"
+                                          :style (str "background-color:" (plan-color @plan)
+                                                      ";color: white;")
+                                          (i info)))
+
+                                (loop-tpl :bindings [{:keys [feature plans]} features-list]
+                                          (when (contains? @plans (keyword (lower-case @plan)))
+                                            (div :class "feature row"
+                                                 (div :class "centered column" feature)))))))
+             (cta-section))))
+
 (defn pg []
   (layout/primary
-    :id "pricing"
+    :id "appboard-pricing"
     :page-title "Product Pricing | Analytics & App Management | Exicon"
     :description "Pricing For Exicon's App Management & Logistics Platform That Scales With Your App Portfolio, Analytics, Distribution & API Management."
     :keywords "AppBoard, Analytics, App Management, Exicon Pricing, AppBoard Subscription, Mobile Relationship Management Pricing, Mobile Relationship Management Subscription "
@@ -130,4 +158,5 @@
     (secondary-header :header (:header page-header) :page "pricing")
     (div :class "ui hidden divider")
     (pricing-section)
+    (pricing-section-mobile)
     (div :class "ui hidden divider")))
