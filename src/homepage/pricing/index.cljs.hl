@@ -42,7 +42,7 @@
    {:feature "Notifications" :plans #{:basic :pro :enterprise}}
    {:feature "AppStore Analytics Integration" :plans #{:basic :pro :enterprise}}
    {:feature "Appstore Reviews and Ratings" :plans #{:basic :pro :enterprise}}
-   {:feature "In App Analytics Intergration" :plans #{:basic :pro :enterprise}}
+   {:feature "In App Analytics Integration" :plans #{:basic :pro :enterprise}}
    {:feature "Distribution* <br>(up to 33 Global Android Stores)" :plans #{:basic :pro :enterprise}
     :info    {:basic " 1/mo"
               :pro   " 5/mo"}}
@@ -147,7 +147,7 @@
                                 (loop-tpl :bindings [{:keys [feature plans]} features-list]
                                           (when (contains? @plans (keyword (lower-case @plan)))
                                             (div :class "feature row"
-                                                 (div :class "centered column" feature))))))))))
+                                                 (div :class "centered column" :html feature))))))))))
 
 (defn pg []
   (layout/primary
