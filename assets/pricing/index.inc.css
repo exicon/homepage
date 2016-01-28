@@ -4,12 +4,15 @@ background-color: #e2dcda;
 }
 
 #pricing .feature.row .column{
-    padding: 1em;
+    padding: 0.25em;
     align-items: center;
     display: flex;
 }
 #pricing .feature.row .centered.column{
     justify-content: center;
+}
+#pricing .feature.column .content{
+    margin-left: 46%;
 }
 #pricing .header.row, #pricing .info.row{
    padding: 0 0.5em;
@@ -40,7 +43,6 @@ background-color: #e2dcda;
 #pricing .basic.column .header span,
 #pricing .pro.column .header span{
     font-size: 0.60em;
-    color: black;
     font-weight: 400;
 }
 #pricing .info.column{
